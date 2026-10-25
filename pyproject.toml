@@ -1,0 +1,44 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "eq-biodt"
+version = "0.2.0"
+description = "Biodiversity Digital Twin for the Rub' al-Khali (Empty Quarter) grounded in EU BioDT standards and Ontological Causal Models"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Robert Hoehndorf", email = "robert.hoehndorf@kaust.edu.sa" }
+]
+dependencies = [
+    "numpy>=1.26.0",
+    "scipy>=1.11.0",
+    "pandas>=2.1.0",
+    "pyarrow>=14.0.0",
+    "pyyaml>=6.0.1",
+    "fastapi>=0.110.0",
+    "uvicorn>=0.27.0",
+    "pydantic>=2.6.0",
+    "httpx>=0.27.0",
+    "h3>=3.7.6",
+    "matplotlib>=3.10.9",
+    "scikit-learn>=1.4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+]
+
+[project.scripts]
+eq-biodt = "eq_biodt.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/eq_biodt"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

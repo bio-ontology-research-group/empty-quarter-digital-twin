@@ -1,0 +1,14 @@
+Saved the [referee report](paper/REVIEW_EQ_BioDT.txt) in the requested format: 20 substantive comments and eight minor points.
+
+Verdict: not ready for acceptance; substantial reanalysis and independent intervention validation are needed.
+
+Critical findings include:
+
+- All 268 `PlantRoot` metagenomes fail compartment normalization.
+- Three Shannon observations are scored without held-out predictions.
+- Diffusivity normalization can make compaction increase gas power.
+- The metabolic model permits fixation with sulfate as its only supplied energy-related input.
+
+All seven tests pass, and regenerated validation results exactly match the saved JSON, reproducing these defects.
+
+The report accepts your previously completed hidden-text scans as clean.

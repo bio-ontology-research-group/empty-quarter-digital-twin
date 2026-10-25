@@ -1,0 +1,2615 @@
+{
+  "twin_version": "0.2.0",
+  "tier1_spatial_block_cv": {
+    "validation_scheme": "5-Fold Spatial Block Cross-Validation (zero site overlap across folds, train-only median imputation)",
+    "total_wgs_samples": 551,
+    "observed_guild_wgs_samples": 550,
+    "observed_mobilome_wgs_samples": 549,
+    "total_site_compartments": 180,
+    "targets": {
+      "log2_hydB_1l": {
+        "n": 550,
+        "rmse": 1.7689,
+        "mae": 1.4201,
+        "r2": 0.2501,
+        "pearson_r": 0.5011,
+        "pearson_p": 2.6742785858870398e-36,
+        "spearman_rho": 0.5428,
+        "spearman_p": 1.7971578400980427e-43,
+        "n_clusters_sites": 61,
+        "spearman_rho_cluster_ci95": [
+          0.4697,
+          0.6221
+        ],
+        "r2_cluster_ci95": [
+          0.1483,
+          0.3378
+        ]
+      },
+      "log2_hydB_1h": {
+        "n": 550,
+        "rmse": 1.0721,
+        "mae": 0.8356,
+        "r2": 0.0558,
+        "pearson_r": 0.2551,
+        "pearson_p": 1.2905800248622994e-09,
+        "spearman_rho": 0.2586,
+        "spearman_p": 7.423897357968873e-10,
+        "n_clusters_sites": 61,
+        "spearman_rho_cluster_ci95": [
+          0.1331,
+          0.3529
+        ],
+        "r2_cluster_ci95": [
+          -0.0495,
+          0.1238
+        ]
+      },
+      "log2_hydB_2a": {
+        "n": 550,
+        "rmse": 0.9239,
+        "mae": 0.7184,
+        "r2": 0.1547,
+        "pearson_r": 0.4006,
+        "pearson_p": 1.2790097480107196e-22,
+        "spearman_rho": 0.4149,
+        "spearman_p": 2.7108066695841083e-24,
+        "n_clusters_sites": 61,
+        "spearman_rho_cluster_ci95": [
+          0.2842,
+          0.5027
+        ],
+        "r2_cluster_ci95": [
+          0.0434,
+          0.2502
+        ]
+      },
+      "log2_coxL_formI": {
+        "n": 550,
+        "rmse": 0.9056,
+        "mae": 0.7127,
+        "r2": -0.05,
+        "pearson_r": 0.1332,
+        "pearson_p": 0.0017388138816072515,
+        "spearman_rho": 0.1935,
+        "spearman_p": 4.874669093610715e-06,
+        "n_clusters_sites": 61,
+        "spearman_rho_cluster_ci95": [
+          0.0991,
+          0.2889
+        ],
+        "r2_cluster_ci95": [
+          -0.1738,
+          0.043
+        ]
+      },
+      "log2_total_h2ase_ge": {
+        "n": 550,
+        "rmse": 1.4472,
+        "mae": 1.1445,
+        "r2": 0.2188,
+        "pearson_r": 0.4684,
+        "pearson_p": 2.452694144351037e-31,
+        "spearman_rho": 0.5191,
+        "spearman_p": 2.8213487356799802e-39,
+        "n_clusters_sites": 61,
+        "spearman_rho_cluster_ci95": [
+          0.4394,
+          0.5884
+        ],
+        "r2_cluster_ci95": [
+          0.1164,
+          0.2871
+        ]
+      },
+      "log1p_viral_richness": {
+        "n": 549,
+        "rmse": 0.2103,
+        "mae": 0.156,
+        "r2": 0.3784,
+        "pearson_r": 0.6172,
+        "pearson_p": 5.901443111713292e-59,
+        "spearman_rho": 0.3388,
+        "spearman_p": 3.2922263568856293e-16,
+        "n_clusters_sites": 61,
+        "spearman_rho_cluster_ci95": [
+          0.2012,
+          0.4707
+        ],
+        "r2_cluster_ci95": [
+          0.1544,
+          0.5147
+        ]
+      },
+      "log1p_plasmid_richness": {
+        "n": 549,
+        "rmse": 0.1827,
+        "mae": 0.1314,
+        "r2": 0.3463,
+        "pearson_r": 0.5932,
+        "pearson_p": 1.7246197524959287e-53,
+        "spearman_rho": 0.2996,
+        "spearman_p": 7.583932032948027e-13,
+        "n_clusters_sites": 61,
+        "spearman_rho_cluster_ci95": [
+          0.134,
+          0.4529
+        ],
+        "r2_cluster_ci95": [
+          0.0856,
+          0.4837
+        ]
+      },
+      "shannon_16s_site_compartment": {
+        "n": 180,
+        "rmse": 0.8385,
+        "mae": 0.5784,
+        "r2": 0.2453,
+        "pearson_r": 0.5162,
+        "pearson_p": 1.2073893068057633e-13,
+        "spearman_rho": 0.547,
+        "spearman_p": 1.941416443300561e-15,
+        "n_clusters_sites": 60,
+        "spearman_rho_cluster_ci95": [
+          0.4036,
+          0.6545
+        ],
+        "r2_cluster_ci95": [
+          0.0957,
+          0.3513
+        ]
+      }
+    },
+    "baseline_comparisons": {
+      "log2_hydB_1l_compartment_only": {
+        "n": 550,
+        "rmse": 1.8959,
+        "mae": 1.5093,
+        "r2": 0.1386,
+        "pearson_r": 0.3779,
+        "pearson_p": 4.1300942769524256e-20,
+        "spearman_rho": 0.3469,
+        "spearman_p": 5.393197078197532e-17,
+        "n_clusters_sites": 61,
+        "spearman_rho_cluster_ci95": [
+          0.2307,
+          0.4592
+        ],
+        "r2_cluster_ci95": [
+          0.0307,
+          0.2354
+        ]
+      },
+      "log2_hydB_1l_climate_only": {
+        "n": 550,
+        "rmse": 1.9823,
+        "mae": 1.6415,
+        "r2": 0.0583,
+        "pearson_r": 0.2536,
+        "pearson_p": 1.604491196833795e-09,
+        "spearman_rho": 0.2431,
+        "spearman_p": 7.679741710112065e-09,
+        "n_clusters_sites": 61,
+        "spearman_rho_cluster_ci95": [
+          0.1285,
+          0.3554
+        ],
+        "r2_cluster_ci95": [
+          -0.0106,
+          0.1191
+        ]
+      },
+      "log1p_viral_richness_sequencing_depth_only": {
+        "n": 549,
+        "rmse": 0.2472,
+        "mae": 0.1784,
+        "r2": 0.141,
+        "pearson_r": 0.3832,
+        "pearson_p": 1.2113516468338006e-20,
+        "spearman_rho": 0.0819,
+        "spearman_p": 0.05505271137537905,
+        "n_clusters_sites": 61,
+        "spearman_rho_cluster_ci95": [
+          -0.0457,
+          0.2376
+        ],
+        "r2_cluster_ci95": [
+          -0.1049,
+          0.3904
+        ]
+      }
+    }
+  },
+  "tier2_temporal_loco_cv": {
+    "validation_scheme": "Leave-One-Campaign-Out (LOCO), Space-for-Time Transport, and Prospective Trip 5 Forecast",
+    "pooled_metrics": {
+      "log2_hydB_1l": {
+        "n": 550,
+        "rmse": 1.6842,
+        "mae": 1.3516,
+        "r2": 0.3202,
+        "pearson_r": 0.566,
+        "pearson_p": 6.592257417726424e-48,
+        "spearman_rho": 0.5786,
+        "spearman_p": 1.8375331571583803e-50,
+        "n_clusters_sites": 61,
+        "spearman_rho_cluster_ci95": [
+          0.5104,
+          0.641
+        ],
+        "r2_cluster_ci95": [
+          0.2264,
+          0.4016
+        ]
+      },
+      "log2_total_h2ase_ge": {
+        "n": 550,
+        "rmse": 1.3503,
+        "mae": 1.0745,
+        "r2": 0.32,
+        "pearson_r": 0.5658,
+        "pearson_p": 7.30598303800578e-48,
+        "spearman_rho": 0.555,
+        "spearman_p": 9.184158848918247e-46,
+        "n_clusters_sites": 61,
+        "spearman_rho_cluster_ci95": [
+          0.4773,
+          0.6218
+        ],
+        "r2_cluster_ci95": [
+          0.1904,
+          0.435
+        ]
+      },
+      "log1p_viral_richness": {
+        "n": 549,
+        "rmse": 0.217,
+        "mae": 0.155,
+        "r2": 0.3381,
+        "pearson_r": 0.5818,
+        "pearson_p": 4.880837949147752e-51,
+        "spearman_rho": 0.4004,
+        "spearman_p": 1.4647893693883718e-22,
+        "n_clusters_sites": 61,
+        "spearman_rho_cluster_ci95": [
+          0.287,
+          0.487
+        ],
+        "r2_cluster_ci95": [
+          0.1371,
+          0.461
+        ]
+      }
+    },
+    "per_campaign_breakdown": {
+      "trip1": {
+        "n_samples": 210,
+        "log2_hydB_1l": {
+          "n": 210,
+          "rmse": 1.628,
+          "mae": 1.2858,
+          "r2": 0.3364,
+          "pearson_r": 0.5832,
+          "pearson_p": 1.5784309700309287e-20,
+          "spearman_rho": 0.5943,
+          "spearman_p": 1.912740219034829e-21,
+          "n_clusters_sites": 60,
+          "spearman_rho_cluster_ci95": [
+            0.4868,
+            0.6835
+          ],
+          "r2_cluster_ci95": [
+            0.1695,
+            0.4509
+          ]
+        },
+        "log2_total_h2ase_ge": {
+          "n": 210,
+          "rmse": 1.3464,
+          "mae": 1.0834,
+          "r2": 0.345,
+          "pearson_r": 0.5995,
+          "pearson_p": 7.056945576387787e-22,
+          "spearman_rho": 0.5817,
+          "spearman_p": 2.0606969379971052e-20,
+          "n_clusters_sites": 60,
+          "spearman_rho_cluster_ci95": [
+            0.4435,
+            0.677
+          ],
+          "r2_cluster_ci95": [
+            0.131,
+            0.4815
+          ]
+        }
+      },
+      "trip2": {
+        "n_samples": 37,
+        "log2_hydB_1l": {
+          "n": 37,
+          "rmse": 1.5546,
+          "mae": 1.3759,
+          "r2": 0.2946,
+          "pearson_r": 0.5866,
+          "pearson_p": 0.00013586364046611998,
+          "spearman_rho": 0.4938,
+          "spearman_p": 0.001895478105499217,
+          "n_clusters_sites": 7,
+          "spearman_rho_cluster_ci95": [
+            0.2175,
+            0.7952
+          ],
+          "r2_cluster_ci95": [
+            -0.2675,
+            0.497
+          ]
+        },
+        "log2_total_h2ase_ge": {
+          "n": 37,
+          "rmse": 1.1854,
+          "mae": 1.0086,
+          "r2": 0.1978,
+          "pearson_r": 0.4686,
+          "pearson_p": 0.0034390225541042234,
+          "spearman_rho": 0.4467,
+          "spearman_p": 0.005578660312616558,
+          "n_clusters_sites": 7,
+          "spearman_rho_cluster_ci95": [
+            0.182,
+            0.7938
+          ],
+          "r2_cluster_ci95": [
+            -0.4323,
+            0.4479
+          ]
+        }
+      },
+      "trip3": {
+        "n_samples": 127,
+        "log2_hydB_1l": {
+          "n": 127,
+          "rmse": 1.6299,
+          "mae": 1.2774,
+          "r2": 0.2566,
+          "pearson_r": 0.5183,
+          "pearson_p": 4.359485901749364e-10,
+          "spearman_rho": 0.5462,
+          "spearman_p": 3.0902576512955253e-11,
+          "n_clusters_sites": 47,
+          "spearman_rho_cluster_ci95": [
+            0.3644,
+            0.7347
+          ],
+          "r2_cluster_ci95": [
+            0.0949,
+            0.4529
+          ]
+        },
+        "log2_total_h2ase_ge": {
+          "n": 127,
+          "rmse": 1.3352,
+          "mae": 1.0028,
+          "r2": 0.1784,
+          "pearson_r": 0.4511,
+          "pearson_p": 1.0242015925095971e-07,
+          "spearman_rho": 0.4969,
+          "spearman_p": 2.8118699830044015e-09,
+          "n_clusters_sites": 47,
+          "spearman_rho_cluster_ci95": [
+            0.3288,
+            0.676
+          ],
+          "r2_cluster_ci95": [
+            0.007,
+            0.3841
+          ]
+        }
+      },
+      "trip4": {
+        "n_samples": 85,
+        "log2_hydB_1l": {
+          "n": 85,
+          "rmse": 1.8054,
+          "mae": 1.4781,
+          "r2": 0.3109,
+          "pearson_r": 0.5615,
+          "pearson_p": 2.259325592420784e-08,
+          "spearman_rho": 0.6168,
+          "spearman_p": 3.2615132859426227e-10,
+          "n_clusters_sites": 51,
+          "spearman_rho_cluster_ci95": [
+            0.4556,
+            0.7272
+          ],
+          "r2_cluster_ci95": [
+            0.1122,
+            0.4382
+          ]
+        },
+        "log2_total_h2ase_ge": {
+          "n": 85,
+          "rmse": 1.3548,
+          "mae": 1.0709,
+          "r2": 0.3684,
+          "pearson_r": 0.6147,
+          "pearson_p": 3.8832932266701875e-10,
+          "spearman_rho": 0.6255,
+          "spearman_p": 1.5588496770304902e-10,
+          "n_clusters_sites": 51,
+          "spearman_rho_cluster_ci95": [
+            0.4753,
+            0.7281
+          ],
+          "r2_cluster_ci95": [
+            0.1472,
+            0.4928
+          ]
+        }
+      },
+      "trip5": {
+        "n_samples": 91,
+        "log2_hydB_1l": {
+          "n": 91,
+          "rmse": 1.8146,
+          "mae": 1.4788,
+          "r2": 0.3219,
+          "pearson_r": 0.6262,
+          "pearson_p": 3.1659455787628945e-11,
+          "spearman_rho": 0.6288,
+          "spearman_p": 2.496222140361131e-11,
+          "n_clusters_sites": 52,
+          "spearman_rho_cluster_ci95": [
+            0.4845,
+            0.7262
+          ],
+          "r2_cluster_ci95": [
+            0.1155,
+            0.4191
+          ]
+        },
+        "log2_total_h2ase_ge": {
+          "n": 91,
+          "rmse": 1.436,
+          "mae": 1.1843,
+          "r2": 0.3189,
+          "pearson_r": 0.6717,
+          "pearson_p": 3.14831185252941e-13,
+          "spearman_rho": 0.6429,
+          "spearman_p": 6.406101484706099e-12,
+          "n_clusters_sites": 52,
+          "spearman_rho_cluster_ci95": [
+            0.4981,
+            0.7424
+          ],
+          "r2_cluster_ci95": [
+            -0.0022,
+            0.4714
+          ]
+        }
+      }
+    },
+    "space_for_time_transport": {
+      "h123_within_vs_between_hydB_1l": [
+        {
+          "compartment": "Deep",
+          "exposure": "P365_era5",
+          "n_visits": 103,
+          "n_sites": 35,
+          "between_slope": -0.440656203950703,
+          "within_slope": 0.400439752237629,
+          "within_se": 0.231729708229275,
+          "within_LRT_p": 0.0893949597115592,
+          "within_boot_lo": 0.0317336597509901,
+          "within_boot_hi": 0.824571826253743,
+          "q_BH_family": 0.337488164038956
+        },
+        {
+          "compartment": "Deep",
+          "exposure": "P90_era5",
+          "n_visits": 103,
+          "n_sites": 35,
+          "between_slope": -1.65895018648239,
+          "within_slope": -0.0401046750126126,
+          "within_se": 0.25512314754301,
+          "within_LRT_p": 0.875169696772187,
+          "within_boot_lo": -0.6274471080315,
+          "within_boot_hi": 0.601418289683276,
+          "q_BH_family": 0.899705944068029
+        },
+        {
+          "compartment": "Deep",
+          "exposure": "P365_power",
+          "n_visits": 103,
+          "n_sites": 35,
+          "between_slope": -0.438956381637732,
+          "within_slope": -0.0231356253991839,
+          "within_se": 0.534370122302428,
+          "within_LRT_p": 0.965469455884688,
+          "within_boot_lo": -0.823443306866649,
+          "within_boot_hi": 0.820097872180231,
+          "q_BH_family": 0.965469455884688
+        },
+        {
+          "compartment": "Deep",
+          "exposure": "P90_power",
+          "n_visits": 103,
+          "n_sites": 35,
+          "between_slope": -0.316745470336849,
+          "within_slope": -0.322992165912746,
+          "within_se": 0.185116948156365,
+          "within_LRT_p": 0.0834442025236777,
+          "within_boot_lo": -0.863206945464244,
+          "within_boot_hi": 0.184690798746023,
+          "q_BH_family": 0.250332607571033
+        },
+        {
+          "compartment": "Surface",
+          "exposure": "P365_era5",
+          "n_visits": 79,
+          "n_sites": 29,
+          "between_slope": -0.545767343210522,
+          "within_slope": -0.158986798491034,
+          "within_se": 0.227270284781419,
+          "within_LRT_p": 0.486288907019407,
+          "within_boot_lo": -0.63005990684348,
+          "within_boot_hi": 0.411121051051053,
+          "q_BH_family": 0.583546688423288
+        },
+        {
+          "compartment": "Surface",
+          "exposure": "P90_era5",
+          "n_visits": 79,
+          "n_sites": 29,
+          "between_slope": -0.85200105198117,
+          "within_slope": -0.779394994032652,
+          "within_se": 0.226847566358202,
+          "within_LRT_p": 0.00106674710945733,
+          "within_boot_lo": -1.24244488974329,
+          "within_boot_hi": -0.395518541300783,
+          "q_BH_family": 0.012800965313488
+        },
+        {
+          "compartment": "Surface",
+          "exposure": "P365_power",
+          "n_visits": 79,
+          "n_sites": 29,
+          "between_slope": -0.157119694358314,
+          "within_slope": -0.371208019554091,
+          "within_se": 0.666622328395817,
+          "within_LRT_p": 0.578197898024945,
+          "within_boot_lo": -1.27253440456695,
+          "within_boot_hi": 0.937471210336356,
+          "q_BH_family": 0.965469455884688
+        },
+        {
+          "compartment": "Surface",
+          "exposure": "P90_power",
+          "n_visits": 79,
+          "n_sites": 29,
+          "between_slope": 0.135623248459001,
+          "within_slope": -0.106547694699315,
+          "within_se": 0.196828712975472,
+          "within_LRT_p": 0.590173293404092,
+          "within_boot_lo": -0.532913370816733,
+          "within_boot_hi": 0.307765457899421,
+          "q_BH_family": 0.70820795208491
+        },
+        {
+          "compartment": "PlantRoot",
+          "exposure": "P365_era5",
+          "n_visits": 193,
+          "n_sites": 57,
+          "between_slope": -0.85413093618623,
+          "within_slope": -0.395122060863718,
+          "within_se": 0.232867019820267,
+          "within_LRT_p": 0.0911801445834069,
+          "within_boot_lo": -0.888161849532952,
+          "within_boot_hi": 0.096204670009844,
+          "q_BH_family": 0.337488164038956
+        },
+        {
+          "compartment": "PlantRoot",
+          "exposure": "P90_era5",
+          "n_visits": 193,
+          "n_sites": 57,
+          "between_slope": -0.788862844480913,
+          "within_slope": -0.854058334851536,
+          "within_se": 0.286880025427625,
+          "within_LRT_p": 0.00336562481954904,
+          "within_boot_lo": -1.27166986656219,
+          "within_boot_hi": -0.41129620932725,
+          "q_BH_family": 0.0201937489172942
+        },
+        {
+          "compartment": "PlantRoot",
+          "exposure": "P365_power",
+          "n_visits": 193,
+          "n_sites": 57,
+          "between_slope": -0.431196863546053,
+          "within_slope": 0.0927547940512632,
+          "within_se": 0.584799594781759,
+          "within_LRT_p": 0.874925039373128,
+          "within_boot_lo": -1.02682494342808,
+          "within_boot_hi": 1.18200740769517,
+          "q_BH_family": 0.965469455884688
+        },
+        {
+          "compartment": "PlantRoot",
+          "exposure": "P90_power",
+          "n_visits": 193,
+          "n_sites": 57,
+          "between_slope": -0.207113299683458,
+          "within_slope": 0.298387585680146,
+          "within_se": 0.197428676182266,
+          "within_LRT_p": 0.132955268219185,
+          "within_boot_lo": -0.0941437083244435,
+          "within_boot_hi": 0.762039517966413,
+          "q_BH_family": 0.319092643726043
+        }
+      ],
+      "exact_collection_date_within_vs_between": [
+        {
+          "compartment": "ShallowSubsurface",
+          "exposure": "log1p_P90_era5_exact",
+          "n_visits": 103,
+          "n_sites": 35,
+          "between_site_slope": -1.6515,
+          "within_site_slope_exact_dates": -0.0231
+        },
+        {
+          "compartment": "ShallowSubsurface",
+          "exposure": "log1p_P365_era5_exact",
+          "n_visits": 103,
+          "n_sites": 35,
+          "between_site_slope": -0.6952,
+          "within_site_slope_exact_dates": 0.0177
+        },
+        {
+          "compartment": "Surface",
+          "exposure": "log1p_P90_era5_exact",
+          "n_visits": 79,
+          "n_sites": 29,
+          "between_site_slope": -0.9177,
+          "within_site_slope_exact_dates": -0.4661
+        },
+        {
+          "compartment": "Surface",
+          "exposure": "log1p_P365_era5_exact",
+          "n_visits": 79,
+          "n_sites": 29,
+          "between_site_slope": -0.3473,
+          "within_site_slope_exact_dates": -0.0495
+        },
+        {
+          "compartment": "RootAdjacent",
+          "exposure": "log1p_P90_era5_exact",
+          "n_visits": 193,
+          "n_sites": 57,
+          "between_site_slope": -0.9553,
+          "within_site_slope_exact_dates": -0.4471
+        },
+        {
+          "compartment": "RootAdjacent",
+          "exposure": "log1p_P365_era5_exact",
+          "n_visits": 193,
+          "n_sites": 57,
+          "between_site_slope": -0.7793,
+          "within_site_slope_exact_dates": -0.2908
+        }
+      ],
+      "era5_vs_nasa_power_agreement": [
+        {
+          "window_days": 90,
+          "n_visits": 244,
+          "rho_levels": 0.200608088283059,
+          "rho_within_site": 0.192872313522295,
+          "frac_same_sign_within": 0.557377049180328
+        },
+        {
+          "window_days": 365,
+          "n_visits": 244,
+          "rho_levels": 0.559735083151327,
+          "rho_within_site": 0.61237779233069,
+          "frac_same_sign_within": 0.795081967213115
+        }
+      ]
+    },
+    "trip5_prospective_forecast_benchmark": {
+      "train_campaigns": [
+        "trip1",
+        "trip2",
+        "trip3",
+        "trip4"
+      ],
+      "test_campaign": "trip5 (12-15 October 2025)",
+      "n_train_visit_compartments": 325,
+      "n_test_visit_compartments": 89,
+      "n_test_with_prior_site_compartment_history": 85,
+      "level_forecasts_log2_hydB_1l": {
+        "longitudinal_twin": {
+          "n": 89,
+          "rmse": 1.8363,
+          "mae": 1.5186,
+          "r2": 0.2991,
+          "pearson_r": 0.617,
+          "pearson_p": 1.2085264990035877e-10,
+          "spearman_rho": 0.6188,
+          "spearman_p": 1.0266956373203633e-10,
+          "n_clusters_sites": 52,
+          "spearman_rho_cluster_ci95": [
+            0.4567,
+            0.7294
+          ],
+          "r2_cluster_ci95": [
+            0.0652,
+            0.4098
+          ]
+        },
+        "site_compartment_persistence": {
+          "n": 89,
+          "rmse": 1.9753,
+          "mae": 1.5543,
+          "r2": 0.189,
+          "pearson_r": 0.5503,
+          "pearson_p": 2.3250872936382836e-08,
+          "spearman_rho": 0.5524,
+          "spearman_p": 1.998876913139302e-08,
+          "n_clusters_sites": 52,
+          "spearman_rho_cluster_ci95": [
+            0.3595,
+            0.7069
+          ],
+          "r2_cluster_ci95": [
+            -0.1698,
+            0.4204
+          ]
+        },
+        "environmental_ridge_spatial_only": {
+          "n": 89,
+          "rmse": 1.8486,
+          "mae": 1.5291,
+          "r2": 0.2897,
+          "pearson_r": 0.6092,
+          "pearson_p": 2.3659145935555956e-10,
+          "spearman_rho": 0.6169,
+          "spearman_p": 1.2171887901664747e-10,
+          "n_clusters_sites": 52,
+          "spearman_rho_cluster_ci95": [
+            0.4593,
+            0.717
+          ],
+          "r2_cluster_ci95": [
+            0.0622,
+            0.3919
+          ]
+        },
+        "random_forest_baseline": {
+          "n": 89,
+          "rmse": 1.8028,
+          "mae": 1.4602,
+          "r2": 0.3244,
+          "pearson_r": 0.6296,
+          "pearson_p": 3.857467997141474e-11,
+          "spearman_rho": 0.6001,
+          "spearman_p": 5.146093504067552e-10,
+          "n_clusters_sites": 52,
+          "spearman_rho_cluster_ci95": [
+            0.4079,
+            0.7283
+          ],
+          "r2_cluster_ci95": [
+            0.0703,
+            0.4845
+          ]
+        },
+        "gradient_boosting_baseline": {
+          "n": 89,
+          "rmse": 1.7943,
+          "mae": 1.4344,
+          "r2": 0.3308,
+          "pearson_r": 0.6155,
+          "pearson_p": 1.3744213003574417e-10,
+          "spearman_rho": 0.5796,
+          "spearman_p": 2.6547067061682023e-09,
+          "n_clusters_sites": 52,
+          "spearman_rho_cluster_ci95": [
+            0.3845,
+            0.7033
+          ],
+          "r2_cluster_ci95": [
+            0.0796,
+            0.4912
+          ]
+        }
+      },
+      "temporal_anomaly_forecasts_delta_trip5_minus_history": {
+        "longitudinal_twin": {
+          "n": 85,
+          "rmse": 1.8599,
+          "mae": 1.5399,
+          "r2": 0.0551,
+          "pearson_r": 0.4094,
+          "pearson_p": 9.99315585172373e-05,
+          "spearman_rho": 0.3753,
+          "spearman_p": 0.00040203570664427903,
+          "n_clusters_sites": 52,
+          "spearman_rho_cluster_ci95": [
+            0.1424,
+            0.5806
+          ],
+          "r2_cluster_ci95": [
+            -0.2828,
+            0.2449
+          ]
+        },
+        "environmental_ridge_spatial_only": {
+          "n": 85,
+          "rmse": 1.8726,
+          "mae": 1.5511,
+          "r2": 0.0422,
+          "pearson_r": 0.4091,
+          "pearson_p": 0.00010151355079915686,
+          "spearman_rho": 0.3789,
+          "spearman_p": 0.0003488822988659762,
+          "n_clusters_sites": 52,
+          "spearman_rho_cluster_ci95": [
+            0.1512,
+            0.5783
+          ],
+          "r2_cluster_ci95": [
+            -0.3255,
+            0.2424
+          ]
+        },
+        "random_forest_baseline": {
+          "n": 85,
+          "rmse": 1.8328,
+          "mae": 1.487,
+          "r2": 0.0825,
+          "pearson_r": 0.4051,
+          "pearson_p": 0.00012020501637141259,
+          "spearman_rho": 0.3509,
+          "spearman_p": 0.0009944271566200982,
+          "n_clusters_sites": 52,
+          "spearman_rho_cluster_ci95": [
+            0.1559,
+            0.5408
+          ],
+          "r2_cluster_ci95": [
+            -0.1611,
+            0.2377
+          ]
+        }
+      }
+    }
+  },
+  "tier3_causal_ontological_projection": {
+    "n_samples_evaluated": 550,
+    "ocs_unconstrained": 0.0,
+    "ocs_projected_two_layer": 1.0,
+    "ocs_nonnegative_mint": 1.0,
+    "mean_cvm_unconstrained": 0.2634,
+    "mean_cvm_projected_two_layer": 0.0,
+    "rmse_unconstrained": 0.4708,
+    "rmse_projected_two_layer": 0.4624,
+    "rmse_nonnegative_mint": 0.4633,
+    "rmse_shrinkage_mint_unconstrained": 0.4652,
+    "rmse_diagonal_wls_nonnegative": 0.4617,
+    "leaf_rmse_unconstrained": 0.3315,
+    "leaf_rmse_projected_two_layer": 0.3192,
+    "leaf_rmse_nonnegative_mint": 0.3161,
+    "aggregate_rmse_unconstrained": 0.6672,
+    "aggregate_rmse_projected_two_layer": 0.6617,
+    "aggregate_rmse_nonnegative_mint": 0.6664,
+    "mse_reduction_pct": 3.51,
+    "mse_reduction_pct_nonnegative_mint": 3.15,
+    "mse_reduction_pct_cluster_ci95": [
+      2.11,
+      5.1
+    ],
+    "mean_ledoit_wolf_shrinkage_intensity": 0.05,
+    "theorem2_samplewise_error_reduction_rate": 1.0,
+    "strict_samplewise_error_reduction_rate": 1.0,
+    "reconciliation_baselines": {
+      "bottom_up_nonneg_leaf_sum_rmse": 0.4879,
+      "diagonal_wls_nonneg_rmse": 0.4617,
+      "shrinkage_mint_unconstrained_rmse": 0.4652,
+      "nonnegative_shrinkage_mint_rmse": 0.4633,
+      "matched_feature_linear_ridge_rmse": 0.4918
+    },
+    "proposition2_sibling_class_transport": {
+      "pooled_effect": -0.916001,
+      "pooled_se": 0.424697,
+      "dersimonian_laird_tau2": 0.493642,
+      "effective_tau2": 0.493642,
+      "cochran_q": 31.5353,
+      "sign_concordance": 1.0,
+      "abundance_weighted_parent_log2fc": -1.819704,
+      "weights": {
+        "hydB_1l": 0.2993,
+        "hydB_1h": 0.3474,
+        "hydB_2a": 0.3533
+      }
+    }
+  },
+  "tier4_natural_experiment_calibration": {
+    "root_vs_bulk_rhizosphere_paradox": {
+      "n_paired_visits": 106,
+      "n_paired_sites": 47,
+      "empirical_median_log2fc_hydB_1l": -2.2747,
+      "empirical_95ci": [
+        -2.9011,
+        -1.5927
+      ],
+      "twin_predicted_median_log2fc_hydB_1l": -2.0969,
+      "abs_calibration_error_log2": 0.1779,
+      "within_empirical_95ci": true,
+      "empirical_root_bulk_log2_dna_ratio": 3.37,
+      "twin_predicted_log2_dna_ratio": 3.1601,
+      "empirical_site_depletion_fraction": 0.8723
+    },
+    "lineage_turnover_vs_copy_number_decomposition": {
+      "root_vs_bulk_decomposition": {
+        "n_visits": 106,
+        "median_share1l_bulk": 0.312239087498798,
+        "median_share1l_root": 0.0601112648258588,
+        "median_delta": -0.198293211401413,
+        "median_genus_turnover": -0.192797528464876,
+        "median_within_genus": -0.00464691015677473,
+        "frac_delta_from_turnover": 0.974472716898476,
+        "frac_turnover_site_boot95": "0.967 to 0.983",
+        "p_within_genus_site": 0.000572132172575098
+      },
+      "aridity_gradient_decomposition": {
+        "n_sites": 51.0,
+        "rho_observed_vs_logMAP": -0.430421049083031,
+        "rho_turnover_only_vs_logMAP": -0.433273018592101,
+        "rho_within_residual_vs_logMAP": -0.314078800855918,
+        "p_within_residual": 0.0248004835006901,
+        "n_mixed_genera": 81.0,
+        "within_mixed_genera_logit_slope_per_SD_logMAP": -0.29127176492593,
+        "within_mixed_genera_se": 0.117373730100397,
+        "mixed_genera_share_of_bulk_1l": 0.204350928650963,
+        "slope_clip0.001": -0.382755553943561,
+        "se_clip0.001": 0.147921132001324,
+        "slope_clip0.02": -0.209587460572938,
+        "se_clip0.02": 0.0910732570529836
+      }
+    },
+    "h2_oxidation_vs_cbb_autotrophy_decoupling": {
+      "cbb_cocarriage_by_group": [
+        {
+          "group": "1h",
+          "n": 371,
+          "cbb": 30,
+          "frac_cbb": 0.0808625336927224,
+          "within_order_log_odds_1l_vs_1h": 0.725271384164655,
+          "se": 0.392560986680881,
+          "p": 0.0646691898013451,
+          "completeness_adjusted_log_odds": 0.963014114480407,
+          "completeness_adjusted_p": 0.0203478051077377,
+          "hc90_n_1l": 275,
+          "hc90_n_1h": 237,
+          "hc90_frac_1l": 0.276363636363636,
+          "hc90_frac_1h": 0.0928270042194093,
+          "hc90_log_odds": 1.29121540444574,
+          "hc90_se": 0.5395215252189,
+          "hc90_p": 0.0166993925741446
+        },
+        {
+          "group": "1l",
+          "n": 558,
+          "cbb": 101,
+          "frac_cbb": 0.181003584229391,
+          "within_order_log_odds_1l_vs_1h": 0.725271384164655,
+          "se": 0.392560986680881,
+          "p": 0.0646691898013451,
+          "completeness_adjusted_log_odds": 0.963014114480407,
+          "completeness_adjusted_p": 0.0203478051077377,
+          "hc90_n_1l": 275,
+          "hc90_n_1h": 237,
+          "hc90_frac_1l": 0.276363636363636,
+          "hc90_frac_1h": 0.0928270042194093,
+          "hc90_log_odds": 1.29121540444574,
+          "hc90_se": 0.5395215252189,
+          "hc90_p": 0.0166993925741446
+        },
+        {
+          "group": "1l+1h",
+          "n": 39,
+          "cbb": 11,
+          "frac_cbb": 0.282051282051282,
+          "within_order_log_odds_1l_vs_1h": 0.725271384164655,
+          "se": 0.392560986680881,
+          "p": 0.0646691898013451,
+          "completeness_adjusted_log_odds": 0.963014114480407,
+          "completeness_adjusted_p": 0.0203478051077377,
+          "hc90_n_1l": 275,
+          "hc90_n_1h": 237,
+          "hc90_frac_1l": 0.276363636363636,
+          "hc90_frac_1h": 0.0928270042194093,
+          "hc90_log_odds": 1.29121540444574,
+          "hc90_se": 0.5395215252189,
+          "hc90_p": 0.0166993925741446
+        },
+        {
+          "group": "2a_only",
+          "n": 126,
+          "cbb": 31,
+          "frac_cbb": 0.246031746031746,
+          "within_order_log_odds_1l_vs_1h": 0.725271384164655,
+          "se": 0.392560986680881,
+          "p": 0.0646691898013451,
+          "completeness_adjusted_log_odds": 0.963014114480407,
+          "completeness_adjusted_p": 0.0203478051077377,
+          "hc90_n_1l": 275,
+          "hc90_n_1h": 237,
+          "hc90_frac_1l": 0.276363636363636,
+          "hc90_frac_1h": 0.0928270042194093,
+          "hc90_log_odds": 1.29121540444574,
+          "hc90_se": 0.5395215252189,
+          "hc90_p": 0.0166993925741446
+        },
+        {
+          "group": "no_high_affinity_or_2a",
+          "n": 4342,
+          "cbb": 142,
+          "frac_cbb": 0.0327038231229848,
+          "within_order_log_odds_1l_vs_1h": 0.725271384164655,
+          "se": 0.392560986680881,
+          "p": 0.0646691898013451,
+          "completeness_adjusted_log_odds": 0.963014114480407,
+          "completeness_adjusted_p": 0.0203478051077377,
+          "hc90_n_1l": 275,
+          "hc90_n_1h": 237,
+          "hc90_frac_1l": 0.276363636363636,
+          "hc90_frac_1h": 0.0928270042194093,
+          "hc90_log_odds": 1.29121540444574,
+          "hc90_se": 0.5395215252189,
+          "hc90_p": 0.0166993925741446
+        }
+      ],
+      "cbb_subsets_position_and_aridity": [
+        {
+          "contrast": "root/bulk",
+          "quantity": "l1_cbb",
+          "n_visits": 105.0,
+          "n_sites": 47,
+          "median_log2": -2.58170954219374,
+          "ci_lo": -3.50699610498079,
+          "ci_hi": -2.02914034911906,
+          "frac_below0": 0.866666666666667,
+          "p_site_wilcoxon": 1.28968046175944e-06
+        },
+        {
+          "contrast": "root/bulk",
+          "quantity": "l1_nocbb",
+          "n_visits": 105.0,
+          "n_sites": 47,
+          "median_log2": -2.0106012481187,
+          "ci_lo": -2.3991889811206,
+          "ci_hi": -1.53569603258305,
+          "frac_below0": 0.876190476190476,
+          "p_site_wilcoxon": 4.34967679742116e-07
+        },
+        {
+          "contrast": "surface/bulk",
+          "quantity": "l1_cbb",
+          "n_visits": 68.0,
+          "n_sites": 36,
+          "median_log2": -1.27327481157671,
+          "ci_lo": -1.88581147781838,
+          "ci_hi": -0.617693973155133,
+          "frac_below0": 0.720588235294118,
+          "p_site_wilcoxon": 0.00117767069921098
+        },
+        {
+          "contrast": "surface/bulk",
+          "quantity": "l1_nocbb",
+          "n_visits": 68.0,
+          "n_sites": 36,
+          "median_log2": -0.60485286885553,
+          "ci_lo": -0.825488333912444,
+          "ci_hi": -0.347531169103869,
+          "frac_below0": 0.838235294117647,
+          "p_site_wilcoxon": 1.04901096685817e-05
+        },
+        {
+          "contrast": "bulk sites vs log MAP (Spearman rho in median_log2)",
+          "quantity": "frac_cbb",
+          "n_visits": null,
+          "n_sites": 51,
+          "median_log2": -0.301222303386463,
+          "ci_lo": null,
+          "ci_hi": null,
+          "frac_below0": null,
+          "p_site_wilcoxon": 0.0317143438694027
+        },
+        {
+          "contrast": "bulk sites vs log MAP (Spearman rho in median_log2)",
+          "quantity": "l1_cbb",
+          "n_visits": null,
+          "n_sites": 51,
+          "median_log2": -0.457673202169694,
+          "ci_lo": null,
+          "ci_hi": null,
+          "frac_below0": null,
+          "p_site_wilcoxon": 0.000733417806221887
+        },
+        {
+          "contrast": "bulk sites vs log MAP (Spearman rho in median_log2)",
+          "quantity": "l1_nocbb",
+          "n_visits": null,
+          "n_sites": 51,
+          "median_log2": -0.502716212670074,
+          "ci_lo": null,
+          "ci_hi": null,
+          "frac_below0": null,
+          "p_site_wilcoxon": 0.000170301362892723
+        }
+      ]
+    },
+    "surface_vs_subsurface_refugium": {
+      "n_paired_visits": 68,
+      "n_paired_sites": 36,
+      "empirical_median_log2fc_hydB_1l": -1.0488,
+      "empirical_95ci": [
+        -1.4369,
+        -0.539
+      ],
+      "twin_predicted_median_log2fc_hydB_1l": -0.7562,
+      "abs_calibration_error_log2": 0.2926,
+      "within_empirical_95ci": true
+    },
+    "aridity_gradient_hydB_1l_vs_MAP": {
+      "n_sites": 51,
+      "cube_spearman_rho": -0.5137,
+      "cube_spearman_p": 0.00011567464537842991,
+      "paper_reference_rho_bestmatch": -0.5119,
+      "sign_and_significance_match": true
+    }
+  },
+  "tier5_synthetic_and_metabolic_benchmark": {
+    "synthetic_metagenome_ge_benchmark": {
+      "markers_evaluated": [
+        {
+          "group": "coxL_formI",
+          "n": 19,
+          "spearman_log": 0.9404,
+          "pearson_log": 0.9314,
+          "median_log2_bias": 0.841
+        },
+        {
+          "group": "hydB_1h",
+          "n": 18,
+          "spearman_log": 0.9587,
+          "pearson_log": 0.9735,
+          "median_log2_bias": 0.8042
+        },
+        {
+          "group": "hydB_1l",
+          "n": 18,
+          "spearman_log": 0.9752,
+          "pearson_log": 0.9976,
+          "median_log2_bias": 0.6653
+        },
+        {
+          "group": "hydB_2a",
+          "n": 17,
+          "spearman_log": 0.9577,
+          "pearson_log": 0.9571,
+          "median_log2_bias": 0.5959
+        }
+      ],
+      "mean_pearson_r_across_guilds": 0.9649,
+      "mean_spearman_rho_across_guilds": 0.958,
+      "root_vs_bulk_synthetic_contrast_hydB_1l": {
+        "n": 8,
+        "rmse": 0.2277,
+        "mae": 0.1923,
+        "r2": 0.9888,
+        "pearson_r": 0.9964,
+        "pearson_p": 1.1263979218693479e-07,
+        "spearman_rho": 1.0,
+        "spearman_p": 0.0
+      }
+    },
+    "metabolic_pilot_72mag_10584run_audit": {
+      "total_representative_mags": 5438,
+      "eligible_quality_filtered_mags": 1759,
+      "eligible_group_1l_mags": 178,
+      "eligible_group_1h_mags": 163,
+      "eligible_neither_control_mags": 1418,
+      "matched_triplets_selected": 24,
+      "pilot_panel_mags": 72,
+      "orders_represented": 13,
+      "total_fba_scenarios_run": 10584,
+      "optimal_solver_return_rate": 1.0,
+      "carrier_proteome_exact_matches": 44,
+      "carrier_proteome_total": 48,
+      "uncurated_native_h2_gpr_wired_count": 1,
+      "uncurated_native_h2_gpr_wired_mag": "S54PRr1__self_SemiBin_621",
+      "gapseq_vs_gapsmith_paired_mags": 25,
+      "gapseq_vs_gapsmith_phenotype_disagreements": 6,
+      "group_1l_total_mags": 558,
+      "group_1l_cbb_cocarriage_mags": 101,
+      "group_1l_cbb_cocarriage_fraction": 0.181,
+      "group_1l_hc90_cbb_fraction": 0.276,
+      "group_1h_total_mags": 371,
+      "group_1h_cbb_cocarriage_mags": 30,
+      "group_1h_cbb_cocarriage_fraction": 0.0809,
+      "group_1h_hc90_cbb_fraction": 0.0928,
+      "cbb_completeness_adjusted_log_odds_1l_vs_1h": 0.963,
+      "cbb_completeness_adjusted_p": 0.0203
+    },
+    "measured_aquatic_hydrochemistry": {
+      "59-MR-WR1": {
+        "site_num": 59,
+        "ec_ms_cm": 216.2,
+        "ph": 7.92,
+        "ca_mg_l": 1371.85,
+        "mg_mg_l": 2818.13,
+        "na_mg_l": 71044.9,
+        "k_mg_l": 2344.7,
+        "cl_mg_l": 103722.0,
+        "so4_mg_l": 11074.6,
+        "total_c_mg_l": 41.11,
+        "total_n_mg_l": 168.2
+      },
+      "59-MR-WR2": {
+        "site_num": 59,
+        "ec_ms_cm": 231.4,
+        "ph": 8.01,
+        "ca_mg_l": 1241.72,
+        "mg_mg_l": 3249.28,
+        "na_mg_l": 79896.2,
+        "k_mg_l": 2762.86,
+        "cl_mg_l": 121069.0,
+        "so4_mg_l": 11923.9,
+        "total_c_mg_l": 33.03,
+        "total_n_mg_l": 193.5
+      },
+      "60-MR-WR1": {
+        "site_num": 60,
+        "ec_ms_cm": 10.65,
+        "ph": 7.68,
+        "ca_mg_l": 1066.4,
+        "mg_mg_l": 165.25,
+        "na_mg_l": 1548.88,
+        "k_mg_l": 101.42,
+        "cl_mg_l": 2221.43,
+        "so4_mg_l": 2228.98,
+        "total_c_mg_l": 9.12,
+        "total_n_mg_l": 6.22
+      }
+    },
+    "factorial_brine_common_baseline_grid": [
+      {
+        "intervention": "desalination_brine",
+        "site_iri": "https://rubalkhali.science/kb/RAK_1000060",
+        "discharge_salinity_ms_cm": 10.65,
+        "effective_nacl_ec_ms_cm": 10.09,
+        "ca_so4_to_nacl_ratio": 0.1,
+        "sulfur_geochemical_regime": "NACL_HYPERSALINE_SULFUR_SINK",
+        "sphingomonas_ect_kdp_plasmid_dose": 0.0,
+        "allorhizobium_rbcl_hyab_dose": 0.0,
+        "counterfactual_shannon_16s": 4.3652,
+        "halobacteriota_rel_abund": 0.0928,
+        "hard_maintenance_feasible": true,
+        "metabolic_viability_state": "VIABLE_GROWTH",
+        "autotrophic_carbon_fixation_flux": 0.96667,
+        "sulfur_redox_flux": 0.045,
+        "atpm_maintenance_deficit": 0.0,
+        "dark_proteome_coding_fraction": 0.534,
+        "dark_proteome_active_fraction": 0.534,
+        "ocs_score": 1.0,
+        "management_advisory": "WARNING_SITE59_SULFUR_SINK_COLLAPSE: Unbuffered Na-Cl brine (>200 mS/cm) drives hard ATP maintenance deficit and Halobacteriota monoculture; dilute below 15 mS/cm and buffer with Ca-SO4."
+      },
+      {
+        "intervention": "desalination_brine",
+        "site_iri": "https://rubalkhali.science/kb/RAK_1000060",
+        "discharge_salinity_ms_cm": 10.65,
+        "effective_nacl_ec_ms_cm": 10.09,
+        "ca_so4_to_nacl_ratio": 0.1,
+        "sulfur_geochemical_regime": "NACL_HYPERSALINE_SULFUR_SINK",
+        "sphingomonas_ect_kdp_plasmid_dose": 0.6,
+        "allorhizobium_rbcl_hyab_dose": 0.6,
+        "counterfactual_shannon_16s": 4.4039,
+        "halobacteriota_rel_abund": 0.0819,
+        "hard_maintenance_feasible": true,
+        "metabolic_viability_state": "VIABLE_GROWTH",
+        "autotrophic_carbon_fixation_flux": 1.3058,
+        "sulfur_redox_flux": 0.045,
+        "atpm_maintenance_deficit": 0.0,
+        "dark_proteome_coding_fraction": 0.5263,
+        "dark_proteome_active_fraction": 0.5263,
+        "ocs_score": 1.0,
+        "management_advisory": "WARNING_SITE59_SULFUR_SINK_COLLAPSE: Unbuffered Na-Cl brine (>200 mS/cm) drives hard ATP maintenance deficit and Halobacteriota monoculture; dilute below 15 mS/cm and buffer with Ca-SO4."
+      },
+      {
+        "intervention": "desalination_brine",
+        "site_iri": "https://rubalkhali.science/kb/RAK_1000060",
+        "discharge_salinity_ms_cm": 10.65,
+        "effective_nacl_ec_ms_cm": 6.02,
+        "ca_so4_to_nacl_ratio": 1.4,
+        "sulfur_geochemical_regime": "CA_SO4_SULFUR_FLUX_OASIS",
+        "sphingomonas_ect_kdp_plasmid_dose": 0.0,
+        "allorhizobium_rbcl_hyab_dose": 0.0,
+        "counterfactual_shannon_16s": 4.8238,
+        "halobacteriota_rel_abund": 0.0804,
+        "hard_maintenance_feasible": true,
+        "metabolic_viability_state": "VIABLE_GROWTH",
+        "autotrophic_carbon_fixation_flux": 0.96667,
+        "sulfur_redox_flux": 0.63,
+        "atpm_maintenance_deficit": 0.0,
+        "dark_proteome_coding_fraction": 0.534,
+        "dark_proteome_active_fraction": 0.534,
+        "ocs_score": 1.0,
+        "management_advisory": "SITE60_SULFUR_FLUX_OASIS: Brackish Ca-SO4 regime (~10.65 mS/cm) sustains Allorhizobium CBB carbon fixation, N2 fixation, and dark-proteome coding diversity."
+      },
+      {
+        "intervention": "desalination_brine",
+        "site_iri": "https://rubalkhali.science/kb/RAK_1000060",
+        "discharge_salinity_ms_cm": 10.65,
+        "effective_nacl_ec_ms_cm": 6.02,
+        "ca_so4_to_nacl_ratio": 1.4,
+        "sulfur_geochemical_regime": "CA_SO4_SULFUR_FLUX_OASIS",
+        "sphingomonas_ect_kdp_plasmid_dose": 0.6,
+        "allorhizobium_rbcl_hyab_dose": 0.6,
+        "counterfactual_shannon_16s": 4.8565,
+        "halobacteriota_rel_abund": 0.0714,
+        "hard_maintenance_feasible": true,
+        "metabolic_viability_state": "VIABLE_GROWTH",
+        "autotrophic_carbon_fixation_flux": 1.5561,
+        "sulfur_redox_flux": 0.63,
+        "atpm_maintenance_deficit": 0.0,
+        "dark_proteome_coding_fraction": 0.5039,
+        "dark_proteome_active_fraction": 0.5039,
+        "ocs_score": 1.0,
+        "management_advisory": "SITE60_SULFUR_FLUX_OASIS: Brackish Ca-SO4 regime (~10.65 mS/cm) sustains Allorhizobium CBB carbon fixation, N2 fixation, and dark-proteome coding diversity."
+      },
+      {
+        "intervention": "desalination_brine",
+        "site_iri": "https://rubalkhali.science/kb/RAK_1000060",
+        "discharge_salinity_ms_cm": 35.0,
+        "effective_nacl_ec_ms_cm": 33.18,
+        "ca_so4_to_nacl_ratio": 0.1,
+        "sulfur_geochemical_regime": "NACL_HYPERSALINE_SULFUR_SINK",
+        "sphingomonas_ect_kdp_plasmid_dose": 0.0,
+        "allorhizobium_rbcl_hyab_dose": 0.0,
+        "counterfactual_shannon_16s": 4.0348,
+        "halobacteriota_rel_abund": 0.2111,
+        "hard_maintenance_feasible": true,
+        "metabolic_viability_state": "VIABLE_GROWTH",
+        "autotrophic_carbon_fixation_flux": 0.86327,
+        "sulfur_redox_flux": 0.04087,
+        "atpm_maintenance_deficit": 0.0,
+        "dark_proteome_coding_fraction": 0.4467,
+        "dark_proteome_active_fraction": 0.4467,
+        "ocs_score": 1.0,
+        "management_advisory": "WARNING_SITE59_SULFUR_SINK_COLLAPSE: Unbuffered Na-Cl brine (>200 mS/cm) drives hard ATP maintenance deficit and Halobacteriota monoculture; dilute below 15 mS/cm and buffer with Ca-SO4."
+      },
+      {
+        "intervention": "desalination_brine",
+        "site_iri": "https://rubalkhali.science/kb/RAK_1000060",
+        "discharge_salinity_ms_cm": 35.0,
+        "effective_nacl_ec_ms_cm": 33.18,
+        "ca_so4_to_nacl_ratio": 0.1,
+        "sulfur_geochemical_regime": "NACL_HYPERSALINE_SULFUR_SINK",
+        "sphingomonas_ect_kdp_plasmid_dose": 0.6,
+        "allorhizobium_rbcl_hyab_dose": 0.6,
+        "counterfactual_shannon_16s": 4.1289,
+        "halobacteriota_rel_abund": 0.1824,
+        "hard_maintenance_feasible": true,
+        "metabolic_viability_state": "VIABLE_GROWTH",
+        "autotrophic_carbon_fixation_flux": 0.91459,
+        "sulfur_redox_flux": 0.04087,
+        "atpm_maintenance_deficit": 0.0,
+        "dark_proteome_coding_fraction": 0.4467,
+        "dark_proteome_active_fraction": 0.4467,
+        "ocs_score": 1.0,
+        "management_advisory": "WARNING_SITE59_SULFUR_SINK_COLLAPSE: Unbuffered Na-Cl brine (>200 mS/cm) drives hard ATP maintenance deficit and Halobacteriota monoculture; dilute below 15 mS/cm and buffer with Ca-SO4."
+      },
+      {
+        "intervention": "desalination_brine",
+        "site_iri": "https://rubalkhali.science/kb/RAK_1000060",
+        "discharge_salinity_ms_cm": 35.0,
+        "effective_nacl_ec_ms_cm": 19.77,
+        "ca_so4_to_nacl_ratio": 1.4,
+        "sulfur_geochemical_regime": "CA_SO4_SULFUR_FLUX_OASIS",
+        "sphingomonas_ect_kdp_plasmid_dose": 0.0,
+        "allorhizobium_rbcl_hyab_dose": 0.0,
+        "counterfactual_shannon_16s": 4.4721,
+        "halobacteriota_rel_abund": 0.1314,
+        "hard_maintenance_feasible": true,
+        "metabolic_viability_state": "VIABLE_GROWTH",
+        "autotrophic_carbon_fixation_flux": 0.96667,
+        "sulfur_redox_flux": 0.63,
+        "atpm_maintenance_deficit": 0.0,
+        "dark_proteome_coding_fraction": 0.534,
+        "dark_proteome_active_fraction": 0.534,
+        "ocs_score": 1.0,
+        "management_advisory": "SITE60_SULFUR_FLUX_OASIS: Brackish Ca-SO4 regime (~10.65 mS/cm) sustains Allorhizobium CBB carbon fixation, N2 fixation, and dark-proteome coding diversity."
+      },
+      {
+        "intervention": "desalination_brine",
+        "site_iri": "https://rubalkhali.science/kb/RAK_1000060",
+        "discharge_salinity_ms_cm": 35.0,
+        "effective_nacl_ec_ms_cm": 19.77,
+        "ca_so4_to_nacl_ratio": 1.4,
+        "sulfur_geochemical_regime": "CA_SO4_SULFUR_FLUX_OASIS",
+        "sphingomonas_ect_kdp_plasmid_dose": 0.6,
+        "allorhizobium_rbcl_hyab_dose": 0.6,
+        "counterfactual_shannon_16s": 4.5292,
+        "halobacteriota_rel_abund": 0.1147,
+        "hard_maintenance_feasible": true,
+        "metabolic_viability_state": "VIABLE_GROWTH",
+        "autotrophic_carbon_fixation_flux": 1.38355,
+        "sulfur_redox_flux": 0.63,
+        "atpm_maintenance_deficit": 0.0,
+        "dark_proteome_coding_fraction": 0.5039,
+        "dark_proteome_active_fraction": 0.5039,
+        "ocs_score": 1.0,
+        "management_advisory": "SITE60_SULFUR_FLUX_OASIS: Brackish Ca-SO4 regime (~10.65 mS/cm) sustains Allorhizobium CBB carbon fixation, N2 fixation, and dark-proteome coding diversity."
+      },
+      {
+        "intervention": "desalination_brine",
+        "site_iri": "https://rubalkhali.science/kb/RAK_1000060",
+        "discharge_salinity_ms_cm": 85.0,
+        "effective_nacl_ec_ms_cm": 80.57,
+        "ca_so4_to_nacl_ratio": 0.1,
+        "sulfur_geochemical_regime": "NACL_HYPERSALINE_SULFUR_SINK",
+        "sphingomonas_ect_kdp_plasmid_dose": 0.0,
+        "allorhizobium_rbcl_hyab_dose": 0.0,
+        "counterfactual_shannon_16s": 2.981,
+        "halobacteriota_rel_abund": 0.6145,
+        "hard_maintenance_feasible": true,
+        "metabolic_viability_state": "VIABLE_GROWTH",
+        "autotrophic_carbon_fixation_flux": 0.02314,
+        "sulfur_redox_flux": 0.0234,
+        "atpm_maintenance_deficit": 0.0,
+        "dark_proteome_coding_fraction": 0.1867,
+        "dark_proteome_active_fraction": 0.1867,
+        "ocs_score": 1.0,
+        "management_advisory": "WARNING_SITE59_SULFUR_SINK_COLLAPSE: Unbuffered Na-Cl brine (>200 mS/cm) drives hard ATP maintenance deficit and Halobacteriota monoculture; dilute below 15 mS/cm and buffer with Ca-SO4."
+      },
+      {
+        "intervention": "desalination_brine",
+        "site_iri": "https://rubalkhali.science/kb/RAK_1000060",
+        "discharge_salinity_ms_cm": 85.0,
+        "effective_nacl_ec_ms_cm": 80.57,
+        "ca_so4_to_nacl_ratio": 0.1,
+        "sulfur_geochemical_regime": "NACL_HYPERSALINE_SULFUR_SINK",
+        "sphingomonas_ect_kdp_plasmid_dose": 0.6,
+        "allorhizobium_rbcl_hyab_dose": 0.6,
+        "counterfactual_shannon_16s": 3.2775,
+        "halobacteriota_rel_abund": 0.5253,
+        "hard_maintenance_feasible": true,
+        "metabolic_viability_state": "VIABLE_GROWTH",
+        "autotrophic_carbon_fixation_flux": 0.21328,
+        "sulfur_redox_flux": 0.0234,
+        "atpm_maintenance_deficit": 0.0,
+        "dark_proteome_coding_fraction": 0.1867,
+        "dark_proteome_active_fraction": 0.1867,
+        "ocs_score": 1.0,
+        "management_advisory": "WARNING_SITE59_SULFUR_SINK_COLLAPSE: Unbuffered Na-Cl brine (>200 mS/cm) drives hard ATP maintenance deficit and Halobacteriota monoculture; dilute below 15 mS/cm and buffer with Ca-SO4."
+      },
+      {
+        "intervention": "desalination_brine",
+        "site_iri": "https://rubalkhali.science/kb/RAK_1000060",
+        "discharge_salinity_ms_cm": 85.0,
+        "effective_nacl_ec_ms_cm": 48.02,
+        "ca_so4_to_nacl_ratio": 1.4,
+        "sulfur_geochemical_regime": "NACL_HYPERSALINE_SULFUR_SINK",
+        "sphingomonas_ect_kdp_plasmid_dose": 0.0,
+        "allorhizobium_rbcl_hyab_dose": 0.0,
+        "counterfactual_shannon_16s": 3.7355,
+        "halobacteriota_rel_abund": 0.3344,
+        "hard_maintenance_feasible": true,
+        "metabolic_viability_state": "VIABLE_GROWTH",
+        "autotrophic_carbon_fixation_flux": 0.78236,
+        "sulfur_redox_flux": 0.48052,
+        "atpm_maintenance_deficit": 0.0,
+        "dark_proteome_coding_fraction": 0.3345,
+        "dark_proteome_active_fraction": 0.3345,
+        "ocs_score": 1.0,
+        "management_advisory": "WARNING_SITE59_SULFUR_SINK_COLLAPSE: Unbuffered Na-Cl brine (>200 mS/cm) drives hard ATP maintenance deficit and Halobacteriota monoculture; dilute below 15 mS/cm and buffer with Ca-SO4."
+      },
+      {
+        "intervention": "desalination_brine",
+        "site_iri": "https://rubalkhali.science/kb/RAK_1000060",
+        "discharge_salinity_ms_cm": 85.0,
+        "effective_nacl_ec_ms_cm": 48.02,
+        "ca_so4_to_nacl_ratio": 1.4,
+        "sulfur_geochemical_regime": "NACL_HYPERSALINE_SULFUR_SINK",
+        "sphingomonas_ect_kdp_plasmid_dose": 0.6,
+        "allorhizobium_rbcl_hyab_dose": 0.6,
+        "counterfactual_shannon_16s": 3.8871,
+        "halobacteriota_rel_abund": 0.2872,
+        "hard_maintenance_feasible": true,
+        "metabolic_viability_state": "VIABLE_GROWTH",
+        "autotrophic_carbon_fixation_flux": 0.85812,
+        "sulfur_redox_flux": 0.48052,
+        "atpm_maintenance_deficit": 0.0,
+        "dark_proteome_coding_fraction": 0.3345,
+        "dark_proteome_active_fraction": 0.3345,
+        "ocs_score": 1.0,
+        "management_advisory": "WARNING_SITE59_SULFUR_SINK_COLLAPSE: Unbuffered Na-Cl brine (>200 mS/cm) drives hard ATP maintenance deficit and Halobacteriota monoculture; dilute below 15 mS/cm and buffer with Ca-SO4."
+      },
+      {
+        "intervention": "desalination_brine",
+        "site_iri": "https://rubalkhali.science/kb/RAK_1000060",
+        "discharge_salinity_ms_cm": 216.2,
+        "effective_nacl_ec_ms_cm": 204.93,
+        "ca_so4_to_nacl_ratio": 0.1,
+        "sulfur_geochemical_regime": "NACL_HYPERSALINE_SULFUR_SINK",
+        "sphingomonas_ect_kdp_plasmid_dose": 0.0,
+        "allorhizobium_rbcl_hyab_dose": 0.0,
+        "counterfactual_shannon_16s": 2.3779,
+        "halobacteriota_rel_abund": 0.7796,
+        "hard_maintenance_feasible": false,
+        "metabolic_viability_state": "MAINTENANCE_DEFICIT_DORMANCY",
+        "autotrophic_carbon_fixation_flux": 0.0,
+        "sulfur_redox_flux": 0.00542,
+        "atpm_maintenance_deficit": 2.12213,
+        "dark_proteome_coding_fraction": 0.057,
+        "dark_proteome_active_fraction": 0.057,
+        "ocs_score": 1.0,
+        "management_advisory": "WARNING_SITE59_SULFUR_SINK_COLLAPSE: Unbuffered Na-Cl brine (>200 mS/cm) drives hard ATP maintenance deficit and Halobacteriota monoculture; dilute below 15 mS/cm and buffer with Ca-SO4."
+      },
+      {
+        "intervention": "desalination_brine",
+        "site_iri": "https://rubalkhali.science/kb/RAK_1000060",
+        "discharge_salinity_ms_cm": 216.2,
+        "effective_nacl_ec_ms_cm": 204.93,
+        "ca_so4_to_nacl_ratio": 0.1,
+        "sulfur_geochemical_regime": "NACL_HYPERSALINE_SULFUR_SINK",
+        "sphingomonas_ect_kdp_plasmid_dose": 0.6,
+        "allorhizobium_rbcl_hyab_dose": 0.6,
+        "counterfactual_shannon_16s": 2.7901,
+        "halobacteriota_rel_abund": 0.6656,
+        "hard_maintenance_feasible": false,
+        "metabolic_viability_state": "MAINTENANCE_DEFICIT_DORMANCY",
+        "autotrophic_carbon_fixation_flux": 0.0,
+        "sulfur_redox_flux": 0.00542,
+        "atpm_maintenance_deficit": 1.3855,
+        "dark_proteome_coding_fraction": 0.057,
+        "dark_proteome_active_fraction": 0.057,
+        "ocs_score": 1.0,
+        "management_advisory": "WARNING_SITE59_SULFUR_SINK_COLLAPSE: Unbuffered Na-Cl brine (>200 mS/cm) drives hard ATP maintenance deficit and Halobacteriota monoculture; dilute below 15 mS/cm and buffer with Ca-SO4."
+      },
+      {
+        "intervention": "desalination_brine",
+        "site_iri": "https://rubalkhali.science/kb/RAK_1000060",
+        "discharge_salinity_ms_cm": 216.2,
+        "effective_nacl_ec_ms_cm": 122.15,
+        "ca_so4_to_nacl_ratio": 1.4,
+        "sulfur_geochemical_regime": "NACL_HYPERSALINE_SULFUR_SINK",
+        "sphingomonas_ect_kdp_plasmid_dose": 0.0,
+        "allorhizobium_rbcl_hyab_dose": 0.0,
+        "counterfactual_shannon_16s": 2.4953,
+        "halobacteriota_rel_abund": 0.7544,
+        "hard_maintenance_feasible": false,
+        "metabolic_viability_state": "MAINTENANCE_DEFICIT_DORMANCY",
+        "autotrophic_carbon_fixation_flux": 0.0,
+        "sulfur_redox_flux": 0.17112,
+        "atpm_maintenance_deficit": 0.74112,
+        "dark_proteome_coding_fraction": 0.1042,
+        "dark_proteome_active_fraction": 0.1042,
+        "ocs_score": 1.0,
+        "management_advisory": "WARNING_SITE59_SULFUR_SINK_COLLAPSE: Unbuffered Na-Cl brine (>200 mS/cm) drives hard ATP maintenance deficit and Halobacteriota monoculture; dilute below 15 mS/cm and buffer with Ca-SO4."
+      },
+      {
+        "intervention": "desalination_brine",
+        "site_iri": "https://rubalkhali.science/kb/RAK_1000060",
+        "discharge_salinity_ms_cm": 216.2,
+        "effective_nacl_ec_ms_cm": 122.15,
+        "ca_so4_to_nacl_ratio": 1.4,
+        "sulfur_geochemical_regime": "NACL_HYPERSALINE_SULFUR_SINK",
+        "sphingomonas_ect_kdp_plasmid_dose": 0.6,
+        "allorhizobium_rbcl_hyab_dose": 0.6,
+        "counterfactual_shannon_16s": 2.885,
+        "halobacteriota_rel_abund": 0.6443,
+        "hard_maintenance_feasible": false,
+        "metabolic_viability_state": "MAINTENANCE_DEFICIT_DORMANCY",
+        "autotrophic_carbon_fixation_flux": 0.0,
+        "sulfur_redox_flux": 0.17112,
+        "atpm_maintenance_deficit": 0.30498,
+        "dark_proteome_coding_fraction": 0.1042,
+        "dark_proteome_active_fraction": 0.1042,
+        "ocs_score": 1.0,
+        "management_advisory": "WARNING_SITE59_SULFUR_SINK_COLLAPSE: Unbuffered Na-Cl brine (>200 mS/cm) drives hard ATP maintenance deficit and Halobacteriota monoculture; dilute below 15 mS/cm and buffer with Ca-SO4."
+      }
+    ],
+    "highs_fba_thermodynamic_audit": {
+      "closed_exchange_zero_growth_pass": true,
+      "sulfate_electron_donor_closure_pass": true,
+      "h2_uptake_monotonicity_25_steps_pass": true,
+      "salinity_atpm_monotonicity_25_steps_pass": true
+    }
+  },
+  "carbon_budget_cross_desert_validation": {
+    "empirical_cbb_rubisco_by_compartment": {
+      "RootAdjacent": {
+        "n_observed_sites": 59,
+        "share_cbb_mapped_mean": 0.2111,
+        "share_cbb_prkb_mapped_mean": 0.1065,
+        "share_cbb_3gene_mapped_mean": 0.0876,
+        "share_1l_mapped_mean": 0.129,
+        "share_1l_cbb_mapped_mean": 0.0475,
+        "share_1l_cbb_3gene_mapped_mean": 0.0312,
+        "conditional_cbb_given_1l_mean": 0.3197,
+        "conditional_cbb_3gene_given_1l_mean": 0.2036
+      },
+      "ShallowSubsurface": {
+        "n_observed_sites": 51,
+        "share_cbb_mapped_mean": 0.2556,
+        "share_cbb_prkb_mapped_mean": 0.1607,
+        "share_cbb_3gene_mapped_mean": 0.138,
+        "share_1l_mapped_mean": 0.3066,
+        "share_1l_cbb_mapped_mean": 0.131,
+        "share_1l_cbb_3gene_mapped_mean": 0.094,
+        "conditional_cbb_given_1l_mean": 0.3767,
+        "conditional_cbb_3gene_given_1l_mean": 0.2495
+      },
+      "Surface": {
+        "n_observed_sites": 45,
+        "share_cbb_mapped_mean": 0.2235,
+        "share_cbb_prkb_mapped_mean": 0.1332,
+        "share_cbb_3gene_mapped_mean": 0.1157,
+        "share_1l_mapped_mean": 0.2535,
+        "share_1l_cbb_mapped_mean": 0.0885,
+        "share_1l_cbb_3gene_mapped_mean": 0.0647,
+        "conditional_cbb_given_1l_mean": 0.3026,
+        "conditional_cbb_3gene_given_1l_mean": 0.2061
+      }
+    },
+    "overall_wgs_cbb_community_share_mean": 0.2293,
+    "overall_wgs_cbb_prkb_community_share_mean": 0.1321,
+    "overall_wgs_cbb_3gene_community_share_mean": 0.1123,
+    "mag_hydB_1l_cbb_cocarriage_fraction": 0.181,
+    "mag_hydB_1l_hc90_cbb_cocarriage_fraction": 0.2764,
+    "dark_co2_fixation_annual_dry_column_nmol_gdw_d": 0.000397,
+    "dark_co2_fixation_wetted_active_horizon_nmol_gdw_d": 0.04824,
+    "internal_invariants_audit": {
+      "maintenance_infeasible_zero_rubisco_pass": true,
+      "zero_trace_gas_zero_rubisco_pass": true,
+      "plasmid_cbb_monotonicity_pass": true,
+      "shrub_cover_npp_and_sic_monotonicity_pass": true,
+      "compaction_diffusivity_h2_sink_monotonicity_pass": true,
+      "domain_of_support_abstention_preserved_pass": true
+    },
+    "cross_desert_benchmark_validation": [
+      {
+        "desert": "Global 25-Desert Synthesis (Atacama, Namib, Gobi, Negev, Mojave, Kalahari, Antarctic)",
+        "citation": "Leung et al. 2025 (bioRxiv 10.1101/2025.11.29.691269)",
+        "metric": "cbb_rubisco_community_share",
+        "unit": "fraction_of_cells_or_mapped_reads",
+        "literature_low": 0.17,
+        "literature_point": 0.21,
+        "literature_high": 0.28,
+        "eq_biodt_value": 0.2293,
+        "within_published_desert_range": true
+      },
+      {
+        "desert": "Global 25-Desert Synthesis (Atacama, Namib, Gobi, Negev, Mojave, Antarctic)",
+        "citation": "Leung et al. 2025 (bioRxiv 10.1101/2025.11.29.691269)",
+        "metric": "dark_and_h2_stimulated_co2_fixation_nmol_gdw_d",
+        "unit": "nmol_CO2_gdw^-1_d^-1",
+        "literature_low": 0.01,
+        "literature_point": 0.15,
+        "literature_high": 1.0,
+        "eq_biodt_value": 0.04824,
+        "within_published_desert_range": true
+      },
+      {
+        "desert": "Namib Desert Hyperarid & Fog Transect (C14-2 to C14-18)",
+        "citation": "Tribbia et al. 2026 (Appl. Environ. Microbiol. 10.1128/aem.00265-26)",
+        "metric": "cell_specific_h2_oxidation_nmol_h_cell",
+        "unit": "nmol_H2_h^-1_cell^-1",
+        "literature_low": 1.36e-08,
+        "literature_point": 2.82e-08,
+        "literature_high": 5.31e-08,
+        "eq_biodt_value": 1.677e-08,
+        "within_published_desert_range": true
+      },
+      {
+        "desert": "Australian & Global Hyperarid Drylands",
+        "citation": "Bay et al. 2021 (Nat. Microbiol. 10.1038/s41564-020-00811-w); Buzzard et al. 2022",
+        "metric": "areal_h2_uptake_mg_m2_yr",
+        "unit": "mg_H2_m^-2_yr^-1",
+        "literature_low": 5.0,
+        "literature_point": 12.5,
+        "literature_high": 25.0,
+        "eq_biodt_value": 8.719,
+        "within_published_desert_range": true
+      },
+      {
+        "desert": "Negev Desert Aridity Gradient (Hyperarid to Sub-humid)",
+        "citation": "Bay et al. 2021 (ISME J 10.1038/s41396-021-01001-0)",
+        "metric": "actinomycetota_rubisco_cocarriage_fraction",
+        "unit": "fraction_of_mags",
+        "literature_low": 0.17,
+        "literature_point": 0.28,
+        "literature_high": 0.35,
+        "eq_biodt_value": 0.181,
+        "within_published_desert_range": true
+      },
+      {
+        "desert": "Mojave Desert Aridisols (Unirrigated Caliche)",
+        "citation": "Schlesinger 1985 (Geochim. Cosmochim. Acta 49:57-66)",
+        "metric": "bare_pedogenic_carbonate_t_co2_km2_yr",
+        "unit": "t_CO2_km^-2_yr^-1",
+        "literature_low": 0.44,
+        "literature_point": 0.88,
+        "literature_high": 1.54,
+        "eq_biodt_value": 0.5603,
+        "within_published_desert_range": true
+      },
+      {
+        "desert": "Taklamakan / Tarim & Gobi Desert Haloxylon Plantations & Alkaline Soils",
+        "citation": "Ma et al. 2013 (Sci. Rep. 3:2025); Ma et al. 2021 (Glob. Ecol. Conserv. 28:e01607)",
+        "metric": "revegetated_corridor_total_t_co2_km2_yr",
+        "unit": "t_CO2_km^-2_yr^-1",
+        "literature_low": 45.0,
+        "literature_point": 95.0,
+        "literature_high": 185.0,
+        "eq_biodt_value": 91.249,
+        "within_published_desert_range": true
+      }
+    ],
+    "all_cross_desert_benchmarks_pass": true,
+    "corridor_and_basin_budgets": {
+      "baseline_observed": {
+        "policy_name": "Current_Baseline_State",
+        "supported_corridor_area_km2": 92160.0,
+        "unmanaged_reserve_area_km2": 557840.0,
+        "sand_sea_polygon_area_km2": 500000.0,
+        "total_basin_area_km2": 650000.0,
+        "unmanaged_reserve_management_delta_kt_yr": 0.0,
+        "direct_microbial_rubisco_co2": {
+          "corridor_t_km2_yr_point": 0.0011,
+          "delta_vs_baseline_t_km2_yr_point": 0.0,
+          "corridor_kt_yr_low": 0.016,
+          "corridor_kt_yr_point": 0.098,
+          "corridor_kt_yr_high": 0.407,
+          "delta_vs_baseline_corridor_kt_yr_low": 0.0,
+          "delta_vs_baseline_corridor_kt_yr_point": 0.0,
+          "delta_vs_baseline_corridor_kt_yr_high": 0.0,
+          "sand_sea_500k_kt_yr_point": 0.514,
+          "basin_kt_yr_low": 0.111,
+          "basin_kt_yr_point": 0.666,
+          "basin_kt_yr_high": 2.776
+        },
+        "indirect_h2_sink_co2eq": {
+          "corridor_t_km2_yr_point": 0.1052,
+          "delta_vs_baseline_t_km2_yr_point": 0.0,
+          "corridor_kt_yr_low": 2.006,
+          "corridor_kt_yr_point": 9.7,
+          "corridor_kt_yr_high": 26.758,
+          "delta_vs_baseline_corridor_kt_yr_low": 0.0,
+          "delta_vs_baseline_corridor_kt_yr_point": 0.0,
+          "delta_vs_baseline_corridor_kt_yr_high": 0.0,
+          "sand_sea_500k_kt_yr_point": 50.947,
+          "basin_kt_yr_low": 13.674,
+          "basin_kt_yr_point": 66.118,
+          "basin_kt_yr_high": 182.397
+        },
+        "vegetation_npp_co2": {
+          "corridor_t_km2_yr_point": 8.0573,
+          "delta_vs_baseline_t_km2_yr_point": 0.0,
+          "corridor_kt_yr_low": 478.258,
+          "corridor_kt_yr_point": 742.559,
+          "corridor_kt_yr_high": 1057.203,
+          "delta_vs_baseline_corridor_kt_yr_low": 0.0,
+          "delta_vs_baseline_corridor_kt_yr_point": 0.0,
+          "delta_vs_baseline_corridor_kt_yr_high": 0.0,
+          "sand_sea_500k_kt_yr_point": 973.002,
+          "basin_kt_yr_low": 681.261,
+          "basin_kt_yr_point": 1057.757,
+          "basin_kt_yr_high": 1505.962
+        },
+        "pedogenic_carbonate_co2": {
+          "corridor_t_km2_yr_point": 0.6395,
+          "delta_vs_baseline_t_km2_yr_point": 0.0,
+          "corridor_kt_yr_low": 29.47,
+          "corridor_kt_yr_point": 58.94,
+          "corridor_kt_yr_high": 103.145,
+          "delta_vs_baseline_corridor_kt_yr_low": 0.0,
+          "delta_vs_baseline_corridor_kt_yr_point": 0.0,
+          "delta_vs_baseline_corridor_kt_yr_high": 0.0,
+          "sand_sea_500k_kt_yr_point": 287.457,
+          "basin_kt_yr_low": 185.754,
+          "basin_kt_yr_point": 371.503,
+          "basin_kt_yr_high": 650.142
+        },
+        "total_direct_co2_bound": {
+          "corridor_t_km2_yr_point": 8.6979,
+          "delta_vs_baseline_t_km2_yr_point": 0.0,
+          "corridor_kt_yr_low": 507.745,
+          "corridor_kt_yr_point": 801.597,
+          "corridor_kt_yr_high": 1160.755,
+          "delta_vs_baseline_corridor_kt_yr_low": 0.0,
+          "delta_vs_baseline_corridor_kt_yr_point": 0.0,
+          "delta_vs_baseline_corridor_kt_yr_high": 0.0,
+          "sand_sea_500k_kt_yr_point": 1260.978,
+          "basin_kt_yr_low": 867.135,
+          "basin_kt_yr_point": 1429.934,
+          "basin_kt_yr_high": 2158.875
+        },
+        "net_persistent_co2_sequestered": {
+          "corridor_t_km2_yr_point": 1.5286,
+          "delta_vs_baseline_t_km2_yr_point": 0.0,
+          "corridor_kt_yr_low": 55.196,
+          "corridor_kt_yr_point": 140.878,
+          "corridor_kt_yr_high": 341.822,
+          "delta_vs_baseline_corridor_kt_yr_low": 0.0,
+          "delta_vs_baseline_corridor_kt_yr_point": 0.0,
+          "delta_vs_baseline_corridor_kt_yr_high": 0.0,
+          "sand_sea_500k_kt_yr_point": 289.809,
+          "basin_kt_yr_low": 114.582,
+          "basin_kt_yr_point": 344.584,
+          "basin_kt_yr_high": 865.204
+        },
+        "total_co2eq_bound": {
+          "corridor_t_km2_yr_point": 8.8031,
+          "delta_vs_baseline_t_km2_yr_point": 0.0,
+          "corridor_kt_yr_low": 509.752,
+          "corridor_kt_yr_point": 811.297,
+          "corridor_kt_yr_high": 1187.513,
+          "delta_vs_baseline_corridor_kt_yr_low": 0.0,
+          "delta_vs_baseline_corridor_kt_yr_point": 0.0,
+          "delta_vs_baseline_corridor_kt_yr_high": 0.0,
+          "sand_sea_500k_kt_yr_point": 1311.926,
+          "basin_kt_yr_low": 880.812,
+          "basin_kt_yr_point": 1496.053,
+          "basin_kt_yr_high": 2341.269
+        }
+      },
+      "prescribed_corridor_atlas": {
+        "policy_name": "Spatially Prescribed Corridor Atlas (87 P2, 34 P3, 7 P4)",
+        "supported_corridor_area_km2": 92160.0,
+        "unmanaged_reserve_area_km2": 557840.0,
+        "sand_sea_polygon_area_km2": 500000.0,
+        "total_basin_area_km2": 650000.0,
+        "unmanaged_reserve_management_delta_kt_yr": 0.0,
+        "direct_microbial_rubisco_co2": {
+          "corridor_t_km2_yr_point": 0.0014,
+          "delta_vs_baseline_t_km2_yr_point": 0.0004,
+          "corridor_kt_yr_low": 0.022,
+          "corridor_kt_yr_point": 0.131,
+          "corridor_kt_yr_high": 0.548,
+          "delta_vs_baseline_corridor_kt_yr_low": 0.006,
+          "delta_vs_baseline_corridor_kt_yr_point": 0.034,
+          "delta_vs_baseline_corridor_kt_yr_high": 0.141,
+          "sand_sea_500k_kt_yr_point": 0.547,
+          "basin_kt_yr_low": 0.116,
+          "basin_kt_yr_point": 0.7,
+          "basin_kt_yr_high": 2.917
+        },
+        "indirect_h2_sink_co2eq": {
+          "corridor_t_km2_yr_point": 0.1273,
+          "delta_vs_baseline_t_km2_yr_point": 0.022,
+          "corridor_kt_yr_low": 2.426,
+          "corridor_kt_yr_point": 11.728,
+          "corridor_kt_yr_high": 32.351,
+          "delta_vs_baseline_corridor_kt_yr_low": 0.42,
+          "delta_vs_baseline_corridor_kt_yr_point": 2.028,
+          "delta_vs_baseline_corridor_kt_yr_high": 5.593,
+          "sand_sea_500k_kt_yr_point": 52.976,
+          "basin_kt_yr_low": 14.094,
+          "basin_kt_yr_point": 68.146,
+          "basin_kt_yr_high": 187.989
+        },
+        "vegetation_npp_co2": {
+          "corridor_t_km2_yr_point": 55.2291,
+          "delta_vs_baseline_t_km2_yr_point": 47.1718,
+          "corridor_kt_yr_low": 3278.248,
+          "corridor_kt_yr_point": 5089.912,
+          "corridor_kt_yr_high": 7246.654,
+          "delta_vs_baseline_corridor_kt_yr_low": 2799.99,
+          "delta_vs_baseline_corridor_kt_yr_point": 4347.353,
+          "delta_vs_baseline_corridor_kt_yr_high": 6189.452,
+          "sand_sea_500k_kt_yr_point": 5320.355,
+          "basin_kt_yr_low": 3481.251,
+          "basin_kt_yr_point": 5405.11,
+          "basin_kt_yr_high": 7695.413
+        },
+        "pedogenic_carbonate_co2": {
+          "corridor_t_km2_yr_point": 1.1068,
+          "delta_vs_baseline_t_km2_yr_point": 0.4672,
+          "corridor_kt_yr_low": 51.0,
+          "corridor_kt_yr_point": 101.999,
+          "corridor_kt_yr_high": 178.499,
+          "delta_vs_baseline_corridor_kt_yr_low": 21.53,
+          "delta_vs_baseline_corridor_kt_yr_point": 43.06,
+          "delta_vs_baseline_corridor_kt_yr_high": 75.354,
+          "sand_sea_500k_kt_yr_point": 330.516,
+          "basin_kt_yr_low": 207.283,
+          "basin_kt_yr_point": 414.563,
+          "basin_kt_yr_high": 725.496
+        },
+        "total_direct_co2_bound": {
+          "corridor_t_km2_yr_point": 56.3373,
+          "delta_vs_baseline_t_km2_yr_point": 47.6394,
+          "corridor_kt_yr_low": 3329.27,
+          "corridor_kt_yr_point": 5192.042,
+          "corridor_kt_yr_high": 7425.701,
+          "delta_vs_baseline_corridor_kt_yr_low": 2821.525,
+          "delta_vs_baseline_corridor_kt_yr_point": 4390.445,
+          "delta_vs_baseline_corridor_kt_yr_high": 6264.946,
+          "sand_sea_500k_kt_yr_point": 5651.423,
+          "basin_kt_yr_low": 3688.66,
+          "basin_kt_yr_point": 5820.379,
+          "basin_kt_yr_high": 8423.821
+        },
+        "net_persistent_co2_sequestered": {
+          "corridor_t_km2_yr_point": 8.8381,
+          "delta_vs_baseline_t_km2_yr_point": 7.3095,
+          "corridor_kt_yr_low": 340.578,
+          "corridor_kt_yr_point": 814.519,
+          "corridor_kt_yr_high": 1945.757,
+          "delta_vs_baseline_corridor_kt_yr_low": 285.382,
+          "delta_vs_baseline_corridor_kt_yr_point": 673.641,
+          "delta_vs_baseline_corridor_kt_yr_high": 1603.935,
+          "sand_sea_500k_kt_yr_point": 963.45,
+          "basin_kt_yr_low": 399.964,
+          "basin_kt_yr_point": 1018.226,
+          "basin_kt_yr_high": 2469.139
+        },
+        "total_co2eq_bound": {
+          "corridor_t_km2_yr_point": 56.4645,
+          "delta_vs_baseline_t_km2_yr_point": 47.6614,
+          "corridor_kt_yr_low": 3331.696,
+          "corridor_kt_yr_point": 5203.77,
+          "corridor_kt_yr_high": 7458.052,
+          "delta_vs_baseline_corridor_kt_yr_low": 2821.945,
+          "delta_vs_baseline_corridor_kt_yr_point": 4392.474,
+          "delta_vs_baseline_corridor_kt_yr_high": 6270.539,
+          "sand_sea_500k_kt_yr_point": 5704.399,
+          "basin_kt_yr_low": 3702.757,
+          "basin_kt_yr_point": 5888.526,
+          "basin_kt_yr_high": 8611.808
+        }
+      },
+      "candidate_portfolios": [
+        {
+          "policy_name": "Baseline Hyperarid Do-Nothing",
+          "supported_corridor_area_km2": 92160.0,
+          "unmanaged_reserve_area_km2": 557840.0,
+          "sand_sea_polygon_area_km2": 500000.0,
+          "total_basin_area_km2": 650000.0,
+          "unmanaged_reserve_management_delta_kt_yr": 0.0,
+          "direct_microbial_rubisco_co2": {
+            "corridor_t_km2_yr_point": 0.001,
+            "delta_vs_baseline_t_km2_yr_point": -0.0001,
+            "corridor_kt_yr_low": 0.016,
+            "corridor_kt_yr_point": 0.093,
+            "corridor_kt_yr_high": 0.387,
+            "delta_vs_baseline_corridor_kt_yr_low": -0.001,
+            "delta_vs_baseline_corridor_kt_yr_point": -0.005,
+            "delta_vs_baseline_corridor_kt_yr_high": -0.019,
+            "sand_sea_500k_kt_yr_point": 0.509,
+            "basin_kt_yr_low": 0.11,
+            "basin_kt_yr_point": 0.662,
+            "basin_kt_yr_high": 2.757
+          },
+          "indirect_h2_sink_co2eq": {
+            "corridor_t_km2_yr_point": 0.1002,
+            "delta_vs_baseline_t_km2_yr_point": -0.005,
+            "corridor_kt_yr_low": 1.91,
+            "corridor_kt_yr_point": 9.236,
+            "corridor_kt_yr_high": 25.478,
+            "delta_vs_baseline_corridor_kt_yr_low": -0.096,
+            "delta_vs_baseline_corridor_kt_yr_point": -0.464,
+            "delta_vs_baseline_corridor_kt_yr_high": -1.28,
+            "sand_sea_500k_kt_yr_point": 50.484,
+            "basin_kt_yr_low": 13.578,
+            "basin_kt_yr_point": 65.654,
+            "basin_kt_yr_high": 181.117
+          },
+          "vegetation_npp_co2": {
+            "corridor_t_km2_yr_point": 11.3639,
+            "delta_vs_baseline_t_km2_yr_point": 3.3066,
+            "corridor_kt_yr_low": 674.529,
+            "corridor_kt_yr_point": 1047.295,
+            "corridor_kt_yr_high": 1491.064,
+            "delta_vs_baseline_corridor_kt_yr_low": 196.271,
+            "delta_vs_baseline_corridor_kt_yr_point": 304.736,
+            "delta_vs_baseline_corridor_kt_yr_high": 433.861,
+            "sand_sea_500k_kt_yr_point": 1277.738,
+            "basin_kt_yr_low": 877.532,
+            "basin_kt_yr_point": 1362.493,
+            "basin_kt_yr_high": 1939.823
+          },
+          "pedogenic_carbonate_co2": {
+            "corridor_t_km2_yr_point": 0.6732,
+            "delta_vs_baseline_t_km2_yr_point": 0.0337,
+            "corridor_kt_yr_low": 31.023,
+            "corridor_kt_yr_point": 62.046,
+            "corridor_kt_yr_high": 108.58,
+            "delta_vs_baseline_corridor_kt_yr_low": 1.553,
+            "delta_vs_baseline_corridor_kt_yr_point": 3.106,
+            "delta_vs_baseline_corridor_kt_yr_high": 5.435,
+            "sand_sea_500k_kt_yr_point": 290.563,
+            "basin_kt_yr_low": 187.307,
+            "basin_kt_yr_point": 374.609,
+            "basin_kt_yr_high": 655.578
+          },
+          "total_direct_co2_bound": {
+            "corridor_t_km2_yr_point": 12.0381,
+            "delta_vs_baseline_t_km2_yr_point": 3.3402,
+            "corridor_kt_yr_low": 705.568,
+            "corridor_kt_yr_point": 1109.434,
+            "corridor_kt_yr_high": 1600.032,
+            "delta_vs_baseline_corridor_kt_yr_low": 197.823,
+            "delta_vs_baseline_corridor_kt_yr_point": 307.837,
+            "delta_vs_baseline_corridor_kt_yr_high": 439.277,
+            "sand_sea_500k_kt_yr_point": 1568.815,
+            "basin_kt_yr_low": 1064.958,
+            "basin_kt_yr_point": 1737.771,
+            "basin_kt_yr_high": 2598.153
+          },
+          "net_persistent_co2_sequestered": {
+            "corridor_t_km2_yr_point": 2.0415,
+            "delta_vs_baseline_t_km2_yr_point": 0.5128,
+            "corridor_kt_yr_low": 75.211,
+            "corridor_kt_yr_point": 188.14,
+            "corridor_kt_yr_high": 454.356,
+            "delta_vs_baseline_corridor_kt_yr_low": 20.015,
+            "delta_vs_baseline_corridor_kt_yr_point": 47.262,
+            "delta_vs_baseline_corridor_kt_yr_high": 112.534,
+            "sand_sea_500k_kt_yr_point": 337.071,
+            "basin_kt_yr_low": 134.597,
+            "basin_kt_yr_point": 391.847,
+            "basin_kt_yr_high": 977.738
+          },
+          "total_co2eq_bound": {
+            "corridor_t_km2_yr_point": 12.1383,
+            "delta_vs_baseline_t_km2_yr_point": 3.3352,
+            "corridor_kt_yr_low": 707.478,
+            "corridor_kt_yr_point": 1118.669,
+            "corridor_kt_yr_high": 1625.509,
+            "delta_vs_baseline_corridor_kt_yr_low": 197.727,
+            "delta_vs_baseline_corridor_kt_yr_point": 307.373,
+            "delta_vs_baseline_corridor_kt_yr_high": 437.996,
+            "sand_sea_500k_kt_yr_point": 1619.298,
+            "basin_kt_yr_low": 1078.539,
+            "basin_kt_yr_point": 1803.425,
+            "basin_kt_yr_high": 2779.266
+          }
+        },
+        {
+          "policy_name": "Integrated Eco-Restoration & Oryx Rewilding (Balanced Optimum)",
+          "supported_corridor_area_km2": 92160.0,
+          "unmanaged_reserve_area_km2": 557840.0,
+          "sand_sea_polygon_area_km2": 500000.0,
+          "total_basin_area_km2": 650000.0,
+          "unmanaged_reserve_management_delta_kt_yr": 0.0,
+          "direct_microbial_rubisco_co2": {
+            "corridor_t_km2_yr_point": 0.0016,
+            "delta_vs_baseline_t_km2_yr_point": 0.0006,
+            "corridor_kt_yr_low": 0.025,
+            "corridor_kt_yr_point": 0.151,
+            "corridor_kt_yr_high": 0.631,
+            "delta_vs_baseline_corridor_kt_yr_low": 0.009,
+            "delta_vs_baseline_corridor_kt_yr_point": 0.054,
+            "delta_vs_baseline_corridor_kt_yr_high": 0.224,
+            "sand_sea_500k_kt_yr_point": 0.567,
+            "basin_kt_yr_low": 0.12,
+            "basin_kt_yr_point": 0.72,
+            "basin_kt_yr_high": 3.0
+          },
+          "indirect_h2_sink_co2eq": {
+            "corridor_t_km2_yr_point": 0.1322,
+            "delta_vs_baseline_t_km2_yr_point": 0.027,
+            "corridor_kt_yr_low": 2.521,
+            "corridor_kt_yr_point": 12.184,
+            "corridor_kt_yr_high": 33.613,
+            "delta_vs_baseline_corridor_kt_yr_low": 0.514,
+            "delta_vs_baseline_corridor_kt_yr_point": 2.484,
+            "delta_vs_baseline_corridor_kt_yr_high": 6.854,
+            "sand_sea_500k_kt_yr_point": 53.431,
+            "basin_kt_yr_low": 14.189,
+            "basin_kt_yr_point": 68.602,
+            "basin_kt_yr_high": 189.251
+          },
+          "vegetation_npp_co2": {
+            "corridor_t_km2_yr_point": 89.8315,
+            "delta_vs_baseline_t_km2_yr_point": 81.7742,
+            "corridor_kt_yr_low": 5332.152,
+            "corridor_kt_yr_point": 8278.868,
+            "corridor_kt_yr_high": 11786.863,
+            "delta_vs_baseline_corridor_kt_yr_low": 4853.894,
+            "delta_vs_baseline_corridor_kt_yr_point": 7536.309,
+            "delta_vs_baseline_corridor_kt_yr_high": 10729.66,
+            "sand_sea_500k_kt_yr_point": 8509.311,
+            "basin_kt_yr_low": 5535.155,
+            "basin_kt_yr_point": 8594.066,
+            "basin_kt_yr_high": 12235.622
+          },
+          "pedogenic_carbonate_co2": {
+            "corridor_t_km2_yr_point": 1.4154,
+            "delta_vs_baseline_t_km2_yr_point": 0.7759,
+            "corridor_kt_yr_low": 65.223,
+            "corridor_kt_yr_point": 130.446,
+            "corridor_kt_yr_high": 228.28,
+            "delta_vs_baseline_corridor_kt_yr_low": 35.753,
+            "delta_vs_baseline_corridor_kt_yr_point": 71.506,
+            "delta_vs_baseline_corridor_kt_yr_high": 125.135,
+            "sand_sea_500k_kt_yr_point": 358.962,
+            "basin_kt_yr_low": 221.506,
+            "basin_kt_yr_point": 443.009,
+            "basin_kt_yr_high": 775.278
+          },
+          "total_direct_co2_bound": {
+            "corridor_t_km2_yr_point": 91.2485,
+            "delta_vs_baseline_t_km2_yr_point": 82.5507,
+            "corridor_kt_yr_low": 5397.401,
+            "corridor_kt_yr_point": 8409.466,
+            "corridor_kt_yr_high": 12015.774,
+            "delta_vs_baseline_corridor_kt_yr_low": 4889.656,
+            "delta_vs_baseline_corridor_kt_yr_point": 7607.869,
+            "delta_vs_baseline_corridor_kt_yr_high": 10855.02,
+            "sand_sea_500k_kt_yr_point": 8868.846,
+            "basin_kt_yr_low": 5756.791,
+            "basin_kt_yr_point": 9037.803,
+            "basin_kt_yr_high": 13013.895
+          },
+          "net_persistent_co2_sequestered": {
+            "corridor_t_km2_yr_point": 14.1829,
+            "delta_vs_baseline_t_km2_yr_point": 12.6542,
+            "corridor_kt_yr_low": 549.525,
+            "corridor_kt_yr_point": 1307.091,
+            "corridor_kt_yr_high": 3118.178,
+            "delta_vs_baseline_corridor_kt_yr_low": 494.329,
+            "delta_vs_baseline_corridor_kt_yr_point": 1166.213,
+            "delta_vs_baseline_corridor_kt_yr_high": 2776.356,
+            "sand_sea_500k_kt_yr_point": 1456.022,
+            "basin_kt_yr_low": 608.911,
+            "basin_kt_yr_point": 1510.798,
+            "basin_kt_yr_high": 3641.561
+          },
+          "total_co2eq_bound": {
+            "corridor_t_km2_yr_point": 91.3808,
+            "delta_vs_baseline_t_km2_yr_point": 82.5776,
+            "corridor_kt_yr_low": 5399.922,
+            "corridor_kt_yr_point": 8421.65,
+            "corridor_kt_yr_high": 12049.388,
+            "delta_vs_baseline_corridor_kt_yr_low": 4890.17,
+            "delta_vs_baseline_corridor_kt_yr_point": 7610.354,
+            "delta_vs_baseline_corridor_kt_yr_high": 10861.875,
+            "sand_sea_500k_kt_yr_point": 8922.279,
+            "basin_kt_yr_low": 5770.982,
+            "basin_kt_yr_point": 9106.406,
+            "basin_kt_yr_high": 13203.144
+          }
+        },
+        {
+          "policy_name": "Low-Water Chemosynthetic Crust & Refugium Conservation",
+          "supported_corridor_area_km2": 92160.0,
+          "unmanaged_reserve_area_km2": 557840.0,
+          "sand_sea_polygon_area_km2": 500000.0,
+          "total_basin_area_km2": 650000.0,
+          "unmanaged_reserve_management_delta_kt_yr": 0.0,
+          "direct_microbial_rubisco_co2": {
+            "corridor_t_km2_yr_point": 0.0014,
+            "delta_vs_baseline_t_km2_yr_point": 0.0003,
+            "corridor_kt_yr_low": 0.021,
+            "corridor_kt_yr_point": 0.129,
+            "corridor_kt_yr_high": 0.54,
+            "delta_vs_baseline_corridor_kt_yr_low": 0.005,
+            "delta_vs_baseline_corridor_kt_yr_point": 0.032,
+            "delta_vs_baseline_corridor_kt_yr_high": 0.133,
+            "sand_sea_500k_kt_yr_point": 0.545,
+            "basin_kt_yr_low": 0.116,
+            "basin_kt_yr_point": 0.698,
+            "basin_kt_yr_high": 2.909
+          },
+          "indirect_h2_sink_co2eq": {
+            "corridor_t_km2_yr_point": 0.1271,
+            "delta_vs_baseline_t_km2_yr_point": 0.0218,
+            "corridor_kt_yr_low": 2.422,
+            "corridor_kt_yr_point": 11.712,
+            "corridor_kt_yr_high": 32.308,
+            "delta_vs_baseline_corridor_kt_yr_low": 0.416,
+            "delta_vs_baseline_corridor_kt_yr_point": 2.013,
+            "delta_vs_baseline_corridor_kt_yr_high": 5.549,
+            "sand_sea_500k_kt_yr_point": 52.96,
+            "basin_kt_yr_low": 14.091,
+            "basin_kt_yr_point": 68.131,
+            "basin_kt_yr_high": 187.946
+          },
+          "vegetation_npp_co2": {
+            "corridor_t_km2_yr_point": 48.7226,
+            "delta_vs_baseline_t_km2_yr_point": 40.6653,
+            "corridor_kt_yr_low": 2892.043,
+            "corridor_kt_yr_point": 4490.278,
+            "corridor_kt_yr_high": 6392.938,
+            "delta_vs_baseline_corridor_kt_yr_low": 2413.785,
+            "delta_vs_baseline_corridor_kt_yr_point": 3747.719,
+            "delta_vs_baseline_corridor_kt_yr_high": 5335.736,
+            "sand_sea_500k_kt_yr_point": 4720.721,
+            "basin_kt_yr_low": 3095.046,
+            "basin_kt_yr_point": 4805.476,
+            "basin_kt_yr_high": 6841.697
+          },
+          "pedogenic_carbonate_co2": {
+            "corridor_t_km2_yr_point": 1.0399,
+            "delta_vs_baseline_t_km2_yr_point": 0.4003,
+            "corridor_kt_yr_low": 47.917,
+            "corridor_kt_yr_point": 95.834,
+            "corridor_kt_yr_high": 167.709,
+            "delta_vs_baseline_corridor_kt_yr_low": 18.447,
+            "delta_vs_baseline_corridor_kt_yr_point": 36.894,
+            "delta_vs_baseline_corridor_kt_yr_high": 64.564,
+            "sand_sea_500k_kt_yr_point": 324.351,
+            "basin_kt_yr_low": 204.201,
+            "basin_kt_yr_point": 408.397,
+            "basin_kt_yr_high": 714.707
+          },
+          "total_direct_co2_bound": {
+            "corridor_t_km2_yr_point": 49.7639,
+            "delta_vs_baseline_t_km2_yr_point": 41.066,
+            "corridor_kt_yr_low": 2939.982,
+            "corridor_kt_yr_point": 4586.241,
+            "corridor_kt_yr_high": 6561.187,
+            "delta_vs_baseline_corridor_kt_yr_low": 2432.237,
+            "delta_vs_baseline_corridor_kt_yr_point": 3784.644,
+            "delta_vs_baseline_corridor_kt_yr_high": 5400.432,
+            "sand_sea_500k_kt_yr_point": 5045.622,
+            "basin_kt_yr_low": 3299.372,
+            "basin_kt_yr_point": 5214.578,
+            "basin_kt_yr_high": 7559.308
+          },
+          "net_persistent_co2_sequestered": {
+            "corridor_t_km2_yr_point": 7.8287,
+            "delta_vs_baseline_t_km2_yr_point": 6.3001,
+            "corridor_kt_yr_low": 301.187,
+            "corridor_kt_yr_point": 721.491,
+            "corridor_kt_yr_high": 1724.232,
+            "delta_vs_baseline_corridor_kt_yr_low": 245.991,
+            "delta_vs_baseline_corridor_kt_yr_point": 580.613,
+            "delta_vs_baseline_corridor_kt_yr_high": 1382.41,
+            "sand_sea_500k_kt_yr_point": 870.422,
+            "basin_kt_yr_low": 360.573,
+            "basin_kt_yr_point": 925.197,
+            "basin_kt_yr_high": 2247.615
+          },
+          "total_co2eq_bound": {
+            "corridor_t_km2_yr_point": 49.891,
+            "delta_vs_baseline_t_km2_yr_point": 41.0879,
+            "corridor_kt_yr_low": 2942.405,
+            "corridor_kt_yr_point": 4597.953,
+            "corridor_kt_yr_high": 6593.495,
+            "delta_vs_baseline_corridor_kt_yr_low": 2432.653,
+            "delta_vs_baseline_corridor_kt_yr_point": 3786.657,
+            "delta_vs_baseline_corridor_kt_yr_high": 5405.982,
+            "sand_sea_500k_kt_yr_point": 5098.582,
+            "basin_kt_yr_low": 3313.465,
+            "basin_kt_yr_point": 5282.709,
+            "basin_kt_yr_high": 7747.251
+          }
+        },
+        {
+          "policy_name": "High-Canopy Oasis Revegetation + Site 60 Ca-SO4 Irrigation",
+          "supported_corridor_area_km2": 92160.0,
+          "unmanaged_reserve_area_km2": 557840.0,
+          "sand_sea_polygon_area_km2": 500000.0,
+          "total_basin_area_km2": 650000.0,
+          "unmanaged_reserve_management_delta_kt_yr": 0.0,
+          "direct_microbial_rubisco_co2": {
+            "corridor_t_km2_yr_point": 0.002,
+            "delta_vs_baseline_t_km2_yr_point": 0.001,
+            "corridor_kt_yr_low": 0.031,
+            "corridor_kt_yr_point": 0.186,
+            "corridor_kt_yr_high": 0.775,
+            "delta_vs_baseline_corridor_kt_yr_low": 0.015,
+            "delta_vs_baseline_corridor_kt_yr_point": 0.088,
+            "delta_vs_baseline_corridor_kt_yr_high": 0.368,
+            "sand_sea_500k_kt_yr_point": 0.602,
+            "basin_kt_yr_low": 0.125,
+            "basin_kt_yr_point": 0.755,
+            "basin_kt_yr_high": 3.144
+          },
+          "indirect_h2_sink_co2eq": {
+            "corridor_t_km2_yr_point": 0.1309,
+            "delta_vs_baseline_t_km2_yr_point": 0.0257,
+            "corridor_kt_yr_low": 2.497,
+            "corridor_kt_yr_point": 12.068,
+            "corridor_kt_yr_high": 33.29,
+            "delta_vs_baseline_corridor_kt_yr_low": 0.491,
+            "delta_vs_baseline_corridor_kt_yr_point": 2.368,
+            "delta_vs_baseline_corridor_kt_yr_high": 6.531,
+            "sand_sea_500k_kt_yr_point": 53.315,
+            "basin_kt_yr_low": 14.165,
+            "basin_kt_yr_point": 68.486,
+            "basin_kt_yr_high": 188.928
+          },
+          "vegetation_npp_co2": {
+            "corridor_t_km2_yr_point": 157.3897,
+            "delta_vs_baseline_t_km2_yr_point": 149.3324,
+            "corridor_kt_yr_low": 9342.228,
+            "corridor_kt_yr_point": 14505.037,
+            "corridor_kt_yr_high": 20651.24,
+            "delta_vs_baseline_corridor_kt_yr_low": 8863.969,
+            "delta_vs_baseline_corridor_kt_yr_point": 13762.478,
+            "delta_vs_baseline_corridor_kt_yr_high": 19594.037,
+            "sand_sea_500k_kt_yr_point": 14735.48,
+            "basin_kt_yr_low": 9545.23,
+            "basin_kt_yr_point": 14820.235,
+            "basin_kt_yr_high": 21099.999
+          },
+          "pedogenic_carbonate_co2": {
+            "corridor_t_km2_yr_point": 2.1253,
+            "delta_vs_baseline_t_km2_yr_point": 1.4858,
+            "corridor_kt_yr_low": 97.936,
+            "corridor_kt_yr_point": 195.872,
+            "corridor_kt_yr_high": 342.776,
+            "delta_vs_baseline_corridor_kt_yr_low": 68.466,
+            "delta_vs_baseline_corridor_kt_yr_point": 136.932,
+            "delta_vs_baseline_corridor_kt_yr_high": 239.631,
+            "sand_sea_500k_kt_yr_point": 424.389,
+            "basin_kt_yr_low": 254.22,
+            "basin_kt_yr_point": 508.435,
+            "basin_kt_yr_high": 889.773
+          },
+          "total_direct_co2_bound": {
+            "corridor_t_km2_yr_point": 159.5171,
+            "delta_vs_baseline_t_km2_yr_point": 150.8192,
+            "corridor_kt_yr_low": 9440.195,
+            "corridor_kt_yr_point": 14701.096,
+            "corridor_kt_yr_high": 20994.79,
+            "delta_vs_baseline_corridor_kt_yr_low": 8932.45,
+            "delta_vs_baseline_corridor_kt_yr_point": 13899.499,
+            "delta_vs_baseline_corridor_kt_yr_high": 19834.036,
+            "sand_sea_500k_kt_yr_point": 15160.476,
+            "basin_kt_yr_low": 9799.585,
+            "basin_kt_yr_point": 15329.433,
+            "basin_kt_yr_high": 21992.911
+          },
+          "net_persistent_co2_sequestered": {
+            "corridor_t_km2_yr_point": 24.6716,
+            "delta_vs_baseline_t_km2_yr_point": 23.143,
+            "corridor_kt_yr_low": 958.712,
+            "corridor_kt_yr_point": 2273.738,
+            "corridor_kt_yr_high": 5420.202,
+            "delta_vs_baseline_corridor_kt_yr_low": 903.516,
+            "delta_vs_baseline_corridor_kt_yr_point": 2132.86,
+            "delta_vs_baseline_corridor_kt_yr_high": 5078.38,
+            "sand_sea_500k_kt_yr_point": 2422.669,
+            "basin_kt_yr_low": 1018.097,
+            "basin_kt_yr_point": 2477.445,
+            "basin_kt_yr_high": 5943.584
+          },
+          "total_co2eq_bound": {
+            "corridor_t_km2_yr_point": 159.648,
+            "delta_vs_baseline_t_km2_yr_point": 150.8449,
+            "corridor_kt_yr_low": 9442.691,
+            "corridor_kt_yr_point": 14713.164,
+            "corridor_kt_yr_high": 21028.082,
+            "delta_vs_baseline_corridor_kt_yr_low": 8932.94,
+            "delta_vs_baseline_corridor_kt_yr_point": 13901.867,
+            "delta_vs_baseline_corridor_kt_yr_high": 19840.569,
+            "sand_sea_500k_kt_yr_point": 15213.793,
+            "basin_kt_yr_low": 9813.752,
+            "basin_kt_yr_point": 15397.92,
+            "basin_kt_yr_high": 22181.838
+          }
+        },
+        {
+          "policy_name": "Active Energy-Corridor Nodal Seismic + Oil-Spill Bioremediation",
+          "supported_corridor_area_km2": 92160.0,
+          "unmanaged_reserve_area_km2": 557840.0,
+          "sand_sea_polygon_area_km2": 500000.0,
+          "total_basin_area_km2": 650000.0,
+          "unmanaged_reserve_management_delta_kt_yr": 0.0,
+          "direct_microbial_rubisco_co2": {
+            "corridor_t_km2_yr_point": 0.0014,
+            "delta_vs_baseline_t_km2_yr_point": 0.0004,
+            "corridor_kt_yr_low": 0.022,
+            "corridor_kt_yr_point": 0.133,
+            "corridor_kt_yr_high": 0.552,
+            "delta_vs_baseline_corridor_kt_yr_low": 0.006,
+            "delta_vs_baseline_corridor_kt_yr_point": 0.035,
+            "delta_vs_baseline_corridor_kt_yr_high": 0.145,
+            "sand_sea_500k_kt_yr_point": 0.548,
+            "basin_kt_yr_low": 0.117,
+            "basin_kt_yr_point": 0.701,
+            "basin_kt_yr_high": 2.921
+          },
+          "indirect_h2_sink_co2eq": {
+            "corridor_t_km2_yr_point": 0.1272,
+            "delta_vs_baseline_t_km2_yr_point": 0.022,
+            "corridor_kt_yr_low": 2.427,
+            "corridor_kt_yr_point": 11.724,
+            "corridor_kt_yr_high": 32.341,
+            "delta_vs_baseline_corridor_kt_yr_low": 0.421,
+            "delta_vs_baseline_corridor_kt_yr_point": 2.025,
+            "delta_vs_baseline_corridor_kt_yr_high": 5.582,
+            "sand_sea_500k_kt_yr_point": 52.972,
+            "basin_kt_yr_low": 14.095,
+            "basin_kt_yr_point": 68.143,
+            "basin_kt_yr_high": 187.979
+          },
+          "vegetation_npp_co2": {
+            "corridor_t_km2_yr_point": 63.9218,
+            "delta_vs_baseline_t_km2_yr_point": 55.8645,
+            "corridor_kt_yr_low": 3794.226,
+            "corridor_kt_yr_point": 5891.035,
+            "corridor_kt_yr_high": 8387.237,
+            "delta_vs_baseline_corridor_kt_yr_low": 3315.968,
+            "delta_vs_baseline_corridor_kt_yr_point": 5148.476,
+            "delta_vs_baseline_corridor_kt_yr_high": 7330.034,
+            "sand_sea_500k_kt_yr_point": 6121.478,
+            "basin_kt_yr_low": 3997.229,
+            "basin_kt_yr_point": 6206.233,
+            "basin_kt_yr_high": 8835.996
+          },
+          "pedogenic_carbonate_co2": {
+            "corridor_t_km2_yr_point": 1.1593,
+            "delta_vs_baseline_t_km2_yr_point": 0.5197,
+            "corridor_kt_yr_low": 53.418,
+            "corridor_kt_yr_point": 106.837,
+            "corridor_kt_yr_high": 186.966,
+            "delta_vs_baseline_corridor_kt_yr_low": 23.948,
+            "delta_vs_baseline_corridor_kt_yr_point": 47.898,
+            "delta_vs_baseline_corridor_kt_yr_high": 83.821,
+            "sand_sea_500k_kt_yr_point": 335.354,
+            "basin_kt_yr_low": 209.702,
+            "basin_kt_yr_point": 419.401,
+            "basin_kt_yr_high": 733.963
+          },
+          "total_direct_co2_bound": {
+            "corridor_t_km2_yr_point": 65.0825,
+            "delta_vs_baseline_t_km2_yr_point": 56.3846,
+            "corridor_kt_yr_low": 3847.667,
+            "corridor_kt_yr_point": 5998.005,
+            "corridor_kt_yr_high": 8574.754,
+            "delta_vs_baseline_corridor_kt_yr_low": 3339.922,
+            "delta_vs_baseline_corridor_kt_yr_point": 5196.408,
+            "delta_vs_baseline_corridor_kt_yr_high": 7413.999,
+            "sand_sea_500k_kt_yr_point": 6457.386,
+            "basin_kt_yr_low": 4207.057,
+            "basin_kt_yr_point": 6626.342,
+            "basin_kt_yr_high": 9572.875
+          },
+          "net_persistent_co2_sequestered": {
+            "corridor_t_km2_yr_point": 10.1683,
+            "delta_vs_baseline_t_km2_yr_point": 8.6396,
+            "corridor_kt_yr_low": 392.781,
+            "corridor_kt_yr_point": 937.107,
+            "corridor_kt_yr_high": 2237.254,
+            "delta_vs_baseline_corridor_kt_yr_low": 337.585,
+            "delta_vs_baseline_corridor_kt_yr_point": 796.229,
+            "delta_vs_baseline_corridor_kt_yr_high": 1895.432,
+            "sand_sea_500k_kt_yr_point": 1086.038,
+            "basin_kt_yr_low": 452.166,
+            "basin_kt_yr_point": 1140.813,
+            "basin_kt_yr_high": 2760.637
+          },
+          "total_co2eq_bound": {
+            "corridor_t_km2_yr_point": 65.2097,
+            "delta_vs_baseline_t_km2_yr_point": 56.4066,
+            "corridor_kt_yr_low": 3850.093,
+            "corridor_kt_yr_point": 6009.729,
+            "corridor_kt_yr_high": 8607.096,
+            "delta_vs_baseline_corridor_kt_yr_low": 3340.341,
+            "delta_vs_baseline_corridor_kt_yr_point": 5198.433,
+            "delta_vs_baseline_corridor_kt_yr_high": 7419.583,
+            "sand_sea_500k_kt_yr_point": 6510.358,
+            "basin_kt_yr_low": 4221.153,
+            "basin_kt_yr_point": 6694.485,
+            "basin_kt_yr_high": 9760.852
+          }
+        },
+        {
+          "policy_name": "Unmitigated Heavy Seeding + Brine Disposal + Camel Overgrazing + Vibroseis",
+          "supported_corridor_area_km2": 92160.0,
+          "unmanaged_reserve_area_km2": 557840.0,
+          "sand_sea_polygon_area_km2": 500000.0,
+          "total_basin_area_km2": 650000.0,
+          "unmanaged_reserve_management_delta_kt_yr": 0.0,
+          "direct_microbial_rubisco_co2": {
+            "corridor_t_km2_yr_point": 0.0,
+            "delta_vs_baseline_t_km2_yr_point": -0.0011,
+            "corridor_kt_yr_low": 0.0,
+            "corridor_kt_yr_point": 0.0,
+            "corridor_kt_yr_high": 0.0,
+            "delta_vs_baseline_corridor_kt_yr_low": -0.016,
+            "delta_vs_baseline_corridor_kt_yr_point": -0.098,
+            "delta_vs_baseline_corridor_kt_yr_high": -0.407,
+            "sand_sea_500k_kt_yr_point": 0.416,
+            "basin_kt_yr_low": 0.094,
+            "basin_kt_yr_point": 0.569,
+            "basin_kt_yr_high": 2.369
+          },
+          "indirect_h2_sink_co2eq": {
+            "corridor_t_km2_yr_point": 0.0452,
+            "delta_vs_baseline_t_km2_yr_point": -0.06,
+            "corridor_kt_yr_low": 0.862,
+            "corridor_kt_yr_point": 4.17,
+            "corridor_kt_yr_high": 11.5,
+            "delta_vs_baseline_corridor_kt_yr_low": -1.144,
+            "delta_vs_baseline_corridor_kt_yr_point": -5.53,
+            "delta_vs_baseline_corridor_kt_yr_high": -15.258,
+            "sand_sea_500k_kt_yr_point": 45.417,
+            "basin_kt_yr_low": 12.531,
+            "basin_kt_yr_point": 60.588,
+            "basin_kt_yr_high": 167.139
+          },
+          "vegetation_npp_co2": {
+            "corridor_t_km2_yr_point": 0.7102,
+            "delta_vs_baseline_t_km2_yr_point": -7.347,
+            "corridor_kt_yr_low": 42.158,
+            "corridor_kt_yr_point": 65.456,
+            "corridor_kt_yr_high": 93.192,
+            "delta_vs_baseline_corridor_kt_yr_low": -436.101,
+            "delta_vs_baseline_corridor_kt_yr_point": -677.103,
+            "delta_vs_baseline_corridor_kt_yr_high": -964.011,
+            "sand_sea_500k_kt_yr_point": 295.899,
+            "basin_kt_yr_low": 245.16,
+            "basin_kt_yr_point": 380.654,
+            "basin_kt_yr_high": 541.951
+          },
+          "pedogenic_carbonate_co2": {
+            "corridor_t_km2_yr_point": 0.6757,
+            "delta_vs_baseline_t_km2_yr_point": 0.0362,
+            "corridor_kt_yr_low": 31.137,
+            "corridor_kt_yr_point": 62.275,
+            "corridor_kt_yr_high": 108.981,
+            "delta_vs_baseline_corridor_kt_yr_low": 1.667,
+            "delta_vs_baseline_corridor_kt_yr_point": 3.335,
+            "delta_vs_baseline_corridor_kt_yr_high": 5.836,
+            "sand_sea_500k_kt_yr_point": 290.792,
+            "basin_kt_yr_low": 187.42,
+            "basin_kt_yr_point": 374.838,
+            "basin_kt_yr_high": 655.978
+          },
+          "total_direct_co2_bound": {
+            "corridor_t_km2_yr_point": 1.386,
+            "delta_vs_baseline_t_km2_yr_point": -7.3119,
+            "corridor_kt_yr_low": 73.295,
+            "corridor_kt_yr_point": 127.73,
+            "corridor_kt_yr_high": 202.171,
+            "delta_vs_baseline_corridor_kt_yr_low": -434.45,
+            "delta_vs_baseline_corridor_kt_yr_point": -673.866,
+            "delta_vs_baseline_corridor_kt_yr_high": -958.583,
+            "sand_sea_500k_kt_yr_point": 587.111,
+            "basin_kt_yr_low": 432.686,
+            "basin_kt_yr_point": 756.067,
+            "basin_kt_yr_high": 1200.292
+          },
+          "net_persistent_co2_sequestered": {
+            "corridor_t_km2_yr_point": 0.4444,
+            "delta_vs_baseline_t_km2_yr_point": -1.0842,
+            "corridor_kt_yr_low": 12.0,
+            "corridor_kt_yr_point": 40.955,
+            "corridor_kt_yr_high": 105.033,
+            "delta_vs_baseline_corridor_kt_yr_low": -43.196,
+            "delta_vs_baseline_corridor_kt_yr_point": -99.923,
+            "delta_vs_baseline_corridor_kt_yr_high": -236.789,
+            "sand_sea_500k_kt_yr_point": 189.886,
+            "basin_kt_yr_low": 71.386,
+            "basin_kt_yr_point": 244.662,
+            "basin_kt_yr_high": 628.415
+          },
+          "total_co2eq_bound": {
+            "corridor_t_km2_yr_point": 1.4312,
+            "delta_vs_baseline_t_km2_yr_point": -7.3719,
+            "corridor_kt_yr_low": 74.158,
+            "corridor_kt_yr_point": 131.899,
+            "corridor_kt_yr_high": 213.672,
+            "delta_vs_baseline_corridor_kt_yr_low": -435.594,
+            "delta_vs_baseline_corridor_kt_yr_point": -679.398,
+            "delta_vs_baseline_corridor_kt_yr_high": -973.841,
+            "sand_sea_500k_kt_yr_point": 632.528,
+            "basin_kt_yr_low": 445.218,
+            "basin_kt_yr_point": 816.655,
+            "basin_kt_yr_high": 1367.428
+          }
+        }
+      ]
+    }
+  }
+}

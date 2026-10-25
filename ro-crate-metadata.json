@@ -1,0 +1,117 @@
+{
+  "@context": [
+    "https://w3id.org/ro/crate/1.1/context",
+    {
+      "SIO": "http://semanticscience.org/resource/SIO_",
+      "ENVO": "http://purl.obolibrary.org/obo/ENVO_",
+      "CHEBI": "http://purl.obolibrary.org/obo/CHEBI_",
+      "PATO": "http://purl.obolibrary.org/obo/PATO_",
+      "UO": "http://purl.obolibrary.org/obo/UO_",
+      "RAK": "https://rubalkhali.science/kb/RAK_",
+      "bioschemas": "https://bioschemas.org/"
+    }
+  ],
+  "@graph": [
+    {
+      "@id": "ro-crate-metadata.json",
+      "@type": "CreativeWork",
+      "conformsTo": [
+        { "@id": "https://w3id.org/ro/crate/1.1" },
+        { "@id": "https://w3id.org/workflowhub/workflow-ro-crate/1.0" },
+        { "@id": "https://w3id.org/ro/wfrun/process/0.4" }
+      ],
+      "about": { "@id": "./" }
+    },
+    {
+      "@id": "./",
+      "@type": [
+        "Dataset",
+        "SoftwareSourceCode"
+      ],
+      "name": "EQ-BioDT: Empty Quarter Biodiversity Digital Twin",
+      "description": "Biodiversity Digital Twin for the Rub' al Khali (Empty Quarter) hyperarid desert ecosystem. Integrates a 1,043 km multi-campaign spatiotemporal data cube (60 primary + 10 auxiliary sites, 2,550 specimens, 573 shotgun libraries, 5,438 dereplicated species-level MAGs [756 high-quality], 19,300 vOTUs, 322,755 pOTUs, 33 XRF analytes, CaCl2 pH, and collection-date-matched ERA5/NASA POWER hydroclimate) with a Two-Layer Causal-Ontological Engine (OCS = 1.0) and European BioDT/B-Cubed/LTER-LIFE/DTO-BioFlow standards for environmental management via cloud seeding, revegetation, desalination/brine governance, subsurface refugium protection, megafauna reintroduction (Oryx/Gazelle vs Camel grazing), and seismic/hydrocarbon bioremediation.",
+      "license": { "@id": "https://spdx.org/licenses/MIT.html" },
+      "version": "0.2.0",
+      "spatialCoverage": {
+        "@type": "Place",
+        "name": "Rub' al Khali (Empty Quarter), Arabian Peninsula",
+        "geo": {
+          "@type": "GeoShape",
+          "box": "19.0 45.0 21.5 55.5"
+        }
+      },
+      "temporalCoverage": "2023-03-17/2025-10-15",
+      "keywords": [
+        "Biodiversity Digital Twin",
+        "BioDT",
+        "B-Cubed",
+        "Rub' al Khali",
+        "Empty Quarter",
+        "Causal Knowledge Graph",
+        "Ontological Causal Model",
+        "Cloud Seeding",
+        "Revegetation",
+        "Desalination Brine",
+        "Arabian Oryx",
+        "Seismic Exploration"
+      ],
+      "hasPart": [
+        { "@id": "pyproject.toml" },
+        { "@id": "src/eq_biodt/data/manifest_registry.py" },
+        { "@id": "src/eq_biodt/data/build_twin_state_cube.py" },
+        { "@id": "src/eq_biodt/standards/dwc_emof_exporter.py" },
+        { "@id": "src/eq_biodt/standards/b3_occurrence_cube.py" },
+        { "@id": "src/eq_biodt/standards/fdo_provenance.py" },
+        { "@id": "src/eq_biodt/models/causal_ontological_twin.py" },
+        { "@id": "src/eq_biodt/models/moisture_pulse_diffusion.py" },
+        { "@id": "src/eq_biodt/models/metabolic_community_engine.py" },
+        { "@id": "src/eq_biodt/models/spatial_jsdm_virome.py" },
+        { "@id": "src/eq_biodt/interventions/cloud_seeding.py" },
+        { "@id": "src/eq_biodt/interventions/revegetation.py" },
+        { "@id": "src/eq_biodt/interventions/desalination_brine.py" },
+        { "@id": "src/eq_biodt/interventions/refugium_thermal.py" },
+        { "@id": "src/eq_biodt/interventions/megafauna_grazing.py" },
+        { "@id": "src/eq_biodt/interventions/seismic_hydrocarbon.py" },
+        { "@id": "src/eq_biodt/interventions/pareto_optimizer.py" },
+        { "@id": "data/ontology/rubalkhali_twin_constraints.owl" },
+        { "@id": "data/processed/eq_sites_cube.parquet" },
+        { "@id": "data/processed/eq_compartment_state_cube.parquet" },
+        { "@id": "data/processed/eq_visit_compartment_cube.parquet" },
+        { "@id": "data/processed/eq_era5_h3_corridor_grid.parquet" }
+      ],
+      "isBasedOn": [
+        {
+          "@id": "https://rubalkhali.science/kb/",
+          "name": "Rub' al Khali Ecological Knowledge Graph (SIO/ENVO/ChEBI/PATO/UO/NCBITaxon)"
+        },
+        {
+          "@id": "https://github.com/BioDT/biodt-DTOs",
+          "name": "EU BioDT Digital Twin Prototype Standards (RO-Crate 1.3 & FDO)"
+        },
+        {
+          "@id": "https://github.com/b-cubed-eu",
+          "name": "B-Cubed (b3verse) Spatiotemporal Biodiversity Data Cubes"
+        },
+        {
+          "@id": "https://github.com/LTER-LIFE",
+          "name": "LTER-LIFE & DTO-BioFlow Darwin Core Event + eMoF Profile"
+        }
+      ],
+      "mainEntity": {
+        "@id": "src/eq_biodt/cli.py"
+      }
+    },
+    {
+      "@id": "src/eq_biodt/cli.py",
+      "@type": [
+        "File",
+        "SoftwareSourceCode",
+        "ComputationalWorkflow"
+      ],
+      "name": "EQ-BioDT CLI and FastAPI Simulation Engine",
+      "programmingLanguage": {
+        "@id": "https://w3id.org/workflowhub/workflow-ro-crate#python"
+      }
+    }
+  ]
+}

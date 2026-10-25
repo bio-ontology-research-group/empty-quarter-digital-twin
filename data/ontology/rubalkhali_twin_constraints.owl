@@ -1,0 +1,282 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="https://rubalkhali.science/kb/rubalkhali_twin_constraints.owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:sio="http://semanticscience.org/resource/"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:rak="https://rubalkhali.science/kb/"
+     ontologyIRI="https://rubalkhali.science/kb/rubalkhali_twin_constraints.owl"
+     versionIRI="https://rubalkhali.science/kb/rubalkhali_twin_constraints/0.2.0">
+
+    <!-- Annotation Properties for Digital Twin State Variable Compilation -->
+    <Declaration><AnnotationProperty IRI="https://rubalkhali.science/kb/hasStateVariable"/></Declaration>
+    <Declaration><AnnotationProperty IRI="https://rubalkhali.science/kb/upperSimplexBound"/></Declaration>
+    <Declaration><AnnotationProperty IRI="https://rubalkhali.science/kb/measurementDomain"/></Declaration>
+    <Declaration><AnnotationProperty IRI="http://semanticscience.org/resource/SIO_000221"/></Declaration>
+
+    <!-- =========================================================================
+         1. Prokaryotic Taxonomic Composition Hierarchy (Verified NCBITaxon IRIs)
+         ========================================================================= -->
+    <Declaration><Class IRI="https://rubalkhali.science/kb/RAK_TAXON_TOTAL_PROKARYOTA"/></Declaration>
+    <Declaration><Class IRI="http://purl.obolibrary.org/obo/NCBITaxon_201174"/></Declaration>
+    <Declaration><Class IRI="http://purl.obolibrary.org/obo/NCBITaxon_2283796"/></Declaration>
+    <Declaration><Class IRI="http://purl.obolibrary.org/obo/NCBITaxon_3100166"/></Declaration>
+    <Declaration><Class IRI="https://rubalkhali.science/kb/RAK_TAXON_OTHER_PROKARYOTA"/></Declaration>
+
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="https://rubalkhali.science/kb/hasStateVariable"/>
+        <IRI>https://rubalkhali.science/kb/RAK_TAXON_TOTAL_PROKARYOTA</IRI>
+        <Literal>total_prokaryotic_rel_abund</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="https://rubalkhali.science/kb/upperSimplexBound"/>
+        <IRI>https://rubalkhali.science/kb/RAK_TAXON_TOTAL_PROKARYOTA</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">1.0</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://semanticscience.org/resource/SIO_000221"/>
+        <IRI>https://rubalkhali.science/kb/RAK_TAXON_TOTAL_PROKARYOTA</IRI>
+        <IRI>https://rubalkhali.science/kb/RAK_0000072</IRI>
+    </AnnotationAssertion>
+
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="https://rubalkhali.science/kb/hasStateVariable"/>
+        <IRI>http://purl.obolibrary.org/obo/NCBITaxon_201174</IRI>
+        <Literal>actinomycetota_rel_abund</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="https://rubalkhali.science/kb/upperSimplexBound"/>
+        <IRI>http://purl.obolibrary.org/obo/NCBITaxon_201174</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">1.0</Literal>
+    </AnnotationAssertion>
+
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="https://rubalkhali.science/kb/hasStateVariable"/>
+        <IRI>http://purl.obolibrary.org/obo/NCBITaxon_2283796</IRI>
+        <Literal>thermoplasmatota_rel_abund</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="https://rubalkhali.science/kb/upperSimplexBound"/>
+        <IRI>http://purl.obolibrary.org/obo/NCBITaxon_2283796</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">1.0</Literal>
+    </AnnotationAssertion>
+
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="https://rubalkhali.science/kb/hasStateVariable"/>
+        <IRI>http://purl.obolibrary.org/obo/NCBITaxon_3100166</IRI>
+        <Literal>halobacteriota_rel_abund</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="https://rubalkhali.science/kb/upperSimplexBound"/>
+        <IRI>http://purl.obolibrary.org/obo/NCBITaxon_3100166</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">1.0</Literal>
+    </AnnotationAssertion>
+
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="https://rubalkhali.science/kb/hasStateVariable"/>
+        <IRI>https://rubalkhali.science/kb/RAK_TAXON_OTHER_PROKARYOTA</IRI>
+        <Literal>other_prokaryotes_rel_abund</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="https://rubalkhali.science/kb/upperSimplexBound"/>
+        <IRI>https://rubalkhali.science/kb/RAK_TAXON_OTHER_PROKARYOTA</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">1.0</Literal>
+    </AnnotationAssertion>
+
+    <SubClassOf>
+        <Class IRI="http://purl.obolibrary.org/obo/NCBITaxon_201174"/>
+        <Class IRI="https://rubalkhali.science/kb/RAK_TAXON_TOTAL_PROKARYOTA"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://purl.obolibrary.org/obo/NCBITaxon_2283796"/>
+        <Class IRI="https://rubalkhali.science/kb/RAK_TAXON_TOTAL_PROKARYOTA"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://purl.obolibrary.org/obo/NCBITaxon_3100166"/>
+        <Class IRI="https://rubalkhali.science/kb/RAK_TAXON_TOTAL_PROKARYOTA"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="https://rubalkhali.science/kb/RAK_TAXON_OTHER_PROKARYOTA"/>
+        <Class IRI="https://rubalkhali.science/kb/RAK_TAXON_TOTAL_PROKARYOTA"/>
+    </SubClassOf>
+
+    <DisjointUnion>
+        <Class IRI="https://rubalkhali.science/kb/RAK_TAXON_TOTAL_PROKARYOTA"/>
+        <Class IRI="http://purl.obolibrary.org/obo/NCBITaxon_201174"/>
+        <Class IRI="http://purl.obolibrary.org/obo/NCBITaxon_2283796"/>
+        <Class IRI="http://purl.obolibrary.org/obo/NCBITaxon_3100166"/>
+        <Class IRI="https://rubalkhali.science/kb/RAK_TAXON_OTHER_PROKARYOTA"/>
+    </DisjointUnion>
+
+    <!-- =========================================================================
+         2. Trace-Gas Chemolithoautotrophic Guild Hierarchy (Genome Equivalents)
+         ========================================================================= -->
+    <Declaration><Class IRI="https://rubalkhali.science/kb/RAK_GUILD_TOTAL_TRACE_GAS"/></Declaration>
+    <Declaration><Class IRI="https://rubalkhali.science/kb/RAK_GUILD_TOTAL_H2ASE"/></Declaration>
+    <Declaration><Class IRI="https://rubalkhali.science/kb/RAK_GUILD_HYDB_1L"/></Declaration>
+    <Declaration><Class IRI="https://rubalkhali.science/kb/RAK_GUILD_HYDB_1H"/></Declaration>
+    <Declaration><Class IRI="https://rubalkhali.science/kb/RAK_GUILD_HYDB_2A"/></Declaration>
+    <Declaration><Class IRI="https://rubalkhali.science/kb/RAK_GUILD_COXL_FORMI"/></Declaration>
+
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="https://rubalkhali.science/kb/hasStateVariable"/>
+        <IRI>https://rubalkhali.science/kb/RAK_GUILD_HYDB_1L</IRI>
+        <Literal>hydB_1l_ge</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="https://rubalkhali.science/kb/hasStateVariable"/>
+        <IRI>https://rubalkhali.science/kb/RAK_GUILD_HYDB_1H</IRI>
+        <Literal>hydB_1h_ge</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="https://rubalkhali.science/kb/hasStateVariable"/>
+        <IRI>https://rubalkhali.science/kb/RAK_GUILD_HYDB_2A</IRI>
+        <Literal>hydB_2a_ge</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="https://rubalkhali.science/kb/hasStateVariable"/>
+        <IRI>https://rubalkhali.science/kb/RAK_GUILD_TOTAL_H2ASE</IRI>
+        <Literal>total_h2ase_ge</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="https://rubalkhali.science/kb/hasStateVariable"/>
+        <IRI>https://rubalkhali.science/kb/RAK_GUILD_COXL_FORMI</IRI>
+        <Literal>coxL_formI_ge</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="https://rubalkhali.science/kb/hasStateVariable"/>
+        <IRI>https://rubalkhali.science/kb/RAK_GUILD_TOTAL_TRACE_GAS</IRI>
+        <Literal>total_trace_gas_scavenger_ge</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://semanticscience.org/resource/SIO_000221"/>
+        <IRI>https://rubalkhali.science/kb/RAK_GUILD_TOTAL_TRACE_GAS</IRI>
+        <IRI>https://rubalkhali.science/kb/RAK_0000078</IRI>
+    </AnnotationAssertion>
+
+    <SubClassOf>
+        <Class IRI="https://rubalkhali.science/kb/RAK_GUILD_HYDB_1L"/>
+        <Class IRI="https://rubalkhali.science/kb/RAK_GUILD_TOTAL_H2ASE"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="https://rubalkhali.science/kb/RAK_GUILD_HYDB_1H"/>
+        <Class IRI="https://rubalkhali.science/kb/RAK_GUILD_TOTAL_H2ASE"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="https://rubalkhali.science/kb/RAK_GUILD_HYDB_2A"/>
+        <Class IRI="https://rubalkhali.science/kb/RAK_GUILD_TOTAL_H2ASE"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="https://rubalkhali.science/kb/RAK_GUILD_TOTAL_H2ASE"/>
+        <Class IRI="https://rubalkhali.science/kb/RAK_GUILD_TOTAL_TRACE_GAS"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="https://rubalkhali.science/kb/RAK_GUILD_COXL_FORMI"/>
+        <Class IRI="https://rubalkhali.science/kb/RAK_GUILD_TOTAL_TRACE_GAS"/>
+    </SubClassOf>
+
+    <DisjointUnion>
+        <Class IRI="https://rubalkhali.science/kb/RAK_GUILD_TOTAL_H2ASE"/>
+        <Class IRI="https://rubalkhali.science/kb/RAK_GUILD_HYDB_1L"/>
+        <Class IRI="https://rubalkhali.science/kb/RAK_GUILD_HYDB_1H"/>
+        <Class IRI="https://rubalkhali.science/kb/RAK_GUILD_HYDB_2A"/>
+    </DisjointUnion>
+
+    <DisjointUnion>
+        <Class IRI="https://rubalkhali.science/kb/RAK_GUILD_TOTAL_TRACE_GAS"/>
+        <Class IRI="https://rubalkhali.science/kb/RAK_GUILD_TOTAL_H2ASE"/>
+        <Class IRI="https://rubalkhali.science/kb/RAK_GUILD_COXL_FORMI"/>
+    </DisjointUnion>
+
+    <!-- =========================================================================
+         3. Realized Thermodynamic Trace-Gas Oxidation Power (uW m^-3)
+         ========================================================================= -->
+    <Declaration><Class IRI="https://rubalkhali.science/kb/RAK_FLUX_TOTAL_TRACE_GAS_POWER"/></Declaration>
+    <Declaration><Class IRI="https://rubalkhali.science/kb/RAK_FLUX_H2_OXIDATION_POWER"/></Declaration>
+    <Declaration><Class IRI="https://rubalkhali.science/kb/RAK_FLUX_CO_OXIDATION_POWER"/></Declaration>
+
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="https://rubalkhali.science/kb/hasStateVariable"/>
+        <IRI>https://rubalkhali.science/kb/RAK_FLUX_H2_OXIDATION_POWER</IRI>
+        <Literal>h2_oxidation_power_uw_m3</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="https://rubalkhali.science/kb/hasStateVariable"/>
+        <IRI>https://rubalkhali.science/kb/RAK_FLUX_CO_OXIDATION_POWER</IRI>
+        <Literal>co_oxidation_power_uw_m3</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="https://rubalkhali.science/kb/hasStateVariable"/>
+        <IRI>https://rubalkhali.science/kb/RAK_FLUX_TOTAL_TRACE_GAS_POWER</IRI>
+        <Literal>total_trace_gas_power_uw_m3</Literal>
+    </AnnotationAssertion>
+
+    <SubClassOf>
+        <Class IRI="https://rubalkhali.science/kb/RAK_FLUX_H2_OXIDATION_POWER"/>
+        <Class IRI="https://rubalkhali.science/kb/RAK_FLUX_TOTAL_TRACE_GAS_POWER"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="https://rubalkhali.science/kb/RAK_FLUX_CO_OXIDATION_POWER"/>
+        <Class IRI="https://rubalkhali.science/kb/RAK_FLUX_TOTAL_TRACE_GAS_POWER"/>
+    </SubClassOf>
+    <DisjointUnion>
+        <Class IRI="https://rubalkhali.science/kb/RAK_FLUX_TOTAL_TRACE_GAS_POWER"/>
+        <Class IRI="https://rubalkhali.science/kb/RAK_FLUX_H2_OXIDATION_POWER"/>
+        <Class IRI="https://rubalkhali.science/kb/RAK_FLUX_CO_OXIDATION_POWER"/>
+    </DisjointUnion>
+
+    <!-- =========================================================================
+         4. Viable vs Extracellular Relic DNA Partition (PMAxx Turnover)
+         ========================================================================= -->
+    <Declaration><Class IRI="https://rubalkhali.science/kb/RAK_DNA_TOTAL_SOIL_FRACTION"/></Declaration>
+    <Declaration><Class IRI="https://rubalkhali.science/kb/RAK_DNA_VIABLE_FRACTION"/></Declaration>
+    <Declaration><Class IRI="https://rubalkhali.science/kb/RAK_DNA_RELIC_FRACTION"/></Declaration>
+
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="https://rubalkhali.science/kb/hasStateVariable"/>
+        <IRI>https://rubalkhali.science/kb/RAK_DNA_VIABLE_FRACTION</IRI>
+        <Literal>viable_dna_fraction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="https://rubalkhali.science/kb/upperSimplexBound"/>
+        <IRI>https://rubalkhali.science/kb/RAK_DNA_VIABLE_FRACTION</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">1.0</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="https://rubalkhali.science/kb/hasStateVariable"/>
+        <IRI>https://rubalkhali.science/kb/RAK_DNA_RELIC_FRACTION</IRI>
+        <Literal>relic_dna_fraction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="https://rubalkhali.science/kb/upperSimplexBound"/>
+        <IRI>https://rubalkhali.science/kb/RAK_DNA_RELIC_FRACTION</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">1.0</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="https://rubalkhali.science/kb/hasStateVariable"/>
+        <IRI>https://rubalkhali.science/kb/RAK_DNA_TOTAL_SOIL_FRACTION</IRI>
+        <Literal>total_dna_fraction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="https://rubalkhali.science/kb/upperSimplexBound"/>
+        <IRI>https://rubalkhali.science/kb/RAK_DNA_TOTAL_SOIL_FRACTION</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">1.0</Literal>
+    </AnnotationAssertion>
+
+    <SubClassOf>
+        <Class IRI="https://rubalkhali.science/kb/RAK_DNA_VIABLE_FRACTION"/>
+        <Class IRI="https://rubalkhali.science/kb/RAK_DNA_TOTAL_SOIL_FRACTION"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="https://rubalkhali.science/kb/RAK_DNA_RELIC_FRACTION"/>
+        <Class IRI="https://rubalkhali.science/kb/RAK_DNA_TOTAL_SOIL_FRACTION"/>
+    </SubClassOf>
+    <DisjointUnion>
+        <Class IRI="https://rubalkhali.science/kb/RAK_DNA_TOTAL_SOIL_FRACTION"/>
+        <Class IRI="https://rubalkhali.science/kb/RAK_DNA_VIABLE_FRACTION"/>
+        <Class IRI="https://rubalkhali.science/kb/RAK_DNA_RELIC_FRACTION"/>
+    </DisjointUnion>
+</Ontology>

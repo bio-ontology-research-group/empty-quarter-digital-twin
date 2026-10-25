@@ -1,0 +1,102 @@
+{
+  "profile": "tabular-data-package",
+  "name": "eq-biodt-b3-occurrence-cube",
+  "title": "Empty Quarter B-Cubed (b3verse) Spatiotemporal Biodiversity & Functional Trait Cube",
+  "description": "H3-indexed taxonomic, trace-gas chemolithoautotrophic guild, and virome data cube conforming to B-Cubed (b-cubed-eu) specifications.",
+  "temporal": {
+    "startDate": "2023-03-17",
+    "endDate": "2025-10-15"
+  },
+  "spatial": {
+    "gridType": "H3",
+    "resolutions": [
+      5,
+      6
+    ],
+    "crs": "EPSG:4326"
+  },
+  "resources": [
+    {
+      "name": "b3_eq_occurrence_cube",
+      "path": "b3_eq_occurrence_cube.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "year_period",
+            "type": "string"
+          },
+          {
+            "name": "eventDate",
+            "type": "string"
+          },
+          {
+            "name": "h3_5",
+            "type": "string"
+          },
+          {
+            "name": "h3_6",
+            "type": "string"
+          },
+          {
+            "name": "era5_cell",
+            "type": "string"
+          },
+          {
+            "name": "site_num",
+            "type": "number"
+          },
+          {
+            "name": "site_iri",
+            "type": "string"
+          },
+          {
+            "name": "compartment",
+            "type": "string"
+          },
+          {
+            "name": "transect_zone",
+            "type": "string"
+          },
+          {
+            "name": "taxonKey",
+            "type": "string"
+          },
+          {
+            "name": "scientificName",
+            "type": "string"
+          },
+          {
+            "name": "taxonRank",
+            "type": "string"
+          },
+          {
+            "name": "occurrences",
+            "type": "number"
+          },
+          {
+            "name": "abundance_or_ge",
+            "type": "number"
+          },
+          {
+            "name": "shannon_16s",
+            "type": "number"
+          },
+          {
+            "name": "hill_q1_diversity",
+            "type": "number"
+          },
+          {
+            "name": "minCoordinateUncertaintyInMeters",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "b3_h3_biodiversity_indicators",
+      "path": "b3_h3_biodiversity_indicators.csv",
+      "profile": "tabular-data-resource"
+    }
+  ]
+}

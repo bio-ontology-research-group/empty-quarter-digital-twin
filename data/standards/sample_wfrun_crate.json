@@ -1,0 +1,97 @@
+{
+  "@context": "https://w3id.org/ro/crate/1.1/context",
+  "fdo_kernel_metadata": {
+    "fdo_pid": "https://rubalkhali.science/fdo/eq-biodt/2f688a58ad0e13f8",
+    "fdo_profile": "https://github.com/BioDT/biodt-DTOs#FDOProfile",
+    "sha256_checksum": "2f688a58ad0e13f821bb8da15c1a00c43f82c4065648657aa90abc0a143e56ba",
+    "created_at": "2026-10-24T10:15:02.758536+00:00",
+    "ontological_consistency_score_ocs": 1.0,
+    "version_ambiguity_bounds": [
+      0.0,
+      0.0
+    ]
+  },
+  "@graph": [
+    {
+      "@id": "ro-crate-metadata.json",
+      "@type": "CreativeWork",
+      "conformsTo": [
+        {
+          "@id": "https://w3id.org/ro/crate/1.1"
+        },
+        {
+          "@id": "https://w3id.org/ro/wfrun/process/0.4"
+        }
+      ],
+      "about": {
+        "@id": "./"
+      }
+    },
+    {
+      "@id": "./",
+      "@type": "Dataset",
+      "name": "EQ-BioDT Simulation Run: megafauna_grazing",
+      "datePublished": "2026-10-24T10:15:02.758536+00:00",
+      "mentions": [
+        {
+          "@id": "urn:uuid:107f0b2a-c3a8-5028-996c-5b0f436d744f"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:107f0b2a-c3a8-5028-996c-5b0f436d744f",
+      "@type": "CreateAction",
+      "name": "Counterfactual megafauna_grazing at https://rubalkhali.science/kb/RAK_1000064",
+      "startTime": "2026-10-24T10:15:02.758536+00:00",
+      "endTime": "2026-10-24T10:15:02.758536+00:00",
+      "actionStatus": "http://schema.org/CompletedActionStatus",
+      "instrument": {
+        "@id": "src/eq_biodt/models/causal_ontological_twin.py"
+      },
+      "location": {
+        "@id": "https://rubalkhali.science/kb/RAK_1000064"
+      },
+      "object": [
+        {
+          "@type": "PropertyValue",
+          "name": "oryx_head_per_100km2",
+          "value": 4.0
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "gazelle_head_per_100km2",
+          "value": 7.0
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "camel_head_per_100km2",
+          "value": 1.0
+        }
+      ],
+      "result": {
+        "@id": "https://rubalkhali.science/fdo/eq-biodt/2f688a58ad0e13f8",
+        "@type": "Dataset",
+        "sha256": "2f688a58ad0e13f821bb8da15c1a00c43f82c4065648657aa90abc0a143e56ba",
+        "ontologicalConsistencyScore": 1.0,
+        "summary": {
+          "intervention": "megafauna_grazing",
+          "site_iri": "https://rubalkhali.science/kb/RAK_1000064",
+          "oryx_head_per_100km2": 4.0,
+          "gazelle_head_per_100km2": 7.0,
+          "camel_head_per_100km2": 1.0,
+          "rotational_water_point_management": true,
+          "net_shrub_cover_fraction": 0.45,
+          "effective_soil_porosity": 0.3897,
+          "relative_gas_diffusivity": 0.9822,
+          "nitrification_flux": 0.30232,
+          "archaeal_3hp4hb_c_fixation_flux": 0.45,
+          "counterfactual_shannon_16s": 6.3622,
+          "resistome_arg_risk_index": 0.1155,
+          "resistome_biosafety_pass": true,
+          "ocs_score": 1.0,
+          "management_advisory": "OPTIMAL_ORYX_GAZELLE_REWILDING: Native ungulate N/P pulses bypass the 1% soil nifH bottleneck, boost nitrification & seed dispersal, and pass resistome safety."
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EQ-BioDT | Empty Quarter Biodiversity Digital Twin</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --panel: #182029;
+      --border: #2a3644;
+      --accent: #d97706;
+      --accent2: #10b981;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    header {
+      padding: 14px 24px;
+      background: #121820;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.2rem;
+      letter-spacing: 0.02em;
+    }
+    .badge {
+      background: #1f2937;
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      color: var(--accent2);
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 420px 1fr 440px;
+      gap: 14px;
+      padding: 14px;
+      height: calc(100vh - 58px);
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      overflow-y: auto;
+    }
+    h2 {
+      margin: 0 0 10px 0;
+      font-size: 0.98rem;
+      color: #f3f4f6;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+    }
+    label {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+    select, input[type="range"], button {
+      width: 100%;
+      margin-top: 4px;
+    }
+    select, button {
+      background: #0f1419;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+    }
+    button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 12px;
+    }
+    button.secondary {
+      background: #065f46;
+      border-color: #10b981;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+    #map {
+      width: 100%;
+      height: 55%;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .kpi {
+      background: #11161d;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+    }
+    .kpi .k-label { font-size: 0.74rem; color: var(--muted); }
+    .kpi .k-val { font-size: 1.05rem; font-weight: 700; color: var(--accent2); margin-top: 2px; }
+    pre {
+      background: #0b0f14;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px;
+      font-size: 0.76rem;
+      overflow-x: auto;
+      color: #d1d5db;
+    }
+    .advisory {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 6px;
+      background: #1e293b;
+      border-left: 4px solid var(--accent);
+      font-size: 0.82rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>EQ-BioDT: Empty Quarter Biodiversity Digital Twin</h1>
+      <small style="color: var(--muted)">1,043 km Rub' al Khali Transect | Two-Layer Causal-Ontological Engine (OCS = 1.0) | EU BioDT &amp; B-Cubed Compliant</small>
+    </div>
+    <div>
+      <span class="badge" id="health-badge">Initializing Twin...</span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- Left Column: Site & Intervention Controls -->
+    <div class="card">
+      <h2>1. Spatial Locus &amp; Soil Horizon</h2>
+      <label for="site-select">Sampling Site (60 Primary + 10 Auxiliary Loci)</label>
+      <select id="site-select"></select>
+
+      <label for="comp-select">Soil Compartment</label>
+      <select id="comp-select">
+        <option value="Surface">Surface Horizon (0 cm, RAK_0000020)</option>
+        <option value="ShallowSubsurface">Subsurface Refugium (5-10 cm, RAK_0000021)</option>
+        <option value="RootAdjacent">Rhizosphere / Root-Adjacent (5-10 cm, RAK_0000022)</option>
+      </select>
+
+      <h2 style="margin-top:16px;">2. Counterfactual Management Simulator</h2>
+      <label for="interv-select">Select Intervention Module</label>
+      <select id="interv-select" onchange="renderInterventionControls()">
+        <option value="cloud_seeding">1. Cloud Seeding &amp; Precipitation Pulse</option>
+        <option value="revegetation">2. Native Shrub Revegetation + RAK-PR / Site 60 Inoculation</option>
+        <option value="desalination_brine">3. Desalination Brine vs Ca-SO4 Oasis Irrigation</option>
+        <option value="refugium_thermal">4. 5-10 cm Subsurface Refugium &amp; 60 C Betaine Shielding</option>
+        <option value="megafauna_grazing">5. Arabian Oryx &amp; Gazelle Reintroduction vs Camel Grazing</option>
+        <option value="seismic_hydrocarbon">6. Seismic Exploration (Nodal vs Vibroseis) &amp; Oil Bioremediation</option>
+      </select>
+
+      <div id="dynamic-controls"></div>
+
+      <button class="primary" onclick="runIntervention()">Run Counterfactual Simulation</button>
+      <button class="secondary" onclick="runParetoOptimizer()">Run 4-Objective DESDEO Pareto Optimizer</button>
+    </div>
+
+    <!-- Center Column: Interactive Map & Site Baseline -->
+    <div class="card">
+      <h2>Rub' al Khali 1,043 km Transect &amp; H3 / ERA5 Cube Explorer</h2>
+      <div id="map"></div>
+      <h2 style="margin-top:12px;">Selected Site Geochemical &amp; Guild Baseline</h2>
+      <div class="kpi-grid" id="site-baseline-kpis"></div>
+    </div>
+
+    <!-- Right Column: Counterfactual Output & Provenance -->
+    <div class="card">
+      <h2>3. Counterfactual Twin Response &amp; FDO Provenance</h2>
+      <div id="advisory-box" class="advisory">Select a site and run an intervention or Pareto optimization.</div>
+      <div class="kpi-grid" id="sim-kpis"></div>
+      <h2 style="margin-top:14px;">Causal-Ontological State &amp; RO-Crate / FDO Record</h2>
+      <pre id="json-output">{}</pre>
+    </div>
+  </div>
+
+  <script>
+    let map, markers = [];
+    let sitesData = [];
+
+    const INTERVENTION_SCHEMAS = {
+      cloud_seeding: [
+        { key: "rain_pulse_mm", label: "Artificial Rain Pulse (mm)", min: 0, max: 30, step: 0.5, val: 6.5 }
+      ],
+      revegetation: [
+        { key: "shrub_cover_fraction", label: "Native Shrub Canopy Fraction", min: 0, max: 0.75, step: 0.05, val: 0.25 },
+        { key: "rak_pr_pgpr_dose", label: "RAK-PR PGPR Inoculation Dose", min: 0, max: 1.0, step: 0.1, val: 0.8 },
+        { key: "site60_rbcl_hyab_plasmid_dose", label: "Site 60 rbcL-hyaB Plasmid Consortium Dose", min: 0, max: 1.0, step: 0.1, val: 0.6 }
+      ],
+      desalination_brine: [
+        { key: "discharge_salinity_ms_cm", label: "Discharge Electrical Conductivity (mS/cm)", min: 1.0, max: 220.0, step: 1.5, val: 10.65 },
+        { key: "ca_so4_to_nacl_ratio", label: "Ca-SO4 : Na-Cl Ionic Ratio (Sulfur Flux Switch)", min: 0.1, max: 2.5, step: 0.1, val: 1.4 },
+        { key: "sphingomonas_ect_kdp_plasmid_dose", label: "Sphingomonas ectABC-kdpFABC-proP Dose", min: 0, max: 1.0, step: 0.1, val: 0.5 }
+      ],
+      refugium_thermal: [
+        { key: "subsurface_refugium_intact_fraction", label: "5-10 cm Subsurface Refugium Integrity", min: 0, max: 1.0, step: 0.05, val: 0.95 },
+        { key: "surface_temp_c", label: "Peak Surface Temperature (C)", min: 25, max: 65, step: 1, val: 58 },
+        { key: "exogenous_choline_betaine_mm", label: "Exogenous Choline/Betaine Priming (mM)", min: 0, max: 2.0, step: 0.1, val: 0.5 }
+      ],
+      megafauna_grazing: [
+        { key: "oryx_head_per_100km2", label: "Arabian Oryx (Oryx leucoryx) / 100 km2", min: 0, max: 20, step: 0.5, val: 3.5 },
+        { key: "gazelle_head_per_100km2", label: "Sand Gazelle (Gazella marica) / 100 km2", min: 0, max: 30, step: 1.0, val: 6.0 },
+        { key: "camel_head_per_100km2", label: "Domestic Camel (Camelus dromedarius) / 100 km2", min: 0, max: 35, step: 0.5, val: 1.5 }
+      ],
+      seismic_hydrocarbon: [
+        { key: "seismic_line_density_km_km2", label: "Seismic Line Density (km / km2)", min: 0, max: 20, step: 0.5, val: 4.0 },
+        { key: "cut_line_grading_fraction", label: "Bulldozer Cut-Line Grading Fraction", min: 0, max: 0.8, step: 0.05, val: 0.05 },
+        { key: "hydrocarbon_tph_g_kg", label: "Crude Oil / TPH Contamination (g/kg)", min: 0, max: 50, step: 1.0, val: 5.0 },
+        { key: "alkb_consortium_bioaug_dose", label: "Indigenous alkB/ladA Consortium Dose", min: 0, max: 1.0, step: 0.1, val: 0.8 }
+      ]
+    };
+
+    function renderInterventionControls() {
+      const itype = document.getElementById("interv-select").value;
+      const container = document.getElementById("dynamic-controls");
+      container.innerHTML = "";
+      (INTERVENTION_SCHEMAS[itype] || []).forEach(cfg => {
+        const id = `ctrl-${cfg.key}`;
+        const wrap = document.createElement("div");
+        wrap.innerHTML = `
+          <label for="${id}">${cfg.label}: <strong id="${id}-val">${cfg.val}</strong></label>
+          <input type="range" id="${id}" min="${cfg.min}" max="${cfg.max}" step="${cfg.step}" value="${cfg.val}"
+            oninput="document.getElementById('${id}-val').innerText = this.value" />
+        `;
+        container.appendChild(wrap);
+      });
+    }
+
+    async function initDashboard() {
+      renderInterventionControls();
+      map = L.map("map").setView([20.2, 50.5], 6);
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+        attribution: "&copy; OpenStreetMap &amp; CartoDB"
+      }).addTo(map);
+
+      const healthRes = await fetch("/api/v1/health").then(r => r.json());
+      document.getElementById("health-badge").innerText =
+        `OCS=1.0 | ${healthRes.sites_count} Sites | ${healthRes.era5_h3_grid_cells} H3/ERA5 Cells`;
+
+      const sitesRes = await fetch("/api/v1/sites").then(r => r.json());
+      sitesData = sitesRes.sites;
+      const sel = document.getElementById("site-select");
+      sitesData.forEach(s => {
+        const opt = document.createElement("option");
+        opt.value = s.site_id;
+        opt.textContent = `${s.site_label} (${s.habitat_regime}, MAP=${s.map_mm}mm)`;
+        if (s.site_id === "35") opt.selected = true;
+        sel.appendChild(opt);
+
+        const color = s.is_primary_transect ? "#d97706" : "#10b981";
+        const m = L.circleMarker([s.lat, s.lon], {
+          radius: s.is_primary_transect ? 5 : 7,
+          fillColor: color,
+          color: "#fff",
+          weight: 1,
+          fillOpacity: 0.85
+        }).addTo(map);
+        m.bindPopup(`<b>${s.site_label}</b><br/>IRI: ${s.site_iri}<br/>H3_6: ${s.h3_6}`);
+        m.on("click", () => {
+          sel.value = s.site_id;
+          loadSiteBaseline();
+        });
+      });
+
+      sel.addEventListener("change", loadSiteBaseline);
+      document.getElementById("comp-select").addEventListener("change", loadSiteBaseline);
+      await loadSiteBaseline();
+      await runIntervention();
+    }
+
+    async function loadSiteBaseline() {
+      const siteId = document.getElementById("site-select").value;
+      const comp = document.getElementById("comp-select").value;
+      const detail = await fetch(`/api/v1/sites/${encodeURIComponent(siteId)}`).then(r => r.json());
+      const row = detail.compartments.find(c => c.compartment_norm === comp) || detail.compartments[0];
+      const grid = document.getElementById("site-baseline-kpis");
+      grid.innerHTML = `
+        <div class="kpi"><div class="k-label">16S Shannon / pH (CaCl2)</div><div class="k-val">${Number(row.shannon_16s).toFixed(2)} / pH ${Number(row.ph_mean).toFixed(2)}</div></div>
+        <div class="kpi"><div class="k-label">Group 1l [NiFe] H2ase / coxL GE</div><div class="k-val">${Number(row.hydB_1l_ge).toFixed(2)} / ${Number(row.coxL_formI_ge).toFixed(2)}</div></div>
+        <div class="kpi"><div class="k-label">XRF Evaporite Index / Si (%)</div><div class="k-val">${Number(row.xrf_evaporite_index).toFixed(2)} / ${Number(row.Si).toFixed(1)}%</div></div>
+        <div class="kpi"><div class="k-label">H3_6 Cell / MAP (mm/yr)</div><div class="k-val">${row.h3_6} / ${Number(row.map_mm).toFixed(1)}</div></div>
+      `;
+    }
+
+    async function runIntervention() {
+      const siteId = document.getElementById("site-select").value;
+      const comp = document.getElementById("comp-select").value;
+      const itype = document.getElementById("interv-select").value;
+      const params = {};
+      (INTERVENTION_SCHEMAS[itype] || []).forEach(cfg => {
+        params[cfg.key] = parseFloat(document.getElementById(`ctrl-${cfg.key}`).value);
+      });
+
+      const res = await fetch(`/api/v1/intervene/${itype}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ site_id: siteId, compartment: comp, parameters: params })
+      }).then(r => r.json());
+
+      const sum = res.summary || {};
+      document.getElementById("advisory-box").innerText = sum.management_advisory || "Simulation completed.";
+      const shannonVal = sum.counterfactual_shannon_16s || sum.counterfactual_peak_shannon_16s || 0;
+      document.getElementById("sim-kpis").innerHTML = `
+        <div class="kpi"><div class="k-label">Counterfactual 16S Shannon</div><div class="k-val">${Number(shannonVal).toFixed(3)}</div></div>
+        <div class="kpi"><div class="k-label">Ontological Consistency (OCS)</div><div class="k-val">${Number(sum.ocs_score || 1.0).toFixed(3)}</div></div>
+        <div class="kpi"><div class="k-label">H2 Oxidation Power (uW/m3)</div><div class="k-val">${Number(res.projected_state?.h2_oxidation_power_uw_m3 || 0).toFixed(2)}</div></div>
+        <div class="kpi"><div class="k-label">FDO PID Checksum</div><div class="k-val" style="font-size:0.78rem">${(res.fdo_provenance?.sha256_checksum || "").slice(0, 14)}...</div></div>
+      `;
+      document.getElementById("json-output").innerText = JSON.stringify(res, null, 2);
+    }
+
+    async function runParetoOptimizer() {
+      const siteId = document.getElementById("site-select").value;
+      const comp = document.getElementById("comp-select").value;
+      const res = await fetch("/api/v1/optimize", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ site_id: siteId, compartment: comp })
+      }).then(r => r.json());
+
+      const rec = res.recommended_policy;
+      document.getElementById("advisory-box").innerText =
+        `RECOMMENDED PARETO POLICY: ${rec.policy.name} (DESDEO Utility = ${rec.desdeo_utility_score})`;
+      document.getElementById("sim-kpis").innerHTML = `
+        <div class="kpi"><div class="k-label">J1 Biodiversity &amp; Refugium</div><div class="k-val">${rec.objectives.J1_biodiversity_refugium_max}</div></div>
+        <div class="kpi"><div class="k-label">J2 Chemosynthesis &amp; C/N</div><div class="k-val">${rec.objectives.J2_chemosynthesis_cn_flux_max}</div></div>
+        <div class="kpi"><div class="k-label">J3 Salinity/Compaction Risk</div><div class="k-val">${rec.objectives.J3_salinity_compaction_risk_min}</div></div>
+        <div class="kpi"><div class="k-label">J4 Cost &amp; ARG Risk</div><div class="k-val">${rec.objectives.J4_water_energy_arg_risk_min}</div></div>
+      `;
+      document.getElementById("json-output").innerText = JSON.stringify(res, null, 2);
+    }
+
+    window.addEventListener("DOMContentLoaded", initDashboard);
+  </script>
+</body>
+</html>

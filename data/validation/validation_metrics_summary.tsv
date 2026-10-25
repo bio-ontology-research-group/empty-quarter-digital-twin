@@ -1,0 +1,8 @@
+tier	metric_target	rmse	mae	r2	pearson_r	spearman_rho	p_value
+Tier 1 (5-Fold Spatial Block CV)	log2(hydB_1l_ge) [n=550 WGS]	1.7689	1.4201	0.2501	0.5011	0.5428	1.7971578400980427e-43
+Tier 1 (5-Fold Spatial Block CV)	log2(total_h2ase_ge) [n=550 WGS]	1.4472	1.1445	0.2188	0.4684	0.5191	2.8213487356799802e-39
+Tier 1 (5-Fold Spatial Block CV)	log1p(viral_richness) [n=549 WGS]	0.2103	0.156	0.3784	0.6172	0.3388	3.2922263568856293e-16
+Tier 1 (5-Fold Spatial Block CV)	log1p(plasmid_richness) [n=549 WGS]	0.1827	0.1314	0.3463	0.5932	0.2996	7.583932032948027e-13
+Tier 1 (5-Fold Spatial Block CV)	shannon_16s [n=180 site-compartments]	0.8385	0.5784	0.2453	0.5162	0.547	1.941416443300561e-15
+Tier 2A (Leave-One-Campaign-Out CV)	log2(hydB_1l_ge) across Trips 1..5 [n=550]	1.6842	1.3516	0.3202	0.566	0.5786	1.8375331571583803e-50
+Tier 2B (Prospective Trips 1..4 -> Trip 5 Forecast)	log2(hydB_1l_ge) Trip 5 [n=89 site-compartments]	1.8363	1.5186	0.2991	0.617	0.6188	1.0266956373203633e-10

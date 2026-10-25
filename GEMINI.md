@@ -1,0 +1,14 @@
+# GEMINI.md — Empty Quarter Biodiversity Digital Twin (`EQ-BioDT`)
+
+## Project Scope & Architecture
+- **Workspace**: `/home/leechuck/Public/software/empty-quarter-digital-twin`
+- **Purpose**: Biodiversity Digital Twin for the Rub' al-Khali (Empty Quarter), integrating:
+  1. Multi-campaign geochemical, climatic, 16S amplicon, shotgun metagenomic (MAG/proteome/mobilome/trace-gas), and cultured pangenome (`RAK-PR`) datasets from `~/Public/software/empty-quarter*`, `~/Documents/papers/empty-quarter-*`, and IBEX `/ibex/scratch/projects/c2014/`.
+  2. The Rub' al-Khali OWL Knowledge Graph (`rubalkhali.owl`, Virtuoso SPARQL `localhost:8895/sparql`) and Two-Layer Causal-Ontological Models (`~/Documents/papers/causal-knowledge-graphs` and `~/Documents/papers/onto-causal`).
+  3. European Biodiversity Digital Twin standards (`BioDT` FDOs & RO-Crate v1.3, `B-Cubed` occurrence/trait cubes, `LTER-LIFE` Darwin Core Archive + OBIS `eMoF`, and `DESDEO`-style multi-objective Pareto optimization), stored locally in `references/eu-biodiversity-digital-twins/`.
+
+## Critical Rules
+- **Python Execution**: Always run Python commands and tests through `uv` (`uv run ...`).
+- **Ontology Identifiers**: NEVER guess or invent ontology IRIs (`ChEBI`, `ENVO`, `PATO`, `UO`, `NCBITaxon`, `SIO`, `RAK`). Always load them programmatically from verified project registries (`~/Public/software/empty-quarter/config/codes/xrf_chemical_mapping.yml`, `biome_codes.yml`, `site_iri_registry.tsv`, `update_rubalkhali_ontology.groovy`).
+- **Canonical Data Pointers**: Follow `~/Public/software/empty-quarter-workbench/DATA_LOCATIONS.md`. Use Open-Meteo 0.25° / ERA5 climate products with Uber H3 indexing (`h3_5`/`h3_6`), avoiding pseudoreplicated 0.5° NASA POWER grids for spatial site tests.
+- **Causal & Scientific Rigor**: Adhere strictly to `~/Documents/papers/causal-knowledge-graphs/CKG_USEFULNESS.md` — separate constitutive relations ($\Phi_{\mathrm{const}}$) from causal mechanisms ($\mathcal{M}_{\mathrm{caus}}$), enforce ontological consistency ($\text{OCS} = 1.0$) under $\mathrm{do}$-interventions, distinguish encoded capacity from flux/activity, and report version-ambiguity bounds.
