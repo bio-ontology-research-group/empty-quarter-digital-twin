@@ -10,7 +10,8 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
 authors = [
-    { name = "Robert Hoehndorf", email = "robert.hoehndorf@kaust.edu.sa" }
+    { name = "Robert Hoehndorf", email = "robert.hoehndorf@kaust.edu.sa" },
+    { name = "Magnus Rueping" }
 ]
 dependencies = [
     "numpy>=1.26.0",
