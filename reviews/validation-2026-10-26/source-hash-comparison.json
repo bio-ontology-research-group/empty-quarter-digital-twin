@@ -1,0 +1,140 @@
+[
+  {
+    "source": "xrf_chemical_mapping",
+    "exists": true,
+    "reported_matches_disk": true,
+    "matches_bundled_manifest": true
+  },
+  {
+    "source": "biome_codes",
+    "exists": true,
+    "reported_matches_disk": true,
+    "matches_bundled_manifest": true
+  },
+  {
+    "source": "site_iri_registry",
+    "exists": true,
+    "reported_matches_disk": true,
+    "matches_bundled_manifest": true
+  },
+  {
+    "source": "site_aliases",
+    "exists": true,
+    "reported_matches_disk": true,
+    "matches_bundled_manifest": true
+  },
+  {
+    "source": "env_measurements_curated",
+    "exists": true,
+    "reported_matches_disk": true,
+    "matches_bundled_manifest": true
+  },
+  {
+    "source": "sample_ledger",
+    "exists": true,
+    "reported_matches_disk": true,
+    "matches_bundled_manifest": true
+  },
+  {
+    "source": "taxonomy_mapping_decisions",
+    "exists": true,
+    "reported_matches_disk": true,
+    "matches_bundled_manifest": true
+  },
+  {
+    "source": "feature_table_16s",
+    "exists": true,
+    "reported_matches_disk": true,
+    "matches_bundled_manifest": true
+  },
+  {
+    "source": "taxonomy_16s",
+    "exists": true,
+    "reported_matches_disk": true,
+    "matches_bundled_manifest": true
+  },
+  {
+    "source": "ph_accepted",
+    "exists": true,
+    "reported_matches_disk": true,
+    "matches_bundled_manifest": true
+  },
+  {
+    "source": "env_site",
+    "exists": true,
+    "reported_matches_disk": true,
+    "matches_bundled_manifest": true
+  },
+  {
+    "source": "env_site_trip",
+    "exists": true,
+    "reported_matches_disk": true,
+    "matches_bundled_manifest": true
+  },
+  {
+    "source": "era5_daily",
+    "exists": true,
+    "reported_matches_disk": true,
+    "matches_bundled_manifest": true
+  },
+  {
+    "source": "power_daily",
+    "exists": true,
+    "reported_matches_disk": true,
+    "matches_bundled_manifest": true
+  },
+  {
+    "source": "xrf_site_compartment_panel",
+    "exists": true,
+    "reported_matches_disk": true,
+    "matches_bundled_manifest": true
+  },
+  {
+    "source": "coverm_rep_abundance",
+    "exists": true,
+    "reported_matches_disk": true,
+    "matches_bundled_manifest": true
+  },
+  {
+    "source": "rep_cbb_ko",
+    "exists": true,
+    "reported_matches_disk": true,
+    "matches_bundled_manifest": true
+  },
+  {
+    "source": "atmo_classification_v2",
+    "exists": true,
+    "reported_matches_disk": true,
+    "matches_bundled_manifest": true
+  },
+  {
+    "source": "guild_ge_strict",
+    "exists": true,
+    "reported_matches_disk": true,
+    "matches_bundled_manifest": true
+  },
+  {
+    "source": "sample_mobilome_load",
+    "exists": true,
+    "reported_matches_disk": true,
+    "matches_bundled_manifest": true
+  },
+  {
+    "source": "aquatic_supp_xlsx",
+    "exists": true,
+    "reported_matches_disk": true,
+    "matches_bundled_manifest": true
+  },
+  {
+    "source": "wgs_sample_metadata",
+    "exists": true,
+    "reported_matches_disk": true,
+    "matches_bundled_manifest": true
+  },
+  {
+    "source": "condition_anchors",
+    "exists": true,
+    "reported_matches_disk": true,
+    "matches_bundled_manifest": true
+  }
+]

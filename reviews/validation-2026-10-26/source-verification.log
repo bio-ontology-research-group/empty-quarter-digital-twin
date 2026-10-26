@@ -1,0 +1,123 @@
+{
+  "status": "VERIFIED",
+  "files_verified": 23,
+  "xrf_analytes_mapped": 93,
+  "sites_registered": 138,
+  "sources": {
+    "xrf_chemical_mapping": {
+      "path": "/home/leechuck/Public/software/empty-quarter/config/codes/xrf_chemical_mapping.yml",
+      "bytes": 11723,
+      "sha256": "fcebc8ba8c10344fa3f86109d35d7100b7bc7008aacbca9124098d2eb0628a3e"
+    },
+    "biome_codes": {
+      "path": "/home/leechuck/Public/software/empty-quarter/config/codes/biome_codes.yml",
+      "bytes": 1323,
+      "sha256": "327d898b53fb669ffac6df4aef50cc5eb3fc4429256a4ebf12a857196d402cb4"
+    },
+    "site_iri_registry": {
+      "path": "/home/leechuck/Public/software/empty-quarter-ecology-data/metadata/samples/site_iri_registry.tsv",
+      "bytes": 1233,
+      "sha256": "3c06493397372cfe518e6bb1cd8a3275c0f6ed67a83b9ef6bc84f51c1efce7d4"
+    },
+    "site_aliases": {
+      "path": "/home/leechuck/Public/software/empty-quarter-ecology-data/metadata/samples/site_aliases.tsv",
+      "bytes": 1128,
+      "sha256": "eba7c55b7ce3344be91077ec2226e5af8a76d8b3aa683beac0926eedc637de2b"
+    },
+    "env_measurements_curated": {
+      "path": "/home/leechuck/Public/software/empty-quarter-ecology-data/metadata/environmental/environmental_measurements_curated.tsv",
+      "bytes": 47897,
+      "sha256": "51177fb6b21e4b10712daaa731cdf3783d0fc351c536f562851efd233386573f"
+    },
+    "sample_ledger": {
+      "path": "/home/leechuck/Public/software/empty-quarter-ecology-data/evidence/release/sample_ledger.tsv",
+      "bytes": 558402,
+      "sha256": "cf7affd4d58803417fc5cf03ab71e6455e7fe190db449b0eb7ebaedfb4d1c99f"
+    },
+    "taxonomy_mapping_decisions": {
+      "path": "/home/leechuck/Public/software/empty-quarter-ecology-data/evidence/release/taxonomy_mapping_audit/taxonomy_mapping_decisions.tsv",
+      "bytes": 13817313,
+      "sha256": "72e232fd8408aa2b6c2a10d84c7410439ecea01fedcd387a2bb22ed813391acc"
+    },
+    "feature_table_16s": {
+      "path": "/home/leechuck/Public/software/empty-quarter-ecology-data/metadata/taxonomy/feature-table-trips1-5.tsv",
+      "bytes": 1801512613,
+      "sha256": "129f47d8f0db8d9afd6f8c67b8d80b5bead90155d8c91d2f43ea6a4139b0cb12"
+    },
+    "taxonomy_16s": {
+      "path": "/home/leechuck/Public/software/empty-quarter-ecology-data/metadata/taxonomy/taxonomy-trips1-5.tsv",
+      "bytes": 39741062,
+      "sha256": "fcf0a3ea0ca8ed956532fb4d7bffa0c20249e3048779a219155cc1bb7e483d35"
+    },
+    "ph_accepted": {
+      "path": "/home/leechuck/Public/software/empty-quarter-ecology-data/metadata/ph/ph_accepted_measurements.tsv",
+      "bytes": 140371,
+      "sha256": "2f89d80eaf630d014099a8f58d2e9c2635cfa30a18b5888ebf35145f4125fa8e"
+    },
+    "env_site": {
+      "path": "/home/leechuck/Public/software/empty-quarter-lifeonair/lifeonair/results/inputs/env_site.tsv",
+      "bytes": 6082,
+      "sha256": "99655eb9ccfae538251fd0e15726e2e90e3e98b08faf65bc2509f72ef48e2245"
+    },
+    "env_site_trip": {
+      "path": "/home/leechuck/Public/software/empty-quarter-lifeonair/lifeonair/results/inputs/env_site_trip.tsv",
+      "bytes": 21561,
+      "sha256": "3a09f94b4afc5078ef3a74175e3b39e1161fd94cc42ca62aa3d95629d6076a87"
+    },
+    "era5_daily": {
+      "path": "/home/leechuck/Public/software/empty-quarter-lifeonair/lifeonair/results/inputs/era5_daily_1995_2025.tsv",
+      "bytes": 12062207,
+      "sha256": "7f9d9ed4497d174a2118e064487bab87aaecf5ed79c0c490a71b04ea1f513f61"
+    },
+    "power_daily": {
+      "path": "/home/leechuck/Public/software/empty-quarter-lifeonair/lifeonair/results/inputs/power_daily_2021_2025.tsv",
+      "bytes": 1904438,
+      "sha256": "51958f5ce03a2e0c1ccf53c717934682681d1191414b2d47601a4ece509ac698"
+    },
+    "xrf_site_compartment_panel": {
+      "path": "/home/leechuck/Public/software/empty-quarter-lifeonair/lifeonair/results/inputs/xrf_site_compartment_panel.tsv",
+      "bytes": 48413,
+      "sha256": "715b07fca563e6d907a92bd5d855194c62023120890188938afa82cde91e88cc"
+    },
+    "coverm_rep_abundance": {
+      "path": "/home/leechuck/Public/software/empty-quarter-lifeonair/lifeonair/results/inputs/coverm_rep_abundance_long.tsv.gz",
+      "bytes": 4701602,
+      "sha256": "2536800baa7479dea190acd4f903154c4481cb57a8c90af4dd816ba902925856"
+    },
+    "rep_cbb_ko": {
+      "path": "/home/leechuck/Public/software/empty-quarter-lifeonair/lifeonair/results/inputs/rep_cbb_ko.tsv",
+      "bytes": 294443,
+      "sha256": "ff695e39a93faf057ec666ba48d3d38623eb4ec5aeae32407d6062348ba866f0"
+    },
+    "atmo_classification_v2": {
+      "path": "/home/leechuck/Public/software/empty-quarter-lifeonair/lifeonair/results/inputs/atmo_classification_v2.tsv",
+      "bytes": 464305,
+      "sha256": "edbb4360f1b4b5a924bdf5ef25948b71d6490e9db60f7db47ea3582a10ff62f8"
+    },
+    "guild_ge_strict": {
+      "path": "/home/leechuck/Public/software/empty-quarter-lifeonair/lifeonair/results/reads/guild_genome_equivalents_v2_r3noflagged.tsv",
+      "bytes": 196306,
+      "sha256": "2e6f7790575daaf4515788b9251dd42ba2c60eb3eb30816218fe61c0b1c9bd6c"
+    },
+    "sample_mobilome_load": {
+      "path": "/home/leechuck/Documents/papers/empty-quarter-mobilome/results/sample_mobilome_load.tsv",
+      "bytes": 23130,
+      "sha256": "1c289433d1a6d6145d675e527cc498c8384c50d66158232654c5c26559821522"
+    },
+    "aquatic_supp_xlsx": {
+      "path": "/home/leechuck/Documents/papers/empty-quarter-tiannyu/source/tiannyu-2026-10-18/Empty quarter project supplementary table-latest-9.xlsx",
+      "bytes": 748032,
+      "sha256": "a75d1f0e7133bd154f1fcf71322ae3987ceef2ef162485709c837a93d96efd12"
+    },
+    "wgs_sample_metadata": {
+      "path": "/home/leechuck/Public/software/empty-quarter-workbench/data/metadata/sample_metadata.tsv",
+      "bytes": 292989,
+      "sha256": "5daedb1b3d9820314f204343bd0dc9cae342e3c260c2aee0d832916a3b3496c4"
+    },
+    "condition_anchors": {
+      "path": "/home/leechuck/Public/software/empty-quarter-workbench/data/metadata/condition_anchors.json",
+      "bytes": 4080,
+      "sha256": "3484ef6362d1f8949721dbc5fad1c912e71531261056abe65d82f2b72398c830"
+    }
+  }
+}

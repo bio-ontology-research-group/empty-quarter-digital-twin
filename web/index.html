@@ -49,7 +49,7 @@
       grid-template-columns: 420px 1fr 440px;
       gap: 14px;
       padding: 14px;
-      height: calc(100vh - 58px);
+      min-height: 700px;
     }
     .card {
       background: var(--panel);
@@ -101,7 +101,7 @@
     }
     #map {
       width: 100%;
-      height: 55%;
+      height: 370px;
       border-radius: 6px;
       border: 1px solid var(--border);
     }
@@ -136,34 +136,49 @@
       border-left: 4px solid var(--accent);
       font-size: 0.82rem;
     }
+    .evidence { padding: 14px 24px; background: #182029; line-height: 1.6; }
+    details p { max-width: 80ch; }
+    summary { cursor: pointer; }
+    :focus-visible { outline: 3px solid #67c2ef; outline-offset: 3px; }
+    button:disabled { opacity: .5; cursor: wait; }
+    .card { min-width: 0; }
+    .k-val { overflow-wrap: anywhere; }
+    @media (max-width: 1350px) { .layout { grid-template-columns: minmax(260px, 1fr) minmax(300px, 1.5fr); } .layout > .card:last-child { grid-column: 1 / -1; } }
+    @media (max-width: 700px) { header { align-items: flex-start; gap: 12px; flex-direction: column; } .layout { display: block; padding: 10px; } .card { margin-bottom: 12px; } #map { height: 300px; } }
   </style>
 </head>
 <body>
   <header>
     <div>
       <h1>EQ-BioDT: Empty Quarter Biodiversity Digital Twin</h1>
-      <small style="color: var(--muted)">1,043 km Rub' al Khali Transect | Two-Layer Causal-Ontological Engine (OCS = 1.0) | EU BioDT &amp; B-Cubed Compliant</small>
+      <small style="color: var(--muted)">Rub’ al-Khali observations and conditional management scenarios</small>
     </div>
     <div>
       <span class="badge" id="health-badge">Initializing Twin...</span>
     </div>
   </header>
 
+  <aside class="evidence" aria-label="Model evidence">
+    <strong>Observed data, coherent totals, conditional effects.</strong>
+    The model combines measurements and imputed baselines with assumed response functions.
+    OCS measures algebraic consistency. Intervention effects and ARG screening require field validation.
+    <details><summary>What the results mean</summary><p>Genomic capacity is estimated from sequence data. Ontological constraints keep parts and totals consistent. Scenario equations prescribe how management changes the state. Portfolio rankings depend on chosen candidates, weights and response assumptions.</p></details>
+  </aside>
   <div class="layout">
     <!-- Left Column: Site & Intervention Controls -->
     <div class="card">
-      <h2>1. Spatial Locus &amp; Soil Horizon</h2>
+      <h2>Site and soil compartment</h2>
       <label for="site-select">Sampling Site (60 Primary + 10 Auxiliary Loci)</label>
       <select id="site-select"></select>
 
       <label for="comp-select">Soil Compartment</label>
       <select id="comp-select">
-        <option value="Surface">Surface Horizon (0 cm, RAK_0000020)</option>
-        <option value="ShallowSubsurface">Subsurface Refugium (5-10 cm, RAK_0000021)</option>
-        <option value="RootAdjacent">Rhizosphere / Root-Adjacent (5-10 cm, RAK_0000022)</option>
+        <option value="Surface">Surface (0–2 cm)</option>
+        <option value="ShallowSubsurface">Shallow subsurface (5–10 cm)</option>
+        <option value="RootAdjacent">Root-adjacent soil</option>
       </select>
 
-      <h2 style="margin-top:16px;">2. Counterfactual Management Simulator</h2>
+      <h2 style="margin-top:16px;">Explore a management scenario</h2>
       <label for="interv-select">Select Intervention Module</label>
       <select id="interv-select" onchange="renderInterventionControls()">
         <option value="cloud_seeding">1. Cloud Seeding &amp; Precipitation Pulse</option>
@@ -176,8 +191,8 @@
 
       <div id="dynamic-controls"></div>
 
-      <button class="primary" onclick="runIntervention()">Run Counterfactual Simulation</button>
-      <button class="secondary" onclick="runParetoOptimizer()">Run 4-Objective DESDEO Pareto Optimizer</button>
+      <button class="primary action" onclick="withStatus(runIntervention)">Run scenario</button>
+      <button class="secondary action" onclick="withStatus(runParetoOptimizer)">Compare six portfolios</button>
     </div>
 
     <!-- Center Column: Interactive Map & Site Baseline -->
@@ -185,22 +200,39 @@
       <h2>Rub' al Khali 1,043 km Transect &amp; H3 / ERA5 Cube Explorer</h2>
       <div id="map"></div>
       <h2 style="margin-top:12px;">Selected Site Geochemical &amp; Guild Baseline</h2>
-      <div class="kpi-grid" id="site-baseline-kpis"></div>
+      <p id="baseline-evidence" class="advisory"></p><div class="kpi-grid" id="site-baseline-kpis"></div>
     </div>
 
     <!-- Right Column: Counterfactual Output & Provenance -->
     <div class="card">
-      <h2>3. Counterfactual Twin Response &amp; FDO Provenance</h2>
-      <div id="advisory-box" class="advisory">Select a site and run an intervention or Pareto optimization.</div>
+      <h2>Conditional model response</h2>
+      <div id="advisory-box" class="advisory" role="status" aria-live="polite">Select a site and run an intervention or Pareto optimization.</div>
       <div class="kpi-grid" id="sim-kpis"></div>
-      <h2 style="margin-top:14px;">Causal-Ontological State &amp; RO-Crate / FDO Record</h2>
-      <pre id="json-output">{}</pre>
+      <details style="margin-top:14px"><summary>Inspect model output and provenance</summary><pre id="json-output">{}</pre></details>
     </div>
   </div>
 
   <script>
     let map, markers = [];
     let sitesData = [];
+    let baselineRequest = 0;
+    const formatValue = (value, digits = 2) => value != null && Number.isFinite(Number(value)) ? Number(value).toFixed(digits) : 'Unavailable';
+    async function api(url, options) {
+      const response = await fetch(url, options);
+      if (!response.ok) throw new Error(`Request failed (${response.status}). Check the API connection and try again.`);
+      return response.json();
+    }
+    async function withStatus(action) {
+      const buttons = document.querySelectorAll('.action');
+      buttons.forEach(b => b.disabled = true);
+      document.getElementById('advisory-box').textContent = 'Calculating scenario…';
+      try { await action(); }
+      catch (error) {
+        document.getElementById('advisory-box').textContent = error.message;
+        document.getElementById('sim-kpis').replaceChildren();
+        document.getElementById('json-output').textContent = '{}';
+      } finally { buttons.forEach(b => b.disabled = false); }
+    }
 
     const INTERVENTION_SCHEMAS = {
       cloud_seeding: [
@@ -253,22 +285,22 @@
     async function initDashboard() {
       renderInterventionControls();
       map = L.map("map").setView([20.2, 50.5], 6);
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-        attribution: "&copy; OpenStreetMap &amp; CartoDB"
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; OpenStreetMap contributors"
       }).addTo(map);
 
-      const healthRes = await fetch("/api/v1/health").then(r => r.json());
+      const healthRes = await api("/api/v1/health");
       document.getElementById("health-badge").innerText =
-        `OCS=1.0 | ${healthRes.sites_count} Sites | ${healthRes.era5_h3_grid_cells} H3/ERA5 Cells`;
+        `${healthRes.sites_count} sites / ${healthRes.era5_h3_grid_cells} corridor cells`;
 
-      const sitesRes = await fetch("/api/v1/sites").then(r => r.json());
+      const sitesRes = await api("/api/v1/sites");
       sitesData = sitesRes.sites;
       const sel = document.getElementById("site-select");
       sitesData.forEach(s => {
         const opt = document.createElement("option");
         opt.value = s.site_id;
-        opt.textContent = `${s.site_label} (${s.habitat_regime}, MAP=${s.map_mm}mm)`;
-        if (s.site_id === "35") opt.selected = true;
+        opt.textContent = `${s.site_label} (${s.habitat_regime}, MAP=${formatValue(s.map_mm, 1)}mm)`;
+        if (s.site_id === "30") opt.selected = true;
         sel.appendChild(opt);
 
         const color = s.is_primary_transect ? "#d97706" : "#10b981";
@@ -282,27 +314,36 @@
         m.bindPopup(`<b>${s.site_label}</b><br/>IRI: ${s.site_iri}<br/>H3_6: ${s.h3_6}`);
         m.on("click", () => {
           sel.value = s.site_id;
-          loadSiteBaseline();
+          withStatus(loadSiteBaseline);
         });
       });
 
-      sel.addEventListener("change", loadSiteBaseline);
-      document.getElementById("comp-select").addEventListener("change", loadSiteBaseline);
+      sel.addEventListener("change", () => withStatus(loadSiteBaseline));
+      document.getElementById("comp-select").addEventListener("change", () => withStatus(loadSiteBaseline));
       await loadSiteBaseline();
-      await runIntervention();
+
     }
 
     async function loadSiteBaseline() {
+      const request = ++baselineRequest;
       const siteId = document.getElementById("site-select").value;
       const comp = document.getElementById("comp-select").value;
-      const detail = await fetch(`/api/v1/sites/${encodeURIComponent(siteId)}`).then(r => r.json());
+      const detail = await api(`/api/v1/sites/${encodeURIComponent(siteId)}`);
+      if (request !== baselineRequest) return;
       const row = detail.compartments.find(c => c.compartment_norm === comp) || detail.compartments[0];
+      document.getElementById('baseline-evidence').textContent =
+        (Number(siteId) >= 1 && Number(siteId) <= 60 ? 'Primary-site baseline. ' : 'Auxiliary site: baseline transferred from a nearest primary site. ') +
+        (row.wgs_observed ? 'Guild values derive from metagenomes. ' : 'Guild values are imputed. ') +
+        (row.ph_observed ? 'pH is measured.' : 'pH is imputed.');
+      document.getElementById('sim-kpis').replaceChildren();
+      document.getElementById('json-output').textContent = '{}';
+      document.getElementById('advisory-box').textContent = 'Baseline loaded. Run a scenario to see conditional outputs.';
       const grid = document.getElementById("site-baseline-kpis");
       grid.innerHTML = `
-        <div class="kpi"><div class="k-label">16S Shannon / pH (CaCl2)</div><div class="k-val">${Number(row.shannon_16s).toFixed(2)} / pH ${Number(row.ph_mean).toFixed(2)}</div></div>
-        <div class="kpi"><div class="k-label">Group 1l [NiFe] H2ase / coxL GE</div><div class="k-val">${Number(row.hydB_1l_ge).toFixed(2)} / ${Number(row.coxL_formI_ge).toFixed(2)}</div></div>
-        <div class="kpi"><div class="k-label">XRF Evaporite Index / Si (%)</div><div class="k-val">${Number(row.xrf_evaporite_index).toFixed(2)} / ${Number(row.Si).toFixed(1)}%</div></div>
-        <div class="kpi"><div class="k-label">H3_6 Cell / MAP (mm/yr)</div><div class="k-val">${row.h3_6} / ${Number(row.map_mm).toFixed(1)}</div></div>
+        <div class="kpi"><div class="k-label">16S Shannon / pH (CaCl2)</div><div class="k-val">${formatValue(row.shannon_16s, 2)} / pH ${formatValue(row.ph_mean, 2)}</div></div>
+        <div class="kpi"><div class="k-label">Group 1l [NiFe] H2ase / coxL GE</div><div class="k-val">${formatValue(row.hydB_1l_ge, 2)} / ${formatValue(row.coxL_formI_ge, 2)}</div></div>
+        <div class="kpi"><div class="k-label">XRF Evaporite Index / Si (%)</div><div class="k-val">${formatValue(row.xrf_evaporite_index, 2)} / ${formatValue(row.Si, 1)}%</div></div>
+        <div class="kpi"><div class="k-label">H3_6 Cell / MAP (mm/yr)</div><div class="k-val">${row.h3_6} / ${formatValue(row.map_mm, 1)}</div></div>
       `;
     }
 
@@ -315,19 +356,19 @@
         params[cfg.key] = parseFloat(document.getElementById(`ctrl-${cfg.key}`).value);
       });
 
-      const res = await fetch(`/api/v1/intervene/${itype}`, {
+      const res = await api(`/api/v1/intervene/${itype}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ site_id: siteId, compartment: comp, parameters: params })
-      }).then(r => r.json());
+      });
 
       const sum = res.summary || {};
-      document.getElementById("advisory-box").innerText = sum.management_advisory || "Simulation completed.";
-      const shannonVal = sum.counterfactual_shannon_16s || sum.counterfactual_peak_shannon_16s || 0;
+      document.getElementById("advisory-box").innerText = "Conditional scenario calculated. Read the output with the response assumptions above.";
+      const shannonVal = sum.counterfactual_shannon_16s ?? sum.counterfactual_peak_shannon_16s;
       document.getElementById("sim-kpis").innerHTML = `
-        <div class="kpi"><div class="k-label">Counterfactual 16S Shannon</div><div class="k-val">${Number(shannonVal).toFixed(3)}</div></div>
-        <div class="kpi"><div class="k-label">Ontological Consistency (OCS)</div><div class="k-val">${Number(sum.ocs_score || 1.0).toFixed(3)}</div></div>
-        <div class="kpi"><div class="k-label">H2 Oxidation Power (uW/m3)</div><div class="k-val">${Number(res.projected_state?.h2_oxidation_power_uw_m3 || 0).toFixed(2)}</div></div>
+        <div class="kpi"><div class="k-label">Counterfactual 16S Shannon</div><div class="k-val">${formatValue(shannonVal, 3)}</div></div>
+        <div class="kpi"><div class="k-label">Ontological Consistency (OCS)</div><div class="k-val">${formatValue(sum.ocs_score, 3)}</div></div>
+        <div class="kpi"><div class="k-label">H2 Oxidation Power (uW/m3)</div><div class="k-val">${formatValue(res.projected_state?.h2_oxidation_power_uw_m3, 2)}</div></div>
         <div class="kpi"><div class="k-label">FDO PID Checksum</div><div class="k-val" style="font-size:0.78rem">${(res.fdo_provenance?.sha256_checksum || "").slice(0, 14)}...</div></div>
       `;
       document.getElementById("json-output").innerText = JSON.stringify(res, null, 2);
@@ -336,15 +377,15 @@
     async function runParetoOptimizer() {
       const siteId = document.getElementById("site-select").value;
       const comp = document.getElementById("comp-select").value;
-      const res = await fetch("/api/v1/optimize", {
+      const res = await api("/api/v1/optimize", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ site_id: siteId, compartment: comp })
-      }).then(r => r.json());
+      });
 
       const rec = res.recommended_policy;
       document.getElementById("advisory-box").innerText =
-        `RECOMMENDED PARETO POLICY: ${rec.policy.name} (DESDEO Utility = ${rec.desdeo_utility_score})`;
+        `Highest-ranked model candidate: ${rec.policy.name} (utility = ${rec.desdeo_utility_score})`;
       document.getElementById("sim-kpis").innerHTML = `
         <div class="kpi"><div class="k-label">J1 Biodiversity &amp; Refugium</div><div class="k-val">${rec.objectives.J1_biodiversity_refugium_max}</div></div>
         <div class="kpi"><div class="k-label">J2 Chemosynthesis &amp; C/N</div><div class="k-val">${rec.objectives.J2_chemosynthesis_cn_flux_max}</div></div>
@@ -354,7 +395,7 @@
       document.getElementById("json-output").innerText = JSON.stringify(res, null, 2);
     }
 
-    window.addEventListener("DOMContentLoaded", initDashboard);
+    window.addEventListener("DOMContentLoaded", () => withStatus(initDashboard));
   </script>
 </body>
 </html>

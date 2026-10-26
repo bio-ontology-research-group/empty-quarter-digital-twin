@@ -1,0 +1,285 @@
+{
+  "findings": [
+    {
+      "check": "OWL module dimensions",
+      "status": "pass",
+      "evidence": {
+        "variables": 17,
+        "subsumptions": 13,
+        "partitions": 5
+      }
+    },
+    {
+      "check": "Projection rejects missing coordinates",
+      "status": "fail",
+      "evidence": {
+        "accepted": true,
+        "output_coordinates": 17
+      }
+    },
+    {
+      "check": "Constitutive evaluation rejects missing leaf coordinates",
+      "status": "fail",
+      "evidence": {
+        "accepted": true,
+        "output_coordinates": 22
+      }
+    },
+    {
+      "check": "Projection rejects indefinite metric",
+      "status": "fail",
+      "evidence": {
+        "accepted": true,
+        "output_coordinates": 17
+      }
+    },
+    {
+      "check": "Numerical LP failure is distinct from biological dormancy",
+      "status": "fail",
+      "evidence": {
+        "solver_status": "infeasible_maintenance_deficit",
+        "native_highs_status": 4,
+        "native_highs_success": false,
+        "hard_maintenance_feasible": false,
+        "metabolic_viability_state": "MAINTENANCE_DEFICIT_DORMANCY",
+        "total_biomass_flux": 0.0,
+        "autotrophic_carbon_fixation_flux": 0.0,
+        "cbb_rubisco_flux": 0.0,
+        "archaeal_3hp4hb_flux": 0.0,
+        "heterotrophic_doc_flux": 0.0,
+        "nifH_n2_fixation_flux": 0.0,
+        "nitrification_flux": 0.08,
+        "sulfur_redox_flux": 0.25,
+        "betaine_osmoprotectant_flux": 0.0,
+        "atpm_maintenance_drain": 3.075,
+        "atpm_required_unmitigated": 0.08,
+        "atpm_maintenance_deficit": 0.0,
+        "energy_stress_ratio": 0.026,
+        "dark_proteome_coding_fraction": 0.534,
+        "dark_proteome_active_fraction": 0.534
+      }
+    },
+    {
+      "check": "Dormancy fallback no longer creates ATP from unconsumed DOC",
+      "status": "pass",
+      "evidence": {
+        "solver_status": "infeasible_maintenance_deficit",
+        "native_highs_status": 2,
+        "native_highs_success": false,
+        "hard_maintenance_feasible": false,
+        "metabolic_viability_state": "MAINTENANCE_DEFICIT_DORMANCY",
+        "total_biomass_flux": 0.0,
+        "autotrophic_carbon_fixation_flux": 0.0,
+        "cbb_rubisco_flux": 0.0,
+        "archaeal_3hp4hb_flux": 0.0,
+        "heterotrophic_doc_flux": 0.0,
+        "nifH_n2_fixation_flux": 0.0,
+        "nitrification_flux": 0.0,
+        "sulfur_redox_flux": 0.0,
+        "betaine_osmoprotectant_flux": 0.0,
+        "atpm_maintenance_drain": 0.0,
+        "atpm_required_unmitigated": 2.4362,
+        "atpm_maintenance_deficit": 2.4362,
+        "energy_stress_ratio": 11.0736,
+        "dark_proteome_coding_fraction": 0.055,
+        "dark_proteome_active_fraction": 0.055
+      }
+    },
+    {
+      "check": "Zero-intervention virome identity includes zero baselines",
+      "status": "fail",
+      "evidence": {
+        "viral_richness_votu": 1.0,
+        "viral_abundance_tpm": 24.5,
+        "plasmid_richness_potu": 2.0,
+        "plasmid_abundance_tpm": 64.0,
+        "lysogenic_phage_fraction": 0.68,
+        "resistome_arg_risk_index": 0.035,
+        "resistome_biosafety_pass": true,
+        "variance_partition_meta": {
+          "votu_catalogue_total": 19300,
+          "potu_catalogue_total": 322755,
+          "mobilome_samples_n": 552,
+          "host_community": 0.106,
+          "soil_compartment": 0.028,
+          "climate_aridity": 0.014,
+          "spatial_geography": 0.014,
+          "edaphic_xrf_ph": 0.013,
+          "total_explained_r2": 0.175,
+          "viral_host_mantel_r": 0.254
+        }
+      }
+    },
+    {
+      "check": "Regional carbon responds to portfolio rainfall",
+      "status": "fail",
+      "evidence": {
+        "rainfall_mm": [
+          6.5,
+          100
+        ],
+        "outputs_identical": true
+      }
+    },
+    {
+      "check": "Zero rbcL co-carriage preserves zero microbial fixation",
+      "status": "pass",
+      "evidence": {
+        "low": 0.0,
+        "point": 0.0,
+        "high": 0.0
+      }
+    },
+    {
+      "check": "Carbon pathway arithmetic",
+      "status": "pass",
+      "evidence": {
+        "P2_corridor": {
+          "policy_name": "Integrated Eco-Restoration & Oryx Rewilding (Balanced Optimum)",
+          "supported_corridor_area_km2": 92160.0,
+          "unmanaged_reserve_area_km2": 557840.0,
+          "sand_sea_polygon_area_km2": 500000.0,
+          "total_basin_area_km2": 650000.0,
+          "unmanaged_reserve_management_delta_kt_yr": 0.0,
+          "direct_microbial_rubisco_co2": {
+            "corridor_t_km2_yr_point": 0.0016,
+            "delta_vs_baseline_t_km2_yr_point": 0.0006,
+            "corridor_kt_yr_low": 0.025,
+            "corridor_kt_yr_point": 0.151,
+            "corridor_kt_yr_high": 0.631,
+            "delta_vs_baseline_corridor_kt_yr_low": 0.009,
+            "delta_vs_baseline_corridor_kt_yr_point": 0.054,
+            "delta_vs_baseline_corridor_kt_yr_high": 0.224,
+            "sand_sea_500k_kt_yr_point": 0.567,
+            "basin_kt_yr_low": 0.12,
+            "basin_kt_yr_point": 0.72,
+            "basin_kt_yr_high": 3.0
+          },
+          "indirect_h2_sink_co2eq": {
+            "corridor_t_km2_yr_point": 0.1322,
+            "delta_vs_baseline_t_km2_yr_point": 0.027,
+            "corridor_kt_yr_low": 2.521,
+            "corridor_kt_yr_point": 12.184,
+            "corridor_kt_yr_high": 33.613,
+            "delta_vs_baseline_corridor_kt_yr_low": 0.514,
+            "delta_vs_baseline_corridor_kt_yr_point": 2.484,
+            "delta_vs_baseline_corridor_kt_yr_high": 6.854,
+            "sand_sea_500k_kt_yr_point": 53.431,
+            "basin_kt_yr_low": 14.189,
+            "basin_kt_yr_point": 68.602,
+            "basin_kt_yr_high": 189.251
+          },
+          "vegetation_npp_co2": {
+            "corridor_t_km2_yr_point": 89.8315,
+            "delta_vs_baseline_t_km2_yr_point": 81.7742,
+            "corridor_kt_yr_low": 5332.152,
+            "corridor_kt_yr_point": 8278.868,
+            "corridor_kt_yr_high": 11786.863,
+            "delta_vs_baseline_corridor_kt_yr_low": 4853.894,
+            "delta_vs_baseline_corridor_kt_yr_point": 7536.309,
+            "delta_vs_baseline_corridor_kt_yr_high": 10729.66,
+            "sand_sea_500k_kt_yr_point": 8509.311,
+            "basin_kt_yr_low": 5535.155,
+            "basin_kt_yr_point": 8594.066,
+            "basin_kt_yr_high": 12235.622
+          },
+          "pedogenic_carbonate_co2": {
+            "corridor_t_km2_yr_point": 1.4154,
+            "delta_vs_baseline_t_km2_yr_point": 0.7759,
+            "corridor_kt_yr_low": 65.223,
+            "corridor_kt_yr_point": 130.446,
+            "corridor_kt_yr_high": 228.28,
+            "delta_vs_baseline_corridor_kt_yr_low": 35.753,
+            "delta_vs_baseline_corridor_kt_yr_point": 71.506,
+            "delta_vs_baseline_corridor_kt_yr_high": 125.135,
+            "sand_sea_500k_kt_yr_point": 358.962,
+            "basin_kt_yr_low": 221.506,
+            "basin_kt_yr_point": 443.009,
+            "basin_kt_yr_high": 775.278
+          },
+          "total_direct_co2_bound": {
+            "corridor_t_km2_yr_point": 91.2485,
+            "delta_vs_baseline_t_km2_yr_point": 82.5507,
+            "corridor_kt_yr_low": 5397.401,
+            "corridor_kt_yr_point": 8409.466,
+            "corridor_kt_yr_high": 12015.774,
+            "delta_vs_baseline_corridor_kt_yr_low": 4889.656,
+            "delta_vs_baseline_corridor_kt_yr_point": 7607.869,
+            "delta_vs_baseline_corridor_kt_yr_high": 10855.02,
+            "sand_sea_500k_kt_yr_point": 8868.846,
+            "basin_kt_yr_low": 5756.791,
+            "basin_kt_yr_point": 9037.803,
+            "basin_kt_yr_high": 13013.895
+          },
+          "net_persistent_co2_sequestered": {
+            "corridor_t_km2_yr_point": 14.1829,
+            "delta_vs_baseline_t_km2_yr_point": 12.6542,
+            "corridor_kt_yr_low": 549.525,
+            "corridor_kt_yr_point": 1307.091,
+            "corridor_kt_yr_high": 3118.178,
+            "delta_vs_baseline_corridor_kt_yr_low": 494.329,
+            "delta_vs_baseline_corridor_kt_yr_point": 1166.213,
+            "delta_vs_baseline_corridor_kt_yr_high": 2776.356,
+            "sand_sea_500k_kt_yr_point": 1456.022,
+            "basin_kt_yr_low": 608.911,
+            "basin_kt_yr_point": 1510.798,
+            "basin_kt_yr_high": 3641.561
+          },
+          "total_co2eq_bound": {
+            "corridor_t_km2_yr_point": 91.3808,
+            "delta_vs_baseline_t_km2_yr_point": 82.5776,
+            "corridor_kt_yr_low": 5399.922,
+            "corridor_kt_yr_point": 8421.65,
+            "corridor_kt_yr_high": 12049.388,
+            "delta_vs_baseline_corridor_kt_yr_low": 4890.17,
+            "delta_vs_baseline_corridor_kt_yr_point": 7610.354,
+            "delta_vs_baseline_corridor_kt_yr_high": 10861.875,
+            "sand_sea_500k_kt_yr_point": 8922.279,
+            "basin_kt_yr_low": 5770.982,
+            "basin_kt_yr_point": 9106.406,
+            "basin_kt_yr_high": 13203.144
+          }
+        },
+        "vegetation_fraction_of_total": 0.983045840185712
+      }
+    },
+    {
+      "check": "All supported grid baselines have observed surface WGS",
+      "status": "fail",
+      "evidence": {
+        "supported_cells": 128,
+        "cells_assigned_imputed_surface_WGS": 35
+      }
+    }
+  ],
+  "source_sha256": {
+    "src/eq_biodt/__init__.py": "5be4ffb250d17deeabc9e959d86b2034a47da12365ee1c34f4c9a99ac22d1a00",
+    "src/eq_biodt/api/__init__.py": "c6f44a5184b272b201d0f5b0b03e82bed90752da25e6389ae7e64bcd46bf1797",
+    "src/eq_biodt/api/main.py": "e53f0674af8b112d769311924c19d7b0dee84c289874b7f6f1a6a09c60ee22e0",
+    "src/eq_biodt/cli.py": "e48dc1b8e3c5f9a6c61824449428c2490074b9e49008303188be76cdc0c488b0",
+    "src/eq_biodt/data/__init__.py": "c92c4594469106ca4c9143eaa928641cdd2125ce20a096c74eb072942f0f3d2e",
+    "src/eq_biodt/data/build_twin_state_cube.py": "54d856adec99a759ce5fbe219ebe7e1a993211ed81361ca7f863729e30888abe",
+    "src/eq_biodt/data/manifest_registry.py": "4786f9668a9789f23c5bee53c5c437256c11c19306a94f4f1b2f1ace35d92a75",
+    "src/eq_biodt/data/sparql_bridge.py": "dbec38f94a0544e9272f0ed4585a2bd0cc271cb809896e5138e63066397ee347",
+    "src/eq_biodt/interventions/__init__.py": "ea58c06afc6e2be429358ce4852bc6cac13243e6b1d66009a88049c362c14f33",
+    "src/eq_biodt/interventions/cloud_seeding.py": "f9702b22fc1850eeaf78313b29cb47f5cba0dd2743a2b9376e51cb75685f44b0",
+    "src/eq_biodt/interventions/desalination_brine.py": "280fd361a573c37bb401e62a1d082912b12e7a96838073c43577fc24b6e52115",
+    "src/eq_biodt/interventions/megafauna_grazing.py": "44a73b95a555f78cf23c3d1dec6a11211f1e186bd2cf0273e45c96522c1f44df",
+    "src/eq_biodt/interventions/pareto_optimizer.py": "b608347d5afd2c0ede92b40e02168c8db4f0a16ff5e625311d892753086ed2db",
+    "src/eq_biodt/interventions/refugium_thermal.py": "fbd7b1a24ef4e9403ebbff87175fa7df0971044ce4927bf8fdf5809fe09c3608",
+    "src/eq_biodt/interventions/revegetation.py": "a3f38a11b40f7637aff9aec26c5ab94c71a2f094239f427f70810497a62a7d7e",
+    "src/eq_biodt/interventions/seismic_hydrocarbon.py": "971b192bb70f909d6660bf9daedae03f9966b0083178391b4566c23f487ffc70",
+    "src/eq_biodt/models/__init__.py": "f4a6bea50c0b871a84584230b848b4bea3af43a1a9728c278e35063e393fbffb",
+    "src/eq_biodt/models/carbon_budget_engine.py": "10029057f27caa09e894f727770c139ec6d3461ad6661df3f9b6554daae35992",
+    "src/eq_biodt/models/causal_ontological_twin.py": "1fee2699a4acdbe0d96ff6675929a27fee09bfbdf95c61d7149aa2023e28e773",
+    "src/eq_biodt/models/metabolic_community_engine.py": "f631460dcfc1dfdf69e1e4d4294d5ea467ae5b6a4af8d0462fe2f4f62c9aa6c5",
+    "src/eq_biodt/models/moisture_pulse_diffusion.py": "88a319c99db46814efc24db2ae9e763ae93726dbba850c468ac6eb03c686d5bd",
+    "src/eq_biodt/models/spatial_jsdm_virome.py": "77635b8dd9534b109100556ad0cb2581f912d9644c5e9bb135ee879edaea8198",
+    "src/eq_biodt/standards/__init__.py": "fa63db5aaf065a3f3afbc4636bd3f7d5e91877cf9f6cbfc9d7928c55317be932",
+    "src/eq_biodt/standards/b3_occurrence_cube.py": "7620bda108f9a56126d4366613309e54ec37914a680cf3720cc5401cbc71d258",
+    "src/eq_biodt/standards/dwc_emof_exporter.py": "327db6f24368a5a03f2b10fbda576368bed1e900915f134638a919912ff8cfc3",
+    "src/eq_biodt/standards/fdo_provenance.py": "d2f4cf17f291bc7f21d20ad457e7e862b49a9372504cafc399e205933811ee72",
+    "src/eq_biodt/validation/__init__.py": "19261f575f380bad909ddc625ca711968ff00b03cbafa7f3670d88532b07ac56",
+    "src/eq_biodt/validation/twin_validator.py": "80bf32d7899dd09ebd9a356832fb256124731b45a230ea3c50fc4162b29c6e60"
+  }
+}

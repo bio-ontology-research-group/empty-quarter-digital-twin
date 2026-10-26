@@ -1,0 +1,1271 @@
+--- before/main.tex
++++ /home/leechuck/Public/software/empty-quarter-digital-twin/paper/main.tex
+@@ -46,7 +46,7 @@
+ % Marks information the authors still have to supply; must be empty before submission.
+ \newcommand{\authorinput}[1]{\textcolor{red}{[#1]}}
+ 
+-\title{A causal-ontological biodiversity digital twin of the Rub' al-Khali desert predicts trace-gas scavenger capacity across sites and campaigns and quantifies chemosynthetic and rhizosphere trade-offs of land management}
++\title{Ontological-causal reasoning for prediction and conditional management scenarios in a biodiversity digital twin of the Rub' al-Khali}
+ 
+ \input{authors.tex}
+ 
+@@ -59,18 +59,18 @@
+ 
+ 
+ \begin{abstract}
+-Microbial communities in hyperarid soils such as those of the Rub' al-Khali persist through oxidation of atmospheric $\Htwo$ and CO, a thermally buffered horizon 5--10 cm below the surface, and rare moisture pulses. Rainfall enhancement, revegetation, brine disposal and land use in these deserts are planned without models that predict microbial responses, keep hierarchical quantities such as total hydrogenase capacity consistent with their subclasses, and make the assumptions behind each scenario explicit. We developed EQ-BioDT, a digital twin that integrates \nWGS{} shotgun metagenomes, X-ray fluorescence geochemistry, 1,227 primary-site 16S rRNA amplicon profiles and climate data from \nSites{} sites along a 1,043 km transect into a cube of \nStates{} site-compartment states. EQ-BioDT has three layers: statistical predictors validated on held-out sites and campaigns, a constitutive layer that projects predictions onto linear constraints compiled from the axioms of an OWL 2 ontology, and six mechanistic scenario engines calibrated from the literature and from paired field contrasts. Under spatially blocked cross-validation on \nGuildWGS{} metagenomes from \nWGSsites{} sites, EQ-BioDT predicted group 1l [NiFe]-hydrogenase abundance with Spearman $\rho = 0.543$ (site-clustered 95\% CI 0.470--0.622), compared with 0.347 for a compartment-only and 0.243 for a climate-only model, and 16S Shannon diversity of the 180 states with $\rho = 0.547$ (0.404--0.655). In a retrospective temporal holdout trained on the first four of five expeditions, it predicted group 1l abundance in the fifth with $\rho = 0.619$, compared with 0.552 for site-compartment persistence. Projection onto the constraint set removed every hierarchical violation and reduced mean squared error by 3.51\% (2.11--5.10\%), within 0.2\% of the root mean squared error of covariance-weighted reconciliation and below that of bottom-up summation and matched-feature ridge regression. The revegetation and refugium engines reproduced the paired root-versus-bulk and surface-versus-subsurface contrasts within their empirical confidence intervals. In scenario simulations at an interdune site, a 6 mm rainfall pulse raised Shannon diversity by 0.35 and retained 76\% of the minimum $\Htwo$ oxidation power, whereas a 25 mm pulse retained 20\%; 30\% shrub cover lowered group 1l capacity per genome equivalent while raising its absolute density 1.38-fold. Across the 92,160 km$^2$ empirically supported corridor, four-pathway carbon accounting aligned with seven cross-desert plausibility comparisons and estimated 811.3 kt $\COtwoeq$ $\mathrm{yr}^{-1}$ of gross baseline binding (140.9 kt $\COtwo$ $\mathrm{yr}^{-1}$ in persistent soil organic and pedogenic carbonate pools; 1.50 Mt $\COtwoeq$ $\mathrm{yr}^{-1}$ gross across the 650,000 km$^2$ basin), rising to 8.42 Mt $\COtwoeq$ $\mathrm{yr}^{-1}$ gross (1.31 Mt $\COtwo$ $\mathrm{yr}^{-1}$ persistent) under corridor eco-restoration and falling to 0.13 Mt $\COtwoeq$ $\mathrm{yr}^{-1}$ under unmitigated disturbance. EQ-BioDT provides validated predictions of desert trace-gas guilds and auditable, assumption-explicit scenarios for dryland management.
++Desert management requires predictions of microbial responses that distinguish observations, biological hypotheses and relations that hold by definition. We developed EQ-BioDT, a biodiversity digital twin combining \nWGS{} shotgun metagenomes, 1,227 primary-site 16S profiles, geochemistry and climate in \nStates{} site-compartment states. Its ontological-causal reasoning separates statistical prediction, constitutive constraints compiled from an OWL ontology, and six mechanistic scenario engines. Under spatially blocked cross-validation, group 1l [NiFe]-hydrogenase abundance reached Spearman $\rho = 0.543$ (site-clustered 95\% CI 0.470--0.622), compared with 0.347 for a compartment-only model; Shannon diversity reached $\rho = 0.547$ (0.404--0.655). Projection onto the ontological constraint set removed hierarchical violations and reduced joint mean squared error by 3.51\% (2.11--5.10\%). These evaluations establish predictive performance and algebraic consistency within the transect. Management scenarios combine calibrated field contrasts with transferred and assumed response functions. Their causal interpretation depends on the invariance of these functions under intervention and on transport from sampled habitats to managed soils. Four-pathway carbon accounting produces conditional annual flux and retention estimates; vegetation supplies 98.3\% of the integrated-restoration corridor total. The implementation exposes the distinction between empirical prediction, ontology-derived aggregation and hypothesized causal mechanisms, and identifies the controlled interventions and flux measurements required to evaluate management effects.
+ \end{abstract}
+ 
+ \section{Introduction}
+ 
+-Hyperarid deserts receive too little rain to sustain photosynthetic primary production for most of the year, and their soil microbial communities persist on alternative energy sources and physical shelter. Aerobic bacteria in these soils oxidize atmospheric $\Htwo$ and CO at trace concentrations using high-affinity [NiFe]-hydrogenases and form I carbon monoxide dehydrogenases, and the energy from this oxidation supports survival and, in some lineages, carbon fixation \cite{bay2021trace,grinter2023structural,leung2020energetic}. Across aridity gradients, the contribution of these chemosynthetic guilds to primary production increases as photosynthetic contributions decline \cite{bay2021aridity,ji2017atmospheric,leung2025aridity}. Soil $\Htwo$ oxidation also removes an indirect greenhouse gas by preserving tropospheric hydroxyl radicals that oxidize methane \cite{ehhalt2009h2cycle,ocko2022hydrogen,paulot2024reanalysis}, while alkaline desert soils precipitate pedogenic carbonate \cite{schlesinger1985caliche,ma2013inorganic}. The topmost centimetres of sand reach surface temperatures above $58\degC$ and receive intense ultraviolet radiation, whereas the horizon 5--10 cm below the surface remains cooler and shelters a distinct community. Hydration events resuscitate dormant cells within days \cite{jordaan2020gobi,imminger2024resuscitation}, and extracellular relic DNA, which persists after cell death, inflates diversity estimates obtained from total soil DNA \cite{carini2016relicdna,lennon2018relicdna}. In inland and coastal sabkhas, evaporite minerals add a geochemical axis: calcium sulfate and sodium chloride brines impose osmotic stress of very different severity.
++Hyperarid deserts receive too little rain to sustain photosynthetic primary production for most of the year, and their soil microbial communities persist on alternative energy sources and physical shelter. Aerobic bacteria in these soils oxidize atmospheric $\Htwo$ and CO at trace concentrations using high-affinity [NiFe]-hydrogenases and form I carbon monoxide dehydrogenases, and the energy from this oxidation supports survival and, in some lineages, carbon fixation \cite{bay2021trace,grinter2023structural,leung2020energetic}. Across aridity gradients, the contribution of these chemosynthetic guilds to primary production increases as photosynthetic contributions decline \cite{bay2021aridity,ji2017atmospheric,leung2025aridity}. Soil $\Htwo$ oxidation also removes an indirect greenhouse gas by preserving tropospheric hydroxyl radicals that oxidize methane \cite{ehhalt2009h2cycle,ocko2022hydrogen,paulot2024reanalysis}, while alkaline desert soils precipitate pedogenic carbonate \cite{schlesinger1985caliche,ma2013inorganic}. The topmost centimetres of sand reach surface temperatures above $58\degC$ and receive intense ultraviolet radiation, whereas the horizon 5--10 cm below the surface remains cooler and shelters a distinct community. Hydration events can resuscitate dormant cells within minutes \cite{jordaan2020gobi,imminger2024resuscitation}, and extracellular relic DNA, which persists after cell death, inflates diversity estimates obtained from total soil DNA \cite{carini2016relicdna,lennon2018relicdna}. In inland and coastal sabkhas, evaporite minerals add a geochemical axis: calcium sulfate and sodium chloride brines impose osmotic stress of very different severity.
+ 
+ These mechanisms determine how desert soils respond to the environmental interventions now planned for the Arabian Peninsula. Rainfall enhancement adds water, but water also fills the pores through which atmospheric gases reach the cells that oxidize them; gas diffusivity in soil falls steeply with water-filled pore space \cite{millington1961permeability}. Revegetation creates root zones with more microbial biomass, but root exudates favour heterotrophs over trace-gas scavengers. Desalination plants discharge brines whose ionic composition differs from that of natural sabkha waters, and reintroduced ungulates, livestock and seismic surveys compact the surface layer and strip the subsurface refugium. Each intervention acts on several of these coupled mechanisms at once, so its outcome depends on how moisture, gas transport, temperature, salinity and community composition interact at a given site.
+ 
+ Current approaches address parts of this problem. Correlative models fitted to environmental covariates predict the spatial distribution of taxa and functional genes, and biodiversity data cubes aggregate occurrence records on standard spatial grids \cite{oldoni2020occurrence}. These models predict each quantity separately. When the predicted quantities form a hierarchy, for example the abundances of three hydrogenase subgroups and their sum, separately fitted predictors produce subgroup values whose sum differs from the predicted total, and they assign negative abundances where the data are sparse. Forecast reconciliation addresses the same problem for hierarchical time series by adjusting independent forecasts so that they satisfy aggregation constraints \cite{wickramasuriya2019optimal}. Correlative models also lack an explicit representation of interventions. Causal models specify interventions as operations on structural equations \cite{pearl2009causality}, but an intervention on a coarse class such as ``add rain'' has several realizations with different effects, and its consequences are then defined only up to an interval \cite{spirtes2004ambiguous,vanderweele2013multiple}. Work on causal abstraction relates models of the same system at different levels of granularity \cite{rubenstein2017causal,beckers2019abstracting}, and ontologies formalize the class hierarchies across which such relations hold \cite{owl2direct2012,thomas2019gocam}. These strands have yet to be combined into an operational twin of a soil ecosystem.
+ 
+-A digital twin for desert management therefore needs to separate three kinds of model components. Statistical predictors estimate microbial quantities from environmental covariates, and their accuracy can be tested directly on held-out sites and campaigns. A constitutive layer, $\Phic$, derives aggregate quantities from their parts according to the axioms of an ontology $\Tont$; under explicit measurement assumptions these relations hold by definition and are unaffected by any intervention. A mechanistic layer, $\Mcaus$, contains the structural equations through which water, heat, salt, grazing and inoculation change the leaf quantities. For interventions without field experiments at the transect, $\Mcaus$ encodes causal hypotheses whose coefficients come from the literature, from companion analyses and from natural experiments; its outputs are scenarios conditional on those hypotheses, and the twin must expose the provenance of every coefficient.
++A digital twin for desert management therefore needs to separate three kinds of model components. Statistical predictors estimate microbial quantities from environmental covariates, and their accuracy can be tested directly on held-out sites and campaigns. A constitutive layer, $\Phic$, derives aggregate quantities from their parts according to the axioms of an ontology $\Tont$; under explicit measurement assumptions these relations hold by definition and are unaffected by any intervention. A mechanistic layer, $\Mcaus$, contains the structural equations through which water, heat, salt, grazing and inoculation change the leaf quantities. For interventions without field experiments at the transect, $\Mcaus$ encodes causal hypotheses whose coefficients come from the literature, from companion analyses and from paired observational comparisons; its outputs are scenarios conditional on those hypotheses, and the twin must expose the provenance of every coefficient.
+ 
+ Here we present the Empty Quarter Biodiversity Digital Twin (EQ-BioDT). EQ-BioDT harmonizes metagenomic, amplicon, geochemical and climatic data from \nSites{} sites along a 1,043 km transect of the Rub' al-Khali into a site-by-compartment state cube indexed on H3 and ERA5 grids, with explicit flags for observed and imputed values. Its predictive layer consists of ridge regressions evaluated under spatially blocked, leave-one-campaign-out and retrospective temporal holdout validation, with site-clustered uncertainty and comparisons against simpler baselines. Its constitutive layer compiles linear constraints from the hierarchy of trace-gas guilds, prokaryotic phyla, trace-gas oxidation power and soil DNA pools stated in an OWL 2 constraint module of the Rub' al-Khali ontology, and enforces them by Euclidean projection. Its mechanistic layer couples Millington--Quirk gas diffusion, a moisture-pulse resuscitation model, a reduced guild-level flux balance model solved with HiGHS, and virome and mobilome response functions in six scenario engines. We evaluate EQ-BioDT in five validation tiers, simulate six management interventions, rank six prescribed management portfolios under four objectives, and upscale dimensional $\COtwo$ and $\COtwoeq$ budgets across the corridor and basin against seven cross-desert benchmarks. Data products follow Darwin Core, B-Cubed and RO-Crate conventions \cite{wieczorek2012dwc,oldoni2020occurrence,soilandreyes2022rocrate}, and each simulation is recorded with a content-derived identifier.
+ 
+@@ -117,7 +117,7 @@
+ 
+ \begin{table}[p]
+ \centering
+-\caption{Out-of-sample accuracy of the EQ-BioDT predictive layer (Tiers 1 and 2) and reconciliation of hierarchical predictions (Tier 3). Tier 1, five-fold spatially blocked cross-validation with contiguous longitude blocks and no site shared between folds; Tier 2, leave-one-campaign-out cross-validation across Trips 1--5, pooled over held-out campaigns, and the retrospective temporal holdout of Trip 5 from models trained on Trips 1--4, scored on visit-compartment means. Covariates were imputed with training medians, and only observed targets were scored. Brackets give site-clustered bootstrap 95\% confidence intervals (300 resamples of sites). $R^2$ is computed against the mean of all pooled observed values of the target. Baselines are ridge regressions on the same folds unless stated; environment only, ridge regression on the environmental covariates without site history. $\Delta$, within-site change of Trip 5 from the Trips 1--4 mean of the same site and compartment, scored for the visit-compartments with prior history. In Tier 3, the six-variable trace-gas hierarchy, RMSE is computed over all entries of the six-variable vectors, over the four leaf variables, or over the two aggregates; WLS, weighted least squares; MinT, minimum-trace reconciliation; OCS, ontological consistency score; CVM, mean constraint violation magnitude. GE, genome equivalents; vOTU and pOTU, viral and plasmid operational taxonomic units. Per-campaign results are given in Suppl. Table~S2.}
++\caption{Out-of-sample accuracy of the EQ-BioDT predictive layer (Tiers 1 and 2) and reconciliation of hierarchical predictions (Tier 3). Tier 1, five-fold spatially blocked cross-validation with contiguous longitude blocks and no site shared between folds; Tier 2, leave-one-campaign-out cross-validation across Trips 1--5, pooled over held-out campaigns, and the retrospective temporal holdout of Trip 5 from models trained on Trips 1--4, scored on visit-compartment means. Remaining missing covariates were imputed with training medians, and only observed targets were scored; some covariates had already been pooled or imputed upstream (Supplementary Note~4). Brackets give site-clustered bootstrap 95\% confidence intervals (300 resamples of sites). $R^2$ is computed against the mean of all pooled observed values of the target. Baselines are ridge regressions on the same folds unless stated; environment only, ridge regression on the environmental covariates without site history. $\Delta$, within-site change of Trip 5 from the Trips 1--4 mean of the same site and compartment, scored for the visit-compartments with prior history. In Tier 3, the six-variable trace-gas hierarchy, RMSE is computed over all entries of the six-variable vectors, over the four leaf variables, or over the two aggregates; WLS, weighted least squares; MinT, minimum-trace reconciliation; OCS, ontological consistency score; CVM, mean constraint violation magnitude. GE, genome equivalents; vOTU and pOTU, viral and plasmid operational taxonomic units. Per-campaign results are given in Suppl. Table~S2.}
+ \label{tab:cv}
+ \footnotesize
+ \setlength{\tabcolsep}{4pt}
+@@ -201,7 +201,7 @@
+ 
+ \subsection{Scenario engines reproduce paired field contrasts}
+ 
+-The six scenario engines encode causal hypotheses through response functions whose coefficients are fitted to the transect, transferred from companion analyses and the literature, or assumed (Methods); they are separate from the fitted ridge regressions of Tiers 1 and 2. We therefore asked whether the engines reproduce field contrasts when run from observed baselines (Fig.~\ref{fig:validation}c). Across 106 paired visits at 47 sites, \hl{} GE in root-adjacent soil was lower than in bulk subsurface soil, with an empirical median $\log_2$ fold change of $-2.27$ (95\% CI $-2.90$ to $-1.59$) and depletion at 87\% of sites, while DNA yield was 10.3-fold higher ($\log_2$ ratio 3.37). Decomposing this root-versus-bulk change across the 5,438 dereplicated MAGs showed that taxonomic turnover between genera accounted for 97.4\% of the \hl{} depletion ($-0.253$ GE) and within-genus changes in carrier prevalence and copy number for 2.6\% ($-0.007$ GE), while the median copy number per carrier genome was 1.000 in both compartments (mean 1.003 in subsurface and 1.002 in root-adjacent soil). Across the MAG catalogue, 597 genomes carried at least one \hl{} copy and 558 had \hl{} as their primary hydrogenase assignment (78.6\% in Actinomycetota and 12.7\% in Chloroflexota); 101 of these 558 genomes (18.1\%, rising to 76 of 275 or 27.6\% among $\ge 90\%$ complete MAGs) also carried form I (\texttt{rbcL\_IA/IC/ID}) or form IE (\texttt{rbcL\_IE}) RuBisCO, compared with 30 of 371 \hh{} carriers (8.1\%), so 81.9\% of group 1l carriers encode atmospheric $\Htwo$ oxidation without a Calvin--Benson--Bassham cycle. Run from each site's own subsurface state, the revegetation engine predicted a median $\log_2$ fold change of $-2.10$ and a $\log_2$ DNA ratio of 3.16. Its depletion and biomass coefficients were fitted to this pooled contrast, so the agreement shows that site-specific baselines, the inoculation term and the projection preserve the calibrated effect. Across 68 paired visits at 36 sites, surface soil carried less \hl{} GE than the 5--10 cm horizon (median $-1.05$, 95\% CI $-1.44$ to $-0.54$), and the refugium engine, run with an exposed horizon at $58\degC$ against an intact horizon at $35\degC$, predicted $-0.76$, inside the interval. Along the aridity gradient, \hl{} GE in the 51 observed subsurface states decreased with mean annual precipitation ($\rho = -0.514$, $p = 1.2 \times 10^{-4}$), matching the companion estimate of $\rho = -0.512$.
++The six scenario engines encode causal hypotheses through response functions whose coefficients are fitted to the transect, transferred from companion analyses and the literature, or assumed (Methods); they are separate from the fitted ridge regressions of Tiers 1 and 2. We therefore asked whether the engines reproduce field contrasts when run from observed baselines (Fig.~\ref{fig:validation}c). Across 106 paired visits at 47 sites, \hl{} GE in root-adjacent soil was lower than in bulk subsurface soil, with an empirical median $\log_2$ fold change of $-2.27$ (95\% CI $-2.90$ to $-1.59$) and depletion at 87\% of sites, while DNA yield was 10.3-fold higher ($\log_2$ ratio 3.37). Decomposing this root-versus-bulk change across the 5,438 dereplicated MAGs showed that taxonomic turnover between genera accounted for 97.4\% of the \hl{} depletion ($-0.253$ GE) and within-genus changes in carrier prevalence and copy number for 2.6\% ($-0.007$ GE), while the median copy number per carrier genome was 1.000 in both compartments (mean 1.003 in subsurface and 1.002 in root-adjacent soil). Across the MAG catalogue, 597 genomes carried at least one \hl{} copy and 558 had \hl{} as their primary hydrogenase assignment (78.6\% in Actinomycetota and 12.7\% in Chloroflexota); 101 of these 558 genomes (18.1\%, rising to 76 of 275 or 27.6\% among $\ge 90\%$ complete MAGs) also carried form I (\texttt{rbcL\_IA/IC/ID}) or form IE (\texttt{rbcL\_IE}) RuBisCO, compared with 30 of 371 \hh{} carriers (8.1\%), so 81.9\% of these primary group 1l carriers lacked the screened RuBisCO annotations. Run from each site's own subsurface state, the revegetation engine predicted a median $\log_2$ fold change of $-2.10$ and a $\log_2$ DNA ratio of 3.16. Its depletion and biomass coefficients were fitted to this pooled contrast, so the agreement shows that site-specific baselines, the inoculation term and the projection preserve the calibrated effect. Across 68 paired visits at 36 sites, surface soil carried less \hl{} GE than the 5--10 cm horizon (median $-1.05$, 95\% CI $-1.44$ to $-0.54$), and the refugium engine, run with an exposed horizon at $58\degC$ against an intact horizon at $35\degC$, predicted $-0.76$, inside the interval. Along the aridity gradient, \hl{} GE in the 51 observed subsurface states decreased with mean annual precipitation ($\rho = -0.514$, $p = 1.2 \times 10^{-4}$), matching the companion estimate of $\rho = -0.512$.
+ 
+ The read-to-guild pipeline and the flux balance model were checked against known behaviour before they entered the scenarios. On eight synthetic root-versus-bulk pairs, the pipeline recovered the true \hl{} contrasts with $R^2 = 0.989$ (Suppl. Table~S1). To test whether automated genome-scale metabolic models capture trace-gas oxidation in these soils, we audited 72 representative MAGs across 10,584 automated flux-balance runs from the companion study: automated gene-protein-reaction rules matched only 1 of 48 trace-gas oxidation keywords and produced zero dynamic $\Htwo$ or CO uptake responses across all 72 models. EQ-BioDT therefore uses a curated ten-flux reduced guild-level flux balance model in the sense of flux balance analysis \cite{orth2010fba}. It passed four audits: zero biomass with all exchanges closed; zero biomass and zero sulfur redox flux when sulfate was supplied without $\Htwo$, CO or organic carbon as electron donors; non-decreasing biomass across 25 increasing $\Htwo$ uptake bounds; and a non-decreasing maintenance requirement across 25 increasing salinities. The model enforces the maintenance requirement as a hard constraint and sets biomass and carbon-fixation fluxes to zero when the requirement exceeds the maximum attainable ATP generation. With these components in place, we used the engines to explore six interventions at Site 30, an interdune site with observed surface metagenomes, and at the sabkha Sites 59 and 60 (Table~\ref{tab:interventions}).
+ 
+@@ -238,7 +238,7 @@
+ \end{tabularx}
+ \end{table}
+ 
+-Rainfall adds water to soils whose energy supply depends on gas exchange. A prescribed $+6$ mm pulse at Site 30, of which 78\% infiltrated, raised Shannon diversity by 0.3473 at day 3, within the 1--4 day resuscitation window, and the daily minimum of $\Htwo$ oxidation power over 14 days was $40.1\ \uWm$, 76\% of the $52.82\ \uWm$ at baseline moisture (Table~\ref{tab:interventions}, Fig.~\ref{fig:interventions}a). A $+25$ mm pulse raised Shannon diversity by 0.6972 but filled enough pore space to reduce the Millington--Quirk diffusivity term to 15\% of its reference value on day 1, and the minimum fell to $10.4\ \uWm$ (20\%). The delivery of a given depth as convective downpour or stratiform drizzle changes its infiltration; propagating infiltration efficiencies of 0.55 and 0.92 through the moisture trajectory bounds the Shannon response to a 6 mm pulse by $[0.2791, 0.3824]$. The linear allocation surrogate of Proposition 1, with fixed per-millimetre sensitivities for the two delivery modes, gives the narrower interval $[0.0975, 0.1731]$, which bounds only the allocation-dependent component of that surrogate. Under the assumptions of the moisture model, small pulses therefore buy resuscitation at a modest energetic cost, whereas large pulses trade most of the chemosynthetic energy supply for diversity gains.
++Rainfall adds water to soils whose energy supply depends on gas exchange. A prescribed $+6$ mm pulse at Site 30, of which 78\% infiltrated, raised Shannon diversity by 0.3473 at day 3, under the prescribed diversity-response lag, and the daily minimum of $\Htwo$ oxidation power over 14 days was $40.1\ \uWm$, 76\% of the $52.82\ \uWm$ at baseline moisture (Table~\ref{tab:interventions}, Fig.~\ref{fig:interventions}a). A $+25$ mm pulse raised Shannon diversity by 0.6972 but filled enough pore space to reduce the Millington--Quirk diffusivity term to 15\% of its reference value on day 1, and the minimum fell to $10.4\ \uWm$ (20\%). The delivery of a given depth as convective downpour or stratiform drizzle changes its infiltration; propagating infiltration efficiencies of 0.55 and 0.92 through the moisture trajectory bounds the Shannon response to a 6 mm pulse by $[0.2791, 0.3824]$. The linear allocation surrogate of Proposition 1, with fixed per-millimetre sensitivities for the two delivery modes, gives the narrower interval $[0.0975, 0.1731]$, which bounds only the allocation-dependent component of that surrogate. Under the assumptions of the moisture model, small pulses therefore buy resuscitation at a modest energetic cost, whereas large pulses trade most of the chemosynthetic energy supply for diversity gains.
+ 
+ Revegetation separates relative and absolute trace-gas capacity. Planting 30\% \textit{Haloxylon persicum} cover without inoculum expanded DNA biomass 3.47-fold across the planted mosaic and reduced \hl{} GE in the root zones from 2.11 to 0.52 GE, so that the area-weighted mean of local GE fell to 1.630 GE and the biomass-weighted GE of the pooled community to 0.840 GE (Fig.~\ref{fig:interventions}b). Because root zones carry more genomes, the absolute density of \hl{} copies per unit soil rose 1.38-fold under the assumption that DNA yield scales with genome density. Co-inoculating the plantings with \textit{Peribacillus frigoritolerans} RAK-PR and the \textit{rbcL-hyaB} plasmid from Site 60 raised the DNA multiplier to 4.29 and the absolute \hl{} density to 1.46-fold, and raised autotrophic carbon fixation flux in the reduced flux balance model from 0.83 to 1.36 and N$_2$ fixation flux from 0.045 to 0.14, through the assumed dose-dependent increases in CBB and nitrogen-fixation capacity. Revegetation therefore dilutes group 1l scavengers in the genome pool while adding scavenger copies to the soil, and the sign of its effect on $\Htwo$ uptake depends on whether per-genome activity or copy density limits oxidation.
+ 
+@@ -265,17 +265,17 @@
+ \label{fig:interventions}
+ \end{figure}
+ 
+-\subsection{Dimensional carbon and greenhouse-gas budgets across the corridor and basin match cross-desert benchmarks}
+-
+-To translate dimensionless flux-balance outputs and trace-gas capacities into physical carbon fluxes, we coupled four sequestration pathways across the state cube (Methods). These pathways comprise direct dark $\COtwo$ fixation by RuBisCO-encoding trace-gas scavengers, the indirect $\COtwoeq$ sink of soil $\Htwo$ oxidation, halophytic shrub and rhizosphere net primary production, and pedogenic $\CaCOthree$ precipitation. Across the \nWGSstates{} states with observed metagenomes, MAGs carrying form I or form IE \texttt{rbcL} accounted for 22.9\% of mapped reads (25.6\% in the subsurface), MAGs carrying both \texttt{rbcL} and phosphoribulokinase (\texttt{prkB}) accounted for 13.2\% (16.1\% in the subsurface), and MAGs carrying the complete three-gene CBB complement (\texttt{rbcL}, \texttt{rbcS} and \texttt{prkB}) accounted for 11.2\% (13.8\% in the subsurface; Suppl. Table~S6). Among mapped reads assigned to group 1l carriers in the subsurface, the conditional CBB co-carriage share was 37.7\% under the inclusive screen and 25.0\% under the strict three-gene screen, and 27.6\% of high-completeness group 1l MAGs encoded CBB genes. All seven model outputs fell within published empirical ranges from global dryland syntheses, the Namib and Negev deserts, Mojave caliche and \textit{Haloxylon} plantations (Suppl. Table~S6) \cite{leung2025aridity,tribbia2026namib,bay2021aridity,buzzard2022h2uptake,schlesinger1985caliche,ma2013inorganic,ma2021haloxylon}. Both the wetted-horizon dark $\COtwo$ fixation rate (0.048 nmol $\COtwo$ $\mathrm{gdw}^{-1}$ $\mathrm{d}^{-1}$) and the cell-specific $\Htwo$ oxidation rate ($1.68 \times 10^{-8}$ nmol $\Htwo$ $\mathrm{h}^{-1}$ $\mathrm{cell}^{-1}$) matched published microcosm and Namib Desert measurements.
+-
+-We then upscaled the four pathways across the 92,160 km$^2$ empirically supported corridor (evaluating each of the 128 cells at its local climate and nearest observed primary-site state) and the 650,000 km$^2$ Rub' al-Khali basin (and 500,000 km$^2$ core sand-sea polygon), holding the unmanaged reserve at its observed baseline so that management additionality ($\Delta$) arises strictly inside the supported corridor (Table~\ref{tab:carbon}). Because annual vegetation net primary production turns over through litter respiration and weathered carbonate dissolution releases half of its bound $\COtwo$, we report both gross annual pathway binding and net persistent carbon storage (applying soil organic carbon humification $\eta_{\mathrm{SOC}} = 0.15\ [0.10, 0.25]$, non-carbonate $\mathrm{Ca}^{2+}$ silicate/dust weathering fraction $f_{\mathrm{sil\text{-}Ca}} = 0.50\ [0.25, 0.75]$, and microbial necromass retention $\eta_{\mathrm{mic}} = 0.25\ [0.15, 0.40]$; Methods). Under current conditions, the supported corridor binds 801.6 kt $\COtwo$ $\mathrm{yr}^{-1}$ gross (811.3 kt $\COtwoeq$ $\mathrm{yr}^{-1}$ including the 9.7 kt $\COtwoeq$ $\mathrm{yr}^{-1}$ indirect $\Htwo$ sink at $\mathrm{GWP}_{100} = 11.6$) and stores 140.9 kt $\COtwo$ $\mathrm{yr}^{-1}$ in persistent soil organic and pedogenic carbonate pools (Table~\ref{tab:carbon}). Across the whole basin, current baseline binding reaches 1.43 Mt $\COtwo$ $\mathrm{yr}^{-1}$ gross (1.50 Mt $\COtwoeq$ $\mathrm{yr}^{-1}$ total; 1.31 Mt $\COtwoeq$ $\mathrm{yr}^{-1}$ in the 500,000 km$^2$ sand-sea polygon) and 0.34 Mt $\COtwo$ $\mathrm{yr}^{-1}$ in persistent pools. Because group 1l scavengers route 88\% of reducing equivalents to maintenance and lack CBB genes in four-fifths of all carrier genomes, the indirect $\Htwo$ sink in the corridor exceeds direct microbial $\COtwo$ fixation by 99-fold (9.70 kt $\COtwoeq$ $\mathrm{yr}^{-1}$ against 0.098 kt $\COtwo$ $\mathrm{yr}^{-1}$ inclusive, or 0.065 kt $\COtwo$ $\mathrm{yr}^{-1}$ under the strict three-gene screen).
++\subsection{Conditional carbon and greenhouse-gas budgets across the corridor and basin}
++
++To translate dimensionless flux-balance outputs and trace-gas capacities into physical carbon fluxes, we coupled four accounting pathways across the state cube (Methods). These pathways comprise direct dark $\COtwo$ fixation by RuBisCO-encoding trace-gas scavengers, the indirect $\COtwoeq$ sink of soil $\Htwo$ oxidation, halophytic shrub and rhizosphere net primary production, and pedogenic $\CaCOthree$ precipitation. Across the \nWGSstates{} states with observed metagenomes, MAGs carrying form I or form IE \texttt{rbcL} accounted for 22.9\% of mapped reads (25.6\% in the subsurface), MAGs carrying both \texttt{rbcL} and phosphoribulokinase (\texttt{prkB}) accounted for 13.2\% (16.1\% in the subsurface), and MAGs carrying the three-marker CBB screen (\texttt{rbcL}, \texttt{rbcS} and \texttt{prkB}) accounted for 11.2\% (13.8\% in the subsurface; Suppl. Table~S6). Among mapped reads assigned to group 1l carriers in the subsurface, the conditional CBB co-carriage share was 37.7\% under the inclusive screen and 25.0\% under the strict three-gene screen, and 27.6\% of high-completeness group 1l MAGs encoded CBB genes. All seven model outputs fell within the configured comparison intervals from global dryland syntheses, the Namib and Negev deserts, Mojave caliche and \textit{Haloxylon} plantations (Suppl. Table~S6) \cite{leung2025aridity,tribbia2026namib,bay2021aridity,buzzard2022h2uptake,schlesinger1985caliche,ma2013inorganic,ma2021haloxylon}. The wetted-horizon rate and cell-normalized uptake are model-derived diagnostics whose interpretation depends on the assumed active duration, soil depth and cell density (Methods).
++
++We then upscaled the four pathways across the 92,160 km$^2$ empirically supported corridor (evaluating each of the 128 cells at its local climate and nearest primary-site state) and the 650,000 km$^2$ Rub' al-Khali basin (and 500,000 km$^2$ core sand-sea polygon), holding the unmanaged reserve at its assumed background so that management additionality ($\Delta$) arises strictly inside the supported corridor (Table~\ref{tab:carbon}). We report the annual production and mineral-accumulation sum and an assumed retained-carbon scenario (applying soil organic carbon humification $\eta_{\mathrm{SOC}} = 0.15\ [0.10, 0.25]$, non-carbonate $\mathrm{Ca}^{2+}$ silicate/dust weathering fraction $f_{\mathrm{sil\text{-}Ca}} = 0.50\ [0.25, 0.75]$, and microbial necromass retention $\eta_{\mathrm{mic}} = 0.25\ [0.15, 0.40]$; Methods). Under current conditions, the supported corridor binds 801.6 kt $\COtwo$ $\mathrm{yr}^{-1}$ gross (811.3 kt $\COtwoeq$ $\mathrm{yr}^{-1}$ including the 9.7 kt $\COtwoeq$ $\mathrm{yr}^{-1}$ indirect $\Htwo$ sink at $\mathrm{GWP}_{100} = 11.6$) and assigns 140.9 kt $\COtwo$ $\mathrm{yr}^{-1}$ to the assumed retained-carbon scenario (Table~\ref{tab:carbon}). Across the whole basin, current baseline binding reaches 1.43 Mt $\COtwo$ $\mathrm{yr}^{-1}$ gross (1.50 Mt $\COtwoeq$ $\mathrm{yr}^{-1}$ total; 1.31 Mt $\COtwoeq$ $\mathrm{yr}^{-1}$ in the 500,000 km$^2$ sand-sea polygon) and 0.34 Mt $\COtwo$ $\mathrm{yr}^{-1}$ in persistent pools. Under the assumed 12\% anabolic allocation and observed marker-carriage screen, the indirect $\Htwo$ sink in the corridor exceeds direct microbial $\COtwo$ fixation by 99-fold (9.70 kt $\COtwoeq$ $\mathrm{yr}^{-1}$ against 0.098 kt $\COtwo$ $\mathrm{yr}^{-1}$ inclusive, or 0.065 kt $\COtwo$ $\mathrm{yr}^{-1}$ under the strict three-gene screen).
+ 
+ Across the management portfolios applied to the supported corridor, the spatially prescribed corridor atlas (122 P3 and 6 P4 cells) raised corridor gross binding to 5,203.8 kt $\COtwoeq$ $\mathrm{yr}^{-1}$ ($\Delta = +4,392.5$ kt $\mathrm{yr}^{-1}$ above baseline) and persistent corridor storage to 814.5 kt $\COtwo$ $\mathrm{yr}^{-1}$ ($\Delta = +673.6$ kt $\mathrm{yr}^{-1}$). Uniform low-water crust conservation (P3) in the corridor yielded 4,598.0 kt $\COtwoeq$ $\mathrm{yr}^{-1}$ gross (721.5 kt $\COtwo$ $\mathrm{yr}^{-1}$ persistent), integrated eco-restoration (P2) yielded 8,421.7 kt $\COtwoeq$ $\mathrm{yr}^{-1}$ gross (91.38 t $\mathrm{km}^{-2}$ $\mathrm{yr}^{-1}$; 1,307.1 kt $\COtwo$ $\mathrm{yr}^{-1}$ persistent), and high-canopy oasis revegetation with Ca-SO$_4$ irrigation (P4) reached 14,713.2 kt $\COtwoeq$ $\mathrm{yr}^{-1}$ gross (2,273.7 kt $\COtwo$ $\mathrm{yr}^{-1}$ persistent; Table~\ref{tab:carbon}). Conversely, unmitigated disturbance (P6) induced osmotic maintenance-deficit dormancy across the corridor in the coupled HiGHS flux balance model, collapsed direct microbial RuBisCO fixation to zero, reduced the corridor $\Htwo$ sink by 57\% ($\Delta = -5.53$ kt $\COtwoeq$ $\mathrm{yr}^{-1}$), and lowered corridor gross binding to 131.9 kt $\COtwoeq$ $\mathrm{yr}^{-1}$ ($\Delta = -679.4$ kt $\mathrm{yr}^{-1}$; persistent storage 41.0 kt $\COtwo$ $\mathrm{yr}^{-1}$).
+ 
+ \begin{table}[t]
+ \centering
+-\caption{Dimensional $\COtwo$ and $\COtwoeq$ budgets across the 92,160 km$^2$ empirically supported corridor (128 grid cells evaluated at local climate and nearest primary-site state) and the 650,000 km$^2$ Rub' al-Khali basin under the observed baseline, the spatially prescribed corridor atlas (122 P3 and 6 P4 cells), and uniform corridor portfolios P1--P6. Management levers are applied only inside the 92,160 km$^2$ supported corridor; the 557,840 km$^2$ out-of-support reserve remains at its unmanaged baseline ($f_{\mathrm{shrub}} = 0.002$, zero management additionality), so $\Delta$ vs.\ baseline in the basin equals $\Delta$ in the corridor. Fluxes are in kt $\mathrm{yr}^{-1}$ ($10^3$ t $\mathrm{yr}^{-1}$; divide by $10^3$ for Mt $\mathrm{yr}^{-1}$), with parameter-uncertainty bounds in brackets on the totals, except the last column, which gives the corridor areal total in t $\COtwoeq$ $\mathrm{km}^{-2}$ $\mathrm{yr}^{-1}$. Direct RuBisCO, dark autotrophic $\COtwo$ fixation by CBB-encoding $\Htwo$ and CO scavengers; Indirect $\Htwo$ sink, tropospheric $\mathrm{OH}^{\bullet}$ preservation from soil $\Htwo$ oxidation at $\mathrm{GWP}_{100} = 11.6$ \cite{warwick2023atmospheric,paulot2024reanalysis}; Veg.\ NPP, halophytic shrub and rhizosphere net primary production; Ped.\ $\CaCOthree$, gross pedogenic carbonate precipitation; Persistent $\COtwo$, net long-lived sequestration after accounting for litter respiration and carbonate re-precipitation ($\eta_{\mathrm{SOC}} = 0.15\ [0.10, 0.25]$, $f_{\mathrm{sil\text{-}Ca}} = 0.50\ [0.25, 0.75]$, $\eta_{\mathrm{mic}} = 0.25\ [0.15, 0.40]$). Cross-desert benchmark comparisons and sand-sea polygon (500,000 km$^2$) totals are in Suppl. Table~S6.}
++\caption{Dimensional $\COtwo$ and $\COtwoeq$ budgets across the 92,160 km$^2$ empirically supported corridor (128 grid cells evaluated at local climate and nearest primary-site state) and the 650,000 km$^2$ Rub' al-Khali basin under the observed baseline, the spatially prescribed corridor atlas (122 P3 and 6 P4 cells), and uniform corridor portfolios P1--P6. Management levers are applied only inside the 92,160 km$^2$ supported corridor; the 557,840 km$^2$ out-of-support reserve remains at its unmanaged baseline ($f_{\mathrm{shrub}} = 0.002$, zero management additionality), so $\Delta$ vs.\ baseline in the basin equals $\Delta$ in the corridor. Fluxes are in kt $\mathrm{yr}^{-1}$ ($10^3$ t $\mathrm{yr}^{-1}$; divide by $10^3$ for Mt $\mathrm{yr}^{-1}$), with joint low/high parameter envelopes in brackets on the totals, except the last column, which gives the corridor areal total in t $\COtwoeq$ $\mathrm{km}^{-2}$ $\mathrm{yr}^{-1}$. Direct RuBisCO, dark autotrophic $\COtwo$ fixation by CBB-encoding $\Htwo$ and CO scavengers; Indirect $\Htwo$ sink, tropospheric $\mathrm{OH}^{\bullet}$ preservation from soil $\Htwo$ oxidation at $\mathrm{GWP}_{100} = 11.6$ \cite{warwick2023atmospheric,paulot2024reanalysis}; Veg.\ NPP, halophytic shrub and rhizosphere net primary production; Ped.\ $\CaCOthree$, gross pedogenic carbonate precipitation; Persistent $\COtwo$, conditional retention estimate using prescribed production and mineral-source fractions ($\eta_{\mathrm{SOC}} = 0.15\ [0.10, 0.25]$, $f_{\mathrm{sil\text{-}Ca}} = 0.50\ [0.25, 0.75]$, $\eta_{\mathrm{mic}} = 0.25\ [0.15, 0.40]$). Cross-desert benchmark comparisons and sand-sea polygon (500,000 km$^2$) totals are in Suppl. Table~S6.}
+ \label{tab:carbon}
+ \scriptsize
+ \setlength{\tabcolsep}{1.6pt}
+@@ -320,7 +320,7 @@
+ 
+ Under five-fold spatially blocked cross-validation, the uncultivated oligotrophic lineage \textit{CSP1-2} reached out-of-fold $R^2 = 0.444$ in surface soil, $0.452$ in the 5--10 cm subsurface and $0.196$ in root-adjacent soil, driven by a strong negative slope on precipitation ($\beta_{\mathrm{MAP/12}} = -1.382$ in surface and $-1.691$ in subsurface soil), and the biocrust polysaccharide producer \textit{Flavisolibacter} reached $R^2 = 0.476$ in the subsurface ($\beta_{\mathrm{S}} = -1.857$, $\beta_{\mathrm{MAT}} = -0.645$). Endospore-forming \textit{Bacillus} increased with both temperature and evaporite sulfur ($\beta_{\mathrm{MAT}} = +1.116$, $\beta_{\mathrm{S}} = +1.154$ in surface soil; $\beta_{\mathrm{S}} = +1.220$ in the subsurface), whereas the five root-adjacent indicator genera had low or negative spatial cross-validation $R^2$ when predicted from macro-climate and bulk sulfur alone (five-genus mean $R^2 = -0.315$ in surface, $-0.325$ in subsurface and $-0.206$ in root-adjacent soil; Suppl. Table~S9), consistent with their dependence on local host-root microhabitats.
+ 
+-We integrated these 12 genus models, the trace-gas and diversity predictors, the OWL 2 constraint projection, the six scenario engines and the four-pathway carbon budget into an interactive web platform (\url{https://rubalkhali.science/twin}). The web twin evaluates the full Arabian Desert ecoregion ($14$--$32^{\circ}$N, $36$--$60^{\circ}$E, spanning the Rub' al-Khali, the Ad-Dahna sand corridor and the An-Nafud desert) at three selectable grid resolutions: coarse ($0.10^{\circ}$, $180 \times 240 = 43,200$ cells; $15,967$ desert cells), medium ($0.05^{\circ}$, $360 \times 480 = 172,800$ cells; $63,902$ desert cells) and fine ($0.04^{\circ}$, $450 \times 600 = 270,000$ cells; $99,870$ desert cells). On the interactive map, the empirically supported southern Rub' al-Khali transect envelope ($\le 45$ km from the 60 primary sites; $716$, $2,916$ and $4,572$ grid cells at the three resolutions) is separated visually and analytically from out-of-envelope regional extrapolations across the central and northern Arabian Desert. Users can inspect the observed hyperarid baseline (P0), the six management portfolios (P1--P6), the spatial composite and custom six-lever interventions at any grid cell or field site, coupled to a procedural three-dimensional WebGL ecosystem visualizer and illustrated plain-language guides.
++The interactive platform at \url{https://rubalkhali.science/twin} combines browser-based statistical maps with exported EQ-BioDT scenario curves and carbon tables. Its Arabian Desert grids span $14$--$32^{\circ}$N and $36$--$60^{\circ}$E at $0.10^{\circ}$, $0.05^{\circ}$ and $0.04^{\circ}$ resolution. The map's hydrogenase and power layers interpolate exported site values and apply prescribed portfolio and climate adjustments. The scenario dashboard displays precomputed Python-engine results, while the three-dimensional scene illustrates scenario concepts procedurally. Interpretation therefore follows the evidence level of each display: mapped observations and imputations, statistical predictions, prescribed response illustrations, or conditional carbon calculations. A distance envelope highlights proximity to the sampled transect; environmental and intervention-dose support require additional assessment.
+ 
+ \section{Discussion}
+ 
+@@ -328,15 +328,15 @@
+ 
+ The constitutive constraints hold under explicit measurement assumptions. Disjoint enzyme subgroups support additive counts of gene copies normalized by a common genome-equivalent denominator; the aggregate of the three measured hydrogenase subgroups is their sum, and the trace-gas scavenger aggregate sums hydrogenase and CoxL copies. These constraints concern copies per genome equivalent; constraints on the organisms carrying the genes, on expression or on activity would each require a separate measure with its own normalization. Likewise, the intact-cell DNA fraction of the twin is an operational quantity of the two-pool model, and a third pool would separate DNA in dead but intact cells. The constraints are compiled at run time from the OWL 2 constraint module, so the mapping from axioms to constraints is machine-checkable and every change of the module changes the constraint set of both the validation and the scenarios. Reasoning over the full Rub' al-Khali ontology, with entailed subsumptions added to the compiled set, would extend the constraint set beyond the explicitly stated axioms.
+ 
+-The scenarios place two physical limits on dryland greening, conditional on the mechanistic assumptions of the engines. The first is gas transport. Atmospheric $\Htwo$ reaches soil cells by diffusion through air-filled pores, and the Millington--Quirk relation makes diffusivity fall steeply as water fills them \cite{millington1961permeability}. In the moisture model, moderate pulses resuscitate the community within days, as observed for desert soils \cite{jordaan2020gobi,imminger2024resuscitation}, while retaining most of the chemosynthetic energy supply, whereas large pulses remove most of it during the wet period. The second is the rhizosphere paradox. Root zones hold an order of magnitude more DNA, but group 1l scavengers, which carry a large share of primary production in hyperarid soils \cite{bay2021aridity,leung2020energetic}, make up a smaller fraction of their genomes. The scenarios show that this dilution lowers capacity per genome equivalent while raising the absolute density of scavenger genes, so the consequence of revegetation for trace-gas uptake depends on per-cell activity and gas supply, which require absolute gene abundance, trace-gas uptake and carbon-fixation measurements in planted and bare soil. For brine disposal, the factorial grid on a common baseline identifies conductivity as the factor that sets the regime: calcium sulfate buffering and inoculation sustain sulfur cycling and autotrophy up to intermediate conductivities, and at the conductivity of the Site 59 brine pool the maintenance requirement exceeds the attainable ATP supply under every tested composition and inoculum.
+-
+-Dimensional carbon accounting clarifies how microbial trace-gas oxidation contributes to dryland climate mitigation relative to vegetation and inorganic carbon sinks. In bare hyperarid sand, atmospheric $\Htwo$ oxidation supplies the primary energetic input to the microbial community \cite{ji2017atmospheric,bay2021trace,leung2025aridity,tribbia2026namib}. Four-fifths of group 1l carriers lack a Calvin--Benson--Bassham cycle, and the remaining carriers route most reducing equivalents to maintenance ATP. Direct dark $\COtwo$ fixation across the Rub' al-Khali is therefore modest (0.098 kt $\COtwo$ $\mathrm{yr}^{-1}$ in the 92,160 km$^2$ corridor and 0.67 kt $\COtwo$ $\mathrm{yr}^{-1}$ across the 650,000 km$^2$ basin), whereas soil $\Htwo$ oxidation removes 0.84 kt $\Htwo$ $\mathrm{yr}^{-1}$ in the corridor (5.70 kt $\Htwo$ $\mathrm{yr}^{-1}$ across the basin) and provides a 9.70 kt $\COtwoeq$ $\mathrm{yr}^{-1}$ corridor sink (66.1 kt $\COtwoeq$ $\mathrm{yr}^{-1}$ basin-wide) by preserving tropospheric hydroxyl radicals at $\mathrm{GWP}_{100} = 11.6$ \cite{ehhalt2009h2cycle,ocko2022hydrogen,warwick2023atmospheric,paulot2024reanalysis}. Expressing dark $\COtwo$ fixation over the 15 d $\mathrm{yr}^{-1}$ wetted horizon window reconciles the low annual column flux with $^{14}\COtwo$ microcosm assays of rewetted desert soils \cite{bay2021aridity,leung2025aridity}, and cell-specific $\Htwo$ oxidation matches rates measured in Namib Desert soils \cite{tribbia2026namib}. Under eco-restoration (P2--P4), \textit{Haloxylon} plantings and pedogenic $\CaCOthree$ precipitation supply more than 99\% of both the gross and persistent sequestration gain \cite{schlesinger1985caliche,ma2013inorganic,ma2021haloxylon}, while trace-gas scavengers stabilize interdune biocrusts and co-inoculation enhances rhizosphere carbon and nitrogen fixation. The principal uncertainties in the budget arise from hyperarid active cell densities, areal $\Htwo$ deposition velocities \cite{buzzard2022h2uptake,paulot2024reanalysis}, soil organic carbon humification and non-carbonate $\mathrm{Ca}^{2+}$ supply \cite{schlesinger1985caliche}, and the 100-year global warming potential of $\Htwo$ \cite{warwick2023atmospheric}. Coupled soil-chamber $\Htwo$ and $^{13}\COtwo$/$^{14}\COtwo$ flux measurements alongside mineral-associated organic carbon fractionation \cite{wieder2015mimics,reji2025h2sink} are needed to narrow these intervals.
++The scenarios place two physical limits on dryland greening, conditional on the mechanistic assumptions of the engines. The first is gas transport. Atmospheric $\Htwo$ reaches soil cells by diffusion through air-filled pores, and the Millington--Quirk relation makes diffusivity fall steeply as water fills them \cite{millington1961permeability}. In the moisture model, moderate pulses increase diversity over several days; desert-soil studies establish rapid activation after wetting \cite{jordaan2020gobi,imminger2024resuscitation}, while retaining most of the chemosynthetic energy supply, whereas large pulses remove most of it during the wet period. The second is the rhizosphere paradox. Root zones hold an order of magnitude more DNA, but group 1l scavengers, which carry a large share of primary production in hyperarid soils \cite{bay2021aridity,leung2020energetic}, make up a smaller fraction of their genomes. The scenarios show that this dilution lowers capacity per genome equivalent while raising the absolute density of scavenger genes, so the consequence of revegetation for trace-gas uptake depends on per-cell activity and gas supply, which require absolute gene abundance, trace-gas uptake and carbon-fixation measurements in planted and bare soil. For brine disposal, the factorial grid on a common baseline identifies conductivity as the factor that sets the regime: calcium sulfate buffering and inoculation sustain sulfur cycling and autotrophy up to intermediate conductivities, and at the conductivity of the Site 59 brine pool the maintenance requirement exceeds the attainable ATP supply under every tested composition and inoculum.
++
++The annual accounting is dominated by vegetation assumptions: vegetation NPP supplies 98.3\% of the P2 corridor total. The assumed canopy, production coefficient and retention fractions therefore determine most of the apparent management benefit. The microbial observations constrain gene capacity and marker carriage; they enter annual gas uptake through prescribed scaling. The seven literature comparisons provide context with partly shared calibration intervals and heterogeneous denominators. Controlled planting experiments, measured water requirements, chamber gas fluxes, mineral-source characterization and repeated carbon stocks would test these annual pathway and retention estimates. A lifecycle balance would additionally quantify intervention emissions, losses and permanence.
+ 
+ The field data qualify how the twin should treat rainfall. Within-site responses of group 1l capacity to 90-day precipitation in surface and root-adjacent soil depend on whether ERA5 or NASA POWER supplies the exposure, and the two products agree poorly on 90-day anomalies at the transect sites. The subsurface horizon carries a steep spatial precipitation gradient with within-site slopes indistinguishable from zero under both products, so the spatial gradient of the subsurface describes long-term filtering of the community across sites. The rainfall engine models a prescribed pulse through the moisture model, and its coefficients transfer from the companion rainfall analysis; gauge-calibrated precipitation at the sites, and denser repeated sampling around individual rain events, would determine which product and which lag describe the short-term response.
+ 
+ The scope of the scenario results follows from how the engines are built. Their response coefficients are fitted to the transect for the revegetation contrast, transferred from companion analyses for the GE-to-power factors, the dark-proteome coding fraction and the virome coupling, and assumed for compaction, thermal offsets, inoculation effects, hydrocarbon degradation and the resistome screening score (Suppl. Table~S7). The scenario outputs are point estimates conditional on these coefficients. The Monte Carlo robustness analysis perturbs the objective values of the portfolios, and propagating parameter, baseline and structural uncertainty through the engines themselves by global sensitivity analysis is the next step.
+ 
+-The submodels set further boundaries. The GE-to-power conversion omits an explicit gas concentration gradient and supply limit, and the revegetation, brine and refugium engines use direct GE-to-power equations, whereas the rainfall, grazing and seismic engines use the shared diffusion function. The rainfall engine models the soil response to a prescribed pulse, and linking it to cloud seeding requires a model of the rainfall increment that seeding produces; its trajectory is sampled daily from day 1, so the reported minimum is a daily minimum. The virome and mobilome functions are anchored to baseline richness and use a Mantel correlation as a slope, and the ARG screening score awaits calibration against measured ARG, mobility, host and exposure endpoints. The Thermoplasmatota and Halobacteriota baselines of the scenarios are MAG phylum shares of the mapped reads. On average 52.4\% of the reads of a library remained unmapped to the MAG catalogue, and the 25 states without metagenomes carry compartment medians. The 16S phylum shares stored alongside them in the cube provide an independent check of each baseline. The read-to-guild pipeline overestimated GE by 1.5- to 1.8-fold on synthetic metagenomes at the 60\% identity floor used throughout the twin, and the bias cancels in contrasts where it is matched between conditions.
++The submodels set further boundaries. The GE-to-power conversion omits an explicit gas concentration gradient and supply limit, and the revegetation and refugium engines use direct GE-to-power equations, whereas the rainfall, brine, grazing and seismic engines use the shared diffusion function. The rainfall engine models the soil response to a prescribed pulse, and linking it to cloud seeding requires a model of the rainfall increment that seeding produces; its trajectory is sampled daily from day 1, so the reported minimum is a daily minimum. The virome and mobilome functions are anchored to baseline richness and use a Mantel correlation as a slope, and the ARG screening score awaits calibration against measured ARG, mobility, host and exposure endpoints. The Thermoplasmatota and Halobacteriota baselines of the scenarios are MAG phylum shares of the mapped reads. On average 52.4\% of the reads of a library remained unmapped to the MAG catalogue, and the 25 states without metagenomes carry compartment medians. The 16S phylum shares stored alongside them in the cube provide an independent check of each baseline. The read-to-guild pipeline overestimated GE by 1.5- to 1.8-fold on synthetic metagenomes at the 60\% identity floor used throughout the twin, and the bias cancels in contrasts where it is matched between conditions.
+ 
+ The validation design delimits the predictive claims. Spatial blocks test transfer to unsampled sites within the transect, and leave-one-campaign-out validation tests transfer across sampling years at the same sites. Because the 5,438 species-level MAG clusters and 16S ASV feature table were assembled across all five campaigns, the Trip 5 holdout is a retrospective temporal holdout at revisited sites rather than a pre-registered prospective forecast, and its within-site skill equals that of an environmental model without site history; pre-registered forecasts of future campaigns with training-only genome dereplication and combined site-and-campaign holdouts will test whether site history adds skill as the record lengthens. The proportion of variance explained for group 1l and total hydrogenase capacity (25 to 32\%) and the low accuracy for \cox{} limit quantitative use of individual predictions, and covariates such as grain size, organic carbon and fine-scale moisture records are the next additions. The Proposition 2 estimates are computed from overlapping paired samples, whose correlated errors a hierarchical model of the joint site-level contrasts would represent directly. The portfolio comparison scores six prescribed scenarios that run independently from the same baseline, with objectives that combine outcomes on different time horizons; shared state variables and conservation equations across engines, a no-activity control, and weight and candidate-set sensitivity analyses would turn it into a coupled decision analysis. Rainfall time series, gas-flux measurements and controlled planting, compaction and brine experiments at reserved sites would test the scenario predictions directly.
+ 
+@@ -348,11 +348,11 @@
+ 
+ The state cube assembles every observation layer that EQ-BioDT reads into a table of site-compartment states. The transect comprises \nPrimary{} primary sites (S01--S60) between Wadi ad-Dawasir and the Umm as-Samim sabkha, sampled during five field campaigns (Trips 1--5, March 2023 to October 2025), and \nAux{} auxiliary sites: a hydrocarbon spill, a hot spring, two groundwater wells, a camel grazing locus, a plant gradient, an interdune waypoint, two road verges and a campground (four of which resolve Trip 1 numeric alias labels 61--64 to canonical site IRIs RAK\_1000067 to RAK\_1000070 via \texttt{site\_aliases.tsv}). Each site is identified by an IRI in the Rub' al-Khali knowledge base (RAK\_1000001 to RAK\_1000060 for the primary sites). For each primary site we took the best-matching mean annual precipitation estimate of the companion climate analysis, ERA5 mean annual precipitation and temperature \cite{hersbach2020era5}, and elevation; each auxiliary site has its own coordinates and inherits the climate of the nearest primary site. We indexed every site to H3 hexagonal cells at resolutions 5 and 6 (h3 v4.5.0) and to its 0.25$^{\circ}$ ERA5 cell, and assigned it to one of four transect zones: the western plateau (west of 48.0$^{\circ}$E), the central hyperarid erg (48.0--52.8$^{\circ}$E), the eastern sabkha frontier (east of 52.8$^{\circ}$E) and the Umm as-Samim sabkha (Sites 59 and 60). The site table, the climate ranges reported in Results and the figure legends are generated from the same release of the cube.
+ 
+-At each primary site, states are defined for the surface (0--2 cm), the shallow subsurface (5--10 cm) and root-adjacent soil. Compartment labels of all input tables were mapped to these three compartments with a fixed vocabulary in which the metadata labels surface, deep and PlantRoot (with their variants) map to surface, subsurface and root-adjacent; any unmapped label of a metagenome stops the build. We transformed the X-ray fluorescence concentrations of 11 core elements (Al, Ca, Cl, Fe, K, Mg, Na, P, S, Si and Ti) to centred log-ratios, replacing missing and nonpositive values by $10^{-4}$, and defined the evaporite index of a state as the mean centred log-ratio of Ca, Mg, Na, S and Cl minus that of Si. We averaged the \nPH{} admitted CaCl$_2$ pH measurements per state and took 16S rRNA Shannon diversity $H'$ from the amplicon profiles. From the \nWGS{} shotgun metagenomes we averaged, per state, the GE of the \hl, \hh, \hta{} and \cox{} guilds estimated by the companion read-to-guild pipeline at a 60\% identity floor, the viral and plasmid richness and abundance of the companion mobilome catalogue, and the DNA concentration recorded in the specimen ledger. Before imputation we recorded for every state whether pH, metagenomes and amplicon profiles were observed, and the cube keeps the unimputed values in separate columns. Missing pH values, DNA concentrations and guild, mobilome and MAG phylum values were then replaced in the working columns by the median of the same compartment across states; these imputed values serve only as baselines for scenario simulations and are excluded from every scored evaluation.
++At each primary site, states are defined for the surface (0--2 cm), the shallow subsurface (5--10 cm) and root-adjacent soil. Compartment labels of all input tables were mapped to these three compartments with a fixed vocabulary in which the metadata labels surface, deep and PlantRoot (with their variants) map to surface, subsurface and root-adjacent; any unmapped label of a metagenome stops the build. We transformed the X-ray fluorescence concentrations of 11 core elements (Al, Ca, Cl, Fe, K, Mg, Na, P, S, Si and Ti) to centred log-ratios, replacing missing and nonpositive values by $10^{-4}$, and defined the evaporite index of a state as the mean centred log-ratio of Ca, Mg, Na, S and Cl minus that of Si. We averaged the \nPH{} admitted CaCl$_2$ pH measurements per state and took 16S rRNA Shannon diversity $H'$ from the amplicon profiles. From the \nWGS{} shotgun metagenomes we averaged, per state, the GE of the \hl, \hh, \hta{} and \cox{} guilds estimated by the companion read-to-guild pipeline at a 60\% identity floor, the viral and plasmid richness and abundance of the companion mobilome catalogue, and the DNA concentration recorded in the specimen ledger. Before imputation we recorded for every state whether pH, metagenomes and amplicon profiles were observed, and the cube keeps the unimputed values in separate columns. Missing pH values, DNA concentrations and guild, mobilome and MAG phylum values were then replaced in the working columns by the median of the same compartment across states; observed targets are used for scoring. The sample-level predictive panel also inherits state-level pH and DNA summaries, including values already imputed across the cube. Subsequent training-fold imputation therefore applies to the missing values that remain after this join.
+ 
+ The causal layer reads relative abundances of Actinomycetota, Thermoplasmatota and Halobacteriota for every state, and the cube stores two phylum profiles for each. The MAG phylum shares come from CoverM read mapping of 573 shotgun libraries against the 5,438 dereplicated metagenome-assembled genome (MAG) representatives of the transect. For each library, we summed the mapped-read percentages of the representatives assigned to each GTDB phylum and divided them by the total mapped percentage, so that the shares describe the mapped fraction; the unmapped fraction averaged 52.4\% of reads per library (median 51.5\%, range 7.3 to 100\%). The 16S phylum shares come from the amplicon feature table of 1,271 sequenced profiles, of which 1,237 passed quality control across all sites and 1,227 came from the 60 primary sites (372 surface, 381 subsurface and 474 root-adjacent, resolved via \texttt{profile\_extraction\_join\_audit.tsv}); we summed the reads of the amplicon sequence variants assigned to each phylum, divided them by the total reads of the profile, and averaged the profiles of each state. The working phylum columns that the causal layer reads are the state means of the MAG phylum shares, with compartment medians for the 25 states without metagenomes, and the 16S phylum columns are stored alongside them for all 180 states. The constitutive layer assigns the remaining relative abundance to all other prokaryotes.
+ 
+-For validation, we assembled a sample-level panel of the \nWGS{} metagenomes. Each metagenome was joined to its guild GE at a 60\% identity floor, its viral and plasmid richness, the coordinates and climate of its site, campaign-specific remote-sensing and weather covariates of its site visit (NDVI and EVI over the preceding 60 days, SMAP soil moisture over the preceding 30 days, and ERA5 and NASA POWER precipitation over the 7, 14, 30, 90 and 365 days preceding the exact field collection date from \texttt{environmental\_measurements\_curated.tsv}, correcting the legacy 19-day Trip 4 date shift in \texttt{env\_site\_trip.tsv}), and the geochemistry, pH, Shannon diversity and DNA concentration of its state. Every metagenome has site coordinates, including those of the auxiliary sites, and the panel spans \nWGSsites{} sites. Covariates kept their missing values in the panel and were imputed inside each training fold. Guild targets were observed for \nGuildWGS{} metagenomes and both mobilome targets for \nMobWGS{}; metagenomes with a missing target were excluded from training and scoring for that target. We modelled guild abundances as $\log_2(\mathrm{GE}+0.01)$ and mobilome richness as $\log(1+\text{richness})$, and computed total [NiFe]-hydrogenase GE as the sum of the three subgroup GE truncated at zero. Figure~\ref{fig:cube} uses the same pseudocount of 0.01. To interpolate climate between sites, we built a 0.25$^{\circ}$ grid from 19.0 to 21.5$^{\circ}$N and from 45.25 to 55.25$^{\circ}$E, retained the \nCells{} cells within 85 km of a primary site, and assigned each cell the mean annual precipitation, mean annual temperature and elevation of the primary sites averaged with weights $1/(d^2+0.02)$, where $d$ is the distance in degrees. A cell was marked as within the empirical domain of support when it lay within $0.40^{\circ}$ ($\approx 45$ km) of a primary site and inside the observed primary-site ranges of mean annual precipitation and temperature (128 cells), and was otherwise marked for abstention (120 cells). Supported cells on the Umm as-Samim sabkha margin received P4 (6 cells, 4,320 km$^2$), and the remaining 122 supported aeolian corridor cells received P3 (87,840 km$^2$).
++For validation, we assembled a sample-level panel of the \nWGS{} metagenomes. Each metagenome was joined to its guild GE at a 60\% identity floor, its viral and plasmid richness, the coordinates and climate of its site, campaign-specific remote-sensing and weather covariates of its site visit (NDVI and EVI over the preceding 60 days, SMAP soil moisture over the preceding 30 days, and ERA5 and NASA POWER precipitation over the 7, 14, 30, 90 and 365 days preceding the exact field collection date from \texttt{environmental\_measurements\_curated.tsv}, correcting the legacy 19-day Trip 4 date shift in \texttt{env\_site\_trip.tsv}), and the geochemistry, pH, Shannon diversity and DNA concentration of its state. Every metagenome has site coordinates, including those of the auxiliary sites, and the panel spans \nWGSsites{} sites. Remaining missing covariates were imputed inside each training fold. State-level summaries pool the available campaigns, so the retrospective temporal evaluation conditions on some covariates assembled using all campaigns. Guild targets were observed for \nGuildWGS{} metagenomes and both mobilome targets for \nMobWGS{}; metagenomes with a missing target were excluded from training and scoring for that target. We modelled guild abundances as $\log_2(\mathrm{GE}+0.01)$ and mobilome richness as $\log(1+\text{richness})$, and computed total [NiFe]-hydrogenase GE as the sum of the three subgroup GE truncated at zero. Figure~\ref{fig:cube} uses the same pseudocount of 0.01. To interpolate climate between sites, we built a 0.25$^{\circ}$ grid from 19.0 to 21.5$^{\circ}$N and from 45.25 to 55.25$^{\circ}$E, retained the \nCells{} cells within 85 km of a primary site, and assigned each cell the mean annual precipitation, mean annual temperature and elevation of the primary sites averaged with weights $1/(d^2+0.02)$, where $d$ is the distance in degrees. A cell was marked as within the empirical domain of support when it lay within 45 km under the approximation $111\sqrt{\Delta\mathrm{lat}^2+\Delta\mathrm{lon}^2}$ km of a primary site and inside the observed aeolian-site ranges of mean annual precipitation and elevation (128 cells), and was otherwise marked for abstention (120 cells). Supported cells on the Umm as-Samim sabkha margin received P4 (6 cells, 4,320 km$^2$), and the remaining 122 supported aeolian corridor cells received P3 (87,840 km$^2$).
+ 
+ We published the state cube in two biodiversity data standards (Supplementary Note 3). The Darwin Core Archive \cite{wieczorek2012dwc} has an Event core in which each state is an event with its site as parent event identifier, the site IRI as location identifier, ENVO habitat classes \cite{buttigieg2016envo} and the compartment class of \texttt{rubalkhali.owl} in the sampling protocol field. Its Occurrence extension records the three phyla and the \hl{} and \cox{} guilds of each of the 155 events with metagenomes, from unimputed values only, and its ExtendedMeasurementOrFact extension records the 11 core elements and vanadium, pH, Shannon diversity and mean annual precipitation, with measurement types, analyte identifiers and units linked to \texttt{rubalkhali.owl}, ChEBI \cite{hastings2016chebi} and the Units of Measurement Ontology. The B-Cubed occurrence cube \cite{oldoni2020occurrence} has spatial (H3 resolutions 5 and 6 and ERA5 cell), temporal (campaign period), compartment and taxon or guild dimensions, carries the number of metagenomes of each state as occurrence count, the relative abundance, GE or viral richness, Shannon diversity and Hill diversity of order 1, and is described by a Frictionless data package.
+ 
+@@ -360,9 +360,13 @@
+ 
+ EQ-BioDT separates two kinds of relations among the variables of a state. We write a state as a vector $y \in \mathbb{R}^p$ of leaf and aggregate variables. Leaf variables are the quantities that interventions change directly: the relative abundances of Actinomycetota, Thermoplasmatota, Halobacteriota and all other prokaryotes; the GE of the \hl, \hh, \hta{} and \cox{} guilds; $\Htwo$ and CO oxidation power; and the intact-cell and relic fractions of soil DNA. Aggregate variables are total prokaryotic relative abundance, the GE sum of the three measured hydrogenase subgroups, total trace-gas scavenger GE, total trace-gas oxidation power, and the total DNA fraction. The mechanistic layer $\Mcaus$ consists of the structural equations, defined by the submodels and scenario engines below, that compute leaf variables from intervention settings, the baseline state and fixed parameters. The constitutive layer $\Phic$ computes aggregate variables from leaf variables according to the ontology $\Tont$.
+ 
++We use \emph{ontological-causal reasoning} for the composition of two operations. Ontological reasoning translates explicitly asserted named-class subsumptions and exhaustive partitions into constraints on additive measurements and derives their aggregates. The compiler reads this restricted OWL/XML fragment; the evaluated constraint set consists of the asserted axioms and their numerical consequences. Causal reasoning evaluates the consequences of changing a management input in the prescribed structural response functions while keeping their other coefficients fixed. For example, water changes pore moisture and gas transport through a hypothesized mechanism; summing hydrogenase subgroup GE into total hydrogenase GE is a constitutive relation. The ontology supplies the latter relation, while causal direction and effect size enter through the structural functions.
++
++A causal reading of the scenarios assumes well-defined intervention doses, invariant response functions, transportability of the source contrasts, and adequate representation of the environmental drivers of each response. The paired habitat contrasts are observational calibrations, and each module is deterministic conditional on its baseline and parameters. Between-cell dispersal, interference, water redistribution and feedback between independently run intervention modules remain outside this model. The fitted ridge coefficients describe observational conditional means. Supplementary Note~4 states the assumptions of each layer, the omitted couplings and the distinction between measured quantities, calibration and scenario parameters.
++
+ Each axiom of $\Tont$ that relates two measured classes corresponds to a linear constraint on $y$, under the assumption that the measured quantity is nonnegative and additive over disjoint classes with a common denominator: gene copies per genome equivalent for guilds, fractions of reads for phyla, contributed power for oxidation fluxes, and fractions of soil DNA for DNA pools. A subsumption axiom $C \sqsubseteq D$ then implies $y_C \le y_D$, and a disjoint-union axiom stating that $D$ is the disjoint union of $C_1, \dots, C_k$ implies $y_D = \sum_i y_{C_i}$. Every variable is nonnegative, and relative abundances and DNA fractions are at most 1. The constraint module \texttt{rubalkhali\_\allowbreak{}twin\_\allowbreak{}constraints.owl} (version 0.2.0) binds each of the $p = 17$ classes to a state variable with an annotation property, marks the relative abundances and DNA fractions with an upper-bound annotation, and states 13 \texttt{SubClassOf} axioms and five \texttt{DisjointUnion} axioms (prokaryotic phyla, hydrogenase subgroups, trace-gas scavengers, trace-gas oxidation power, and intact-cell and relic DNA) (Supplementary Note 1). EQ-BioDT compiles this module into constraints at run time (\texttt{OntologicalPolytope.\allowbreak{}from\_owl\_file}), recording the axiom behind each constraint: 13 subsumption constraints, five exhaustive partitions and eight unit upper bounds. Together they define the closed convex polyhedron $\CT = \{y : Ay \le b,\ Ey = 0\}$, where $A$, $b$ and $E$ collect the inequality and equality constraints; GE and power have no upper bound, so $\CT$ is unbounded.
+ 
+-$\Phic$ is applied in two steps. States that are empty or contain any missing or nonfinite coordinate are rejected with an exception before preprocessing or projection. A preprocessing step truncates leaf variables at zero, rescales the three named phyla proportionally when their sum exceeds 0.96, assigns the remainder to other prokaryotes so that the phylum total equals 1, sums subgroups into aggregates, and clips the intact-cell DNA fraction to $[0.01, 0.99]$, with the relic fraction as its complement and the DNA total equal to 1. The projection step then computes the Euclidean projection $\PiC(y) = \arg\min_{z \in \CT} \tfrac{1}{2}\lVert z - y \rVert_2^2$ of the preprocessed state by sequential least-squares quadratic programming in SciPy \cite{virtanen2020scipy} with tolerance $10^{-10}$ and at most 300 iterations, starting from the nonnegative part of $y$, and records solver convergence status. After optimization, the engine checks every constraint at a tolerance of $10^{-5}$; if the solver fails or leaves a residual violation, a fallback rescales children to the upper bound of their parent and recomputes each exhaustive parent as the sum of its children, which returns a feasible state. Theorem 2 applies to the projection step. Shannon diversity passes through unchanged, and Hill diversity of order 1 is $\exp(H')$. We measured consistency by the ontological consistency score (OCS), the fraction of states that satisfy every constraint within the tolerance, with any nonfinite coordinate counted as a violation, and by the constraint violation magnitude (CVM), the sum of the negative parts and absolute partition residuals of a state.
++$\Phic$ is applied in two steps. Empty states and supplied nonfinite numeric values are rejected. Missing leaf values receive prescribed defaults during preprocessing; direct projection fills absent coordinates with zero. These completions are modelling assumptions, and completeness of a scientific input must be checked separately. A preprocessing step truncates leaf variables at zero, rescales the three named phyla proportionally when their sum exceeds 0.96, assigns the remainder to other prokaryotes so that the phylum total equals 1, sums subgroups into aggregates, and clips the intact-cell DNA fraction to $[0.01, 0.99]$, with the relic fraction as its complement and the DNA total equal to 1. The projection step then computes the Euclidean projection $\PiC(y) = \arg\min_{z \in \CT} \tfrac{1}{2}\lVert z - y \rVert_2^2$ of the preprocessed state by sequential least-squares quadratic programming in SciPy \cite{virtanen2020scipy} with tolerance $10^{-10}$ and at most 300 iterations, starting from the nonnegative part of $y$, and records solver convergence status. After optimization, the engine checks every constraint at a tolerance of $10^{-5}$; on solver failure the implementation first clips the input, and if residual violations remain it rescales partition children and recomputes their parents. This repair has a separate fallback flag. Theorem 2 applies to an optimal metric projection; its guarantee requires solver convergence and feasibility. The full 17-coordinate Euclidean objective uses the numerical scales of fractions, GE and power, whereas the six-coordinate validation uses a common GE scale. Shannon diversity passes through unchanged, and Hill diversity of order 1 is $\exp(H')$. We measured consistency by the ontological consistency score (OCS), the fraction of states that satisfy every constraint within the tolerance, with any nonfinite coordinate counted as a violation, and by the constraint violation magnitude (CVM), the sum of the negative parts and absolute partition residuals of a state.
+ 
+ Two further results concern interventions on coarse classes (Supplementary Note 1). When an intervention fixes a parent quantity $c$ and leaves its allocation among leaf subclasses with response sensitivities $\beta_i$ open, apart from minimum shares $m_i$, Proposition 1 bounds the response of the linear allocation model $\Delta = \sum_i \beta_i s_i c$ by $L(c) = c\,[\sum_i m_i\beta_i + (1-\sum_i m_i)\min_i \beta_i]$ and $U(c) = c\,[\sum_i m_i\beta_i + (1-\sum_i m_i)\max_i \beta_i]$. These are identification bounds of the linear surrogate conditional on its coefficients. The engine rejects negative minimum shares and minimum shares that sum to more than 1, and returns a zero interval for a zero parent quantity. For rainfall, the subclasses are stratiform drizzle ($\beta = 0.032$ per mm, $m = 0.25$) and convective downpour ($\beta = 0.011$ per mm, $m = 0.15$), assumed values. The rainfall engine additionally propagates the two delivery modes through the nonlinear moisture model as infiltration efficiencies of 0.55 (downpour) and 0.92 (drizzle) and reports the range of the resulting Shannon responses and minimum $\Htwo$ oxidation powers. For seismic surveys the parent quantity is the line density in km km$^{-2}$.
+ 
+@@ -370,17 +374,17 @@
+ 
+ \subsection{Moisture-pulse diffusion, flux balance and virome-mobilome models}
+ 
+-Three submodels compute the leaf variables that the scenario engines pass to $\Phic$; Suppl. Table~S7 lists the provenance and status of their coefficients. The moisture-pulse model follows a 0.10 m soil column with total porosity $\varepsilon = 0.40$ and baseline volumetric water content $\theta_0 = 0.018$ over 14 daily steps. A pulse of $P$ mm with infiltration efficiency $e$ (default 0.78) delivers $P_e = eP$ mm and raises water content by $\Delta\theta = \min(10^{-3}P_e/0.10,\ \varepsilon - \theta_0 - 0.005)$, which decays as $\theta(t) = \theta_0 + \Delta\theta \exp[-k(t-0.5)]$ for $t \ge 1$ day, with $k = 0.34\exp[-0.12\max(0, E)]$ d$^{-1}$ for evaporite index $E$. Community responses follow the distributed-lag kernel $h(t) = (t/t_p)\exp(1 - t/t_p)$ with peak $t_p = 2.5$ days, inside the 1--4 day resuscitation window of desert soils \cite{jordaan2020gobi,imminger2024resuscitation}. Shannon diversity rises by $0.31\ln(1+P_e/2.2)\,h(t)$, minus a salt-crust penalty when $E > 0.3$ and $P_e > 12$ mm. The intact-cell DNA fraction rises by $0.24\ln(1+P_e/3)\,h(t)$ and declines after day 4 through a desiccation-lysis term that returns DNA to the relic pool; this two-pool model prescribes the intact-cell fraction and assigns its complement to relic DNA. Opportunistic heterotrophs dilute \hl{} GE by the factor $[1 + 0.22\ln(1+P_e/4)\,h(t)]^{-1}$ and \cox{} GE by 0.3 plus 0.7 times that factor. The model reports the peak Shannon change, the daily minimum of $\Htwo$ oxidation power and its 14-day integral (trapezoidal rule over daily values) in J m$^{-3}$.
+-
+-Trace-gas oxidation power couples these GE to gas transport. Air-filled porosity is $\varepsilon_a = \varepsilon - \theta$, and the Millington--Quirk factor $\varepsilon_a^{10/3}/\varepsilon^2$ \cite{millington1961permeability}, divided by its value at the fixed uncompacted reference state ($\varepsilon = 0.40$, $\theta = \theta_0$), gives the relative gas diffusivity $D_{\mathrm{rel}}$; compaction therefore lowers $D_{\mathrm{rel}}$ at every water content. $\Htwo$ oxidation power is $29.8\,\mathrm{GE}_{1l}\,D_{\mathrm{rel}}\,g\,Q$ and CO oxidation power is $1.95\,\mathrm{GE}_{\mathrm{cox}}\,D_{\mathrm{rel}}\,g\,Q$, both in $\uWm$, with moisture gate $g = 0.75 + 0.65\sin(\pi\theta/0.40)$, referenced to the uncompacted pore capacity, and temperature factor $Q = 1.35^{(T-30)/10}$ for soil temperature $T$ in $^{\circ}$C. The two coefficients scale GE to the thermodynamic budget of the companion trace-gas analysis for atmospheric $\Htwo$ at 0.53 ppmv and CO at 0.10 ppmv. The revegetation, brine and refugium engines compute $\Htwo$ power directly as $29.8\,\mathrm{GE}_{1l} + 8.5(\mathrm{GE}_{1h} + \mathrm{GE}_{2a})$.
++Three submodels compute the leaf variables that the scenario engines pass to $\Phic$; Suppl. Table~S7 lists the provenance and status of their coefficients. The moisture-pulse model follows a 0.10 m soil column with total porosity $\varepsilon = 0.40$ and baseline volumetric water content $\theta_0 = 0.018$ over 14 daily steps. A pulse of $P$ mm with infiltration efficiency $e$ (default 0.78) delivers $P_e = eP$ mm and raises water content by $\Delta\theta = \min(10^{-3}P_e/0.10,\ \varepsilon - \theta_0 - 0.005)$, which decays as $\theta(t) = \theta_0 + \Delta\theta \exp[-k(t-0.5)]$ for $t \ge 1$ day, with $k = 0.34\exp[-0.12\max(0, E)]$ d$^{-1}$ for evaporite index $E$. Community responses follow the distributed-lag kernel $h(t) = (t/t_p)\exp(1 - t/t_p)$ with an assumed diversity-response peak $t_p = 2.5$ days. Desert-soil studies support rapid activation after wetting, including resuscitation within minutes, but do not establish this diversity-response kernel or its coefficients \cite{jordaan2020gobi,imminger2024resuscitation}. Shannon diversity rises by $0.31\ln(1+P_e/2.2)\,h(t)$, minus a salt-crust penalty when $E > 0.3$ and $P_e > 12$ mm. The intact-cell DNA fraction rises by $0.24\ln(1+P_e/3)\,h(t)$ and declines after day 4 through a desiccation-lysis term that returns DNA to the relic pool; this two-pool model prescribes the intact-cell fraction and assigns its complement to relic DNA. Opportunistic heterotrophs dilute \hl{} GE by the factor $[1 + 0.22\ln(1+P_e/4)\,h(t)]^{-1}$ and \cox{} GE by 0.3 plus 0.7 times that factor. The model reports the peak Shannon change, the daily minimum of $\Htwo$ oxidation power and its 14-day integral (trapezoidal rule over daily values) in J m$^{-3}$.
++
++Trace-gas oxidation power couples these GE to gas transport. Air-filled porosity is $\varepsilon_a = \varepsilon - \theta$, and the Millington--Quirk factor $\varepsilon_a^{10/3}/\varepsilon^2$ \cite{millington1961permeability}, divided by its value at the fixed uncompacted reference state ($\varepsilon = 0.40$, $\theta = \theta_0$), gives the relative gas diffusivity $D_{\mathrm{rel}}$; compaction therefore lowers $D_{\mathrm{rel}}$ at every water content. $\Htwo$ oxidation power is $29.8\,\mathrm{GE}_{1l}\,D_{\mathrm{rel}}\,g\,Q$ and CO oxidation power is $1.95\,\mathrm{GE}_{\mathrm{cox}}\,D_{\mathrm{rel}}\,g\,Q$, both in $\uWm$, with moisture gate $g = 0.75 + 0.65\sin(\pi\theta/0.40)$, referenced to the uncompacted pore capacity, and temperature factor $Q = 1.35^{(T-30)/10}$ for soil temperature $T$ in $^{\circ}$C. The two coefficients scale GE to the thermodynamic budget of the companion trace-gas analysis for atmospheric $\Htwo$ at 0.53 ppmv and CO at 0.10 ppmv. The revegetation and refugium engines compute $\Htwo$ power directly as $29.8\,\mathrm{GE}_{1l} + 8.5(\mathrm{GE}_{1h} + \mathrm{GE}_{2a})$.
+ 
+ The guild-level flux balance model is a reduced linear program \cite{orth2010fba} over ten nonnegative pathway fluxes: $\Htwo$ oxidation, CO oxidation, Calvin--Benson--Bassham (CBB) CO$_2$ fixation, archaeal 3-hydroxypropionate/4-hydroxybutyrate CO$_2$ fixation, heterotrophic growth on dissolved organic carbon ($v_{\mathrm{DOC}}$), N$_2$ fixation, nitrification, sulfur redox cycling ($v_{\mathrm{S}}$), choline and glycine betaine uptake, and maintenance ATP. Each engine supplies the uptake bounds for $\Htwo$, CO, organic carbon, inorganic nitrogen, sulfate and betaine. The constraints require ATP generation to cover ATP consumption, nitrogen from fixation and exogenous supply to cover a demand of 0.15 per unit of carbon assimilation, nitrification to stay within the available ammonium, sulfur redox flux to be supplied with reducing equivalents by electron donors ($v_{\mathrm{S}} \le 0.5\,v_{\Htwo} + 0.35\,v_{\mathrm{CO}} + 0.5\,v_{\mathrm{DOC}}$), and maintenance flux to reach the maintenance requirement. The maintenance requirement is $0.08 + 0.011(\mathrm{EC}-2)_+ m_{\mathrm{osm}} m_{\mathrm{bet}} + 0.028(T-38)_+^{1.25} m_{\mathrm{bet}}$, where EC is electrical conductivity in $\mScm$, $(x)_+ = \max(0, x)$, $m_{\mathrm{osm}} = 1 - 0.55\,d_{\mathrm{ect}}$ for the dose $d_{\mathrm{ect}}$ of the \textit{Sphingomonas} \textit{ect/kdp} plasmid, and $m_{\mathrm{bet}} = 1/(1 + 1.8\,u_{\mathrm{bet}})$ for betaine supply $u_{\mathrm{bet}}$.
+ 
+-The maintenance requirement is a hard feasibility threshold. When it exceeds the maximum attainable catabolic ATP generation, the linear program is infeasible; the model then sets all anabolic growth and carbon-fixation fluxes ($v_{\mathrm{CBB}}$, $v_{\mathrm{3HP}}$, $v_{\mathrm{DOC}}$, $v_{\mathrm{N_2}}$) to zero, assigns the maximum catabolic ATP yield from trace-gas, nitrification, sulfur redox and betaine fluxes ($1.4\,v_{\Htwo} + 0.9\,v_{\mathrm{CO}} + 0.5\,v_{\mathrm{nit}} + 0.8\,v_{\mathrm{S}} + 0.7\,v_{\mathrm{bet}}$) to maintenance so that all stoichiometric matrix inequalities ($A_{\mathrm{ub}}v \le b_{\mathrm{ub}}$) hold identically, reports both the native HiGHS solver status and the maintenance deficit, and classifies the community as in maintenance-deficit dormancy.
++The maintenance requirement is a hard feasibility threshold in the reduced resource-allocation model. Its inequalities encode selected energy and nitrogen budgets; a genome-resolved carbon and electron mass-balance network would require additional reactions and constraints. The implementation sends every unsuccessful LP termination to its dormancy fallback, so the native solver status must be inspected to separate infeasibility from numerical failure. When it exceeds the maximum attainable catabolic ATP generation, the linear program is infeasible; the model then sets all anabolic growth and carbon-fixation fluxes ($v_{\mathrm{CBB}}$, $v_{\mathrm{3HP}}$, $v_{\mathrm{DOC}}$, $v_{\mathrm{N_2}}$) to zero, assigns the maximum catabolic ATP yield from trace-gas, nitrification, sulfur redox and betaine fluxes ($1.4\,v_{\Htwo} + 0.9\,v_{\mathrm{CO}} + 0.5\,v_{\mathrm{nit}} + 0.8\,v_{\mathrm{S}} + 0.7\,v_{\mathrm{bet}}$) to maintenance so that the four resource inequalities hold, with the unmet maintenance inequality quantified as a deficit, reports both the native HiGHS solver status and the maintenance deficit, and classifies the community as in maintenance-deficit dormancy.
+ 
+ The \textit{rbcL-hyaB} plasmid dose $d_{\mathrm{pl}}$ raises the CBB capacity to $0.65 + 1.15\,d_{\mathrm{pl}}$ and the N$_2$ fixation capacity to $0.045 + 0.42\,d_{\mathrm{pl}}$, and sulfur redox capacity decays as $\exp[-(\mathrm{EC}-25)_+/85]$. We maximized a weighted sum of the fluxes, with weights 0.15, 0.10, 1.25, 1.35, 1.10, 0.90, 0.65, 0.80 and 0.50 for the first nine fluxes and $-0.05$ for maintenance, with the HiGHS solver \cite{huangfu2018highs} through SciPy, and recorded the solver status of every solution. Autotrophic carbon fixation is the sum of the two CO$_2$ fixation fluxes, and the uncharacterized (dark) proteome coding fraction is $0.534\exp(-1.45\,v_{\mathrm{DOC}})\,\{0.09 + 0.91\exp[-(\mathrm{EC}-25)_+/45]\}$, clipped to $[0.03, 0.65]$, where 0.534 is the uncharacterized fraction of predicted protein families in native desert soil in the companion proteome catalogue. Fluxes are in model units.
+ 
+-The virome-mobilome model scales the baseline viral and plasmid richness of a state and is anchored so that a null intervention returns the baseline exactly. Viral richness is multiplied by a host factor $\exp[0.254(H' - H'_0)]$, where $H'_0$ is the baseline Shannon diversity and 0.254 is the viral-prokaryotic Mantel correlation of the companion virome analysis used as an assumed slope, and by $1 + 0.55f + 0.15M$ for vegetation cover $f$ and manure load $M$. Plasmid richness is multiplied by the same host factor and by $1 + 0.65f + 0.48\,d_{\mathrm{inoc}} + 0.30M$, where $d_{\mathrm{inoc}}$ is the plasmid inoculation dose. The antibiotic-resistance-gene (ARG) screening score is an assumed index, $0.035 + 0.42M + 0.015\,d_{\mathrm{inoc}} - 0.01s$, clipped to $[0.01, 1]$, and the engines flag states with a score of at least 0.25.
++The virome-mobilome model uses prescribed response functions to scale the baseline viral and plasmid richness of a state and is anchored to baseline Shannon diversity, with richness floors of one viral and two plasmid taxa. A null intervention preserves baseline richness when the baseline is at or above these floors. Viral richness is multiplied by a host factor $\exp[0.254(H' - H'_0)]$, where $H'_0$ is the baseline Shannon diversity and 0.254 is the viral-prokaryotic Mantel correlation of the companion virome analysis used as an assumed slope, and by $1 + 0.55f + 0.15M$ for vegetation cover $f$ and manure load $M$. Plasmid richness is multiplied by the same host factor and by $1 + 0.65f + 0.48\,d_{\mathrm{inoc}} + 0.30M$, where $d_{\mathrm{inoc}}$ is the plasmid inoculation dose. The antibiotic-resistance-gene (ARG) screening score is an assumed index, $0.035 + 0.42M + 0.015\,d_{\mathrm{inoc}} - 0.01s$, clipped to $[0.01, 1]$, and the engines flag states with a score of at least 0.25.
+ 
+ \subsection{Mechanistic scenario engines and portfolio comparison}
+ 
+@@ -398,21 +402,26 @@
+ 
+ To assess the stability of the ranking, we drew $B = 200$ Monte Carlo perturbations (seed 42) of the four objective vectors of the six portfolios. The draws perturb the objective values from the single evaluation of each portfolio, and the noise scales are fixed values chosen to approximate the empirical standard errors of the companion contrasts (about 0.12 $\log_2$ units for the root-versus-bulk and 0.125 for the surface-versus-subsurface fold change, 0.20 for the DNA adjustment and 0.105 for the precipitation exposure) and a 6\% coefficient of variation of the maintenance and salinity responses. In each draw, every cost was multiplied by one plus a shock shared by all portfolios, drawn from a normal distribution with standard deviation 0.035, and a portfolio-specific normal deviation with standard deviation $\max(0.08, 0.055\,|\mathrm{cost}|)$ was added. For each draw we recomputed Pareto membership, the normalized costs and $U$, and we report for each portfolio the fraction of draws in which it was non-dominated, the fraction in which it had the highest $U$, the 2.5th and 97.5th percentiles of $U$, and the mean regret against the best portfolio of each draw.
+ 
+-\subsection{Dimensional carbon and greenhouse-gas budget and cross-desert validation}
+-
+-To express scenario and portfolio outcomes in physical mass units ($\mathrm{t\ \COtwo\ km^{-2}\ yr^{-1}}$ and $\mathrm{kt\ yr^{-1}}$), we coupled four carbon and greenhouse-gas pathways in \texttt{CarbonBudget\allowbreak{}Engine} (Suppl. Table~S7). For a state with $\Htwo$ oxidation power $P_{\Htwo}$ and CO oxidation power $P_{\mathrm{CO}}$ (in $\uWm$) over an active trace-gas horizon of depth $z_{\mathrm{act}} = 0.10\ \mathrm{m}$ and seconds per year $S_{\mathrm{yr}} = 3.15576 \times 10^7\ \mathrm{s\ yr^{-1}}$, thermodynamic oxidation is $n_{\Htwo,\mathrm{therm}} = P_{\Htwo}\,z_{\mathrm{act}}\,S_{\mathrm{yr}} / |\Delta G_{\Htwo}|$ and $n_{\mathrm{CO}} = P_{\mathrm{CO}}\,z_{\mathrm{act}}\,S_{\mathrm{yr}} / |\Delta G_{\mathrm{CO}}|$ ($\mathrm{mol\ m^{-2}\ yr^{-1}}$), where $|\Delta G_{\Htwo}| = 203,000\ \mathrm{J\ mol^{-1}}$ and $|\Delta G_{\mathrm{CO}}| = 240,000\ \mathrm{J\ mol^{-1}}$ are the thermodynamic free-energy yields of atmospheric $\Htwo$ (0.53 ppmv) and CO (0.10 ppmv) oxidation from the companion energetics analysis. While bare cell-specific scaling at $10^6\ \mathrm{cells\ gdw^{-1}}$ gives $0.45\ \mathrm{mg\ \Htwo\ m^{-2}\ yr^{-1}}$, coupling Millington--Quirk gas diffusion $D_{\mathrm{rel}}$ and the moisture gate $g$ to the empirical dryland deposition envelope ($12.5\ [5.0, 25.0]\ \mathrm{mg\ \Htwo\ m^{-2}\ yr^{-1}}$ \cite{bay2021trace,buzzard2022h2uptake}) yields $8.72\ \mathrm{mg\ \Htwo\ m^{-2}\ yr^{-1}}$ at the Site 30 hyperarid baseline. Under planted shrub cover $f \in [0, 0.85]$ with mosaic absolute \hl{} density multiplier $M_{\mathrm{abs}}(f, d_{\mathrm{PR}}, d_{\mathrm{pl}})$, areal $\Htwo$ oxidation scales by $M_{\mathrm{abs}}$.
+-
+-In the first pathway (direct microbial RuBisCO dark $\COtwo$ fixation), only the fraction of reducing equivalents routed to growth by CBB-encoding scavengers fixes $\COtwo$. From CoverM mapped reads across the 5,438 dereplicated MAGs and the companion CBB co-carriage catalogue (\texttt{rep\_cbb\_ko.tsv}), we computed for every state the community CBB mapped-read share across three screen stringencies (\texttt{rbcL} K01601 alone, \texttt{rbcL}+\texttt{prkB} K00855, and the complete three-gene \texttt{rbcL}+\texttt{rbcS}+\texttt{prkB} complement), the group 1l mapped-read share $s_{1l}$, and the conditional CBB co-carriage fraction among group 1l mapped reads $c_{\mathrm{CBB}|1l} = s_{1l\wedge\mathrm{CBB}} / s_{1l}$ (compartment means 0.3026 in surface, 0.3767 in subsurface and 0.3197 in root-adjacent soil under the inclusive screen, and 0.2061, 0.2495 and 0.2036 under the strict three-gene screen; states with $s_{1l} = 0$ retain $c_{\mathrm{CBB}|1l} = 0$). With baseline maintenance allocation $f_{\mathrm{maint}} = 0.88$ (anabolic allocation $f_{\mathrm{anab}} = 0.12$ at 18\% ATP energy conservation efficiency), a stoichiometric requirement of $8\ \mathrm{mol\ \Htwo}$ per $\mathrm{mol\ \COtwo}$ fixed via the CBB cycle ($2.0\ \mathrm{mol\ NADH}$ and $3.0\ \mathrm{mol\ ATP}$ per $\mathrm{mol\ \COtwo}$), and molecular mass $M_{\COtwo} = 44.01\ \mathrm{g\ mol^{-1}}$, annual direct microbial $\COtwo$ fixation is
++\subsection{Conditional carbon and greenhouse-gas accounting}
++
++The carbon model combines gene-capacity proxies with prescribed annual uptake references, vegetation production and carbonate accumulation. All rates below are conditional on the response functions and parameter bounds in Suppl. Table~S6c and Supplementary Note~4. For relative diffusivity $D$ and moisture gate $g$ defined above, the carbon engine computes $P_H=[29.8\,\mathrm{GE}_{1l}+8.5(\mathrm{GE}_{1h}+\mathrm{GE}_{2a})]Dg$ and $P_C=1.95\,\mathrm{GE}_{\mathrm{cox}}Dg$. It uses baseline water content 0.018 unless supplied otherwise and omits the temperature multiplier of the daily diffusion model. With mosaic biomass multiplier $B$, let $b=\max[0.2,\min(2.5,B^{0.35})]$. Annual uptake is $U_H=12.5(P_H/28)b$ mg $\Htwo$ m$^{-2}$ yr$^{-1}$ and $U_C=50(P_C/1.95)b$ mg CO m$^{-2}$ yr$^{-1}$. Low and high references are 5 and 25 for $\Htwo$, and 20 and 100 for CO. These are prescribed deposition-scale calibrations. A separate diagnostic converts power to molar uptake as $n_{H,\mathrm{therm}}=10^{-6}P_H(0.10)(31{,}557{,}600)/203{,}000$ mol m$^{-2}$ yr$^{-1}$; the factor $10^{-6}$ converts microwatts to watts.
++
++The genomic allocation uses three distinct marker screens: K01601 (\texttt{rbcL}), K01601+K00855 (\texttt{rbcL+prk}), and K01601+K01602+K00855 (\texttt{rbcL+rbcS+prk}). These are annotation screens for potential pathway carriage. The default carbon calculation uses the conditional mapped-read share $c=s_{1l\wedge rbcL}/s_{1l}$, clipped to $[0,1]$, with $c=0$ when $s_{1l}\le10^{-9}$. A parallel estimate uses the three-marker share. For shrub cover $f$ and plasmid dose $d$, the supplied carbon-allocation multiplier is $m=1+0.65df$. The effective share is $c_e=\min[0.85,c(1+0.65d\max(0.15,f))m]$. Thus the implementation applies plasmid dose through both the supplied multiplier and an internal allocation term. Direct microbial fixation is
+ \[
+-F_{\mathrm{RuBisCO}} = M_{\COtwo}\Bigl(\frac{n_{\Htwo}}{8} + \frac{n_{\mathrm{CO}}}{8.5}\Bigr)\,f_{\mathrm{anab}}\,c_{\mathrm{CBB}|1l}\,\phi_{\mathrm{FBA}}\,\psi_{\mathrm{pl}},
++ F_{\mathrm{mic}}=0.04401\,\frac{U_H/2.016+0.70U_C/28.01}{8}\,a\,c_e
++ \quad\mathrm{t\ CO_2\ km^{-2}\ yr^{-1}},
+ \]
+-where $\phi_{\mathrm{FBA}} = v_{\mathrm{C,aut}} / v_{\mathrm{C,aut,0}}$ is the autotrophic carbon-fixation ratio solved directly from the reduced HiGHS flux balance model ($\phi_{\mathrm{FBA}} = 0$ under osmotic maintenance-deficit dormancy) and $\psi_{\mathrm{pl}} = 1 + 0.45\,f\,d_{\mathrm{pl}}$ represents augmentation by the Site 60 \textit{rbcL-hyaB} plasmid in the planted rhizosphere. Uncertainty bounds propagate low ($f_{\mathrm{anab}} = 0.04$, $c_{\mathrm{CBB}|1l} = 0.181$ across all 558 group 1l MAGs) and high ($f_{\mathrm{anab}} = 0.25$, $c_{\mathrm{CBB}|1l} = 0.50$) parameter limits. To compare model rates with laboratory $^{14}\COtwo$ tracer microcosms of wetted surface soils \cite{bay2021aridity,leung2025aridity} and cell-specific $\Htwo$ oxidation rates \cite{tribbia2026namib}, we evaluated both the 365-day dry-column average over $z_{\mathrm{act}} = 0.10\ \mathrm{m}$ at bulk density $\rho_b = 1.6 \times 10^6\ \mathrm{g\ m^{-3}}$ ($1.6 \times 10^5\ \mathrm{gdw\ m^{-2}}$) and the active rate during the $D_{\mathrm{wet}} = 15\ \mathrm{d\ yr^{-1}}$ hyperarid moisture window in the top $z_{\mathrm{wet}} = 0.02\ \mathrm{m}$ biocrust horizon ($3.2 \times 10^4\ \mathrm{gdw\ m^{-2}}$), and normalized $\Htwo$ oxidation by the hyperarid cell density $10^6\ \mathrm{cells\ gdw^{-1}}$ and the companion trace-gas guild fraction of 0.184.
+-
+-In the second pathway (indirect $\COtwoeq$ sink of soil $\Htwo$ oxidation), soil uptake of $n_{\Htwo}\,M_{\Htwo}$ ($\mathrm{g\ \Htwo\ m^{-2}\ yr^{-1}}$, $M_{\Htwo} = 2.016\ \mathrm{g\ mol^{-1}}$) removes an indirect greenhouse gas that otherwise competes for tropospheric $\mathrm{OH}^{\bullet}$, prolongs the lifetime of $\mathrm{CH}_4$, and increases stratospheric water vapour and tropospheric ozone \cite{ehhalt2009h2cycle,ocko2022hydrogen,paulot2024reanalysis}. We converted soil $\Htwo$ mass uptake to $\COtwoeq$ using the 100-year global warming potential $\mathrm{GWP}_{100}(\Htwo) = 11.6\ \mathrm{g\ \COtwoeq\ (g\ \Htwo)^{-1}}$ \cite{warwick2023atmospheric,paulot2024reanalysis} (uncertainty bounds combining $\mathrm{GWP}_{100} \in [6.0, 16.0]$ with areal uptake scaling $[0.40, 2.00]$).
+-
+-In the third pathway (halophytic shrub and rhizosphere net primary production), above- and below-ground carbon fixation by \textit{Haloxylon persicum} and its rhizosphere microbiome scales with canopy cover $f$, a mean annual precipitation factor $\phi_{\mathrm{MAP}} = \mathrm{clip}(0.55 + 0.45\,\mathrm{MAP}/25,\ 0.45,\ 1.35)$, a PGPR and \textit{rbcL-hyaB} inoculation boost $1 + 0.25\,d_{\mathrm{PR}} + 0.15\,d_{\mathrm{pl}}$, and a calcium sulfate irrigation factor $\phi_{\mathrm{irr}}$ (1.12 in the Ca-SO$_4$ regime, 0.18 under Na-Cl brine collapse), with base rate $295.0\ \mathrm{t\ \COtwo\ km^{-2}\ yr^{-1}}$ at full cover (bounds $190.0$ to $420.0\ \mathrm{t\ \COtwo\ km^{-2}\ yr^{-1}}$ \cite{ma2021haloxylon}) and bare-crust residual fixation of $0.50\ \mathrm{t\ \COtwo\ km^{-2}\ yr^{-1}}\,\phi_{\mathrm{MAP}}\,\phi_{\mathrm{FBA}}$. In the fourth pathway (pedogenic $\CaCOthree$ precipitation), root- and microbe-respired $\COtwo$ reacts with $\mathrm{Ca}^{2+}$-rich aeolian dust and sabkha brines ($\mathrm{Ca}^{2+} + 2\,\mathrm{HCO}_3^- \to \CaCOthree\downarrow + \COtwo + \mathrm{H}_2\mathrm{O}$, binding one mole of atmospheric $\COtwo$ per mole of $\CaCOthree$ precipitated when $\mathrm{Ca}^{2+}$ derives from silicate or non-carbonate dust \cite{schlesinger1985caliche,ma2013inorganic}) at $[r_{\mathrm{bare}} + r_{\mathrm{rhiz}}\,f\,(1 + 0.25\,d_{\mathrm{PR}})]\,\phi_{\mathrm{Ca}}$, where $r_{\mathrm{bare}} = 0.55\ \mathrm{t\ \COtwo\ km^{-2}\ yr^{-1}}$ (bounds $0.275$ to $0.963$), $r_{\mathrm{rhiz}} = 2.80\ \mathrm{t\ \COtwo\ km^{-2}\ yr^{-1}}$, and $\phi_{\mathrm{Ca}} = \mathrm{clip}[1 + 0.18\max(0, E) + 0.15\max(0, q - 0.8),\ 0.75,\ 1.85]$. To separate persistent carbon sequestration from fast-cycling annual NPP and carbonate re-precipitation, we computed net persistent $\COtwo$ storage as $\eta_{\mathrm{SOC}}\,F_{\mathrm{NPP}} + f_{\mathrm{sil\text{-}Ca}}\,F_{\mathrm{CaCO_3}} + \eta_{\mathrm{mic}}\,F_{\mathrm{RuBisCO}}$, with soil organic carbon humification efficiency $\eta_{\mathrm{SOC}} = 0.15\ [0.10, 0.25]$, non-carbonate $\mathrm{Ca}^{2+}$ fraction $f_{\mathrm{sil\text{-}Ca}} = 0.50\ [0.25, 0.75]$, and microbial necromass stabilization $\eta_{\mathrm{mic}} = 0.25\ [0.15, 0.40]$.
+-
+-For regional upscaling, each of the 128 empirically supported $0.25^{\circ}$ corridor grid cells (mean cell area $720.0\ \mathrm{km}^2$ at $20.25^{\circ}\mathrm{N}$, total supported corridor area $92,160\ \mathrm{km}^2$) was evaluated at its interpolated climate and nearest observed primary-site state and assigned either its current baseline cover ($f_{\mathrm{shrub}} = 0.028$ in P4 cells and $0.004$ in P3 interdune cells), its spatially prescribed portfolio (122 P3 and 6 P4 cells), or the uniform portfolio setting P1--P6. The unmanaged reserve ($407,840\ \mathrm{km}^2$ in the $500,000\ \mathrm{km}^2$ sand-sea polygon and $557,840\ \mathrm{km}^2$ in the $650,000\ \mathrm{km}^2$ basin) was held at its unmanaged hyperarid baseline ($f_{\mathrm{shrub}} = 0.002$) across all scenarios so that management additionality ($\Delta$ vs.\ baseline) is restricted strictly to the supported corridor.
++where $a=0.12$ with low and high values 0.05 and 0.25. The LP supplies a Boolean maintenance-feasibility gate: infeasible states receive zero microbial fixation. The annual carbon allocation uses this gate and the prescribed multiplier $m$. Guild-specific gene carriage, expression and measured uptake would be needed to estimate the allocation empirically. The assay-scale diagnostic concentrates this annual fixation into an assumed 15-day active window and 0--2 cm soil layer of density $1.6\times10^6$ g m$^{-3}$; the annual diagnostic uses a 0--10 cm layer over 365 days. The cell-normalized diagnostic assumes $10^6$ cells per gram dry soil and guild fraction 0.184.
++
++For the indirect atmospheric contribution we compute $F_H=10^{-3}U_HG$, in t $\COtwoeq$ km$^{-2}$ yr$^{-1}$, with $G=11.6$ and sensitivity bounds 6 and 16. The point value is the multimodel hydrogen $\mathrm{GWP}_{100}$ estimate of Sand et al.\ \cite{sand2023hydrogen}; their reported uncertainty is $\pm2.8$ at one standard deviation. Applying an emissions-based GWP to an additional soil sink assumes the corresponding atmospheric response to marginal uptake. The selected low and high values are scenario bounds.
++
++Vegetation net primary production is $F_V=295f\,\phi_P(1+0.25d_{\mathrm{PR}}+0.15d)\phi_E$, with low and high coefficients 190 and 420 t $\COtwo$ km$^{-2}$ yr$^{-1}$ at full cover. Here $\phi_P=\mathrm{clip}[(\mathrm{MAP}/25)^{0.40},0.65,1.55]$, and $\phi_E=\exp[-\max(0,\mathrm{EC}-35)/60]$ when maintenance is feasible, or 0.05 otherwise. The reference production and its transfer to \textit{H. persicum} in this corridor are modelling assumptions informed by desert plantation studies \cite{ma2021haloxylon}. Baseline cover is inferred as $\mathrm{clip}\{0.5(\mathrm{NDVI}-0.075)/0.45+0.5[0.012+0.0009\max(0,\mathrm{MAP}-14)],0.005,0.08\}$, unless explicitly supplied. Canopy cover is capped at 0.85.
++
++Carbonate accumulation is $F_S=0.88\phi_{\mathrm{pH}}\phi_M[1+4.5f\{1+0.45\max(0,\min(2.5,q-0.5))\}]$, with low and high reference rates 0.44 and 1.54 t $\COtwo$ km$^{-2}$ yr$^{-1}$. The factors are $\phi_{\mathrm{pH}}=\mathrm{clip}[(\mathrm{pH}-7.1)/1.2,0.25,1.45]$ and $\phi_M=\mathrm{clip}[((\mathrm{Ca}+1.2\mathrm{Mg})/6)^{0.35},0.60,1.75]$, with Ca and Mg in XRF mass percent and lower floors of 0.1 and 0.05. These factors transfer a literature-informed accumulation scale \cite{schlesinger1985caliche} to the local geochemistry by assumption. The sum $F_{\mathrm{mic}}+F_V+F_S$ is a mixed annual production and mineral-accumulation index. The retained-carbon scenario is $0.25F_{\mathrm{mic}}+0.15F_V+0.50F_S$, with respective low/high retention fractions $[0.15,0.40]$, $[0.10,0.25]$ and $[0.25,0.75]$. These assumed fractions stand in for unresolved turnover and mineral-source processes. Establishment and operating emissions, water delivery, stock permanence and displacement of existing ecosystem fluxes require separate accounting for net atmospheric removal. Low and high totals combine parameter endpoints in the same direction.
++
++Regional accounting assigns each of the 128 supported cells a fixed area of 720 km$^2$, interpolated climate and the nearest primary site's surface state. Of these cells, 35 inherit surface guild values imputed at their assigned site. The P3/P4 atlas is a prescribed rule based on zone, climate and nearest site. For policies, the regional calculator combines canopy, inoculation, salinity and compaction terms; the rainfall pulse, wild-ungulate density, refugium integrity and hydrocarbon-remediation inputs have no direct path into this annual calculator. Its maintenance LP and canopy mixing are evaluated separately from the six site-scenario outputs. Outside the corridor, the mean budget of the 60 surface states at fixed cover 0.002 supplies an assumed unmanaged background. Holding this background fixed makes basin management differences equal corridor differences by construction.
++
++The seven literature comparisons are context checks of selected model quantities against configured intervals. Uptake and carbonate intervals also contribute to calibration. Assay duration, cell versus 16S-copy normalization, marker screening, mapped-read denominators, plantation species and stock versus flux endpoints differ among sources. Source-matched observations reserved from calibration are required for external process validation.
+ 
+ \subsection{Five-tier validation protocol}
+ 
+@@ -424,11 +433,11 @@
+ 
+ Tier 3 tests the constitutive layer on the six-variable trace-gas hierarchy of the three hydrogenase subgroups, their sum, form I CO dehydrogenase and total scavenger GE, for the \nGuildWGS{} metagenomes with observed guilds. Its constraints are linear on the GE scale, so we predicted and projected untransformed GE. Under the Tier 1 folds, the four leaf variables were predicted from nine covariates (three compartment indicators, ERA5 mean annual precipitation, mean annual temperature, elevation, evaporite index, pH and $\log(1+{}$DNA concentration$)$) with $\alpha = 8$, and the two aggregates from nine different covariates (three compartment indicators, best-matching mean annual precipitation, NDVI, SMAP soil moisture, 365-day precipitation and the Si and Ca log-ratios) with $\alpha = 1$, which reproduces the situation of separately developed predictors. We compiled the constraint set of these six variables from the OWL module, which gives five subsumption constraints, two exhaustive partitions and nonnegativity, projected each held-out prediction vector onto it, and computed OCS at a tolerance of $10^{-4}$, mean CVM, RMSE over all entries, over the leaves and over the aggregates, and the fraction of samples whose squared $L_2$ error after projection was at most the error before projection (tolerance $10^{-7}$) or strictly smaller. A site-clustered bootstrap (300 resamples, seed 42) gave the 95\% interval of the MSE reduction. Five reconciliation baselines used the same folds and base predictions. Bottom-up summation took the nonnegative parts of the leaf predictions as leaves and their sums as aggregates, and matched-feature regression fitted ridge regressions on the leaf covariates with $\alpha = 8$ for all six variables. The three covariance-weighted baselines reconcile the base prediction vector $\hat{y}$ with the summing matrix $S$, which maps the four leaves to the six variables, as $S(S^{\top}W^{-1}S)^{-1}S^{\top}W^{-1}\hat{y}$ \cite{wickramasuriya2019optimal}, with $W$ estimated in each training fold from the in-sample residuals of the base regressions. Diagonal WLS used the diagonal matrix of residual variances, and shrinkage-MinT the Ledoit--Wolf shrinkage of the residual covariance towards its diagonal \cite{ledoit2004well}, with shrinkage intensity clipped to $[0.05, 0.95]$. The nonnegative variants of diagonal WLS and shrinkage-MinT replaced the reconciled leaves of every vector with a negative leaf by the solution of the same weighted least-squares problem under nonnegativity of the leaves (L-BFGS-B in SciPy). Proposition 2 was evaluated on the sibling contrasts given above.
+ 
+-Tier 4 compares the scenario engines with natural experiments in the field. The empirical contrasts are the median $\log_2$ fold changes of \hl{} GE, with their 95\% confidence intervals, between root-adjacent and bulk subsurface soil over 106 paired visits at 47 sites and between surface and subsurface soil over 68 paired visits at 36 sites, as computed by the companion paired-visit analysis. For each root-versus-bulk site, we ran the revegetation engine from the subsurface state of the site with cover 0.85, RAK-PR dose 0.5 and plasmid dose 0, and computed $\log_2[(\mathrm{GE}_{\mathrm{root}} + 0.01)/(\mathrm{GE}_{\mathrm{base}} + 0.01)]$ for \hl{} and the $\log_2$ DNA biomass multiplier of the planted mosaic. For each surface-versus-subsurface site, we ran the refugium engine with an intact horizon at a skin temperature of $35\degC$ and with a fully exposed horizon at $58\degC$, and computed the $\log_2$ ratio of the projected \hl{} GE with the same pseudocount. We compared the medians of the simulated contrasts across sites with the empirical intervals. The revegetation comparison checks the calibration of coefficients fitted to the same pooled contrast, and the refugium comparison checks response functions whose thermal and refugium terms were set independently of the paired-visit analysis. We also computed the Spearman correlation between \hl{} GE and mean annual precipitation across the 51 subsurface states with observed metagenomes and compared it with the correlation of $-0.5119$ reported by the companion analysis; this check concerns the observed cube.
+-
+-Tier 5 tests the measured inputs and the metabolic component. We evaluated the read-to-guild pipeline on the synthetic metagenomes of the companion benchmark, whose guild compositions are known, using the full reference database and the 60\% identity floor, from the benchmark's summary tables. For each guild we computed Pearson and Spearman correlations between true and estimated GE on the log scale and the median $\log_2$ bias, and we compared true and estimated root-versus-bulk contrasts of \hl{} in eight synthetic pairs. We audited the flux balance model with four checks, each requiring an optimal solver status: zero biomass flux when every uptake bound is zero; zero biomass and zero sulfur redox flux when sulfate is supplied at bound 1 with all electron-donor bounds at zero; non-decreasing biomass flux over 25 $\Htwo$ uptake bounds from 0 to 2.5 at an inorganic nitrogen bound of 0.5; and a non-decreasing maintenance requirement over 25 conductivities from 2 to $220\ \mScm$, each at a tolerance of $10^{-7}$. Tier 5 also runs the factorial brine grid and records the maintenance feasibility of each of its 16 combinations. Finally, Tier 5 checks six internal invariants of the carbon budget (nonnegativity, positive baseline sequestration, zero microbial fixation under P6 dormancy, cover monotonicity, inoculation boost and nested uncertainty intervals) and compares seven model outputs against published empirical intervals from independent desert studies (Suppl. Table~S6).
+-
+-EQ-BioDT v0.2.0 is implemented in Python with NumPy, SciPy, pandas, scikit-learn and h3, with all dependency versions locked in the \texttt{uv.lock} file of the repository. For the 12 focal bacterial genera (seven hallmark desert genera and five root-adjacent indicator genera; Suppl. Table~S9), we fitted site-mean 16S rRNA centred log-ratio ridge regressions ($\alpha = 10$) separately in each compartment across the 60 primary sites using standardized mean annual temperature ($\mu = 27.648\degC$, $\sigma = 0.903\degC$), monthly precipitation ($\mathrm{MAP}/12$; $\mu = 2.044$ mm, $\sigma = 0.728$ mm) and XRF sulfur ($\mu = 0.144\%$, $\sigma = 0.562\%$), with 200 site-level bootstrap resamples (seed 42) and five contiguous longitude cross-validation blocks of 12 sites each. The interactive web application (\url{https://rubalkhali.science/twin}) serves these 12 genus models, the trace-gas and diversity predictors, the six scenario engines and the four-pathway carbon budget over the full Arabian Desert bounding box ($14$--$32^{\circ}$N, $36$--$60^{\circ}$E) at $0.10^{\circ}$, $0.05^{\circ}$ and $0.04^{\circ}$ resolutions, masking cells to the Arabian Desert ecoregion polygon, delineating the $\le 45$ km southern Rub' al-Khali empirical support envelope, and rendering site-level changes in a procedural Three.js WebGL scene. The repository tests check the state-cube dimensions and compartment coverage, rejection of empty or nonfinite states, feasibility after projection, satisfaction of all linear-programming matrix inequalities under maintenance-deficit dormancy, sulfate electron-donor closure, compaction monotonicity of the diffusion model, preservation of baseline richness under a null virome intervention, and strict RFC 8259 JSON serialization of the validation report. The validation suite writes the results of all five tiers to a JSON report and a summary table, and the \texttt{reproducibility/} package regenerates every number, table, figure and web bundle reported here from the repository-bundled data cubes and verifies 205 numerical assertions automatically.
++Tier 4 compares the scenario engines with paired observational comparisons in the field. The empirical contrasts are the median $\log_2$ fold changes of \hl{} GE, with their 95\% confidence intervals, between root-adjacent and bulk subsurface soil over 106 paired visits at 47 sites and between surface and subsurface soil over 68 paired visits at 36 sites, as computed by the companion paired-visit analysis. For each root-versus-bulk site, we ran the revegetation engine from the subsurface state of the site with cover 0.85, RAK-PR dose 0.5 and plasmid dose 0, and computed $\log_2[(\mathrm{GE}_{\mathrm{root}} + 0.01)/(\mathrm{GE}_{\mathrm{base}} + 0.01)]$ for \hl{} and the $\log_2$ DNA biomass multiplier of the planted mosaic. For each surface-versus-subsurface site, we ran the refugium engine with an intact horizon at a skin temperature of $35\degC$ and with a fully exposed horizon at $58\degC$, and computed the $\log_2$ ratio of the projected \hl{} GE with the same pseudocount. We compared the medians of the simulated contrasts across sites with the empirical intervals. The revegetation comparison checks the calibration of coefficients fitted to the same pooled contrast, and the refugium comparison checks response functions whose thermal and refugium terms were set independently of the paired-visit analysis. We also computed the Spearman correlation between \hl{} GE and mean annual precipitation across the 51 subsurface states with observed metagenomes and compared it with the correlation of $-0.5119$ reported by the companion analysis; this check concerns the observed cube.
++
++Tier 5 tests the measured inputs and the metabolic component. We evaluated the read-to-guild pipeline on the synthetic metagenomes of the companion benchmark, whose guild compositions are known, using the full reference database and the 60\% identity floor, from the benchmark's summary tables. For each guild we computed Pearson and Spearman correlations between true and estimated GE on the log scale and the median $\log_2$ bias, and we compared true and estimated root-versus-bulk contrasts of \hl{} in eight synthetic pairs. We audited the reduced LP with four behavioural checks: zero biomass flux when every uptake bound is zero; zero biomass and zero sulfur redox flux when sulfate is supplied at bound 1 with all electron-donor bounds at zero; non-decreasing biomass flux over 25 $\Htwo$ uptake bounds from 0 to 2.5 at an inorganic nitrogen bound of 0.5; and a non-decreasing maintenance requirement over 25 conductivities from 2 to $220\ \mScm$, each at a tolerance of $10^{-7}$. Tier 5 also runs the factorial brine grid and records the maintenance feasibility of each of its 16 combinations. Finally, Tier 5 checks six internal invariants of the carbon budget (nonnegativity, positive baseline sequestration, zero microbial fixation under P6 dormancy, cover monotonicity, inoculation boost and nested uncertainty intervals) and compares seven outputs with configured literature-context intervals, including intervals used in calibration (Suppl. Table~S6).
++
++EQ-BioDT v0.2.0 is implemented in Python with NumPy, SciPy, pandas, scikit-learn and h3, with all dependency versions locked in the \texttt{uv.lock} file of the repository. For the 12 focal bacterial genera (seven hallmark desert genera and five root-adjacent indicator genera; Suppl. Table~S9), we fitted site-mean 16S rRNA centred log-ratio ridge regressions ($\alpha = 10$) separately in each compartment across the 60 primary sites using standardized mean annual temperature ($\mu = 27.648\degC$, $\sigma = 0.903\degC$), monthly precipitation ($\mathrm{MAP}/12$; $\mu = 2.044$ mm, $\sigma = 0.728$ mm) and XRF sulfur ($\mu = 0.144\%$, $\sigma = 0.562\%$), with 200 site-level bootstrap resamples (seed 42) and five contiguous longitude cross-validation blocks of 12 sites each. The browser application uses separate statistical raster models, interpolated gene-capacity and power layers with prescribed adjustments, and an exported bundle of Python scenario results. Supplementary Note~4 describes the resulting boundaries between the browser visualizations and the evaluated engine. The repository tests check the state-cube dimensions and compartment coverage, rejection of empty or nonfinite states, feasibility after projection, satisfaction of all linear-programming matrix inequalities under maintenance-deficit dormancy, sulfate electron-donor closure, compaction monotonicity of the diffusion model, preservation of baseline richness under a null virome intervention, and strict RFC 8259 JSON serialization of the validation report. The validation suite writes the results of all five tiers to a JSON report and a summary table, and the \texttt{reproducibility/} package regenerates computational outputs from bundled state cubes and checks 205 selected numeric fixtures. The fixture checks compare executable outputs with constants; manuscript prose, equations and source-level data admission require separate review.
+ 
+ \section*{Data and Code Availability}
+ 
+--- before/supplementary.tex
++++ /home/leechuck/Public/software/empty-quarter-digital-twin/paper/supplementary.tex
+@@ -49,7 +49,7 @@
+ \renewcommand{\thesection}{Supplementary Note \arabic{section}}
+ \renewcommand{\thesubsection}{S\arabic{section}.\arabic{subsection}}
+ 
+-\title{Supplementary Information for: A causal-ontological biodiversity digital twin of the Rub' al-Khali desert predicts trace-gas scavenger capacity across sites and campaigns and quantifies chemosynthetic and rhizosphere trade-offs of land management}
++\title{Supplementary Information for: Ontological-causal reasoning for prediction and conditional management scenarios in a biodiversity digital twin of the Rub' al-Khali}
+ 
+ \input{authors.tex}
+ 
+@@ -372,7 +372,7 @@
+ 
+ \begin{table}[p]
+ \centering
+-\caption{{\footnotesize Empirical Calvin--Benson--Bassham (CBB) co-carriage in the Rub' al-Khali state cube, cross-desert plausibility comparisons and provenance of the EQ-BioDT carbon budget. (a) Mean CoverM mapped-read shares across the 155 observed metagenome states from the 5,438 dereplicated MAGs (\texttt{rep\_cbb\_ko.tsv}): community CBB shares across three screens ($s_{\mathrm{rbcL}}$, K01601; $s_{\mathrm{rbcL+prkB}}$, K01601+K00855; $s_{\mathrm{3gene}}$, K01601+K01602+K00855), group 1l carrier share ($s_{1l}$), and conditional CBB shares among group 1l reads ($c_{\mathrm{CBB}|1l}$ inclusive, $c_{\mathrm{3gene}|1l}$ strict). Across the 558 primary group 1l MAGs (597 inclusive), 101 (18.1\%) encode CBB genes, rising to 76/275 (27.6\%) in $\ge 90\%$ complete MAGs. (b) Plausibility comparison of seven EQ-BioDT outputs at Site 30 (and P2 for the revegetated corridor) against published desert ranges. (c) Provenance and bounds of carbon-budget parameters. In the 500,000 km$^2$ core sand-sea polygon ($92,160\ \mathrm{km}^2$ corridor + $407,840\ \mathrm{km}^2$ unmanaged reserve), gross $\COtwoeq$ binding (persistent $\COtwo$ storage) in kt $\mathrm{yr}^{-1}$ is 1,311.9 (289.8) at baseline, 5,704.4 (963.5) under the prescribed corridor atlas, 1,619.3 (337.1) under P1, 8,922.3 (1,456.0) under P2, 5,098.6 (870.4) under P3, 15,213.8 (2,422.7) under P4, 6,510.4 (1,086.0) under P5, and 632.5 (189.9) under P6.}}
++\caption{{\footnotesize Empirical Calvin--Benson--Bassham (CBB) co-carriage in the Rub' al-Khali state cube, cross-desert plausibility comparisons and provenance of the EQ-BioDT carbon budget. (a) Mean CoverM mapped-read shares across the 155 observed metagenome states from the 5,438 dereplicated MAGs (\texttt{rep\_cbb\_ko.tsv}): community CBB shares across three screens ($s_{\mathrm{rbcL}}$, K01601; $s_{\mathrm{rbcL+prkB}}$, K01601+K00855; $s_{\mathrm{3gene}}$, K01601+K01602+K00855), group 1l carrier share ($s_{1l}$), and conditional CBB shares among group 1l reads ($c_{\mathrm{CBB}|1l}$ inclusive, $c_{\mathrm{3gene}|1l}$ strict). Across the 558 primary group 1l MAGs (597 inclusive), 101 (18.1\%) encode CBB genes, rising to 76/275 (27.6\%) in $\ge 90\%$ complete MAGs. (b) Plausibility comparison of seven EQ-BioDT outputs at Site 30 (and P2 for the revegetated corridor) against published desert ranges. (c) Provenance and bounds of carbon-budget parameters. In the 500,000 km$^2$ core sand-sea polygon ($92,160\ \mathrm{km}^2$ corridor + $407,840\ \mathrm{km}^2$ unmanaged reserve), gross $\COtwoeq$ binding (assumed retained $\COtwo$) in kt $\mathrm{yr}^{-1}$ is 1,311.9 (289.8) at baseline, 5,704.4 (963.5) under the prescribed corridor atlas, 1,619.3 (337.1) under P1, 8,922.3 (1,456.0) under P2, 5,098.6 (870.4) under P3, 15,213.8 (2,422.7) under P4, 6,510.4 (1,086.0) under P5, and 632.5 (189.9) under P6.}}
+ \label{tab:crossdesert}
+ \scriptsize
+ \renewcommand{\arraystretch}{0.70}
+@@ -397,7 +397,7 @@
+ \toprule
+ Metric and unit & EQ-BioDT & Literature [range] & Desert benchmark & Source \\
+ \midrule
+-Community CBB (\texttt{rbcL}) share (fraction) & 0.2293 & 0.21 [0.17, 0.28] & Global 25-desert synthesis & Leung et al.\ \cite{leung2025aridity} \\
++Community \texttt{rbcL} mapped-read share (fraction) & 0.2293 & 0.21 [0.17, 0.28] & Global 25-desert synthesis & Leung et al.\ \cite{leung2025aridity} \\
+ Active wetted-horizon dark $\COtwo$ fixation (nmol $\COtwo$ $\mathrm{gdw}^{-1}$ $\mathrm{d}^{-1}$)$^{\mathrm{a}}$ & 0.0482 & 0.15 [0.01, 1.00] & Global desert $^{14}\COtwo$ microcosms & Leung et al.\ \cite{leung2025aridity}; Bay et al.\ \cite{bay2021aridity} \\
+ Cell-specific $\Htwo$ oxidation ($\times 10^{-8}$ nmol $\Htwo$ $\mathrm{h}^{-1}$ $\mathrm{cell}^{-1}$)$^{\mathrm{b}}$ & 1.68 & 2.82 [1.36, 5.31] & Namib Desert hyperarid soils & Tribbia et al.\ \cite{tribbia2026namib} \\
+ Areal soil $\Htwo$ uptake (mg $\Htwo$ $\mathrm{m}^{-2}$ $\mathrm{yr}^{-1}$)$^{\mathrm{c}}$ & 8.72 & 12.5 [5.0, 25.0] & Negev and global hyperarid drylands & Bay et al.\ \cite{bay2021aridity}; Buzzard et al.\ \cite{buzzard2022h2uptake} \\
+@@ -417,23 +417,23 @@
+ Carbon-budget parameter & Value [bounds] and unit & Status & Source or role \\
+ \midrule
+ Free-energy yields $|\Delta G_{\Htwo}|$, $|\Delta G_{\mathrm{CO}}|$ & 203 and 240 kJ mol$^{-1}$ & transferred & Companion trace-gas energetics analysis \\
+-Maintenance allocation $f_{\mathrm{maint}}$ & 0.88 [0.75, 0.96] & transferred & Companion energetics analysis (18\% ATP efficiency) \\
+-Group 1l CBB co-carriage $c_{\mathrm{CBB}|1l}$ & 0.3767 [0.181, 0.50] & fitted & CoverM mapped-read ratio in subsurface states ($n = 51$; strict 3-gene 0.2495) \\
++Maintenance allocation $f_{\mathrm{maint}}$ & 0.88 [0.75, 0.95] & assumed & Anabolic allocation 0.12 [0.05, 0.25] \\
++Group 1l CBB co-carriage $c_{\mathrm{CBB}|1l}$ & State-specific ratio in $[0,1]$ & fitted & CoverM mapped-read ratio in subsurface states ($n = 51$; strict 3-gene 0.2495) \\
+ Wetted horizon and duty cycle & 0--2 cm, 15 d $\mathrm{yr}^{-1}$; $\rho_b = 1.6 \times 10^6$ g m$^{-3}$ & transferred & Companion climate and energetics analyses \cite{leung2025aridity,tribbia2026namib} \\
+-$\Htwo$ indirect warming potential $\mathrm{GWP}_{100}$ & 11.6 [6.0, 16.0] & transferred & Warwick et al.\ \cite{warwick2023atmospheric}; Paulot et al.\ \cite{paulot2024reanalysis} \\
+-\textit{Haloxylon} NPP at full cover & 295 [190, 420] t $\COtwo$ $\mathrm{km}^{-2}$ $\mathrm{yr}^{-1}$ & transferred & Central Asian \textit{Haloxylon} stands \cite{ma2021haloxylon} \\
+-Pedogenic $\CaCOthree$ rates $r_{\mathrm{bare}}$, $r_{\mathrm{rhiz}}$ & 0.55 [0.275, 0.963] and 2.80 t $\COtwo$ $\mathrm{km}^{-2}$ $\mathrm{yr}^{-1}$ & transferred & Mojave caliche and Tarim rhizosphere \cite{schlesinger1985caliche,ma2013inorganic} \\
+-Persistent storage fractions $\eta_{\mathrm{SOC}}$, $f_{\mathrm{sil\text{-}Ca}}$, $\eta_{\mathrm{mic}}$ & 0.15 [0.10, 0.25], 0.50 [0.25, 0.75], 0.25 [0.15, 0.40] & transferred & Soil organic carbon humification, non-carbonate $\mathrm{Ca}^{2+}$ supply and necromass retention \cite{schlesinger1985caliche,wieder2015mimics} \\
++$\Htwo$ indirect warming potential $\mathrm{GWP}_{100}$ & 11.6 [6.0, 16.0] & transferred & Sand et al.\ \cite{sand2023hydrogen}; bounds assumed \\
++\textit{Haloxylon} NPP at full cover & 295 [190, 420] t $\COtwo$ $\mathrm{km}^{-2}$ $\mathrm{yr}^{-1}$ & assumed & Transfer informed by Central Asian \textit{Haloxylon} stands \cite{ma2021haloxylon} \\
++Carbonate reference rate & 0.88 [0.44, 1.54] t $\COtwo$ $\mathrm{km}^{-2}$ $\mathrm{yr}^{-1}$ & transferred & Mojave caliche and Tarim rhizosphere \cite{schlesinger1985caliche,ma2013inorganic} \\
++Persistent storage fractions $\eta_{\mathrm{SOC}}$, $f_{\mathrm{sil\text{-}Ca}}$, $\eta_{\mathrm{mic}}$ & 0.15 [0.10, 0.25], 0.50 [0.25, 0.75], 0.25 [0.15, 0.40] & assumed & Scenario retention and non-carbonate $\mathrm{Ca}^{2+}$ supply and necromass retention \cite{schlesinger1985caliche,wieder2015mimics} \\
+ \bottomrule
+ \end{tabularx}
+ \end{table}
+ 
+ \begin{table}[p]
+ \centering
+-\caption{Provenance of the principal coefficients of the mechanistic layer. Status: fitted, estimated from data of this transect in the present analysis; transferred, taken from a companion analysis of the transect or from the literature; assumed, set by the authors to encode a hypothesized response. Companion analyses are cited in the Data and Code Availability statement. Transferred and assumed coefficients enter the scenarios as point values. GE, genome equivalents; EC, electrical conductivity.}
++\caption{Provenance of the principal coefficients of the mechanistic layer. Status: fitted, estimated from data of this transect in the present analysis; transferred, taken from a companion analysis of the transect or from the literature; assumed, set by the authors to encode a hypothesized response. Transferred and assumed coefficients enter the scenarios as point values. GE, genome equivalents; EC, electrical conductivity.}
+ \label{tab:params}
+ \scriptsize
+-\renewcommand{\arraystretch}{0.72}
++\renewcommand{\arraystretch}{0.57}
+ \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4.5cm}>{\raggedright\arraybackslash}p{2.7cm}>{\raggedright\arraybackslash}p{1.5cm}X}
+ \toprule
+ Coefficient & Value and unit & Status & Source or role \\
+@@ -447,8 +447,8 @@
+ \midrule
+ \multicolumn{4}{l}{\textit{Moisture pulse}} \\
+ Evaporation decay rate & 0.34 d$^{-1}$ & assumed & Hyperarid drying of a 0.10 m column \\
+-Kernel peak & 2.5 d & transferred & 1--4 day resuscitation window \cite{jordaan2020gobi,imminger2024resuscitation} \\
+-Shannon response & $0.31\ln(1 + P_e/2.2)$ & transferred & Companion rainfall analysis \\
++Kernel peak & 2.5 d & assumed & Diversity-response lag; wetting studies support rapid activation \cite{jordaan2020gobi,imminger2024resuscitation} \\
++Shannon response & $0.31\ln(1 + P_e/2.2)$ & assumed & Response motivated by companion rainfall analysis; exact slope requires source-level verification \\
+ Infiltration efficiencies & 0.55, 0.78, 0.92 & assumed & Downpour, default, drizzle \\
+ Proposition 1 sensitivities and minimum shares & 0.032 and 0.011 per mm; 0.25 and 0.15 & assumed & Linear allocation surrogate \\
+ \midrule
+@@ -476,7 +476,7 @@
+ TPH degradation rates & 0.0025 and 0.0155 d$^{-1}$ & assumed & Natural attenuation and \textit{alkB/ladA} consortium \\
+ \midrule
+ \multicolumn{4}{l}{\textit{Virome, mobilome and screening}} \\
+-Host coupling & 0.254 & transferred & Viral-prokaryotic Mantel correlation of the companion virome analysis, used as a slope \\
++Host coupling & 0.254 & assumed & Viral-prokaryotic Mantel correlation of the companion virome analysis, used as a slope \\
+ Cover, manure and dose terms & 0.55, 0.15; 0.65, 0.48, 0.30 & assumed & Viral and plasmid richness multipliers \\
+ ARG screening score & $0.035 + 0.42M + 0.015d$; flag at 0.25 & assumed & Assumed screening index of resistome load \\
+ \midrule
+@@ -485,7 +485,7 @@
+ Maintenance feasibility & requirement $\le$ maximum attainable ATP & assumed & Hard threshold; growth and carbon fixation set to zero when violated \\
+ \midrule
+ \multicolumn{4}{l}{\textit{Portfolio robustness and carbon budget}} \\
+-Monte Carlo noise scales & shared SD 0.035; portfolio SD $\max(0.08, 0.055|J|)$ & assumed & Set to approximate the empirical standard errors of the companion contrasts; $B = 200$ draws (carbon-budget parameters in Table~\ref{tab:crossdesert}c) \\
++Monte Carlo noise scales & shared SD 0.035; portfolio SD $\max(0.08, 0.055|J|)$ & assumed & Prescribed score-noise scales; $B = 200$ draws (carbon-budget parameters in Table~\ref{tab:crossdesert}c) \\
+ \bottomrule
+ \end{tabularx}
+ \end{table}
+@@ -578,6 +578,9 @@
+ \end{tabular}
+ \end{table}
+ 
++\clearpage
++\input{assumptions.tex}
++
+ \bibliographystyle{unsrt}
+ \bibliography{references}
+ 
+--- before/references.bib
++++ /home/leechuck/Public/software/empty-quarter-digital-twin/paper/references.bib
+@@ -144,13 +144,13 @@
+ }
+ 
+ @article{imminger2024resuscitation,
+-  author  = {Imminger, Sonja and Meier, Dimitri V. and Schintlmeister, Arno and Legin, Anton and Schnecker, J{\"o}rg and Richter, Andreas and Greening, Chris and Woebken, Dagmar},
+-  title   = {Survival and rapid resuscitation of polyextremophilic desert soil bacteria},
++  author  = {Imminger, Stefanie and Meier, Dimitri V. and Schintlmeister, Arno and Legin, Anton and Schnecker, J{\"o}rg and Richter, Andreas and Gillor, Osnat and Eichorst, Stephanie A. and Woebken, Dagmar},
++  title   = {Survival and rapid resuscitation permit limited productivity in desert microbial communities},
+   journal = {Nature Communications},
+   year    = {2024},
+   volume  = {15},
+-  pages   = {1856},
+-  doi     = {10.1038/s41467-024-45996-0}
++  pages   = {3056},
++  doi     = {10.1038/s41467-024-46920-6}
+ }
+ 
+ @article{hersbach2020era5,
+@@ -230,11 +230,9 @@
+ @article{oldoni2020occurrence,
+   author  = {Oldoni, Damiano and Groom, Quentin and Adriaens, Tim and Davis, Amy J. S. and Reyserhove, Lien and Strubbe, Diederik and Vanderhoeven, Sonia and Desmet, Peter},
+   title   = {Occurrence cubes: a new paradigm for aggregating species occurrence data},
+-  journal = {f1000Research},
++  journal = {bioRxiv},
+   year    = {2020},
+-  volume  = {9},
+-  pages   = {793},
+-  doi     = {10.12688/f1000research.25169.1}
++  doi     = {10.1101/2020.03.23.983601}
+ }
+ 
+ @article{misitano2021desdeo,
+@@ -489,3 +487,11 @@
+   pages   = {1782--1800},
+   doi     = {10.1002/2015GB005188}
+ }
++
++@article{sand2023hydrogen,
++  author = {Sand, Maria and Skeie, Ragnhild Bieltvedt and Sandstad, Marit and Krishnan, Srinath and Myhre, Gunnar and Bryant, Hannah and Derwent, Richard and Hauglustaine, Didier and Paulot, Fabien and Prather, Michael and Stevenson, David},
++  title = {A multi-model assessment of the Global Warming Potential of hydrogen},
++  journal = {Communications Earth \& Environment},
++  volume = {4}, pages = {203}, year = {2023},
++  doi = {10.1038/s43247-023-00857-8}
++}
+--- before/README.md
++++ /home/leechuck/Public/software/empty-quarter-digital-twin/README.md
+@@ -3,12 +3,14 @@
+ [![Live Digital Twin](https://img.shields.io/badge/Live_Digital_Twin-rubalkhali.science%2Ftwin-0ea5e9)](https://rubalkhali.science/twin)
+ [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+ 
+-**EQ-BioDT** is a causal-ontological biodiversity digital twin of the Rub' al-Khali (Empty Quarter) and the wider Arabian Desert ecoregion. It accompanies the manuscript:
++**EQ-BioDT** combines observational prediction, ontological constraint reconciliation and conditional mechanistic scenarios in a biodiversity digital twin of the Rub' al-Khali (Empty Quarter) and the wider Arabian Desert ecoregion. It accompanies the manuscript:
+ 
+-> **A causal-ontological biodiversity digital twin of the Rub' al-Khali desert predicts trace-gas scavenger capacity across sites and campaigns and quantifies chemosynthetic and rhizosphere trade-offs of land management**  
++> **Ontological-causal reasoning for prediction and conditional management scenarios in a biodiversity digital twin of the Rub' al-Khali**  
+ > Robert Hoehndorf & Magnus Rueping
+ 
+ The live interactive 2D/3D WebGL Digital Twin is deployed at **[https://rubalkhali.science/twin](https://rubalkhali.science/twin)** (and **[https://rubalkhali.science/model](https://rubalkhali.science/model)**).
++
++The [scientific validation audit](reviews/validation-2026-10-26/report.md) distinguishes reproducibility from predictive and causal validity. All nine existing tests and 205 numerical fixtures pass; additional contract checks identify unresolved limitations. Management effects, portfolio rankings and carbon retention are conditional on prescribed response functions and parameter assumptions. The paper documents these in [Supplementary Note 4](paper/assumptions.tex).
+ 
+ ---
+ 
+@@ -19,11 +21,11 @@
+    - Indexed on Uber H3 hexagonal cells (`h3_5`, `h3_6`) and `0.25°` ERA5 corridor grid cells (`248` cells total: `128` inside the $\le 45\text{ km}$ empirical domain of support covering `92,160 km²`, and `120` abstained cells).
+ 2. **Three-Layer Causal-Ontological Engine**:
+    - **Predictive Layer**: Out-of-sample ridge regressions for trace-gas guilds (`hydB_1l`, `hydB_1h`, `hydB_2a`, `coxL_formI`), 16S Shannon diversity ($H'$), viral and plasmid richness (`vOTU`, `pOTU`), and `12` focal bacterial genera (`7` hallmark desert genera: *Domibacillus*, *Massilia*, *Bacillus*, *Microvirga*, *Flavisolibacter*, *Noviherbaspirillum*, *CSP1-2*; and `5` root-adjacent indicator genera: *TM7a*, *Pelagibacterium*, *Arsenicitalea*, *Ohtaekwangia*, *Neorhizobium*).
+-   - **Constitutive Layer ($\Phi_{\mathrm{const}}$)**: Compiles `13` subsumption (`SubClassOf`), `5` exhaustive partition (`DisjointUnion`), and `8` unit upper-bound axioms over `17` state variables from the OWL 2 DL module [`ontology/rubalkhali_twin_constraints.owl`](ontology/rubalkhali_twin_constraints.owl) into a closed convex polyhedron $\mathcal{C}(\mathcal{T}_{\mathrm{ont}})$ and enforces ontological consistency ($\mathrm{OCS} = 1.0$, $\mathrm{CVM} = 0.0$) via Euclidean projection $\Pi_{\mathcal{C}(\mathcal{T}_{\mathrm{ont}})}$.
++   - **Constitutive Layer ($\Phi_{\mathrm{const}}$)**: Compiles `13` subsumption (`SubClassOf`), `5` exhaustive partition (`DisjointUnion`), and `8` unit upper-bound axioms over `17` state variables from the OWL 2 DL module [`data/ontology/rubalkhali_twin_constraints.owl`](data/ontology/rubalkhali_twin_constraints.owl) into a closed convex polyhedron $\mathcal{C}(\mathcal{T}_{\mathrm{ont}})$ and reconciles states by Euclidean projection (tested states attain $\mathrm{OCS} = 1.0$, $\mathrm{CVM} = 0.0$) $\Pi_{\mathcal{C}(\mathcal{T}_{\mathrm{ont}})}$.
+    - **Mechanistic Scenario Layer ($\mathcal{M}_{\mathrm{caus}}$)**: Couples Millington–Quirk porous-media gas diffusion, distributed-lag moisture-pulse resuscitation, a curated 10-flux guild-level linear program solved with HiGHS, and spatial virome/mobilome response models across six desert management engines.
+ 3. **Multi-Objective Portfolio Optimization & Dimensional Carbon Accounting**:
+    - Evaluates the current hyperarid baseline (`P0`) and six management portfolios (`P1`–`P6`) across four objectives ($J_1$–$J_4$) using DESDEO achievement scalarizing functions and `B = 200` Monte Carlo robustness draws.
+-   - Upscales four physical carbon and greenhouse-gas pathways (direct microbial RuBisCO dark $\mathrm{CO}_2$ fixation, the indirect tropospheric $\mathrm{OH}^{\bullet}$ / $\mathrm{CH}_4$ sink of soil $\mathrm{H}_2$ oxidation at $\mathrm{GWP}_{100} = 11.6$, *Haloxylon persicum* and rhizosphere net primary production, and pedogenic $\mathrm{CaCO}_3$ precipitation) across the `92,160 km²` empirically supported corridor (`122` `P3` and `6` `P4` cells in the prescribed corridor atlas), the `500,000 km²` core sand-sea polygon, and the `650,000 km²` Rub' al-Khali basin, validated against seven published cross-desert benchmarks.
++   - Upscales four physical carbon and greenhouse-gas pathways (direct microbial RuBisCO dark $\mathrm{CO}_2$ fixation, the indirect tropospheric $\mathrm{OH}^{\bullet}$ / $\mathrm{CH}_4$ sink of soil $\mathrm{H}_2$ oxidation at $\mathrm{GWP}_{100} = 11.6$, *Haloxylon persicum* and rhizosphere net primary production, and pedogenic $\mathrm{CaCO}_3$ precipitation) across the `92,160 km²` empirically supported corridor (`122` `P3` and `6` `P4` cells in the prescribed corridor atlas), the `500,000 km²` core sand-sea polygon, and the `650,000 km²` Rub' al-Khali basin, compared with seven configured literature-context intervals, some shared with calibration.
+ 4. **European Biodiversity Digital Twin Interoperability**:
+    - Exports Darwin Core Archives (`event.txt`, `occurrence.txt`, `emof.txt`, `meta.xml`, `eml.xml`), B-Cubed occurrence cubes (`datapackage.json`), and content-addressed FAIR Digital Objects (`FDO`) / Workflow Run RO-Crate v1.1 (`ro-crate-metadata.json`) provenance records.
+ 
+@@ -39,18 +41,18 @@
+ │   ├── b3_cubes/                  # B-Cubed occurrence cube & H3 indicator tables + Frictionless spec
+ │   ├── ro_crate/                  # Workflow Run RO-Crate v1.1 & FDO kernel metadata
+ │   └── validation/                # Five-tier validation report JSON & metrics summary TSV
+-├── ontology/
++├── data/ontology/
+ │   └── rubalkhali_twin_constraints.owl  # OWL 2 DL constraint module (17 classes, 5 partitions, 13 subsumptions)
+ ├── paper/
+ │   ├── main.tex                   # Main manuscript LaTeX source
+-│   ├── supplementary.tex          # Supplementary Information LaTeX source (Notes 1-3, Tables S1-S9)
++│   ├── supplementary.tex          # Supplementary Information LaTeX source (Notes 1-4, Tables S1-S9)
+ │   ├── references.bib             # BibTeX bibliography
+ │   ├── figures/                   # Multi-panel vector PDF figures (fig1, fig2, fig3)
+ │   └── tables/                    # Auto-generated LaTeX table fragments (table_s3_scores.tex)
+-├── reproducibility/               # Full standalone reproducibility package for every number in the paper
++├── reproducibility/               # Standalone computation and selected numerical fixture checks
+ │   ├── README.md                  # Detailed table-by-table & section-by-section reproduction guide
+ │   ├── reproduce_all.py           # Master script regenerating all tables, figures, bundles & audits
+-│   ├── verify_all_paper_numbers.py# Automated assertion suite checking 205 exact paper numbers
++│   ├── verify_all_paper_numbers.py# Automated suite checking 205 numerical fixtures
+ │   ├── export_web_twin_bundle.py  # Exporter for the interactive WebGL Digital Twin JSON bundle
+ │   ├── data/                      # Bundled standalone empirical contrasts, benchmarks & registries
+ │   └── outputs/                   # Generated reproducibility reports, CSVs & audit logs
+@@ -66,7 +68,7 @@
+ │   ├── standards/                 # DwC-A/eMoF, B-Cubed & RO-Crate/FDO exporters
+ │   └── validation/                # Five-tier quantitative validation suite
+ └── tests/
+-    └── test_eq_biodt.py           # Comprehensive pytest suite (unit, API, 5-tier validation & standalone audit)
++    └── test_eq_biodt.py           # Pytest suite (unit, API, 5-tier validation & standalone audit)
+ ```
+ 
+ ---
+@@ -101,17 +103,17 @@
+ 
+ ```bash
+ # Verify all 23 canonical data and ontology sources
+-uv run eq-biodt verify-sources
++uv run eq-biodt verify-data
+ 
+ # Build all Parquet state cubes (70 sites, 180 site-compartments, 414 visit-compartments, 248 grid cells)
+ uv run eq-biodt build-cubes
+ 
+ # Export Darwin Core Archive, B-Cubed occurrence cube, and RO-Crate metadata
+-uv run eq-biodt export-standards
++uv run eq-biodt build-cubes
+ 
+ # Simulate any of the 6 desert interventions at a specific site and compartment
+-uv run eq-biodt simulate --site 30 --compartment Surface --intervention cloud_seeding --param rain_pulse_mm=6.0
+-uv run eq-biodt simulate --site 60 --compartment Surface --intervention desalination_brine --param discharge_salinity_ms_cm=45.0 --param ca_so4_to_nacl_ratio=2.4
++uv run eq-biodt simulate cloud_seeding --site 30 --compartment Surface --params '{"rain_pulse_mm":6.0}' 
++uv run eq-biodt simulate desalination_brine --site 60 --compartment Surface --params '{"discharge_salinity_ms_cm":45.0,"ca_so4_to_nacl_ratio":2.4}' 
+ 
+ # Run multi-objective Pareto portfolio optimization (P1-P6) with 200 Monte Carlo draws
+ uv run eq-biodt optimize --site 30 --compartment Surface
+--- before/index.html
++++ /home/leechuck/Public/software/empty-quarter-digital-twin/web/index.html
+@@ -49,7 +49,7 @@
+       grid-template-columns: 420px 1fr 440px;
+       gap: 14px;
+       padding: 14px;
+-      height: calc(100vh - 58px);
++      min-height: 700px;
+     }
+     .card {
+       background: var(--panel);
+@@ -101,7 +101,7 @@
+     }
+     #map {
+       width: 100%;
+-      height: 55%;
++      height: 370px;
+       border-radius: 6px;
+       border: 1px solid var(--border);
+     }
+@@ -136,34 +136,49 @@
+       border-left: 4px solid var(--accent);
+       font-size: 0.82rem;
+     }
++    .evidence { padding: 14px 24px; background: #182029; line-height: 1.6; }
++    details p { max-width: 80ch; }
++    summary { cursor: pointer; }
++    :focus-visible { outline: 3px solid #67c2ef; outline-offset: 3px; }
++    button:disabled { opacity: .5; cursor: wait; }
++    .card { min-width: 0; }
++    .k-val { overflow-wrap: anywhere; }
++    @media (max-width: 1350px) { .layout { grid-template-columns: minmax(260px, 1fr) minmax(300px, 1.5fr); } .layout > .card:last-child { grid-column: 1 / -1; } }
++    @media (max-width: 700px) { header { align-items: flex-start; gap: 12px; flex-direction: column; } .layout { display: block; padding: 10px; } .card { margin-bottom: 12px; } #map { height: 300px; } }
+   </style>
+ </head>
+ <body>
+   <header>
+     <div>
+       <h1>EQ-BioDT: Empty Quarter Biodiversity Digital Twin</h1>
+-      <small style="color: var(--muted)">1,043 km Rub' al Khali Transect | Two-Layer Causal-Ontological Engine (OCS = 1.0) | EU BioDT &amp; B-Cubed Compliant</small>
++      <small style="color: var(--muted)">Rub’ al-Khali observations and conditional management scenarios</small>
+     </div>
+     <div>
+       <span class="badge" id="health-badge">Initializing Twin...</span>
+     </div>
+   </header>
+ 
++  <aside class="evidence" aria-label="Model evidence">
++    <strong>Observed data, coherent totals, conditional effects.</strong>
++    The model combines measurements and imputed baselines with assumed response functions.
++    OCS measures algebraic consistency. Intervention effects and ARG screening require field validation.
++    <details><summary>What the results mean</summary><p>Genomic capacity is estimated from sequence data. Ontological constraints keep parts and totals consistent. Scenario equations prescribe how management changes the state. Portfolio rankings depend on chosen candidates, weights and response assumptions.</p></details>
++  </aside>
+   <div class="layout">
+     <!-- Left Column: Site & Intervention Controls -->
+     <div class="card">
+-      <h2>1. Spatial Locus &amp; Soil Horizon</h2>
++      <h2>Site and soil compartment</h2>
+       <label for="site-select">Sampling Site (60 Primary + 10 Auxiliary Loci)</label>
+       <select id="site-select"></select>
+ 
+       <label for="comp-select">Soil Compartment</label>
+       <select id="comp-select">
+-        <option value="Surface">Surface Horizon (0 cm, RAK_0000020)</option>
+-        <option value="ShallowSubsurface">Subsurface Refugium (5-10 cm, RAK_0000021)</option>
+-        <option value="RootAdjacent">Rhizosphere / Root-Adjacent (5-10 cm, RAK_0000022)</option>
++        <option value="Surface">Surface (0–2 cm)</option>
++        <option value="ShallowSubsurface">Shallow subsurface (5–10 cm)</option>
++        <option value="RootAdjacent">Root-adjacent soil</option>
+       </select>
+ 
+-      <h2 style="margin-top:16px;">2. Counterfactual Management Simulator</h2>
++      <h2 style="margin-top:16px;">Explore a management scenario</h2>
+       <label for="interv-select">Select Intervention Module</label>
+       <select id="interv-select" onchange="renderInterventionControls()">
+         <option value="cloud_seeding">1. Cloud Seeding &amp; Precipitation Pulse</option>
+@@ -176,8 +191,8 @@
+ 
+       <div id="dynamic-controls"></div>
+ 
+-      <button class="primary" onclick="runIntervention()">Run Counterfactual Simulation</button>
+-      <button class="secondary" onclick="runParetoOptimizer()">Run 4-Objective DESDEO Pareto Optimizer</button>
++      <button class="primary action" onclick="withStatus(runIntervention)">Run scenario</button>
++      <button class="secondary action" onclick="withStatus(runParetoOptimizer)">Compare six portfolios</button>
+     </div>
+ 
+     <!-- Center Column: Interactive Map & Site Baseline -->
+@@ -185,22 +200,39 @@
+       <h2>Rub' al Khali 1,043 km Transect &amp; H3 / ERA5 Cube Explorer</h2>
+       <div id="map"></div>
+       <h2 style="margin-top:12px;">Selected Site Geochemical &amp; Guild Baseline</h2>
+-      <div class="kpi-grid" id="site-baseline-kpis"></div>
++      <p id="baseline-evidence" class="advisory"></p><div class="kpi-grid" id="site-baseline-kpis"></div>
+     </div>
+ 
+     <!-- Right Column: Counterfactual Output & Provenance -->
+     <div class="card">
+-      <h2>3. Counterfactual Twin Response &amp; FDO Provenance</h2>
+-      <div id="advisory-box" class="advisory">Select a site and run an intervention or Pareto optimization.</div>
++      <h2>Conditional model response</h2>
++      <div id="advisory-box" class="advisory" role="status" aria-live="polite">Select a site and run an intervention or Pareto optimization.</div>
+       <div class="kpi-grid" id="sim-kpis"></div>
+-      <h2 style="margin-top:14px;">Causal-Ontological State &amp; RO-Crate / FDO Record</h2>
+-      <pre id="json-output">{}</pre>
++      <details style="margin-top:14px"><summary>Inspect model output and provenance</summary><pre id="json-output">{}</pre></details>
+     </div>
+   </div>
+ 
+   <script>
+     let map, markers = [];
+     let sitesData = [];
++    let baselineRequest = 0;
++    const formatValue = (value, digits = 2) => value != null && Number.isFinite(Number(value)) ? Number(value).toFixed(digits) : 'Unavailable';
++    async function api(url, options) {
++      const response = await fetch(url, options);
++      if (!response.ok) throw new Error(`Request failed (${response.status}). Check the API connection and try again.`);
++      return response.json();
++    }
++    async function withStatus(action) {
++      const buttons = document.querySelectorAll('.action');
++      buttons.forEach(b => b.disabled = true);
++      document.getElementById('advisory-box').textContent = 'Calculating scenario…';
++      try { await action(); }
++      catch (error) {
++        document.getElementById('advisory-box').textContent = error.message;
++        document.getElementById('sim-kpis').replaceChildren();
++        document.getElementById('json-output').textContent = '{}';
++      } finally { buttons.forEach(b => b.disabled = false); }
++    }
+ 
+     const INTERVENTION_SCHEMAS = {
+       cloud_seeding: [
+@@ -253,22 +285,22 @@
+     async function initDashboard() {
+       renderInterventionControls();
+       map = L.map("map").setView([20.2, 50.5], 6);
+-      L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+-        attribution: "&copy; OpenStreetMap &amp; CartoDB"
++      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
++        attribution: "&copy; OpenStreetMap contributors"
+       }).addTo(map);
+ 
+-      const healthRes = await fetch("/api/v1/health").then(r => r.json());
++      const healthRes = await api("/api/v1/health");
+       document.getElementById("health-badge").innerText =
+-        `OCS=1.0 | ${healthRes.sites_count} Sites | ${healthRes.era5_h3_grid_cells} H3/ERA5 Cells`;
+-
+-      const sitesRes = await fetch("/api/v1/sites").then(r => r.json());
++        `${healthRes.sites_count} sites / ${healthRes.era5_h3_grid_cells} corridor cells`;
++
++      const sitesRes = await api("/api/v1/sites");
+       sitesData = sitesRes.sites;
+       const sel = document.getElementById("site-select");
+       sitesData.forEach(s => {
+         const opt = document.createElement("option");
+         opt.value = s.site_id;
+-        opt.textContent = `${s.site_label} (${s.habitat_regime}, MAP=${s.map_mm}mm)`;
+-        if (s.site_id === "35") opt.selected = true;
++        opt.textContent = `${s.site_label} (${s.habitat_regime}, MAP=${formatValue(s.map_mm, 1)}mm)`;
++        if (s.site_id === "30") opt.selected = true;
+         sel.appendChild(opt);
+ 
+         const color = s.is_primary_transect ? "#d97706" : "#10b981";
+@@ -282,27 +314,36 @@
+         m.bindPopup(`<b>${s.site_label}</b><br/>IRI: ${s.site_iri}<br/>H3_6: ${s.h3_6}`);
+         m.on("click", () => {
+           sel.value = s.site_id;
+-          loadSiteBaseline();
++          withStatus(loadSiteBaseline);
+         });
+       });
+ 
+-      sel.addEventListener("change", loadSiteBaseline);
+-      document.getElementById("comp-select").addEventListener("change", loadSiteBaseline);
++      sel.addEventListener("change", () => withStatus(loadSiteBaseline));
++      document.getElementById("comp-select").addEventListener("change", () => withStatus(loadSiteBaseline));
+       await loadSiteBaseline();
+-      await runIntervention();
++
+     }
+ 
+     async function loadSiteBaseline() {
++      const request = ++baselineRequest;
+       const siteId = document.getElementById("site-select").value;
+       const comp = document.getElementById("comp-select").value;
+-      const detail = await fetch(`/api/v1/sites/${encodeURIComponent(siteId)}`).then(r => r.json());
++      const detail = await api(`/api/v1/sites/${encodeURIComponent(siteId)}`);
++      if (request !== baselineRequest) return;
+       const row = detail.compartments.find(c => c.compartment_norm === comp) || detail.compartments[0];
++      document.getElementById('baseline-evidence').textContent =
++        (Number(siteId) >= 1 && Number(siteId) <= 60 ? 'Primary-site baseline. ' : 'Auxiliary site: baseline transferred from a nearest primary site. ') +
++        (row.wgs_observed ? 'Guild values derive from metagenomes. ' : 'Guild values are imputed. ') +
++        (row.ph_observed ? 'pH is measured.' : 'pH is imputed.');
++      document.getElementById('sim-kpis').replaceChildren();
++      document.getElementById('json-output').textContent = '{}';
++      document.getElementById('advisory-box').textContent = 'Baseline loaded. Run a scenario to see conditional outputs.';
+       const grid = document.getElementById("site-baseline-kpis");
+       grid.innerHTML = `
+-        <div class="kpi"><div class="k-label">16S Shannon / pH (CaCl2)</div><div class="k-val">${Number(row.shannon_16s).toFixed(2)} / pH ${Number(row.ph_mean).toFixed(2)}</div></div>
+-        <div class="kpi"><div class="k-label">Group 1l [NiFe] H2ase / coxL GE</div><div class="k-val">${Number(row.hydB_1l_ge).toFixed(2)} / ${Number(row.coxL_formI_ge).toFixed(2)}</div></div>
+-        <div class="kpi"><div class="k-label">XRF Evaporite Index / Si (%)</div><div class="k-val">${Number(row.xrf_evaporite_index).toFixed(2)} / ${Number(row.Si).toFixed(1)}%</div></div>
+-        <div class="kpi"><div class="k-label">H3_6 Cell / MAP (mm/yr)</div><div class="k-val">${row.h3_6} / ${Number(row.map_mm).toFixed(1)}</div></div>
++        <div class="kpi"><div class="k-label">16S Shannon / pH (CaCl2)</div><div class="k-val">${formatValue(row.shannon_16s, 2)} / pH ${formatValue(row.ph_mean, 2)}</div></div>
++        <div class="kpi"><div class="k-label">Group 1l [NiFe] H2ase / coxL GE</div><div class="k-val">${formatValue(row.hydB_1l_ge, 2)} / ${formatValue(row.coxL_formI_ge, 2)}</div></div>
++        <div class="kpi"><div class="k-label">XRF Evaporite Index / Si (%)</div><div class="k-val">${formatValue(row.xrf_evaporite_index, 2)} / ${formatValue(row.Si, 1)}%</div></div>
++        <div class="kpi"><div class="k-label">H3_6 Cell / MAP (mm/yr)</div><div class="k-val">${row.h3_6} / ${formatValue(row.map_mm, 1)}</div></div>
+       `;
+     }
+ 
+@@ -315,19 +356,19 @@
+         params[cfg.key] = parseFloat(document.getElementById(`ctrl-${cfg.key}`).value);
+       });
+ 
+-      const res = await fetch(`/api/v1/intervene/${itype}`, {
++      const res = await api(`/api/v1/intervene/${itype}`, {
+         method: "POST",
+         headers: { "Content-Type": "application/json" },
+         body: JSON.stringify({ site_id: siteId, compartment: comp, parameters: params })
+-      }).then(r => r.json());
++      });
+ 
+       const sum = res.summary || {};
+-      document.getElementById("advisory-box").innerText = sum.management_advisory || "Simulation completed.";
+-      const shannonVal = sum.counterfactual_shannon_16s || sum.counterfactual_peak_shannon_16s || 0;
++      document.getElementById("advisory-box").innerText = "Conditional scenario calculated. Read the output with the response assumptions above.";
++      const shannonVal = sum.counterfactual_shannon_16s ?? sum.counterfactual_peak_shannon_16s;
+       document.getElementById("sim-kpis").innerHTML = `
+-        <div class="kpi"><div class="k-label">Counterfactual 16S Shannon</div><div class="k-val">${Number(shannonVal).toFixed(3)}</div></div>
+-        <div class="kpi"><div class="k-label">Ontological Consistency (OCS)</div><div class="k-val">${Number(sum.ocs_score || 1.0).toFixed(3)}</div></div>
+-        <div class="kpi"><div class="k-label">H2 Oxidation Power (uW/m3)</div><div class="k-val">${Number(res.projected_state?.h2_oxidation_power_uw_m3 || 0).toFixed(2)}</div></div>
++        <div class="kpi"><div class="k-label">Counterfactual 16S Shannon</div><div class="k-val">${formatValue(shannonVal, 3)}</div></div>
++        <div class="kpi"><div class="k-label">Ontological Consistency (OCS)</div><div class="k-val">${formatValue(sum.ocs_score, 3)}</div></div>
++        <div class="kpi"><div class="k-label">H2 Oxidation Power (uW/m3)</div><div class="k-val">${formatValue(res.projected_state?.h2_oxidation_power_uw_m3, 2)}</div></div>
+         <div class="kpi"><div class="k-label">FDO PID Checksum</div><div class="k-val" style="font-size:0.78rem">${(res.fdo_provenance?.sha256_checksum || "").slice(0, 14)}...</div></div>
+       `;
+       document.getElementById("json-output").innerText = JSON.stringify(res, null, 2);
+@@ -336,15 +377,15 @@
+     async function runParetoOptimizer() {
+       const siteId = document.getElementById("site-select").value;
+       const comp = document.getElementById("comp-select").value;
+-      const res = await fetch("/api/v1/optimize", {
++      const res = await api("/api/v1/optimize", {
+         method: "POST",
+         headers: { "Content-Type": "application/json" },
+         body: JSON.stringify({ site_id: siteId, compartment: comp })
+-      }).then(r => r.json());
++      });
+ 
+       const rec = res.recommended_policy;
+       document.getElementById("advisory-box").innerText =
+-        `RECOMMENDED PARETO POLICY: ${rec.policy.name} (DESDEO Utility = ${rec.desdeo_utility_score})`;
++        `Highest-ranked model candidate: ${rec.policy.name} (utility = ${rec.desdeo_utility_score})`;
+       document.getElementById("sim-kpis").innerHTML = `
+         <div class="kpi"><div class="k-label">J1 Biodiversity &amp; Refugium</div><div class="k-val">${rec.objectives.J1_biodiversity_refugium_max}</div></div>
+         <div class="kpi"><div class="k-label">J2 Chemosynthesis &amp; C/N</div><div class="k-val">${rec.objectives.J2_chemosynthesis_cn_flux_max}</div></div>
+@@ -354,7 +395,7 @@
+       document.getElementById("json-output").innerText = JSON.stringify(res, null, 2);
+     }
+ 
+-    window.addEventListener("DOMContentLoaded", initDashboard);
++    window.addEventListener("DOMContentLoaded", () => withStatus(initDashboard));
+   </script>
+ </body>
+ </html>
+--- before/Twin.jsx
++++ /home/leechuck/Public/software/empty-quarter/website/frontend/src/pages/Twin.jsx
+@@ -12,6 +12,7 @@
+ import TwinPixelPanel from '../components/twin/TwinPixelPanel';
+ import TwinImpactPanel from '../components/twin/TwinImpactPanel';
+ import TwinBioDTDashboard from '../components/twin/TwinBioDTDashboard';
++import TwinEvidenceGuide from '../components/twin/TwinEvidenceGuide';
+ import TwinWebGLScene from '../components/twin/TwinWebGLScene';
+ import { fetchSites } from '../services/api';
+ import { parseWKTPoint } from '../utils/wkt';
+@@ -211,7 +212,7 @@
+         }
+         // Only mark as prescribed within the visited survey corridor (envelopeMask[idx] === 1)
+         if (!envelopeMask[idx]) {
+-          out[idx] = (activePortfolio && pCodeMap[activePortfolio]) ? pCodeMap[activePortfolio] : 0.5;
++          out[idx] = 0.5;
+           continue;
+         }
+         const lon = lon_min + ((c + 0.5) * (lon_max - lon_min)) / cols;
+@@ -288,7 +289,7 @@
+           hydbSum += w * s.hydb;
+           powerSum += w * s.power;
+         }
+-        hydbOut[idx] = (hydbSum / wSum) + pHydbDelta;
++        hydbOut[idx] = Math.log2(Math.max(0, (hydbSum / wSum) + pHydbDelta) + 0.01);
+         powerOut[idx] = (powerSum / wSum) * pPowerMult;
+       }
+     }
+@@ -354,7 +355,7 @@
+             </div>
+             <p className="text-secondary small mb-0">
+               Even in the hyper-arid Empty Quarter (&lt;35 mm rain/yr, surface sand &gt;58 °C), billions of soil bacteria stay alive by sheltering 5–10 cm underground and breathing trace hydrogen gas (H₂) from the air.
+-              Explore how seven desert regimes (<strong>P0 Observed Baseline</strong> to <strong>P6 High-Salinity Disturbance</strong>) reshape soil life, plant-root partnerships, and carbon storage across the Arabian Desert.
++              Explore observed gene capacity and conditional management scenarios. Their responses combine measured baselines, fitted associations and explicitly assumed mechanisms.
+             </p>
+           </div>
+           <Nav variant="pills" className="gap-1 small">
+@@ -393,7 +394,7 @@
+                 active={dashboardTab === 'carbon'}
+                 onClick={() => setDashboardTab('carbon')}
+               >
+-                Carbon Storage
++                Carbon scenarios
+               </Nav.Link>
+             </Nav.Item>
+             <Nav.Item>
+@@ -409,6 +410,7 @@
+       </Container>
+ 
+       <Container fluid className="flex-grow-1 py-3" id="twin-map-section">
++        <TwinEvidenceGuide summary={bioDt?.summary} layerKind={layerKind} />
+         <Row className="g-3">
+           <Col md={8} lg={9} className="d-flex flex-column">
+             <div
+@@ -548,7 +550,7 @@
+ function Legend({ kind, selectedTaxon, gridMeta }) {
+   const cfg = LEGEND_CONFIG[kind] || LEGEND_CONFIG.shannon;
+   const title = kind === 'csp' && selectedTaxon
+-    ? (selectedTaxon === 'CSP1-2_niche' ? 'CSP1-2 Presence Probability' : `Hallmark Species: ${selectedTaxon} (CLR)`)
++    ? (selectedTaxon === 'CSP1-2_niche' ? 'CSP1-2 Presence Probability' : `Focal genus: ${selectedTaxon} (CLR)`)
+     : cfg.title;
+   const cellKm = gridMeta ? (gridMeta.deg_per_pixel * 106).toFixed(1) : '5.3';
+ 
+@@ -627,7 +629,7 @@
+     high: 'Visited survey corridor (≤45 km from sites)',
+     mid:  'Unvisited Arabian Desert (extrapolated)',
+     low:  'Outside Arabian Desert mask',
+-    note: 'Green marks the actually visited southern Rub’ al-Khali transect (≤45 km from our 60 primary sites). Amber marks unvisited desert regions (northern Rub’ al-Khali, Ad-Dahna, An-Nafud) where predictions are extrapolated.',
++    note: 'Green marks the distance envelope around sampling sites. Amber marks regional extrapolation. Cells inside the envelope can also inherit imputed baselines.',
+   },
+   corridor_atlas: {
+     title: 'Spatial Scenario Composite (P3 / P4)',
+@@ -635,14 +637,14 @@
+     high: 'P4 · Gypsum-Buffered Oasis Regime (eastern sabkhas)',
+     mid:  'P3 · Low-Water Micro-Catchment Regime (95% of transect)',
+     low:  'Outside Sampled Support (>45 km — Abstained)',
+-    note: 'Maps landform-matched scenario regimes P3 (blue) and P4 (amber) within the sampled transect support (≤45 km from primary sites). Unvisited regions are hatched grey.',
++    note: 'Maps a prescribed geographic allocation of P3 (blue) and P4 (amber). Areas outside the sampling envelope remain unassigned.',
+   },
+   hydb_1l: {
+     title: 'Air-Breathing Soil Bacteria (hydB_1l)',
+     gradient: 'linear-gradient(to top, #23174b, #31688e, #21918c, #5ec962, #fde725)',
+-    high: '+1.4 log₂ copies/cell (enriched)',
+-    mid:  '−0.3 log₂ copies/cell',
+-    low:  '−2.5 log₂ copies/cell (diluted)',
++    high: '+1.4 log₂(GE + 0.01)',
++    mid:  '−0.3 log₂(GE + 0.01)',
++    low:  '−2.5 log₂(GE + 0.01)',
+     note: 'Abundance of the Group 1l [NiFe]-hydrogenase gene that lets desert bacteria live on trace hydrogen gas from the air.',
+   },
+   h2_power: {
+@@ -651,6 +653,6 @@
+     high: '80+ µW/m³ (high air-breathing energy)',
+     mid:  '45 µW/m³ (moderate energy)',
+     low:  '15 µW/m³ (waterlogged or salt-stressed)',
+-    note: 'Biological energy (µW per m³ of soil) harvested by microbes oxidizing atmospheric H₂ and CO gases.',
++    note: 'Capacity-derived energy proxy with prescribed scenario multipliers; units are µW per m³ of soil.',
+   },
+ };
+--- before/TwinBioDTDashboard.jsx
++++ /home/leechuck/Public/software/empty-quarter/website/frontend/src/components/twin/TwinBioDTDashboard.jsx
+@@ -34,18 +34,16 @@
+     plainExplanation:
+       'The natural Empty Quarter today: almost no rain (15–35 mm/yr), scorching surface sand (>58 °C), and sparse shrubs (4%). Soil life survives 5–10 cm underground where the sand is 14 °C cooler, breathing trace hydrogen gas (H₂) from the air flowing through open sand pores.',
+     forcings: '+0 mm water · 4% shrub cover · Uninoculated · 95% intact 5–10 cm shelter.',
+-    response: '38–52 µW/m³ air-breathing microbial energy; low baseline carbon storage (69.3 kt CO₂/yr).',
+   },
+   P1: {
+     code: 'P1',
+     portfolioKey: 'P1',
+-    shortTitle: 'P1 · Unperturbed Conservation Regime',
++    shortTitle: 'P1 · Current-use baseline',
+     tag: '0 mm · 4% Shrub',
+     tagBg: 'secondary',
+     plainExplanation:
+-      'A strict hands-off conservation reserve: no irrigation water, no new planting, and no bulldozers or heavy livestock. Keeps the natural desert crust and air-filled sand pores completely intact, using zero groundwater.',
++      'A prescribed current-use reference with light grazing, discharge at 15 mS/cm and conventional seismic activity. Compare its settings with the separately calculated P0 baseline.',
+     forcings: '+0 mm water · 4% shrub cover · Uninoculated · 95% intact 5–10 cm shelter · Low wildlife density.',
+-    response: 'Preserves 100% of natural air-breathing microbial energy, but adds little new plant carbon (71.5 kt CO₂/yr).',
+   },
+   P2: {
+     code: 'P2',
+@@ -56,7 +54,6 @@
+     plainExplanation:
+       'Restores desert shrubland (24% cover) with a modest rain pulse (+6.5 mm), native root-partner bacteria (RAK-PR), and light-footed native Arabian Oryx and Sand Gazelles that move between water points without packing down the soil.',
+     forcings: '+6.5 mm moisture pulse · 24% shrub cover + RAK-PR · Rotational native browsers (oryx/gazelle).',
+-    response: 'Boosts air-breathing bacteria across the landscape (1.24×) and stores 188.6 kt CO₂/yr while keeping 80% of air pores open.',
+   },
+   P3: {
+     code: 'P3',
+@@ -67,7 +64,6 @@
+     plainExplanation:
+       'Uses shallow sand swales to trap a tiny +3.5 mm moisture pulse for hardy shrubs (14% cover) while keeping 100% of the 5–10 cm underground heat shelter untouched. Because the sand is never flooded, air flows freely to underground H₂-breathing microbes.',
+     forcings: '+3.5 mm moisture pulse · 14% shrub cover + RAK-PR · 100% intact 5–10 cm shelter · Wireless sensors.',
+-    response: 'Increases trace-gas microbial energy (1.46×) and stores 125.9 kt CO₂/yr with minimal water use.',
+   },
+   P4: {
+     code: 'P4',
+@@ -76,9 +72,8 @@
+     tag: '+9.5 mm · 40% Shrub · CaSO₄',
+     tagBg: 'warning',
+     plainExplanation:
+-      'Designed for salty eastern sabkha margins: dense shrubs and trees (40% cover) are watered with brackish water (+9.5 mm) buffered by natural gypsum (calcium sulfate, CaSO₄). Calcium shields roots and microbes from sodium toxicity and turns soil CO₂ into solid limestone.',
++      'Designed for salty eastern sabkha margins: dense shrubs and trees (40% cover) are watered with brackish water (+9.5 mm) buffered by natural gypsum (calcium sulfate, CaSO₄). The model assumes a composition-dependent reduction in effective conductivity and a carbonate response; these effects require local field validation.',
+     forcings: '+9.5 mm moisture · 40% shrub cover · CaSO₄/NaCl ratio 1.8 + salt-protective root microbes.',
+-    response: 'Highest carbon capture per km² (302.7 kt CO₂/yr via deep woody roots and solid CaCO₃ mineral crusts).',
+   },
+   P5: {
+     code: 'P5',
+@@ -87,9 +82,8 @@
+     tag: '+5 mm · Nodal · alkB',
+     tagBg: 'info',
+     plainExplanation:
+-      'Tailored for energy corridors: replaces heavy bulldozed seismic tracks with hand-placed wireless sensors (leaving 96% of the soil crust intact) and adds native oil-eating bacteria (alkB/ladA) that digest spilled petroleum into harmless water and CO₂.',
++      'Tailored for energy corridors: replaces heavy bulldozed seismic tracks with hand-placed wireless sensors (leaving 96% of the soil crust intact) and adds native oil-eating bacteria (alkB/ladA) with an assumed first-order hydrocarbon disappearance rate. Product toxicity requires separate measurement.',
+     forcings: '+5 mm moisture pulse · 18% shrub cover · 4% surface grading · alkB/ladA oil-degrading consortium.',
+-    response: 'Breaks down 66.5% of soil petroleum hydrocarbons while protecting the 5–10 cm underground shelter.',
+   },
+   P6: {
+     code: 'P6',
+@@ -100,11 +94,10 @@
+     plainExplanation:
+       'Shows what happens when multiple stresses hit the desert at once: heavy flooding (+26 mm) fills sand pores with water, unbuffered table-salt brine (195 mS/cm) forms a toxic crust, bulldozers scrape away the 5–10 cm heat shelter, and crowded camels pack the soil shut.',
+     forcings: '+26 mm water · 5% shrub cover · 195 mS/cm unbuffered NaCl · 25 camels/100 km² · 65% graded.',
+-    response: 'Clogged pores and salt stress cut microbial air-breathing energy by >50% and collapse carbon storage (19.6 kt CO₂/yr).',
+   },
+ };
+ 
+-const fmt = (v, d = 2) => (Number.isFinite(Number(v)) ? Number(v).toFixed(d) : '—');
++const fmt = (v, d = 2) => (v != null && Number.isFinite(Number(v)) ? Number(v).toFixed(d) : 'Unavailable');
+ 
+ export default function TwinBioDTDashboard({
+   bioDt,
+@@ -237,6 +230,17 @@
+       };
+     });
+   }, [carbonBudget, carbonScope, carbonMode]);
++
++  const carbonOutcome = (code) => {
++    const budgets = carbonBudget.corridor_and_basin_budgets;
++    const entry = code === 'P0' ? budgets?.baseline_observed
++      : code === 'Prescribed' ? budgets?.prescribed_corridor_atlas
++      : budgets?.candidate_portfolios?.[Number(code.slice(1)) - 1];
++    const estimate = entry?.net_persistent_co2_sequestered;
++    return estimate
++      ? `${fmt(estimate.corridor_kt_yr_point, 1)} kt CO₂/yr assumed retained carbon; parameter envelope ${fmt(estimate.corridor_kt_yr_low, 1)}–${fmt(estimate.corridor_kt_yr_high, 1)} kt/yr across the corridor.`
++      : 'Carbon estimate unavailable in this data bundle.';
++  };
+ 
+   if (!bioDt) return null;
+ 
+@@ -347,7 +351,7 @@
+                   </div>
+                   <div className="border-top pt-1 small text-muted" style={{ fontSize: '0.72rem' }}>
+                     <div><strong>Conditions:</strong> {SCENARIO_SPECIFICATIONS.P0.forcings}</div>
+-                    <div className="mt-1"><strong>Outcome:</strong> {SCENARIO_SPECIFICATIONS.P0.response}</div>
++                    <div className="mt-1"><strong>Conditional estimate:</strong> {carbonOutcome('P0')}</div>
+                   </div>
+                 </Card.Body>
+               </Card>
+@@ -385,7 +389,7 @@
+                       </div>
+                       <div className="border-top pt-1 small text-muted" style={{ fontSize: '0.72rem' }}>
+                         <div><strong>Conditions:</strong> {spec.forcings}</div>
+-                        <div className="mt-1"><strong>Outcome:</strong> {spec.response}</div>
++                        <div className="mt-1"><strong>Conditional estimate:</strong> {carbonOutcome(p.code)}</div>
+                         {showTechnical && (
+                           <div className="d-flex justify-content-between mt-1 pt-1 border-top font-monospace">
+                             <span>U = {fmt(p.utility, 3)}</span>
+@@ -426,7 +430,7 @@
+                   </div>
+                   <div className="border-top pt-1 small text-muted" style={{ fontSize: '0.72rem' }}>
+                     <div><strong>Support:</strong> Evaluated on 128 in-support cells (≤45 km); abstains on 120 unvisited cells.</div>
+-                    <div className="mt-1"><strong>Outcome:</strong> 232.0 kt CO₂/yr persistent carbon storage across sampled corridor.</div>
++                    <div className="mt-1"><strong>Conditional estimate:</strong> {carbonOutcome('Prescribed')}</div>
+                   </div>
+                 </Card.Body>
+               </Card>
+@@ -736,7 +740,7 @@
+                     <MetricHelp metricKey="salinity_ec" /> <MetricHelp metricKey="atpm" />
+                   </h6>
+                   <p className="small text-secondary mb-2">
+-                    <strong>How gypsum shields cells from salt:</strong> Pure table salt (NaCl, red bars) forces bacteria to spend all their cellular energy pumping toxic sodium (Na⁺) out of the cell, leaving no energy to capture carbon. Natural gypsum (calcium sulfate, CaSO₄) provides calcium ions that seal cell membranes against sodium leaks, keeping <strong>85.8% of carbon capture running</strong> even at high salinity (85 mS/cm, green bars).
++                    <strong>Assumed composition response:</strong> This scenario lowers effective conductivity as the calcium-sulfate composition index rises. The resulting allocation of energy to maintenance and growth follows the prescribed LP constraints. Matched soil-exposure experiments are needed to evaluate this response.
+                   </p>
+                   <div style={{ width: '100%', height: 245 }}>
+                     <ResponsiveContainer width="100%" height="100%">
+@@ -904,7 +908,7 @@
+                 <MetricHelp metricKey="h2_power" />
+               </h6>
+               <p className="small text-secondary mb-2">
+-                <strong>Protecting the crust &amp; cleaning up oil with desert bacteria:</strong> Traditional seismic surveys used bulldozers to scrape flat corridors across the desert, destroying the fragile surface crust. Switching to hand-placed wireless nodal sensors leaves 96% of the soil untouched, while native desert bacteria carrying <i>alkB</i> and <i>ladA</i> enzymes break down <strong>66.5% of spilled petroleum hydrocarbons</strong> into harmless water and carbon dioxide.
++                <strong>Compaction and remediation scenarios:</strong> The model reduces compaction and grading effects under a prescribed nodal-survey multiplier and assumes first-order hydrocarbon disappearance with inoculation. The curves illustrate these assumptions; field measurements would establish remediation rates and product toxicity.
+               </p>
+               <table className="table table-sm table-bordered small align-middle mb-0">
+                 <thead className="table-light">
+@@ -944,10 +948,10 @@
+         <div>
+           <div className="p-3 mb-3 bg-light rounded border">
+             <h5 className="h6 fw-bold text-dark mb-1">
+-              How Can a Hyper-Arid Desert Capture and Lock Away Carbon?
++              What the carbon scenarios estimate
+             </h5>
+             <p className="small text-secondary mb-2">
+-              Even without dense forests, desert ecosystems capture greenhouse gases through <strong>four complementary pathways</strong>: (1) deep woody roots of hardy desert shrubs, (2) underground bacteria that use hydrogen-gas energy to fix carbon dioxide in the dark without sunlight, (3) mineral reactions with gypsum calcium that turn dissolved CO₂ into solid limestone grains (<i>CaCO₃</i>) in the soil, and (4) soil microbes that scrub trace hydrogen gas (H₂) from the air, which indirectly shortens the atmospheric lifetime of methane (CH₄).
++              The calculator reports vegetation net primary production, microbial fixation, carbonate accumulation and a separate hydrogen climate-equivalent contribution. Retained-carbon estimates apply assumed fractions to the first three pathways. Assessing net removal additionally requires water demand, lifecycle emissions, turnover and permanence evidence.
+             </p>
+             <CarbonPathwaysIllustration />
+             <div className="d-flex justify-content-between align-items-center flex-wrap gap-2 pt-2 border-top">
+@@ -965,7 +969,7 @@
+                 >
+                   <option value="corridor">Sampled Transect Support (92,160 km²)</option>
+                   <option value="sand_sea">Core Sand Sea (500,000 km² — Extrapolated)</option>
+-                  <option value="basin">Full Basin (650,000 km² — Upper Bound)</option>
++                  <option value="basin">Full basin (650,000 km²; assumed background)</option>
+                 </Form.Select>
+                 <Form.Select
+                   size="sm"
+@@ -974,9 +978,9 @@
+                   aria-label="Carbon accounting mode"
+                   onChange={(e) => setCarbonMode(e.target.value)}
+                 >
+-                  <option value="persistent">Persistent Sequestered CO₂</option>
+-                  <option value="persistent_h2">Persistent CO₂ + Indirect H₂ Sink (CO₂-eq)</option>
+-                  <option value="gross">Gross Captured CO₂ (Pre-Respiration)</option>
++                  <option value="persistent">Assumed retained CO₂</option>
++                  <option value="persistent_h2">Assumed retained CO₂ + H₂ contribution (CO₂-eq)</option>
++                  <option value="gross">Annual production + carbonate accumulation</option>
+                 </Form.Select>
+               </div>
+             </div>
+@@ -997,7 +1001,7 @@
+                       <YAxis tick={{ fontSize: 11 }} unit=" kt" />
+                       <RechartsTooltip />
+                       <Legend wrapperStyle={{ fontSize: 11 }} />
+-                      <Bar dataKey="Vegetation" stackId="a" name="1. Shrub Wood & Root Biomass (CO₂)" fill="#1b9e77" />
++                      <Bar dataKey="Vegetation" stackId="a" name="1. Vegetation production / assumed retention" fill="#1b9e77" />
+                       <Bar dataKey="Microbial_RuBisCO" stackId="a" name="2. Microbial RuBisCO Fixation (CO₂)" fill="#2b83ba" />
+                       <Bar dataKey="Pedogenic_Carbonate" stackId="a" name="3. Pedogenic CaCO₃ Carbonate (CO₂)" fill="#d95f02" />
+                       {(carbonMode === 'persistent_h2' || carbonMode === 'gross_h2') && (
+@@ -1018,7 +1022,7 @@
+                     <thead className="table-light">
+                       <tr>
+                         <th>Regime</th>
+-                        <th>Persistent CO₂ <MetricHelp metricKey="carbon_persistent" /></th>
++                        <th>Assumed retention <MetricHelp metricKey="carbon_persistent" /></th>
+                         <th>Gross CO₂ <MetricHelp metricKey="carbon_gross" /></th>
+                         <th>Total CO₂-eq (incl. H₂) <MetricHelp metricKey="carbon_h2" /></th>
+                       </tr>
+@@ -1036,7 +1040,7 @@
+                   </table>
+                 </div>
+                 <div className="small text-muted" style={{ fontSize: '0.73rem' }}>
+-                  <strong>Retention fractions:</strong> Persistent sequestration retains 15% of shrub NPP (deep woody roots), 25% of microbial RuBisCO necromass, and 50% of pedogenic CaCO₃ mineral precipitation after annual respiratory turnover.
++                  <strong>Assumed retention fractions:</strong> 15% of vegetation NPP, 25% of microbial fixation and 50% of carbonate accumulation. Low/high parameter envelopes are sensitivity ranges. These estimates require stock and lifecycle measurements for net-removal claims.
+                 </div>
+               </div>
+             </Col>
+--- before/MetricHelp.jsx
++++ /home/leechuck/Public/software/empty-quarter/website/frontend/src/components/twin/MetricHelp.jsx
+@@ -16,24 +16,19 @@
+       'Change in standardized bacterial Shannon diversity between the baseline climate/soil state (P0) and the active scenario or slider perturbation.',
+   },
+   clr: {
+-    title: 'Centered Log-Ratio Abundance (CLR / Δ CLR)',
+-    unit: 'Natural log ratio relative to geometric mean',
+-    body:
+-      'Compositional log-abundance of a bacterial genus relative to the geometric mean of 200 desert genera in that soil compartment. ' +
+-      'A shift of +0.69 CLR corresponds to a 2× increase in relative abundance share; −0.69 CLR corresponds to a 0.5× share.',
++    title: "Centred log-ratio abundance",
++    unit: "Natural log ratio to the geometric-mean reference",
++    body: "A change of +0.69 CLR doubles the ratio to the geometric-mean reference composition. Converting it to a change in abundance share requires the full composition.",
+   },
+   bootstrap_ci: {
+-    title: '95% Site-Bootstrap Confidence Interval',
+-    unit: 'Δ CLR (2.5th to 97.5th percentile)',
+-    body:
+-      'Non-parametric uncertainty range estimated by resampling the survey sites with replacement (1,000 bootstrap replicates) and refitting the ridge regression model.',
++    title: "Site-bootstrap interval",
++    unit: "2.5th to 97.5th percentile",
++    body: "Uncertainty from resampling sites and refitting the model, conditional on its chosen predictors and form. The exported genus models use 200 site resamples.",
+   },
+   r2_block: {
+-    title: 'Spatial Block Cross-Validation R²',
+-    unit: 'Out-of-sample variance explained (−∞ to 1.0)',
+-    body:
+-      'Predictive accuracy evaluated by holding out entire 0.5° geographic blocks during fitting. ' +
+-      'Positive R² indicates a spatially transferable relationship; values near or below 0 indicate high local heterogeneity where predictions should be treated as exploratory.',
++    title: "Spatial block cross-validation R\u00b2",
++    unit: "Out-of-sample variance explained",
++    body: "The genus evaluation holds out five contiguous longitude blocks of sites. Values below zero indicate worse squared error than the pooled observed-mean reference.",
+   },
+   ndvi: {
+     title: 'Normalized Difference Vegetation Index (NDVI)',
+@@ -57,48 +52,39 @@
+       'Fresh/brackish groundwater is <15 mS/cm, seawater is ~55 mS/cm, and hypersaline sabkha brines exceed 100–200 mS/cm.',
+   },
+   hydb_1l: {
+-    title: 'Group 1l [NiFe]-Hydrogenase Abundance (hydB_1l)',
+-    unit: 'log₂ Genome Equivalents (GE) per cell',
+-    body:
+-      'Copy number per microbial genome (log₂ scale) of the high-affinity atmospheric H₂-oxidizing hydrogenase gene (hydB_1l) from shotgun metagenomes. ' +
+-      'Enables trace-gas chemoautotrophs to oxidize atmospheric H₂ (0.53 ppmv) for maintenance energy and metabolic water in hyper-arid sand.',
++    title: "Group 1l hydrogenase gene capacity",
++    unit: "log\u2082(GE + 0.01)",
++    body: "Gene copies normalized by estimated genome equivalents from shotgun reads. This describes encoded capacity. The map interpolates site values and applies prescribed scenario offsets.",
+   },
+   h2_power: {
+-    title: 'Atmospheric Trace-Gas Oxidation Power',
+-    unit: 'Microwatts per cubic metre of bulk soil (µW/m³)',
+-    body:
+-      'Thermodynamic Gibbs free energy flux harvested by soil bacteria oxidizing atmospheric H₂ and CO gases. ' +
+-      'Depends on both enzyme abundance (hydB_1l, coxL) and Millington–Quirk gas diffusion through air-filled sand pores.',
++    title: "Modelled trace-gas oxidation power",
++    unit: "\u00b5W per m\u00b3 of soil",
++    body: "A capacity-to-power estimate. Site engines use prescribed gene-capacity scaling, sometimes coupled to relative gas diffusion. The map uses interpolated exported values and assumed multipliers.",
+   },
+   cbb_share: {
+-    title: 'Chemoautotrophic CO₂-Fixation Gene Share (rbcL / prkB)',
+-    unit: 'Percentage of microbial genomes (%)',
+-    body:
+-      'Fraction of community genomes encoding Calvin–Benson–Bassham (RuBisCO) dark CO₂-fixation enzymes, allowing carbon fixation without sunlight using trace-gas energy.',
++    title: "RuBisCO / CBB marker carriage",
++    unit: "Fraction of mapped reads (%)",
++    body: "Shares of reads mapping to MAGs passing the selected rbcL, rbcL+prk, or rbcL+rbcS+prk screen. These are distinct genomic marker screens; functional fixation requires activity measurements.",
+   },
+   j1: {
+-    title: 'Biodiversity & Subsurface Shelter Index (J₁)',
+-    unit: 'Composite index (higher = greater diversity & survival)',
+-    body:
+-      'Combines standardized 16S Shannon diversity (H′) and the survival index of endospore-forming bacteria in the 5–10 cm subsurface thermal shelter.',
++    title: "Biodiversity and refugium objective J\u2081",
++    unit: "Composite model score",
++    body: "Mean scenario Shannon diversity plus 2.5 times the brine-model dark coding fraction and 1.2 times seismic-model refugium integrity. The coefficients are chosen preferences.",
+   },
+   j2: {
+-    title: 'Chemosynthetic & C/N Flux Index (J₂)',
+-    unit: 'Relative biogeochemical activity (1.00 = P0 baseline)',
+-    body:
+-      'Combines atmospheric H₂/CO oxidation power, dark RuBisCO carbon fixation, and nitrification flux relative to the unperturbed P0 baseline.',
++    title: "Chemosynthesis and nutrient objective J\u2082",
++    unit: "Composite model score",
++    body: "Weighted sum of modelled gas power, carbon fixation, nitrogen fixation and nitrification. Components use different model units and the weights are prescribed.",
+   },
+   j3: {
+-    title: 'Salinity & Compaction Stress Index (J₃)',
+-    unit: 'Composite stress index (lower = less soil degradation)',
+-    body:
+-      'Combines cellular osmotic maintenance energy deficit (ATPM stress from Na⁺) and mechanical loss of air-filled soil porosity from surface grading or trampling.',
++    title: "Salinity and compaction objective J\u2083",
++    unit: "Composite model score; lower is preferred",
++    body: "Eight times salt-crust penalty, four times modelled Halobacteriota share, and fifteen times combined porosity loss. Treating Halobacteriota as adverse is a non-sabkha management preference.",
+   },
+   j4: {
+-    title: 'Water Input & Resistome Load Index (J₄)',
+-    unit: 'Composite resource & biosafety index (lower = lower cost/load)',
+-    body:
+-      'Combines supplemental water volume applied (mm/yr) and the relative abundance of mobile antibiotic-resistance genes (ARGs) in the soil resistome.',
++    title: "Resource and ARG objective J\u2084",
++    unit: "Composite model score; lower is preferred",
++    body: "A prescribed weighted index of rain pulse, canopy cover, dilution cost and a heuristic ARG screening score. Water budgets, operating emissions and measured ARG risk require additional assessment.",
+   },
+   utility: {
+     title: 'Multi-Objective Composite Index (U)',
+@@ -111,31 +97,27 @@
+     unit: 'Non-Dominated (Pareto front) vs. Dominated',
+     body:
+       'A regime is Non-Dominated (on the Pareto front) if no other modeled regime improves one index (J₁–J₄) without worsening at least one other. ' +
+-      'A regime is Dominated if another modeled regime performs better on all four indices simultaneously.',
++      'A regime is Dominated if another modeled regime is at least as good on all objectives and strictly better on at least one.',
+   },
+   ocs: {
+-    title: 'Ontological Consistency Score (OCS)',
+-    unit: 'Fraction of OWL 2 domain axioms satisfied (0.00 to 1.00)',
+-    body:
+-      'Proportion of formal constraints in the Rub’ al-Khali OWL 2 knowledge graph (compositional bounds, non-negativity, ATPM maintenance feasibility, and compartment hierarchy) satisfied by the predicted state.',
++    title: "Ontological consistency score",
++    unit: "Fraction of evaluated states satisfying all constraints",
++    body: "Checks nonnegativity, subsumption, exhaustive partition sums and upper bounds in the compiled OWL module. Energy maintenance is checked separately by the LP. OCS measures algebraic coherence.",
+   },
+   carbon_persistent: {
+-    title: 'Persistent Sequestered CO₂',
+-    unit: 'Kilotonnes of CO₂ per year (kt CO₂/yr)',
+-    body:
+-      'Annual CO₂ flux retained in long-lived soil pools after subtracting fast respiratory turnover: 15% of shrub NPP (deep woody roots), 25% of microbial RuBisCO necromass, and 50% of pedogenic CaCO₃ mineral precipitation.',
++    title: "Assumed retained carbon",
++    unit: "kt CO\u2082 per year",
++    body: "A conditional retention scenario: 15% of vegetation NPP, 25% of microbial fixation and 50% of carbonate accumulation. These fractions are assumed. Measured stocks, permanence, water and lifecycle emissions are needed to assess net removal.",
+   },
+   carbon_gross: {
+-    title: 'Gross Captured CO₂',
+-    unit: 'Kilotonnes of CO₂ per year (kt CO₂/yr)',
+-    body:
+-      'Total annual autotrophic CO₂ fixation by desert shrubs, chemoautotrophic bacteria, and carbonate precipitation prior to annual ecosystem respiration.',
++    title: "Annual carbon pathway sum",
++    unit: "kt CO\u2082 per year",
++    body: "Adds modelled vegetation NPP, microbial fixation and carbonate accumulation. These are different production and mineral endpoints; NPP already accounts for plant respiration.",
+   },
+   carbon_h2: {
+-    title: 'Indirect Atmospheric H₂ Climate Sink',
+-    unit: 'Kilotonnes of CO₂-equivalent per year (kt CO₂-eq/yr)',
+-    body:
+-      'Radiative forcing offset resulting from soil bacterial oxidation of atmospheric H₂, which preserves tropospheric ·OH radicals and shortens the atmospheric lifetime of methane (GWP₁₀₀ ≈ 11.6).',
++    title: "Conditional hydrogen climate contribution",
++    unit: "kt CO\u2082-equivalent per year",
++    body: "Modelled H\u2082 uptake multiplied by the emissions-based GWP\u2081\u2080\u2080 of 11.6. Using it for a soil sink assumes a corresponding marginal atmospheric response. It is reported separately from retained carbon.",
+   },
+   porosity: {
+     title: 'Effective Porosity & Gas Diffusivity',
+@@ -150,10 +132,9 @@
+       'Extra ATP energy required by microbial cells to extrude Na⁺ ions and synthesize compatible solutes (ectoine, glycine betaine) under high salinity. Values above the cellular threshold cause metabolic arrest.',
+   },
+   coverage_mask: {
+-    title: 'Empirical Survey Support vs. Extrapolation',
+-    unit: 'Distance to nearest sampled site (≤45 km threshold)',
+-    body:
+-      'Locations within 45 km of the 60 primary Rub’ al-Khali transect sites and within the observed climate range are classified as Inside Empirical Support. Unvisited regions farther north are marked as model extrapolations.',
++    title: "Sampling-distance envelope",
++    unit: "Approximate distance threshold of 45 km",
++    body: "Marks proximity to the transect. The corridor calculator also uses interpolated climate and elevation ranges. Nearby grid cells may inherit imputed microbial baselines; intervention-dose support requires separate evaluation.",
+   },
+ };
+ 
+--- before/App.css
++++ /home/leechuck/Public/software/empty-quarter/website/frontend/src/App.css
+@@ -1503,3 +1503,27 @@
+ ::-webkit-scrollbar-thumb { background: var(--rk-sand-300); border-radius: 5px; }
+ ::-webkit-scrollbar-thumb:hover { background: var(--rk-rust-500); }
+ ::-webkit-scrollbar-track { background: var(--rk-sand-50); }
++
++/* Twin evidence follows the existing field-map palette and type hierarchy. */
++.twin-evidence-guide {
++  margin-block: 1rem;
++  padding: 1rem 1.25rem;
++  background: #fff;
++  color: #25241f;
++  border-left: 4px solid #2c6e91;
++  border-radius: 0 8px 8px 0;
++  font-size: .9rem;
++}
++.twin-evidence-guide h2 { font-size: 1.1rem; margin-bottom: .3rem; }
++.twin-evidence-intro p { color: #595547; margin-bottom: .85rem; }
++.twin-evidence-levels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; margin-bottom: .7rem; }
++.twin-evidence-levels dt { color: #205676; margin-bottom: .25rem; }
++.twin-evidence-levels dd { margin: 0; max-width: 65ch; }
++.twin-layer-evidence { background: #edf4f8; padding: .6rem .8rem; border-radius: 4px; margin-bottom: .6rem; }
++.twin-evidence-guide summary { cursor: pointer; color: #205676; font-weight: 600; padding-block: .25rem; }
++.twin-evidence-guide details p { max-width: 85ch; margin-top: .6rem; }
++.twin-evidence-guide :focus-visible { outline: 3px solid #2c6e91; outline-offset: 4px; }
++@media (max-width: 700px) {
++  .twin-evidence-levels { grid-template-columns: 1fr; gap: .8rem; }
++  .twin-evidence-guide { padding: .85rem; }
++}
+--- before/TwinIllustrations.jsx
++++ /home/leechuck/Public/software/empty-quarter/website/frontend/src/components/twin/TwinIllustrations.jsx
+@@ -517,16 +517,16 @@
+ 
+ export function CarbonPathwaysIllustration() {
+   return (
+-    <svg viewBox="0 0 760 175" className="w-100 rounded border bg-white mb-3" role="img" aria-label="Four pathways of desert carbon capture and storage">
++    <div className="overflow-auto mb-3" tabIndex={0} aria-label="Four conditional carbon pathways; scroll horizontally on small screens"><svg viewBox="0 0 760 175" style={{ minWidth: 680 }} className="w-100 rounded border bg-white" role="img" aria-label="Vegetation and microbial production, carbonate accumulation and an indirect hydrogen contribution. Retention fractions are assumptions.">
+       {/* Box 1: Woody Roots */}
+       <rect x="8" y="8" width="178" height="159" rx="6" fill="#f0fdf4" stroke="#86efac" />
+       <text x="16" y="26" fontSize="10.5" fill="#14532d" fontWeight="bold">1. Deep Shrub Roots</text>
+       <text x="16" y="40" fontSize="9" fill="#15803d">Photosynthesis (CO₂ → Wood)</text>
+       <circle cx="97" cy="74" r="14" fill="#16a34a" />
+       <path d="M97 88 L85 112 M97 88 L109 112 M97 88 L97 116" stroke="#78350f" strokeWidth="2.5" />
+-      <text x="16" y="134" fontSize="8.8" fill="#166534">• Leaves decay quickly, but</text>
+-      <text x="16" y="146" fontSize="8.8" fill="#14532d" fontWeight="bold">  15% stays locked in deep</text>
+-      <text x="16" y="158" fontSize="8.8" fill="#14532d" fontWeight="bold">  woody roots for decades</text>
++      <text x="16" y="134" fontSize="8.8" fill="#166534">• Modelled plant production</text>
++      <text x="16" y="146" fontSize="8.8" fill="#14532d" fontWeight="bold">  Retention assumed at 15%;</text>
++      <text x="16" y="158" fontSize="8.8" fill="#14532d" fontWeight="bold">  duration requires evidence</text>
+ 
+       {/* Box 2: Dark Microbial Rubisco */}
+       <rect x="196" y="8" width="178" height="159" rx="6" fill="#eff6ff" stroke="#93c5fd" />
+@@ -536,17 +536,17 @@
+       <text x="265" y="89" fontSize="8.5" fill="#1e3a8a" fontWeight="bold">RuBisCO</text>
+       <text x="204" y="134" fontSize="8.8" fill="#1e40af">• Uses H₂ gas energy to turn</text>
+       <text x="204" y="146" fontSize="8.8" fill="#1e3a8a" fontWeight="bold">  soil CO₂ into cell biomass</text>
+-      <text x="204" y="158" fontSize="8.8" fill="#1e3a8a" fontWeight="bold">  (25% kept as soil humus)</text>
++      <text x="204" y="158" fontSize="8.8" fill="#1e3a8a" fontWeight="bold">  (25% retention assumed)</text>
+ 
+       {/* Box 3: Limestone Mineral */}
+       <rect x="384" y="8" width="178" height="159" rx="6" fill="#fffbeb" stroke="#fcd34d" />
+-      <text x="392" y="26" fontSize="10.5" fill="#78350f" fontWeight="bold">3. Solid Limestone Crust</text>
+-      <text x="392" y="40" fontSize="9" fill="#b45309">CO₂ + Calcium → CaCO₃ Stone</text>
++      <text x="392" y="26" fontSize="10.5" fill="#78350f" fontWeight="bold">3. Soil Carbonate</text>
++      <text x="392" y="40" fontSize="9" fill="#b45309">Mineral accumulation index</text>
+       <polygon points="473,65 493,80 485,102 461,102 453,80" fill="#fef3c7" stroke="#d97706" strokeWidth="2" />
+       <text x="458" y="89" fontSize="8.5" fill="#78350f" fontWeight="bold">CaCO₃</text>
+-      <text x="392" y="134" fontSize="8.8" fill="#92400e">• Turns dissolved CO₂ + gypsum</text>
+-      <text x="392" y="146" fontSize="8.8" fill="#78350f" fontWeight="bold">  calcium into solid mineral</text>
+-      <text x="392" y="158" fontSize="8.8" fill="#78350f" fontWeight="bold">  grains (50% locked centuries)</text>
++      <text x="392" y="134" fontSize="8.8" fill="#92400e">• Mineral-source attribution</text>
++      <text x="392" y="146" fontSize="8.8" fill="#78350f" fontWeight="bold">  requires measurement;</text>
++      <text x="392" y="158" fontSize="8.8" fill="#78350f" fontWeight="bold">  50% retention assumed</text>
+ 
+       {/* Box 4: Indirect H2 Sink */}
+       <rect x="572" y="8" width="180" height="159" rx="6" fill="#f5f3ff" stroke="#c4b5fd" />
+@@ -555,8 +555,8 @@
+       <circle cx="662" cy="84" r="20" fill="#ede9fe" stroke="#7c3aed" strokeWidth="2" />
+       <text x="646" y="88" fontSize="8.5" fill="#4c1d95" fontWeight="bold">H₂ → H₂O</text>
+       <text x="580" y="134" fontSize="8.8" fill="#5b21b6">• Soil bacteria eat air H₂ gas,</text>
+-      <text x="580" y="146" fontSize="8.8" fill="#4c1d95" fontWeight="bold">  freeing •OH in the sky to</text>
+-      <text x="580" y="158" fontSize="8.8" fill="#4c1d95" fontWeight="bold">  destroy greenhouse methane</text>
+-    </svg>
++      <text x="580" y="146" fontSize="8.8" fill="#4c1d95" fontWeight="bold">  with an assumed marginal</text>
++      <text x="580" y="158" fontSize="8.8" fill="#4c1d95" fontWeight="bold">  atmospheric climate benefit</text>
++    </svg></div>
+   );
+ }

@@ -1,0 +1,12 @@
+PASS: OWL module dimensions
+FAIL: Projection rejects missing coordinates
+FAIL: Constitutive evaluation rejects missing leaf coordinates
+FAIL: Projection rejects indefinite metric
+FAIL: Numerical LP failure is distinct from biological dormancy
+PASS: Dormancy fallback no longer creates ATP from unconsumed DOC
+FAIL: Zero-intervention virome identity includes zero baselines
+FAIL: Regional carbon responds to portfolio rainfall
+PASS: Zero rbcL co-carriage preserves zero microbial fixation
+PASS: Carbon pathway arithmetic
+FAIL: All supported grid baselines have observed surface WGS
+/home/leechuck/Public/software/empty-quarter-digital-twin/reviews/validation-2026-10-26/model-contracts.json

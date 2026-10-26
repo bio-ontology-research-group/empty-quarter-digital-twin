@@ -1,0 +1,50 @@
+# paper/references.bib: 47 entries
+  SKIP  pearl2009causality           no doi field (web source?)
+  OK    spirtes2004ambiguous         10.1086/425058
+  OK    vanderweele2013multiple      10.1515/jci-2012-0002
+  SKIP  rubenstein2017causal         no doi field (web source?)
+  OK    beckers2019abstracting       10.1609/aaai.v33i01.33012678
+  OK    thomas2019gocam              10.1038/s41588-019-0500-1
+  SKIP  owl2direct2012               no doi field (web source?)
+  OK    bay2021trace                 10.1038/s41564-020-00811-w
+  OK    bay2021aridity               10.1038/s41396-021-01001-0
+  OK    grinter2023structural        10.1038/s41586-023-05781-7
+  OK    jordaan2020gobi              10.1128/mSystems.01131-20
+  OK    leung2020energetic           10.1128/mSystems.00495-19
+  OK    carini2016relicdna           10.1038/nmicrobiol.2016.242
+  OK    lennon2018relicdna           10.1128/mBio.00637-18
+  FAIL  imminger2024resuscitation    10.1038/s41467-024-45996-0 does NOT resolve
+  OK    hersbach2020era5             10.1002/qj.3803
+  OK    millington1961permeability   10.1039/TF9615701200
+  OK    soilandreyes2022rocrate      10.3233/DS-210053
+  OK    wieczorek2012dwc             10.1371/journal.pone.0029715
+  OK    dumontier2014sio             10.1186/2041-1480-5-14
+  OK    buttigieg2016envo            10.1186/s13326-016-0097-6
+  OK    hastings2016chebi            10.1093/nar/gkv1031
+  FAIL  oldoni2020occurrence         10.12688/f1000research.25169.1 does NOT resolve
+  OK    misitano2021desdeo           10.1109/ACCESS.2021.3123825
+  OK    huangfu2018highs             10.1007/s12532-017-0130-5
+  OK    virtanen2020scipy            10.1038/s41592-019-0686-2
+  OK    wickramasuriya2019optimal    10.1080/01621459.2018.1448825
+  OK    orth2010fba                  10.1038/nbt.1614
+  OK    dersimonian1986meta          10.1016/0197-2456(86)90046-2
+  OK    ledoit2004well               10.1016/S0047-259X(03)00096-4
+  SKIP  pedregosa2011scikit          no doi field (web source?)
+  OK    bates2015lme4                10.18637/jss.v067.i01
+  OK    benjamini1995controlling     10.1111/j.2517-6161.1995.tb02031.x
+  OK    ji2017atmospheric            10.1038/nature25014
+  OK    cordero2019atmospheric       10.1038/s41396-019-0479-8
+  OK    ehhalt2009h2cycle            10.1111/j.1600-0889.2009.00416.x
+  OK    ocko2022hydrogen             10.5194/acp-22-9349-2022
+  OK    warwick2023atmospheric       10.5194/acp-23-13451-2023
+  OK    paulot2024reanalysis         10.5194/acp-24-4217-2024
+  OK    buzzard2022h2uptake          10.7717/peerj.12966
+  OK    leung2025aridity             10.1101/2025.11.29.691269
+  OK    tribbia2026namib             10.1128/aem.00265-26
+  OK    reji2025h2sink               10.1038/s41467-025-67208-3
+  OK    schlesinger1985caliche       10.1016/0016-7037(85)90191-7
+  OK    ma2013inorganic              10.1038/srep02025
+  OK    ma2021haloxylon              10.1016/j.gecco.2021.e01607
+  OK    wieder2015mimics             10.1002/2015GB005188
+
+PROBLEMS FOUND (2 problem(s))

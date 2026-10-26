@@ -1,0 +1,377 @@
+Skip to main content
+Rub' al-Khali
+microbial survey of the Empty Quarter
+Explore
+Data
+Stats
+Model
+Genomes
+Query
+API
+Stories
+About
+KG VERSION —
+SURVEY 60 core sites · 5 expeditions
+SPARQL /sparql
+API /api/docs
+Cite this resource
+Arabian Desert & Empty Quarter Biodiversity Digital Twin
+Full Arabian Desert (Rub' al-Khali · Ad-Dahna · An-Nafud)
+Grid Cell Size: 0.05° × 0.05° (~5.3 km)
+
+Even in the hyper-arid Empty Quarter (<35 mm rain/yr, surface sand >58 °C), billions of soil bacteria stay alive by sheltering 5–10 cm underground and breathing trace hydrogen gas (H₂) from the air. Explore observed gene capacity and conditional management scenarios. Their responses combine measured baselines, fitted associations and explicitly assumed mechanisms.
+
+Map & 3D View
+Scenario Regimes (P0–P6)
+Desert Mechanisms (6)
+Carbon scenarios
+Hallmark & Root Microbes (12)
+Read the twin with its evidence
+
+Explore observed microbial capacity and conditional scenarios for the Rub’ al-Khali.
+
+Observed baseline
+155 of 180 site–compartment states have metagenomes. Remaining guild baselines are imputed.
+Ontological consistency
+Class constraints keep parts and totals coherent. OCS measures states satisfying all compiled constraints.
+Conditional mechanisms
+Management effects depend on calibrated and assumed response functions. Field intervention validation remains outstanding.
+
+Statistical maps describe fitted associations. Slider changes are conditional on those associations holding under the new conditions.
+
+How to interpret maps, scenarios and carbon
++
+−
+ Leaflet | Esri World Imagery
+3D Desert Ecosystem Visualizer (WebGL)
+Representative Arabian Desert Patch
+Showing: Today (P0 Baseline)
+
+Most of the hyper-arid desert has no trees (only bare sand and sparse low scrub), while restoration or wadi oases support solitary flat-topped Acacia trees (Vachellia tortilis) or an Oasis Palm. Watch white sabkha salt crusts & halite crystals spread across the dune hollows when salinity rises.
+
+Today (P0 Baseline)
+After Scenario / Sliders
+Pause Rotation
+Preview Scenario in 3D:
+P0 · Today (0 Trees)
+P1 · Conservation
+P2 · Acacia & Oryx
+P3 · Soil Crust
+P4 · Oasis + Palm
+P5 · Clean Energy
+P6 · High Salt Brine
+Drag to rotate · White patches & cubes: Surface salt crust & crystals · Flat-crowned tree: Desert Acacia (Vachellia tortilis)
+Zoom +
+Zoom −
+Vegetation (Acacia & Oasis Palm) ?
+0 trees (open dune) + 2 low scrub tufts → 0 trees (open dune) + 2 low scrub tufts
+Bare dunes: 0 trees; wadis/oases add solitary Acacia
+Sabkha Salt Crust & Crystals ?
+2 salt patches (7% crust) → 2 patches (7% crust)
+Soil S: 0.24% → 0.24% (NaCl crust)
+Trace-Gas Oxidation Power ?
+38 → 38 µW/m³
+Atmospheric H₂/CO uptake in 5–10 cm shelter
+Precipitation & Temperature
+84 → 84 mm/yr
+MAT: 21.1 °C → 21.1 °C
+Click any location on the map to inspect its local climate, soil salt, predicted bacterial diversity across all three soil layers, all 7 Hallmark desert bacteria, and its 3D ecosystem visualization.
+MAP VARIABLE ?
+Grid: 0.05° (~5.3 km)
+Bacterial diversity (Shannon index z-score)
+Vegetation greenness index (NDVI)
+Soil sulfur / evaporite salt proxy (S mass %)
+Taxon abundance models (7 hallmark & 5 root genera)
+Empirical sampling support (≤45 km transect vs. extrapolated)
+Spatial scenario composite (P3 plains / P4 sabkha margins)
+Atmospheric H₂-oxidizing gene abundance (hydB_1l)
+Atmospheric trace-gas oxidation power (µW/m³)
+Spatial Grid Resolution
+360×480 cells
+Fine grid · 0.04° × 0.04° (~4.3 km cells)
+Standard grid · 0.05° × 0.05° (~5.3 km cells)
+Coarse grid · 0.10° × 0.10° (~10.6 km cells)
+Show diversity change from current (±0.3 z) ?
+Hatch extrapolated regions (>45 km from sites) ?
+Clip to Arabian Desert boundary
+Show 60 sampled core sites
+Show all 70 survey stations (60 primary + 10 auxiliary)
+Show transect grid cells (~11 km vector overlay)
+SCENARIO REGIME (P0–P6) ?
+P0 · Observed Baseline (0 mm · 4% Shrub)
+P1 · Unperturbed Conservation Regime (0 mm · 4% Shrub)
+P2 · Revegetation & Native Browser Regime (+6 mm · 22% Shrub)
+P3 · Low-Water Micro-Catchment & Crust Regime (+3.5 mm · 14% Shrub)
+P4 · Gypsum-Buffered Irrigated Oasis Regime (+10 mm · 38% Shrub)
+P5 · Nodal Seismic & Hydrocarbon Bioremediation (+15 mm · 16% Shrub)
+P6 · High-Salinity Brine & Surface Disturbance (+25 mm · 120 mS/cm)
+Spatial Composite (P3 Plains / P4 Sabkha Margins)
+SOIL COMPARTMENT
+Surface
+Shallow subsurface
+Root-adjacent
+Surface: 0–2 cm · Shallow subsurface: 5–10 cm · Root-adjacent: rhizosphere soil.
+CLIMATE & EDAPHIC PERTURBATIONS
+Current baseline climate
+SSP1-2.6 · 2050
+SSP1-2.6 · 2100
+SSP2-4.5 · 2050
+SSP2-4.5 · 2100
+SSP3-7.0 · 2050
+SSP3-7.0 · 2100
+Soil salt reduction (do(S-2SD))
+Precipitation perturbation (% MAP)
++0 %
+Temperature perturbation (Δ °C)
++0.0 °C
+Soil sulfur / salinity shift (Δ SD) ?
++0.00 SD
+Reset sliders
+BACTERIAL DIVERSITY (SHANNON SCORE)
++0.1 (richer bacterial variety)
+−0.3 (typical desert sand)
+−0.7 (sparse / stress-dominated)
+Measures how many different bacterial types live in the soil relative to our 60-site survey average.
+Active grid resolution: 0.05° × 0.05° (~5.3 km cells, 360×480 grid). Diagonal stripes indicate unvisited desert (>45 km from sampled sites).
+Scenario Regimes (P0–P6)
+Biophysical Response Curves
+Carbon Fluxes & Storage
+Multi-objective details (U, Pareto, OCS) ?
+Map: Spatial Composite
+Map: hydB_1l
+Map: Trace-Gas Power
+
+Each card below illustrates one of the seven desert regimes (P0 through P6) plus the landform-matched Spatial Composite (P3 / P4). Click any card to update the 2D Arabian Desert Map and the 3D WebGL Ecosystem View above.
+
+P0 · Observed Baseline
+0 mm · 4% Shrub
+Surface >58 °C
+15–35 mm rain/yr
+Air H₂ & CO gas
+4% sparse shrub
+5–10 cm Cool Shelter (~44 °C): Air-breathing microbes & spores
+Open air-filled sand pores (38–52 µW/m³ trace-gas energy)
+
+The natural Empty Quarter today: almost no rain (15–35 mm/yr), scorching surface sand (>58 °C), and sparse shrubs (4%). Soil life survives 5–10 cm underground where the sand is 14 °C cooler, breathing trace hydrogen gas (H₂) from the air flowing through open sand pores.
+
+Conditions: +0 mm water · 4% shrub cover · Uninoculated · 95% intact 5–10 cm shelter.
+Conditional estimate: 140.9 kt CO₂/yr assumed retained carbon; parameter envelope 55.2–341.8 kt/yr across the corridor.
+P1 · Current-use baseline
+0 mm · 4% Shrub
+Protected Reserve · No Water Added (+0 mm)
+Natural desert crust & open air pores preserved intact
+95% Intact 5–10 cm Shelter · Maximum gas diffusion
+Zero groundwater draw · Baseline carbon storage only
+
+A prescribed current-use reference with light grazing, discharge at 15 mS/cm and conventional seismic activity. Compare its settings with the separately calculated P0 baseline.
+
+Conditions: +0 mm water · 4% shrub cover · Uninoculated · 95% intact 5–10 cm shelter · Low wildlife density.
+Conditional estimate: 188.1 kt CO₂/yr assumed retained carbon; parameter envelope 75.2–454.4 kt/yr across the corridor.
+P2 · Revegetation & Native Browser Regime
++6.5 mm · 24% Shrub
++6.5 mm Gentle Rain · 24% Shrubs + Native Oryx
+Rotational Oryx & Gazelle
+RAK-PR Root Microbes: 1.24× air-breathing gene density
+80% open air pores retained · Strong shrub & soil carbon gain
+
+Restores desert shrubland (24% cover) with a modest rain pulse (+6.5 mm), native root-partner bacteria (RAK-PR), and light-footed native Arabian Oryx and Sand Gazelles that move between water points without packing down the soil.
+
+Conditions: +6.5 mm moisture pulse · 24% shrub cover + RAK-PR · Rotational native browsers (oryx/gazelle).
+Conditional estimate: 1307.1 kt CO₂/yr assumed retained carbon; parameter envelope 549.5–3118.2 kt/yr across the corridor.
+P3 · Low-Water Micro-Catchment & Crust Regime
++3.5 mm · 14% Shrub
++3.5 mm Micro-Catchment · 14% Shrubs · 100% Shelter
+Tiny moisture pulse keeps air channels wide open for H₂ gas
+100% Intact 5–10 cm Shelter · 1.46× Trace-Gas Power
+Suited for 95.3% of sandy plains · Minimal water footprint
+
+Uses shallow sand swales to trap a tiny +3.5 mm moisture pulse for hardy shrubs (14% cover) while keeping 100% of the 5–10 cm underground heat shelter untouched. Because the sand is never flooded, air flows freely to underground H₂-breathing microbes.
+
+Conditions: +3.5 mm moisture pulse · 14% shrub cover + RAK-PR · 100% intact 5–10 cm shelter · Wireless sensors.
+Conditional estimate: 721.5 kt CO₂/yr assumed retained carbon; parameter envelope 301.2–1724.2 kt/yr across the corridor.
+P4 · Gypsum-Buffered Irrigated Oasis Regime
++9.5 mm · 40% Shrub · CaSO₄
++9.5 mm Brackish Water · 40% Shrubs · Gypsum Shield
+Calcium sulfate (CaSO₄) protects roots & locks CO₂ into calcite
+CaSO₄ Shield + Ectoine Microbes: Neutralizes salt stress
+Highest carbon storage per km² (woody roots + CaCO₃ limestone)
+
+Designed for salty eastern sabkha margins: dense shrubs and trees (40% cover) are watered with brackish water (+9.5 mm) buffered by natural gypsum (calcium sulfate, CaSO₄). The model assumes a composition-dependent reduction in effective conductivity and a carbonate response; these effects require local field validation.
+
+Conditions: +9.5 mm moisture · 40% shrub cover · CaSO₄/NaCl ratio 1.8 + salt-protective root microbes.
+Conditional estimate: 2273.7 kt CO₂/yr assumed retained carbon; parameter envelope 958.7–5420.2 kt/yr across the corridor.
+P5 · Nodal Seismic & Hydrocarbon Bioremediation
++5 mm · Nodal · alkB
+Wireless Nodal Sensors (No Bulldozers) + Oil-Eating Microbes
+Leaves desert crust intact while alkB/ladA bacteria digest oil spills
+66.5% oil digested
+96% Undisturbed Surface · Native alkB/ladA Oil Remediation
+Designed for energy-corridor footprints & hydrocarbon cleanup
+
+Tailored for energy corridors: replaces heavy bulldozed seismic tracks with hand-placed wireless sensors (leaving 96% of the soil crust intact) and adds native oil-eating bacteria (alkB/ladA) with an assumed first-order hydrocarbon disappearance rate. Product toxicity requires separate measurement.
+
+Conditions: +5 mm moisture pulse · 18% shrub cover · 4% surface grading · alkB/ladA oil-degrading consortium.
+Conditional estimate: 937.1 kt CO₂/yr assumed retained carbon; parameter envelope 392.8–2237.3 kt/yr across the corridor.
+P6 · High-Salinity Brine & Surface Disturbance
++26 mm · 195 mS/cm · Graded
++26 mm Flooding + 195 mS/cm Salt Brine + Surface Grading
+Waterlogged pores & pure NaCl salt crust suffocate soil microbes
+Thick NaCl salt crust & compaction
+5–10 cm Shelter Scraped Away · Pores Flooded with Brine
+>50% loss of trace-gas energy · Cellular salt-pump exhaustion
+
+Shows what happens when multiple stresses hit the desert at once: heavy flooding (+26 mm) fills sand pores with water, unbuffered table-salt brine (195 mS/cm) forms a toxic crust, bulldozers scrape away the 5–10 cm heat shelter, and crowded camels pack the soil shut.
+
+Conditions: +26 mm water · 5% shrub cover · 195 mS/cm unbuffered NaCl · 25 camels/100 km² · 65% graded.
+Conditional estimate: 41.0 kt CO₂/yr assumed retained carbon; parameter envelope 12.0–105.0 kt/yr across the corridor.
+Spatial Composite (P3 / P4)
+Landform Composite
+Landform-Matched Spatial Composite (P3 Plains + P4 Sabkhas)
+Matches each desert landform to its natural geochemical regime
+P3 · Sand Dunes & Plains (95.3%)
+P4 · Sabkhas (4.7%)
+128 Sampled Corridor Cells (≤45 km) · Abstains on Unvisited North
+232.0 kt CO₂/yr persistent carbon storage across sampled corridor
+
+Matches each part of the surveyed southern Rub’ al-Khali to its natural terrain: applies low-water micro-catchments (P3) across 122 sandy dune and gravel-plain cells (95.3%) and gypsum-buffered oasis restoration (P4) across 6 salty eastern sabkha cells (4.7%).
+
+Support: Evaluated on 128 in-support cells (≤45 km); abstains on 120 unvisited cells.
+Conditional estimate: 814.5 kt CO₂/yr assumed retained carbon; parameter envelope 340.6–1945.8 kt/yr across the corridor.
+Regime	Forcing Parameters (Precipitation · Shrub Cover · Salinity & CaSO₄ · 5–10 cm Shelter · Surface Mode)	Biodiversity Index (J₁) ?	C/N & Gas Flux (J₂) ?	Salinity/Compaction (J₃) ?	Water/Resistome (J₄) ?	Transect Allocation ?
+P0 · Observed Baseline	+0 mm · 4% shrub · uninoculated · 15 mS/cm (CaSO₄/NaCl 1.0) · 95% shelter · baseline grazing	8.59	16.75	0.997	1.805	Reference
+P1 · Current-use baseline	+0 mm · 4% shrub · uninoculated · 15 mS/cm (CaSO₄/NaCl 1) · 95% shelter · graded seismic	8.59	16.75	0.997	1.805	0/128 cells
+P2 · Revegetation & Native Browser Regime	+6.5 mm · 24% shrub · RAK-PR inoculation · 10.65 mS/cm (CaSO₄/NaCl 1.5) · 98% shelter · nodal seismic	8.76	21.21	0.480	2.545	0/128 cells
+P3 · Low-Water Micro-Catchment & Crust Regime	+3.5 mm · 14% shrub · RAK-PR inoculation · 12 mS/cm (CaSO₄/NaCl 1.4) · 100% shelter · nodal seismic	8.73	20.35	0.424	1.822	122/128 cells (95.3%)
+P4 · Gypsum-Buffered Irrigated Oasis Regime	+9.5 mm · 40% shrub · RAK-PR inoculation · 8.5 mS/cm (CaSO₄/NaCl 1.8) · 95% shelter · nodal seismic	8.77	22.47	0.449	3.318	6/128 cells (4.7%)
+P5 · Nodal Seismic & Hydrocarbon Bioremediation	+5 mm · 18% shrub · RAK-PR inoculation · 11.5 mS/cm (CaSO₄/NaCl 1.3) · 92% shelter · nodal seismic	8.72	19.93	0.532	2.286	0/128 cells
+P6 · High-Salinity Brine & Surface Disturbance	+26 mm · 5% shrub · uninoculated · 195 mS/cm (CaSO₄/NaCl 0.15) · 35% shelter · graded seismic	5.91	6.60	7.213	6.180	0/128 cells
+RESPONSE INDICES ACROSS SCENARIO REGIMES (P1–P6) ? ? ? ?
+J₁ Biodiversity & ShelterJ₂ Chemosynthetic & C/N FluxJ₃ Salinity & Compaction StressJ₄ Water & Resistome Load
+P1
+P2
+P3
+P4
+P5
+P6
+0
+6
+12
+18
+24
+Hallmark Desert Microbes & Plant-Root Partners (12 Key Bacterial Genera)
+
+Area-weighted mean across valid Rub’ al-Khali & Arabian Desert pixels · Surface (0–2 cm) · 96% outside sampled transect support ?
+
+What is a Hallmark Desert Taxon?
+
+Over 95% of the Empty Quarter has no plants at all—yet a single gram of bare sand holds tens of thousands of bacteria. The 7 Hallmark genera (the six most abundant bacterial genera across our 60-site survey plus the desert lineage CSP1-2) are the biological backbone of bare desert sand. When there is no water or organic food, they stay alive by breathing trace hydrogen (H₂) and carbon monoxide (CO) directly from the air, retreating into heat-proof spores (>58 °C), and gluing loose sand grains into a stable crust that prevents wind erosion.
+
+What is a Root-Adjacent Partner Microbe?
+
+Where hardy desert shrubs (like Haloxylon) manage to grow, their roots leak sugars and organic acids into the surrounding sand. This attracts the 5 Root-Adjacent indicator genera, which are 2.8× to 4.2× more abundant on shrub roots than in bare sand. They act as a life-support team for desert plants: they turn nitrogen gas from the air into natural fertilizer, shield roots against toxic salt buildup, and build moisture-holding sponges around the root tips.
+
+1. The 7 Hallmark Desert Genera (Backbone of Bare Sand)
+Dominant across open dunes & subsurface sand where plants cannot grow
+Superpower 1: Breathing Trace Air Gases (H₂ & CO)
+Harvest energy directly from thin air when organic food is zero
+Superpower 2: Armored Heat-Proof Endospores (>58 °C)
+Domibacillus & Bacillus sleep for years in dry sand until rain arrives
+Superpower 3: Binding Dust & Scavenging Ultra-Scarce Nutrients
+Massilia, Microvirga, Flavisolibacter, Noviherbaspirillum & CSP1-2
+Why they matter: They keep 95% of the plantless desert biologically alive
+and stabilize shifting sand grains before any shrub can take root.
+2. The 5 Root-Adjacent Genera (Plant Life-Support Partners)
+Enriched 2.8× to 4.2× right around desert shrub roots (the rhizosphere)
+Partnership 1: Nitrogen Fertilizer Factory (Neorhizobium)
+Converts nitrogen gas from air into plant nutrients in exchange for sugars
+Partnership 2: Salt & Mineral Shield (Pelagibacterium, Arsenicitalea)
+Protects roots from salt buildup as shrubs pull moisture from desert sand
+Partnership 3: Root Recycling & Biofilm Guild (Ohtaekwangia, TM7a)
+Recycles root mucilage into moisture-holding sponges around the root
+Why they matter: Desert shrubs cannot survive drought and salt alone—
+these 5 indicator genera measure how healthy the plant–microbe team is.
+Overall Bacterial Variety (Shannon Diversity) ?
++0.000 Δ Shannon z
+No change · -0.110 → -0.110
+Root-Associated Partner Guild (5 Genera Average) ?
+No change
+Mean log-abundance shift (Δ CLR) across the 5 root-partner genera under current sliders.
+95% site-bootstrap CI: +0.000 to +0.000 ?
+
+Spatial transferability note: the root-associated guild has low out-of-sample accuracy across held-out geographic blocks (R² -0.31 ?); interpret regional map trends as exploratory.
+
+Genus	Role in the Desert Ecosystem & Why It Matters	Predicted Shift (Δ CLR) ?	95% Bootstrap CI ?	Spatial Block R² ?	Map Layer
+
+Domibacillus
+Hallmark · Spore-Former	
+Forms armored, heat-proof endospores that survive >58 °C in sun-baked dune sand for years, waking up within hours of a rain or dew pulse to cycle organic matter.
+Hallmark desert taxon
+	No change	+0.000 to +0.000	-0.79 · weak	Map Taxon
+
+Massilia
+Hallmark · Sand-Binder	
+Colonizes wind-blown quartz sand grains, secretes sticky natural sugars (polysaccharides) that glue loose sand into a stable crust, and dissolves rock phosphate.
+Hallmark desert taxon
+	No change	+0.000 to +0.000	0.13	Map Taxon
+
+Bacillus
+Hallmark · Heat-Shielded Generalist	
+Tough spore-forming bacterium that shelters in the cooler 5–10 cm underground sand layer and around roots, producing stress-protective enzymes and natural antimicrobials.
+Hallmark desert taxon
+	No change	+0.000 to +0.000	-0.68 · weak	Map Taxon
+
+Microvirga
+Hallmark · UV-Tolerant Nitrogen Cycler	
+Pink-pigmented bacterium shielded against intense solar radiation; fixes and cycles scarce nitrogen in warm arid sands and pioneer shrub zones.
+Hallmark desert taxon
+	No change	+0.000 to +0.000	-1.16 · weak	Map Taxon
+
+Flavisolibacter
+Hallmark · Open-Sand Recycler	
+Sun-tolerant specialist of open, unshaded sand dunes; breaks down wind-deposited organic dust and tough plant fragments where shrubs are absent.
+Hallmark desert taxon
+	No change	+0.000 to +0.000	0.00	Map Taxon
+
+Noviherbaspirillum
+Hallmark · Oligotrophic Dune Pioneer	
+Fast-swimming pioneer of nutrient-poor (oligotrophic) sand dunes and mineral dust; helps jump-start nitrogen cycling in bare mobile sand.
+Hallmark desert taxon
+	No change	+0.000 to +0.000	-0.37 · weak	Map Taxon
+
+CSP1-2
+Hallmark · Air-Breathing Sand Indicator	
+Uncultured hyper-arid soil lineage (phylum Armatimonadota) that thrives strictly in bare, undisturbed mineral sand by scavenging trace gases and ultra-scarce nutrients.
+Hallmark desert taxon
+	No change	+0.000 to +0.000	0.44	Map Taxon
+
+TM7a
+Root Partner · Biofilm Symbiont (4.2× near roots)	
+Ultra-small epibiotic bacterium (Saccharibacteria) that lives attached to other root bacteria inside the moisture-rich biofilm coating desert shrub roots.
+Root-adjacent indicator
+	No change	+0.000 to +0.000	-0.39 · weak	Map Taxon
+
+Pelagibacterium
+Root Partner · Salt-Tolerant Root Cycler (3.6×)	
+Salt-tolerant bacterium that thrives in the saline moisture film around desert shrub roots, turning organic acids leaked by roots into microbial biomass.
+Root-adjacent indicator
+	No change	+0.000 to +0.000	-0.59 · weak	Map Taxon
+
+Arsenicitalea
+Root Partner · Mineral & Salt Detoxifier (3.2×)	
+Halotolerant root-zone specialist that tolerates and processes concentrated salts and trace minerals drawn toward desert plant roots during water uptake.
+Root-adjacent indicator
+	No change	+0.000 to +0.000	-1.16 · weak	Map Taxon
+
+Ohtaekwangia
+Root Partner · Root Mucilage Recycler (3.0×)	
+Gliding bacterium that colonizes living shrub roots, recycling complex root mucilage into moisture-holding soil aggregates and protective compounds.
+Root-adjacent indicator
+	No change	+0.000 to +0.000	-0.62 · weak	Map Taxon
+
+Neorhizobium
+Root Partner · Nitrogen-Fixing Symbiont (2.8×)	
+Classic plant-partner bacterium that converts nitrogen gas from the air into natural fertilizer and growth hormones, helping desert shrubs establish in poor sand.
+Root-adjacent indicator
+	No change	+0.000 to +0.000	-0.09 · weak	Map Taxon
+Model specification & data download
+0

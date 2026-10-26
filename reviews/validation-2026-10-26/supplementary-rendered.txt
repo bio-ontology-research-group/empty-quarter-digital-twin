@@ -1,0 +1,1066 @@
+  Supplementary Information for: Ontological-causal reasoning
+   for prediction and conditional management scenarios in a
+          biodiversity digital twin of the Rub’ al-Khali
+                             Robert Hoehndorf∗1 and Magnus Rueping2
+      1
+     Bio-Ontology Research Group (BORG), Computer, Electrical and Mathematical
+ Sciences and Engineering (CEMSE) Division, King Abdullah University of Science and
+                      Technology (KAUST), Thuwal, Saudi Arabia
+2
+  Physical Science and Engineering (PSE) Division, King Abdullah University of Science
+                    and Technology (KAUST), Thuwal, Saudi Arabia
+
+
+
+
+Supplementary Note 1                     OWL 2 DL constitutive axioms, con-
+                                         straint projection and intervention
+                                         bounds
+This note states the constitutive axioms of the OWL 2 constraint module rubalkhali_twin_
+constraints.owl (version 0.2.0) of the Rub’ al-Khali ontology, from which the constitutive layer
+Φconst of EQ-BioDT is compiled, the measurement assumptions under which they become linear
+constraints on measured quantities, and the constraint set C(Tont ) that these constraints define.
+It then proves the three results used in the main text: the error guarantee of the projection
+onto C(Tont ) (Theorem 2), the bounds on interventions on coarse classes under a linear allocation
+model (Proposition 1), and the relation between sibling-class effects and the effect on their parent
+(Proposition 2).
+
+S1.1      Constitutive axioms
+The constitutive layer uses five disjoint-union axioms of Tont . In OWL 2, the axiom
+DisjointUnion(D, C1 , . . . , Ck ) states that D is equivalent to C1 ⊔ · · · ⊔ Ck and that the Ci are
+pairwise disjoint [1]. Written in description logic notation, with the class identifiers of the
+module in parentheses, the axioms are:
+(A1) Prokaryote ≡ Actinomycetota ⊔ Thermoplasmatota ⊔ Halobacteriota ⊔ OtherProkaryote,
+     pairwise disjoint (RAK_TAXON_TOTAL_PROKARYOTA; NCBITaxon:201174,
+     NCBITaxon:2283796 and NCBITaxon:3100166 for the three phyla; RAK_TAXON_
+     OTHER_PROKARYOTA).
+(A2) MeasuredNiFeHydrogenase ≡ Group1l ⊔ Group1h ⊔ Group2a, pairwise disjoint (RAK_
+     GUILD_TOTAL_H2ASE; RAK_GUILD_HYDB_1L, RAK_GUILD_HYDB_1H and
+     RAK_GUILD_HYDB_2A). The parent class is the union of the three measured sub-
+     groups.
+(A3) TraceGasScavengerCapacity ≡ MeasuredNiFeHydrogenase ⊔ FormICoxL, disjoint (RAK_
+     GUILD_TOTAL_TRACE_GAS; RAK_GUILD_COXL_FORMI).
+  ∗
+      Correspondence: robert.hoehndorf@kaust.edu.sa
+
+
+                                                      1
+(A4) AtmosphericTraceGasPower ≡ H2OxidationFlux ⊔ COOxidationFlux , disjoint (RAK_
+     FLUX_TOTAL_TRACE_GAS_POWER; RAK_FLUX_H2_OXIDATION_POWER
+     and RAK_FLUX_CO_OXIDATION_POWER).
+
+(A5) TotalSoilDNA ≡ IntactCellDNA ⊔ ExtracellularRelicDNA, disjoint (RAK_DNA_
+     TOTAL_SOIL_FRACTION; RAK_DNA_VIABLE_FRACTION and RAK_DNA_
+     RELIC_FRACTION).
+
+Each disjoint-union axiom entails Ci ⊑ D for each of its members, and the module states all 13
+of these subsumptions as SubClassOf axioms: the four members of (A1) under Prokaryote, the
+three subgroups under MeasuredNiFeHydrogenase, MeasuredNiFeHydrogenase and FormICoxL
+under TraceGasScavengerCapacity, the two oxidation fluxes under AtmosphericTraceGasPower ,
+and the two DNA pools under TotalSoilDNA. An annotation property binds each of the 17 classes
+to a state variable of the twin, and a second annotation marks the eight classes whose quantities
+are relative abundances or DNA fractions with the upper bound 1. EQ-BioDT compiles the
+constraints below from these axioms and annotations each time the constitutive layer is built,
+and each constraint carries the axiom it implements.
+
+S1.2    Measurement semantics
+The axioms constrain classes. To obtain constraints on measured quantities, each variable yC of
+a state is read as the value µ(C) of a quantity defined on the extension of class C in a soil sample,
+with one measure and one normalization for each partition: for (A2) and (A3), the number of
+gene copies of the class divided by the number of genome equivalents in the sample; for (A1),
+the fraction of 16S rRNA reads assigned to the class; for (A4), the oxidation power contributed
+by the reactions of the class; and for (A5), the fraction of soil DNA in the pool. Gene copies of
+disjoint enzyme classes are additive under a common denominator, so (A2) and (A3) constrain
+copies per genome equivalent; organisms that carry several of these genes contribute to several
+classes. The intact-cell DNA pool of (A5) is operationally defined by the two-pool model of the
+twin and includes DNA in intact cells irrespective of their viability.
+
+Lemma 1. Let µ be a nonnegative, finitely additive function on the extensions of the classes of
+Tont . If T ont |= C ⊑ D, then µ(C) ≤ µ(D). If Tont contains DisjointUnion(D, C1 , . . . , Ck ), then
+µ(D) = ki=1 µ(Ci ).
+          P
+
+Proof. In every model of Tont , C ⊑ D means C I ⊆ DI , so DI is the disjoint union of C I and
+DI \ C I . Additivity gives µ(D) = µ(C) + µ(D \ C) ≥ µ(C), because µ is nonnegative. A
+               axiom makes DI the union of the pairwise disjoint sets CiI , and finite additivity
+disjoint-union P
+gives µ(D) = i µ(Ci ).
+
+   Relative abundances and DNA fractions are normalized by their total, so their values are
+additionally at most 1.
+
+Definition 1. Let y ∈ Rp be the vector of state variables, S the set of stated subsumptions
+(C, D), P the set of disjoint-union axioms (D; C1 , . . . , Ck ), and B the set of variables bounded
+by 1. The ontological constraint set is the polyhedron
+                   n
+         C(Tont ) = y ∈ Rp : y ≥ 0; yC ≤ yD for (C, D) ∈ S;
+                                    P                                                     o
+                              yD = i yCi for (D; C1 , . . . , Ck ) ∈ P ; yj ≤ 1 for j ∈ B .
+
+   In the full engine, p = 17, |S| = 13, |P | = 5 and |B| = 8. GE and oxidation power have no
+upper bound, so C(Tont ) is an unbounded polyhedron. In the Tier 3 benchmark, p = 6 (the three
+hydrogenase subgroups, their sum, form I CO dehydrogenase and total scavenger GE), and the
+
+
+                                                 2
+constraints compiled from the module for these variables are five subsumptions, the partitions
+(A2) and (A3), and an empty B. By Lemma 1, the true state of a soil sample satisfies these
+constraints whenever the measured quantities have the additive semantics described above. The
+preprocessing step of Φconst additionally sets the totals of the phylum partition and the DNA
+partition to 1 before projection (Methods).
+
+S1.3     Constraint projection
+Theorem 1. C(Tont ) is a nonempty, closed and convex set. For every ŷ ∈ Rp , the Euclidean
+projection ΠC(Tont ) (ŷ) = arg minz∈C(Tont ) ∥z − ŷ∥2 exists and is unique.
+
+Proof. C(Tont ) is the intersection of finitely many closed half-spaces and hyperplanes, so it is
+closed and convex, and 0 ∈ C(Tont ). The function z 7→ ∥z − ŷ∥22 is continuous, coercive and
+strictly convex, so it attains its minimum on the nonempty closed set C(Tont ), and strict convexity
+together with convexity of C(Tont ) makes the minimizer unique.
+
+Theorem 2. Let y ∗ ∈ C(Tont ) be the true state and ŷ ∈ Rp a prediction, and write ȳ = ΠC(Tont ) (ŷ).
+Then
+                               ∥ȳ − y ∗ ∥22 ≤ ∥ŷ − y ∗ ∥22 − ∥ŷ − ȳ∥22 .
+In particular, projection never increases the error of a prediction, and it strictly reduces the error
+of every prediction outside C(Tont ).
+
+Proof. The projection onto a closed convex set is characterized by the variational inequality
+⟨ŷ − ȳ, z − ȳ⟩ ≤ 0 for all z ∈ C(Tont ). Expanding ŷ − y ∗ = (ŷ − ȳ) + (ȳ − y ∗ ) gives
+
+                        ∥ŷ − y ∗ ∥22 = ∥ŷ − ȳ∥22 + ∥ȳ − y ∗ ∥22 − 2⟨ŷ − ȳ, y ∗ − ȳ⟩.
+
+Because y ∗ ∈ C(Tont ), the variational inequality with z = y ∗ makes the last term nonnegative,
+which yields the inequality. If ŷ ∈
+                                   / C(Tont ), then ŷ ̸= ȳ and the subtracted term is positive.
+
+Corollary 1. For predictions ŷ1 , . . . , ŷn of true states y1∗ , . . . , yn∗ ∈ C(Tont ), the mean squared
+error after projection P
+                       is at most the mean squared error before projection minus the mean squared
+projection distance n1 j ∥ŷj − ΠC(Tont ) (ŷj )∥22 .
+
+    Corollary 1 follows by summing Theorem 2 over samples. Theorem 2 is a standard property
+of metric projection onto a closed convex set, and it bounds the total squared error of a vector; in-
+dividual coordinates, rank correlations and quantities computed downstream from the projected
+state can still change in either direction. In EQ-BioDT, the theorem applies to the projection
+step of Φconst , whose input is the preprocessed state, and it compares the projected state with
+that input; the preceding truncation, phylum rescaling and clipping are heuristic operations.
+In Tier 3, the observed aggregates are sums of the observed subgroup GE, so each of the 550
+observed vectors lies in C(Tont ) and Theorem 2 applies sample by sample; the observed improve-
+ment of every sample in Tier 3 therefore follows from the construction of the benchmark, and the
+size of the improvement, measured against reconciliation baselines, is the empirical result. The
+projection is computed numerically by sequential least-squares quadratic programming, and the
+per-sample check uses a tolerance of 10−7 . The disjoint-union constraints are linear in GE and
+become nonlinear after a logarithmic transform, so Tier 3 predicts and projects untransformed
+GE. In the scenario engines, the aggregates are recomputed by the preprocessing step before
+projection, so OCS = 1 for scenario states verifies the constitutive layer of each run.
+
+
+
+
+                                                        3
+S1.4    Version-ambiguity bounds of the linear allocation surrogate
+An intervention that sets a parent quantity, for example a rainfall total, can be realized by
+different allocations among its subclasses, for example drizzle and downpour. Let an intervention
+set the parent quantity to c ≥ 0 andPallocate it to P  leaf subclasses X1 , . . . , Xk with Xi = si c,
+where the shares satisfy si ≥Pmi ≥ 0, i si = 1 and i mi ≤ 1. Let the response of an outcome
+be the linear surrogate ∆ = i βi Xi with subclass sensitivities βi .
+Proposition 1. The set of responses of the linear surrogate attainable over all admissible allo-
+cations is the interval [L(c), U (c)] with
+            hX                X           i            hX               X              i
+   L(c) = c      mi βi + 1 −       mi min βi ,  U (c) = c     mi βi + 1 −       mi max βi .
+                                          i                                                    i
+               i                 i                                 i                  i
+                                         P                        P                   P
+ P Write si = mi +ti with ti ≥ 0 and i ti = r, where r = 1− i mi . Then ∆ = cP i mi βi +
+Proof.
+c i ti βi . The second term is a linear function of t on the scaled simplex {t ≥ 0, i ti = r},
+so it attains its minimum c r mini βi and its maximum c r maxi βi at vertices that place all of
+r on a subclass with the smallest or largest sensitivity. The scaled simplex is convex and ∆ is
+continuous on it, so every value between these extremes is attained.
+
+     The bounds are identification bounds of the surrogate conditional on its coefficients βi and
+mi ; uncertainty in these coefficients would widen them. The engine checks that the minimum
+shares are nonnegative and sum to at most 1 and that c ≥ 0. For a 6 mm rainfall pulse with
+stratiform drizzle (β = 0.032 per mm, m = 0.25) and convective downpour (β = 0.011 per mm,
+m = 0.15), the fixed part is 6(0.25 × 0.032 + 0.15 × 0.011) = 0.0579, the free share is r = 0.60,
+and the bounds on the surrogate Shannon response are L = 0.0579 + 6 × 0.60 × 0.011 = 0.0975
+and U = 0.0579 + 6 × 0.60 × 0.032 = 0.1731. For a 25 mm pulse the same coefficients give
+[0.4062, 0.7212].
+     The moisture-pulse model that produces the reported Shannon response is nonlinear in the
+infiltrated depth, and the surrogate omits its common, allocation-independent component. The
+rainfall engine therefore also propagates the two delivery modes through the moisture trajectory
+as infiltration efficiencies of 0.55 for convective downpour and 0.92 for stratiform drizzle. At
+Site 30 this gives Shannon responses of [0.2791, 0.3824] for a 6 mm pulse, around the response of
++0.3473 at the default efficiency of 0.78, and [0.6034, 0.7427] for a 25 mm pulse, around +0.6972.
+These trajectory bounds cover the two pure delivery modes; mixed allocations give infiltration
+efficiencies between them.
+
+S1.5    Sibling-class effects and the effect on their parent
+Field effects are estimated for subclasses, whereas interventions and aggregate quantities are
+often specified for their parent class. Let β̂1 , . . . , β̂K be log2 fold-change estimates for K sibling
+subclasses of a class D with standard errors s1 , . . . , sK . Two parent-level estimands are relevant.
+The first is the mean sibling effect βD in the random-effects model β̂k = βD + uk + ek , where
+uk are sibling deviations with mean 0 and variance τ 2 and ek are estimation errors with mean 0
+and variance s2k . The second is the fold change of the summed abundancePof the siblings,          which
+for baseline subgroup amounts ak and subgroup effects βk is βΣ = log2 [ k ak 2βk / k ak ]; this
+                                                                                             P
+is the effect on the aggregate variable of the constitutive layer.
+Proposition 2. If the uk and ek are mutually independent and τ 2 and s2k are known, then among
+                        P                 P
+linear estimators β̂D = k wk β̂P  k with      k wk = 1, which are unbiased for βD  P, the variance is
+minimized by wk = (τ 2 + s2k )−1 / j (τ 2 + s2j )−1 , and the minimum variance is [ k (τ 2 + s2k )−1 ]−1 .
+
+Proof. Write σk2 = τ 2 + s2kP
+                                                                         P 2 2
+                             . The estimator      has   variance V (w)
+                                                                     P 2 k2wkP
+                                                                       =       σk . By the Cauchy–
+                     1 = ( k wk ) = ( k wk σk · σk ) ≤ ( k wk σk )( k σk−2 ), so V (w) ≥
+                                    2                       −1 2
+                                            P
+Schwarz
+ P −2 inequality,
+( k σk ) , with equality when wk σk is proportional to σk−1 , that is, when wk ∝ σk−2 .
+          −1
+
+
+
+                                                    4
+    EQ-BioDT estimates τ 2 by the DerSimonian–Laird           moment  estimator [2]. WithP
+                                                                                         fixed-effect
+weights vk = s−2
+                                                   P           P
+                   , fixed-effect  estimate β̂FE =      v β̂
+                                                      k k k  /    v
+                                                                k k and   Cochran’s  Q =     v (β̂ −
+      2
+                 k
+                            2
+                                                                         P        P 2 Pk k k
+β̂FE ) , the estimator is τDL = max{0, (Q − (K − 1))/C} with C = k vk − k vk / k vk . The
+engine uses τ 2 = max(0.252 , τDL 2 ) in the weights of Proposition 2. Plugging an estimated τ 2 into
+
+the weights makes them data-dependent, so the pooled estimate isPthe standard approximate
+random-effects estimate and its standard error is the plug-in value [ k (τ 2 + s2k )−1 ]−1/2 .
+    For the root-versus-bulk contrasts of hydB_1l (β̂ = −2.2747, s = 0.33), hydB_1h (−0.3277,
+0.16) and hydB_2a (−0.3432, 0.13), β̂FE = −0.503, Q = 31.54 on 2 degrees of freedom, C = 59.83
+and τDL 2 = 0.4936, which exceeds the floor of 0.0625. The weights are 0.2993, 0.3474 and 0.3533,
+
+the pooled sibling effect is −0.916 log2 units and its plug-in standard error is 0.425. All three
+estimates are negative (sign concordance 1). With ak the mean GE of each subgroup in the
+observed subsurface metagenomes, the abundance-weighted parent effect is βΣ = −1.820. The
+two estimands differ because group 1l carries most of the subsurface hydrogenase pool and is
+the most strongly depleted subgroup. The three contrasts are estimated from the same paired
+visits, so their estimation errors are correlated; a joint model of the site-level contrasts of the
+three subgroups would estimate this covariance and the aggregate contrast directly.
+
+
+Supplementary Note 2                  Synthetic    metagenome       benchmark,
+                                      leave-one-campaign-out cross-validation
+                                      and within-site precipitation slopes
+S2.1    Synthetic metagenome benchmark
+All guild abundances in the state cube are estimated from reads, so the accuracy of the twin
+depends on how well the read-to-guild pipeline recovers known abundances. In the synthetic
+metagenome benchmark (b3_mock_sim.py), 20 synthetic communities were constructed from
+paired subsurface bulk and root-adjacent CoverM relative-abundance profiles across 5,438 derepli-
+cated Rub’ al-Khali MAG representatives (contigs ≥ 150 nt), stratified across expeditions; 150-nt
+reads were drawn in proportion to each genome’s relative abundance with Poisson(0.75) base
+substitutions (0.5% per base) and truncated to 100 nt (seqtk trimfq -L 100) to match the
+empiricalPread-mapping
+                    P workflow, with true GE defined as the cell-weighted mean marker copy
+number        c m
+            g g g /    g cg (cg = RAg /Lg ). Evaluated with the full reference database at the
+60% identity floor, estimated and true GE correlated on the log scale with Pearson r between
+0.9314 (coxL_formI) and 0.9976 (hydB_1l) and Spearman ρ between 0.9404 and 0.9752 across
+17 to 19 synthetic metagenomes per guild (Table S1). Estimates exceeded true GE by a median
+of 0.60 to 0.84 log2 units, a 1.5- to 1.8-fold overestimate. In eight synthetic root-versus-bulk
+pairs, the estimated hydB_1l contrasts matched the true contrasts with RMSE 0.2277 log2 units,
+R2 = 0.9888 and ρ = 1.0000. The benchmark therefore supports the rank-based accuracy met-
+rics of Tiers 1 and 2 and the fold-change contrasts of Tier 4 for compositions represented in the
+synthetic communities. Validation (Tiers 1–3), the state cube and the scenario baselines all use
+GE at the 60% identity floor of this benchmark; the overestimate translates into GE-to-power
+conversions in proportion, and it cancels in a contrast where the bias is matched between the
+two conditions. The validation suite reads the benchmark’s summary tables, and regeneration
+of the read-to-guild evaluation requires the companion workflow.
+
+S2.2    Leave-one-campaign-out cross-validation
+Leave-one-campaign-out cross-validation tests whether the relation between environment and
+trace-gas capacity learned from four expeditions predicts the fifth. Table S2 lists the per-
+campaign accuracy for log2 hydB_1l GE and log2 total [NiFe]-hydrogenase GE over the 550
+metagenomes with observed guilds, with R2 computed against the mean of the held-out cam-
+
+
+                                                 5
+Table S1: Recovery of guild abundance from synthetic metagenomes with known composition
+(full reference database, 60% identity floor). n is the number of synthetic metagenomes evaluated
+for the guild. Correlations compare true and estimated GE on the log scale; the median log2
+bias is the median of log2 (estimated/true). The last row compares true and estimated log2 root-
+versus-bulk contrasts of hydB_1l (RMSE 0.2277, R2 = 0.9888).
+       Guild                                           n       Pearson r     Spearman ρ       Median log2 bias
+       hydB_1l (group 1l [NiFe]-hydrogenase)          18          0.9976           0.9752                 0.6653
+       hydB_1h (group 1h [NiFe]-hydrogenase)          18          0.9735           0.9587                 0.8042
+       hydB_2a (group 2a [NiFe]-hydrogenase)          17          0.9571           0.9577                 0.5959
+       coxL_formI (form I CO dehydrogenase)           19          0.9314           0.9404                 0.8410
+       Mean over guilds                                           0.9649           0.9580
+       Root-versus-bulk contrast of hydB_1l            8          0.9964           1.0000
+
+
+paign and site-clustered bootstrap intervals for Spearman ρ (300 resamples of sites). For hydB_1l,
+ρ ranged from 0.494 (Trip 2) to 0.629 (Trip 5) and RMSE from 1.555 (Trip 2) to 1.815 (Trip
+5) log2 units, around the pooled RMSE of 1.684, and the ρ interval of every campaign excluded
+zero for both targets. Within-campaign R2 for total hydrogenase GE ranged from 0.178 (Trip
+3) to 0.368 (Trip 4). Trip 2, the smallest campaign with 37 metagenomes from 7 sites, had the
+widest intervals; its site-clustered R2 intervals (−0.268 to 0.497 for hydB_1l and −0.432 to 0.448
+for total hydrogenase GE) and that of total hydrogenase GE in Trip 5 (−0.002 to 0.471) include
+zero.
+
+Table S2: Per-campaign leave-one-campaign-out cross-validation of EQ-BioDT across Trips 1–
+5. Each campaign was predicted by ridge regressions trained on the other four, with covariates
+imputed from training-campaign medians. RMSE is in log2 GE units; R2 is computed against the
+mean of the held-out campaign; ρ is the Spearman correlation with its site-clustered bootstrap
+95% confidence interval. The pooled row evaluates all out-of-campaign predictions together, with
+R2 against the pooled mean.
+                                       log2 hydB_1l GE                     log2 total [NiFe]-hydrogenase GE
+                                             2
+         Campaign    n Sites RMSE        R       ρ [95% CI]                RMSE      R2 ρ [95% CI]
+         Trip 1     210   60   1.628   0.336     0.594 [0.487, 0.684]      1.346   0.345   0.582 [0.444, 0.677]
+         Trip 2      37    7   1.555   0.295     0.494 [0.218, 0.795]      1.185   0.198   0.447 [0.182, 0.794]
+         Trip 3     127   47   1.630   0.257     0.546 [0.364, 0.735]      1.335   0.178   0.497 [0.329, 0.676]
+         Trip 4      85   51   1.805   0.311     0.617 [0.456, 0.727]      1.355   0.368   0.626 [0.475, 0.728]
+         Trip 5      91   52   1.815   0.322     0.629 [0.485, 0.726]      1.436   0.319   0.643 [0.498, 0.742]
+         Pooled     550   61   1.684 0.320 0.579 [0.510, 0.641]            1.350 0.320 0.555 [0.477, 0.622]
+
+
+
+
+S2.3     Within-site and between-site precipitation slopes
+Table S3 lists the within-site and between-site slopes of visit-median log2 (hydB_1l GE + 0.01)
+on log(1 + P ) for ERA5 and NASA POWER precipitation over the 90 and 365 days before each
+visit, estimated by the companion analysis in linear mixed models with campaign as a fixed effect
+and a random intercept per site. Only the 90-day ERA5 slopes of surface and root-adjacent soil
+had qBH < 0.05. Across the 244 visits of the analysis, the two products correlated with Spearman
+ρ = 0.201 in their 90-day values and ρ = 0.193 in their within-site 90-day deviations, which had
+the same sign at 55.7% of visits; at 365 days the correlations were 0.560 and 0.612, with the
+same sign at 79.5% of visits.
+
+
+
+
+                                                           6
+Table S3: Within-site and between-site slopes of log2 hydB_1l GE on antecedent precipitation.
+Slopes are per unit of log(1 + P ), with P in mm over the window before the visit. The within-
+site slope is the coefficient of the deviation of a visit from its site mean, with its standard error,
+the likelihood-ratio p-value against the model without it, and the Benjamini–Hochberg q-value
+within the family of tests sharing an exposure; the between-site slope is the coefficient of the site
+mean. Only sites sampled in at least two campaigns enter. Subsurface, 5–10 cm horizon.
+     Compartment Exposure                 Visits Sites Within-site slope      p    qBH Between-site
+     Surface         ERA5, 90 d              79    29    −0.779 ± 0.227 0.0011 0.013        −0.852
+     Surface         NASA POWER, 90 d        79    29    −0.107 ± 0.197   0.59 0.71          0.136
+     Surface         ERA5, 365 d             79    29    −0.159 ± 0.227   0.49 0.58         −0.546
+     Surface         NASA POWER, 365 d       79    29    −0.371 ± 0.667   0.58 0.97         −0.157
+     Subsurface      ERA5, 90 d             103    35    −0.040 ± 0.255     0.88   0.90     −1.659
+     Subsurface      NASA POWER, 90 d       103    35    −0.323 ± 0.185    0.083   0.25     −0.317
+     Subsurface      ERA5, 365 d            103    35     0.400 ± 0.232    0.089   0.34     −0.441
+     Subsurface      NASA POWER, 365 d      103    35    −0.023 ± 0.534     0.97   0.97     −0.439
+     Root-adjacent   ERA5, 90 d             193    57    −0.854 ± 0.287 0.0034 0.020        −0.789
+     Root-adjacent   NASA POWER, 90 d       193    57     0.298 ± 0.197   0.13 0.32         −0.207
+     Root-adjacent   ERA5, 365 d            193    57    −0.395 ± 0.233 0.091 0.34          −0.854
+     Root-adjacent   NASA POWER, 365 d      193    57     0.093 ± 0.585   0.87 0.97         −0.431
+
+
+
+Supplementary Note 3                  European biodiversity digital twin stan-
+                                      dards: BioDT, B-Cubed, Darwin Core
+                                      Archive, FAIR Digital Objects and RO-
+                                      Crate
+S3.1    Alignment with European biodiversity digital twins
+EQ-BioDT adopts the data and provenance conventions of three European biodiversity digital
+twin initiatives so that its inputs and outputs can be exchanged with their infrastructures. From
+BioDT (https://biodt.eu) it takes the representation of datasets and model runs as FAIR
+Digital Objects described by RO-Crate metadata, and the achievement scalarizing functions of
+the DESDEO framework for multi-objective decision support [3], which EQ-BioDT evaluates
+directly for its six candidate portfolios. From B-Cubed (https://b-cubed.eu) it takes the
+occurrence cube, which aggregates occurrences over taxonomic, temporal and gridded spatial
+dimensions [4]. From LTER-LIFE (https://lter-life.nl) and the OBIS community it takes
+the Darwin Core Archive with an Event core and ExtendedMeasurementOrFact extension for
+site-based monitoring data [5].
+
+S3.2    Darwin Core Archive
+The archive consists of event.txt, occurrence.txt, emof.txt, the structural descriptor
+meta.xml and Ecological Metadata Language v2.2.0 metadata in eml.xml. meta.xml de-
+clares the Event file as core (row type http://rs.tdwg.org/dwc/terms/Event) and the
+Occurrence (http://rs.tdwg.org/dwc/terms/Occurrence) and ExtendedMeasurementOrFact
+(http://rs.iobis.org/obis/terms/ExtendedMeasurementOrFact) files as extensions linked
+to the core through eventID.
+    The Event core holds one event for each of the 180 site-compartment states. Its eventID
+has the form RAK_SITE_nn_COMPARTMENT and its parentEventID the form RAK_SITE_nn,
+which groups the events of one site. The locationID is the site IRI in the Rub’ al-Khali
+knowledge base, eventDate is the period of the five campaigns as the ISO 8601 interval 2023-
+03-17/2025-10-15, decimalLatitude, decimalLongitude and the elevation fields give the site
+
+
+                                                  7
+position, habitat lists the ENVO classes of the desert habitat [6], samplingProtocol holds
+the IRI of the compartment class (surface, 5–10 cm subsurface or rhizosphere sample), and
+fieldNotes records the compartment, H3 resolution 6 cell and ERA5 cell.
+    The Occurrence extension holds five occurrences for each of the 155 events with metagenomes
+(775 in total): Actinomycetota, Thermoplasmatota and Halobacteriota with taxonRank
+phylum and organismQuantityType relative abundance fraction, and the group 1l [NiFe]-
+hydrogenase and form I CO dehydrogenase guilds with taxonRank functional guild and
+organismQuantityType copies per genome equivalent. occurrenceStatus is present when
+organismQuantity is positive (658 occurrences) and absent otherwise (117), and basisOfRecord
+is MaterialSample. The phylum quantities are the MAG phylum shares and the guild quantities
+the observed GE of the state, both from the unimputed columns of the cube.
+    The ExtendedMeasurementOrFact extension holds 15 measurements per event (2,700 in to-
+tal): XRF concentrations of the 11 core elements and vanadium in percent, CaCl2 pH, 16S
+rRNA Shannon diversity and mean annual precipitation, the last with the UO millimetre unit
+and the precipitation-value type of rubalkhali.owl. For XRF analytes, measurementTypeID is
+the analyte-specific quality IRI of rubalkhali.owl, measurementValueID the ChEBI IRI of the
+element [7], and measurementUnitID the UO IRI of percent.
+
+S3.3    B-Cubed occurrence cube
+The B-Cubed cube holds one row per observed state and taxon or guild (1,240 rows for the
+155 states with metagenomes and eight taxa or guilds): Actinomycetota, Thermoplasmatota,
+Halobacteriota and Chloroflexota, the group 1l and 1h [NiFe]-hydrogenase guilds, the form I CO
+dehydrogenase guild, and the desert virome. Its dimensions are the campaign period, the H3
+cells at resolutions 5 and 6, the ERA5 cell, the site and its IRI, the compartment, the transect
+zone, and the taxon key, scientific name and rank (phylum, functional guild or viral guild). Its
+measures are the number of metagenomes of the state as occurrence count, the unimputed relative
+abundance, GE or viral richness, Shannon diversity H ′ , Hill diversity of order 1, exp(H ′ ), and
+a minimum coordinate uncertainty of 10 m. A companion indicator table aggregates Shannon
+and Hill diversity, observed guild GE, viral richness, MAG phylum shares, evaporite index, pH
+and mean annual precipitation per H3 resolution 5 cell, transect zone and compartment. A
+Frictionless tabular data package (datapackage.json) describes both tables, declares the H3
+grid at resolutions 5 and 6 in EPSG:4326, and lists the field types of the cube.
+
+S3.4    FAIR Digital Objects and Workflow Run RO-Crates
+Every simulation and every portfolio comparison produces a JSON-LD RO-Crate [8] with the
+RO-Crate 1.1 context. Its metadata descriptor declares conformance to RO-Crate 1.1 and to the
+Process Run Crate profile v0.4 (https://w3id.org/ro/wfrun/process/0.4). The root dataset
+names the run and mentions a CreateAction entity, which records the intervention and site,
+start and end times, a completed action status, the path of the engine module as instrument,
+the site IRI as location, each parameter setting passed to the engine as a PropertyValue object,
+and a result dataset that carries the output summary and the ontological consistency score of
+the run.
+    Identifiers are derived from content. EQ-BioDT serializes the software version (eq-biodt
+v0.2.0), intervention name, site IRI, parameters, outputs, the SHA-256 digest of the OWL
+constraint module rubalkhali_twin_constraints.owl, and the SHA-256 digests of the
+processed state cubes as JSON with sorted keys and computes its SHA-256 digest; the run
+identifier is the version 5 UUID of this digest, and the FAIR Digital Object identifier is
+https://rubalkhali.science/fdo/eq-biodt/ followed by the first 16 hexadecimal digits
+of the digest. Two runs with identical software version, input cubes, settings and outputs
+therefore receive the same identifier, and any change of version, input cube, parameter or output
+
+
+                                                8
+produces a new one. The identifiers are generated locally, and resolving them requires deposition
+of the crates. The FAIR Digital Object kernel metadata returned with each run record its
+identifier, the BioDT FDO profile, the software version, the checksum, the constraint-module
+and state-cube SHA-256 digests, the creation time, the ontological consistency score and the
+Proposition 1 bounds of the run, and the root dataset and the instrument of the crate carry
+the software version. The portfolio comparison summarized in Table S5 is recorded in the
+same way, with the objective weights and the number of evaluated portfolios as parameters and
+the highest-ranked portfolio, its objective scores and the size of the Pareto front as outputs.
+Table S8 lists the ontology identifiers used across the Darwin Core Archive, the B-Cubed cube
+and the run crates.
+
+
+Supplementary tables
+
+Table S4: Factorial brine grid on the common baseline of the Site 60 surface state. Each row
+is one run of the brine engine; the inoculum dose applies jointly to the ect/kdp plasmid and
+the Allorhizobium rbcL-hyaB dose. 10.65 and 216.2 mS cm−1 are the conductivities measured
+in pool water at Site 60 and Site 59. ECeff , effective osmotic conductivity; regime, calcium
+sulfate (Ca-SO4 ) or sodium chloride (Na-Cl); feasible, maintenance requirement at most the
+maximum attainable catabolic ATP generation; deficit, requirement minus maximum attainable
+catabolic ATP when infeasible. EC and ECeff are in mS cm−1 ; Halobact., Halobacteriota relative
+abundance; C fix., autotrophic carbon fixation flux; S redox, sulfur redox flux; Dark prot.,
+uncharacterized (dark) proteome coding fraction. Fluxes are in model units.
+           EC     q Dose     ECeff Regime        H ′ Halobact. Feasible C fix. S redox Deficit Dark prot.
+         10.65   0.1     0    10.09   Na-Cl    4.365     0.093   yes    0.967    0.045      0       0.534
+         10.65   0.1   0.6    10.09   Na-Cl    4.404     0.082   yes    1.306    0.045      0       0.526
+         10.65   1.4     0     6.02   Ca-SO4   4.824     0.080   yes    0.967    0.630      0       0.534
+         10.65   1.4   0.6     6.02   Ca-SO4   4.857     0.071   yes    1.556    0.630      0       0.504
+            35   0.1     0    33.18   Na-Cl    4.035     0.211   yes    0.863    0.041      0       0.447
+            35   0.1   0.6    33.18   Na-Cl    4.129     0.182   yes    0.915    0.041      0       0.447
+            35   1.4     0    19.77   Ca-SO4   4.472     0.131   yes    0.967    0.630      0       0.534
+            35   1.4   0.6    19.77   Ca-SO4   4.529     0.115   yes    1.384    0.630      0       0.504
+            85   0.1     0    80.57   Na-Cl    2.981     0.615   yes    0.023    0.023      0       0.187
+            85   0.1   0.6    80.57   Na-Cl    3.278     0.525   yes    0.213    0.023      0       0.187
+            85   1.4     0    48.02   Na-Cl    3.736     0.334   yes    0.782    0.481      0       0.335
+            85   1.4   0.6    48.02   Na-Cl    3.887     0.287   yes    0.858    0.481      0       0.335
+         216.2   0.1     0   204.93   Na-Cl    2.378     0.780   no         0    0.005   2.122      0.057
+         216.2   0.1   0.6   204.93   Na-Cl    2.790     0.666   no         0    0.005   1.386      0.057
+         216.2   1.4     0   122.15   Na-Cl    2.495     0.754   no         0    0.171   0.741      0.104
+         216.2   1.4   0.6   122.15   Na-Cl    2.885     0.644   no         0    0.171   0.305      0.104
+
+
+
+
+                                                          9
+Table S5: Prescribed management portfolios compared at Site 30. (a) Lever settings of the six
+portfolios: P1, current-use baseline with light grazing, low-conductivity discharge and conven-
+tional surveys (labelled do-nothing baseline in panel b); P2, integrated eco-restoration and oryx
+rewilding; P3, low-water chemosynthetic crust and refugium conservation; P4, high-canopy oasis
+revegetation with Ca-SO4 irrigation; P5, active energy corridor with nodal seismic surveys and
+oil-spill bioremediation; P6, unmitigated heavy rainfall enhancement, Na-Cl brine disposal, camel
+overgrazing and Vibroseis surveys. Densities are head per 100 km2 ; doses are dimensionless in
+[0, 1]. The brine engine uses the rbcL-hyaB plasmid dose of each portfolio as its Allorhizobium
+dose, and all other engine settings take the defaults given in Methods. (b) Objective scores,
+Pareto membership, utility U of the weighted achievement function, the fraction of B = 200
+Monte Carlo draws of the objective values in which the portfolio was non-dominated (PrPareto )
+or had the highest utility (Prrank 1 ), rank (first by Pareto membership, then by U ) and minimum
+ontological consistency score (OCS) across the six engines. J1 and J2 are maximized and J3 and
+J4 minimized; objective definitions, weights and the Monte Carlo procedure, which perturbs the
+objective values without re-running the scenario engines, are given in Methods. Normalization
+of the objectives is over the six candidates, so U depends on the candidate set.
+                                                        (a)
+             Lever setting                                P1         P2        P3    P4       P5      P6
+             Rainfall pulse (mm)                          0.0     6.5       3.5      9.5     5.0    26.0
+             Haloxylon persicum cover (fraction)         0.04    0.24      0.14     0.40    0.18    0.05
+             RAK-PR dose                                 0.00    0.85      0.60     1.00    0.70    0.00
+             rbcL-hyaB plasmid dose                      0.00    0.70      0.50     0.90    0.50    0.00
+             Discharge conductivity (mS cm−1 )           15.0   10.65      12.0      8.5    11.5   195.0
+             Ca-SO4 :Na-Cl ratio                         1.00    1.50      1.40     1.80    1.30    0.15
+             ect/kdp plasmid dose                        0.00    0.60      0.40     0.80    0.50    0.00
+             Intact refugium fraction                    0.95    0.98      1.00     0.95    0.92    0.35
+             Choline/glycine betaine (mM)                0.00    0.50      0.35     0.80    0.40    0.00
+             Oryx leucoryx density                        0.5     4.0       3.0      5.0     2.5     0.0
+             Gazella marica density                       1.0     7.0       5.0      9.0     4.5     0.0
+             Camelus dromedarius density                  2.0     1.0       0.5      1.0     1.5    25.0
+             Rotational water points                       no     yes       yes      yes     yes      no
+             Seismic line density (km km−2 )              2.0     3.0       1.5      1.0     8.0    12.0
+             Cut-line grading fraction                   0.10    0.02      0.00     0.00    0.04    0.65
+             Wireless nodal survey                         no     yes       yes      yes     yes      no
+             Hydrocarbon spill, TPH (g kg−1 )             0.0     0.0       0.0      0.0    15.0    25.0
+             alkB/ladA consortium dose                   0.00    0.50      0.20     0.40    0.95    0.00
+
+                                                        (b)
+     Portfolio                     Pareto      J1       J2      J3        J4        U PrPareto Prrank 1 Rank OCS
+  P1 Do-nothing baseline            yes     8.5934 16.7531 0.9971 1.8054 0.8367            0.710   0.005   4   1.0
+  P2 Integrated eco-restoration     yes     8.7567 21.2104 0.4801 2.5446 0.9432            0.885   0.245   2   1.0
+     and oryx rewilding
+  P3 Low-water chemosynthetic       yes     8.7326 20.3456 0.4237 1.8224 0.9481            1.000   0.310   1   1.0
+     crust and refugium
+     conservation
+  P4 High-canopy oasis              yes     8.7746 22.4712 0.4489 3.3176 0.9396            0.905   0.305   3   1.0
+     revegetation with Ca-SO4
+     irrigation
+  P5 Energy corridor with           no      8.7188 19.9298 0.5324 2.2858 0.9183            0.685   0.135   5   1.0
+     nodal seismic and oil-spill
+     bioremediation
+  P6 Unmitigated seeding,           no      5.9096   6.6005 7.2135 6.1800 -0.0525          0.000   0.000   6   1.0
+     brine, camel overgrazing
+     and Vibroseis
+
+
+
+                                                         10
+Table S6: Empirical Calvin–Benson–Bassham (CBB) co-carriage in the Rub’ al-Khali state cube, cross-desert
+plausibility comparisons and provenance of the EQ-BioDT carbon budget. (a) Mean CoverM mapped-read shares
+across the 155 observed metagenome states from the 5,438 dereplicated MAGs (rep_cbb_ko.tsv): community
+CBB shares across three screens (srbcL , K01601; srbcL+prkB , K01601+K00855; s3gene , K01601+K01602+K00855),
+group 1l carrier share (s1l ), and conditional CBB shares among group 1l reads (cCBB|1l inclusive, c3gene|1l strict).
+Across the 558 primary group 1l MAGs (597 inclusive), 101 (18.1%) encode CBB genes, rising to 76/275 (27.6%)
+in ≥ 90% complete MAGs. (b) Plausibility comparison of seven EQ-BioDT outputs at Site 30 (and P2 for the
+revegetated corridor) against published desert ranges. (c) Provenance and bounds of carbon-budget parameters.
+In the 500,000 km2 core sand-sea polygon (92, 160 km2 corridor + 407, 840 km2 unmanaged reserve), gross CO2 -eq
+binding (assumed retained CO2 ) in kt yr−1 is 1,311.9 (289.8) at baseline, 5,704.4 (963.5) under the prescribed
+corridor atlas, 1,619.3 (337.1) under P1, 8,922.3 (1,456.0) under P2, 5,098.6 (870.4) under P3, 15,213.8 (2,422.7)
+under P4, 6,510.4 (1,086.0) under P5, and 632.5 (189.9) under P6.
+                                                            (a)
+           Compartment             States (n)     srbcL     srbcL+prkB      s3gene          s1l   cCBB|1l    c3gene|1l
+           Surface (0–2 cm)                45    0.2235           0.1332   0.1157    0.2535        0.3026       0.2061
+           Subsurface (5–10 cm)            51    0.2556           0.1607   0.1380    0.3066        0.3767       0.2495
+           Root-adjacent                   59    0.2111           0.1065   0.0876    0.1290        0.3197       0.2036
+           All observed states           155     0.2293           0.1321   0.1123    0.2236        0.3335       0.2194
+                                                            (b)
+Metric and unit                   EQ-BioDT Literature [range] Desert benchmark                    Source
+Community rbcL mapped-read             0.2293    0.21 [0.17, 0.28] Global 25-desert               Leung et al. [9]
+share (fraction)                                                   synthesis
+Active wetted-horizon dark CO2         0.0482    0.15 [0.01, 1.00] Global desert 14 CO2           Leung et al. [9]; Bay et al. [10]
+fixation (nmol CO2 gdw−1                                           microcosms
+d−1 )a
+Cell-specific H2 oxidation               1.68    2.82 [1.36, 5.31] Namib Desert                   Tribbia et al. [11]
+(×10−8 nmol H2 h−1 cell−1 )b                                       hyperarid soils
+Areal soil H2 uptake (mg H2              8.72     12.5 [5.0, 25.0] Negev and global               Bay et al. [10]; Buzzard et al.
+m−2 yr−1 )c                                                        hyperarid drylands             [12]
+Group 1l MAG RuBisCO                   0.1810    0.28 [0.17, 0.35] Negev aridity transect         Bay et al. [10]
+co-carriage (fraction)d                                            MAGs
+Bare hyperarid pedogenic                 0.56    0.88 [0.44, 1.54] Mojave Desert caliche          Schlesinger [13]
+CaCO3 binding (t CO2 km−2                                          (14 C)
+yr−1 )
+Revegetated Haloxylon corridor          91.25   95.0 [45.0, 185.0] Taklamakan, Tarim              Ma et al. [14, 15]
+total CO2 binding (t CO2 km−2                                      and Gobi Haloxylon
+yr−1 )e
+a Evaluated in the 0–2 cm horizon over the 15 d yr−1 moisture window; 365-day dry 0–10 cm column average is
+
+3.97 × 10−4 nmol CO2 gdw−1 d−1 . b Normalized at 106 cells gdw−1 and 18.4% trace-gas guild fraction from the
+companion energetics analysis. c Diffusion-coupled dryland uptake; bare 106 cells gdw−1 thermodynamic scaling is 0.45
+mg H2 m−2 yr−1 . d 0.2764 among ≥ 90% complete MAGs. e Portfolio P2 (f = 0.24).
+                                                            (c)
+Carbon-budget parameter           Value [bounds] and        Status         Source or role
+                                  unit
+Free-energy yields |∆GH2 |,       203 and 240 kJ mol−1 transferred         Companion trace-gas energetics analysis
+|∆GCO |
+Maintenance allocation fmaint     0.88 [0.75, 0.95]         assumed        Anabolic allocation 0.12 [0.05, 0.25]
+Group 1l CBB co-carriage          State-specific ratio in   fitted         CoverM mapped-read ratio in subsurface states
+cCBB|1l                           [0, 1]                                   (n = 51; strict 3-gene 0.2495)
+Wetted horizon and duty cycle     0–2 cm, 15 d yr−1 ;       transferred    Companion climate and energetics analyses [9, 11]
+                                  ρb = 1.6 × 106 g m−3
+H2 indirect warming potential     11.6 [6.0, 16.0]          transferred    Sand et al. [16]; bounds assumed
+GWP100
+Haloxylon NPP at full cover       295 [190, 420] t CO2      assumed        Transfer informed by Central Asian Haloxylon
+                                  km−2 yr−1                                stands [15]
+Carbonate reference rate          0.88 [0.44, 1.54] t       transferred    Mojave caliche and Tarim rhizosphere [13, 14]
+                                  CO2 km−2 yr−1
+Persistent storage fractions      0.15 [0.10, 0.25], 0.50   assumed        Scenario retention and non-carbonate Ca2+ sup-
+ηSOC , fsil-Ca , ηmic             [0.25, 0.75], 0.25                       ply and necromass retention [13, 17]
+                                  [0.15, 0.40]
+
+
+
+
+                                                            11
+Table S7: Provenance of the principal coefficients of the mechanistic layer. Status: fitted, esti-
+mated from data of this transect in the present analysis; transferred, taken from a companion
+analysis of the transect or from the literature; assumed, set by the authors to encode a hypoth-
+esized response. Companion analyses are cited in the Data and Code Availability statement.
+Transferred and assumed coefficients enter the scenarios as point values. GE, genome equiva-
+lents; EC, electrical conductivity.
+ Coefficient                         Value and unit              Status        Source or role
+ Gas transport and trace-gas power
+                                      10/3
+ Millington–Quirk exponents          εa /ε2                      transferred   Millington and Quirk [18]
+ Reference state of Drel             ε = 0.40, θ0 = 0.018        assumed       Uncompacted aeolian sand at baseline
+                                                                               moisture
+ GE-to-power factors                 29.8 and 1.95               transferred   Companion thermodynamic budget for H2
+                                     µW m−3 per GE                             (0.53 ppmv) and CO (0.10 ppmv)
+ Direct power factor for groups 1h   8.5 µW m−3 per GE           assumed       Revegetation, brine and refugium engines
+ and 2a
+ Moisture gate, temperature factor   0.75 +                      assumed       Shared diffusion function
+                                     0.65 sin(πθ/0.40);
+                                     1.35(T −30)/10
+ Moisture pulse
+ Evaporation decay rate              0.34 d−1                    assumed       Hyperarid drying of a 0.10 m column
+ Kernel peak                         2.5 d                       assumed       Diversity-response lag; wetting studies sup-
+                                                                               port rapid activation [19, 20]
+ Shannon response                    0.31 ln(1 + Pe /2.2)        assumed       Response motivated by companion rainfall
+                                                                               analysis; exact slope requires source-level
+                                                                               verification
+ Infiltration efficiencies           0.55, 0.78, 0.92            assumed       Downpour, default, drizzle
+ Proposition 1 sensitivities and     0.032 and 0.011 per         assumed       Linear allocation surrogate
+ minimum shares                      mm; 0.25 and 0.15
+ Revegetation
+ Root-zone hydB_1l depletion         0.793                       fitted        Pooled paired root-versus-bulk contrast
+                                                                               (log2 fold change −2.2747)
+ Root-zone biomass increase          9.34                        fitted        Pooled paired DNA-yield contrast (log2 ra-
+                                                                               tio 3.37)
+ PGPR and plasmid dose terms         0.05, 0.24, 0.12;           assumed       Inoculation of RAK-PR and the rbcL-hyaB
+                                     CBB +1.15, N2                             plasmid
+                                     +0.42 per dose
+ Brine discharge
+ Ca-SO4 buffering factor             0.55 per unit ratio         assumed       Effective osmotic conductivity
+ Regime thresholds                   ECeff ≤                     assumed       Calcium sulfate and sodium chloride
+                                     25 mS cm−1 , q ≥ 0.6                      regimes
+ Halobacteriota response             0.76; centre 55, scale      assumed       Set to span the Site 59 and Site 60 pools
+                                     20 mS cm−1
+ Shannon floor                       1.35                        assumed       Minimum Shannon diversity of the engine
+ ect/kdp mitigation                  0.55                        assumed       Osmotic maintenance term
+ Dark-proteome coding fraction       0.534                       transferred   Companion proteome coding-sequence cat-
+                                                                               alogue
+ Refugium and thermal priming
+ Horizon and shade cooling           11 and 7 ◦ C                assumed       Effective horizon temperature
+ Thermoplasmatota subsurface         2.26-fold                   transferred   Companion compartment analysis
+ enrichment
+ Thermal attenuation threshold       48 ◦ C                      assumed       Thermoplasmatota and hydB_1l responses
+ Grazing and seismic surveys
+ Porosity loss per animal unit       0.0035 (camel),             assumed       Hoof compaction
+                                     0.0008 (wild)
+ Nodal survey mitigation             0.18                        assumed       Compaction and grading multiplier
+ TPH degradation rates               0.0025 and 0.0155           assumed       Natural attenuation and alkB/ladA consor-
+                                     d−1                                       tium
+ Virome, mobilome and screening
+ Host coupling                       0.254                       assumed       Viral-prokaryotic Mantel correlation of the
+                                                                               companion virome analysis, used as a slope
+ Cover, manure and dose terms        0.55, 0.15; 0.65,           assumed       Viral and plasmid richness multipliers
+                                     0.48, 0.30
+ ARG screening score                 0.035 + 0.42M +             assumed       Assumed screening index of resistome load
+                                     0.015d; flag at 0.25
+ Flux balance model
+ Stoichiometric and objective        see Methods                 assumed       Reduced ten-flux linear program
+ coefficients
+ Maintenance feasibility             requirement ≤               assumed       Hard threshold; growth and carbon fixation
+                                     maximum attainable                        set to zero when violated
+                                     ATP
+ Portfolio robustness and carbon budget
+ Monte Carlo noise scales            shared SD 0.035;            assumed       Prescribed score-noise scales; B = 200
+                                     portfolio SD                              draws (carbon-budget parameters in Ta-
+                                     max(0.08, 0.055|J|)                       ble S6c)
+
+
+                                                            12
+Table S8: Ontology identifiers used by EQ-BioDT, as loaded from the canonical registries
+of the Rub’ al-Khali knowledge base and its Darwin Core exporter. Prefixes: RAK,
+https://rubalkhali.science/kb/; CHEBI, ENVO, NCBITaxon, PATO and UO, http:
+//purl.obolibrary.org/obo/; SIO, http://semanticscience.org/resource/. Site IRIs
+RAK_1000001 to RAK_1000060 identify the primary sites. eMoF, ExtendedMeasurementOr-
+Fact.
+ Concept                          Identifier       Role in EQ-BioDT
+ rubalkhali.owl
+ Site quality                     RAK_0000001      eMoF measurement type of 16S Shannon diversity
+ Sampling site                    RAK_0000002      Class of transect sites
+ Site visit                       RAK_0000003      Class of campaign visits
+ Annual total precipitation       RAK_0000014      eMoF measurement type of mean annual precipitation
+ value
+ Surface soil sample              RAK_0000020      Compartment class; DwC samplingProtocol
+ Deep (5–10 cm) soil sample       RAK_0000021      Compartment class; DwC samplingProtocol
+ Rhizosphere sample               RAK_0000022      Compartment class; DwC samplingProtocol
+ XRF measuring process            RAK_0000025      Process class of geochemical measurements
+ Chemical analyte                 RAK_0000029;     Quality and value classes of analyte concentrations
+ concentration; value             RAK_0000030
+ Light elements quality; value    RAK_0000032;     XRF light-element pseudo-analyte
+                                  RAK_0000033
+ DNA concentration quality;       RAK_0000043;     DNA yield of specimens
+ value                            RAK_0000044
+ Taxon relative abundance         RAK_0000072;     Relative abundances of taxa
+ quality; value                   RAK_0000073
+ Taxon absolute abundance         RAK_0000076;     Absolute abundances; RAK_0000078 is the DwC unit iden-
+ value; quality                   RAK_0000078      tifier of guild GE
+ XRF analyte qualities Si, Fe,    RAK_0000100 to   eMoF measurementTypeID of the 11 core elements, in this or-
+ Ca, K, S, P, Ti, Al, Mg, Na,     RAK_0000110      der
+ Cl
+ XRF analyte quality V            RAK_0000114      eMoF measurementTypeID of vanadium
+ NCBITaxon and constraint-module classes
+ Actinomycetota;             NCBITaxon_201174;     Phylum classes of axiom (A1); DwC scientificNameID
+ Thermoplasmatota;           NCBITaxon_2283796;
+ Halobacteriota              NCBITaxon_3100166
+ Guild, flux and DNA-pool    RAK_GUILD_*;          Classes of axioms (A2) to (A5) in rubalkhali_twin_
+ classes                     RAK_FLUX_*;           constraints.owl
+                             RAK_DNA_*
+ ChEBI
+ Silicon; iron; calcium           CHEBI_27573;     eMoF measurementValueID of XRF analytes
+                                  CHEBI_18248;
+                                  CHEBI_22984
+ Potassium; sulfur;               CHEBI_26216;     eMoF measurementValueID of XRF analytes
+ phosphorus                       CHEBI_26833;
+                                  CHEBI_28659
+ Titanium; aluminium;             CHEBI_33341;     eMoF measurementValueID of XRF analytes
+ magnesium                        CHEBI_28984;
+                                  CHEBI_25107
+ Sodium; chlorine; vanadium       CHEBI_26708;     eMoF measurementValueID of XRF analytes;              vanadium
+                                  CHEBI_23116;     marks crude-oil contamination
+                                  CHEBI_27698
+ ENVO
+ Desert biome                     ENVO_01000179    DwC habitat of all events
+ Desert sand                      ENVO_00005800    DwC habitat of all events
+ PATO
+ Concentration of                 PATO_0000033     Registry quality term for concentration measurements
+ UO
+ Millimetre                       UO_0000016       eMoF unit of mean annual precipitation
+ Pascal                           UO_0000110       Registry unit of pressure measurements
+ Dimensionless unit               UO_0000186       Unit of relative abundance and Shannon diversity
+ Percent                          UO_0000187       eMoF unit of XRF concentrations
+ pH                               UO_0000196       eMoF type and unit of CaCl2 pH
+ SIO [21]
+ Has attribute; is attribute of   SIO_000008;      Knowledge-base links between entities and their measured
+                                  SIO_000011       qualities
+ Has measurement value; is        SIO_000216;      Knowledge-base links between qualities and measurement val-
+ measurement value of             SIO_000215       ues
+ Has value; has unit              SIO_000300;      Literal value and unit of a measurement in the knowledge
+                                  SIO_000221       base
+
+
+
+
+                                                   13
+Table S9: Site-mean 16S rRNA centred log-ratio (CLR) ridge response models (α = 10, n = 60
+primary sites per compartment) and five-fold spatially blocked cross-validation R2 for the 12 focal
+bacterial genera of the interactive Arabian Desert digital twin (https://rubalkhali.science/
+twin). Predictors are standardized mean annual temperature (MAT, µ = 27.65 ◦ C, σ = 0.90 ◦ C),
+monthly precipitation (MAP/12, µ = 2.04 mm, σ = 0.73 mm) and XRF sulfur concentration
+(S, µ = 0.144%, σ = 0.562%). Spatial cross-validation R2 is computed across five contiguous
+longitude blocks of 12 sites each.
+                                                  Surface (0–2 cm)              Subsurface (5–10 cm)        Root-adj.
+ Genus                Ecological group   βMAT βMAP/12            βS CV R2   βMAT βMAP/12       βS CV R2       CV R2
+ Domibacillus         Hallmark desert     0.207    −0.184 −0.185 −0.787 −0.331      −0.236 −0.491 −0.060      −0.030
+ Massilia             Hallmark desert    −1.037    −0.761 −0.669 0.134 −0.420       −0.308 −0.761 0.114       −0.568
+ Bacillus             Hallmark desert     1.116     0.146 1.154 −0.682 0.559        −0.026 1.220 −0.579       −0.601
+ Microvirga           Hallmark desert    −0.686    −0.047 0.327 −1.159 −0.186        0.139 −0.533 −0.599      −0.171
+ Flavisolibacter      Hallmark desert    −1.291    −0.567 −1.022 0.001 −0.645       −0.509 −1.857 0.476        0.050
+ Noviherbaspirillum   Hallmark desert    −1.154    −0.553 −0.694 −0.367 −0.389      −0.381 −0.653 0.016       −0.063
+ CSP1-2               Hallmark desert     0.197    −1.382 0.154 0.444 −0.020        −1.691 0.315 0.452         0.196
+ TM7a                 Root-adjacent       0.294      0.071 0.409 −0.389     0.249    0.004   0.847 −0.543      0.093
+ Pelagibacterium      Root-adjacent       0.930      0.132 1.020 −0.594     1.112    0.513   0.975 −0.212     −0.817
+ Arsenicitalea        Root-adjacent       0.758      0.048 0.651 −1.161     0.381    0.107   0.508 0.039      −0.055
+ Ohtaekwangia         Root-adjacent       1.250      0.011 −0.061 −0.615    0.462   −0.128   0.234 −0.345      0.123
+ Neorhizobium         Root-adjacent       0.370      0.034 0.553 −0.086     0.616    0.282   0.502 0.115       0.004
+
+
+
+
+                                                            14
+Supplementary Note 4: Assumptions and operational scope
+This note distinguishes the sources of numerical values from the assumptions that permit their
+interpretation. Measured quantities comprise sequence-derived gene capacity, mapped-read
+composition, amplicon diversity, XRF concentrations, pH and the sampled water chemistry.
+Environmental products and companion analyses supply additional covariates and calibrated
+contrasts. Response coefficients introduced to translate these quantities into management
+effects are assumptions unless a matching fitted estimate and endpoint are specified. The
+accompanying machine-readable coefficient inventory lists numeric expressions, defaults
+and clipping thresholds in the executable model with their source locations; the inventory
+records implementation choices and does not establish empirical support. It is supplied as
+reproducibility/outputs/model_coefficient_inventory.json.
+
+Observation, preprocessing and prediction
+The cube averages heterogeneous samples within each site and compartment and therefore treats
+the resulting mean as a representative baseline. MAG shares condition on mapped reads, and
+marker-gene GE represents genomic capacity. The three RuBisCO/CBB marker screens have
+different sensitivities to pathway type, annotation and genome completeness. Inferring realized
+oxidation or fixation additionally requires active biomass, expression, substrate delivery and per-
+cell kinetics. DNA extraction yield is used as a biomass proxy in the revegetation calculation,
+which assumes comparable extraction and recovery between bare and root-associated soil. Taxo-
+nomic phylum membership supplies a compositional baseline; functional attribution requires the
+corresponding pathway evidence.
+    Missing XRF values and nonpositive concentrations receive a fixed replacement before log-
+ratio transformation. Missing working-state guilds, phylum shares, pH and DNA values re-
+ceive compartment medians, with global or fixed fallbacks when necessary. The raw columns
+and observation flags distinguish these completed baselines from observations. The validation
+panel inherits some completed covariates from this cube before its fold-specific imputation. Site-
+compartment summaries and the sequence reference catalogues pool campaigns, including the
+temporal holdout campaign. Consequently, the retrospective holdout evaluates a fixed reference
+representation and pooled environmental context. A strictly prospective evaluation requires
+freezing all preprocessing, covariate summaries and sequence references at the training cutoff.
+    Ridge models assume an additive linear response on the specified transformed scale after
+standardization. Spatial blocks group sites by longitude; they test within-transect transfer under
+this block definition. Site bootstraps treat sites as the resampling units. Campaign holdouts
+retain recurring sites. The selected penalties, target transforms, feature sets and partition rules
+are fixed choices. Their uncertainty intervals describe resampling conditional on these choices.
+The genus fits use a separate site-mean CLR panel and a separate browser representation; CLR
+differences quantify changes relative to the geometric-mean reference composition.
+
+Ontological and numerical assumptions
+Subsumption monotonicity and partition sums require a nonnegative additive measure with a
+shared denominator. Hydrogenase partitions refer to disjoint gene categories; an organism can
+carry several categories, so summing carrier counts would require overlap accounting. The on-
+tology module explicitly asserts the partitions and binds classes to numeric coordinates. Com-
+pilation handles named-class subsumptions, disjoint unions and upper-bound annotations. The
+full ontology’s arbitrary OWL entailments require a separate reasoning step.
+    The constitutive preprocessing reserves at least 4% of the phylum simplex for other prokary-
+otes, clips intact-cell DNA to [0.01, 0.99], and sets the relic fraction to its complement. The two-
+pool representation treats these fractions operationally and combines several biological states.
+
+
+                                                15
+Missing inputs can receive defaults. The OCS is the fraction of evaluated states satisfying every
+compiled constraint. It concerns algebraic coherence; ATP feasibility belongs to the metabolic
+model and predictive accuracy belongs to held-out evaluation. The scenario preprocessing al-
+ready imposes most equalities before projection. The projection theorem concerns the optimal
+projection of the supplied vector onto a closed convex set containing the truth. Solver fallback,
+preprocessing changes and arbitrary weighted metrics require their own checks. The unit-weight
+full-state objective combines fractions, GE and power on their stored numerical scales.
+
+Mechanistic hypotheses and intervention versions
+Every scenario holds the baseline and unmodified coefficients fixed while changing designated
+inputs. This operational intervention assumes the response function remains valid under the new
+exposure. Calibration from paired root and bulk samples assumes that the contrast transports
+to a planted mosaic; matching that same calibration contrast measures implementation fidelity.
+Transfer to inoculated shrubs additionally assumes establishment, expression and dose efficacy.
+Species names and gene labels identify the scenario hypothesis, while the common response
+equations determine its numerical outcome. The fixed phylogenetic attenuation dictionary is
+unused in these evaluations; the evaluated scenarios include no fitted phylogenetic adjustment.
+     Rainfall is a prescribed pulse entering a homogeneous 0.10 m column, with fixed porosity,
+infiltration and drying coefficients. The response kernel, Shannon gain, heterotroph dilution,
+DNA resuscitation and desiccation terms are prescribed. Day zero represents the pre-pulse
+state; days 1–14 sample the response after infiltration. The instantaneous post-pulse maximum
+moisture and minimum gas transport remain unresolved at this daily timestep. Cloud-seeding
+efficacy, runoff, lateral flow and repeated-event hydrology require additional models. Diffusion is
+a relative Millington–Quirk response multiplied by capacity and activity factors. The model uses
+a fixed atmospheric reference and a capacity-to-power scaling; a spatial concentration-gradient
+and gas-supply balance would supply additional physical constraints.
+     Revegetation assumes an area mosaic with root and bare zones. Root depletion and
+biomass multipliers derive from the pooled field contrast; inoculation gains, phylum shifts,
+the canopy-diversity response and DNA viability factors are prescribed. Area-weighted GE,
+biomass-weighted GE and the absolute gene-density multiplier are distinct outputs. The carbon
+module further assumes a clipped biomass multiplier raised to 0.35. Its additional plasmid
+allocation term overlaps the supplied plasmid multiplier, so the combined response is a specified
+amplification assumption.
+     The brine model assumes effective conductivity EC/(1 + 0.55q) for composition index q.
+Logistic community responses, salinity thresholds, inoculation rescue and conductivity-dependent
+water content and porosity are prescribed. The reference conductivities were measured in pool
+water; predicting soil exposure assumes transport from discharge to porewater. Ion activity,
+mineral saturation, water residence time, organism-specific tolerance and toxicity would require
+additional measurements. In the brine power calculation water content changes from 0.045 to
+0.085 at EC 50 mS cm−1 and porosity from 0.40 to 0.32 at EC 80 mS cm−1 .
+     The refugium model assumes cooling of 11 ◦ C per intact-horizon fraction and 7 ◦ C per shade
+fraction. Thermal loss begins above an effective 48 ◦ C, with separate prescribed effects on guilds,
+Shannon diversity and the Bacillus survival index. Betaine changes both maintenance and the
+thermal-response denominator. These dose-response curves assume transport from the motivat-
+ing biological evidence to community-scale intervention effects.
+     Grazing converts oryx, gazelle and camel densities to assumed disturbance units. A
+rotational-management multiplier of 0.55 changes camel impact. Prescribed seed dispersal,
+browsing, nutrient inputs, compatible-solute supply and compaction functions determine the
+response. Even zero animal density retains baseline cover 0.08 and fixed moisture 0.020, so a
+zero-input calculation is a model reference state. The ARG score and its 0.25 threshold are
+assumed screening rules requiring endpoint validation before biosafety use.
+
+                                                16
+    The seismic model prescribes compaction from line density, axle passes and grading, with
+a nodal mitigation factor of 0.18. First-order hydrocarbon disappearance uses a baseline rate
+0.0025 d−1 plus a dose- and porosity-dependent increment up to 0.0155 d−1 . Its vanadium
+increment, pore clogging, toxicity losses and remediation diversity gain are assumed. Hydro-
+carbon disappearance is the represented endpoint; product toxicity, mineralization and release
+of contaminants require separate assays. Version-ambiguity intervals use fixed leaf sensitivities
+for alternative realizations of a coarse intervention. They quantify allocation uncertainty within
+that linear surrogate, conditional on its sensitivities and minimum shares.
+
+Reduced metabolism, virome and uncertainty
+The ten-flux LP uses prescribed energy yields, nitrogen demand, capacities, maintenance and
+objective weights. It combines ammonia and nitrate in one external supply and uses a coarse
+sulfur-redox term linked to available donors. Its fluxes have model units. Growth and carbon-
+fixation outputs are allocation indices conditional on the resource constraints. The fallback
+removes anabolic fluxes and excludes DOC from its catabolic maintenance allocation. Native
+HiGHS status distinguishes proved infeasibility from other solver terminations, although the
+current biological label is shared across unsuccessful terminations. The reported dark-proteome
+fraction is a prescribed coding-composition response, and its legacy “active” output is an alias of
+the same value.
+    Virome and plasmid richness follow prescribed exponential and multiplicative response func-
+tions. The coefficient 0.254 transfers a companion Mantel correlation as an assumed slope. Viral
+and plasmid richness have floors of one and two; TPM, lysogeny and ARG outputs use fixed
+response rules. The supplied climate, pH and evaporite variables have no numerical effect in
+this implementation. A fitted joint species model and a calibrated ARG endpoint would require
+separate estimation.
+    Portfolio scores combine six simulations started independently from the same baseline. Their
+means and weighted sums assume comparability across different endpoints and time horizons.
+Joint feedback, shared resource depletion and interaction between modules require a coupled
+state transition. P1 is a prescribed current-use portfolio with discharge, grazing and survey
+activity; P0 is the separately calculated baseline. Utility depends on both the candidate set and
+subjective weights. The 200 Monte Carlo draws perturb objective scores using fixed Gaussian
+noise scales. Their quantiles and rank frequencies express sensitivity to that perturbation model.
+Parameter distributions, structural alternatives and sampling uncertainty remain distinct sources
+requiring propagation through the engines.
+
+Regional carbon and browser interpretation
+Carbon coefficients, clipping thresholds, reference uptake, annualization, retention fractions and
+the regional background are specified in Methods. The low and high combinations are sensi-
+tivity envelopes. The inferred shrub cover, NPP transfer, mineral-source fraction and retention
+factors are assumptions. Long-term permanence, respiration, water delivery, establishment and
+operating emissions require a stock-and-flow lifecycle model. Soil hydrogen uptake is reported
+separately as a climate-equivalent contribution under an assumed marginal atmospheric response.
+Regional policy calculations omit several levers exposed by the site models, including rainfall,
+wild-ungulate density, refugium integrity and oil remediation.
+    The 45 km corridor mask uses an approximate degree-distance conversion and interpolated
+climate and elevation bounds. Interpolation inside observed ranges is a geometric rule, whose
+relation to prediction error and intervention-dose support requires empirical evaluation. Nearest-
+site transfer includes imputed states: 35 of the 128 supported cells inherit imputed surface guild
+baselines. The P3/P4 assignment is a fixed rule. The constant cell area and regional mean
+background assume representativeness beyond the directly sampled area.
+
+
+                                                17
+    The website combines several computational products. Statistical diversity and genus maps,
+interpolated gene-capacity and energy maps, precomputed scenario curves, carbon tables and
+procedural three-dimensional illustrations have different evidential roles. Browser portfolio offsets
+and climate-slider substitutions are prescribed visualization rules. They run separately from the
+Python mechanistic engines and ontology compiler. The map resolution specifies display and
+interpolation density. Scientific precision depends on observation coverage, fitted predictive error
+and the validity of the scenario assumptions.
+
+
+References
+ [1] Boris Motik, Peter F. Patel-Schneider, and Bernardo Cuenca Grau. OWL 2 web ontol-
+     ogy language direct semantics (second edition). W3c recommendation, World Wide Web
+     Consortium (W3C), 2012.
+
+ [2] Rebecca DerSimonian and Nan Laird. Meta-analysis in clinical trials. Controlled Clinical
+     Trials, 7(3):177–188, 1986.
+
+ [3] Giovanni Misitano, Bhupinder S. Saini, Bekir Afsar, Babooshka Shavazipour, and Kaisa
+     Miettinen. DESDEO: The modular and open source framework for interactive multiobjective
+     optimization. IEEE Access, 9:148277–148295, 2021.
+
+ [4] Damiano Oldoni, Quentin Groom, Tim Adriaens, Amy J. S. Davis, Lien Reyserhove,
+     Diederik Strubbe, Sonia Vanderhoeven, and Peter Desmet. Occurrence cubes: a new
+     paradigm for aggregating species occurrence data. bioRxiv, 2020.
+
+ [5] John Wieczorek, David Bloom, Robert Guralnick, Stan Blum, Markus Döring, Renato
+     Giovanni, Tim Robertson, and David Vieglais. Darwin Core: An evolving community-
+     developed biodiversity data standard. PLOS ONE, 7(1):e29715, 2012.
+
+ [6] Pier Luigi Buttigieg, Evangelos Pafilis, Suzanna E. Lewis, Mark P. Schildhauer, Ramona L.
+     Walls, and Christopher J. Mungall. The environment ontology in 2016: bridging domains
+     with increased scope, semantic density, and interoperation. Journal of Biomedical Semantics,
+     7:57, 2016.
+
+ [7] Janna Hastings, Gareth Owen, Adriano Dekker, Marcus Ennis, Namrata Kale, Venkatesh
+     Muthukrishnan, Steve Turner, Neil Swainston, Pedro Mendes, and Christoph Steinbeck.
+     ChEBI in 2016: Improved services and an expanding collection of metabolites. Nucleic
+     Acids Research, 44(D1):D1214–D1219, 2016.
+
+ [8] Stian Soiland-Reyes, Peter Sefton, Mercè Crosas, Leyla Jael Castro, Frederik Coppens,
+     José M. Fernández, Daniel Garijo, Björn Grüning, Marco La Rosa, Simone Leo, Eoghan
+     Ó Carragáin, Marc Portier, Ana Trisovic, and Carole Goble. Packaging research artefacts
+     with RO-Crate. Data Science, 5(2):97–138, 2022.
+
+ [9] Pok Man Leung, Sean K. Bay, Wei Wen Wong, Thanavit Jirapanjawat, Stephen D. Archer,
+     Julian Beaman, Ameur Cherif, Steven L. Chown, Don A. Cowan, Cecilia Demergasso, Asun-
+     ción de los Ríos, Jocelyne DiRuggiero, Bo Elberling, Beat Frey, Osnat Gillor, David W. Gra-
+     ham, Puja Gupta, Ian D. Hogg, Heli Juottonen, Minna-Maarit Kytöviita, Thulani Makha-
+     lanyane, Laura K. Meredith, Thanh Nguyen-Dinh, Anders Priemé, Jean-Baptiste Ramond,
+     Steven D. Siciliano, Geok Yuan Annie Tan, Kimberley A. Warren-Rhodes, Nimrod Wieler,
+     Perran L. M. Cook, Manuel Delgado-Baquerizo, and Chris Greening. Aridity drives global
+     convergence of desert microbiomes and biogeochemical activities. bioRxiv, 2025. Preprint.
+
+
+
+
+                                                 18
+[10] Sean K. Bay, David W. Waite, Xiyang Dong, Osnat Gillor, Steven L. Chown, Philip Hugen-
+     holtz, and Chris Greening. Chemosynthetic and photosynthetic bacteria contribute differ-
+     entially to primary production across a steep desert aridity gradient. The ISME Journal,
+     15(11):3339–3356, 2021.
+[11] Dana Z. Tribbia, Pedro H. Lebre, Xabier Vázquez-Campos, Angelique E. Ray, Thomas
+     Laird, Náthali Machado de Lima, Gillian Maggs-Kölling, Don A. Cowan, and Belinda C.
+     Ferrari. Trace gas oxidation supports sub-surface microbial communities across Namib
+     Desert fog and aridity gradients. Applied and Environmental Microbiology, 92(8):e00265–26,
+     2026.
+[12] Vanessa Buzzard, Dana Thorne, Juliana Gil-Loaiza, Alejandro Cueva, and Laura K. Mered-
+     ith. Sensitivity of soil hydrogen uptake to natural and managed moisture dynamics in a
+     semiarid urban ecosystem. PeerJ, 10:e12966, 2022.
+[13] William H. Schlesinger. The formation of caliche in soils of the Mojave Desert, California.
+     Geochimica et Cosmochimica Acta, 49(1):57–66, 1985.
+[14] Jie Ma, Zhong-Yuan Wang, Brett A. Stevenson, Xin-Jun Zheng, and Yan Li. An inorganic
+     CO2 diffusion and dissolution process explains negative CO2 fluxes in saline/alkaline soils.
+     Scientific Reports, 3:2025, 2013.
+[15] Quanlin Ma, Xinyou Wang, Fang Chen, Linyuan Wei, Dekui Zhang, and Hujia Jin. Carbon
+     sequestration of sand-fixing plantation of haloxylon ammodendron in Shiyang River Basin:
+     Storage, rate and potential. Global Ecology and Conservation, 28:e01607, 2021.
+[16] Maria Sand, Ragnhild Bieltvedt Skeie, Marit Sandstad, Srinath Krishnan, Gunnar Myhre,
+     Hannah Bryant, Richard Derwent, Didier Hauglustaine, Fabien Paulot, Michael Prather,
+     and David Stevenson. A multi-model assessment of the global warming potential of hydro-
+     gen. Communications Earth & Environment, 4:203, 2023.
+[17] William R. Wieder, Steven D. Allison, Eric A. Davidson, Katerina Georgiou, Oleksandra
+     Hararuk, Yujie He, Francesca Hopkins, Yiqi Luo, Matthew J. Smith, Benjamin Sulman,
+     Katherine Todd-Brown, Ying-Ping Wang, Jianyang Xia, and Xiaofeng Xu. Explicitly rep-
+     resenting soil microbial processes in Earth system models. Global Biogeochemical Cycles,
+     29(10):1782–1800, 2015.
+[18] R. J. Millington and J. P. Quirk. Permeability of porous solids. Transactions of the Faraday
+     Society, 57:1200–1207, 1961.
+[19] Karin Jordaan, Rachel Lappan, Xiyang Dong, Ian J. Aitkenhead, Sean K. Bay, Eleonora
+     Chiri, Nimrod Wieler, Laura K. Meredith, Don A. Cowan, Steven L. Chown, and Chris
+     Greening. Hydrogen-oxidizing bacteria are abundant in desert soils and strongly stimulated
+     by hydration. mSystems, 5(6):e01131–20, 2020.
+[20] Stefanie Imminger, Dimitri V. Meier, Arno Schintlmeister, Anton Legin, Jörg Schnecker,
+     Andreas Richter, Osnat Gillor, Stephanie A. Eichorst, and Dagmar Woebken. Survival and
+     rapid resuscitation permit limited productivity in desert microbial communities. Nature
+     Communications, 15:3056, 2024.
+[21] Michel Dumontier, Christopher J. O. Baker, Joachim Baran, Alison Callahan, Leonid Che-
+     pelev, Jose Cruz-Toledo, Nicholas R. Del Rio, Geraint Duck, Laura I. Furlong, Nichealla
+     Keath, David Klassen, Jamie P. McCusker, Núria Queralt-Rosinach, Matthias Samwald, Na-
+     talia Villanueva-Rosales, Mark D. Wilkinson, and Robert Hoehndorf. The Semanticscience
+     Integrated Ontology (SIO) for biomedical research and knowledge discovery. Journal of
+     Biomedical Semantics, 5:14, 2014.
+
+
+                                               19
+

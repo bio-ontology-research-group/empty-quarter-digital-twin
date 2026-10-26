@@ -1,0 +1,96 @@
+
+> frontend@0.0.0 build
+> vite build
+
+vite v7.3.0 building client environment for production...
+transforming...
+✓ 1144 modules transformed.
+Export "Bar" of module "../../../../../Public/software/empty-quarter/website/frontend/node_modules/recharts/es6/cartesian/Bar.js" was reexported through module "../../../../../Public/software/empty-quarter/website/frontend/node_modules/recharts/es6/index.js" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/TaxonomyChart.jsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Bar" of module "../../../../../Public/software/empty-quarter/website/frontend/node_modules/recharts/es6/cartesian/Bar.js" was reexported through module "../../../../../Public/software/empty-quarter/website/frontend/node_modules/recharts/es6/index.js" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/TaxonomyComparison.jsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Bar" of module "../../../../../Public/software/empty-quarter/website/frontend/node_modules/recharts/es6/cartesian/Bar.js" was reexported through module "../../../../../Public/software/empty-quarter/website/frontend/node_modules/recharts/es6/index.js" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/MonthlyWeatherChart.jsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Bar" of module "../../../../../Public/software/empty-quarter/website/frontend/node_modules/recharts/es6/cartesian/Bar.js" was reexported through module "../../../../../Public/software/empty-quarter/website/frontend/node_modules/recharts/es6/index.js" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/pages/Compare.jsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Bar" of module "../../../../../Public/software/empty-quarter/website/frontend/node_modules/recharts/es6/cartesian/Bar.js" was reexported through module "../../../../../Public/software/empty-quarter/website/frontend/node_modules/recharts/es6/index.js" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/twin/TwinBioDTDashboard.jsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+../../../../../Public/software/empty-quarter/website/frontend/node_modules/@triply/yasgui/build/yasgui.min.js (2:479889): Use of eval in "../../../../../Public/software/empty-quarter/website/frontend/node_modules/@triply/yasgui/build/yasgui.min.js" is strongly discouraged as it poses security risks and may cause issues with minification.
+rendering chunks...
+[esbuild css minify]
+▲ [WARNING] Expected identifier but found "*" [css-syntax-error]
+
+    <stdin>:1:7404:
+      1 │ ...ng_desc_disabled{cursor:pointer;*cursor:hand;background-repeat:n...
+        ╵                                    ^
+
+
+▲ [WARNING] Expected identifier but found "*" [css-syntax-error]
+
+    <stdin>:1:14338:
+      1 │ ...er{position:relative;clear:both;*zoom:1;zoom:1}.dataTables_wrapp...
+        ╵                                    ^
+
+
+▲ [WARNING] Expected identifier but found "*" [css-syntax-error]
+
+    <stdin>:1:15120:
+      1 │ ...n:none!important;cursor:pointer;*cursor:hand;color:#333!importan...
+        ╵                                    ^
+
+
+▲ [WARNING] Expected identifier but found "*" [css-syntax-error]
+
+    <stdin>:1:18533:
+      1 │ ...croll div.dataTables_scrollBody{*margin-top:-1px;-webkit-overflo...
+        ╵                                    ^
+
+
+computing gzip size...
+dist/index.html                                2.50 kB │ gzip:   0.94 kB
+dist/assets/yasgui-DhVPLk_r.css               42.46 kB │ gzip:   8.70 kB
+dist/assets/index-L5gV2rKH.css               274.77 kB │ gzip:  43.13 kB
+dist/assets/kg-release-DuWCCbwo.js             0.17 kB │ gzip:   0.15 kB
+dist/assets/wkt-D4BUnNjN.js                    0.21 kB │ gzip:   0.18 kB
+dist/assets/Badge-CVIb1tUz.js                  0.32 kB │ gzip:   0.26 kB
+dist/assets/Rectangle-DoUE4xaY.js              0.32 kB │ gzip:   0.24 kB
+dist/assets/Row-CIRre3Ky.js                    0.43 kB │ gzip:   0.33 kB
+dist/assets/Table-DhTwj2Ms.js                  0.57 kB │ gzip:   0.36 kB
+dist/assets/voices-BpsGGxzk.js                 0.64 kB │ gzip:   0.28 kB
+dist/assets/Col-BrKicXdD.js                    0.67 kB │ gzip:   0.43 kB
+dist/assets/usePageMeta-CSPgOsyU.js            0.67 kB │ gzip:   0.38 kB
+dist/assets/audio_video_links-DBP4ogAJ.js      0.90 kB │ gzip:   0.34 kB
+dist/assets/ListGroup-BIaHqxWm.js              1.00 kB │ gzip:   0.59 kB
+dist/assets/Stories-DpwDwRY1.js                1.19 kB │ gzip:   0.63 kB
+dist/assets/featured_videos-8mj1oDmE.js        1.35 kB │ gzip:   0.54 kB
+dist/assets/Card-DT-CMeMT.js                   2.02 kB │ gzip:   0.66 kB
+dist/assets/JournalDayMap-Fr-dBs5x.js          2.34 kB │ gzip:   1.19 kB
+dist/assets/Genomes-D_6lbXH-.js                2.87 kB │ gzip:   1.26 kB
+dist/assets/Form-BZxK00s5.js                   4.64 kB │ gzip:   1.72 kB
+dist/assets/SparqlLink-Bz8JGf1t.js             4.92 kB │ gzip:   2.71 kB
+dist/assets/colors-Dj2kKtOa.js                 5.77 kB │ gzip:   2.37 kB
+dist/assets/Stats-Cop5BoDh.js                  9.25 kB │ gzip:   3.32 kB
+dist/assets/About-BewJ11yk.js                 10.57 kB │ gzip:   4.13 kB
+dist/assets/SparqlPage-Dkbacm9j.js            13.54 kB │ gzip:   4.75 kB
+dist/assets/Home-DlrfRZGE.js                  13.59 kB │ gzip:   4.83 kB
+dist/assets/Voices-DlhXd8vB.js                16.26 kB │ gzip:   5.66 kB
+dist/assets/videos-B4eXAgJ5.js                16.73 kB │ gzip:   2.54 kB
+dist/assets/Data-AZP84cXu.js                  17.80 kB │ gzip:   5.97 kB
+dist/assets/ComposedChart-JLwMD34u.js         22.26 kB │ gzip:   6.67 kB
+dist/assets/Journal-C63Imhwm.js               28.06 kB │ gzip:   6.07 kB
+dist/assets/Compare-miWKVp6x.js               35.82 kB │ gzip:  12.13 kB
+dist/assets/KbEntity-CDoWbqri.js              40.15 kB │ gzip:  12.08 kB
+dist/assets/Gallery-CyT7qsWR.js               58.98 kB │ gzip:   8.82 kB
+dist/assets/photos-jZh1Us8M.js               140.99 kB │ gzip:  12.80 kB
+dist/assets/TileLayer-D2Z1ralX.js            153.49 kB │ gzip:  44.72 kB
+dist/assets/Twin-CmdQWACN.js                 172.21 kB │ gzip:  51.99 kB
+dist/assets/photo_metadata-DtiC0l_C.js       321.28 kB │ gzip:  41.00 kB
+dist/assets/index-DOkiBA3E.js                347.46 kB │ gzip: 115.75 kB
+dist/assets/BarChart-BpIj7yXg.js             347.76 kB │ gzip: 104.81 kB
+dist/assets/yasgui-DT1ZmYaK.js             1,078.32 kB │ gzip: 310.72 kB
+
+(!) Some chunks are larger than 800 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 4.91s

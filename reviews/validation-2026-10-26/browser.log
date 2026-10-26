@@ -1,0 +1,44 @@
+[
+  {
+    "check": "Evidence guide visible and keyboard-operable",
+    "pass": true
+  },
+  {
+    "check": "Carbon scope and accounting controls respond",
+    "pass": true
+  },
+  {
+    "check": "Website mobile has no horizontal page overflow",
+    "pass": true
+  },
+  {
+    "check": "Website JavaScript has no unhandled errors",
+    "pass": true,
+    "errors": []
+  },
+  {
+    "check": "Console loads baseline without silently running an intervention",
+    "pass": true
+  },
+  {
+    "check": "Console real rainfall intervention succeeds",
+    "pass": true
+  },
+  {
+    "check": "Console preserves OCS zero and labels missing values unavailable",
+    "pass": true
+  },
+  {
+    "check": "Console handles HTTP failure and clears stale results",
+    "pass": true
+  },
+  {
+    "check": "Console mobile has no horizontal page overflow",
+    "pass": true
+  },
+  {
+    "check": "Console JavaScript has no unhandled errors",
+    "pass": true,
+    "errors": []
+  }
+]
