@@ -188,6 +188,10 @@ class TwinValidationSuite:
 
     def build_sample_level_validation_panel(self, id_floor: int = 60) -> pd.DataFrame:
         """Merge the 551 WGS soil samples with site coordinates, exact weather windows, XRF, pH, guild GEs, and mobilome."""
+        if id_floor == 60 and not self.paths.wgs_sample_metadata_tsv.exists():
+            cached_panel = self.paths.processed_dir / "eq_wgs_validation_panel.parquet"
+            if cached_panel.exists():
+                return pd.read_parquet(cached_panel)
         wgs = self.registry.load_wgs_sample_metadata().copy()
         wgs["compartment_norm"] = wgs["compartment"].map(self.builder.COMPARTMENT_NORMALIZATION)
         if wgs["compartment_norm"].isna().any():
@@ -1334,7 +1338,7 @@ class TwinValidationSuite:
 
     def run_tier5_synthetic_and_metabolic_benchmark(self) -> Dict[str, Any]:
         """Tier 5: Synthetic Metagenome Read-to-Guild Accuracy, 72-MAG GSMM Pilot Audit & Factorial Brine Analysis."""
-        bench_dir = self.paths.eq_lifeonair / "lifeonair" / "results" / "benchmark_r2"
+        bench_dir = self.paths.benchmark_r2_dir
         mock_acc = pd.read_csv(bench_dir / "mock_ge_accuracy.tsv", sep="\t")
         mock_rb = pd.read_csv(bench_dir / "mock_ge_root_bulk.tsv", sep="\t")
 

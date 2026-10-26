@@ -111,6 +111,10 @@ class TwinStateCubeBuilder:
 
     def build_sites_cube(self) -> pd.DataFrame:
         """Build the 70-site spatial table (60 primary transect + 10 auxiliary sites)."""
+        if not self.registry.paths.env_site_tsv.exists():
+            cached = self.registry.paths.processed_dir / "eq_sites_cube.parquet"
+            if cached.exists():
+                return pd.read_parquet(cached)
         env_site = self.registry.load_env_site().copy()
         rows: List[Dict[str, Any]] = []
 
@@ -184,6 +188,10 @@ class TwinStateCubeBuilder:
 
     def build_compartment_state_cube(self) -> pd.DataFrame:
         """Build the Site x Compartment state cube combining XRF, pH, 16S ASVs, WGS guilds, CoverM MAGs, and mobilome."""
+        if not self.registry.paths.xrf_site_compartment_panel_tsv.exists():
+            cached = self.registry.paths.processed_dir / "eq_compartment_state_cube.parquet"
+            if cached.exists():
+                return pd.read_parquet(cached)
         sites_df = self.build_sites_cube()
         primary_sites = sites_df[sites_df["is_primary_transect"]].copy()
 
@@ -400,6 +408,10 @@ class TwinStateCubeBuilder:
         CBB co-carriage, mobilome load, and exact collection-date weather windows
         (P7, P14, P30, P90, P365 from ERA5 and NASA POWER).
         """
+        if not self.registry.paths.wgs_sample_metadata_tsv.exists():
+            cached = self.registry.paths.processed_dir / "eq_visit_compartment_cube.parquet"
+            if cached.exists():
+                return pd.read_parquet(cached)
         wgs_meta = self.registry.load_wgs_sample_metadata().copy()
         wgs_meta["compartment_norm"] = wgs_meta["compartment"].map(self.COMPARTMENT_NORMALIZATION)
         guild_ge = self.registry.load_guild_genome_equivalents(id_floor=60)

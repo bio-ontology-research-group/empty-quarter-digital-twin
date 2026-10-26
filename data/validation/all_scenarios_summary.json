@@ -29,6 +29,63 @@
         "J3_salinity_compaction_risk_min": 0.4237,
         "J4_water_energy_arg_risk_min": 1.8224
       },
+      "carbon_budget": {
+        "shrub_cover_fraction": 0.14,
+        "cbb_community_share_mapped": 0.3838,
+        "cbb_3gene_community_share_mapped": 0.3081,
+        "cbb_1l_cocarriage_conditional": 0.5142,
+        "cbb_1l_3gene_cocarriage_conditional": 0.4444,
+        "bare_thermodynamic_1e6_h2_mg_m2_yr": 1.5095,
+        "h2_uptake_mg_m2_yr": {
+          "low": 11.7138,
+          "point": 29.2845,
+          "high": 58.5689
+        },
+        "co_uptake_mg_m2_yr": {
+          "low": 4.8312,
+          "point": 12.0781,
+          "high": 24.1562
+        },
+        "dark_co2_fixation_annual_avg_nmol_gdw_d": 0.002147,
+        "dark_co2_fixation_wetted_active_nmol_gdw_d": 0.26123,
+        "guild_cell_specific_h2_oxidation_nmol_h_cell": 5.633e-08,
+        "direct_microbial_rubisco_t_co2_km2_yr": {
+          "low": 0.00092,
+          "point": 0.00552,
+          "high": 0.02299
+        },
+        "direct_microbial_rubisco_3gene_strict_t_co2_km2_yr_point": 0.00477,
+        "indirect_h2_sink_t_co2eq_km2_yr": {
+          "low": 0.0703,
+          "point": 0.3397,
+          "high": 0.9371
+        },
+        "vegetation_npp_t_co2_km2_yr": {
+          "low": 26.5827,
+          "point": 41.2731,
+          "high": 58.7617
+        },
+        "pedogenic_carbonate_t_co2_km2_yr": {
+          "low": 0.3354,
+          "point": 0.6708,
+          "high": 1.1738
+        },
+        "total_direct_co2_bound_t_km2_yr": {
+          "low": 26.919,
+          "point": 41.9493,
+          "high": 59.9585
+        },
+        "net_persistent_co2_sequestered_t_km2_yr": {
+          "low": 2.7422,
+          "point": 6.5277,
+          "high": 15.58
+        },
+        "total_co2eq_bound_t_km2_yr": {
+          "low": 26.9892,
+          "point": 42.289,
+          "high": 60.8956
+        }
+      },
       "ocs_score": 1.0,
       "resistome_biosafety_pass": true,
       "module_summaries": {
@@ -80,6 +137,8 @@
           "counterfactual_shannon_16s": 6.1736,
           "autotrophic_carbon_fixation_flux": 1.09653,
           "nifH_n2_fixation_flux": 0.0744,
+          "total_direct_co2_bound_t_km2_yr": 41.9091,
+          "total_co2eq_bound_t_km2_yr": 42.2546,
           "viral_richness_votu": 8668.6,
           "plasmid_richness_potu": 268607.59,
           "resistome_biosafety_pass": true,
@@ -201,6 +260,63 @@
           "J3_salinity_compaction_risk_min": 0.4237,
           "J4_water_energy_arg_risk_min": 1.8224
         },
+        "carbon_budget": {
+          "shrub_cover_fraction": 0.14,
+          "cbb_community_share_mapped": 0.3838,
+          "cbb_3gene_community_share_mapped": 0.3081,
+          "cbb_1l_cocarriage_conditional": 0.5142,
+          "cbb_1l_3gene_cocarriage_conditional": 0.4444,
+          "bare_thermodynamic_1e6_h2_mg_m2_yr": 1.5095,
+          "h2_uptake_mg_m2_yr": {
+            "low": 11.7138,
+            "point": 29.2845,
+            "high": 58.5689
+          },
+          "co_uptake_mg_m2_yr": {
+            "low": 4.8312,
+            "point": 12.0781,
+            "high": 24.1562
+          },
+          "dark_co2_fixation_annual_avg_nmol_gdw_d": 0.002147,
+          "dark_co2_fixation_wetted_active_nmol_gdw_d": 0.26123,
+          "guild_cell_specific_h2_oxidation_nmol_h_cell": 5.633e-08,
+          "direct_microbial_rubisco_t_co2_km2_yr": {
+            "low": 0.00092,
+            "point": 0.00552,
+            "high": 0.02299
+          },
+          "direct_microbial_rubisco_3gene_strict_t_co2_km2_yr_point": 0.00477,
+          "indirect_h2_sink_t_co2eq_km2_yr": {
+            "low": 0.0703,
+            "point": 0.3397,
+            "high": 0.9371
+          },
+          "vegetation_npp_t_co2_km2_yr": {
+            "low": 26.5827,
+            "point": 41.2731,
+            "high": 58.7617
+          },
+          "pedogenic_carbonate_t_co2_km2_yr": {
+            "low": 0.3354,
+            "point": 0.6708,
+            "high": 1.1738
+          },
+          "total_direct_co2_bound_t_km2_yr": {
+            "low": 26.919,
+            "point": 41.9493,
+            "high": 59.9585
+          },
+          "net_persistent_co2_sequestered_t_km2_yr": {
+            "low": 2.7422,
+            "point": 6.5277,
+            "high": 15.58
+          },
+          "total_co2eq_bound_t_km2_yr": {
+            "low": 26.9892,
+            "point": 42.289,
+            "high": 60.8956
+          }
+        },
         "ocs_score": 1.0,
         "resistome_biosafety_pass": true,
         "module_summaries": {
@@ -252,6 +368,8 @@
             "counterfactual_shannon_16s": 6.1736,
             "autotrophic_carbon_fixation_flux": 1.09653,
             "nifH_n2_fixation_flux": 0.0744,
+            "total_direct_co2_bound_t_km2_yr": 41.9091,
+            "total_co2eq_bound_t_km2_yr": 42.2546,
             "viral_richness_votu": 8668.6,
             "plasmid_richness_potu": 268607.59,
             "resistome_biosafety_pass": true,
@@ -372,6 +490,63 @@
           "J3_salinity_compaction_risk_min": 0.4801,
           "J4_water_energy_arg_risk_min": 2.5446
         },
+        "carbon_budget": {
+          "shrub_cover_fraction": 0.24,
+          "cbb_community_share_mapped": 0.3838,
+          "cbb_3gene_community_share_mapped": 0.3081,
+          "cbb_1l_cocarriage_conditional": 0.5142,
+          "cbb_1l_3gene_cocarriage_conditional": 0.4444,
+          "bare_thermodynamic_1e6_h2_mg_m2_yr": 1.3654,
+          "h2_uptake_mg_m2_yr": {
+            "low": 12.202,
+            "point": 30.5049,
+            "high": 61.0099
+          },
+          "co_uptake_mg_m2_yr": {
+            "low": 5.5094,
+            "point": 13.7736,
+            "high": 27.5471
+          },
+          "dark_co2_fixation_annual_avg_nmol_gdw_d": 0.002514,
+          "dark_co2_fixation_wetted_active_nmol_gdw_d": 0.30593,
+          "guild_cell_specific_h2_oxidation_nmol_h_cell": 5.867e-08,
+          "direct_microbial_rubisco_t_co2_km2_yr": {
+            "low": 0.00108,
+            "point": 0.00646,
+            "high": 0.02693
+          },
+          "direct_microbial_rubisco_3gene_strict_t_co2_km2_yr_point": 0.00559,
+          "indirect_h2_sink_t_co2eq_km2_yr": {
+            "low": 0.0732,
+            "point": 0.3539,
+            "high": 0.9762
+          },
+          "vegetation_npp_t_co2_km2_yr": {
+            "low": 49.0113,
+            "point": 76.0965,
+            "high": 108.3407
+          },
+          "pedogenic_carbonate_t_co2_km2_yr": {
+            "low": 0.4565,
+            "point": 0.913,
+            "high": 1.5978
+          },
+          "total_direct_co2_bound_t_km2_yr": {
+            "low": 49.4689,
+            "point": 77.0159,
+            "high": 109.9654
+          },
+          "net_persistent_co2_sequestered_t_km2_yr": {
+            "low": 5.0154,
+            "point": 11.8726,
+            "high": 28.2943
+          },
+          "total_co2eq_bound_t_km2_yr": {
+            "low": 49.5421,
+            "point": 77.3698,
+            "high": 110.9416
+          }
+        },
         "ocs_score": 1.0,
         "resistome_biosafety_pass": true,
         "module_summaries": {
@@ -423,6 +598,8 @@
             "counterfactual_shannon_16s": 6.2147,
             "autotrophic_carbon_fixation_flux": 1.2932,
             "nifH_n2_fixation_flux": 0.11556,
+            "total_direct_co2_bound_t_km2_yr": 76.9297,
+            "total_co2eq_bound_t_km2_yr": 77.2942,
             "viral_richness_votu": 9206.77,
             "plasmid_richness_potu": 306076.16,
             "resistome_biosafety_pass": true,
@@ -543,6 +720,63 @@
           "J3_salinity_compaction_risk_min": 0.4489,
           "J4_water_energy_arg_risk_min": 3.3176
         },
+        "carbon_budget": {
+          "shrub_cover_fraction": 0.4,
+          "cbb_community_share_mapped": 0.3838,
+          "cbb_3gene_community_share_mapped": 0.3081,
+          "cbb_1l_cocarriage_conditional": 0.5142,
+          "cbb_1l_3gene_cocarriage_conditional": 0.4444,
+          "bare_thermodynamic_1e6_h2_mg_m2_yr": 1.1591,
+          "h2_uptake_mg_m2_yr": {
+            "low": 12.0602,
+            "point": 30.1506,
+            "high": 60.3011
+          },
+          "co_uptake_mg_m2_yr": {
+            "low": 6.4197,
+            "point": 16.0491,
+            "high": 32.0983
+          },
+          "dark_co2_fixation_annual_avg_nmol_gdw_d": 0.003088,
+          "dark_co2_fixation_wetted_active_nmol_gdw_d": 0.37573,
+          "guild_cell_specific_h2_oxidation_nmol_h_cell": 5.799e-08,
+          "direct_microbial_rubisco_t_co2_km2_yr": {
+            "low": 0.00132,
+            "point": 0.00794,
+            "high": 0.03307
+          },
+          "direct_microbial_rubisco_3gene_strict_t_co2_km2_yr_point": 0.00686,
+          "indirect_h2_sink_t_co2eq_km2_yr": {
+            "low": 0.0724,
+            "point": 0.3497,
+            "high": 0.9648
+          },
+          "vegetation_npp_t_co2_km2_yr": {
+            "low": 85.8705,
+            "point": 133.3252,
+            "high": 189.819
+          },
+          "pedogenic_carbonate_t_co2_km2_yr": {
+            "low": 0.6855,
+            "point": 1.3709,
+            "high": 2.3991
+          },
+          "total_direct_co2_bound_t_km2_yr": {
+            "low": 86.5573,
+            "point": 134.7041,
+            "high": 192.2512
+          },
+          "net_persistent_co2_sequestered_t_km2_yr": {
+            "low": 8.7586,
+            "point": 20.6862,
+            "high": 49.2673
+          },
+          "total_co2eq_bound_t_km2_yr": {
+            "low": 86.6297,
+            "point": 135.0539,
+            "high": 193.216
+          }
+        },
         "ocs_score": 1.0,
         "resistome_biosafety_pass": true,
         "module_summaries": {
@@ -594,6 +828,8 @@
             "counterfactual_shannon_16s": 6.2809,
             "autotrophic_carbon_fixation_flux": 1.514,
             "nifH_n2_fixation_flux": 0.1962,
+            "total_direct_co2_bound_t_km2_yr": 134.4738,
+            "total_co2eq_bound_t_km2_yr": 134.8364,
             "viral_richness_votu": 10090.93,
             "plasmid_richness_potu": 349569.83,
             "resistome_biosafety_pass": true,
@@ -714,6 +950,63 @@
           "J3_salinity_compaction_risk_min": 0.9971,
           "J4_water_energy_arg_risk_min": 1.8054
         },
+        "carbon_budget": {
+          "shrub_cover_fraction": 0.04,
+          "cbb_community_share_mapped": 0.3838,
+          "cbb_3gene_community_share_mapped": 0.3081,
+          "cbb_1l_cocarriage_conditional": 0.5142,
+          "cbb_1l_3gene_cocarriage_conditional": 0.4444,
+          "bare_thermodynamic_1e6_h2_mg_m2_yr": 1.5332,
+          "h2_uptake_mg_m2_yr": {
+            "low": 9.6504,
+            "point": 24.1261,
+            "high": 48.2522
+          },
+          "co_uptake_mg_m2_yr": {
+            "low": 3.6684,
+            "point": 9.171,
+            "high": 18.3419
+          },
+          "dark_co2_fixation_annual_avg_nmol_gdw_d": 0.001611,
+          "dark_co2_fixation_wetted_active_nmol_gdw_d": 0.19597,
+          "guild_cell_specific_h2_oxidation_nmol_h_cell": 4.64e-08,
+          "direct_microbial_rubisco_t_co2_km2_yr": {
+            "low": 0.00069,
+            "point": 0.00414,
+            "high": 0.01725
+          },
+          "direct_microbial_rubisco_3gene_strict_t_co2_km2_yr_point": 0.00358,
+          "indirect_h2_sink_t_co2eq_km2_yr": {
+            "low": 0.0579,
+            "point": 0.2799,
+            "high": 0.772
+          },
+          "vegetation_npp_t_co2_km2_yr": {
+            "low": 6.2,
+            "point": 9.6264,
+            "high": 13.7053
+          },
+          "pedogenic_carbonate_t_co2_km2_yr": {
+            "low": 0.2171,
+            "point": 0.4343,
+            "high": 0.76
+          },
+          "total_direct_co2_bound_t_km2_yr": {
+            "low": 6.4179,
+            "point": 10.0648,
+            "high": 14.4826
+          },
+          "net_persistent_co2_sequestered_t_km2_yr": {
+            "low": 0.6744,
+            "point": 1.6621,
+            "high": 4.0032
+          },
+          "total_co2eq_bound_t_km2_yr": {
+            "low": 6.4758,
+            "point": 10.3446,
+            "high": 15.2546
+          }
+        },
         "ocs_score": 1.0,
         "resistome_biosafety_pass": true,
         "module_summaries": {
@@ -765,6 +1058,8 @@
             "counterfactual_shannon_16s": 6.1381,
             "autotrophic_carbon_fixation_flux": 0.83333,
             "nifH_n2_fixation_flux": 0.045,
+            "total_direct_co2_bound_t_km2_yr": 10.0651,
+            "total_co2eq_bound_t_km2_yr": 10.3686,
             "viral_richness_votu": 8151.94,
             "plasmid_richness_potu": 201559.29,
             "resistome_biosafety_pass": true,
@@ -887,6 +1182,63 @@
           "J3_salinity_compaction_risk_min": 0.4237,
           "J4_water_energy_arg_risk_min": 1.8224
         },
+        "carbon_budget": {
+          "shrub_cover_fraction": 0.14,
+          "cbb_community_share_mapped": 0.3838,
+          "cbb_3gene_community_share_mapped": 0.3081,
+          "cbb_1l_cocarriage_conditional": 0.5142,
+          "cbb_1l_3gene_cocarriage_conditional": 0.4444,
+          "bare_thermodynamic_1e6_h2_mg_m2_yr": 1.5095,
+          "h2_uptake_mg_m2_yr": {
+            "low": 11.7138,
+            "point": 29.2845,
+            "high": 58.5689
+          },
+          "co_uptake_mg_m2_yr": {
+            "low": 4.8312,
+            "point": 12.0781,
+            "high": 24.1562
+          },
+          "dark_co2_fixation_annual_avg_nmol_gdw_d": 0.002147,
+          "dark_co2_fixation_wetted_active_nmol_gdw_d": 0.26123,
+          "guild_cell_specific_h2_oxidation_nmol_h_cell": 5.633e-08,
+          "direct_microbial_rubisco_t_co2_km2_yr": {
+            "low": 0.00092,
+            "point": 0.00552,
+            "high": 0.02299
+          },
+          "direct_microbial_rubisco_3gene_strict_t_co2_km2_yr_point": 0.00477,
+          "indirect_h2_sink_t_co2eq_km2_yr": {
+            "low": 0.0703,
+            "point": 0.3397,
+            "high": 0.9371
+          },
+          "vegetation_npp_t_co2_km2_yr": {
+            "low": 26.5827,
+            "point": 41.2731,
+            "high": 58.7617
+          },
+          "pedogenic_carbonate_t_co2_km2_yr": {
+            "low": 0.3354,
+            "point": 0.6708,
+            "high": 1.1738
+          },
+          "total_direct_co2_bound_t_km2_yr": {
+            "low": 26.919,
+            "point": 41.9493,
+            "high": 59.9585
+          },
+          "net_persistent_co2_sequestered_t_km2_yr": {
+            "low": 2.7422,
+            "point": 6.5277,
+            "high": 15.58
+          },
+          "total_co2eq_bound_t_km2_yr": {
+            "low": 26.9892,
+            "point": 42.289,
+            "high": 60.8956
+          }
+        },
         "ocs_score": 1.0,
         "resistome_biosafety_pass": true,
         "module_summaries": {
@@ -938,6 +1290,8 @@
             "counterfactual_shannon_16s": 6.1736,
             "autotrophic_carbon_fixation_flux": 1.09653,
             "nifH_n2_fixation_flux": 0.0744,
+            "total_direct_co2_bound_t_km2_yr": 41.9091,
+            "total_co2eq_bound_t_km2_yr": 42.2546,
             "viral_richness_votu": 8668.6,
             "plasmid_richness_potu": 268607.59,
             "resistome_biosafety_pass": true,
@@ -1058,6 +1412,63 @@
           "J3_salinity_compaction_risk_min": 0.4801,
           "J4_water_energy_arg_risk_min": 2.5446
         },
+        "carbon_budget": {
+          "shrub_cover_fraction": 0.24,
+          "cbb_community_share_mapped": 0.3838,
+          "cbb_3gene_community_share_mapped": 0.3081,
+          "cbb_1l_cocarriage_conditional": 0.5142,
+          "cbb_1l_3gene_cocarriage_conditional": 0.4444,
+          "bare_thermodynamic_1e6_h2_mg_m2_yr": 1.3654,
+          "h2_uptake_mg_m2_yr": {
+            "low": 12.202,
+            "point": 30.5049,
+            "high": 61.0099
+          },
+          "co_uptake_mg_m2_yr": {
+            "low": 5.5094,
+            "point": 13.7736,
+            "high": 27.5471
+          },
+          "dark_co2_fixation_annual_avg_nmol_gdw_d": 0.002514,
+          "dark_co2_fixation_wetted_active_nmol_gdw_d": 0.30593,
+          "guild_cell_specific_h2_oxidation_nmol_h_cell": 5.867e-08,
+          "direct_microbial_rubisco_t_co2_km2_yr": {
+            "low": 0.00108,
+            "point": 0.00646,
+            "high": 0.02693
+          },
+          "direct_microbial_rubisco_3gene_strict_t_co2_km2_yr_point": 0.00559,
+          "indirect_h2_sink_t_co2eq_km2_yr": {
+            "low": 0.0732,
+            "point": 0.3539,
+            "high": 0.9762
+          },
+          "vegetation_npp_t_co2_km2_yr": {
+            "low": 49.0113,
+            "point": 76.0965,
+            "high": 108.3407
+          },
+          "pedogenic_carbonate_t_co2_km2_yr": {
+            "low": 0.4565,
+            "point": 0.913,
+            "high": 1.5978
+          },
+          "total_direct_co2_bound_t_km2_yr": {
+            "low": 49.4689,
+            "point": 77.0159,
+            "high": 109.9654
+          },
+          "net_persistent_co2_sequestered_t_km2_yr": {
+            "low": 5.0154,
+            "point": 11.8726,
+            "high": 28.2943
+          },
+          "total_co2eq_bound_t_km2_yr": {
+            "low": 49.5421,
+            "point": 77.3698,
+            "high": 110.9416
+          }
+        },
         "ocs_score": 1.0,
         "resistome_biosafety_pass": true,
         "module_summaries": {
@@ -1109,6 +1520,8 @@
             "counterfactual_shannon_16s": 6.2147,
             "autotrophic_carbon_fixation_flux": 1.2932,
             "nifH_n2_fixation_flux": 0.11556,
+            "total_direct_co2_bound_t_km2_yr": 76.9297,
+            "total_co2eq_bound_t_km2_yr": 77.2942,
             "viral_richness_votu": 9206.77,
             "plasmid_richness_potu": 306076.16,
             "resistome_biosafety_pass": true,
@@ -1229,6 +1642,63 @@
           "J3_salinity_compaction_risk_min": 0.4489,
           "J4_water_energy_arg_risk_min": 3.3176
         },
+        "carbon_budget": {
+          "shrub_cover_fraction": 0.4,
+          "cbb_community_share_mapped": 0.3838,
+          "cbb_3gene_community_share_mapped": 0.3081,
+          "cbb_1l_cocarriage_conditional": 0.5142,
+          "cbb_1l_3gene_cocarriage_conditional": 0.4444,
+          "bare_thermodynamic_1e6_h2_mg_m2_yr": 1.1591,
+          "h2_uptake_mg_m2_yr": {
+            "low": 12.0602,
+            "point": 30.1506,
+            "high": 60.3011
+          },
+          "co_uptake_mg_m2_yr": {
+            "low": 6.4197,
+            "point": 16.0491,
+            "high": 32.0983
+          },
+          "dark_co2_fixation_annual_avg_nmol_gdw_d": 0.003088,
+          "dark_co2_fixation_wetted_active_nmol_gdw_d": 0.37573,
+          "guild_cell_specific_h2_oxidation_nmol_h_cell": 5.799e-08,
+          "direct_microbial_rubisco_t_co2_km2_yr": {
+            "low": 0.00132,
+            "point": 0.00794,
+            "high": 0.03307
+          },
+          "direct_microbial_rubisco_3gene_strict_t_co2_km2_yr_point": 0.00686,
+          "indirect_h2_sink_t_co2eq_km2_yr": {
+            "low": 0.0724,
+            "point": 0.3497,
+            "high": 0.9648
+          },
+          "vegetation_npp_t_co2_km2_yr": {
+            "low": 85.8705,
+            "point": 133.3252,
+            "high": 189.819
+          },
+          "pedogenic_carbonate_t_co2_km2_yr": {
+            "low": 0.6855,
+            "point": 1.3709,
+            "high": 2.3991
+          },
+          "total_direct_co2_bound_t_km2_yr": {
+            "low": 86.5573,
+            "point": 134.7041,
+            "high": 192.2512
+          },
+          "net_persistent_co2_sequestered_t_km2_yr": {
+            "low": 8.7586,
+            "point": 20.6862,
+            "high": 49.2673
+          },
+          "total_co2eq_bound_t_km2_yr": {
+            "low": 86.6297,
+            "point": 135.0539,
+            "high": 193.216
+          }
+        },
         "ocs_score": 1.0,
         "resistome_biosafety_pass": true,
         "module_summaries": {
@@ -1280,6 +1750,8 @@
             "counterfactual_shannon_16s": 6.2809,
             "autotrophic_carbon_fixation_flux": 1.514,
             "nifH_n2_fixation_flux": 0.1962,
+            "total_direct_co2_bound_t_km2_yr": 134.4738,
+            "total_co2eq_bound_t_km2_yr": 134.8364,
             "viral_richness_votu": 10090.93,
             "plasmid_richness_potu": 349569.83,
             "resistome_biosafety_pass": true,
@@ -1400,6 +1872,63 @@
           "J3_salinity_compaction_risk_min": 0.9971,
           "J4_water_energy_arg_risk_min": 1.8054
         },
+        "carbon_budget": {
+          "shrub_cover_fraction": 0.04,
+          "cbb_community_share_mapped": 0.3838,
+          "cbb_3gene_community_share_mapped": 0.3081,
+          "cbb_1l_cocarriage_conditional": 0.5142,
+          "cbb_1l_3gene_cocarriage_conditional": 0.4444,
+          "bare_thermodynamic_1e6_h2_mg_m2_yr": 1.5332,
+          "h2_uptake_mg_m2_yr": {
+            "low": 9.6504,
+            "point": 24.1261,
+            "high": 48.2522
+          },
+          "co_uptake_mg_m2_yr": {
+            "low": 3.6684,
+            "point": 9.171,
+            "high": 18.3419
+          },
+          "dark_co2_fixation_annual_avg_nmol_gdw_d": 0.001611,
+          "dark_co2_fixation_wetted_active_nmol_gdw_d": 0.19597,
+          "guild_cell_specific_h2_oxidation_nmol_h_cell": 4.64e-08,
+          "direct_microbial_rubisco_t_co2_km2_yr": {
+            "low": 0.00069,
+            "point": 0.00414,
+            "high": 0.01725
+          },
+          "direct_microbial_rubisco_3gene_strict_t_co2_km2_yr_point": 0.00358,
+          "indirect_h2_sink_t_co2eq_km2_yr": {
+            "low": 0.0579,
+            "point": 0.2799,
+            "high": 0.772
+          },
+          "vegetation_npp_t_co2_km2_yr": {
+            "low": 6.2,
+            "point": 9.6264,
+            "high": 13.7053
+          },
+          "pedogenic_carbonate_t_co2_km2_yr": {
+            "low": 0.2171,
+            "point": 0.4343,
+            "high": 0.76
+          },
+          "total_direct_co2_bound_t_km2_yr": {
+            "low": 6.4179,
+            "point": 10.0648,
+            "high": 14.4826
+          },
+          "net_persistent_co2_sequestered_t_km2_yr": {
+            "low": 0.6744,
+            "point": 1.6621,
+            "high": 4.0032
+          },
+          "total_co2eq_bound_t_km2_yr": {
+            "low": 6.4758,
+            "point": 10.3446,
+            "high": 15.2546
+          }
+        },
         "ocs_score": 1.0,
         "resistome_biosafety_pass": true,
         "module_summaries": {
@@ -1451,6 +1980,8 @@
             "counterfactual_shannon_16s": 6.1381,
             "autotrophic_carbon_fixation_flux": 0.83333,
             "nifH_n2_fixation_flux": 0.045,
+            "total_direct_co2_bound_t_km2_yr": 10.0651,
+            "total_co2eq_bound_t_km2_yr": 10.3686,
             "viral_richness_votu": 8151.94,
             "plasmid_richness_potu": 201559.29,
             "resistome_biosafety_pass": true,
@@ -1571,6 +2102,63 @@
           "J3_salinity_compaction_risk_min": 0.5324,
           "J4_water_energy_arg_risk_min": 2.2858
         },
+        "carbon_budget": {
+          "shrub_cover_fraction": 0.18,
+          "cbb_community_share_mapped": 0.3838,
+          "cbb_3gene_community_share_mapped": 0.3081,
+          "cbb_1l_cocarriage_conditional": 0.5142,
+          "cbb_1l_3gene_cocarriage_conditional": 0.4444,
+          "bare_thermodynamic_1e6_h2_mg_m2_yr": 1.4365,
+          "h2_uptake_mg_m2_yr": {
+            "low": 11.8281,
+            "point": 29.5702,
+            "high": 59.1403
+          },
+          "co_uptake_mg_m2_yr": {
+            "low": 5.052,
+            "point": 12.6301,
+            "high": 25.2602
+          },
+          "dark_co2_fixation_annual_avg_nmol_gdw_d": 0.002217,
+          "dark_co2_fixation_wetted_active_nmol_gdw_d": 0.26974,
+          "guild_cell_specific_h2_oxidation_nmol_h_cell": 5.687e-08,
+          "direct_microbial_rubisco_t_co2_km2_yr": {
+            "low": 0.00095,
+            "point": 0.0057,
+            "high": 0.02374
+          },
+          "direct_microbial_rubisco_3gene_strict_t_co2_km2_yr_point": 0.00493,
+          "indirect_h2_sink_t_co2eq_km2_yr": {
+            "low": 0.071,
+            "point": 0.343,
+            "high": 0.9462
+          },
+          "vegetation_npp_t_co2_km2_yr": {
+            "low": 34.8752,
+            "point": 54.1483,
+            "high": 77.0926
+          },
+          "pedogenic_carbonate_t_co2_km2_yr": {
+            "low": 0.3739,
+            "point": 0.7478,
+            "high": 1.3086
+          },
+          "total_direct_co2_bound_t_km2_yr": {
+            "low": 35.25,
+            "point": 54.9018,
+            "high": 78.4249
+          },
+          "net_persistent_co2_sequestered_t_km2_yr": {
+            "low": 3.5811,
+            "point": 8.4976,
+            "high": 20.2641
+          },
+          "total_co2eq_bound_t_km2_yr": {
+            "low": 35.321,
+            "point": 55.2448,
+            "high": 79.3711
+          }
+        },
         "ocs_score": 1.0,
         "resistome_biosafety_pass": true,
         "module_summaries": {
@@ -1622,6 +2210,8 @@
             "counterfactual_shannon_16s": 6.1891,
             "autotrophic_carbon_fixation_flux": 1.18613,
             "nifH_n2_fixation_flux": 0.0828,
+            "total_direct_co2_bound_t_km2_yr": 54.8631,
+            "total_co2eq_bound_t_km2_yr": 55.2174,
             "viral_richness_votu": 8880.58,
             "plasmid_richness_potu": 279618.29,
             "resistome_biosafety_pass": true,
@@ -1742,6 +2332,63 @@
           "J3_salinity_compaction_risk_min": 7.2135,
           "J4_water_energy_arg_risk_min": 6.18
         },
+        "carbon_budget": {
+          "shrub_cover_fraction": 0.05,
+          "cbb_community_share_mapped": 0.3838,
+          "cbb_3gene_community_share_mapped": 0.3081,
+          "cbb_1l_cocarriage_conditional": 0.5142,
+          "cbb_1l_3gene_cocarriage_conditional": 0.4444,
+          "bare_thermodynamic_1e6_h2_mg_m2_yr": 0.8701,
+          "h2_uptake_mg_m2_yr": {
+            "low": 5.5924,
+            "point": 13.981,
+            "high": 27.962
+          },
+          "co_uptake_mg_m2_yr": {
+            "low": 2.1419,
+            "point": 5.3548,
+            "high": 10.7096
+          },
+          "dark_co2_fixation_annual_avg_nmol_gdw_d": 0.0,
+          "dark_co2_fixation_wetted_active_nmol_gdw_d": 0.0,
+          "guild_cell_specific_h2_oxidation_nmol_h_cell": 2.689e-08,
+          "direct_microbial_rubisco_t_co2_km2_yr": {
+            "low": 0.0,
+            "point": 0.0,
+            "high": 0.0
+          },
+          "direct_microbial_rubisco_3gene_strict_t_co2_km2_yr_point": 0.0,
+          "indirect_h2_sink_t_co2eq_km2_yr": {
+            "low": 0.0336,
+            "point": 0.1622,
+            "high": 0.4474
+          },
+          "vegetation_npp_t_co2_km2_yr": {
+            "low": 0.3875,
+            "point": 0.6016,
+            "high": 0.8566
+          },
+          "pedogenic_carbonate_t_co2_km2_yr": {
+            "low": 0.2179,
+            "point": 0.4359,
+            "high": 0.7628
+          },
+          "total_direct_co2_bound_t_km2_yr": {
+            "low": 0.6054,
+            "point": 1.0375,
+            "high": 1.6194
+          },
+          "net_persistent_co2_sequestered_t_km2_yr": {
+            "low": 0.0932,
+            "point": 0.3082,
+            "high": 0.7862
+          },
+          "total_co2eq_bound_t_km2_yr": {
+            "low": 0.639,
+            "point": 1.1997,
+            "high": 2.0667
+          }
+        },
         "ocs_score": 1.0,
         "resistome_biosafety_pass": false,
         "module_summaries": {
@@ -1793,6 +2440,8 @@
             "counterfactual_shannon_16s": 6.1403,
             "autotrophic_carbon_fixation_flux": 0.83333,
             "nifH_n2_fixation_flux": 0.045,
+            "total_direct_co2_bound_t_km2_yr": 12.4914,
+            "total_co2eq_bound_t_km2_yr": 12.799,
             "viral_richness_votu": 8200.56,
             "plasmid_richness_potu": 202953.73,
             "resistome_biosafety_pass": true,
@@ -1814,7 +2463,7 @@
             "metabolic_viability_state": "MAINTENANCE_DEFICIT_DORMANCY",
             "autotrophic_carbon_fixation_flux": 0.0,
             "sulfur_redox_flux": 0.01088,
-            "atpm_maintenance_deficit": 1.76154,
+            "atpm_maintenance_deficit": 1.78354,
             "dark_proteome_coding_fraction": 0.0635,
             "dark_proteome_active_fraction": 0.0635,
             "ocs_score": 1.0,
@@ -1887,13 +2536,17 @@
       }
     ],
     "fdo_provenance": {
-      "fdo_pid": "https://rubalkhali.science/fdo/eq-biodt/35524671e41c9374",
+      "fdo_pid": "https://rubalkhali.science/fdo/eq-biodt/8d5fb9d465197ae9",
       "fdo_profile": "https://github.com/BioDT/biodt-DTOs#FDOProfile",
       "software_version": "eq-biodt/0.2.0",
-      "sha256_checksum": "35524671e41c9374af67b6f43937bbf587cd9c1915af226e5289b96d38d3d7c0",
-      "ontology_constraint_digest": "rubalkhali_twin_constraints.owl",
-      "input_dataset_digests": {},
-      "created_at": "2026-10-24T18:32:29.137769+00:00",
+      "sha256_checksum": "8d5fb9d465197ae91e5a9c7f767100f2c3353f1f1d512a4b06991d973ed7fb16",
+      "ontology_constraint_digest": "sha256:dbd18b155dde8e66a9e4c592c7b475646b383ffb154a9647e401291c3b353d4b",
+      "input_dataset_digests": {
+        "data/processed/eq_compartment_state_cube.parquet": "sha256:c3c72e7c182c170778c7d9ee74b015890d46ccd67f70d283ec446feb2d4c707d",
+        "data/processed/eq_sites_cube.parquet": "sha256:5de6f0901dfc416656285a24283ac394ed8141f40774ae60cb2b581693f9d45a",
+        "data/processed/eq_era5_h3_corridor_grid.parquet": "sha256:7ac3bc22d45ca6d8d40e2be8797155b81f157206e541774acd28752122e260fa"
+      },
+      "created_at": "2026-10-26T12:13:15.241795+00:00",
       "ontological_consistency_score_ocs": 1.0,
       "version_ambiguity_bounds": [
         0.0,
@@ -1930,6 +2583,63 @@
         "J2_chemosynthesis_cn_flux_max": 19.2425,
         "J3_salinity_compaction_risk_min": 0.4489,
         "J4_water_energy_arg_risk_min": 3.3176
+      },
+      "carbon_budget": {
+        "shrub_cover_fraction": 0.4,
+        "cbb_community_share_mapped": 0.2611,
+        "cbb_3gene_community_share_mapped": 0.1645,
+        "cbb_1l_cocarriage_conditional": 0.414,
+        "cbb_1l_3gene_cocarriage_conditional": 0.3339,
+        "bare_thermodynamic_1e6_h2_mg_m2_yr": 0.5747,
+        "h2_uptake_mg_m2_yr": {
+          "low": 5.9798,
+          "point": 14.9495,
+          "high": 29.8989
+        },
+        "co_uptake_mg_m2_yr": {
+          "low": 2.9468,
+          "point": 7.3669,
+          "high": 14.7338
+        },
+        "dark_co2_fixation_annual_avg_nmol_gdw_d": 0.001231,
+        "dark_co2_fixation_wetted_active_nmol_gdw_d": 0.14972,
+        "guild_cell_specific_h2_oxidation_nmol_h_cell": 2.875e-08,
+        "direct_microbial_rubisco_t_co2_km2_yr": {
+          "low": 0.00053,
+          "point": 0.00316,
+          "high": 0.01318
+        },
+        "direct_microbial_rubisco_3gene_strict_t_co2_km2_yr_point": 0.00255,
+        "indirect_h2_sink_t_co2eq_km2_yr": {
+          "low": 0.0359,
+          "point": 0.1734,
+          "high": 0.4784
+        },
+        "vegetation_npp_t_co2_km2_yr": {
+          "low": 97.1224,
+          "point": 150.7953,
+          "high": 214.6916
+        },
+        "pedogenic_carbonate_t_co2_km2_yr": {
+          "low": 1.1061,
+          "point": 2.2121,
+          "high": 3.8712
+        },
+        "total_direct_co2_bound_t_km2_yr": {
+          "low": 98.229,
+          "point": 153.0106,
+          "high": 218.576
+        },
+        "net_persistent_co2_sequestered_t_km2_yr": {
+          "low": 9.9888,
+          "point": 23.7261,
+          "high": 56.5816
+        },
+        "total_co2eq_bound_t_km2_yr": {
+          "low": 98.2649,
+          "point": 153.184,
+          "high": 219.0544
+        }
       },
       "ocs_score": 1.0,
       "resistome_biosafety_pass": true,
@@ -1982,6 +2692,8 @@
           "counterfactual_shannon_16s": 6.309,
           "autotrophic_carbon_fixation_flux": 1.514,
           "nifH_n2_fixation_flux": 0.1962,
+          "total_direct_co2_bound_t_km2_yr": 152.6386,
+          "total_co2eq_bound_t_km2_yr": 152.8179,
           "viral_richness_votu": 10300.78,
           "plasmid_richness_potu": 349560.92,
           "resistome_biosafety_pass": true,
@@ -2103,6 +2815,63 @@
           "J3_salinity_compaction_risk_min": 0.4489,
           "J4_water_energy_arg_risk_min": 3.3176
         },
+        "carbon_budget": {
+          "shrub_cover_fraction": 0.4,
+          "cbb_community_share_mapped": 0.2611,
+          "cbb_3gene_community_share_mapped": 0.1645,
+          "cbb_1l_cocarriage_conditional": 0.414,
+          "cbb_1l_3gene_cocarriage_conditional": 0.3339,
+          "bare_thermodynamic_1e6_h2_mg_m2_yr": 0.5747,
+          "h2_uptake_mg_m2_yr": {
+            "low": 5.9798,
+            "point": 14.9495,
+            "high": 29.8989
+          },
+          "co_uptake_mg_m2_yr": {
+            "low": 2.9468,
+            "point": 7.3669,
+            "high": 14.7338
+          },
+          "dark_co2_fixation_annual_avg_nmol_gdw_d": 0.001231,
+          "dark_co2_fixation_wetted_active_nmol_gdw_d": 0.14972,
+          "guild_cell_specific_h2_oxidation_nmol_h_cell": 2.875e-08,
+          "direct_microbial_rubisco_t_co2_km2_yr": {
+            "low": 0.00053,
+            "point": 0.00316,
+            "high": 0.01318
+          },
+          "direct_microbial_rubisco_3gene_strict_t_co2_km2_yr_point": 0.00255,
+          "indirect_h2_sink_t_co2eq_km2_yr": {
+            "low": 0.0359,
+            "point": 0.1734,
+            "high": 0.4784
+          },
+          "vegetation_npp_t_co2_km2_yr": {
+            "low": 97.1224,
+            "point": 150.7953,
+            "high": 214.6916
+          },
+          "pedogenic_carbonate_t_co2_km2_yr": {
+            "low": 1.1061,
+            "point": 2.2121,
+            "high": 3.8712
+          },
+          "total_direct_co2_bound_t_km2_yr": {
+            "low": 98.229,
+            "point": 153.0106,
+            "high": 218.576
+          },
+          "net_persistent_co2_sequestered_t_km2_yr": {
+            "low": 9.9888,
+            "point": 23.7261,
+            "high": 56.5816
+          },
+          "total_co2eq_bound_t_km2_yr": {
+            "low": 98.2649,
+            "point": 153.184,
+            "high": 219.0544
+          }
+        },
         "ocs_score": 1.0,
         "resistome_biosafety_pass": true,
         "module_summaries": {
@@ -2154,6 +2923,8 @@
             "counterfactual_shannon_16s": 6.309,
             "autotrophic_carbon_fixation_flux": 1.514,
             "nifH_n2_fixation_flux": 0.1962,
+            "total_direct_co2_bound_t_km2_yr": 152.6386,
+            "total_co2eq_bound_t_km2_yr": 152.8179,
             "viral_richness_votu": 10300.78,
             "plasmid_richness_potu": 349560.92,
             "resistome_biosafety_pass": true,
@@ -2274,6 +3045,63 @@
           "J3_salinity_compaction_risk_min": 0.4801,
           "J4_water_energy_arg_risk_min": 2.5446
         },
+        "carbon_budget": {
+          "shrub_cover_fraction": 0.24,
+          "cbb_community_share_mapped": 0.2611,
+          "cbb_3gene_community_share_mapped": 0.1645,
+          "cbb_1l_cocarriage_conditional": 0.414,
+          "cbb_1l_3gene_cocarriage_conditional": 0.3339,
+          "bare_thermodynamic_1e6_h2_mg_m2_yr": 0.6779,
+          "h2_uptake_mg_m2_yr": {
+            "low": 6.0585,
+            "point": 15.1462,
+            "high": 30.2924
+          },
+          "co_uptake_mg_m2_yr": {
+            "low": 2.529,
+            "point": 6.3224,
+            "high": 12.6448
+          },
+          "dark_co2_fixation_annual_avg_nmol_gdw_d": 0.001004,
+          "dark_co2_fixation_wetted_active_nmol_gdw_d": 0.1221,
+          "guild_cell_specific_h2_oxidation_nmol_h_cell": 2.913e-08,
+          "direct_microbial_rubisco_t_co2_km2_yr": {
+            "low": 0.00043,
+            "point": 0.00258,
+            "high": 0.01075
+          },
+          "direct_microbial_rubisco_3gene_strict_t_co2_km2_yr_point": 0.00208,
+          "indirect_h2_sink_t_co2eq_km2_yr": {
+            "low": 0.0364,
+            "point": 0.1757,
+            "high": 0.4847
+          },
+          "vegetation_npp_t_co2_km2_yr": {
+            "low": 55.4334,
+            "point": 86.0676,
+            "high": 122.537
+          },
+          "pedogenic_carbonate_t_co2_km2_yr": {
+            "low": 0.7366,
+            "point": 1.4732,
+            "high": 2.5781
+          },
+          "total_direct_co2_bound_t_km2_yr": {
+            "low": 56.1704,
+            "point": 87.5434,
+            "high": 125.1258
+          },
+          "net_persistent_co2_sequestered_t_km2_yr": {
+            "low": 5.7276,
+            "point": 13.6474,
+            "high": 32.5721
+          },
+          "total_co2eq_bound_t_km2_yr": {
+            "low": 56.2068,
+            "point": 87.7191,
+            "high": 125.6105
+          }
+        },
         "ocs_score": 1.0,
         "resistome_biosafety_pass": true,
         "module_summaries": {
@@ -2325,6 +3153,8 @@
             "counterfactual_shannon_16s": 6.2427,
             "autotrophic_carbon_fixation_flux": 1.2932,
             "nifH_n2_fixation_flux": 0.11556,
+            "total_direct_co2_bound_t_km2_yr": 87.404,
+            "total_co2eq_bound_t_km2_yr": 87.5848,
             "viral_richness_votu": 9398.24,
             "plasmid_richness_potu": 306068.35,
             "resistome_biosafety_pass": true,
@@ -2445,6 +3275,63 @@
           "J3_salinity_compaction_risk_min": 0.4237,
           "J4_water_energy_arg_risk_min": 1.8224
         },
+        "carbon_budget": {
+          "shrub_cover_fraction": 0.14,
+          "cbb_community_share_mapped": 0.2611,
+          "cbb_3gene_community_share_mapped": 0.1645,
+          "cbb_1l_cocarriage_conditional": 0.414,
+          "cbb_1l_3gene_cocarriage_conditional": 0.3339,
+          "bare_thermodynamic_1e6_h2_mg_m2_yr": 0.75,
+          "h2_uptake_mg_m2_yr": {
+            "low": 5.8199,
+            "point": 14.5498,
+            "high": 29.0996
+          },
+          "co_uptake_mg_m2_yr": {
+            "low": 2.2177,
+            "point": 5.5441,
+            "high": 11.0883
+          },
+          "dark_co2_fixation_annual_avg_nmol_gdw_d": 0.000858,
+          "dark_co2_fixation_wetted_active_nmol_gdw_d": 0.10435,
+          "guild_cell_specific_h2_oxidation_nmol_h_cell": 2.798e-08,
+          "direct_microbial_rubisco_t_co2_km2_yr": {
+            "low": 0.00037,
+            "point": 0.0022,
+            "high": 0.00918
+          },
+          "direct_microbial_rubisco_3gene_strict_t_co2_km2_yr_point": 0.00178,
+          "indirect_h2_sink_t_co2eq_km2_yr": {
+            "low": 0.0349,
+            "point": 0.1688,
+            "high": 0.4656
+          },
+          "vegetation_npp_t_co2_km2_yr": {
+            "low": 30.0659,
+            "point": 46.6812,
+            "high": 66.4614
+          },
+          "pedogenic_carbonate_t_co2_km2_yr": {
+            "low": 0.5412,
+            "point": 1.0823,
+            "high": 1.8941
+          },
+          "total_direct_co2_bound_t_km2_yr": {
+            "low": 30.6074,
+            "point": 47.7657,
+            "high": 68.3646
+          },
+          "net_persistent_co2_sequestered_t_km2_yr": {
+            "low": 3.1419,
+            "point": 7.5439,
+            "high": 18.0396
+          },
+          "total_co2eq_bound_t_km2_yr": {
+            "low": 30.6423,
+            "point": 47.9345,
+            "high": 68.8302
+          }
+        },
         "ocs_score": 1.0,
         "resistome_biosafety_pass": true,
         "module_summaries": {
@@ -2496,6 +3383,8 @@
             "counterfactual_shannon_16s": 6.2017,
             "autotrophic_carbon_fixation_flux": 1.09653,
             "nifH_n2_fixation_flux": 0.0744,
+            "total_direct_co2_bound_t_km2_yr": 47.7007,
+            "total_co2eq_bound_t_km2_yr": 47.8723,
             "viral_richness_votu": 8848.88,
             "plasmid_richness_potu": 268600.74,
             "resistome_biosafety_pass": true,
@@ -2616,6 +3505,63 @@
           "J3_salinity_compaction_risk_min": 0.5324,
           "J4_water_energy_arg_risk_min": 2.2858
         },
+        "carbon_budget": {
+          "shrub_cover_fraction": 0.18,
+          "cbb_community_share_mapped": 0.2611,
+          "cbb_3gene_community_share_mapped": 0.1645,
+          "cbb_1l_cocarriage_conditional": 0.414,
+          "cbb_1l_3gene_cocarriage_conditional": 0.3339,
+          "bare_thermodynamic_1e6_h2_mg_m2_yr": 0.7136,
+          "h2_uptake_mg_m2_yr": {
+            "low": 5.8754,
+            "point": 14.6884,
+            "high": 29.3768
+          },
+          "co_uptake_mg_m2_yr": {
+            "low": 2.319,
+            "point": 5.7975,
+            "high": 11.595
+          },
+          "dark_co2_fixation_annual_avg_nmol_gdw_d": 0.000885,
+          "dark_co2_fixation_wetted_active_nmol_gdw_d": 0.10772,
+          "guild_cell_specific_h2_oxidation_nmol_h_cell": 2.825e-08,
+          "direct_microbial_rubisco_t_co2_km2_yr": {
+            "low": 0.00038,
+            "point": 0.00228,
+            "high": 0.00948
+          },
+          "direct_microbial_rubisco_3gene_strict_t_co2_km2_yr_point": 0.00184,
+          "indirect_h2_sink_t_co2eq_km2_yr": {
+            "low": 0.0353,
+            "point": 0.1704,
+            "high": 0.47
+          },
+          "vegetation_npp_t_co2_km2_yr": {
+            "low": 39.445,
+            "point": 61.2436,
+            "high": 87.1942
+          },
+          "pedogenic_carbonate_t_co2_km2_yr": {
+            "low": 0.6033,
+            "point": 1.2066,
+            "high": 2.1115
+          },
+          "total_direct_co2_bound_t_km2_yr": {
+            "low": 40.0487,
+            "point": 62.4524,
+            "high": 89.3153
+          },
+          "net_persistent_co2_sequestered_t_km2_yr": {
+            "low": 4.0954,
+            "point": 9.7904,
+            "high": 23.386
+          },
+          "total_co2eq_bound_t_km2_yr": {
+            "low": 40.0839,
+            "point": 62.6228,
+            "high": 89.7853
+          }
+        },
         "ocs_score": 1.0,
         "resistome_biosafety_pass": true,
         "module_summaries": {
@@ -2667,6 +3613,8 @@
             "counterfactual_shannon_16s": 6.2172,
             "autotrophic_carbon_fixation_flux": 1.18613,
             "nifH_n2_fixation_flux": 0.0828,
+            "total_direct_co2_bound_t_km2_yr": 62.3897,
+            "total_co2eq_bound_t_km2_yr": 62.5656,
             "viral_richness_votu": 9065.27,
             "plasmid_richness_potu": 279611.16,
             "resistome_biosafety_pass": true,
@@ -2787,6 +3735,63 @@
           "J3_salinity_compaction_risk_min": 0.9971,
           "J4_water_energy_arg_risk_min": 1.8054
         },
+        "carbon_budget": {
+          "shrub_cover_fraction": 0.04,
+          "cbb_community_share_mapped": 0.2611,
+          "cbb_3gene_community_share_mapped": 0.1645,
+          "cbb_1l_cocarriage_conditional": 0.414,
+          "cbb_1l_3gene_cocarriage_conditional": 0.3339,
+          "bare_thermodynamic_1e6_h2_mg_m2_yr": 0.7621,
+          "h2_uptake_mg_m2_yr": {
+            "low": 4.7969,
+            "point": 11.9923,
+            "high": 23.9846
+          },
+          "co_uptake_mg_m2_yr": {
+            "low": 1.6839,
+            "point": 4.2097,
+            "high": 8.4194
+          },
+          "dark_co2_fixation_annual_avg_nmol_gdw_d": 0.000644,
+          "dark_co2_fixation_wetted_active_nmol_gdw_d": 0.07832,
+          "guild_cell_specific_h2_oxidation_nmol_h_cell": 2.307e-08,
+          "direct_microbial_rubisco_t_co2_km2_yr": {
+            "low": 0.00028,
+            "point": 0.00165,
+            "high": 0.00689
+          },
+          "direct_microbial_rubisco_3gene_strict_t_co2_km2_yr_point": 0.00133,
+          "indirect_h2_sink_t_co2eq_km2_yr": {
+            "low": 0.0288,
+            "point": 0.1391,
+            "high": 0.3838
+          },
+          "vegetation_npp_t_co2_km2_yr": {
+            "low": 7.0124,
+            "point": 10.8877,
+            "high": 15.5012
+          },
+          "pedogenic_carbonate_t_co2_km2_yr": {
+            "low": 0.3504,
+            "point": 0.7007,
+            "high": 1.2263
+          },
+          "total_direct_co2_bound_t_km2_yr": {
+            "low": 7.3631,
+            "point": 11.5901,
+            "high": 16.7344
+          },
+          "net_persistent_co2_sequestered_t_km2_yr": {
+            "low": 0.7889,
+            "point": 1.9839,
+            "high": 4.7978
+          },
+          "total_co2eq_bound_t_km2_yr": {
+            "low": 7.3919,
+            "point": 11.7292,
+            "high": 17.1181
+          }
+        },
         "ocs_score": 1.0,
         "resistome_biosafety_pass": true,
         "module_summaries": {
@@ -2838,6 +3843,8 @@
             "counterfactual_shannon_16s": 6.1661,
             "autotrophic_carbon_fixation_flux": 0.83333,
             "nifH_n2_fixation_flux": 0.045,
+            "total_direct_co2_bound_t_km2_yr": 11.5903,
+            "total_co2eq_bound_t_km2_yr": 11.7411,
             "viral_richness_votu": 8321.47,
             "plasmid_richness_potu": 201554.15,
             "resistome_biosafety_pass": true,
@@ -2960,6 +3967,63 @@
           "J3_salinity_compaction_risk_min": 0.4489,
           "J4_water_energy_arg_risk_min": 3.3176
         },
+        "carbon_budget": {
+          "shrub_cover_fraction": 0.4,
+          "cbb_community_share_mapped": 0.2611,
+          "cbb_3gene_community_share_mapped": 0.1645,
+          "cbb_1l_cocarriage_conditional": 0.414,
+          "cbb_1l_3gene_cocarriage_conditional": 0.3339,
+          "bare_thermodynamic_1e6_h2_mg_m2_yr": 0.5747,
+          "h2_uptake_mg_m2_yr": {
+            "low": 5.9798,
+            "point": 14.9495,
+            "high": 29.8989
+          },
+          "co_uptake_mg_m2_yr": {
+            "low": 2.9468,
+            "point": 7.3669,
+            "high": 14.7338
+          },
+          "dark_co2_fixation_annual_avg_nmol_gdw_d": 0.001231,
+          "dark_co2_fixation_wetted_active_nmol_gdw_d": 0.14972,
+          "guild_cell_specific_h2_oxidation_nmol_h_cell": 2.875e-08,
+          "direct_microbial_rubisco_t_co2_km2_yr": {
+            "low": 0.00053,
+            "point": 0.00316,
+            "high": 0.01318
+          },
+          "direct_microbial_rubisco_3gene_strict_t_co2_km2_yr_point": 0.00255,
+          "indirect_h2_sink_t_co2eq_km2_yr": {
+            "low": 0.0359,
+            "point": 0.1734,
+            "high": 0.4784
+          },
+          "vegetation_npp_t_co2_km2_yr": {
+            "low": 97.1224,
+            "point": 150.7953,
+            "high": 214.6916
+          },
+          "pedogenic_carbonate_t_co2_km2_yr": {
+            "low": 1.1061,
+            "point": 2.2121,
+            "high": 3.8712
+          },
+          "total_direct_co2_bound_t_km2_yr": {
+            "low": 98.229,
+            "point": 153.0106,
+            "high": 218.576
+          },
+          "net_persistent_co2_sequestered_t_km2_yr": {
+            "low": 9.9888,
+            "point": 23.7261,
+            "high": 56.5816
+          },
+          "total_co2eq_bound_t_km2_yr": {
+            "low": 98.2649,
+            "point": 153.184,
+            "high": 219.0544
+          }
+        },
         "ocs_score": 1.0,
         "resistome_biosafety_pass": true,
         "module_summaries": {
@@ -3011,6 +4075,8 @@
             "counterfactual_shannon_16s": 6.309,
             "autotrophic_carbon_fixation_flux": 1.514,
             "nifH_n2_fixation_flux": 0.1962,
+            "total_direct_co2_bound_t_km2_yr": 152.6386,
+            "total_co2eq_bound_t_km2_yr": 152.8179,
             "viral_richness_votu": 10300.78,
             "plasmid_richness_potu": 349560.92,
             "resistome_biosafety_pass": true,
@@ -3131,6 +4197,63 @@
           "J3_salinity_compaction_risk_min": 0.4801,
           "J4_water_energy_arg_risk_min": 2.5446
         },
+        "carbon_budget": {
+          "shrub_cover_fraction": 0.24,
+          "cbb_community_share_mapped": 0.2611,
+          "cbb_3gene_community_share_mapped": 0.1645,
+          "cbb_1l_cocarriage_conditional": 0.414,
+          "cbb_1l_3gene_cocarriage_conditional": 0.3339,
+          "bare_thermodynamic_1e6_h2_mg_m2_yr": 0.6779,
+          "h2_uptake_mg_m2_yr": {
+            "low": 6.0585,
+            "point": 15.1462,
+            "high": 30.2924
+          },
+          "co_uptake_mg_m2_yr": {
+            "low": 2.529,
+            "point": 6.3224,
+            "high": 12.6448
+          },
+          "dark_co2_fixation_annual_avg_nmol_gdw_d": 0.001004,
+          "dark_co2_fixation_wetted_active_nmol_gdw_d": 0.1221,
+          "guild_cell_specific_h2_oxidation_nmol_h_cell": 2.913e-08,
+          "direct_microbial_rubisco_t_co2_km2_yr": {
+            "low": 0.00043,
+            "point": 0.00258,
+            "high": 0.01075
+          },
+          "direct_microbial_rubisco_3gene_strict_t_co2_km2_yr_point": 0.00208,
+          "indirect_h2_sink_t_co2eq_km2_yr": {
+            "low": 0.0364,
+            "point": 0.1757,
+            "high": 0.4847
+          },
+          "vegetation_npp_t_co2_km2_yr": {
+            "low": 55.4334,
+            "point": 86.0676,
+            "high": 122.537
+          },
+          "pedogenic_carbonate_t_co2_km2_yr": {
+            "low": 0.7366,
+            "point": 1.4732,
+            "high": 2.5781
+          },
+          "total_direct_co2_bound_t_km2_yr": {
+            "low": 56.1704,
+            "point": 87.5434,
+            "high": 125.1258
+          },
+          "net_persistent_co2_sequestered_t_km2_yr": {
+            "low": 5.7276,
+            "point": 13.6474,
+            "high": 32.5721
+          },
+          "total_co2eq_bound_t_km2_yr": {
+            "low": 56.2068,
+            "point": 87.7191,
+            "high": 125.6105
+          }
+        },
         "ocs_score": 1.0,
         "resistome_biosafety_pass": true,
         "module_summaries": {
@@ -3182,6 +4305,8 @@
             "counterfactual_shannon_16s": 6.2427,
             "autotrophic_carbon_fixation_flux": 1.2932,
             "nifH_n2_fixation_flux": 0.11556,
+            "total_direct_co2_bound_t_km2_yr": 87.404,
+            "total_co2eq_bound_t_km2_yr": 87.5848,
             "viral_richness_votu": 9398.24,
             "plasmid_richness_potu": 306068.35,
             "resistome_biosafety_pass": true,
@@ -3302,6 +4427,63 @@
           "J3_salinity_compaction_risk_min": 0.4237,
           "J4_water_energy_arg_risk_min": 1.8224
         },
+        "carbon_budget": {
+          "shrub_cover_fraction": 0.14,
+          "cbb_community_share_mapped": 0.2611,
+          "cbb_3gene_community_share_mapped": 0.1645,
+          "cbb_1l_cocarriage_conditional": 0.414,
+          "cbb_1l_3gene_cocarriage_conditional": 0.3339,
+          "bare_thermodynamic_1e6_h2_mg_m2_yr": 0.75,
+          "h2_uptake_mg_m2_yr": {
+            "low": 5.8199,
+            "point": 14.5498,
+            "high": 29.0996
+          },
+          "co_uptake_mg_m2_yr": {
+            "low": 2.2177,
+            "point": 5.5441,
+            "high": 11.0883
+          },
+          "dark_co2_fixation_annual_avg_nmol_gdw_d": 0.000858,
+          "dark_co2_fixation_wetted_active_nmol_gdw_d": 0.10435,
+          "guild_cell_specific_h2_oxidation_nmol_h_cell": 2.798e-08,
+          "direct_microbial_rubisco_t_co2_km2_yr": {
+            "low": 0.00037,
+            "point": 0.0022,
+            "high": 0.00918
+          },
+          "direct_microbial_rubisco_3gene_strict_t_co2_km2_yr_point": 0.00178,
+          "indirect_h2_sink_t_co2eq_km2_yr": {
+            "low": 0.0349,
+            "point": 0.1688,
+            "high": 0.4656
+          },
+          "vegetation_npp_t_co2_km2_yr": {
+            "low": 30.0659,
+            "point": 46.6812,
+            "high": 66.4614
+          },
+          "pedogenic_carbonate_t_co2_km2_yr": {
+            "low": 0.5412,
+            "point": 1.0823,
+            "high": 1.8941
+          },
+          "total_direct_co2_bound_t_km2_yr": {
+            "low": 30.6074,
+            "point": 47.7657,
+            "high": 68.3646
+          },
+          "net_persistent_co2_sequestered_t_km2_yr": {
+            "low": 3.1419,
+            "point": 7.5439,
+            "high": 18.0396
+          },
+          "total_co2eq_bound_t_km2_yr": {
+            "low": 30.6423,
+            "point": 47.9345,
+            "high": 68.8302
+          }
+        },
         "ocs_score": 1.0,
         "resistome_biosafety_pass": true,
         "module_summaries": {
@@ -3353,6 +4535,8 @@
             "counterfactual_shannon_16s": 6.2017,
             "autotrophic_carbon_fixation_flux": 1.09653,
             "nifH_n2_fixation_flux": 0.0744,
+            "total_direct_co2_bound_t_km2_yr": 47.7007,
+            "total_co2eq_bound_t_km2_yr": 47.8723,
             "viral_richness_votu": 8848.88,
             "plasmid_richness_potu": 268600.74,
             "resistome_biosafety_pass": true,
@@ -3473,6 +4657,63 @@
           "J3_salinity_compaction_risk_min": 0.5324,
           "J4_water_energy_arg_risk_min": 2.2858
         },
+        "carbon_budget": {
+          "shrub_cover_fraction": 0.18,
+          "cbb_community_share_mapped": 0.2611,
+          "cbb_3gene_community_share_mapped": 0.1645,
+          "cbb_1l_cocarriage_conditional": 0.414,
+          "cbb_1l_3gene_cocarriage_conditional": 0.3339,
+          "bare_thermodynamic_1e6_h2_mg_m2_yr": 0.7136,
+          "h2_uptake_mg_m2_yr": {
+            "low": 5.8754,
+            "point": 14.6884,
+            "high": 29.3768
+          },
+          "co_uptake_mg_m2_yr": {
+            "low": 2.319,
+            "point": 5.7975,
+            "high": 11.595
+          },
+          "dark_co2_fixation_annual_avg_nmol_gdw_d": 0.000885,
+          "dark_co2_fixation_wetted_active_nmol_gdw_d": 0.10772,
+          "guild_cell_specific_h2_oxidation_nmol_h_cell": 2.825e-08,
+          "direct_microbial_rubisco_t_co2_km2_yr": {
+            "low": 0.00038,
+            "point": 0.00228,
+            "high": 0.00948
+          },
+          "direct_microbial_rubisco_3gene_strict_t_co2_km2_yr_point": 0.00184,
+          "indirect_h2_sink_t_co2eq_km2_yr": {
+            "low": 0.0353,
+            "point": 0.1704,
+            "high": 0.47
+          },
+          "vegetation_npp_t_co2_km2_yr": {
+            "low": 39.445,
+            "point": 61.2436,
+            "high": 87.1942
+          },
+          "pedogenic_carbonate_t_co2_km2_yr": {
+            "low": 0.6033,
+            "point": 1.2066,
+            "high": 2.1115
+          },
+          "total_direct_co2_bound_t_km2_yr": {
+            "low": 40.0487,
+            "point": 62.4524,
+            "high": 89.3153
+          },
+          "net_persistent_co2_sequestered_t_km2_yr": {
+            "low": 4.0954,
+            "point": 9.7904,
+            "high": 23.386
+          },
+          "total_co2eq_bound_t_km2_yr": {
+            "low": 40.0839,
+            "point": 62.6228,
+            "high": 89.7853
+          }
+        },
         "ocs_score": 1.0,
         "resistome_biosafety_pass": true,
         "module_summaries": {
@@ -3524,6 +4765,8 @@
             "counterfactual_shannon_16s": 6.2172,
             "autotrophic_carbon_fixation_flux": 1.18613,
             "nifH_n2_fixation_flux": 0.0828,
+            "total_direct_co2_bound_t_km2_yr": 62.3897,
+            "total_co2eq_bound_t_km2_yr": 62.5656,
             "viral_richness_votu": 9065.27,
             "plasmid_richness_potu": 279611.16,
             "resistome_biosafety_pass": true,
@@ -3644,6 +4887,63 @@
           "J3_salinity_compaction_risk_min": 0.9971,
           "J4_water_energy_arg_risk_min": 1.8054
         },
+        "carbon_budget": {
+          "shrub_cover_fraction": 0.04,
+          "cbb_community_share_mapped": 0.2611,
+          "cbb_3gene_community_share_mapped": 0.1645,
+          "cbb_1l_cocarriage_conditional": 0.414,
+          "cbb_1l_3gene_cocarriage_conditional": 0.3339,
+          "bare_thermodynamic_1e6_h2_mg_m2_yr": 0.7621,
+          "h2_uptake_mg_m2_yr": {
+            "low": 4.7969,
+            "point": 11.9923,
+            "high": 23.9846
+          },
+          "co_uptake_mg_m2_yr": {
+            "low": 1.6839,
+            "point": 4.2097,
+            "high": 8.4194
+          },
+          "dark_co2_fixation_annual_avg_nmol_gdw_d": 0.000644,
+          "dark_co2_fixation_wetted_active_nmol_gdw_d": 0.07832,
+          "guild_cell_specific_h2_oxidation_nmol_h_cell": 2.307e-08,
+          "direct_microbial_rubisco_t_co2_km2_yr": {
+            "low": 0.00028,
+            "point": 0.00165,
+            "high": 0.00689
+          },
+          "direct_microbial_rubisco_3gene_strict_t_co2_km2_yr_point": 0.00133,
+          "indirect_h2_sink_t_co2eq_km2_yr": {
+            "low": 0.0288,
+            "point": 0.1391,
+            "high": 0.3838
+          },
+          "vegetation_npp_t_co2_km2_yr": {
+            "low": 7.0124,
+            "point": 10.8877,
+            "high": 15.5012
+          },
+          "pedogenic_carbonate_t_co2_km2_yr": {
+            "low": 0.3504,
+            "point": 0.7007,
+            "high": 1.2263
+          },
+          "total_direct_co2_bound_t_km2_yr": {
+            "low": 7.3631,
+            "point": 11.5901,
+            "high": 16.7344
+          },
+          "net_persistent_co2_sequestered_t_km2_yr": {
+            "low": 0.7889,
+            "point": 1.9839,
+            "high": 4.7978
+          },
+          "total_co2eq_bound_t_km2_yr": {
+            "low": 7.3919,
+            "point": 11.7292,
+            "high": 17.1181
+          }
+        },
         "ocs_score": 1.0,
         "resistome_biosafety_pass": true,
         "module_summaries": {
@@ -3695,6 +4995,8 @@
             "counterfactual_shannon_16s": 6.1661,
             "autotrophic_carbon_fixation_flux": 0.83333,
             "nifH_n2_fixation_flux": 0.045,
+            "total_direct_co2_bound_t_km2_yr": 11.5903,
+            "total_co2eq_bound_t_km2_yr": 11.7411,
             "viral_richness_votu": 8321.47,
             "plasmid_richness_potu": 201554.15,
             "resistome_biosafety_pass": true,
@@ -3815,6 +5117,63 @@
           "J3_salinity_compaction_risk_min": 7.2135,
           "J4_water_energy_arg_risk_min": 6.18
         },
+        "carbon_budget": {
+          "shrub_cover_fraction": 0.05,
+          "cbb_community_share_mapped": 0.2611,
+          "cbb_3gene_community_share_mapped": 0.1645,
+          "cbb_1l_cocarriage_conditional": 0.414,
+          "cbb_1l_3gene_cocarriage_conditional": 0.3339,
+          "bare_thermodynamic_1e6_h2_mg_m2_yr": 0.4325,
+          "h2_uptake_mg_m2_yr": {
+            "low": 2.7798,
+            "point": 6.9495,
+            "high": 13.899
+          },
+          "co_uptake_mg_m2_yr": {
+            "low": 0.9832,
+            "point": 2.458,
+            "high": 4.9159
+          },
+          "dark_co2_fixation_annual_avg_nmol_gdw_d": 0.0,
+          "dark_co2_fixation_wetted_active_nmol_gdw_d": 0.0,
+          "guild_cell_specific_h2_oxidation_nmol_h_cell": 1.337e-08,
+          "direct_microbial_rubisco_t_co2_km2_yr": {
+            "low": 0.0,
+            "point": 0.0,
+            "high": 0.0
+          },
+          "direct_microbial_rubisco_3gene_strict_t_co2_km2_yr_point": 0.0,
+          "indirect_h2_sink_t_co2eq_km2_yr": {
+            "low": 0.0167,
+            "point": 0.0806,
+            "high": 0.2224
+          },
+          "vegetation_npp_t_co2_km2_yr": {
+            "low": 0.4383,
+            "point": 0.6805,
+            "high": 0.9688
+          },
+          "pedogenic_carbonate_t_co2_km2_yr": {
+            "low": 0.3517,
+            "point": 0.7033,
+            "high": 1.2308
+          },
+          "total_direct_co2_bound_t_km2_yr": {
+            "low": 0.7899,
+            "point": 1.3838,
+            "high": 2.1996
+          },
+          "net_persistent_co2_sequestered_t_km2_yr": {
+            "low": 0.1317,
+            "point": 0.4537,
+            "high": 1.1653
+          },
+          "total_co2eq_bound_t_km2_yr": {
+            "low": 0.8066,
+            "point": 1.4644,
+            "high": 2.422
+          }
+        },
         "ocs_score": 1.0,
         "resistome_biosafety_pass": false,
         "module_summaries": {
@@ -3866,6 +5225,8 @@
             "counterfactual_shannon_16s": 6.1684,
             "autotrophic_carbon_fixation_flux": 0.83333,
             "nifH_n2_fixation_flux": 0.045,
+            "total_direct_co2_bound_t_km2_yr": 14.3439,
+            "total_co2eq_bound_t_km2_yr": 14.4968,
             "viral_richness_votu": 8371.1,
             "plasmid_richness_potu": 202948.55,
             "resistome_biosafety_pass": true,
@@ -3887,7 +5248,7 @@
             "metabolic_viability_state": "MAINTENANCE_DEFICIT_DORMANCY",
             "autotrophic_carbon_fixation_flux": 0.0,
             "sulfur_redox_flux": 0.01088,
-            "atpm_maintenance_deficit": 1.76154,
+            "atpm_maintenance_deficit": 1.78354,
             "dark_proteome_coding_fraction": 0.0635,
             "dark_proteome_active_fraction": 0.0635,
             "ocs_score": 1.0,
@@ -3960,13 +5321,17 @@
       }
     ],
     "fdo_provenance": {
-      "fdo_pid": "https://rubalkhali.science/fdo/eq-biodt/c8c45dcba4f208f6",
+      "fdo_pid": "https://rubalkhali.science/fdo/eq-biodt/be8a97cd24688765",
       "fdo_profile": "https://github.com/BioDT/biodt-DTOs#FDOProfile",
       "software_version": "eq-biodt/0.2.0",
-      "sha256_checksum": "c8c45dcba4f208f691616c105995eb79f476085f9e537224f94ddd98592e28fd",
-      "ontology_constraint_digest": "rubalkhali_twin_constraints.owl",
-      "input_dataset_digests": {},
-      "created_at": "2026-10-24T18:32:29.228303+00:00",
+      "sha256_checksum": "be8a97cd24688765e30b8c2b4cb1366b9021ec7436c93f1f8c7f8ab0f5ba83d8",
+      "ontology_constraint_digest": "sha256:dbd18b155dde8e66a9e4c592c7b475646b383ffb154a9647e401291c3b353d4b",
+      "input_dataset_digests": {
+        "data/processed/eq_compartment_state_cube.parquet": "sha256:c3c72e7c182c170778c7d9ee74b015890d46ccd67f70d283ec446feb2d4c707d",
+        "data/processed/eq_sites_cube.parquet": "sha256:5de6f0901dfc416656285a24283ac394ed8141f40774ae60cb2b581693f9d45a",
+        "data/processed/eq_era5_h3_corridor_grid.parquet": "sha256:7ac3bc22d45ca6d8d40e2be8797155b81f157206e541774acd28752122e260fa"
+      },
+      "created_at": "2026-10-26T12:13:15.359169+00:00",
       "ontological_consistency_score_ocs": 1.0,
       "version_ambiguity_bounds": [
         0.0,
@@ -5033,7 +6398,7 @@
       "metabolic_viability_state": "MAINTENANCE_DEFICIT_DORMANCY",
       "autotrophic_carbon_fixation_flux": 0.0,
       "sulfur_redox_flux": 0.00542,
-      "atpm_maintenance_deficit": 2.10013,
+      "atpm_maintenance_deficit": 2.12213,
       "dark_proteome_coding_fraction": 0.057,
       "dark_proteome_active_fraction": 0.057,
       "ocs_score": 1.0,
@@ -5054,7 +6419,7 @@
       "metabolic_viability_state": "MAINTENANCE_DEFICIT_DORMANCY",
       "autotrophic_carbon_fixation_flux": 0.0,
       "sulfur_redox_flux": 0.00542,
-      "atpm_maintenance_deficit": 1.3635,
+      "atpm_maintenance_deficit": 1.3855,
       "dark_proteome_coding_fraction": 0.057,
       "dark_proteome_active_fraction": 0.057,
       "ocs_score": 1.0,
@@ -5075,7 +6440,7 @@
       "metabolic_viability_state": "MAINTENANCE_DEFICIT_DORMANCY",
       "autotrophic_carbon_fixation_flux": 0.0,
       "sulfur_redox_flux": 0.17112,
-      "atpm_maintenance_deficit": 0.71512,
+      "atpm_maintenance_deficit": 0.74112,
       "dark_proteome_coding_fraction": 0.1042,
       "dark_proteome_active_fraction": 0.1042,
       "ocs_score": 1.0,
@@ -5096,7 +6461,7 @@
       "metabolic_viability_state": "MAINTENANCE_DEFICIT_DORMANCY",
       "autotrophic_carbon_fixation_flux": 0.0,
       "sulfur_redox_flux": 0.17112,
-      "atpm_maintenance_deficit": 0.27898,
+      "atpm_maintenance_deficit": 0.30498,
       "dark_proteome_coding_fraction": 0.1042,
       "dark_proteome_active_fraction": 0.1042,
       "ocs_score": 1.0,
@@ -5104,7 +6469,7 @@
     }
   ],
   "single_interventions": {
-    "cloud_seeding_s30_6mm": {
+    "cloud_seeding_6mm_s30": {
       "intervention": "cloud_seeding",
       "site_iri": "https://rubalkhali.science/kb/RAK_1000030",
       "rain_pulse_mm": 6.0,
@@ -5134,67 +6499,37 @@
       ],
       "management_advisory": "OPTIMAL_PULSE: Resuscitates dormant diversity while preserving >=65% atmospheric H2 oxidation."
     },
-    "cloud_seeding_s30_15mm": {
+    "cloud_seeding_25mm_s30": {
       "intervention": "cloud_seeding",
       "site_iri": "https://rubalkhali.science/kb/RAK_1000030",
-      "rain_pulse_mm": 15.0,
-      "effective_infiltrated_mm": 11.7,
+      "rain_pulse_mm": 25.0,
+      "effective_infiltrated_mm": 19.5,
       "peak_resuscitation_day": 3,
       "baseline_shannon_16s": 6.1289,
-      "counterfactual_peak_shannon_16s": 6.6904,
-      "delta_shannon_16s": 0.5615,
+      "counterfactual_peak_shannon_16s": 6.8261,
+      "delta_shannon_16s": 0.6972,
       "baseline_h2_power_uw_m3": 52.8152,
-      "min_h2_power_uw_m3": 24.0529,
-      "integrated_14d_h2_energy_j_m3": 51.5287,
-      "h2_power_retention_ratio": 0.4554,
-      "salt_crust_penalty": 0.0,
-      "viable_dna_fraction_peak": 0.9347,
-      "ocs_score": 1.0,
-      "version_ambiguity_shannon_bounds": [
-        0.2438,
-        0.4327
-      ],
-      "nonlinear_trajectory_shannon_bounds": [
-        0.4746,
-        0.6044
-      ],
-      "nonlinear_trajectory_min_h2_power_bounds": [
-        19.8312,
-        31.6432
-      ],
-      "management_advisory": "WARNING_SALT_CRUST_OR_ANOXIA: Pulse throttles Millington-Quirk H2 diffusion (<65% retention) or mobilizes sabkha evaporite salts."
-    },
-    "cloud_seeding_s30_35mm": {
-      "intervention": "cloud_seeding",
-      "site_iri": "https://rubalkhali.science/kb/RAK_1000030",
-      "rain_pulse_mm": 35.0,
-      "effective_infiltrated_mm": 27.3,
-      "peak_resuscitation_day": 3,
-      "baseline_shannon_16s": 6.1289,
-      "counterfactual_peak_shannon_16s": 6.9196,
-      "delta_shannon_16s": 0.7907,
-      "baseline_h2_power_uw_m3": 52.8152,
-      "min_h2_power_uw_m3": 2.9394,
-      "integrated_14d_h2_energy_j_m3": 42.5125,
-      "h2_power_retention_ratio": 0.0557,
+      "min_h2_power_uw_m3": 10.4208,
+      "integrated_14d_h2_energy_j_m3": 46.4289,
+      "h2_power_retention_ratio": 0.1973,
       "salt_crust_penalty": 0.0,
       "viable_dna_fraction_peak": 0.95,
       "ocs_score": 1.0,
       "version_ambiguity_shannon_bounds": [
-        0.5687,
-        1.0097
+        0.4062,
+        0.7212
       ],
       "nonlinear_trajectory_shannon_bounds": [
-        0.6936,
-        0.8375
+        0.6034,
+        0.7427
       ],
       "nonlinear_trajectory_min_h2_power_bounds": [
-        0.9201,
-        10.7638
+        6.3125,
+        19.9275
       ],
       "management_advisory": "WARNING_SALT_CRUST_OR_ANOXIA: Pulse throttles Millington-Quirk H2 diffusion (<65% retention) or mobilizes sabkha evaporite salts."
     },
-    "revegetation_s30_uninoculated_30pct": {
+    "revegetation_uninoc_s30": {
       "intervention": "revegetation",
       "site_iri": "https://rubalkhali.science/kb/RAK_1000030",
       "shrub_species": "Haloxylon persicum",
@@ -5212,189 +6547,187 @@
       "counterfactual_shannon_16s": 6.1973,
       "autotrophic_carbon_fixation_flux": 0.83333,
       "nifH_n2_fixation_flux": 0.045,
+      "total_direct_co2_bound_t_km2_yr": 73.1471,
+      "total_co2eq_bound_t_km2_yr": 73.4894,
       "viral_richness_votu": 9433.55,
       "plasmid_richness_potu": 238321.15,
       "resistome_biosafety_pass": true,
       "ocs_score": 1.0,
       "management_advisory": "OPTIMAL_MOSAIC_REVEGETATION: Balances 10x root-zone biomass & viral expansion with inter-shrub atmospheric H2 scavenging."
     },
-    "revegetation_s30_coinoculated_30pct": {
+    "revegetation_coinoc_s30": {
       "intervention": "revegetation",
       "site_iri": "https://rubalkhali.science/kb/RAK_1000030",
       "shrub_species": "Haloxylon persicum",
       "shrub_cover_fraction": 0.3,
       "rak_pr_pgpr_dose": 0.85,
-      "site60_rbcl_hyab_plasmid_dose": 0.8,
-      "biomass_dna_multiplier": 4.306,
-      "counterfactual_dna_conc_ng_ul": 0.0635,
+      "site60_rbcl_hyab_plasmid_dose": 0.75,
+      "biomass_dna_multiplier": 4.29,
+      "counterfactual_dna_conc_ng_ul": 0.0633,
       "baseline_hydB_1l_ge": 2.1059,
       "root_zone_hydB_1l_ge": 0.4485,
       "landscape_hydB_1l_ge": 1.6087,
-      "biomass_weighted_hydB_1l_ge": 0.7179,
-      "absolute_hydB_1l_density_multiplier": 1.468,
-      "total_h2ase_ge": 1.9068,
+      "biomass_weighted_hydB_1l_ge": 0.7189,
+      "absolute_hydB_1l_density_multiplier": 1.4644,
+      "total_h2ase_ge": 1.9048,
       "counterfactual_shannon_16s": 6.2361,
-      "autotrophic_carbon_fixation_flux": 1.376,
-      "nifH_n2_fixation_flux": 0.1458,
+      "autotrophic_carbon_fixation_flux": 1.35875,
+      "nifH_n2_fixation_flux": 0.1395,
+      "total_direct_co2_bound_t_km2_yr": 96.6134,
+      "total_co2eq_bound_t_km2_yr": 96.9795,
       "viral_richness_votu": 9526.88,
-      "plasmid_richness_potu": 320435.41,
+      "plasmid_richness_potu": 318018.55,
       "resistome_biosafety_pass": true,
       "ocs_score": 1.0,
       "management_advisory": "OPTIMAL_MOSAIC_REVEGETATION: Balances 10x root-zone biomass & viral expansion with inter-shrub atmospheric H2 scavenging."
     },
-    "desalination_site60_oasis": {
+    "desalination_ca_so4_s60": {
       "intervention": "desalination_brine",
       "site_iri": "https://rubalkhali.science/kb/RAK_1000060",
-      "discharge_salinity_ms_cm": 10.65,
-      "effective_nacl_ec_ms_cm": 6.02,
-      "ca_so4_to_nacl_ratio": 1.4,
+      "discharge_salinity_ms_cm": 45.0,
+      "effective_nacl_ec_ms_cm": 19.4,
+      "ca_so4_to_nacl_ratio": 2.4,
       "sulfur_geochemical_regime": "CA_SO4_SULFUR_FLUX_OASIS",
-      "sphingomonas_ect_kdp_plasmid_dose": 0.6,
-      "allorhizobium_rbcl_hyab_dose": 0.6,
-      "counterfactual_shannon_16s": 4.8565,
-      "halobacteriota_rel_abund": 0.0714,
+      "sphingomonas_ect_kdp_plasmid_dose": 0.8,
+      "allorhizobium_rbcl_hyab_dose": 0.5,
+      "counterfactual_shannon_16s": 4.5883,
+      "halobacteriota_rel_abund": 0.1077,
       "hard_maintenance_feasible": true,
       "metabolic_viability_state": "VIABLE_GROWTH",
-      "autotrophic_carbon_fixation_flux": 1.5561,
-      "sulfur_redox_flux": 0.63,
+      "autotrophic_carbon_fixation_flux": 1.47239,
+      "sulfur_redox_flux": 0.82909,
       "atpm_maintenance_deficit": 0.0,
       "dark_proteome_coding_fraction": 0.5039,
       "dark_proteome_active_fraction": 0.5039,
       "ocs_score": 1.0,
       "management_advisory": "SITE60_SULFUR_FLUX_OASIS: Brackish Ca-SO4 regime (~10.65 mS/cm) sustains Allorhizobium CBB carbon fixation, N2 fixation, and dark-proteome coding diversity."
     },
-    "desalination_site59_pond": {
+    "desalination_nacl_s59": {
       "intervention": "desalination_brine",
       "site_iri": "https://rubalkhali.science/kb/RAK_1000059",
-      "discharge_salinity_ms_cm": 216.2,
-      "effective_nacl_ec_ms_cm": 204.93,
-      "ca_so4_to_nacl_ratio": 0.1,
+      "discharge_salinity_ms_cm": 180.0,
+      "effective_nacl_ec_ms_cm": 166.28,
+      "ca_so4_to_nacl_ratio": 0.15,
       "sulfur_geochemical_regime": "NACL_HYPERSALINE_SULFUR_SINK",
       "sphingomonas_ect_kdp_plasmid_dose": 0.0,
-      "allorhizobium_rbcl_hyab_dose": 0.0,
+      "allorhizobium_rbcl_hyab_dose": 0.5,
       "counterfactual_shannon_16s": 1.35,
-      "halobacteriota_rel_abund": 0.7796,
+      "halobacteriota_rel_abund": 0.7771,
       "hard_maintenance_feasible": false,
       "metabolic_viability_state": "MAINTENANCE_DEFICIT_DORMANCY",
       "autotrophic_carbon_fixation_flux": 0.0,
-      "sulfur_redox_flux": 0.00542,
-      "atpm_maintenance_deficit": 2.10013,
-      "dark_proteome_coding_fraction": 0.057,
-      "dark_proteome_active_fraction": 0.057,
+      "sulfur_redox_flux": 0.01281,
+      "atpm_maintenance_deficit": 1.58369,
+      "dark_proteome_coding_fraction": 0.0691,
+      "dark_proteome_active_fraction": 0.0691,
       "ocs_score": 1.0,
       "management_advisory": "WARNING_SITE59_SULFUR_SINK_COLLAPSE: Unbuffered Na-Cl brine (>200 mS/cm) drives hard ATP maintenance deficit and Halobacteriota monoculture; dilute below 15 mS/cm and buffer with Ca-SO4."
     },
-    "refugium_intact_vs_graded_s30": {
-      "intact_95pct_with_betaine": {
-        "intervention": "refugium_thermal",
-        "site_iri": "https://rubalkhali.science/kb/RAK_1000030",
-        "subsurface_refugium_intact_fraction": 0.95,
-        "surface_temp_c": 60.0,
-        "effective_horizon_temp_c": 46.75,
-        "exogenous_choline_betaine_mm": 0.8,
-        "thermoplasmatota_rel_abund": 0.0188,
-        "bacillus_60c_survival_index": 0.595,
-        "archaeal_3hp4hb_c_fixation_flux": 0.45,
-        "betaine_osmoprotectant_flux": 0.8,
-        "counterfactual_shannon_16s": 6.1564,
-        "ocs_score": 1.0,
-        "management_advisory": "WARNING_REFUGIUM_EXPOSURE: Topsoil scraping (<5-10 cm) or unmitigated 60 C thermal stress depletes subsurface Thermoplasmatota and Nitrospira."
-      },
-      "graded_15pct_no_betaine": {
-        "intervention": "refugium_thermal",
-        "site_iri": "https://rubalkhali.science/kb/RAK_1000030",
-        "subsurface_refugium_intact_fraction": 0.15,
-        "surface_temp_c": 60.0,
-        "effective_horizon_temp_c": 55.55,
-        "exogenous_choline_betaine_mm": 0.0,
-        "thermoplasmatota_rel_abund": 0.0065,
-        "bacillus_60c_survival_index": 0.3596,
-        "archaeal_3hp4hb_c_fixation_flux": 0.39,
-        "betaine_osmoprotectant_flux": 0.0,
-        "counterfactual_shannon_16s": 5.2967,
-        "ocs_score": 1.0,
-        "management_advisory": "WARNING_REFUGIUM_EXPOSURE: Topsoil scraping (<5-10 cm) or unmitigated 60 C thermal stress depletes subsurface Thermoplasmatota and Nitrospira."
-      }
+    "refugium_intact_95_s30": {
+      "intervention": "refugium_thermal",
+      "site_iri": "https://rubalkhali.science/kb/RAK_1000030",
+      "subsurface_refugium_intact_fraction": 0.95,
+      "surface_temp_c": 58.0,
+      "effective_horizon_temp_c": 44.75,
+      "exogenous_choline_betaine_mm": 0.5,
+      "thermoplasmatota_rel_abund": 0.0188,
+      "bacillus_60c_survival_index": 0.5759,
+      "archaeal_3hp4hb_c_fixation_flux": 0.45,
+      "betaine_osmoprotectant_flux": 0.5,
+      "counterfactual_shannon_16s": 6.1564,
+      "ocs_score": 1.0,
+      "management_advisory": "WARNING_REFUGIUM_EXPOSURE: Topsoil scraping (<5-10 cm) or unmitigated 60 C thermal stress depletes subsurface Thermoplasmatota and Nitrospira."
     },
-    "megafauna_oryx_gazelle_vs_camel": {
-      "oryx_gazelle_reintroduction": {
-        "intervention": "megafauna_grazing",
-        "site_iri": "https://rubalkhali.science/kb/RAK_1000064",
-        "oryx_head_per_100km2": 4.5,
-        "gazelle_head_per_100km2": 8.0,
-        "camel_head_per_100km2": 0.5,
-        "rotational_water_point_management": true,
-        "net_shrub_cover_fraction": 0.45,
-        "effective_soil_porosity": 0.3918,
-        "relative_gas_diffusivity": 0.9523,
-        "nitrification_flux": 0.29836,
-        "archaeal_3hp4hb_c_fixation_flux": 0.45,
-        "counterfactual_shannon_16s": 6.3686,
-        "resistome_arg_risk_index": 0.0995,
-        "resistome_biosafety_pass": true,
-        "ocs_score": 1.0,
-        "management_advisory": "OPTIMAL_ORYX_GAZELLE_REWILDING: Native ungulate N/P pulses bypass the 1% soil nifH bottleneck, boost nitrification & seed dispersal, and pass resistome safety."
-      },
-      "high_camel_overgrazing": {
-        "intervention": "megafauna_grazing",
-        "site_iri": "https://rubalkhali.science/kb/RAK_1000064",
-        "oryx_head_per_100km2": 0.0,
-        "gazelle_head_per_100km2": 0.0,
-        "camel_head_per_100km2": 18.0,
-        "rotational_water_point_management": true,
-        "net_shrub_cover_fraction": 0.01,
-        "effective_soil_porosity": 0.303,
-        "relative_gas_diffusivity": 0.6411,
-        "nitrification_flux": 0.461,
-        "archaeal_3hp4hb_c_fixation_flux": 0.45,
-        "counterfactual_shannon_16s": 5.5416,
-        "resistome_arg_risk_index": 0.665,
-        "resistome_biosafety_pass": false,
-        "ocs_score": 1.0,
-        "management_advisory": "WARNING_OVERGRAZING_OR_ARG_LOAD: High livestock stocking compacts topsoil porosity, suppresses H2 diffusion, and elevates fecal resistome risk."
-      }
+    "refugium_graded_20_s30": {
+      "intervention": "refugium_thermal",
+      "site_iri": "https://rubalkhali.science/kb/RAK_1000030",
+      "subsurface_refugium_intact_fraction": 0.2,
+      "surface_temp_c": 58.0,
+      "effective_horizon_temp_c": 53.0,
+      "exogenous_choline_betaine_mm": 0.0,
+      "thermoplasmatota_rel_abund": 0.0079,
+      "bacillus_60c_survival_index": 0.4122,
+      "archaeal_3hp4hb_c_fixation_flux": 0.42,
+      "betaine_osmoprotectant_flux": 0.0,
+      "counterfactual_shannon_16s": 5.4439,
+      "ocs_score": 1.0,
+      "management_advisory": "WARNING_REFUGIUM_EXPOSURE: Topsoil scraping (<5-10 cm) or unmitigated 60 C thermal stress depletes subsurface Thermoplasmatota and Nitrospira."
     },
-    "seismic_nodal_bioaug_vs_conventional": {
-      "low_impact_nodal_plus_alkb": {
-        "intervention": "seismic_hydrocarbon",
-        "site_iri": "https://rubalkhali.science/kb/RAK_1000061",
-        "seismic_line_density_km_km2": 4.0,
-        "vibroseis_axle_passes": 6,
-        "cut_line_grading_fraction": 0.25,
-        "low_impact_nodal_mode": true,
-        "effective_soil_porosity": 0.3922,
-        "subsurface_refugium_integrity": 0.9617,
-        "relative_gas_diffusivity": 0.8976,
-        "initial_tph_g_kg": 15.0,
-        "residual_tph_g_kg": 3.497,
-        "tph_biodegradation_pct": 76.69,
-        "xrf_vanadium_marker_pct": 0.0718,
-        "xrf_vanadium_chebi_iri": "http://purl.obolibrary.org/obo/CHEBI_27698",
-        "counterfactual_shannon_16s": 6.2477,
-        "h2_oxidation_power_uw_m3": 6.1129,
-        "ocs_score": 1.0,
-        "management_advisory": "WARNING_POROSITY_COMPACTION_OR_HYDROCARBON_TOXICITY: Switch to nodal/drone receivers, avoid bulldozer cut-line grading, and inoculate alkB/ladA enrichment consortium."
-      },
-      "conventional_vibroseis_unremediated": {
-        "intervention": "seismic_hydrocarbon",
-        "site_iri": "https://rubalkhali.science/kb/RAK_1000061",
-        "seismic_line_density_km_km2": 12.0,
-        "vibroseis_axle_passes": 6,
-        "cut_line_grading_fraction": 0.25,
-        "low_impact_nodal_mode": false,
-        "effective_soil_porosity": 0.3507,
-        "subsurface_refugium_integrity": 0.7875,
-        "relative_gas_diffusivity": 0.5994,
-        "initial_tph_g_kg": 15.0,
-        "residual_tph_g_kg": 11.978,
-        "tph_biodegradation_pct": 20.15,
-        "xrf_vanadium_marker_pct": 0.0718,
-        "xrf_vanadium_chebi_iri": "http://purl.obolibrary.org/obo/CHEBI_27698",
-        "counterfactual_shannon_16s": 5.4045,
-        "h2_oxidation_power_uw_m3": 2.836,
-        "ocs_score": 1.0,
-        "management_advisory": "WARNING_POROSITY_COMPACTION_OR_HYDROCARBON_TOXICITY: Switch to nodal/drone receivers, avoid bulldozer cut-line grading, and inoculate alkB/ladA enrichment consortium."
-      }
+    "megafauna_rewilding_s30": {
+      "intervention": "megafauna_grazing",
+      "site_iri": "https://rubalkhali.science/kb/RAK_1000030",
+      "oryx_head_per_100km2": 4.0,
+      "gazelle_head_per_100km2": 8.0,
+      "camel_head_per_100km2": 0.0,
+      "rotational_water_point_management": true,
+      "net_shrub_cover_fraction": 0.45,
+      "effective_soil_porosity": 0.3949,
+      "relative_gas_diffusivity": 0.9637,
+      "nitrification_flux": 0.2658,
+      "archaeal_3hp4hb_c_fixation_flux": 0.45,
+      "counterfactual_shannon_16s": 6.3159,
+      "resistome_arg_risk_index": 0.0753,
+      "resistome_biosafety_pass": true,
+      "ocs_score": 1.0,
+      "management_advisory": "OPTIMAL_ORYX_GAZELLE_REWILDING: Native ungulate N/P pulses bypass the 1% soil nifH bottleneck, boost nitrification & seed dispersal, and pass resistome safety."
+    },
+    "megafauna_camel_overgrazing_s30": {
+      "intervention": "megafauna_grazing",
+      "site_iri": "https://rubalkhali.science/kb/RAK_1000030",
+      "oryx_head_per_100km2": 0.0,
+      "gazelle_head_per_100km2": 0.0,
+      "camel_head_per_100km2": 25.0,
+      "rotational_water_point_management": false,
+      "net_shrub_cover_fraction": 0.01,
+      "effective_soil_porosity": 0.22,
+      "relative_gas_diffusivity": 0.3824,
+      "nitrification_flux": 0.416,
+      "archaeal_3hp4hb_c_fixation_flux": 0.45,
+      "counterfactual_shannon_16s": 4.3089,
+      "resistome_arg_risk_index": 0.665,
+      "resistome_biosafety_pass": false,
+      "ocs_score": 1.0,
+      "management_advisory": "WARNING_OVERGRAZING_OR_ARG_LOAD: High livestock stocking compacts topsoil porosity, suppresses H2 diffusion, and elevates fecal resistome risk."
+    },
+    "seismic_nodal_bioaug_s30": {
+      "intervention": "seismic_hydrocarbon",
+      "site_iri": "https://rubalkhali.science/kb/RAK_1000030",
+      "seismic_line_density_km_km2": 6.0,
+      "vibroseis_axle_passes": 6,
+      "cut_line_grading_fraction": 0.03,
+      "low_impact_nodal_mode": true,
+      "effective_soil_porosity": 0.3961,
+      "subsurface_refugium_integrity": 0.9954,
+      "relative_gas_diffusivity": 0.9269,
+      "initial_tph_g_kg": 12.0,
+      "residual_tph_g_kg": 2.764,
+      "tph_biodegradation_pct": 76.97,
+      "xrf_vanadium_marker_pct": 0.0719,
+      "xrf_vanadium_chebi_iri": "http://purl.obolibrary.org/obo/CHEBI_27698",
+      "counterfactual_shannon_16s": 6.1045,
+      "h2_oxidation_power_uw_m3": 44.9109,
+      "ocs_score": 1.0,
+      "management_advisory": "WARNING_POROSITY_COMPACTION_OR_HYDROCARBON_TOXICITY: Switch to nodal/drone receivers, avoid bulldozer cut-line grading, and inoculate alkB/ladA enrichment consortium."
+    },
+    "seismic_vibroseis_unmitigated_s30": {
+      "intervention": "seismic_hydrocarbon",
+      "site_iri": "https://rubalkhali.science/kb/RAK_1000030",
+      "seismic_line_density_km_km2": 12.0,
+      "vibroseis_axle_passes": 6,
+      "cut_line_grading_fraction": 0.65,
+      "low_impact_nodal_mode": false,
+      "effective_soil_porosity": 0.3067,
+      "subsurface_refugium_integrity": 0.4475,
+      "relative_gas_diffusivity": 0.3553,
+      "initial_tph_g_kg": 25.0,
+      "residual_tph_g_kg": 19.963,
+      "tph_biodegradation_pct": 20.15,
+      "xrf_vanadium_marker_pct": 0.1265,
+      "xrf_vanadium_chebi_iri": "http://purl.obolibrary.org/obo/CHEBI_27698",
+      "counterfactual_shannon_16s": 4.3934,
+      "h2_oxidation_power_uw_m3": 7.1005,
+      "ocs_score": 1.0,
+      "management_advisory": "WARNING_POROSITY_COMPACTION_OR_HYDROCARBON_TOXICITY: Switch to nodal/drone receivers, avoid bulldozer cut-line grading, and inoculate alkB/ladA enrichment consortium."
     }
   }
 }

@@ -577,7 +577,7 @@ class ParetoPortfolioOptimizer:
         prescribed_atlas_budget = self.carbon.upscale_corridor_and_basin_budget(
             comp_df,
             grid_df,
-            policy={"name": "Spatially Prescribed Corridor Atlas (87 P2, 34 P3, 7 P4)"},
+            policy={"name": "Spatially Prescribed Corridor Atlas (122 P3, 6 P4)"},
             portfolio_by_code=code_map,
         )
         return {

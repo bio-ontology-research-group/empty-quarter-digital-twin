@@ -26,12 +26,27 @@ import yaml
 
 @dataclass(frozen=True)
 class CanonicalPaths:
-    """Authoritative local and IBEX paths across the Empty Quarter repositories."""
+    """Authoritative local and IBEX paths across the Empty Quarter repositories,
+    with automatic fallback to the self-contained `reproducibility/data` bundle
+    for standalone GitHub clones.
+    """
 
     software_root: Path = Path("/home/leechuck/Public/software")
     papers_root: Path = Path("/home/leechuck/Documents/papers")
     ibex_data_root: str = "/ibex/scratch/projects/c2014/EmptyQuarter_Data"
     ibex_metagenomics_root: str = "/ibex/scratch/projects/c2014/rob/metagenomics"
+    repo_root: Path = Path(__file__).resolve().parents[3]
+
+    @property
+    def repro_data_dir(self) -> Path:
+        return self.repo_root / "reproducibility" / "data"
+
+    @property
+    def processed_dir(self) -> Path:
+        return self.repo_root / "data" / "processed"
+
+    def _resolve_or_fallback(self, primary: Path, fallback: Path) -> Path:
+        return primary if primary.exists() else fallback
 
     @property
     def eq_repo(self) -> Path:
@@ -55,19 +70,31 @@ class CanonicalPaths:
 
     @property
     def xrf_chemical_mapping_yml(self) -> Path:
-        return self.eq_repo / "config" / "codes" / "xrf_chemical_mapping.yml"
+        return self._resolve_or_fallback(
+            self.eq_repo / "config" / "codes" / "xrf_chemical_mapping.yml",
+            self.repro_data_dir / "xrf_chemical_mapping.yml",
+        )
 
     @property
     def biome_codes_yml(self) -> Path:
-        return self.eq_repo / "config" / "codes" / "biome_codes.yml"
+        return self._resolve_or_fallback(
+            self.eq_repo / "config" / "codes" / "biome_codes.yml",
+            self.repro_data_dir / "biome_codes.yml",
+        )
 
     @property
     def site_iri_registry_tsv(self) -> Path:
-        return self.eq_ecology_data / "metadata" / "samples" / "site_iri_registry.tsv"
+        return self._resolve_or_fallback(
+            self.eq_ecology_data / "metadata" / "samples" / "site_iri_registry.tsv",
+            self.repro_data_dir / "site_iri_registry.tsv",
+        )
 
     @property
     def site_aliases_tsv(self) -> Path:
-        return self.eq_ecology_data / "metadata" / "samples" / "site_aliases.tsv"
+        return self._resolve_or_fallback(
+            self.eq_ecology_data / "metadata" / "samples" / "site_aliases.tsv",
+            self.repro_data_dir / "site_aliases.tsv",
+        )
 
     @property
     def env_measurements_curated_tsv(self) -> Path:
@@ -88,12 +115,13 @@ class CanonicalPaths:
 
     @property
     def taxonomy_mapping_decisions_tsv(self) -> Path:
-        return (
+        return self._resolve_or_fallback(
             self.eq_ecology_data
             / "evidence"
             / "release"
             / "taxonomy_mapping_audit"
-            / "taxonomy_mapping_decisions.tsv"
+            / "taxonomy_mapping_decisions.tsv",
+            self.repro_data_dir / "taxonomy_domain_phylum_iris.tsv",
         )
 
     @property
@@ -242,7 +270,17 @@ class CanonicalPaths:
 
     @property
     def h123_v2_dir(self) -> Path:
-        return self.eq_lifeonair / "lifeonair" / "results" / "h123_v2"
+        return self._resolve_or_fallback(
+            self.eq_lifeonair / "lifeonair" / "results" / "h123_v2",
+            self.repro_data_dir / "h123_v2",
+        )
+
+    @property
+    def benchmark_r2_dir(self) -> Path:
+        return self._resolve_or_fallback(
+            self.eq_lifeonair / "lifeonair" / "results" / "benchmark_r2",
+            self.repro_data_dir / "benchmark_r2",
+        )
 
     @property
     def metabolic_pilot_dir(self) -> Path:
@@ -818,6 +856,9 @@ class CanonicalDataRegistry:
     def load_aquatic_water_chemistry(self) -> pd.DataFrame:
         """Load measured surface-water hydrochemistry for Sites 59 and 60 (Table S2 of aquatic study)."""
         if not self.paths.aquatic_supp_xlsx.exists():
+            fallback_tsv = self.paths.repro_data_dir / "aquatic_water_chemistry_s2.tsv"
+            if fallback_tsv.exists():
+                return pd.read_csv(fallback_tsv, sep="\t")
             raise FileNotFoundError(
                 f"Missing aquatic supplementary workbook: {self.paths.aquatic_supp_xlsx}"
             )
@@ -883,6 +924,9 @@ class CanonicalDataRegistry:
             "wgs_sample_metadata": self.paths.wgs_sample_metadata_tsv,
             "condition_anchors": self.paths.condition_anchors_json,
         }
+        manifest_fallback = self.paths.repro_data_dir / "canonical_sources_manifest.json"
+        if not all(p.exists() for p in critical_files.values()) and manifest_fallback.exists():
+            return json.loads(manifest_fallback.read_text(encoding="utf-8"))
         report: Dict[str, Any] = {}
         for name, path in critical_files.items():
             if not path.exists():

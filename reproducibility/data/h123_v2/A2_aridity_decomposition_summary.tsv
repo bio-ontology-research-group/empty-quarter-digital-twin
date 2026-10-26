@@ -1,0 +1,2 @@
+n_sites	rho_observed_vs_logMAP	rho_turnover_only_vs_logMAP	rho_within_residual_vs_logMAP	p_within_residual	n_mixed_genera	within_mixed_genera_logit_slope_per_SD_logMAP	within_mixed_genera_se	mixed_genera_share_of_bulk_1l	slope_clip0.001	se_clip0.001	slope_clip0.02	se_clip0.02
+51	-0.430421049083031	-0.433273018592101	-0.314078800855918	0.0248004835006901	81	-0.29127176492593	0.117373730100397	0.204350928650963	-0.382755553943561	0.147921132001324	-0.209587460572938	0.0910732570529836

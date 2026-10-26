@@ -505,3 +505,27 @@ def test_carbon_budget_and_cross_desert_validation() -> None:
         p2["indirect_h2_sink_co2eq"]["corridor_kt_yr_point"]
         > p6["indirect_h2_sink_co2eq"]["corridor_kt_yr_point"]
     )
+
+
+def test_standalone_reproducibility_package() -> None:
+    import sys
+
+    from eq_biodt.data.manifest_registry import CanonicalPaths
+
+    repo_root = Path(__file__).resolve().parents[1]
+    if str(repo_root) not in sys.path:
+        sys.path.insert(0, str(repo_root))
+    from reproducibility.verify_all_paper_numbers import run_verification
+
+    reg_standalone = CanonicalDataRegistry(
+        CanonicalPaths(
+            software_root=Path("/nonexistent_software"),
+            papers_root=Path("/nonexistent_papers"),
+            repo_root=repo_root,
+        )
+    )
+    assert len(reg_standalone.verify_all_sources()) == 23
+    res = run_verification(repo_root, standalone=True)
+    assert res["all_passed"] is True
+    assert res["total_assertions_checked"] >= 200
+

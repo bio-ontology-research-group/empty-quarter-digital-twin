@@ -1,0 +1,1237 @@
+{
+  "total_assertions_checked": 205,
+  "all_passed": true,
+  "standalone_mode": true,
+  "checks": [
+    {
+      "label": "Table 1: Total sites (primary + auxiliary)",
+      "actual": 70,
+      "expected": 70,
+      "passed": true
+    },
+    {
+      "label": "Table 1: Primary transect sites (Sites 1-60)",
+      "actual": 60,
+      "expected": 60,
+      "passed": true
+    },
+    {
+      "label": "Table 1: Canonical auxiliary sites (RAK_1000061..1000070)",
+      "actual": 10,
+      "expected": 10,
+      "passed": true
+    },
+    {
+      "label": "Table 1: Confirmed Trip-1 numeric site aliases (61-64)",
+      "actual": 4,
+      "expected": 4,
+      "passed": true
+    },
+    {
+      "label": "Table 1: Site x compartment state cube rows",
+      "actual": 180,
+      "expected": 180,
+      "passed": true
+    },
+    {
+      "label": "Table 1: Primary-site QC-passed 16S profiles",
+      "actual": 1227,
+      "expected": 1227,
+      "passed": true
+    },
+    {
+      "label": "Table 1: Surface 16S profiles",
+      "actual": 372,
+      "expected": 372,
+      "passed": true
+    },
+    {
+      "label": "Table 1: ShallowSubsurface 16S profiles",
+      "actual": 381,
+      "expected": 381,
+      "passed": true
+    },
+    {
+      "label": "Table 1: RootAdjacent 16S profiles",
+      "actual": 474,
+      "expected": 474,
+      "passed": true
+    },
+    {
+      "label": "Table 1: Observed WGS site-compartment states",
+      "actual": 155,
+      "expected": 155,
+      "passed": true
+    },
+    {
+      "label": "Table 1: Observed WGS Surface states",
+      "actual": 45,
+      "expected": 45,
+      "passed": true
+    },
+    {
+      "label": "Table 1: Observed WGS ShallowSubsurface states",
+      "actual": 51,
+      "expected": 51,
+      "passed": true
+    },
+    {
+      "label": "Table 1: Observed WGS RootAdjacent states",
+      "actual": 59,
+      "expected": 59,
+      "passed": true
+    },
+    {
+      "label": "Table 1: WGS soil samples with metadata",
+      "actual": 551,
+      "expected": 551,
+      "passed": true
+    },
+    {
+      "label": "Table 1: Primary-site WGS soil samples (Sites 1-60)",
+      "actual": 547,
+      "expected": 547,
+      "passed": true
+    },
+    {
+      "label": "Table 1: Primary-site finite guild GE WGS samples (Sites 1-60)",
+      "actual": 546,
+      "expected": 546,
+      "passed": true
+    },
+    {
+      "label": "Table 1: Finite guild GE WGS samples",
+      "actual": 550,
+      "expected": 550,
+      "passed": true
+    },
+    {
+      "label": "Table 1: Observed mobilome + guild WGS samples",
+      "actual": 549,
+      "expected": 549,
+      "passed": true
+    },
+    {
+      "label": "Section 2.1: Trip 1 WGS samples",
+      "actual": 210,
+      "expected": 210,
+      "passed": true
+    },
+    {
+      "label": "Section 2.1: Trip 2 WGS samples",
+      "actual": 37,
+      "expected": 37,
+      "passed": true
+    },
+    {
+      "label": "Section 2.1: Trip 3 WGS samples",
+      "actual": 128,
+      "expected": 128,
+      "passed": true
+    },
+    {
+      "label": "Section 2.1: Trip 4 WGS samples",
+      "actual": 85,
+      "expected": 85,
+      "passed": true
+    },
+    {
+      "label": "Section 2.1: Trip 5 WGS samples",
+      "actual": 91,
+      "expected": 91,
+      "passed": true
+    },
+    {
+      "label": "Section 2.1: Longitudinal visit-compartment rows",
+      "actual": 414,
+      "expected": 414,
+      "passed": true
+    },
+    {
+      "label": "Table 1: Admitted CaCl2 pH measurements",
+      "actual": 712,
+      "expected": 712,
+      "passed": true
+    },
+    {
+      "label": "Table 1: Site-compartments with admitted pH",
+      "actual": 180,
+      "expected": 180,
+      "passed": true
+    },
+    {
+      "label": "Table 1: Mapped XRF chemical analytes (including LE)",
+      "actual": 93,
+      "expected": 93,
+      "passed": true
+    },
+    {
+      "label": "Table 1: Corridor 0.25-deg grid cells",
+      "actual": 248,
+      "expected": 248,
+      "passed": true
+    },
+    {
+      "label": "Table 1: Supported corridor grid cells (<=45 km)",
+      "actual": 128,
+      "expected": 128,
+      "passed": true
+    },
+    {
+      "label": "Table 1: Abstained corridor grid cells (>45 km)",
+      "actual": 120,
+      "expected": 120,
+      "passed": true
+    },
+    {
+      "label": "Section 3.3: Prescribed P3 cells in corridor",
+      "actual": 122,
+      "expected": 122,
+      "passed": true
+    },
+    {
+      "label": "Section 3.3: Prescribed P4 cells in corridor",
+      "actual": 6,
+      "expected": 6,
+      "passed": true
+    },
+    {
+      "label": "Tier 1 hydB_1l RMSE",
+      "actual": 1.7689,
+      "expected": 1.7689,
+      "passed": true
+    },
+    {
+      "label": "Tier 1 hydB_1l MAE",
+      "actual": 1.4201,
+      "expected": 1.4201,
+      "passed": true
+    },
+    {
+      "label": "Tier 1 hydB_1l R2",
+      "actual": 0.2501,
+      "expected": 0.2501,
+      "passed": true
+    },
+    {
+      "label": "Tier 1 hydB_1l Pearson r",
+      "actual": 0.5011,
+      "expected": 0.5011,
+      "passed": true
+    },
+    {
+      "label": "Tier 1 hydB_1l Spearman rho",
+      "actual": 0.5428,
+      "expected": 0.5428,
+      "passed": true
+    },
+    {
+      "label": "Tier 1 hydB_1l rho CI low",
+      "actual": 0.4697,
+      "expected": 0.4697,
+      "passed": true
+    },
+    {
+      "label": "Tier 1 hydB_1l rho CI high",
+      "actual": 0.6221,
+      "expected": 0.6221,
+      "passed": true
+    },
+    {
+      "label": "Tier 1 hydB_1l R2 CI low",
+      "actual": 0.1483,
+      "expected": 0.1483,
+      "passed": true
+    },
+    {
+      "label": "Tier 1 hydB_1l R2 CI high",
+      "actual": 0.3378,
+      "expected": 0.3378,
+      "passed": true
+    },
+    {
+      "label": "Tier 1 Compartment-only R2",
+      "actual": 0.1386,
+      "expected": 0.1386,
+      "passed": true
+    },
+    {
+      "label": "Tier 1 Compartment-only rho",
+      "actual": 0.3469,
+      "expected": 0.3469,
+      "passed": true
+    },
+    {
+      "label": "Tier 1 Climate-only R2",
+      "actual": 0.0583,
+      "expected": 0.0583,
+      "passed": true
+    },
+    {
+      "label": "Tier 1 Climate-only rho",
+      "actual": 0.2431,
+      "expected": 0.2431,
+      "passed": true
+    },
+    {
+      "label": "Tier 1 total_h2ase RMSE",
+      "actual": 1.4472,
+      "expected": 1.4472,
+      "passed": true
+    },
+    {
+      "label": "Tier 1 total_h2ase R2",
+      "actual": 0.2188,
+      "expected": 0.2188,
+      "passed": true
+    },
+    {
+      "label": "Tier 1 total_h2ase Spearman rho",
+      "actual": 0.5191,
+      "expected": 0.5191,
+      "passed": true
+    },
+    {
+      "label": "Tier 1 viral_richness RMSE",
+      "actual": 0.2103,
+      "expected": 0.2103,
+      "passed": true
+    },
+    {
+      "label": "Tier 1 viral_richness R2",
+      "actual": 0.3784,
+      "expected": 0.3784,
+      "passed": true
+    },
+    {
+      "label": "Tier 1 viral_richness Spearman rho",
+      "actual": 0.3388,
+      "expected": 0.3388,
+      "passed": true
+    },
+    {
+      "label": "Tier 1 Depth-only viral R2",
+      "actual": 0.141,
+      "expected": 0.141,
+      "passed": true
+    },
+    {
+      "label": "Tier 1 plasmid_richness RMSE",
+      "actual": 0.1827,
+      "expected": 0.1827,
+      "passed": true
+    },
+    {
+      "label": "Tier 1 plasmid_richness R2",
+      "actual": 0.3463,
+      "expected": 0.3463,
+      "passed": true
+    },
+    {
+      "label": "Tier 1 plasmid_richness Spearman rho",
+      "actual": 0.2996,
+      "expected": 0.2996,
+      "passed": true
+    },
+    {
+      "label": "Tier 1 shannon_16s RMSE",
+      "actual": 0.8385,
+      "expected": 0.8385,
+      "passed": true
+    },
+    {
+      "label": "Tier 1 shannon_16s R2",
+      "actual": 0.2453,
+      "expected": 0.2453,
+      "passed": true
+    },
+    {
+      "label": "Tier 1 shannon_16s Spearman rho",
+      "actual": 0.547,
+      "expected": 0.547,
+      "passed": true
+    },
+    {
+      "label": "Tier 2A LOCO hydB_1l RMSE",
+      "actual": 1.6842,
+      "expected": 1.6842,
+      "passed": true
+    },
+    {
+      "label": "Tier 2A LOCO hydB_1l R2",
+      "actual": 0.3202,
+      "expected": 0.3202,
+      "passed": true
+    },
+    {
+      "label": "Tier 2A LOCO hydB_1l Pearson r",
+      "actual": 0.566,
+      "expected": 0.566,
+      "passed": true
+    },
+    {
+      "label": "Tier 2A LOCO hydB_1l Spearman rho",
+      "actual": 0.5786,
+      "expected": 0.5786,
+      "passed": true
+    },
+    {
+      "label": "Tier 2A LOCO Trip 1 R2",
+      "actual": 0.3364,
+      "expected": 0.3364,
+      "passed": true
+    },
+    {
+      "label": "Tier 2A LOCO Trip 2 R2",
+      "actual": 0.2946,
+      "expected": 0.2946,
+      "passed": true
+    },
+    {
+      "label": "Tier 2A LOCO Trip 3 R2",
+      "actual": 0.2566,
+      "expected": 0.2566,
+      "passed": true
+    },
+    {
+      "label": "Tier 2A LOCO Trip 4 R2",
+      "actual": 0.3109,
+      "expected": 0.3109,
+      "passed": true
+    },
+    {
+      "label": "Tier 2A LOCO Trip 5 R2",
+      "actual": 0.3219,
+      "expected": 0.3219,
+      "passed": true
+    },
+    {
+      "label": "Tier 2C Train visit-compartments",
+      "actual": 325,
+      "expected": 325,
+      "passed": true
+    },
+    {
+      "label": "Tier 2C Test visit-compartments",
+      "actual": 89,
+      "expected": 89,
+      "passed": true
+    },
+    {
+      "label": "Tier 2C Test with prior history",
+      "actual": 85,
+      "expected": 85,
+      "passed": true
+    },
+    {
+      "label": "Tier 2C Longitudinal twin level RMSE",
+      "actual": 1.8363,
+      "expected": 1.8363,
+      "passed": true
+    },
+    {
+      "label": "Tier 2C Longitudinal twin level R2",
+      "actual": 0.2991,
+      "expected": 0.2991,
+      "passed": true
+    },
+    {
+      "label": "Tier 2C Longitudinal twin level Pearson r",
+      "actual": 0.617,
+      "expected": 0.617,
+      "passed": true
+    },
+    {
+      "label": "Tier 2C Longitudinal twin level Spearman rho",
+      "actual": 0.6188,
+      "expected": 0.6188,
+      "passed": true
+    },
+    {
+      "label": "Tier 2C Persistence level RMSE",
+      "actual": 1.9753,
+      "expected": 1.9753,
+      "passed": true
+    },
+    {
+      "label": "Tier 2C Persistence level R2",
+      "actual": 0.189,
+      "expected": 0.189,
+      "passed": true
+    },
+    {
+      "label": "Tier 2C Env ridge level R2",
+      "actual": 0.2897,
+      "expected": 0.2897,
+      "passed": true
+    },
+    {
+      "label": "Tier 2C Random forest level R2",
+      "actual": 0.3244,
+      "expected": 0.3244,
+      "passed": true
+    },
+    {
+      "label": "Tier 2C Gradient boosting level R2",
+      "actual": 0.3308,
+      "expected": 0.3308,
+      "passed": true
+    },
+    {
+      "label": "Tier 2C Longitudinal twin Delta R2",
+      "actual": 0.0551,
+      "expected": 0.0551,
+      "passed": true
+    },
+    {
+      "label": "Tier 2C Longitudinal twin Delta Pearson r",
+      "actual": 0.4094,
+      "expected": 0.4094,
+      "passed": true
+    },
+    {
+      "label": "Tier 2C Longitudinal twin Delta Spearman rho",
+      "actual": 0.3753,
+      "expected": 0.3753,
+      "passed": true
+    },
+    {
+      "label": "Tier 3 n_samples_evaluated",
+      "actual": 550,
+      "expected": 550,
+      "passed": true
+    },
+    {
+      "label": "Tier 3 OCS unconstrained",
+      "actual": 0.0,
+      "expected": 0.0,
+      "passed": true
+    },
+    {
+      "label": "Tier 3 OCS projected Euclidean",
+      "actual": 1.0,
+      "expected": 1.0,
+      "passed": true
+    },
+    {
+      "label": "Tier 3 OCS Nonnegative MinT",
+      "actual": 1.0,
+      "expected": 1.0,
+      "passed": true
+    },
+    {
+      "label": "Tier 3 Mean CVM unconstrained",
+      "actual": 0.2634,
+      "expected": 0.2634,
+      "passed": true
+    },
+    {
+      "label": "Tier 3 Mean CVM projected",
+      "actual": 0.0,
+      "expected": 0.0,
+      "passed": true
+    },
+    {
+      "label": "Tier 3 All-node RMSE unconstrained",
+      "actual": 0.4708,
+      "expected": 0.4708,
+      "passed": true
+    },
+    {
+      "label": "Tier 3 All-node RMSE Euclidean",
+      "actual": 0.4624,
+      "expected": 0.4624,
+      "passed": true
+    },
+    {
+      "label": "Tier 3 All-node RMSE Nonnegative MinT",
+      "actual": 0.4633,
+      "expected": 0.4633,
+      "passed": true
+    },
+    {
+      "label": "Tier 3 Leaf RMSE unconstrained",
+      "actual": 0.3315,
+      "expected": 0.3315,
+      "passed": true
+    },
+    {
+      "label": "Tier 3 Leaf RMSE Euclidean",
+      "actual": 0.3192,
+      "expected": 0.3192,
+      "passed": true
+    },
+    {
+      "label": "Tier 3 Leaf RMSE Nonnegative MinT",
+      "actual": 0.3161,
+      "expected": 0.3161,
+      "passed": true
+    },
+    {
+      "label": "Tier 3 Aggregate RMSE unconstrained",
+      "actual": 0.6672,
+      "expected": 0.6672,
+      "passed": true
+    },
+    {
+      "label": "Tier 3 Aggregate RMSE Euclidean",
+      "actual": 0.6617,
+      "expected": 0.6617,
+      "passed": true
+    },
+    {
+      "label": "Tier 3 MSE reduction pct",
+      "actual": 3.51,
+      "expected": 3.51,
+      "passed": true
+    },
+    {
+      "label": "Tier 3 Theorem 2 pass rate",
+      "actual": 1.0,
+      "expected": 1.0,
+      "passed": true
+    },
+    {
+      "label": "Tier 3 Strict samplewise improvement rate",
+      "actual": 1.0,
+      "expected": 1.0,
+      "passed": true
+    },
+    {
+      "label": "Tier 4 Root vs bulk paired visits",
+      "actual": 106,
+      "expected": 106,
+      "passed": true
+    },
+    {
+      "label": "Tier 4 Root vs bulk paired sites",
+      "actual": 47,
+      "expected": 47,
+      "passed": true
+    },
+    {
+      "label": "Tier 4 Root vs bulk empirical log2FC",
+      "actual": -2.2747,
+      "expected": -2.2747,
+      "passed": true
+    },
+    {
+      "label": "Tier 4 Root vs bulk twin log2FC",
+      "actual": -2.0969,
+      "expected": -2.0969,
+      "passed": true
+    },
+    {
+      "label": "Tier 4 Root vs bulk lineage turnover fraction",
+      "actual": 0.974473,
+      "expected": 0.9745,
+      "passed": true
+    },
+    {
+      "label": "Tier 4 Surface vs subsurface visits",
+      "actual": 68,
+      "expected": 68,
+      "passed": true
+    },
+    {
+      "label": "Tier 4 Surface vs subsurface sites",
+      "actual": 36,
+      "expected": 36,
+      "passed": true
+    },
+    {
+      "label": "Tier 4 Surface vs subsurface empirical log2FC",
+      "actual": -1.0488,
+      "expected": -1.0488,
+      "passed": true
+    },
+    {
+      "label": "Tier 4 Surface vs subsurface twin log2FC",
+      "actual": -0.7562,
+      "expected": -0.7562,
+      "passed": true
+    },
+    {
+      "label": "Tier 4 Aridity gradient observed sites",
+      "actual": 51,
+      "expected": 51,
+      "passed": true
+    },
+    {
+      "label": "Tier 4 Aridity gradient Spearman rho",
+      "actual": -0.5137,
+      "expected": -0.5137,
+      "passed": true
+    },
+    {
+      "label": "Tier 5 Synthetic mean Pearson r",
+      "actual": 0.9649,
+      "expected": 0.9649,
+      "passed": true
+    },
+    {
+      "label": "Tier 5 Synthetic mean Spearman rho",
+      "actual": 0.958,
+      "expected": 0.958,
+      "passed": true
+    },
+    {
+      "label": "Tier 5 Synthetic root vs bulk R2",
+      "actual": 0.9888,
+      "expected": 0.9888,
+      "passed": true
+    },
+    {
+      "label": "Tier 5 72-MAG GSMM pilot count",
+      "actual": 72,
+      "expected": 72,
+      "passed": true
+    },
+    {
+      "label": "Tier 5 10,584 FBA runs",
+      "actual": 10584,
+      "expected": 10584,
+      "passed": true
+    },
+    {
+      "label": "Table 3 S30 baseline Shannon",
+      "actual": 6.128949,
+      "expected": 6.1289,
+      "passed": true
+    },
+    {
+      "label": "Table 3 S30 baseline hydB_1l GE",
+      "actual": 2.10593,
+      "expected": 2.1059,
+      "passed": true
+    },
+    {
+      "label": "Table 3 S60 baseline Shannon",
+      "actual": 4.524897,
+      "expected": 4.5249,
+      "passed": true
+    },
+    {
+      "label": "Table 3 S59 baseline Shannon",
+      "actual": 2.734604,
+      "expected": 2.7346,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Cloud +6mm Delta Shannon",
+      "actual": 0.3473,
+      "expected": 0.3473,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Cloud +6mm peak Shannon",
+      "actual": 6.4762,
+      "expected": 6.4762,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Cloud +6mm min H2 power",
+      "actual": 40.1066,
+      "expected": 40.1066,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Cloud +25mm Delta Shannon",
+      "actual": 0.6972,
+      "expected": 0.6972,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Cloud +25mm peak Shannon",
+      "actual": 6.8261,
+      "expected": 6.8261,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Cloud +25mm min H2 power",
+      "actual": 10.4208,
+      "expected": 10.4208,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Reveg uninoc DNA mult",
+      "actual": 3.466,
+      "expected": 3.466,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Reveg uninoc landscape hydB_1l",
+      "actual": 1.63,
+      "expected": 1.63,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Reveg uninoc biomass-weighted hydB_1l",
+      "actual": 0.8399,
+      "expected": 0.8399,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Reveg uninoc abs density mult",
+      "actual": 1.3822,
+      "expected": 1.3822,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Reveg coinoc DNA mult",
+      "actual": 4.29,
+      "expected": 4.29,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Reveg coinoc landscape hydB_1l",
+      "actual": 1.6087,
+      "expected": 1.6087,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Reveg coinoc biomass-weighted hydB_1l",
+      "actual": 0.7189,
+      "expected": 0.7189,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Reveg coinoc abs density mult",
+      "actual": 1.4644,
+      "expected": 1.4644,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Reveg coinoc C fixation",
+      "actual": 1.35875,
+      "expected": 1.35875,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Desal S60 Shannon",
+      "actual": 4.5883,
+      "expected": 4.5883,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Desal S60 C fixation",
+      "actual": 1.47239,
+      "expected": 1.4724,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Desal S60 sulfur flux",
+      "actual": 0.82909,
+      "expected": 0.8291,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Desal S59 Shannon",
+      "actual": 1.35,
+      "expected": 1.35,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Desal S59 C fixation",
+      "actual": 0.0,
+      "expected": 0.0,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Desal S59 ATPM deficit",
+      "actual": 1.58369,
+      "expected": 1.5837,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Refugium 95% Shannon",
+      "actual": 6.1564,
+      "expected": 6.1564,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Refugium 95% Bacillus survival",
+      "actual": 0.5759,
+      "expected": 0.5759,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Refugium 20% Shannon",
+      "actual": 5.4439,
+      "expected": 5.4439,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Refugium 20% Bacillus survival",
+      "actual": 0.4122,
+      "expected": 0.4122,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Megafauna wild Shannon",
+      "actual": 6.3159,
+      "expected": 6.3159,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Megafauna wild porosity",
+      "actual": 0.3949,
+      "expected": 0.3949,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Megafauna wild ARG risk",
+      "actual": 0.0753,
+      "expected": 0.0753,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Megafauna camel Shannon",
+      "actual": 4.3089,
+      "expected": 4.3089,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Megafauna camel porosity",
+      "actual": 0.22,
+      "expected": 0.22,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Megafauna camel ARG risk",
+      "actual": 0.665,
+      "expected": 0.665,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Seismic nodal Shannon",
+      "actual": 6.1045,
+      "expected": 6.1045,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Seismic nodal H2 power",
+      "actual": 44.9109,
+      "expected": 44.9109,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Seismic nodal TPH deg pct",
+      "actual": 76.97,
+      "expected": 76.97,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Seismic vibroseis Shannon",
+      "actual": 4.3934,
+      "expected": 4.3934,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Seismic vibroseis H2 power",
+      "actual": 7.1005,
+      "expected": 7.1005,
+      "passed": true
+    },
+    {
+      "label": "Table 3 Seismic vibroseis TPH deg pct",
+      "actual": 20.15,
+      "expected": 20.15,
+      "passed": true
+    },
+    {
+      "label": "Suppl. Table S5 P3 utility",
+      "actual": 0.9481,
+      "expected": 0.9481,
+      "passed": true
+    },
+    {
+      "label": "Suppl. Table S5 P3 dominance prob",
+      "actual": 1.0,
+      "expected": 1.0,
+      "passed": true
+    },
+    {
+      "label": "Suppl. Table S5 P3 rank1 prob",
+      "actual": 0.31,
+      "expected": 0.31,
+      "passed": true
+    },
+    {
+      "label": "Suppl. Table S5 P2 utility",
+      "actual": 0.9432,
+      "expected": 0.9432,
+      "passed": true
+    },
+    {
+      "label": "Suppl. Table S5 P2 rank1 prob",
+      "actual": 0.245,
+      "expected": 0.245,
+      "passed": true
+    },
+    {
+      "label": "Suppl. Table S5 P4 utility",
+      "actual": 0.9396,
+      "expected": 0.9396,
+      "passed": true
+    },
+    {
+      "label": "Suppl. Table S5 P4 rank1 prob",
+      "actual": 0.305,
+      "expected": 0.305,
+      "passed": true
+    },
+    {
+      "label": "Suppl. Table S5 P1 utility",
+      "actual": 0.8367,
+      "expected": 0.8367,
+      "passed": true
+    },
+    {
+      "label": "Suppl. Table S5 P5 utility",
+      "actual": 0.9183,
+      "expected": 0.9183,
+      "passed": true
+    },
+    {
+      "label": "Suppl. Table S5 P6 utility",
+      "actual": -0.0525,
+      "expected": -0.0525,
+      "passed": true
+    },
+    {
+      "label": "Section 3.4 All 7 cross-desert benchmarks pass",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "label": "Section 3.4 Overall WGS CBB share",
+      "actual": 0.2293,
+      "expected": 0.2293,
+      "passed": true
+    },
+    {
+      "label": "Section 3.4 Overall WGS CBB+prkB share",
+      "actual": 0.1321,
+      "expected": 0.1321,
+      "passed": true
+    },
+    {
+      "label": "Section 3.4 Overall WGS 3-gene CBB share",
+      "actual": 0.1123,
+      "expected": 0.1123,
+      "passed": true
+    },
+    {
+      "label": "Section 3.4 Wetted active dark CO2 fixation",
+      "actual": 0.04824,
+      "expected": 0.04824,
+      "passed": true
+    },
+    {
+      "label": "Section 3.4 Annual dry column dark CO2 fixation",
+      "actual": 0.000397,
+      "expected": 0.000397,
+      "passed": true
+    },
+    {
+      "label": "Table 4 Baseline direct CO2 corridor kt/yr",
+      "actual": 801.597,
+      "expected": 801.6,
+      "passed": true
+    },
+    {
+      "label": "Table 4 Baseline persistent CO2 corridor kt/yr",
+      "actual": 140.878,
+      "expected": 140.88,
+      "passed": true
+    },
+    {
+      "label": "Table 4 Baseline total CO2eq corridor kt/yr",
+      "actual": 811.297,
+      "expected": 811.3,
+      "passed": true
+    },
+    {
+      "label": "Table 4 Baseline total CO2eq basin kt/yr",
+      "actual": 1496.053,
+      "expected": 1496.05,
+      "passed": true
+    },
+    {
+      "label": "Table 4 Prescribed Atlas direct CO2 corridor kt/yr",
+      "actual": 5192.042,
+      "expected": 5192.04,
+      "passed": true
+    },
+    {
+      "label": "Table 4 Prescribed Atlas persistent CO2 corridor kt/yr",
+      "actual": 814.519,
+      "expected": 814.52,
+      "passed": true
+    },
+    {
+      "label": "Table 4 Prescribed Atlas total CO2eq corridor kt/yr",
+      "actual": 5203.77,
+      "expected": 5203.77,
+      "passed": true
+    },
+    {
+      "label": "Table 4 Prescribed Atlas total CO2eq basin kt/yr",
+      "actual": 5888.526,
+      "expected": 5888.53,
+      "passed": true
+    },
+    {
+      "label": "Table 4 P1 total CO2eq corridor kt/yr",
+      "actual": 1118.669,
+      "expected": 1118.669,
+      "passed": true
+    },
+    {
+      "label": "Table 4 P1 persistent CO2 corridor kt/yr",
+      "actual": 188.14,
+      "expected": 188.14,
+      "passed": true
+    },
+    {
+      "label": "Table 4 P3 total CO2eq corridor kt/yr",
+      "actual": 4597.953,
+      "expected": 4597.953,
+      "passed": true
+    },
+    {
+      "label": "Table 4 P3 persistent CO2 corridor kt/yr",
+      "actual": 721.491,
+      "expected": 721.491,
+      "passed": true
+    },
+    {
+      "label": "Table 4 P2 total CO2eq corridor kt/yr",
+      "actual": 8421.65,
+      "expected": 8421.65,
+      "passed": true
+    },
+    {
+      "label": "Table 4 P2 persistent CO2 corridor kt/yr",
+      "actual": 1307.091,
+      "expected": 1307.091,
+      "passed": true
+    },
+    {
+      "label": "Table 4 P4 total CO2eq corridor kt/yr",
+      "actual": 14713.164,
+      "expected": 14713.164,
+      "passed": true
+    },
+    {
+      "label": "Table 4 P4 persistent CO2 corridor kt/yr",
+      "actual": 2273.738,
+      "expected": 2273.738,
+      "passed": true
+    },
+    {
+      "label": "Table 4 P5 total CO2eq corridor kt/yr",
+      "actual": 6009.729,
+      "expected": 6009.729,
+      "passed": true
+    },
+    {
+      "label": "Table 4 P5 persistent CO2 corridor kt/yr",
+      "actual": 937.107,
+      "expected": 937.107,
+      "passed": true
+    },
+    {
+      "label": "Table 4 P6 total CO2eq corridor kt/yr",
+      "actual": 131.899,
+      "expected": 131.899,
+      "passed": true
+    },
+    {
+      "label": "Table 4 P6 persistent CO2 corridor kt/yr",
+      "actual": 40.955,
+      "expected": 40.955,
+      "passed": true
+    },
+    {
+      "label": "Table 4 P6 RuBisCO CO2 corridor kt/yr",
+      "actual": 0.0,
+      "expected": 0.0,
+      "passed": true
+    },
+    {
+      "label": "Section 3.5 Total focal bacterial genera",
+      "actual": 12,
+      "expected": 12,
+      "passed": true
+    },
+    {
+      "label": "Section 3.5 Hallmark desert genera count",
+      "actual": 7,
+      "expected": 7,
+      "passed": true
+    },
+    {
+      "label": "Section 3.5 Root-adjacent indicator genera count",
+      "actual": 5,
+      "expected": 5,
+      "passed": true
+    },
+    {
+      "label": "Section 3.5 CSP1-2 surface 5-block spatial CV R2",
+      "actual": 0.44396,
+      "expected": 0.4436,
+      "passed": true
+    },
+    {
+      "label": "Section 3.5 CSP1-2 deep 5-block spatial CV R2",
+      "actual": 0.452262,
+      "expected": 0.4517,
+      "passed": true
+    },
+    {
+      "label": "Section 3.5 Flavisolibacter deep 5-block spatial CV R2",
+      "actual": 0.475513,
+      "expected": 0.4763,
+      "passed": true
+    },
+    {
+      "label": "Section 3.5 Medium grid total pixels (0.05 deg, 360x480)",
+      "actual": 172800,
+      "expected": 172800,
+      "passed": true
+    },
+    {
+      "label": "Section 3.5 Medium grid Arabian Desert mask pixels",
+      "actual": 63902,
+      "expected": 63902,
+      "passed": true
+    },
+    {
+      "label": "Section 3.5 Medium grid southern transect envelope pixels",
+      "actual": 2916,
+      "expected": 2916,
+      "passed": true
+    },
+    {
+      "label": "Section 3.5 Fine grid total pixels (0.04 deg, 450x600)",
+      "actual": 270000,
+      "expected": 270000,
+      "passed": true
+    },
+    {
+      "label": "Section 3.5 Fine grid Arabian Desert mask pixels",
+      "actual": 99870,
+      "expected": 99870,
+      "passed": true
+    },
+    {
+      "label": "Section 3.5 Fine grid southern transect envelope pixels",
+      "actual": 4572,
+      "expected": 4572,
+      "passed": true
+    }
+  ]
+}

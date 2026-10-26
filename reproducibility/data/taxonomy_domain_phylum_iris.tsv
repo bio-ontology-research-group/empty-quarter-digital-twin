@@ -1,0 +1,42 @@
+rank	source_name	final_iri	final_label	mapping_status	parent_iri
+domain	Archaea	http://purl.obolibrary.org/obo/NCBITaxon_2157	Archaea	validated_ncbi	
+phylum	Halobacteriota	http://purl.obolibrary.org/obo/NCBITaxon_3100166	Halobacteriota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2157
+phylum	Methanobacteriota	http://purl.obolibrary.org/obo/NCBITaxon_28890	Methanobacteriota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2157
+phylum	Nanoarchaeota	http://purl.obolibrary.org/obo/NCBITaxon_192989	Nanobdellota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2157
+phylum	Thermoplasmatota	http://purl.obolibrary.org/obo/NCBITaxon_2283796	Thermoplasmatota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2157
+phylum	Thermoproteota	http://purl.obolibrary.org/obo/NCBITaxon_28889	Thermoproteota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2157
+domain	Bacteria	http://purl.obolibrary.org/obo/NCBITaxon_2	Bacteria	validated_ncbi	
+phylum	Abditibacteriota	http://purl.obolibrary.org/obo/NCBITaxon_2109258	Abditibacteriota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Acidobacteriota	http://purl.obolibrary.org/obo/NCBITaxon_57723	Acidobacteriota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Actinomycetota	http://purl.obolibrary.org/obo/NCBITaxon_201174	Actinomycetota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Aquificota	http://purl.obolibrary.org/obo/NCBITaxon_200783	Aquificota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Armatimonadota	http://purl.obolibrary.org/obo/NCBITaxon_67819	Armatimonadota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Bacillota	http://purl.obolibrary.org/obo/NCBITaxon_1239	Bacillota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Bacteroidota	http://purl.obolibrary.org/obo/NCBITaxon_976	Bacteroidota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Balneolota	http://purl.obolibrary.org/obo/NCBITaxon_1936987	Balneolota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Bdellovibrionota	http://purl.obolibrary.org/obo/NCBITaxon_3018035	Bdellovibrionota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Calditrichota	http://purl.obolibrary.org/obo/NCBITaxon_1930617	Calditrichota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Campylobacterota	http://purl.obolibrary.org/obo/NCBITaxon_29547	Campylobacterota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Chlamydiota	http://purl.obolibrary.org/obo/NCBITaxon_204428	Chlamydiota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Chloroflexota	http://purl.obolibrary.org/obo/NCBITaxon_200795	Chloroflexota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Cloacimonadota	http://purl.obolibrary.org/obo/NCBITaxon_456828	Candidatus Cloacimonadota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Cyanobacteriota	http://purl.obolibrary.org/obo/NCBITaxon_1117	Cyanobacteriota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Deferribacterota	http://purl.obolibrary.org/obo/NCBITaxon_200930	Deferribacterota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Deinococcota	http://purl.obolibrary.org/obo/NCBITaxon_1297	Deinococcota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Elusimicrobiota	http://purl.obolibrary.org/obo/NCBITaxon_74152	Elusimicrobiota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Fibrobacterota	http://purl.obolibrary.org/obo/NCBITaxon_65842	Fibrobacterota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Fusobacteriota	http://purl.obolibrary.org/obo/NCBITaxon_32066	Fusobacteriota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Gemmatimonadota	http://purl.obolibrary.org/obo/NCBITaxon_142182	Gemmatimonadota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Ignavibacteriota	http://purl.obolibrary.org/obo/NCBITaxon_1134404	Ignavibacteriota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Myxococcota	http://purl.obolibrary.org/obo/NCBITaxon_2818505	Myxococcota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Nitrospinota	http://purl.obolibrary.org/obo/NCBITaxon_1293497	Nitrospinota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Nitrospirota	http://purl.obolibrary.org/obo/NCBITaxon_40117	Nitrospirota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Planctomycetota	http://purl.obolibrary.org/obo/NCBITaxon_203682	Planctomycetota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Pseudomonadota	http://purl.obolibrary.org/obo/NCBITaxon_1224	Pseudomonadota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Rhodothermota	http://purl.obolibrary.org/obo/NCBITaxon_1853220	Rhodothermota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Spirochaetota	http://purl.obolibrary.org/obo/NCBITaxon_203691	Spirochaetota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Synergistota	http://purl.obolibrary.org/obo/NCBITaxon_508458	Synergistota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Thermodesulfobacteriota	http://purl.obolibrary.org/obo/NCBITaxon_200940	Thermodesulfobacteriota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Thermotogota	http://purl.obolibrary.org/obo/NCBITaxon_200918	Thermotogota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+phylum	Verrucomicrobiota	http://purl.obolibrary.org/obo/NCBITaxon_74201	Verrucomicrobiota	validated_ncbi	http://purl.obolibrary.org/obo/NCBITaxon_2
+domain	Eukaryota	http://purl.obolibrary.org/obo/NCBITaxon_2759	Eukaryota	validated_ncbi	

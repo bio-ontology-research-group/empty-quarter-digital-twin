@@ -1,0 +1,34 @@
+{
+  "bbox": {
+    "lat_min": 14.0,
+    "lat_max": 32.0,
+    "lon_min": 36.0,
+    "lon_max": 60.0
+  },
+  "resolutions": {
+    "coarse": {
+      "deg_per_pixel": 0.1,
+      "rows": 180,
+      "cols": 240,
+      "total_pixels": 43200,
+      "in_arabian_desert_mask_pixels": 15967,
+      "in_southern_transect_envelope_pixels": 716
+    },
+    "medium": {
+      "deg_per_pixel": 0.05,
+      "rows": 360,
+      "cols": 480,
+      "total_pixels": 172800,
+      "in_arabian_desert_mask_pixels": 63902,
+      "in_southern_transect_envelope_pixels": 2916
+    },
+    "fine": {
+      "deg_per_pixel": 0.04,
+      "rows": 450,
+      "cols": 600,
+      "total_pixels": 270000,
+      "in_arabian_desert_mask_pixels": 99870,
+      "in_southern_transect_envelope_pixels": 4572
+    }
+  }
+}

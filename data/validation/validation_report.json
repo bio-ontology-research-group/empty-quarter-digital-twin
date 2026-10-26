@@ -1867,7 +1867,7 @@
         }
       },
       "prescribed_corridor_atlas": {
-        "policy_name": "Spatially Prescribed Corridor Atlas (87 P2, 34 P3, 7 P4)",
+        "policy_name": "Spatially Prescribed Corridor Atlas (122 P3, 6 P4)",
         "supported_corridor_area_km2": 92160.0,
         "unmanaged_reserve_area_km2": 557840.0,
         "sand_sea_polygon_area_km2": 500000.0,

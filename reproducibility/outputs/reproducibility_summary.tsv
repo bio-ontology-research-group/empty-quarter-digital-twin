@@ -1,0 +1,206 @@
+label	actual	expected	passed
+Table 1: Total sites (primary + auxiliary)	70	70	True
+Table 1: Primary transect sites (Sites 1-60)	60	60	True
+Table 1: Canonical auxiliary sites (RAK_1000061..1000070)	10	10	True
+Table 1: Confirmed Trip-1 numeric site aliases (61-64)	4	4	True
+Table 1: Site x compartment state cube rows	180	180	True
+Table 1: Primary-site QC-passed 16S profiles	1227	1227	True
+Table 1: Surface 16S profiles	372	372	True
+Table 1: ShallowSubsurface 16S profiles	381	381	True
+Table 1: RootAdjacent 16S profiles	474	474	True
+Table 1: Observed WGS site-compartment states	155	155	True
+Table 1: Observed WGS Surface states	45	45	True
+Table 1: Observed WGS ShallowSubsurface states	51	51	True
+Table 1: Observed WGS RootAdjacent states	59	59	True
+Table 1: WGS soil samples with metadata	551	551	True
+Table 1: Primary-site WGS soil samples (Sites 1-60)	547	547	True
+Table 1: Primary-site finite guild GE WGS samples (Sites 1-60)	546	546	True
+Table 1: Finite guild GE WGS samples	550	550	True
+Table 1: Observed mobilome + guild WGS samples	549	549	True
+Section 2.1: Trip 1 WGS samples	210	210	True
+Section 2.1: Trip 2 WGS samples	37	37	True
+Section 2.1: Trip 3 WGS samples	128	128	True
+Section 2.1: Trip 4 WGS samples	85	85	True
+Section 2.1: Trip 5 WGS samples	91	91	True
+Section 2.1: Longitudinal visit-compartment rows	414	414	True
+Table 1: Admitted CaCl2 pH measurements	712	712	True
+Table 1: Site-compartments with admitted pH	180	180	True
+Table 1: Mapped XRF chemical analytes (including LE)	93	93	True
+Table 1: Corridor 0.25-deg grid cells	248	248	True
+Table 1: Supported corridor grid cells (<=45 km)	128	128	True
+Table 1: Abstained corridor grid cells (>45 km)	120	120	True
+Section 3.3: Prescribed P3 cells in corridor	122	122	True
+Section 3.3: Prescribed P4 cells in corridor	6	6	True
+Tier 1 hydB_1l RMSE	1.7689	1.7689	True
+Tier 1 hydB_1l MAE	1.4201	1.4201	True
+Tier 1 hydB_1l R2	0.2501	0.2501	True
+Tier 1 hydB_1l Pearson r	0.5011	0.5011	True
+Tier 1 hydB_1l Spearman rho	0.5428	0.5428	True
+Tier 1 hydB_1l rho CI low	0.4697	0.4697	True
+Tier 1 hydB_1l rho CI high	0.6221	0.6221	True
+Tier 1 hydB_1l R2 CI low	0.1483	0.1483	True
+Tier 1 hydB_1l R2 CI high	0.3378	0.3378	True
+Tier 1 Compartment-only R2	0.1386	0.1386	True
+Tier 1 Compartment-only rho	0.3469	0.3469	True
+Tier 1 Climate-only R2	0.0583	0.0583	True
+Tier 1 Climate-only rho	0.2431	0.2431	True
+Tier 1 total_h2ase RMSE	1.4472	1.4472	True
+Tier 1 total_h2ase R2	0.2188	0.2188	True
+Tier 1 total_h2ase Spearman rho	0.5191	0.5191	True
+Tier 1 viral_richness RMSE	0.2103	0.2103	True
+Tier 1 viral_richness R2	0.3784	0.3784	True
+Tier 1 viral_richness Spearman rho	0.3388	0.3388	True
+Tier 1 Depth-only viral R2	0.141	0.141	True
+Tier 1 plasmid_richness RMSE	0.1827	0.1827	True
+Tier 1 plasmid_richness R2	0.3463	0.3463	True
+Tier 1 plasmid_richness Spearman rho	0.2996	0.2996	True
+Tier 1 shannon_16s RMSE	0.8385	0.8385	True
+Tier 1 shannon_16s R2	0.2453	0.2453	True
+Tier 1 shannon_16s Spearman rho	0.547	0.547	True
+Tier 2A LOCO hydB_1l RMSE	1.6842	1.6842	True
+Tier 2A LOCO hydB_1l R2	0.3202	0.3202	True
+Tier 2A LOCO hydB_1l Pearson r	0.566	0.566	True
+Tier 2A LOCO hydB_1l Spearman rho	0.5786	0.5786	True
+Tier 2A LOCO Trip 1 R2	0.3364	0.3364	True
+Tier 2A LOCO Trip 2 R2	0.2946	0.2946	True
+Tier 2A LOCO Trip 3 R2	0.2566	0.2566	True
+Tier 2A LOCO Trip 4 R2	0.3109	0.3109	True
+Tier 2A LOCO Trip 5 R2	0.3219	0.3219	True
+Tier 2C Train visit-compartments	325	325	True
+Tier 2C Test visit-compartments	89	89	True
+Tier 2C Test with prior history	85	85	True
+Tier 2C Longitudinal twin level RMSE	1.8363	1.8363	True
+Tier 2C Longitudinal twin level R2	0.2991	0.2991	True
+Tier 2C Longitudinal twin level Pearson r	0.617	0.617	True
+Tier 2C Longitudinal twin level Spearman rho	0.6188	0.6188	True
+Tier 2C Persistence level RMSE	1.9753	1.9753	True
+Tier 2C Persistence level R2	0.189	0.189	True
+Tier 2C Env ridge level R2	0.2897	0.2897	True
+Tier 2C Random forest level R2	0.3244	0.3244	True
+Tier 2C Gradient boosting level R2	0.3308	0.3308	True
+Tier 2C Longitudinal twin Delta R2	0.0551	0.0551	True
+Tier 2C Longitudinal twin Delta Pearson r	0.4094	0.4094	True
+Tier 2C Longitudinal twin Delta Spearman rho	0.3753	0.3753	True
+Tier 3 n_samples_evaluated	550	550	True
+Tier 3 OCS unconstrained	0.0	0.0	True
+Tier 3 OCS projected Euclidean	1.0	1.0	True
+Tier 3 OCS Nonnegative MinT	1.0	1.0	True
+Tier 3 Mean CVM unconstrained	0.2634	0.2634	True
+Tier 3 Mean CVM projected	0.0	0.0	True
+Tier 3 All-node RMSE unconstrained	0.4708	0.4708	True
+Tier 3 All-node RMSE Euclidean	0.4624	0.4624	True
+Tier 3 All-node RMSE Nonnegative MinT	0.4633	0.4633	True
+Tier 3 Leaf RMSE unconstrained	0.3315	0.3315	True
+Tier 3 Leaf RMSE Euclidean	0.3192	0.3192	True
+Tier 3 Leaf RMSE Nonnegative MinT	0.3161	0.3161	True
+Tier 3 Aggregate RMSE unconstrained	0.6672	0.6672	True
+Tier 3 Aggregate RMSE Euclidean	0.6617	0.6617	True
+Tier 3 MSE reduction pct	3.51	3.51	True
+Tier 3 Theorem 2 pass rate	1.0	1.0	True
+Tier 3 Strict samplewise improvement rate	1.0	1.0	True
+Tier 4 Root vs bulk paired visits	106	106	True
+Tier 4 Root vs bulk paired sites	47	47	True
+Tier 4 Root vs bulk empirical log2FC	-2.2747	-2.2747	True
+Tier 4 Root vs bulk twin log2FC	-2.0969	-2.0969	True
+Tier 4 Root vs bulk lineage turnover fraction	0.974473	0.9745	True
+Tier 4 Surface vs subsurface visits	68	68	True
+Tier 4 Surface vs subsurface sites	36	36	True
+Tier 4 Surface vs subsurface empirical log2FC	-1.0488	-1.0488	True
+Tier 4 Surface vs subsurface twin log2FC	-0.7562	-0.7562	True
+Tier 4 Aridity gradient observed sites	51	51	True
+Tier 4 Aridity gradient Spearman rho	-0.5137	-0.5137	True
+Tier 5 Synthetic mean Pearson r	0.9649	0.9649	True
+Tier 5 Synthetic mean Spearman rho	0.958	0.958	True
+Tier 5 Synthetic root vs bulk R2	0.9888	0.9888	True
+Tier 5 72-MAG GSMM pilot count	72	72	True
+Tier 5 10,584 FBA runs	10584	10584	True
+Table 3 S30 baseline Shannon	6.128949	6.1289	True
+Table 3 S30 baseline hydB_1l GE	2.10593	2.1059	True
+Table 3 S60 baseline Shannon	4.524897	4.5249	True
+Table 3 S59 baseline Shannon	2.734604	2.7346	True
+Table 3 Cloud +6mm Delta Shannon	0.3473	0.3473	True
+Table 3 Cloud +6mm peak Shannon	6.4762	6.4762	True
+Table 3 Cloud +6mm min H2 power	40.1066	40.1066	True
+Table 3 Cloud +25mm Delta Shannon	0.6972	0.6972	True
+Table 3 Cloud +25mm peak Shannon	6.8261	6.8261	True
+Table 3 Cloud +25mm min H2 power	10.4208	10.4208	True
+Table 3 Reveg uninoc DNA mult	3.466	3.466	True
+Table 3 Reveg uninoc landscape hydB_1l	1.63	1.63	True
+Table 3 Reveg uninoc biomass-weighted hydB_1l	0.8399	0.8399	True
+Table 3 Reveg uninoc abs density mult	1.3822	1.3822	True
+Table 3 Reveg coinoc DNA mult	4.29	4.29	True
+Table 3 Reveg coinoc landscape hydB_1l	1.6087	1.6087	True
+Table 3 Reveg coinoc biomass-weighted hydB_1l	0.7189	0.7189	True
+Table 3 Reveg coinoc abs density mult	1.4644	1.4644	True
+Table 3 Reveg coinoc C fixation	1.35875	1.35875	True
+Table 3 Desal S60 Shannon	4.5883	4.5883	True
+Table 3 Desal S60 C fixation	1.47239	1.4724	True
+Table 3 Desal S60 sulfur flux	0.82909	0.8291	True
+Table 3 Desal S59 Shannon	1.35	1.35	True
+Table 3 Desal S59 C fixation	0.0	0.0	True
+Table 3 Desal S59 ATPM deficit	1.58369	1.5837	True
+Table 3 Refugium 95% Shannon	6.1564	6.1564	True
+Table 3 Refugium 95% Bacillus survival	0.5759	0.5759	True
+Table 3 Refugium 20% Shannon	5.4439	5.4439	True
+Table 3 Refugium 20% Bacillus survival	0.4122	0.4122	True
+Table 3 Megafauna wild Shannon	6.3159	6.3159	True
+Table 3 Megafauna wild porosity	0.3949	0.3949	True
+Table 3 Megafauna wild ARG risk	0.0753	0.0753	True
+Table 3 Megafauna camel Shannon	4.3089	4.3089	True
+Table 3 Megafauna camel porosity	0.22	0.22	True
+Table 3 Megafauna camel ARG risk	0.665	0.665	True
+Table 3 Seismic nodal Shannon	6.1045	6.1045	True
+Table 3 Seismic nodal H2 power	44.9109	44.9109	True
+Table 3 Seismic nodal TPH deg pct	76.97	76.97	True
+Table 3 Seismic vibroseis Shannon	4.3934	4.3934	True
+Table 3 Seismic vibroseis H2 power	7.1005	7.1005	True
+Table 3 Seismic vibroseis TPH deg pct	20.15	20.15	True
+Suppl. Table S5 P3 utility	0.9481	0.9481	True
+Suppl. Table S5 P3 dominance prob	1.0	1.0	True
+Suppl. Table S5 P3 rank1 prob	0.31	0.31	True
+Suppl. Table S5 P2 utility	0.9432	0.9432	True
+Suppl. Table S5 P2 rank1 prob	0.245	0.245	True
+Suppl. Table S5 P4 utility	0.9396	0.9396	True
+Suppl. Table S5 P4 rank1 prob	0.305	0.305	True
+Suppl. Table S5 P1 utility	0.8367	0.8367	True
+Suppl. Table S5 P5 utility	0.9183	0.9183	True
+Suppl. Table S5 P6 utility	-0.0525	-0.0525	True
+Section 3.4 All 7 cross-desert benchmarks pass	True	True	True
+Section 3.4 Overall WGS CBB share	0.2293	0.2293	True
+Section 3.4 Overall WGS CBB+prkB share	0.1321	0.1321	True
+Section 3.4 Overall WGS 3-gene CBB share	0.1123	0.1123	True
+Section 3.4 Wetted active dark CO2 fixation	0.04824	0.04824	True
+Section 3.4 Annual dry column dark CO2 fixation	0.000397	0.000397	True
+Table 4 Baseline direct CO2 corridor kt/yr	801.597	801.6	True
+Table 4 Baseline persistent CO2 corridor kt/yr	140.878	140.88	True
+Table 4 Baseline total CO2eq corridor kt/yr	811.297	811.3	True
+Table 4 Baseline total CO2eq basin kt/yr	1496.053	1496.05	True
+Table 4 Prescribed Atlas direct CO2 corridor kt/yr	5192.042	5192.04	True
+Table 4 Prescribed Atlas persistent CO2 corridor kt/yr	814.519	814.52	True
+Table 4 Prescribed Atlas total CO2eq corridor kt/yr	5203.77	5203.77	True
+Table 4 Prescribed Atlas total CO2eq basin kt/yr	5888.526	5888.53	True
+Table 4 P1 total CO2eq corridor kt/yr	1118.669	1118.669	True
+Table 4 P1 persistent CO2 corridor kt/yr	188.14	188.14	True
+Table 4 P3 total CO2eq corridor kt/yr	4597.953	4597.953	True
+Table 4 P3 persistent CO2 corridor kt/yr	721.491	721.491	True
+Table 4 P2 total CO2eq corridor kt/yr	8421.65	8421.65	True
+Table 4 P2 persistent CO2 corridor kt/yr	1307.091	1307.091	True
+Table 4 P4 total CO2eq corridor kt/yr	14713.164	14713.164	True
+Table 4 P4 persistent CO2 corridor kt/yr	2273.738	2273.738	True
+Table 4 P5 total CO2eq corridor kt/yr	6009.729	6009.729	True
+Table 4 P5 persistent CO2 corridor kt/yr	937.107	937.107	True
+Table 4 P6 total CO2eq corridor kt/yr	131.899	131.899	True
+Table 4 P6 persistent CO2 corridor kt/yr	40.955	40.955	True
+Table 4 P6 RuBisCO CO2 corridor kt/yr	0.0	0.0	True
+Section 3.5 Total focal bacterial genera	12	12	True
+Section 3.5 Hallmark desert genera count	7	7	True
+Section 3.5 Root-adjacent indicator genera count	5	5	True
+Section 3.5 CSP1-2 surface 5-block spatial CV R2	0.44396	0.4436	True
+Section 3.5 CSP1-2 deep 5-block spatial CV R2	0.452262	0.4517	True
+Section 3.5 Flavisolibacter deep 5-block spatial CV R2	0.475513	0.4763	True
+Section 3.5 Medium grid total pixels (0.05 deg, 360x480)	172800	172800	True
+Section 3.5 Medium grid Arabian Desert mask pixels	63902	63902	True
+Section 3.5 Medium grid southern transect envelope pixels	2916	2916	True
+Section 3.5 Fine grid total pixels (0.04 deg, 450x600)	270000	270000	True
+Section 3.5 Fine grid Arabian Desert mask pixels	99870	99870	True
+Section 3.5 Fine grid southern transect envelope pixels	4572	4572	True
