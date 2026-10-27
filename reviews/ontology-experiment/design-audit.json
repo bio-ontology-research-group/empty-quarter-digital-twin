@@ -1,0 +1,45 @@
+{
+  "status": "design_feasibility_only_not_experiment_results",
+  "inputs_sha256": {
+    "manifest.json": "8e58c33bcb448582384bc32cc3ff1c2302899c75d5a885772d4ff569163ccd4d",
+    "mag_evidence.tsv": "bdaa17e3490fd658387aebc3fe2ca68ceb642949970b911077426219275e1c5d",
+    "sample_evidence.tsv": "f8ecaf2ff4aaac604e8728024c522e75b2758f027b10a6378c1377fab281c486"
+  },
+  "reference_MAGs": 5438,
+  "screen_strata": {
+    "H_and_C": 23,
+    "H_without_C": 1071,
+    "C_without_H": 60,
+    "neither": 4284
+  },
+  "first_MAG_per_stratum_lexicographic": {
+    "H_and_C": "11Dr3__single_SemiBin_120",
+    "H_without_C": "11Dr3__self_SemiBin_528",
+    "C_without_H": "17PRr2__single_SemiBin_62",
+    "neither": "10Dr2__single_SemiBin_0"
+  },
+  "multiple_hydrogenase_category_MAGs": 47,
+  "rbcl_detected_without_all_CBB_steps_MAGs": 995,
+  "samples": 551,
+  "samples_with_mapped_queries": 550,
+  "missing_mapped_queries": [
+    "F5Dr1"
+  ],
+  "marginal_only_interval_width": {
+    "positive_samples": 543,
+    "minimum": 0.0,
+    "median": 0.02018938205337202,
+    "maximum": 0.19322014759926673,
+    "unit": "fraction_of_mapped_read_weight",
+    "interpretation": "Frechet outer bounds given H and C shares only; no biological rate bounds"
+  },
+  "first_sample_lexicographic": {
+    "sample": "10Dr2",
+    "H_share": 0.2594738602302663,
+    "C_share": 0.01228886696802324,
+    "intersection_share": 0.000634824556344217,
+    "marginal_only_lower": 0.0,
+    "marginal_only_upper": 0.01228886696802324
+  },
+  "evidence_scope": "Existing annotation screens and mapping weights; no independent biological truth or method comparison"
+}

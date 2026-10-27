@@ -57,6 +57,8 @@ Reanalysis of 77 published bottles supports dry-end activation in a directional 
 
 The full inventory is generated from [contract.py](src/eq_biodt/v03/contract.py). It covers causal assumptions, ontology rules, observation mappings, all default parameters, pathway rules, prediction and planning choices. The manuscript's supplement is generated from that same inventory.
 
+The [dedicated ontology experiment protocol](reviews/ontology-experiment/PROTOCOL.md) specifies a planned test of genome identity, pathway composition, overlapping carrier sets and measurement compatibility against an equally informed flat implementation. Its [feasibility audit](reviews/ontology-experiment/design-audit.json) finds nontrivial co-carriage ambiguity in 543 samples. The method comparison and independent review remain to be run; the audit is a design artifact.
+
 ## Reproduce
 
 ~~~bash

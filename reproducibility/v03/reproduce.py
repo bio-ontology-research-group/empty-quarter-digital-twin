@@ -81,7 +81,8 @@ def main():
     x=np.arange(len(ef))
     axes[1].bar(x-.18,ef.diffusion_only,.36,color="#a75d20",label="Diffusion envelope")
     axes[1].bar(x+.18,ef.activation_diffusion,.36,color="#007b83",label="Activation × diffusion envelope")
-    axes[1].set(xticks=x,xticklabels=["Forest","Meadow","Desert sand"],ylabel="Held-replicate bottle-rate RMSE (min⁻¹)",title="B   Published bottle observations")
+    soil_labels = {"Forest": "Forest", "Meadow": "Meadow", "PB_sand": "Pine Barrens"}
+    axes[1].set(xticks=x,xticklabels=[soil_labels[s] for s in ef.index],ylabel="Held-replicate bottle-rate RMSE (min⁻¹)",title="B   Published bottle observations")
     axes[1].legend(frameon=False,fontsize=8)
     fig.savefig(out/"process_validation.pdf");fig.savefig(out/"process_validation.png",dpi=180);plt.close(fig)
     fig,axes=plt.subplots(1,2,figsize=(9,3.3),layout="constrained")
