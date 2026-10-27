@@ -1,3 +1,5 @@
+> Historical v0.2 reproduction. The current v0.3 workflow is `reproducibility/v03/reproduce.py`, documented in the root README. Numerical claims below refer to the archived v0.2 manuscript.
+
 # EQ-BioDT Manuscript Reproducibility Package (`reproducibility/`)
 
 This directory contains a self-contained reproducibility pipeline that regenerates model outputs, tables, figures and the web bundle, and checks **205 selected numerical fixtures** for:

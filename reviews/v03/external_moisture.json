@@ -1,0 +1,157 @@
+{
+  "source_url": "https://raw.githubusercontent.com/Linta-Reji/Reji2025_H2_SoilMoisture/1f860701b8572d3bef7f0657bd5e40862feca477/data/H2_experiments_allData_finalCorrected.txt",
+  "source_sha256": "44bd240facea7db00348fe49046560784652b72a0b9cf43c84c863f80d48dcd0",
+  "bottles": 77,
+  "timepoints": 746,
+  "fixed_threshold_mpa": -85,
+  "fits": [
+    {
+      "soil": "Forest",
+      "heldout_replicate": 1,
+      "model": "diffusion_only",
+      "amplitude": 0.1040789172423213,
+      "rmse_per_min": 0.05775270778325968,
+      "test_bottles": 7
+    },
+    {
+      "soil": "Forest",
+      "heldout_replicate": 1,
+      "model": "activation_diffusion",
+      "amplitude": 0.7287282031580676,
+      "rmse_per_min": 0.021818842258728013,
+      "test_bottles": 7
+    },
+    {
+      "soil": "Forest",
+      "heldout_replicate": 2,
+      "model": "diffusion_only",
+      "amplitude": 0.10420016944923076,
+      "rmse_per_min": 0.05714751700940806,
+      "test_bottles": 7
+    },
+    {
+      "soil": "Forest",
+      "heldout_replicate": 2,
+      "model": "activation_diffusion",
+      "amplitude": 0.7226038516219454,
+      "rmse_per_min": 0.019523629963206637,
+      "test_bottles": 7
+    },
+    {
+      "soil": "Forest",
+      "heldout_replicate": 3,
+      "model": "diffusion_only",
+      "amplitude": 0.0978349041730613,
+      "rmse_per_min": 0.05915266226916568,
+      "test_bottles": 7
+    },
+    {
+      "soil": "Forest",
+      "heldout_replicate": 3,
+      "model": "activation_diffusion",
+      "amplitude": 0.7270689135462475,
+      "rmse_per_min": 0.01828076766536806,
+      "test_bottles": 7
+    },
+    {
+      "soil": "Meadow",
+      "heldout_replicate": 1,
+      "model": "diffusion_only",
+      "amplitude": 0.03327396227056266,
+      "rmse_per_min": 0.014765173995066739,
+      "test_bottles": 8
+    },
+    {
+      "soil": "Meadow",
+      "heldout_replicate": 1,
+      "model": "activation_diffusion",
+      "amplitude": 0.17413221692673417,
+      "rmse_per_min": 0.002239767905252115,
+      "test_bottles": 8
+    },
+    {
+      "soil": "Meadow",
+      "heldout_replicate": 2,
+      "model": "diffusion_only",
+      "amplitude": 0.03061609958076948,
+      "rmse_per_min": 0.015639795842100766,
+      "test_bottles": 8
+    },
+    {
+      "soil": "Meadow",
+      "heldout_replicate": 2,
+      "model": "activation_diffusion",
+      "amplitude": 0.16827187537115462,
+      "rmse_per_min": 0.004073725244976155,
+      "test_bottles": 8
+    },
+    {
+      "soil": "Meadow",
+      "heldout_replicate": 3,
+      "model": "diffusion_only",
+      "amplitude": 0.03179474043965701,
+      "rmse_per_min": 0.015411120104056411,
+      "test_bottles": 8
+    },
+    {
+      "soil": "Meadow",
+      "heldout_replicate": 3,
+      "model": "activation_diffusion",
+      "amplitude": 0.17134259977174984,
+      "rmse_per_min": 0.002653029512894044,
+      "test_bottles": 8
+    },
+    {
+      "soil": "PB_sand",
+      "heldout_replicate": 1,
+      "model": "diffusion_only",
+      "amplitude": 0.08103583299550211,
+      "rmse_per_min": 0.022663972590132437,
+      "test_bottles": 11
+    },
+    {
+      "soil": "PB_sand",
+      "heldout_replicate": 1,
+      "model": "activation_diffusion",
+      "amplitude": 0.32128460855527785,
+      "rmse_per_min": 0.011740478905322885,
+      "test_bottles": 11
+    },
+    {
+      "soil": "PB_sand",
+      "heldout_replicate": 2,
+      "model": "diffusion_only",
+      "amplitude": 0.07509450287480045,
+      "rmse_per_min": 0.023364302278350936,
+      "test_bottles": 11
+    },
+    {
+      "soil": "PB_sand",
+      "heldout_replicate": 2,
+      "model": "activation_diffusion",
+      "amplitude": 0.317935079949716,
+      "rmse_per_min": 0.010283121105437632,
+      "test_bottles": 11
+    },
+    {
+      "soil": "PB_sand",
+      "heldout_replicate": 3,
+      "model": "diffusion_only",
+      "amplitude": 0.07622120227159394,
+      "rmse_per_min": 0.024824321709635163,
+      "test_bottles": 10
+    },
+    {
+      "soil": "PB_sand",
+      "heldout_replicate": 3,
+      "model": "activation_diffusion",
+      "amplitude": 0.3094341196916283,
+      "rmse_per_min": 0.0102702105814532,
+      "test_bottles": 10
+    }
+  ],
+  "supersaturated_bottles": 5,
+  "scope": "Directional moisture-envelope test with leave-replicate-out amplitude fits. Threshold informed by the same published study; not independent threshold validation or local kinetic calibration.",
+  "model": "Observed bottle k = fitted nonnegative soil amplitude times D_ratio, with or without the fixed water-potential activation ramp.",
+  "air_dried": "Fitted from measured concentrations; never assigned a zero rate."
+}

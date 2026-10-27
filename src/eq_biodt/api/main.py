@@ -292,3 +292,9 @@ def serve_web_console() -> HTMLResponse:
     if WEB_INDEX.exists():
         return HTMLResponse(content=WEB_INDEX.read_text(encoding="utf-8"))
     return HTMLResponse(content="<h1>EQ-BioDT API Running</h1>")
+
+
+# Preserve the historical implementation for reproducibility, never as the
+# default public app. The current app returns 410 for retired heuristic routes.
+legacy_app = app
+from eq_biodt.v03.api import app as app

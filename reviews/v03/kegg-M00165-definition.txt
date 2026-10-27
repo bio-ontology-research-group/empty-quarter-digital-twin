@@ -1,0 +1,21 @@
+ENTRY       M00165            Pathway   Module
+NAME        Reductive pentose phosphate cycle (Calvin cycle)
+DEFINITION  (K01601-K01602) K00927 (K05298,K00150,K00134) K01803 (K01623,K01624) (K03841,K02446,K11532,K01086) K00615 (K01100,K11532,K01086) (K01807,K01808) K01783 (K00855,K28462)
+DIAGRAM     M00165  Reductive pentose phosphate cycle (Calvin cycle)
+CLASS       Pathway modules; Energy metabolism; Carbon fixation
+PATHWAY     map00710  Carbon fixation by Calvin cycle
+            map01200  Carbon metabolism
+            map01100  Metabolic pathways
+            map01120  Microbial metabolism in diverse environments
+ORTHOLOGY   K01601,K01602  ribulose-bisphosphate carboxylase [EC:4.1.1.39] [RN:R00024]
+            K00927  phosphoglycerate kinase [EC:2.7.2.3] [RN:R01512]
+            K05298,K00150,K00134  glyceraldehyde-3-phosphate dehydrogenase (phosphorylating) [EC:1.2.1.13 1.2.1.59 1.2.1.12] [RN:R01061 R01063]
+            K01803  triosephosphate isomerase [EC:5.3.1.1] [RN:R01015]
+            K01623,K01624  fructose-bisphosphate aldolase [EC:4.1.2.13] [RN:R01068 R01829]
+            K03841,K02446,K11532,K01086  fructose-1,6-bisphosphatase [EC:3.1.3.11] [RN:R00762]
+            K00615  transketolase [EC:2.2.1.1] [RN:R01067 R01641]
+            K01100,K11532,K01086  sedoheptulose-bisphosphatase [EC:3.1.3.37] [RN:R01845]
+            K01807,K01808  ribose 5-phosphate isomerase [EC:5.3.1.6] [RN:R01056]
+            K01783  ribulose-phosphate 3-epimerase [EC:5.1.3.1] [RN:R01529]
+            K00855,K28462  phosphoribulokinase [EC:2.7.1.19] [RN:R01523]
+Source: https://rest.kegg.jp/get/M00165 (2026-10-27)

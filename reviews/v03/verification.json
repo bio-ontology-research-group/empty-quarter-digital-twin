@@ -1,0 +1,11 @@
+{
+  "current_scientific_tests": 19,
+  "historical_tests": 9,
+  "browser_checks": 9,
+  "wheel_install": "passed with bundled data outside source checkout; Python 3.10",
+  "website_build": "passed",
+  "manuscript_pages": 10,
+  "supplement_pages": 6,
+  "live_forecast": "not_issued_no_scheduled_campaign",
+  "deployment": "source_only_not_deployed"
+}

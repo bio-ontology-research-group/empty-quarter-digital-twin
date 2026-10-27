@@ -226,7 +226,10 @@ class OntologicalPolytope:
         for k, raw_val in raw_state.items():
             if isinstance(raw_val, (int, float, np.number)) and not np.isfinite(float(raw_val)):
                 raise ValueError(f"Cannot project state containing non-finite value for '{k}': {raw_val}")
-        y0 = np.array([float(raw_state.get(k, 0.0)) for k in self.variable_names], dtype=float)
+        missing = set(self.variable_names) - raw_state.keys()
+        if missing:
+            raise ValueError(f"Cannot project missing coordinates: {sorted(missing)}")
+        y0 = np.array([float(raw_state[k]) for k in self.variable_names], dtype=float)
         if not np.all(np.isfinite(y0)):
             raise ValueError("Cannot project state vector containing NaN or infinite values.")
         bounds = [
@@ -263,6 +266,13 @@ class OntologicalPolytope:
 
         if weight_matrix_inv is not None:
             w_inv = np.asarray(weight_matrix_inv, dtype=float)
+            if (w_inv.shape != (len(y0), len(y0)) or not np.isfinite(w_inv).all()
+                    or not np.allclose(w_inv, w_inv.T)):
+                raise ValueError("Projection metric must be finite, symmetric and correctly sized")
+            try:
+                np.linalg.cholesky(w_inv)
+            except np.linalg.LinAlgError as exc:
+                raise ValueError("Projection metric must be positive definite") from exc
             obj_fun = lambda y: 0.5 * float((y - y0) @ w_inv @ (y - y0))
             jac_fun = lambda y: w_inv @ (y - y0)
         else:
@@ -279,31 +289,19 @@ class OntologicalPolytope:
             options={"ftol": 1e-10, "maxiter": 300},
         )
         self.last_projection_solver_success = bool(res.success)
-        projected = res.x if res.success else np.maximum(y0, 0.0)
+        if not res.success:
+            raise RuntimeError(f"Projection solver failed: {res.message}")
+        projected = res.x
         out = dict(raw_state)
         for i, k in enumerate(self.variable_names):
             ub = self.upper_bounds.get(k, None)
             val = float(max(0.0, projected[i]))
             out[k] = min(val, ub) if ub is not None else val
 
-        # Certified feasibility fallback if SLSQP terminated with residual violations
-        used_fallback = False
+        # A feasibility repair is not an exact metric projection. Fail explicitly.
         if len(self.check_violations(out, tol=1e-5)) > 0:
-            used_fallback = True
-            for part in self.partitions:
-                c_vals = [max(0.0, float(out[c])) for c in part.children_vars]
-                c_sum = sum(c_vals)
-                ub_p = self.upper_bounds.get(part.parent_var, None)
-                if ub_p is not None and c_sum > ub_p and c_sum > 0:
-                    scale = ub_p / c_sum
-                    for c in part.children_vars:
-                        out[c] = float(out[c]) * scale
-                    c_sum = ub_p
-                if part.exhaustive:
-                    out[part.parent_var] = c_sum
-                else:
-                    out[part.parent_var] = max(c_sum, float(out[part.parent_var]))
-        self.last_projection_used_fallback = used_fallback
+            raise RuntimeError("Projection solver returned an infeasible state")
+        self.last_projection_used_fallback = False
         return out
 
 

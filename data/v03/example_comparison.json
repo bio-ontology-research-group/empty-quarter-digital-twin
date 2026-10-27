@@ -1,0 +1,371 @@
+{
+  "parameters": {
+    "k_h2_s": 0.001,
+    "k_co_s": 0.001
+  },
+  "initial": {
+    "water_mm": 1.8
+  },
+  "scenarios": [
+    {
+      "name": "intact",
+      "forcing": [
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        }
+      ],
+      "disturbance_m2": 0.0
+    },
+    {
+      "name": "single_pulse",
+      "forcing": [
+        {
+          "water_mm": 12.0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        }
+      ],
+      "disturbance_m2": 1.0
+    },
+    {
+      "name": "four_pulses",
+      "forcing": [
+        {
+          "water_mm": 3.0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 3.0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 3.0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 3.0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        }
+      ],
+      "disturbance_m2": 1.0
+    },
+    {
+      "name": "daily_pulses",
+      "forcing": [
+        {
+          "water_mm": 0.8571428571428571,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0.8571428571428571,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0.8571428571428571,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0.8571428571428571,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0.8571428571428571,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0.8571428571428571,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0.8571428571428571,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0.8571428571428571,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0.8571428571428571,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0.8571428571428571,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0.8571428571428571,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0.8571428571428571,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0.8571428571428571,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        },
+        {
+          "water_mm": 0.8571428571428571,
+          "nacl_mol_l": 0.0,
+          "evaporation_mm": 1.0,
+          "temp_c": 25.0
+        }
+      ],
+      "disturbance_m2": 1.0
+    }
+  ]
+}

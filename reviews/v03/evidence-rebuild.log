@@ -1,0 +1,93 @@
+{
+  "version": "0.3.0",
+  "sources": {
+    "corrected_full_MAG_KOs": {
+      "path": "/home/leechuck/tmp/eq-biodt-v03/rep_ko_v2.tsv",
+      "sha256": "af1b7761527691d587a49d005816d8c5eba44df2f28d154b10d3bcb130e721f8"
+    },
+    "MAG_quality": {
+      "path": "/home/leechuck/Public/software/empty-quarter-workbench/results/rebuild_20260729/canonical_manifest_v1/refined_mag_manifest.tsv",
+      "sha256": "613e060a8c4cfe6e9add4168e9b9bc762262adf22b07210bc48454224213caad"
+    },
+    "read_mapping": {
+      "path": "/home/leechuck/Public/software/empty-quarter-lifeonair/lifeonair/results/inputs/coverm_rep_abundance_long.tsv.gz",
+      "sha256": "2536800baa7479dea190acd4f903154c4481cb57a8c90af4dd816ba902925856"
+    },
+    "gas_marker_classification": {
+      "path": "/home/leechuck/Public/software/empty-quarter-lifeonair/lifeonair/results/inputs/atmo_classification_v2.tsv",
+      "sha256": "edbb4360f1b4b5a924bdf5ef25948b71d6490e9db60f7db47ea3582a10ff62f8"
+    },
+    "marker_genome_equivalents": {
+      "path": "/home/leechuck/Public/software/empty-quarter-lifeonair/lifeonair/results/reads/guild_genome_equivalents_v2_r3noflagged.tsv",
+      "sha256": "2e6f7790575daaf4515788b9251dd42ba2c60eb3eb30816218fe61c0b1c9bd6c"
+    },
+    "metadata_dates": {
+      "path": "data/processed/eq_wgs_validation_panel.parquet",
+      "sha256": "a93dbb8d7f17452e7bbc33f58e61d448efa9cef8a9483a68c088f1fb5705f04c"
+    }
+  },
+  "reference_MAGs": 5438,
+  "samples": 551,
+  "all_CBB_steps_MAGs": 83,
+  "h2_CBB_all_steps_MAGs": 23,
+  "h2_CBB_quality_90_5_MAGs": 20,
+  "annotated_MAGs": 5438,
+  "marker_GE_observed_samples": 550,
+  "dated_samples": 546,
+  "missing_mapping_samples": [
+    "F5Dr1",
+    "SPositive"
+  ],
+  "CBB_step_alternatives": {
+    "carboxylation": [
+      "K01601"
+    ],
+    "phosphoglycerate_kinase": [
+      "K00927"
+    ],
+    "gap_dehydrogenase": [
+      "K05298",
+      "K00150",
+      "K00134"
+    ],
+    "triose_isomerase": [
+      "K01803"
+    ],
+    "aldolase": [
+      "K01623",
+      "K01624"
+    ],
+    "fructose_bisphosphatase": [
+      "K03841",
+      "K02446",
+      "K11532",
+      "K01086"
+    ],
+    "transketolase": [
+      "K00615"
+    ],
+    "sedoheptulose_bisphosphatase": [
+      "K01100",
+      "K11532",
+      "K01086"
+    ],
+    "ribose_isomerase": [
+      "K01807",
+      "K01808"
+    ],
+    "ribulose_epimerase": [
+      "K01783"
+    ],
+    "phosphoribulokinase": [
+      "K00855",
+      "K28462"
+    ]
+  },
+  "endpoint": "detected_genomic_capacity",
+  "negative_screen_interpretation": "incomplete_genome_or_undetected_annotation_or_true_absence",
+  "activity_absolute_biomass": "unobserved",
+  "artifacts": {
+    "mag_evidence.tsv": "bdaa17e3490fd658387aebc3fe2ca68ceb642949970b911077426219275e1c5d",
+    "sample_evidence.tsv": "f8ecaf2ff4aaac604e8728024c522e75b2758f027b10a6378c1377fab281c486"
+  }
+}

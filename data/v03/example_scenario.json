@@ -1,0 +1,95 @@
+{
+  "parameters": {
+    "k_h2_s": 0.001,
+    "k_co_s": 0.001
+  },
+  "initial": {
+    "water_mm": 1.8
+  },
+  "forcing": [
+    {
+      "water_mm": 3.0,
+      "nacl_mol_l": 0.0,
+      "evaporation_mm": 1.0,
+      "temp_c": 25.0
+    },
+    {
+      "water_mm": 0,
+      "nacl_mol_l": 0.0,
+      "evaporation_mm": 1.0,
+      "temp_c": 25.0
+    },
+    {
+      "water_mm": 0,
+      "nacl_mol_l": 0.0,
+      "evaporation_mm": 1.0,
+      "temp_c": 25.0
+    },
+    {
+      "water_mm": 3.0,
+      "nacl_mol_l": 0.0,
+      "evaporation_mm": 1.0,
+      "temp_c": 25.0
+    },
+    {
+      "water_mm": 0,
+      "nacl_mol_l": 0.0,
+      "evaporation_mm": 1.0,
+      "temp_c": 25.0
+    },
+    {
+      "water_mm": 0,
+      "nacl_mol_l": 0.0,
+      "evaporation_mm": 1.0,
+      "temp_c": 25.0
+    },
+    {
+      "water_mm": 0,
+      "nacl_mol_l": 0.0,
+      "evaporation_mm": 1.0,
+      "temp_c": 25.0
+    },
+    {
+      "water_mm": 3.0,
+      "nacl_mol_l": 0.0,
+      "evaporation_mm": 1.0,
+      "temp_c": 25.0
+    },
+    {
+      "water_mm": 0,
+      "nacl_mol_l": 0.0,
+      "evaporation_mm": 1.0,
+      "temp_c": 25.0
+    },
+    {
+      "water_mm": 0,
+      "nacl_mol_l": 0.0,
+      "evaporation_mm": 1.0,
+      "temp_c": 25.0
+    },
+    {
+      "water_mm": 3.0,
+      "nacl_mol_l": 0.0,
+      "evaporation_mm": 1.0,
+      "temp_c": 25.0
+    },
+    {
+      "water_mm": 0,
+      "nacl_mol_l": 0.0,
+      "evaporation_mm": 1.0,
+      "temp_c": 25.0
+    },
+    {
+      "water_mm": 0,
+      "nacl_mol_l": 0.0,
+      "evaporation_mm": 1.0,
+      "temp_c": 25.0
+    },
+    {
+      "water_mm": 0,
+      "nacl_mol_l": 0.0,
+      "evaporation_mm": 1.0,
+      "temp_c": 25.0
+    }
+  ]
+}

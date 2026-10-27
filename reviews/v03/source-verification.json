@@ -1,0 +1,35 @@
+{
+  "retrieved": "2026-10-27",
+  "checks": [
+    {
+      "identifier": "10.1038/s41467-025-67208-3",
+      "url": "https://repository.library.noaa.gov/view/noaa/72500/noaa_72500_DS1.pdf",
+      "support": "Published dry-threshold observations; corrected bottle data separately pinned and hashed."
+    },
+    {
+      "identifier": "10.1029/2021GB006987",
+      "url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2021GB006987",
+      "support": "Primary process rationale for coupled moisture, physiology and gas transport."
+    },
+    {
+      "identifier": "10.1073/pnas.1710231115",
+      "url": "https://people.bu.edu/dietze/manuscripts/Dietze2018PNAS.pdf",
+      "support": "Prospective forecast-feedback framework; no claimed performance transfer."
+    },
+    {
+      "identifier": "10.1097/00010694-197406000-00001",
+      "url": "https://doi.org/10.1097/00010694-197406000-00001",
+      "support": "DOI/Crossref identity checked; author-uploaded abstract gives retention equation. Coefficients are local assumptions."
+    },
+    {
+      "identifier": "KEGG M00165",
+      "url": "https://www.kegg.jp/entry/M00165",
+      "support": "Full definition retrieved; eleven reaction-step alternatives checked."
+    },
+    {
+      "identifier": "KEGG module syntax",
+      "url": "https://www.genome.jp/kegg/module.html",
+      "support": "Official documentation confirms comma OR, space/plus AND, minus optional."
+    }
+  ]
+}

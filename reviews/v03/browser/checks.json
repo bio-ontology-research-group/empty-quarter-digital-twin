@@ -1,0 +1,14 @@
+{
+  "passed": [
+    "live_scenario_and_json_download",
+    "missing_metagenomic_observation",
+    "high_salinity_abstention",
+    "failed_run_clears_old_results",
+    "console_mobile_no_overflow",
+    "website_scenarios_missingness_and_keyboard_contract",
+    "website_mobile_no_overflow",
+    "website_fetch_failure",
+    "no_browser_javascript_errors"
+  ],
+  "count": 9
+}

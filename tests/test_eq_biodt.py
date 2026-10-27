@@ -1,4 +1,4 @@
-"""Comprehensive verification suite for the Empty Quarter Biodiversity Digital Twin (EQ-BioDT)."""
+"""Historical v0.2 reproduction checks; current scientific contracts are in test_v03.py."""
 
 from __future__ import annotations
 
@@ -7,7 +7,7 @@ from pathlib import Path
 import pytest
 from fastapi.testclient import TestClient
 
-from eq_biodt.api.main import app
+from eq_biodt.api.main import legacy_app as app
 from eq_biodt.data import (
     CanonicalDataRegistry,
     OntologyRegistry,

@@ -175,5 +175,10 @@ def main() -> None:
         uvicorn.run("eq_biodt.api.main:app", host=args.host, port=args.port, reload=False)
 
 
+# Public module invocation follows the current release.
+legacy_main = main
+from eq_biodt.v03.cli import main as main
+
+
 if __name__ == "__main__":
     main()

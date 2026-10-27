@@ -1,0 +1,240 @@
+{
+  "version": "0.3.0",
+  "method": "ontological-causal reasoning with separate observation and prediction layers",
+  "clauses": [
+    {
+      "id": "O1",
+      "kind": "ontological",
+      "statement": "A quantity has one endpoint, unit, denominator and provenance. Genomic capacity, mapped-read composition, DNA recovery, membrane integrity, biomass and activity are distinct endpoints."
+    },
+    {
+      "id": "O2",
+      "kind": "ontological",
+      "statement": "Disjoint gene-copy categories with the same normalizer add to their union. Gene-copy totals may exceed one genome equivalent. Organisms carrying several genes may overlap."
+    },
+    {
+      "id": "O3",
+      "kind": "ontological",
+      "statement": "For a specified mapped MAG universe, a carrier set and its exact complement partition mapped-read weight. Their union equals the mapped total; their intersection is empty."
+    },
+    {
+      "id": "O4",
+      "kind": "ontological",
+      "statement": "A nonnegative part cannot exceed its whole under the same measure. Composition has no minimum other-taxon fraction; zero and one are valid boundaries."
+    },
+    {
+      "id": "O5",
+      "kind": "observation",
+      "statement": "Missing measurements remain missing. Aggregates requiring a missing part are unavailable. No projection changes causal leaves or intervention settings."
+    },
+    {
+      "id": "M1",
+      "kind": "observation",
+      "statement": "MAG KO presence comes from corrected post-refinement annotation v2; quality joins use exact MAG identifiers. Missing pathway steps can reflect incompleteness or annotation failure."
+    },
+    {
+      "id": "M2",
+      "kind": "observation",
+      "statement": "CBB support requires all 11 KEGG M00165 reaction steps with the listed alternatives. K01602 is optional in that module; a separate three-gene screen requires it. This is an annotation screen, with no expression or activity inference."
+    },
+    {
+      "id": "M3",
+      "kind": "observation",
+      "statement": "Read percentages are relative mapping weights. Carrier shares divide by mapped reads, while unmapped reads remain explicit. Any nonfinite mapping observation makes that sample's composition unavailable. Shannon uses mapped MAG proportions."
+    },
+    {
+      "id": "M4",
+      "kind": "observation",
+      "statement": "Marker genome equivalents use the 60-percent identity-floor read screen and single-copy-gene normalization. They measure relative gene-copy capacity, with no absolute biomass conversion."
+    },
+    {
+      "id": "M5",
+      "kind": "observation",
+      "statement": "The strict quality sensitivity subset requires completeness at least 90 percent and contamination below 5 percent; it is a declared numerical screen, not a complete MIMAG high-quality assignment."
+    },
+    {
+      "id": "C1",
+      "kind": "causal assumption",
+      "statement": "The soil is a horizontally homogeneous layer of prescribed depth and porosity. Campbell retention uses matric potential = entry potential times (theta/porosity)^(-b); the parameters require local retention measurements."
+    },
+    {
+      "id": "C2",
+      "kind": "causal assumption",
+      "statement": "Activity rises from zero at the dry water-potential threshold to one at the wet activation threshold as a clipped logarithmic ramp raised to a shape exponent. The -70 to -100 MPa threshold range comes from Reji et al.; the ramp, wet endpoint and local transfer are assumptions."
+    },
+    {
+      "id": "C3",
+      "kind": "causal assumption",
+      "statement": "Gas diffusion follows Millington-Quirk: D = D0 (porosity-theta)^(10/3)/porosity^2. Saturation closes the gas pathway. Water-phase transport, crust resistance and gas production are omitted."
+    },
+    {
+      "id": "C4",
+      "kind": "causal assumption",
+      "statement": "A steady, first-order reaction layer obeys D C'' - k C = 0 with atmospheric surface concentration and zero basal gradient. Uptake is C_atm sqrt(D k) tanh(L sqrt(k/D)). The approximation is for trace concentrations; kinetic saturation is unmodelled."
+    },
+    {
+      "id": "C5",
+      "kind": "causal assumption",
+      "statement": "Reaction coefficients k are independent supplied parameters per bulk-soil volume, multiplied by activation and Q10^((T-Tref)/10). They are not derived from marker GE. Temperature is restricted to 0-50 C; diffusion constants are held fixed."
+    },
+    {
+      "id": "C6",
+      "kind": "causal assumption",
+      "statement": "H2 and CO oxidation each consume half a mole of O2 per mole donor. A supplied O2-flux limit scales both uptake demands proportionally when limiting; this is a shared-resource approximation."
+    },
+    {
+      "id": "C7",
+      "kind": "causal assumption",
+      "statement": "Chemical power uses fixed apparent energy yields of 202 and 243 kJ/mol H2 and CO. Captured power is a supplied fraction. Maintenance coverage is unavailable unless independent area-based demand is supplied; no biomass is inferred."
+    },
+    {
+      "id": "C8",
+      "kind": "causal assumption",
+      "statement": "Each daily step adds water and NaCl, mixes the layer, removes overflow and a fraction of water above field capacity with proportional salt, then evaporates water only. Pore capacity is 1000 L porosity mm. Daily gas uptake uses end-of-day state for 86400 seconds."
+    },
+    {
+      "id": "C9",
+      "kind": "causal assumption",
+      "statement": "Salt is conservative NaCl formula units, not conductivity-derived salinity. Dilute osmotic potential is -2 phi c R T; the specified coefficient is a sensitivity parameter. Above 0.1 mol/L or in dry saline soil, gas outputs abstain pending nonideal speciation. Salt inventory remains conserved."
+    },
+    {
+      "id": "C10",
+      "kind": "causal assumption",
+      "statement": "Compaction prescribes post-disturbance porosity and leaves the retention parameters fixed unless replaced. Temperature and evaporation are prescribed levers. Repeated pulses share water and salt memory; biomass, vegetation and community turnover are unmodelled."
+    },
+    {
+      "id": "C11",
+      "kind": "causal assumption",
+      "statement": "The resource ceiling has three balanced reactions: H2+0.5O2 -> H2O; CO+0.5O2 -> CO2; CO2+2H2 -> CH2O+H2O. It maximizes carbohydrate production with donor, O2, external CO2 and independently supplied energy/maintenance bounds. Genomic pathway support only permits a conditional ceiling; incomplete screens return unavailable. Nitrogen, growth and sulfate reduction are outside this network."
+    },
+    {
+      "id": "C12",
+      "kind": "causal assumption",
+      "statement": "Gas exchange is a conditional process calculation. The resource ceiling is a separate optimization over supplied potential flux bounds, not additional realized uptake. They must never be added. Solver infeasibility and numerical failure are separate outcomes."
+    },
+    {
+      "id": "A1",
+      "kind": "accounting",
+      "statement": "Net carbon removal is unavailable from scenario gas uptake. The optional measured account uses total ecosystem stock change minus imported C, geological C and counterfactual stock change, multiplied by 44/12, then subtracts lifecycle and non-CO2 emissions. Respiration already contributes to stock change. Every term requires a source, interval and spatial boundary; permanence remains separate."
+    },
+    {
+      "id": "F1",
+      "kind": "predictive assumption",
+      "statement": "Forecast observations are site-compartment-campaign means of marker GE. Log1p is the target scale. Missing actual collection dates, coordinates or targets are excluded. Curated collection dates replace nominal trip dates; no pooled 16S, pH or DNA imputation enters prediction."
+    },
+    {
+      "id": "F2",
+      "kind": "predictive assumption",
+      "statement": "Ridge alpha=10 uses standardized latitude/longitude, annual sine/cosine day-of-year on their natural [-1,1] scale and one-hot compartment; preprocessing fits on training data only. Baselines are global mean, compartment mean and latest site-compartment observation, with compartment/global fallback for unvisited states."
+    },
+    {
+      "id": "F3",
+      "kind": "predictive assumption",
+      "statement": "Backtests hold out whole later campaigns, using observations before the test campaign begins. The corrected 2026 reference catalogue is fixed throughout, so catalogue discovery is outside the temporal holdout. No calibrated confidence intervals are claimed."
+    },
+    {
+      "id": "F4",
+      "kind": "predictive assumption",
+      "statement": "A forecast freezes issue date, later target date, scoring window (default +/-14 days), source digest, all point predictions and methods. Existing forecasts cannot be overwritten. Scoring verifies the digest and uses only new observations after issuance inside the target window."
+    },
+    {
+      "id": "D1",
+      "kind": "design assumption",
+      "statement": "The experiment crosses six target water potentials (-150,-85,-30,-3,-0.3,-0.03 MPa) with three porosities (0.3,0.4,0.5). Default three randomized complete blocks use seed 42. All -3 MPa units are withheld; repeated time points are not biological replication."
+    },
+    {
+      "id": "D2",
+      "kind": "design assumption",
+      "statement": "Model disagreement compares the water-activation model and a diffusion-only alternative at 25 C, divided by supplied noise (default 1e-9 mol/m2/s). Illustrative theta uses the assumed retention curve. Replication requires pilot variance; the design has no prospective power guarantee."
+    },
+    {
+      "id": "R1",
+      "kind": "decision assumption",
+      "statement": "The 24-member sensitivity grid crosses retention b in {3,5}, dry threshold in {-70,-100} MPa, activation exponent in {0.5,2}, and kinetic-rate multiplier in {0.1,1,10}. Members are assumptions, not posterior probabilities."
+    },
+    {
+      "id": "R2",
+      "kind": "decision assumption",
+      "statement": "Scenario comparison maximizes conditional H2 uptake and minimizes supplied water, residual salt and prescribed disturbed area. It reports per-member Pareto sets, their intersection and uptake rank reversals. No scalar utility, Shannon desirability or vegetation benefit is assumed."
+    }
+  ],
+  "parameter_defaults": {
+    "k_h2_s": "REQUIRED",
+    "k_co_s": "REQUIRED",
+    "porosity": 0.4,
+    "depth_m": 0.1,
+    "psi_entry_mpa": -0.001,
+    "retention_b": 4.0,
+    "dry_threshold_mpa": -85.0,
+    "wet_activation_mpa": -0.1,
+    "activation_shape": 1.0,
+    "q10": 2.0,
+    "reference_temp_c": 25.0,
+    "d_h2_m2_s": 7.7e-05,
+    "d_co_m2_s": 2.1e-05,
+    "h2_mol_m3": 2.13e-05,
+    "co_mol_m3": 4.02e-06,
+    "oxygen_supply_mol_m2_s": 0.001,
+    "energy_capture_fraction": 0.25,
+    "maintenance_w_m2": null,
+    "field_capacity_fraction": 0.5,
+    "drainage_fraction_day": 0.5,
+    "osmotic_coefficient": 1.0,
+    "osmotic_domain_mol_l": 0.1,
+    "mechanism": "activation_diffusion"
+  },
+  "CBB_step_alternatives": {
+    "carboxylation": [
+      "K01601"
+    ],
+    "phosphoglycerate_kinase": [
+      "K00927"
+    ],
+    "gap_dehydrogenase": [
+      "K05298",
+      "K00150",
+      "K00134"
+    ],
+    "triose_isomerase": [
+      "K01803"
+    ],
+    "aldolase": [
+      "K01623",
+      "K01624"
+    ],
+    "fructose_bisphosphatase": [
+      "K03841",
+      "K02446",
+      "K11532",
+      "K01086"
+    ],
+    "transketolase": [
+      "K00615"
+    ],
+    "sedoheptulose_bisphosphatase": [
+      "K01100",
+      "K11532",
+      "K01086"
+    ],
+    "ribose_isomerase": [
+      "K01807",
+      "K01808"
+    ],
+    "ribulose_epimerase": [
+      "K01783"
+    ],
+    "phosphoribulokinase": [
+      "K00855",
+      "K28462"
+    ]
+  },
+  "causal_identification": "Mechanisms are assumed structural equations; intervention effects are not identified by observational metagenomes.",
+  "calibration": "No local gas-kinetic, retention, active-biomass or growth-rate calibration is claimed.",
+  "sources": {
+    "moisture_threshold": "https://doi.org/10.1038/s41467-025-67208-3",
+    "coupled_transport": "https://doi.org/10.1029/2021GB006987",
+    "gas_diffusivity": "https://doi.org/10.1039/TF9615701200",
+    "CBB_reactions": "https://www.kegg.jp/entry/M00165",
+    "forecasting": "https://doi.org/10.1073/pnas.1710231115"
+  }
+}

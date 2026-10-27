@@ -1,143 +1,93 @@
-# Empty Quarter Biodiversity Digital Twin (`EQ-BioDT`)
+# Empty Quarter Digital Twin v0.3
 
-[![Live Digital Twin](https://img.shields.io/badge/Live_Digital_Twin-rubalkhali.science%2Ftwin-0ea5e9)](https://rubalkhali.science/twin)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+EQ-BioDT connects metagenomic evidence to explicit ontological rules, conditional soil-process scenarios and testable forecasts. Its scientific contract distinguishes observations, constitutive relations, causal assumptions and decision objectives.
 
-**EQ-BioDT** combines observational prediction, ontological constraint reconciliation and conditional mechanistic scenarios in a biodiversity digital twin of the Rub' al-Khali (Empty Quarter) and the wider Arabian Desert ecoregion. It accompanies the manuscript:
+The release uses **551 soil metagenomes and 5,438 corrected reference MAG annotations**. An eleven-step CBB screen finds **83** MAGs with every step detected; **23** also carry a screened hydrogenase, and **20** pass completeness ≥90%, contamination <5%. These are annotation-based capacity measurements. Local activity, absolute biomass and gas kinetics need independent measurements.
 
-> **Ontological-causal reasoning for prediction and conditional management scenarios in a biodiversity digital twin of the Rub' al-Khali**
-> Robert Hoehndorf & Magnus Rueping
+[Seven-concern disposition](reviews/v03/report.md) · [Complete executable contract](data/v03/model_contract.json) · [Results](reviews/v03/results.json) · [Manuscript](https://www.overleaf.com/project/6addceec3f96e54f5b1ddd02)
 
-The live interactive 2D/3D WebGL Digital Twin is deployed at **[https://rubalkhali.science/twin](https://rubalkhali.science/twin)** (and **[https://rubalkhali.science/model](https://rubalkhali.science/model)**).
+## Run
 
-The [scientific validation audit](reviews/validation-2026-10-26/report.md) distinguishes reproducibility from predictive and causal validity. All nine existing tests and 205 numerical fixtures pass; additional contract checks identify unresolved limitations. Management effects, portfolio rankings and carbon retention are conditional on prescribed response functions and parameter assumptions. The paper documents these in [Supplementary Note 4 in the Overleaf manuscript](https://www.overleaf.com/project/6addceec3f96e54f5b1ddd02).
-
----
-
-## Architecture & Scientific Overview
-
-1. **Transect State Cube (`180` site-compartment states across `70` sites)**:
-   - Harmonizes `551` shotgun metagenomes (`550` with non-missing trace-gas guild estimates, `549` with mobilome assays, `5,438` dereplicated species-level MAGs), `1,227` quality-controlled primary-site 16S rRNA amplicon profiles (`1,237` across all sites; `1,271` total sequenced profiles), `712` admitted $\mathrm{CaCl}_2$ pH records (`178` observed states), X-ray fluorescence (XRF) geochemistry (`11` core elements + vanadium), and ERA5 / Open-Meteo climate products across `60` primary sites (`S01`–`S60`) and `10` auxiliary sites (`RAK_1000061`–`RAK_1000070`) along a `1,043 km` transect of the Rub' al-Khali across five campaigns (`Trips 1–5`, March 2023 – October 2025).
-   - Indexed on Uber H3 hexagonal cells (`h3_5`, `h3_6`) and `0.25°` ERA5 corridor grid cells (`248` cells total: `128` inside the $\le 45\text{ km}$ empirical domain of support covering `92,160 km²`, and `120` abstained cells).
-2. **Three-Layer Causal-Ontological Engine**:
-   - **Predictive Layer**: Out-of-sample ridge regressions for trace-gas guilds (`hydB_1l`, `hydB_1h`, `hydB_2a`, `coxL_formI`), 16S Shannon diversity ($H'$), viral and plasmid richness (`vOTU`, `pOTU`), and `12` focal bacterial genera (`7` hallmark desert genera: *Domibacillus*, *Massilia*, *Bacillus*, *Microvirga*, *Flavisolibacter*, *Noviherbaspirillum*, *CSP1-2*; and `5` root-adjacent indicator genera: *TM7a*, *Pelagibacterium*, *Arsenicitalea*, *Ohtaekwangia*, *Neorhizobium*).
-   - **Constitutive Layer ($\Phi_{\mathrm{const}}$)**: Compiles `13` subsumption (`SubClassOf`), `5` exhaustive partition (`DisjointUnion`), and `8` unit upper-bound axioms over `17` state variables from the OWL 2 DL module [`data/ontology/rubalkhali_twin_constraints.owl`](data/ontology/rubalkhali_twin_constraints.owl) into a closed convex polyhedron $\mathcal{C}(\mathcal{T}_{\mathrm{ont}})$ and reconciles states by Euclidean projection (tested states attain $\mathrm{OCS} = 1.0$, $\mathrm{CVM} = 0.0$) $\Pi_{\mathcal{C}(\mathcal{T}_{\mathrm{ont}})}$.
-   - **Mechanistic Scenario Layer ($\mathcal{M}_{\mathrm{caus}}$)**: Couples Millington–Quirk porous-media gas diffusion, distributed-lag moisture-pulse resuscitation, a curated 10-flux guild-level linear program solved with HiGHS, and spatial virome/mobilome response models across six desert management engines.
-3. **Multi-Objective Portfolio Optimization & Dimensional Carbon Accounting**:
-   - Evaluates the current hyperarid baseline (`P0`) and six management portfolios (`P1`–`P6`) across four objectives ($J_1$–$J_4$) using DESDEO achievement scalarizing functions and `B = 200` Monte Carlo robustness draws.
-   - Upscales four physical carbon and greenhouse-gas pathways (direct microbial RuBisCO dark $\mathrm{CO}_2$ fixation, the indirect tropospheric $\mathrm{OH}^{\bullet}$ / $\mathrm{CH}_4$ sink of soil $\mathrm{H}_2$ oxidation at $\mathrm{GWP}_{100} = 11.6$, *Haloxylon persicum* and rhizosphere net primary production, and pedogenic $\mathrm{CaCO}_3$ precipitation) across the `92,160 km²` empirically supported corridor (`122` `P3` and `6` `P4` cells in the prescribed corridor atlas), the `500,000 km²` core sand-sea polygon, and the `650,000 km²` Rub' al-Khali basin, compared with seven configured literature-context intervals, some shared with calibration.
-4. **European Biodiversity Digital Twin Interoperability**:
-   - Exports Darwin Core Archives (`event.txt`, `occurrence.txt`, `emof.txt`, `meta.xml`, `eml.xml`), B-Cubed occurrence cubes (`datapackage.json`), and content-addressed FAIR Digital Objects (`FDO`) / Workflow Run RO-Crate v1.1 (`ro-crate-metadata.json`) provenance records.
-
----
-
-## Repository Structure
-
-```text
-empty-quarter-digital-twin/
-├── data/
-│   ├── processed/                 # Self-contained Parquet state cubes, 551-WGS panel & 12-genus JSON
-│   ├── dwca/                      # Darwin Core Archive (Event core + Occurrence + OBIS eMoF)
-│   ├── b3_cubes/                  # B-Cubed occurrence cube & H3 indicator tables + Frictionless spec
-│   ├── ro_crate/                  # Workflow Run RO-Crate v1.1 & FDO kernel metadata
-│   └── validation/                # Five-tier validation report JSON & metrics summary TSV
-├── data/ontology/
-│   └── rubalkhali_twin_constraints.owl  # OWL 2 DL constraint module (17 classes, 5 partitions, 13 subsumptions)
-├── paper/
-│   ├── main.tex                   # Main manuscript LaTeX source
-│   ├── supplementary.tex          # Supplementary Information LaTeX source (Notes 1-4, Tables S1-S9)
-│   ├── references.bib             # BibTeX bibliography
-│   ├── figures/                   # Multi-panel vector PDF figures (fig1, fig2, fig3)
-│   └── tables/                    # Auto-generated LaTeX table fragments (table_s3_scores.tex)
-├── reproducibility/               # Standalone computation and selected numerical fixture checks
-│   ├── README.md                  # Detailed table-by-table & section-by-section reproduction guide
-│   ├── reproduce_all.py           # Master script regenerating all tables, figures, bundles & audits
-│   ├── verify_all_paper_numbers.py# Automated suite checking 205 numerical fixtures
-│   ├── export_web_twin_bundle.py  # Exporter for the interactive WebGL Digital Twin JSON bundle
-│   ├── data/                      # Bundled standalone empirical contrasts, benchmarks & registries
-│   └── outputs/                   # Generated reproducibility reports, CSVs & audit logs
-├── scripts/
-│   ├── generate_figures.py        # Generates vector PDF Figures 1, 2, and 3
-│   └── verify_manuscript_numbers.py # Inspects cube denominators and scenario outputs
-├── src/eq_biodt/
-│   ├── api/                       # FastAPI REST backend & interactive WebGL console (/twin)
-│   ├── cli.py                     # Command-line interface (eq-biodt)
-│   ├── data/                      # State cube builder & programmatic ontology/manifest registries
-│   ├── interventions/             # 6 biophysical scenario engines & DESDEO Pareto portfolio optimizer
-│   ├── models/                    # OWL 2 polytope projection, Millington-Quirk, HiGHS FBA, CarbonBudget
-│   ├── standards/                 # DwC-A/eMoF, B-Cubed & RO-Crate/FDO exporters
-│   └── validation/                # Five-tier quantitative validation suite
-└── tests/
-    └── test_eq_biodt.py           # Pytest suite (unit, API, 5-tier validation & standalone audit)
-```
-
----
-
-## Installation & Quick Start
-
-All Python execution uses [`uv`](https://docs.astral.sh/uv/) with locked dependencies in [`uv.lock`](uv.lock):
-
-```bash
-# 1. Install locked environment
+~~~bash
 uv sync
+uv run eq-biodt serve --port 8000
+~~~
 
-# 2. Run the full test suite (including standalone reproducibility audit)
-uv run pytest -q
-```
+Open http://127.0.0.1:8000/ for the process console or /docs for the API. The console runs the same Python model as the command line and exports inputs, assumptions and daily mass balances.
 
-### Reproducing Every Number, Table, and Figure in the Paper
+~~~bash
+uv run eq-biodt contract
+uv run eq-biodt simulate --input data/v03/example_scenario.json
+uv run eq-biodt compare --input data/v03/example_comparison.json
+uv run eq-biodt experiment --input data/v03/example_scenario.json
+uv run eq-biodt backtest
+~~~
 
-The [`reproducibility/`](reproducibility/) directory is completely self-contained and runs without external mounts or companion repositories:
+Kinetic coefficients are required inputs. The examples supply 0.001 s⁻¹ for H₂ and CO; these are **assumptions**, not fitted Empty Quarter rates.
 
-```bash
-# Run the complete end-to-end reproduction pipeline in standalone mode:
-uv run python reproducibility/reproduce_all.py --standalone
+## Supported uses
 
-# Or run the 205-assertion numerical audit directly:
-uv run python reproducibility/verify_all_paper_numbers.py --standalone
-```
+- Compare repeated water pulses with a common water and salt history.
+- Examine prescribed porosity, temperature, evaporation and atmospheric trace-gas changes.
+- Screen pathways and hydrogenase carriers from full MAG annotations, with quality and missingness exposed.
+- Plan a randomized moisture × porosity experiment with a withheld condition.
+- Compare Pareto sets and uptake rankings across 24 explicit parameter alternatives.
+- Freeze and score genomic-capacity forecasts against persistence and mean baselines.
 
-See [`reproducibility/README.md`](reproducibility/README.md) for the complete mapping between manuscript sections, tables (`Tables 1–4`, `Suppl. Tables S1–S9`), and figures (`Figs. 1–3`) and their generating functions.
+The gas model couples dry-end activation, retention, diffusion, concentration, oxygen and energy. Water and salt are conserved. A separate three-reaction ceiling balances atoms and substrate/energy supplies. Incomplete pathway evidence causes abstention.
 
-### Command-Line Interface (`eq-biodt`)
+High-salinity states retain their water/salt ledger but abstain from gas prediction beyond the dilute NaCl domain. Species-specific growth, cloud-seeding efficacy, nitrogen cycling, sulfate reduction, mineral equilibria and community turnover require additional mechanisms and measurements. Carbon removal is unavailable from simulated gas uptake; a separate account requires measured stocks, carbon sources, a counterfactual and lifecycle emissions.
 
-```bash
-# Verify all 23 canonical data and ontology sources
-uv run eq-biodt verify-data
+## Forecast registration
 
-# Build all Parquet state cubes (70 sites, 180 site-compartments, 414 visit-compartments, 248 grid cells)
-uv run eq-biodt build-cubes
+No next sampling date has been scheduled, so **no live prospective forecast is issued**. Once a date is known:
 
-# Export Darwin Core Archive, B-Cubed occurrence cube, and RO-Crate metadata
-uv run eq-biodt build-cubes
+~~~bash
+uv run eq-biodt freeze --target-date YYYY-MM-DD --output forecast.json
+uv run eq-biodt score --forecast forecast.json --observations new_observations.tsv
+~~~
 
-# Simulate any of the 6 desert interventions at a specific site and compartment
-uv run eq-biodt simulate cloud_seeding --site 30 --compartment Surface --params '{"rain_pulse_mm":6.0}'
-uv run eq-biodt simulate desalination_brine --site 60 --compartment Surface --params '{"discharge_salinity_ms_cm":45.0,"ca_so4_to_nacl_ratio":2.4}'
+The target must be after issuance. Existing files cannot be overwritten. Scoring verifies integrity and matches observations after issuance within ±14 days of the target. New observations require site, compartment, collection_date and total_h2_marker_ge columns. There are no calibrated predictive intervals. A supplied issue-date override in the Python test interface labels the artifact as a fixture.
 
-# Run multi-objective Pareto portfolio optimization (P1-P6) with 200 Monte Carlo draws
-uv run eq-biodt optimize --site 30 --compartment Surface
+## Scientific evaluation
 
-# Run the Five-Tier Quantitative Validation Suite
-uv run eq-biodt validate
+The campaign-blocked backtest has 409 visit means and 278 held-out visits. Geography/season ridge improves RMSE over persistence in all four test campaigns; compartment means perform better in two. The corrected reference catalogue is fixed across this retrospective analysis.
 
-# Launch the FastAPI REST server and interactive web console at http://localhost:8090/twin
-uv run eq-biodt serve --port 8090
-```
+Reanalysis of 77 published bottles supports dry-end activation in a directional moisture-envelope comparison. Its threshold comes from the same study. Local rate calibration and independent field intervention validation remain outstanding.
 
-### Exporting the Interactive WebGL Digital Twin Bundle
+The full inventory is generated from [contract.py](src/eq_biodt/v03/contract.py). It covers causal assumptions, ontology rules, observation mappings, all default parameters, pathway rules, prediction and planning choices. The manuscript's supplement is generated from that same inventory.
 
-To export the self-contained JSON bundle (`eq_biodt_bundle.json`) that powers the interactive 2D/3D WebGL Digital Twin at [https://rubalkhali.science/twin](https://rubalkhali.science/twin):
+## Reproduce
 
-```bash
-uv run python reproducibility/export_web_twin_bundle.py
-```
+~~~bash
+uv run python reproducibility/v03/reproduce.py --paper paper
+uv run pytest --basetemp="$HOME/tmp/eq-biodt-pytest"
+~~~
 
----
+The paper argument is optional; the manuscript is a separate Overleaf repository. The script regenerates backtests, external bottle fits, example scenarios, the experiment schedule, figures, tables and assumptions. External data are retrieved from a pinned commit and checked by SHA-256.
 
-## License & Citation
+Compact evidence is bundled in the wheel and source checkout. Its [manifest](data/v03/manifest.json) identifies annotation, quality, mapping, marker and metadata sources. Rebuild with:
 
-Released under the **MIT License**. When citing **EQ-BioDT** or the Rub' al-Khali Knowledge Graph (`v3.0.1`), please cite:
+~~~bash
+uv run eq-biodt build-evidence \
+  --full-ko /path/to/rep_ko_v2.tsv \
+  --quality /path/to/refined_mag_manifest.tsv \
+  --metadata-panel data/processed/eq_wgs_validation_panel.parquet \
+  --output data/v03
+~~~
 
-- Hoehndorf, R. & Rueping, M. *A causal-ontological biodiversity digital twin of the Rub' al-Khali desert predicts trace-gas scavenger capacity across sites and campaigns and quantifies chemosynthetic and rhizosphere trade-offs of land management* (2026).
-- Rub' al-Khali Knowledge Graph v3.0.1, Zenodo: [https://doi.org/10.5281/zenodo.23134168](https://doi.org/10.5281/zenodo.23134168).
+The full KO source is at ibex:/ibex/scratch/projects/c2014/rob/metagenomics/04_functional/repko_clean/results/rep_ko_v2.tsv. Its [reconstruction notes](reviews/v03/repko-source-README.md) explain retained-contig corrections. No raw reads or annotation reruns are needed for the bundled analysis.
+
+The website export contains computed Python results without browser scenario multipliers:
+
+~~~bash
+uv run python reproducibility/v03/export_website.py /path/to/website/frontend/public/twin-data/eq_biodt_v03.json
+~~~
+
+The website source update does not deploy the live service. Deployments can set VITE_TWIN_API_URL to link a live process console.
+
+## Version boundary
+
+The default CLI and API serve v0.3. Historical /v1/* heuristic routes return HTTP 410 with migration guidance. Old engines, state cubes and reproduction fixtures remain available as historical v0.2 artifacts, with labelled tests. Current scientific tests are in tests/test_v03.py.
+
+The manuscript is **“Ontological-causal reasoning for metagenomic evidence and testable soil-process scenarios in a digital twin of the Rub' al-Khali”**, by Robert Hoehndorf and Magnus Rueping. This release is a research model with conditional process parameters; absolute field predictions require calibration.

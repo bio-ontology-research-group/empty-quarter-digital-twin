@@ -9,3 +9,6 @@ build/
 references
 references/
 paper/
+
+# Downloaded external source is pinned and checked by the reproduction script.
+reviews/v03/reji-source.txt
