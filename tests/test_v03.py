@@ -12,6 +12,7 @@ from eq_biodt.v03.api import app, DATA
 from eq_biodt.v03.contract import contract
 from eq_biodt.v03.evidence import CBB_STEPS, sha256
 from eq_biodt.v03.forecast import backtest, freeze, score
+from eq_biodt.v03.ontology import evaluate_ontology_reasoning
 from eq_biodt.v03.planning import compare, experiment, parameter_ensemble
 from eq_biodt.v03.process import Parameters, State, deposition_flux, gas_exchange, simulate
 from eq_biodt.v03.resources import resource_ceiling, carbon_account
@@ -211,3 +212,57 @@ def test_resource_api_uses_actual_mag_evidence_and_comparison_validates_inputs()
         assert (response.json()["fluxes"] is not None) == support
     assert client.post("/v3/resource-ceiling", json=args|{"pathway_supported":True}).status_code == 422
     assert client.post("/v3/compare", json={"initial":{}, "parameters":{}, "scenarios":[{}]}).status_code == 422
+
+
+def test_owl2_reasoner_classification_justifications_and_frechet_bounds(tmp_path):
+    ofn = tmp_path / "eq_biodt_v03.ofn"
+    mag = pd.read_csv(DATA / "mag_evidence.tsv", sep="\t")
+    sample = pd.read_csv(DATA / "sample_evidence.tsv", sep="\t")
+    res = evaluate_ontology_reasoning(mag, sample, ofn)
+    assert res["consistent"] is True
+    assert res["unsatisfiable_classes"] == 0
+    assert res["dropped_clauses"] == 0
+    assert res["exact_agreement_all_5438_mags"] is True
+    assert res["entailed_class_counts"]["CBBCompleteMAG"] == 83
+    assert res["entailed_class_counts"]["ArchaealRuBisCOMAG"] == 241
+    assert res["entailed_class_counts"]["H2AutotrophicCandidateMAG"] == 23
+    assert res["entailed_class_counts"]["HighQualityH2AutotrophicCandidateMAG"] == 20
+    assert res["entailed_class_counts"]["DualH2COAutotrophicCandidateMAG"] == 6
+    assert res["compartment_niche_partitioning"]["PlantRoot"]["samples_exceeding_1pct_h2_cbb"] == 32
+    assert res["compartment_niche_partitioning"]["Deep"]["samples_exceeding_1pct_h2_cbb"] == 10
+    assert res["compartment_niche_partitioning"]["Surface"]["samples_exceeding_1pct_h2_cbb"] == 0
+    just = res["example_candidate_justification"]
+    assert just["verified"] is True
+    assert just["subset_minimal"] is True
+    assert just["axiom_count"] == 37
+    disj = res["endpoint_disjointness_justification"]
+    assert disj["verified"] is True
+    assert disj["axiom_count"] == 3
+    ab3 = res["ablations"]["sample_marginals_without_genome_linkage"]
+    assert ab3["linked_within_frechet_bounds_all_samples"] is True
+    assert ab3["nonzero_ambiguity_samples"] == 543
+
+
+def test_conformal_intervals_and_mags_ontology_api():
+    panel = pd.read_csv(DATA / "sample_evidence.tsv", sep="\t")
+    bt = backtest(panel)
+    ridge_preds = [r for r in bt["predictions"] if r["model"] == "geography_season_ridge"]
+    assert sum(r["covered_90"] for r in ridge_preds) == 237
+    assert len(ridge_preds) == 278
+    assert all(r["lower_90_log1p_ge"] <= r["predicted_log1p_ge"] <= r["upper_90_log1p_ge"] for r in bt["predictions"])
+    changed = panel.copy()
+    changed.loc[changed.trip_num.eq(5), "total_h2_marker_ge"] *= 100
+    after = backtest(changed)
+    before_q = [r["q90_log1p_ge"] for r in bt["predictions"] if r["campaign"] == 5]
+    after_q = [r["q90_log1p_ge"] for r in after["predictions"] if r["campaign"] == 5]
+    assert before_q == after_q
+
+    client = TestClient(app)
+    mags_resp = client.get("/v3/mags?candidates_only=true&limit=50").json()
+    assert mags_resp["h2_cbb_candidate_mags"] == 23
+    assert len(mags_resp["mags"]) == 23
+    assert all(m["h2_cbb_all_steps"] for m in mags_resp["mags"])
+    assert "K01601" in mags_resp["mags"][0]["cbb_kos"]
+    ont_resp = client.get("/v3/ontology").json()
+    assert ont_resp["consistent"] is True
+

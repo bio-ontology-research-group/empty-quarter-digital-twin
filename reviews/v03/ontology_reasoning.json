@@ -1,0 +1,253 @@
+{
+  "reasoner": "Kobayashi-MaRust (km)",
+  "reasoner_version": "1.5.2",
+  "selected_route": "certified_el_production",
+  "expressivity": "SI",
+  "ontology_file": "eq_biodt_v03.ofn",
+  "logical_axioms": 59447,
+  "declared_classes": 5517,
+  "consistent": true,
+  "unsatisfiable_classes": 0,
+  "dropped_clauses": 0,
+  "classification_wall_seconds": 0.4064,
+  "entailed_class_counts": {
+    "RuBisCOMAG": 1078,
+    "ArchaealRuBisCOMAG": 241,
+    "RuBisCOPRKMAG": 416,
+    "ThreeGeneCBBMAG": 315,
+    "CBBCompleteMAG": 83,
+    "H2CarrierMAG": 1094,
+    "H2AutotrophicCandidateMAG": 23,
+    "HighQualityH2AutotrophicCandidateMAG": 20,
+    "DualH2COAutotrophicCandidateMAG": 6
+  },
+  "exact_agreement_all_5438_mags": true,
+  "taxonomic_architecture": {
+    "archaeal_rubisco_false_positive_mags": 241,
+    "archaeal_rubisco_by_phylum": {
+      "Thermoplasmatota": 167,
+      "Halobacteriota": 68,
+      "Nanohalarchaeota": 3,
+      "Aenigmatarchaeota": 2,
+      "Thermoproteota": 1
+    },
+    "cbb_complete_by_phylum": {
+      "Pseudomonadota": 64,
+      "Actinomycetota": 15,
+      "Cyanobacteriota": 3,
+      "Chloroflexota": 1
+    },
+    "h2_autotrophic_candidates_by_phylum": {
+      "Pseudomonadota": 20,
+      "Actinomycetota": 3
+    },
+    "h2_autotrophic_candidates_by_order": {
+      "Steroidobacterales": 13,
+      "Rhizobiales": 5,
+      "Mycobacteriales": 3,
+      "Dongiales": 1,
+      "DSM-16000": 1
+    },
+    "h2_autotrophic_candidates_by_genus": {
+      "Peristeroidobacter": 6,
+      "JAAYXG01": 5,
+      "Chelativorans": 3,
+      "Dongia_A": 1,
+      "Inquilinus": 1,
+      "Pseudonocardia": 1,
+      "GCA-003244245": 1,
+      "Phytohabitans": 1,
+      "ZC4RG24": 1,
+      "unclassified": 1,
+      "JANQQB01": 1,
+      "FEB-22": 1
+    },
+    "h2_autotrophic_hydrogenase_subtypes": {
+      "group_1l": 1,
+      "group_1h": 1,
+      "group_2a": 22,
+      "dual_h2_co_form1": 6
+    }
+  },
+  "compartment_niche_partitioning": {
+    "Deep": {
+      "n_samples": 166,
+      "total_h2_marker_ge_median": 1.2322,
+      "total_h2_marker_ge_iqr": [
+        0.6703,
+        1.8193
+      ],
+      "h2_carrier_mapped_pct_median": 36.72,
+      "rbcl_single_marker_mapped_pct_median": 22.06,
+      "cbb_11_step_mapped_pct_median": 1.36,
+      "h2_cbb_candidate_mapped_pct_median": 0.141,
+      "h2_cbb_candidate_mapped_pct_max": 2.92,
+      "samples_exceeding_1pct_h2_cbb": 10
+    },
+    "PlantRoot": {
+      "n_samples": 268,
+      "total_h2_marker_ge_median": 0.3212,
+      "total_h2_marker_ge_iqr": [
+        0.1779,
+        0.7492
+      ],
+      "h2_carrier_mapped_pct_median": 14.86,
+      "rbcl_single_marker_mapped_pct_median": 19.53,
+      "cbb_11_step_mapped_pct_median": 2.39,
+      "h2_cbb_candidate_mapped_pct_median": 0.146,
+      "h2_cbb_candidate_mapped_pct_max": 17.05,
+      "samples_exceeding_1pct_h2_cbb": 32
+    },
+    "Surface": {
+      "n_samples": 117,
+      "total_h2_marker_ge_median": 0.6092,
+      "total_h2_marker_ge_iqr": [
+        0.2606,
+        1.1013
+      ],
+      "h2_carrier_mapped_pct_median": 26.21,
+      "rbcl_single_marker_mapped_pct_median": 19.39,
+      "cbb_11_step_mapped_pct_median": 2.21,
+      "h2_cbb_candidate_mapped_pct_median": 0.096,
+      "h2_cbb_candidate_mapped_pct_max": 0.93,
+      "samples_exceeding_1pct_h2_cbb": 0
+    }
+  },
+  "example_candidate_justification": {
+    "mag_id": "11Dr3__single_SemiBin_120",
+    "superClass": "https://rubalkhali.science/kb/H2AutotrophicCandidateMAG",
+    "verified": true,
+    "subset_minimal": true,
+    "axiom_count": 37,
+    "classification_checks": 598,
+    "axioms": [
+      "DisjointUnion(rak:RAK_GUILD_TOTAL_H2ASE rak:RAK_GUILD_HYDB_1L rak:RAK_GUILD_HYDB_1H rak:RAK_GUILD_HYDB_2A)",
+      "EquivalentClasses(rak:H2CarrierMAG ObjectSomeValuesFrom(rak:hasMarkerGuild rak:RAK_GUILD_TOTAL_H2ASE))",
+      "SubClassOf(kegg:K01601 rak:StepKO_carboxylation)",
+      "EquivalentClasses(rak:CBBStep_carboxylation ObjectSomeValuesFrom(rak:hasKO rak:StepKO_carboxylation))",
+      "SubClassOf(kegg:K00927 rak:StepKO_phosphoglycerate_kinase)",
+      "EquivalentClasses(rak:CBBStep_phosphoglycerate_kinase ObjectSomeValuesFrom(rak:hasKO rak:StepKO_phosphoglycerate_kinase))",
+      "SubClassOf(kegg:K00134 rak:StepKO_gap_dehydrogenase)",
+      "EquivalentClasses(rak:CBBStep_gap_dehydrogenase ObjectSomeValuesFrom(rak:hasKO rak:StepKO_gap_dehydrogenase))",
+      "SubClassOf(kegg:K01803 rak:StepKO_triose_isomerase)",
+      "EquivalentClasses(rak:CBBStep_triose_isomerase ObjectSomeValuesFrom(rak:hasKO rak:StepKO_triose_isomerase))",
+      "SubClassOf(kegg:K01624 rak:StepKO_aldolase)",
+      "EquivalentClasses(rak:CBBStep_aldolase ObjectSomeValuesFrom(rak:hasKO rak:StepKO_aldolase))",
+      "SubClassOf(kegg:K01086 rak:StepKO_fructose_bisphosphatase)",
+      "EquivalentClasses(rak:CBBStep_fructose_bisphosphatase ObjectSomeValuesFrom(rak:hasKO rak:StepKO_fructose_bisphosphatase))",
+      "SubClassOf(kegg:K00615 rak:StepKO_transketolase)",
+      "EquivalentClasses(rak:CBBStep_transketolase ObjectSomeValuesFrom(rak:hasKO rak:StepKO_transketolase))",
+      "SubClassOf(kegg:K01086 rak:StepKO_sedoheptulose_bisphosphatase)",
+      "EquivalentClasses(rak:CBBStep_sedoheptulose_bisphosphatase ObjectSomeValuesFrom(rak:hasKO rak:StepKO_sedoheptulose_bisphosphatase))",
+      "SubClassOf(kegg:K01807 rak:StepKO_ribose_isomerase)",
+      "EquivalentClasses(rak:CBBStep_ribose_isomerase ObjectSomeValuesFrom(rak:hasKO rak:StepKO_ribose_isomerase))",
+      "SubClassOf(kegg:K01783 rak:StepKO_ribulose_epimerase)",
+      "EquivalentClasses(rak:CBBStep_ribulose_epimerase ObjectSomeValuesFrom(rak:hasKO rak:StepKO_ribulose_epimerase))",
+      "SubClassOf(kegg:K00855 rak:StepKO_phosphoribulokinase)",
+      "EquivalentClasses(rak:CBBStep_phosphoribulokinase ObjectSomeValuesFrom(rak:hasKO rak:StepKO_phosphoribulokinase))",
+      "EquivalentClasses(rak:CBBCompleteMAG ObjectIntersectionOf(rak:CBBStep_carboxylation rak:CBBStep_phosphoglycerate_kinase rak:CBBStep_gap_dehydrogenase rak:CBBStep_triose_isomerase rak:CBBStep_aldolase rak:CBBStep_fructose_bisphosphatase rak:CBBStep_transketolase rak:CBBStep_sedoheptulose_bisphosphatase rak:CBBStep_ribose_isomerase rak:CBBStep_ribulose_epimerase rak:CBBStep_phosphoribulokinase))",
+      "EquivalentClasses(rak:H2AutotrophicCandidateMAG ObjectIntersectionOf(rak:H2CarrierMAG rak:CBBCompleteMAG))",
+      "SubClassOf(rak:MAG_11Dr3__single_SemiBin_120 ObjectSomeValuesFrom(rak:hasKO kegg:K00134))",
+      "SubClassOf(rak:MAG_11Dr3__single_SemiBin_120 ObjectSomeValuesFrom(rak:hasKO kegg:K00615))",
+      "SubClassOf(rak:MAG_11Dr3__single_SemiBin_120 ObjectSomeValuesFrom(rak:hasKO kegg:K00855))",
+      "SubClassOf(rak:MAG_11Dr3__single_SemiBin_120 ObjectSomeValuesFrom(rak:hasKO kegg:K00927))",
+      "SubClassOf(rak:MAG_11Dr3__single_SemiBin_120 ObjectSomeValuesFrom(rak:hasKO kegg:K01086))",
+      "SubClassOf(rak:MAG_11Dr3__single_SemiBin_120 ObjectSomeValuesFrom(rak:hasKO kegg:K01601))",
+      "SubClassOf(rak:MAG_11Dr3__single_SemiBin_120 ObjectSomeValuesFrom(rak:hasKO kegg:K01624))",
+      "SubClassOf(rak:MAG_11Dr3__single_SemiBin_120 ObjectSomeValuesFrom(rak:hasKO kegg:K01783))",
+      "SubClassOf(rak:MAG_11Dr3__single_SemiBin_120 ObjectSomeValuesFrom(rak:hasKO kegg:K01803))",
+      "SubClassOf(rak:MAG_11Dr3__single_SemiBin_120 ObjectSomeValuesFrom(rak:hasKO kegg:K01807))",
+      "SubClassOf(rak:MAG_11Dr3__single_SemiBin_120 ObjectSomeValuesFrom(rak:hasMarkerGuild rak:RAK_GUILD_HYDB_2A))"
+    ]
+  },
+  "endpoint_disjointness_justification": {
+    "probe_class": "https://rubalkhali.science/kb/ConflatedObservationProbe",
+    "endpoints": [
+      "GenomicCapacityEndpoint",
+      "MappedReadCompositionEndpoint"
+    ],
+    "status": "entailed",
+    "verified": true,
+    "subset_minimal": true,
+    "axiom_count": 3,
+    "axioms": [
+      "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint)",
+      "SubClassOf(rak:ConflatedObservationProbe rak:GenomicCapacityEndpoint)",
+      "SubClassOf(rak:ConflatedObservationProbe rak:MappedReadCompositionEndpoint)"
+    ]
+  },
+  "ablations": {
+    "single_marker_rubisco_without_11_step_conjunction": {
+      "entailed_cbb_mags": 1078,
+      "false_positive_cbb_mags": 995,
+      "entailed_h2_cbb_mags": 322,
+      "false_positive_h2_cbb_mags": 299
+    },
+    "two_gene_rubisco_prk_without_11_step_conjunction": {
+      "entailed_cbb_mags": 416,
+      "false_positive_cbb_mags": 333,
+      "entailed_h2_cbb_mags": 213,
+      "false_positive_h2_cbb_mags": 190
+    },
+    "additive_hydrogenase_guilds_without_carrier_union": {
+      "multi_hydrogenase_mags_double_counted": 47
+    },
+    "sample_marginals_without_genome_linkage": {
+      "usable_mapped_samples": 550,
+      "missing_mapped_samples": 1,
+      "nonzero_ambiguity_samples": 543,
+      "frechet_width_median": 0.02018938205337202,
+      "frechet_width_max": 0.19322014759926673,
+      "linked_intersection_median": 0.001335685286518284,
+      "linked_intersection_max": 0.17047350733784467,
+      "linked_within_frechet_bounds_all_samples": true
+    }
+  },
+  "entailed_candidate_mags": [
+    "11Dr3__single_SemiBin_120",
+    "24Dr2__single_SemiBin_96",
+    "30PRr3__single_SemiBin_133",
+    "38PRr1__self_SemiBin_44",
+    "50Dr1__self_SemiBin_460",
+    "F1PRr3__self_SemiBin_3293",
+    "F26PRr1__self_SemiBin_408",
+    "F34PRr2__self_SemiBin_879",
+    "F38Dr3__single_SemiBin_66",
+    "F41Dr3__self_SemiBin_124",
+    "F6Dr2__self_SemiBin_595",
+    "S20Sr1__single_SemiBin_34",
+    "S3PRr1__self_SemiBin_395",
+    "S3PRr1__single_SemiBin_18",
+    "T5PRr3__self_SemiBin_1426",
+    "T8Dr1__single_SemiBin_117",
+    "V15Sr1__self_SemiBin_668",
+    "V17PRr1__single_SemiBin_130",
+    "V35PRr2__self_SemiBin_74",
+    "V39PRr2__single_SemiBin_3",
+    "V40PRr2__single_SemiBin_6_sub",
+    "V44PRr1__self_SemiBin_1060",
+    "V47PRr1__self_SemiBin_326"
+  ],
+  "entailed_high_quality_candidate_mags": [
+    "11Dr3__single_SemiBin_120",
+    "24Dr2__single_SemiBin_96",
+    "30PRr3__single_SemiBin_133",
+    "38PRr1__self_SemiBin_44",
+    "50Dr1__self_SemiBin_460",
+    "F1PRr3__self_SemiBin_3293",
+    "F26PRr1__self_SemiBin_408",
+    "F34PRr2__self_SemiBin_879",
+    "F38Dr3__single_SemiBin_66",
+    "F41Dr3__self_SemiBin_124",
+    "F6Dr2__self_SemiBin_595",
+    "S3PRr1__self_SemiBin_395",
+    "S3PRr1__single_SemiBin_18",
+    "T5PRr3__self_SemiBin_1426",
+    "T8Dr1__single_SemiBin_117",
+    "V15Sr1__self_SemiBin_668",
+    "V17PRr1__single_SemiBin_130",
+    "V35PRr2__self_SemiBin_74",
+    "V44PRr1__self_SemiBin_1060",
+    "V47PRr1__self_SemiBin_326"
+  ]
+}

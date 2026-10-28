@@ -5,6 +5,7 @@
   "mapped_samples": 550,
   "forecast_visits": 409,
   "test_visits": 278,
+  "conformal_90_coverage_ridge": 0.8525,
   "CBB_screens": {
     "rbcl_detected": 1078,
     "rbcl_prk_detected": 416,
@@ -13,17 +14,24 @@
     "h2_cbb_all_steps": 23,
     "h2_cbb_quality_90_5": 20
   },
+  "owl_reasoning": {
+    "reasoner": "Kobayashi-MaRust (km)",
+    "selected_route": "certified_el_production",
+    "logical_axioms": 59447,
+    "classification_wall_seconds": 0.4064,
+    "justification_axiom_count": 37
+  },
   "external_bottles": 77,
   "ensemble_members": 24,
   "uptake_rank_reversals": 0,
-  "unissued_forecast_reason": "No next sampling date has been scheduled.",
   "source_code_sha256": {
     "src/eq_biodt/v03/__init__.py": "22051b90d2798c3228db0eb4cfef407495d1e8d73147e66e6e3d49f5d247e88d",
-    "src/eq_biodt/v03/api.py": "d21d68856d0c77a61a7317fe8aa603ff8249a19d43f33efd5d044bd588bbf44d",
-    "src/eq_biodt/v03/cli.py": "7c5834862fb3c5319eabf3604f9fa504232ca66bf74044ab1628046ebb59456d",
-    "src/eq_biodt/v03/contract.py": "b545732f2828dba3cf65c6391dbe9a026aabdc269d3152d5f0add6a8d5934014",
-    "src/eq_biodt/v03/evidence.py": "774f855e7090110d3ec27c60460957ca66a44fb603d1f47e0a8e72d8d118af92",
-    "src/eq_biodt/v03/forecast.py": "6a2c163d340cc743ff07e17e840a69ff67d05456b9a50fab4fd5e9d3f3b112b1",
+    "src/eq_biodt/v03/api.py": "07244e11e5e8fe73a1081e3f1e363713d4c6f2718f9555a20a602ae0bbcdde9f",
+    "src/eq_biodt/v03/cli.py": "79654ea69c0b7d1be792945dd7137ab803f45c77e1025d368807656fdb5a96ca",
+    "src/eq_biodt/v03/contract.py": "6c40613c6507c940fdec969e90dd98f5379df719b94fde95eedaeaa873d5e643",
+    "src/eq_biodt/v03/evidence.py": "476d38b4ed105bf5f69670400bac73e2ca8dcabe2c65cde44c237d16a862a24a",
+    "src/eq_biodt/v03/forecast.py": "a37faa2454fef1614e0853dea977a8656862046293cd566c736f08e20acad042",
+    "src/eq_biodt/v03/ontology.py": "9335c01365024b4f0fd05847ca83b4f7a11609c6bcaa2dfc0d334c8f4d9a021a",
     "src/eq_biodt/v03/planning.py": "c340fe8db83ebc5d445f93282aace1668106b4e5870417a706104fa6bca59415",
     "src/eq_biodt/v03/process.py": "bac8656c6b3f44c1669b2e76fd87b95ea6472bb9eeae0b5c1bb72a073166d0ca",
     "src/eq_biodt/v03/resources.py": "21fb8676a84400f9af3c56302f54cf9ed30b499d24d9428391dd374529148171",

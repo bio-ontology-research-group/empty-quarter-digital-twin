@@ -87,7 +87,7 @@
   "negative_screen_interpretation": "incomplete_genome_or_undetected_annotation_or_true_absence",
   "activity_absolute_biomass": "unobserved",
   "artifacts": {
-    "mag_evidence.tsv": "bdaa17e3490fd658387aebc3fe2ca68ceb642949970b911077426219275e1c5d",
+    "mag_evidence.tsv": "b30c1756d30e868cec8f1d0120d3d9875c7148d511f6ff67b7e69156bbc290c7",
     "sample_evidence.tsv": "f8ecaf2ff4aaac604e8728024c522e75b2758f027b10a6378c1377fab281c486"
   }
 }

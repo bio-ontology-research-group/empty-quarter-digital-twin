@@ -54,8 +54,13 @@ def build_evidence(*, full_ko: Path, quality: Path, metadata_panel: Path, output
     mag["rbcl_detected"] = mag.carboxylation
     mag["rbcl_prk_detected"] = mag.carboxylation & mag.phosphoribulokinase
     mag["three_gene_screen"] = mag.rbcl_prk_detected & ko_sets.map(lambda s: "K01602" in s)
+    target_kos = {ko for alts in CBB_STEPS.values() for ko in alts} | {"K01602"}
+    mag["cbb_kos"] = ko_sets.map(lambda s: ";".join(sorted(s.intersection(target_kos))))
     mag["missing_steps"] = mag.apply(lambda r: ";".join(k for k in CBB_STEPS if not r[k]), axis=1)
-    q = pd.read_csv(quality, sep="\t", usecols=["mag_id", "completeness", "contamination", "quality_tier"])
+    q = pd.read_csv(quality, sep="\t", usecols=["mag_id", "completeness", "contamination", "quality_tier", "gtdb_classification"])
+    for rank, prefix in [("domain", "d__"), ("phylum", "p__"), ("order", "o__"), ("family", "f__"), ("genus", "g__")]:
+        q[rank] = q["gtdb_classification"].str.extract(rf"{prefix}([^;]+)").fillna("")
+    q = q.drop(columns=["gtdb_classification"])
     mag = mag.merge(q, left_on="rep", right_on="mag_id", how="left", validate="one_to_one")
     if mag.completeness.isna().any():
         raise ValueError("Missing MAG quality; identity join must be exact")
@@ -67,6 +72,7 @@ def build_evidence(*, full_ko: Path, quality: Path, metadata_panel: Path, output
     mag["h2_carrier_union"] = mag[["h2_1l", "h2_1h", "h2_2a"]].any(axis=1)
     mag["h2_cbb_all_steps"] = mag.h2_carrier_union & mag.cbb_all_steps_detected
     mag["h2_cbb_quality_90_5"] = mag.h2_cbb_all_steps & mag.quality_90_5
+    mag["dual_h2_co_cbb_all_steps"] = mag.h2_cbb_all_steps & mag.co_form1
     mag.to_csv(output/"mag_evidence.tsv", sep="\t", index=False)
     cover = pd.read_csv(paths.coverm_rep_abundance_tsv_gz, sep="\t", names=["sample", "rep", "pct"])
     if cover.duplicated(["sample", "rep"]).any() or (cover.pct < 0).any() or np.isinf(cover.pct).any():

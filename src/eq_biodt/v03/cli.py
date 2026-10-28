@@ -9,6 +9,7 @@ from .api import DATA
 from .contract import contract
 from .evidence import build_evidence
 from .forecast import backtest, freeze, score
+from .ontology import evaluate_ontology_reasoning
 from .planning import compare, experiment, parameter_ensemble
 from .process import Parameters, State, simulate
 
@@ -17,6 +18,8 @@ def main():
     parser = argparse.ArgumentParser(description="EQ-BioDT v0.3: evidence, conditional scenarios and prospective tests")
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("contract")
+    p = sub.add_parser("reason")
+    p.add_argument("--ofn", type=Path, default=DATA.parent/"ontology"/"eq_biodt_v03.ofn")
     p = sub.add_parser("build-evidence")
     for field in ("full-ko", "quality", "metadata-panel", "output"):
         p.add_argument("--"+field, type=Path, required=True)
@@ -42,6 +45,10 @@ def main():
         return 0
     if args.command == "contract":
         result = contract()
+    elif args.command == "reason":
+        mag = pd.read_csv(DATA/"mag_evidence.tsv", sep="\t", keep_default_na=False)
+        panel = pd.read_csv(DATA/"sample_evidence.tsv", sep="\t")
+        result = evaluate_ontology_reasoning(mag, panel, args.ofn)
     elif args.command == "build-evidence":
         result = build_evidence(full_ko=args.full_ko, quality=args.quality, metadata_panel=args.metadata_panel, output=args.output)
     elif args.command == "backtest":

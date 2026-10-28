@@ -10,6 +10,7 @@ import numpy as np
 import pandas as pd
 from sklearn.compose import ColumnTransformer
 from sklearn.linear_model import Ridge
+from sklearn.model_selection import GroupKFold
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
@@ -64,6 +65,25 @@ def predict(train: pd.DataFrame, target: pd.DataFrame) -> dict[str, np.ndarray]:
             "global_mean": np.repeat(train.y.mean(), len(target))}
 
 
+def conformal_quantiles(train: pd.DataFrame, *, alpha: float = 0.10) -> dict[str, float]:
+    """Compute site-blocked cross-conformal residual quantiles on training visits only."""
+    tr = train.reset_index(drop=True)
+    n_splits = min(5, int(tr.site.nunique()))
+    if n_splits < 2:
+        raise ValueError("At least two training sites required for site-blocked conformal calibration")
+    gkf = GroupKFold(n_splits=n_splits)
+    models = ("geography_season_ridge", "persistence", "compartment_mean", "global_mean")
+    residuals = {m: np.zeros(len(tr)) for m in models}
+    for fit_idx, cal_idx in gkf.split(tr, tr.y, tr.site):
+        preds = predict(tr.iloc[fit_idx], tr.iloc[cal_idx])
+        y_cal = tr.iloc[cal_idx].y.to_numpy()
+        for m, vals in preds.items():
+            residuals[m][cal_idx] = np.abs(y_cal - vals)
+    n = len(tr)
+    level = min(1.0, float(np.ceil((n + 1) * (1.0 - alpha)) / n))
+    return {m: float(np.quantile(residuals[m], level, method="higher")) for m in models}
+
+
 def backtest(panel: pd.DataFrame) -> dict:
     frame = visits(panel)
     predictions = []
@@ -71,20 +91,31 @@ def backtest(panel: pd.DataFrame) -> dict:
         test = frame.loc[frame.trip_num.eq(campaign)]
         # All data must precede the first sample of the held-out campaign.
         train = frame.loc[(frame.trip_num < campaign) & (frame.collection_date < test.collection_date.min())]
+        quantiles = conformal_quantiles(train, alpha=0.10)
         for name, values in predict(train, test).items():
+            q = quantiles[name]
             for row, value in zip(test.itertuples(), values):
+                lo = max(0.0, float(value) - q)
+                hi = float(value) + q
                 predictions.append({"campaign": int(campaign), "site": row.site, "compartment": row.compartment,
                                     "model": name, "observed_log1p_ge": row.y, "predicted_log1p_ge": float(value),
+                                    "lower_90_log1p_ge": lo, "upper_90_log1p_ge": hi, "q90_log1p_ge": q,
+                                    "covered_90": bool(lo <= row.y <= hi),
                                     "training_visits": len(train), "training_end": train.collection_date.max().date().isoformat()})
     metrics = []
     pred = pd.DataFrame(predictions)
     if not pred.empty:
         for (campaign, model), group in pred.groupby(["campaign", "model"]):
             residual = group.predicted_log1p_ge-group.observed_log1p_ge
+            width = group.upper_90_log1p_ge-group.lower_90_log1p_ge
             metrics.append({"campaign": int(campaign), "model": model, "n_visits": len(group),
-                            "mae_log1p_ge": float(abs(residual).mean()), "rmse_log1p_ge": float(np.sqrt((residual**2).mean()))})
+                            "mae_log1p_ge": float(abs(residual).mean()), "rmse_log1p_ge": float(np.sqrt((residual**2).mean())),
+                            "q90_log1p_ge": float(group.q90_log1p_ge.iloc[0]),
+                            "coverage_90": float(group.covered_90.mean()),
+                            "mean_width_90_log1p_ge": float(width.mean())})
     return {"target": TARGET, "unit": "log(1+marker genome equivalents)",
             "split": "whole_future_campaign", "metrics": metrics, "predictions": predictions,
+            "conformal_calibration": "5-fold site-blocked cross-conformal 90% intervals fitted strictly on prior-campaign training visits.",
             "reference_scope": "Retrospective fixed 2026 MAG/marker catalogue; catalogue discovery is not time-held-out.",
             "interpretation": "Genomic-capacity prediction; causal flux accuracy requires independent experiments."}
 
@@ -106,16 +137,23 @@ def freeze(panel_path: Path, target_date: str, output: Path, *, issued_on: str |
     latest["last_observed"] = latest.collection_date.dt.date.astype(str)
     latest["collection_date"] = pd.Timestamp(target)
     forecasts = predict(train, latest)
+    quantiles = conformal_quantiles(train, alpha=0.10)
     rows = []
     for i, row in enumerate(latest.itertuples()):
         rows.append({"site": row.site, "compartment": row.compartment, "last_observed": row.last_observed,
                      "days_since_observation": (target-date.fromisoformat(row.last_observed)).days,
-                     "predictions_ge": {name: float(np.expm1(v[i])) for name,v in forecasts.items()}})
+                     "predictions_ge": {name: float(np.expm1(v[i])) for name,v in forecasts.items()},
+                     "intervals_90_ge": {
+                         name: [float(np.expm1(max(0.0, float(v[i]) - quantiles[name]))),
+                                float(np.expm1(float(v[i]) + quantiles[name]))]
+                         for name, v in forecasts.items()
+                     }})
     payload = {"version": "0.3.0", "issued_on": issued.isoformat(), "target_date": target_date,
                "window_days": window_days, "source_sha256": sha256(panel_path),
                "target": TARGET, "training_visits": len(train), "predictions": rows,
+               "conformal_q90_log1p_ge": quantiles,
                "method": "ridge alpha=10; fixed geography, season, compartment; train-only preprocessing",
-               "uncertainty": "No calibrated predictive intervals; compare frozen baseline forecasts.",
+               "uncertainty": "Site-blocked 90% cross-conformal intervals calibrated on training visits.",
                "reference_catalogue": "fixed corrected v2 annotations (2026)",
                "status": "test_fixture" if issued_on is not None else "frozen_prospective_forecast"}
     payload["sha256"] = digest(payload)

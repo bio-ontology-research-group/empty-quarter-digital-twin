@@ -8,6 +8,7 @@ import pandas as pd
 from pydantic import BaseModel, ConfigDict, Field
 
 from .contract import contract
+from .ontology import evaluate_ontology_reasoning
 from .planning import compare, experiment, parameter_ensemble
 from .process import Parameters, State, simulate
 from .resources import resource_ceiling, carbon_account
@@ -75,6 +76,32 @@ def evidence(limit: int = Query(default=551, ge=1, le=551)):
             "observations": json.loads(panel.head(limit).to_json(orient="records"))}
 
 
+@app.get("/v3/mags")
+def mags(candidates_only: bool = Query(default=False), limit: int = Query(default=100, ge=1, le=5438)):
+    mag = pd.read_csv(DATA/"mag_evidence.tsv", sep="\t", keep_default_na=False)
+    if candidates_only:
+        mag = mag.loc[mag.h2_cbb_all_steps]
+    else:
+        mag = mag.sort_values(["h2_cbb_all_steps", "cbb_all_steps_detected", "completeness"], ascending=[False, False, False])
+    cols = ["rep", "domain", "phylum", "order", "family", "genus",
+            "completeness", "contamination", "quality_tier", "quality_90_5",
+            "cbb_steps_detected", "cbb_all_steps_detected", "h2_1l", "h2_1h", "h2_2a",
+            "co_form1", "h2_carrier_union", "h2_cbb_all_steps", "h2_cbb_quality_90_5",
+            "dual_h2_co_cbb_all_steps", "cbb_kos", "missing_steps"]
+    present = [c for c in cols if c in mag.columns]
+    return {"total_reference_mags": 5438,
+            "h2_cbb_candidate_mags": int(mag.h2_cbb_all_steps.sum()) if candidates_only else 23,
+            "mags": json.loads(mag[present].head(limit).to_json(orient="records"))}
+
+
+@app.get("/v3/ontology")
+def ontology_reasoning():
+    mag = pd.read_csv(DATA/"mag_evidence.tsv", sep="\t", keep_default_na=False)
+    panel = pd.read_csv(DATA/"sample_evidence.tsv", sep="\t")
+    ofn_path = DATA.parent/"ontology"/"eq_biodt_v03.ofn"
+    return evaluate_ontology_reasoning(mag, panel, ofn_path)
+
+
 @app.post("/v3/simulate")
 def scenario(request: ScenarioRequest):
     try:
@@ -111,7 +138,17 @@ def resource(values: dict):
     row = match.iloc[0]
     try:
         result = resource_ceiling(**values, pathway_supported=bool(row.h2_cbb_all_steps))
+        owl_classes = ["rak:ReferenceMAG"]
+        if bool(row.h2_carrier_union):
+            owl_classes.append("rak:H2CarrierMAG")
+        if bool(row.cbb_all_steps_detected):
+            owl_classes.append("rak:CBBCompleteMAG")
+        if bool(row.h2_cbb_all_steps):
+            owl_classes.append("rak:H2AutotrophicCandidateMAG")
+        if bool(row.h2_cbb_quality_90_5):
+            owl_classes.append("rak:HighQualityH2AutotrophicCandidateMAG")
         result["genomic_evidence"] = {"mag_id": mag_id, "h2_and_all_cbb_steps": bool(row.h2_cbb_all_steps),
+                                      "owl_classes": owl_classes,
                                       "completeness": float(row.completeness), "contamination": float(row.contamination)}
         return result
     except TypeError as exc:

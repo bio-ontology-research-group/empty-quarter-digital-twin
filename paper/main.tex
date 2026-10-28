@@ -1,0 +1,216 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{authblk,amsmath,amssymb,graphicx,booktabs,tabularx,array}
+\usepackage[hidelinks]{hyperref}
+\input{tables/v03_numbers}
+\makeatletter
+\newcommand{\BacktestRows}{\@@input tables/v03_backtest.tex }
+\makeatother
+\title{Ontological-causal reasoning for metagenomic evidence and soil trace-gas processes in a digital twin of the Rub' al-Khali}
+\input{authors}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+A biodiversity digital twin needs an explicit account of which statements define quantities, which assume mechanisms and which are supported by observations. We developed EQ-BioDT v0.3, a digital twin of soil trace-gas processes in the Rub' al-Khali, around an executable contract that separates OWL 2 reasoning, causal equations and statistical prediction. In the constitutive layer, the OWL 2 reasoner Kobayashi-MaRust classifies 5,517 classes and 59,447 logical axioms across 551 soil metagenomes and \ReferenceMAGs{} reference metagenome-assembled genomes (MAGs). Reasoning over genome-linked annotations entails all 11 Calvin--Benson--Bassham (CBB) reaction steps in \CBBFull{} bacterial MAGs and identifies \HtwoCBB{} candidate chemolithoautotrophic MAGs in \emph{Pseudomonadota} and \emph{Actinomycetota} (\HtwoCBBStrict{} high-quality, \DualHtwoCO{} co-encoding form-I $\mathrm{CO}$ dehydrogenase). Enforcing 11-step pathway completeness eliminates 995 single-marker RuBisCO false positives, including \ArchaealRuBisCO{} archaeal MAGs whose non-autotrophic RuBisCO otherwise inverts carbon-fixation rankings across desert soil compartments. Genome-linked OWL intersection also narrows community co-carriage intervals in \AmbiguousSamples{} of 550 mapped metagenomes from a median Fr\'echet width of 2.02\% to exact shares, revealing that maintenance $\mathrm{H_2}$ oxidation peaks in deep bulk sand whereas $\mathrm{H_2}$-coupled autotrophy concentrates in plant-root and deep microhabitats. Multi-layer validation showed that campaign-blocked ridge regression outperformed persistence in all four held-out campaigns (\TestVisits{} visits; \ConformalCoverage{} coverage for 90\% conformal intervals), water-potential activation $\times$ diffusion reduced held-replicate rate error across 77 bottle incubations, and four 14-day wetting regimes exhibited \RankReversals{} uptake rank reversals across 24 parameter combinations.
+\end{abstract}
+
+\section{Introduction}
+Desert microorganisms oxidize atmospheric hydrogen and carbon monoxide to meet maintenance energy demands and support chemosynthetic carbon fixation under extreme oligotrophy \cite{ji2017atmospheric,bay2021trace,leung2020energetic}. Shotgun metagenomes and metagenome-assembled genomes (MAGs) characterize the genetic machinery present in desert soils. Connecting these genomic observations to soil trace-gas exchange requires three distinct kinds of scientific statement. Constitutive axioms fix what each measurement denotes and how pathway steps or guild shares compose. Causal equations describe how soil moisture, salinity and pore space govern gas diffusion and physiological activation. Statistical models predict genomic capacity across space and time.
+
+Ontological-causal reasoning separates these layers explicitly. Description-logic ontologies under OWL 2 Direct Semantics define classes, part--whole partitions and existential role restrictions over shared biological entities \cite{owl2direct2012}. Applied to genome-resolved metagenomics, OWL class expressions distinguish a genome containing all enzymes of a pathway from a community in which those enzymes are distributed across separate organisms. They also combine overlapping functional guilds by class union while keeping distinct measurement endpoints disjoint. Structural causal models complement ontological axioms by specifying how interventions on exogenous physical variables propagate through mechanistic equations \cite{pearl2009causality}. At the ecosystem level, composite treatments such as revegetation or soil compaction alter multiple physical variables simultaneously \cite{vanderweele2013multiple}. Representing interventions directly on physical state variables and parameters keeps scenario evaluation transparent when local kinetic coefficients are uncertain.
+
+We implemented this architecture in EQ-BioDT v0.3, a digital twin of soil trace-gas processes in the Rub' al-Khali. Its constitutive layer encodes endpoint disjointness, taxonomic domains and phyla, guild hierarchies and the 11 reaction steps of the Calvin--Benson--Bassham (CBB) cycle in OWL 2 and classifies all \ReferenceMAGs{} reference MAGs with the Rust OWL 2 reasoner Kobayashi-MaRust (\texttt{km}). A separate observation rule propagates missing measurements across sample aggregates. Its causal layer couples a daily water and conservative NaCl ledger to Campbell matric retention, osmotic potential, water-potential activation, Millington--Quirk gas diffusion and shared oxygen limitation. It also includes a three-reaction stoichiometric carbohydrate ceiling whose synthesis eligibility is gated by the OWL reasoner. A separate observational layer predicts hydrogenase marker genome equivalents across sampling campaigns with site-blocked conformal prediction intervals. Table~\ref{tab:statements} summarizes each layer of the model contract, and Suppl. Sections~S1--S3 provide the complete generated contract inventory.
+
+We used the twin to address both general questions in dryland metagenomics and biogeochemistry and regional questions specific to the Rub' al-Khali. First, we used Kobayashi-MaRust to classify the \ReferenceMAGs{} MAGs, extract subset-minimal source-axiom justifications, and characterize the taxonomic and metabolic architecture of CBB and trace-gas guilds compared with single-marker screens. Second, we resolved community co-carriage across the 551 Rub' al-Khali metagenomes and compared maintenance $\mathrm{H_2}$-scavenging capacity against chemolithoautotrophic candidate abundance across deep sand, surface sand and plant-root compartments. Third, we examined how water-potential activation, OWL-gated stoichiometry and wetting-pulse fractionation govern trace-gas uptake across 24 parameter combinations. Fourth, we conducted a dedicated multi-layer validation of the twin spanning logical and mass-balance verification, campaign-blocked temporal prediction across \TestVisits{} held-out visits \cite{dietze2018forecasting}, site-blocked conformal calibration and leave-replicate-out rate validation across 77 published bottle incubations \cite{reji2025h2sink}.
+
+\begin{table}[ht]
+\centering\small
+\caption{Classes of statement in the EQ-BioDT v0.3 model contract and the findings established for each in this study. Clause identifiers refer to Suppl. Section~S1.}
+\label{tab:statements}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X}
+\toprule
+Class (clauses) & Formal representation and role & Findings in this study\\
+\midrule
+Ontological constraints (O1--O4) & OWL 2 class disjointness across six measurement endpoints and two prokaryotic domains, disjoint unions for gene-copy guilds, and class unions for multi-gene carrier sets. & Classified by Kobayashi-MaRust with zero unsatisfiable classes; verified 3-axiom unsatisfiability certificate when endpoints are conflated; prevents double-counting of \MultiHtwoMAGs{} multi-hydrogenase MAGs.\\\addlinespace
+Missingness rule (O5) & Epistemic propagation of undefined measurements without modifying causal leaves. & Retains 550 marker totals and 550 mapped compositions across 551 soil samples while reporting sample F5Dr1 as unavailable.\\\addlinespace
+Observation rules (M1--M5) & OWL 2 equivalence axioms for the 11 KEGG M00165 reaction steps over \ReferenceMAGs{} MAGs and read-mapping partitions across 551 metagenomes. & Entails \CBBFull{} bacterial CBB-complete MAGs and \HtwoCBB{} $\mathrm{H_2}$+CBB candidates (\DualHtwoCO{} with $\mathrm{CO}$ dehydrogenase); eliminates \ArchaealRuBisCO{} archaeal RuBisCO false positives; resolves co-carriage in \AmbiguousSamples{} samples.\\\addlinespace
+Causal assumptions (C1--C12) & Structural equations for water and NaCl balance, water-potential activation, pore diffusion, reaction, oxygen sharing and OWL-gated resource ceilings. & Activation $\times$ diffusion reduces held-replicate error in all three soils across 77 bottle incubations; water and solute balances close to machine precision.\\\addlinespace
+Predictive assumptions (F1--F4) & Campaign-blocked ridge regression with 5-fold site-blocked 90\% cross-conformal intervals on $\log(1+\mathrm{GE})$. & Lower RMSE than persistence in all four held-out campaigns (\TestVisits{} visits) and \ConformalCoverage{} overall 90\% conformal coverage.\\\addlinespace
+Decision and accounting (D1, D2, R1, R2, A1) & Multi-objective Pareto comparison over 24 parameter combinations and ecosystem carbon-stock accounting boundaries. & Zero uptake rank reversals across 24 parameter settings; intact soil and a single 12~mm water pulse remain Pareto-efficient in every member.\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Results}
+\subsection{OWL 2 reasoning identifies Empty Quarter autotrophs and eliminates archaeal false positives}
+We encoded the observation, taxonomic and pathway layer as a self-contained OWL 2 ontology (\path{eq_biodt_v03.ofn}; 5,517 declared classes and 59,447 logical axioms) and classified it with Kobayashi-MaRust (\texttt{km}). The ontology declares six pairwise disjoint measurement endpoints (genomic capacity, mapped-read composition, DNA recovery, membrane integrity, biomass and physiological activity) and disjoint bacterial and archaeal MAG domains. It models the group 1l, 1h and 2a $[\mathrm{NiFe}]$-hydrogenase and form-I carbon-monoxide dehydrogenase read-screen guilds as a disjoint union for gene-copy additivity. It also defines each of the 11 reaction steps of \href{https://www.kegg.jp/entry/M00165}{KEGG module M00165} through existential restrictions over its alternative KEGG Orthology (KO) terms (Suppl. Section~S3). Each of the \ReferenceMAGs{} reference MAGs is represented with its GTDB domain and phylum class, observed KO existential restrictions, marker guild restrictions and completeness/contamination quality class.
+
+Kobayashi-MaRust selected its certified $\mathcal{EL}^{++}$ production route and classified the 59,447 logical axioms in 0.41~s. Across the \ReferenceMAGs{} reference MAGs, the reasoner entailed \texttt{RuBisCOMAG} (\texttt{K01601}) for 1,078 MAGs, \texttt{RuBisCOPRKMAG} for 416 MAGs, the three-gene class including \texttt{K01602} for 315 MAGs, and the 11-step conjunction \texttt{CBBCompleteMAG} for \CBBFull{} MAGs. It entailed \texttt{H2CarrierMAG} for \HtwoCarriers{} MAGs (20.1\% of the reference catalogue), the intersection \texttt{H2AutotrophicCandidateMAG} for \HtwoCBB{} MAGs, and \texttt{HighQualityH2AutotrophicCandidateMAG} (completeness $\geq90\%$, contamination $<5\%$) for \HtwoCBBStrict{} MAGs.
+
+Taxonomic reasoning explained why single-marker and two-gene screens overestimate autotrophic capacity in desert metagenomes. Relaxing the 11-step \texttt{CBBCompleteMAG} conjunction to a single-marker \texttt{RuBisCOMAG} screen admitted 995 incomplete MAGs and inflated hydrogenase-coupled candidate autotrophs from \HtwoCBB{} to 322 (299 false positives; two-gene RuBisCO+PRK admitted 213 MAGs with 190 false positives). Among the 995 single-marker false positives, the reasoner entailed \texttt{ArchaealRuBisCOMAG} for \ArchaealRuBisCO{} archaeal genomes (167 \emph{Thermoplasmatota}, 68 \emph{Halobacteriota}, 3 \emph{Nanohalarchaeota}, 2 \emph{Aenigmatarchaeota} and 1 \emph{Thermoproteota}), which use form-III RuBisCO in non-autotrophic nucleoside salvage and lack phosphoribulokinase and the remaining CBB enzymes. By contrast, all \CBBFull{} \texttt{CBBCompleteMAG} genomes were bacterial, spanning four phyla: \emph{Pseudomonadota} (64 MAGs), \emph{Actinomycetota} (15 MAGs), \emph{Cyanobacteriota} (3 MAGs) and \emph{Chloroflexota} (1 MAG).
+
+The \HtwoCBB{} \texttt{H2AutotrophicCandidateMAG} genomes in the Rub' al-Khali belonged exclusively to \emph{Pseudomonadota} (20 MAGs) and \emph{Actinomycetota} (3 MAGs) across five orders: \emph{Steroidobacterales} (13 MAGs, including 6 \emph{Peristeroidobacter} and 5 \texttt{JAAYXG01}), \emph{Rhizobiales} (5 MAGs, including 3 \emph{Chelativorans}), \emph{Mycobacteriales} (3 MAGs, in \emph{Pseudonocardiaceae} and \emph{Micromonosporaceae}), \emph{Dongiales} (1 MAG, \emph{Dongia\_A}) and \texttt{DSM-16000} (1 MAG, \emph{Inquilinus}). Twenty-two of the \HtwoCBB{} candidate autotrophs encoded a group 2a $[\mathrm{NiFe}]$-hydrogenase, one \emph{Pseudonocardia} genome encoded group 1l, and one \emph{Pseudonocardiaceae} genome (\texttt{F41Dr3\_\_self\_SemiBin\_124}) co-encoded both group 1h and group 2a hydrogenases. Six of the \HtwoCBB{} candidates were entailed in the class \texttt{DualH2COAutotrophic\-CandidateMAG}, co-encoding form-I $\mathrm{CO}$ dehydrogenase (\path{RAK_GUILD_COXL_FORMI}) alongside a complete CBB cycle and $[\mathrm{NiFe}]$-hydrogenase. Using \texttt{km explain}, we extracted a verified, subset-minimal justification of \JustAxioms{} axioms for candidate \path{11Dr3__single_SemiBin_120}, showing that 10 KO assertions suffice for the 11 CBB steps because bifunctional fructose-1,6-bisphosphatase / sedoheptulose-1,7-bisphosphatase (\texttt{K01086}) satisfies both bisphosphatase steps simultaneously.
+
+\subsection{Compartment niche partitioning and genome-linked co-carriage across 551 metagenomes}
+We next quantified how OWL class unions and genome-linked intersections resolve community trace-gas traits across the 551 Rub' al-Khali metagenomes (166 deep bulk sand, 117 surface sand and 268 plant-root rhizosphere samples). Summing the read shares of the three hydrogenase guilds (\texttt{1l}, \texttt{1h} and \texttt{2a}) additively instead of forming the OWL class union \texttt{H2CarrierMAG} double-counted \MultiHtwoMAGs{} multi-hydrogenase MAGs. When sample composition is summarized only by its marginal \texttt{H2CarrierMAG} share $h_i$ and \texttt{CBBCompleteMAG} share $c_i$, the community co-carrier share can lie anywhere in the Fr\'echet interval $[\max(0,h_i+c_i-1),\min(h_i,c_i)]$. Across the 550 metagenomes with defined read mappings (sample F5Dr1 has undefined mapping weights and is retained as unavailable), this interval had non-zero width in \AmbiguousSamples{} samples, with a median width of 2.02\% of mapped reads (maximum 19.32\%). Evaluating the genome-linked OWL intersection \texttt{H2AutotrophicCandidateMAG} collapsed this ambiguity to an exact share in all 550 mapped samples (median 0.134\% of mapped reads, maximum 17.05\%).
+
+Mapping these genome-resolved guild shares and read-level marker genome equivalents (GE) across soil compartments revealed a sharp ecological separation between maintenance trace-gas oxidation and $\mathrm{H_2}$-coupled carbon fixation in the Rub' al-Khali. Total hydrogenase capacity ($\mathrm{hydB}_{1\mathrm{l}}+\mathrm{hydB}_{1\mathrm{h}}+\mathrm{hydB}_{2\mathrm{a}}$) and \texttt{H2CarrierMAG} read shares were highest in oligotrophic deep sand (median 1.232~GE, interquartile range 0.670--1.819~GE; median 36.72\% of mapped reads), intermediate in exposed surface sand (median 0.609~GE; 26.21\% of mapped reads), and lowest in the carbon-rich plant-root rhizosphere (median 0.321~GE; 14.86\% of mapped reads).
+
+Conversely, complete CBB capacity (\texttt{CBBCompleteMAG}) and $\mathrm{H_2}$-coupled autotrophic candidates (\texttt{H2Autotrophic\-CandidateMAG}) were concentrated in plant-root and deep-sand microhabitats and depleted in exposed surface sand. Of the 42 metagenomes in which \texttt{H2Autotrophic\-CandidateMAG} exceeded 1\% of mapped reads, 32 occurred in plant-root samples (reaching 17.05\% in \texttt{S3PRr1} and 4.66\% in \texttt{3PRr1}) and 10 occurred in deep sand (up to 2.92\% in \texttt{24Dr2}), whereas zero surface-sand metagenomes exceeded 1\% (maximum 0.93\%). Naive single-marker RuBisCO screening (\texttt{RuBisCOMAG}) inverted this compartment pattern: because deep sand harbours abundant \texttt{ArchaealRuBisCOMAG} populations, single-marker screening falsely assigned the highest median carbon-fixation share to deep sand (22.06\% versus 19.53\% in plant-root and 19.39\% in surface sand), whereas the 11-step \texttt{CBBCompleteMAG} conjunction placed the highest median share in the plant-root compartment (2.39\% versus 2.21\% in surface and 1.36\% in deep sand).
+
+\subsection{Water-potential activation, OWL-gated stoichiometry and wetting-pulse invariance}
+Because metagenomic capacity does not identify kinetic rate constants or moisture thresholds, the causal layer represents trace-gas exchange through coupled physical transport and physiological activation equations with explicit parameter inputs. Surface uptake is driven by first-order reaction--diffusion across a homogeneous soil layer of depth $L$ and porosity $\phi$, combining a logarithmic water-potential activation gate $A(\psi)$ with Millington--Quirk gas diffusivity $D_g(\theta)$. Uptake vanishes when atmospheric trace-gas concentration is zero, when water potential falls below the dry activation threshold $\psi_d$, or when pore saturation closes air-filled pathways ($\theta=\phi$). Between the dry threshold and saturation, opposing physiological activation and diffusive transport produce an interior moisture optimum whose volumetric-water-content location shifts with the Campbell retention exponent $b$ (Fig.~\ref{fig:process}A).
+
+Across multi-day simulations, a shared state ledger tracks water storage $W_t$ and conservative NaCl inventory $N_t$ through additions, overflow, field-capacity drainage and evaporation. When solute concentration exceeds the dilute van 't Hoff domain ($0.1$~mol~L$^{-1}$) or salt remains in dry soil, the twin preserves the water and salt ledger while abstaining from gas-flux prediction. When oxygen supply limits total oxidation demand, $\mathrm{H_2}$ and $\mathrm{CO}$ fluxes scale proportionally to share the available $\mathrm{O_2}$ budget. Independently of bulk soil gas exchange, the three-reaction stoichiometric LP computes an upper bound on carbohydrate ($\mathrm{CH_2O}$) synthesis from supplied $\mathrm{H_2}$, $\mathrm{CO}$, $\mathrm{O_2}$ and $\mathrm{CO_2}$ flux bounds after deducting maintenance power. The public API gates this calculation using the OWL reasoner's classification: only the \HtwoCBB{} MAGs entailed as \texttt{H2AutotrophicCandidateMAG} admit a positive synthesis ceiling, whereas the remaining 5,415 reference MAGs return an explicit insufficient-pathway-evidence status.
+
+To evaluate how wetting regime structure affects cumulative trace-gas oxidation under desert evaporation, we compared four 14-day scenarios under 1~mm~day$^{-1}$ prescribed evaporation at $25~^\circ\mathrm{C}$. The scenarios comprised an intact dry control (0~mm added water, $0\text{ m}^2$ disturbance) and three regimes delivering 12~mm total water as a single 12~mm pulse on day 1, four 3~mm pulses, or 14 daily $12/14$~mm pulses. Across the full factorial grid of 24 parameter settings ($b\in\{3,5\}$, $\psi_d\in\{-70,-100\}$~MPa, $a\in\{0.5,2\}$ and kinetic rate multiplier in $\{0.1,1,10\}$), cumulative 14-day $\mathrm{H_2}$ uptake varied by more than an order of magnitude within each wetting regime (Fig.~\ref{fig:forecast}B), but pairwise scenario comparisons exhibited \RankReversals{} uptake rank reversals. In every parameter setting, the single 12~mm pulse produced the highest cumulative $\mathrm{H_2}$ uptake, followed in fixed order by four 3~mm pulses, 14 daily pulses and the intact control. Under 1~mm~day$^{-1}$ evaporation, fractionating 12~mm of water into small daily additions keeps soil water content near the dry activation threshold where evaporative loss rapidly depletes each pulse, whereas a single 12~mm addition wets the 10~cm layer into the intermediate moisture regime for several days. Under four-objective Pareto evaluation (maximizing $\mathrm{H_2}$ uptake while minimizing added water, residual salt and disturbed area), the intact control and the single 12~mm pulse formed the exact Pareto-efficient set in all 24 parameter members.
+
+\subsection{Multi-layer validation of the digital twin}
+We validated the digital twin across four complementary tests targeting its ontological, mass-balance, predictive and mechanistic process layers. First, in the constitutive and mass-balance layer, Kobayashi-MaRust verified global consistency and zero unsatisfiable classes across all 59,447 OWL 2 axioms, confirmed 100\% extensional agreement with the relational annotation tables across all \ReferenceMAGs{} MAGs and nine target classes, verified subset-minimality of the \JustAxioms{}-axiom candidate justification, and returned a verified 3-axiom unsatisfiability certificate when \texttt{GenomicCapacity\-Endpoint} and \texttt{MappedRead\-Composition\-Endpoint} were conflated. Across 50-day randomized wetting, drainage and evaporation trajectories, daily water and NaCl mass balances closed to machine precision ($<10^{-12}$ relative residual) while abstaining from gas prediction in concentrated brines ($>0.1$~mol~L$^{-1}$).
+
+Second, in the predictive layer, we evaluated out-of-campaign temporal transferability across \ForecastVisits{} dated site-compartment-campaign visit means by holding out each subsequent campaign in turn (\TestVisits{} test visits across campaigns 2--5; Table~\ref{tab:forecast}, Fig.~\ref{fig:forecast}A). Ridge regression ($\alpha=10$) fitted strictly on prior campaigns using standardized latitude and longitude, annual sine and cosine of day-of-year and one-hot compartment achieved lower RMSE on $\log(1+\mathrm{GE})$ than both site-compartment persistence and the training global mean in all four held-out campaigns. The training compartment mean achieved the lowest RMSE in campaigns 2 and 4, whereas adding geographic and seasonal coordinates improved on the compartment mean in campaigns 3 and 5.
+
+\begin{table}[ht]
+\centering\small
+\caption{Future-campaign prediction error (RMSE on the $\log(1+\mathrm{GE})$ scale) and empirical coverage of nominal 90\% site-blocked conformal prediction intervals across \TestVisits{} held-out site-compartment visits.}
+\label{tab:forecast}
+\begin{tabular}{rrrrrrr}\toprule
+Campaign & Visits & Geog./season & Persistence & Comp.\ mean & Global mean & 90\% cov.\\\midrule
+\BacktestRows
+\bottomrule\end{tabular}
+\end{table}
+
+Third, we validated uncertainty quantification for future-campaign capacity predictions using 5-fold site-blocked cross-conformal residuals calibrated strictly within each prior-campaign training split. Across all \TestVisits{} held-out visits, nominal 90\% prediction intervals for the geography/season ridge predictor achieved \ConformalCoverage{} empirical coverage (237 of \TestVisits{} visits; mean width 0.936 on $\log(1+\mathrm{GE})$). Coverage reached 88.2\% and 90.9\% in campaigns 2 and 3 and 81.2\% and 83.0\% in campaigns 4 and 5, outperforming persistence (80.9\% overall coverage) without any access to future campaign observations.
+
+\begin{figure}[ht]
+\centering\includegraphics[width=\textwidth]{figures/forecast_scenarios.pdf}
+\caption{Campaign-blocked capacity validation and multi-objective process sensitivity. (A) Out-of-campaign RMSE on $\log(1+\mathrm{GE})$ across 278 held-out visits in campaigns 2--5. (B) Minimum and maximum 14-day $\mathrm{H_2}$ uptake across 24 process-parameter combinations under 1~mm~day$^{-1}$ prescribed evaporation.}
+\label{fig:forecast}
+\end{figure}
+
+Fourth, we validated the coupled activation $\times$ diffusion moisture response against 746 dilution-corrected $\mathrm{H_2}$ concentration measurements across 77 bottle incubations from three soils reported by Reji and colleagues \cite{reji2025h2sink}. Fitting exponential decay rates to each bottle time series and predicting held-out replicates via leave-replicate-out nonnegative amplitude scaling, the coupled activation $\times$ diffusion envelope ($\psi_d=-85$~MPa) reduced held-replicate rate RMSE by 54--80\% compared with pore diffusion alone across all three soils: 0.0199 versus 0.0580~min$^{-1}$ in forest soil, 0.0030 versus 0.0153~min$^{-1}$ in meadow soil, and 0.0108 versus 0.0236~min$^{-1}$ in Pine Barrens loamy sand (Fig.~\ref{fig:process}B). Five supersaturated bottles ($\theta>\phi$) received zero gas-phase diffusivity under both envelopes, confirming the physical boundary where aqueous-phase transport is required.
+
+\begin{figure}[ht]
+\centering\includegraphics[width=\textwidth]{figures/process_validation.pdf}
+\caption{Coupled moisture response and validation on published incubation time series. (A) Analytical reaction--diffusion $\mathrm{H_2}$ uptake across volumetric water content for $k_{\mathrm{H_2}}=0.001$~s$^{-1}$, $\phi=0.4$, $L=0.1$~m and three Campbell retention exponents. (B) Leave-replicate-out bottle-rate RMSE across 77 incubations comparing the pore-diffusion envelope against the coupled activation $\times$ diffusion envelope.}
+\label{fig:process}
+\end{figure}
+
+\section{Methods}
+\subsection{Metagenomic evidence and OWL 2 ontological reasoning}
+The observational cohort comprises 551 soil metagenomes from the Rub' al-Khali with curated site coordinates, soil compartments and collection dates, paired with \ReferenceMAGs{} dereplicated reference MAGs from the post-refinement catalogue. Functional annotations come from the contig-verified Bakta and eggNOG-mapper KO table (\path{rep_ko_v2.tsv}) and quality metrics and GTDB taxonomy come from CheckM2 and GTDB-Tk (\path{refined_mag_manifest.tsv}). Trace-gas marker classifications come from \path{atmo_classification_v2.tsv}, read-mapping weights from CoverM (\path{coverm_rep_abundance_long.tsv.gz}), and read-level marker genome equivalents at the 60\% identity floor from \path{guild_genome_equivalents_v2_r3noflagged.tsv}. All source paths and SHA-256 digests are recorded in \path{data/v03/manifest.json}.
+
+For sample $i$ and reference MAG $g\in G$, let $w_{ig}\geq0$ be the mapped-read percentage. The reference-mapped carrier share for a class extension $A\subseteq G$ is
+\begin{equation}
+q_i(A)=\frac{\sum_{g\in A}w_{ig}}{\sum_{g\in G}w_{ig}},
+\end{equation}
+which is unavailable when $\sum_{g\in G}w_{ig}=0$ or when any mapping weight for sample $i$ is nonfinite. Mapped-MAG Shannon entropy is $-\sum_{g\in G}p_{ig}\log p_{ig}$ with $p_{ig}=w_{ig}/\sum_{g\in G}w_{ig}$. The evidence builder verifies unique $(i,g)$ pairs, nonnegative weights, reference membership and closure of mapped plus unmapped percentages to $100\pm0.02\%$. DNA recovery, relic DNA fraction, membrane integrity, biomass and physiological resuscitation represent distinct physical endpoints from relative read shares and gene-copy counts \cite{carini2016relicdna,lennon2018relicdna,imminger2024resuscitation}.
+
+We formalized the constitutive and pathway rules in OWL 2 Functional Syntax in \path{data/ontology/eq_biodt_v03.ofn} using verified IRIs from the Rub' al-Khali knowledge base (\url{https://rubalkhali.science/kb/}), NCBITaxon, SIO and KEGG. The TBox declares:
+\begin{enumerate}
+\item pairwise disjointness across the six observation endpoint classes and across \texttt{BacterialMAG} and \texttt{ArchaealMAG} (\texttt{DisjointClasses}, clause O1);
+\item \texttt{DisjointUnion} axioms partitioning prokaryotic phyla, viable/relic DNA fractions, $\mathrm{H_2}$/$\mathrm{CO}$ oxidation power, and the $[\mathrm{NiFe}]$-hydrogenase marker guilds (\texttt{RAK\_GUILD\_HYDB\_1L}, \texttt{1H} and \texttt{2A}, clause O2);
+\item hydrogenase carrier equivalence:
+\begin{equation}
+\texttt{H2CarrierMAG}\equiv\exists\texttt{hasMarkerGuild}.\texttt{RAK\_GUILD\_TOTAL\_H2ASE};
+\end{equation}
+\item for each of the 11 reaction steps $s$ of KEGG module M00165, subclass axioms $k\sqsubseteq\texttt{StepKO}_s$ for each alternative KO $k\in A_s$ and the equivalence $\texttt{CBBStep}_s\equiv\exists\texttt{hasKO}.\texttt{StepKO}_s$ (clause M2, Suppl. Section~S3); and
+\item pathway, taxonomic and eligibility conjunctions:
+\begin{align}
+\texttt{ArchaealRuBisCOMAG}&\equiv\texttt{ArchaealMAG}\sqcap\texttt{RuBisCOMAG},\\
+\texttt{CBBCompleteMAG}&\equiv\texttt{CBBStep}_1\sqcap\dots\sqcap\texttt{CBBStep}_{11},\\
+\texttt{H2AutotrophicCandidateMAG}&\equiv\texttt{H2CarrierMAG}\sqcap\texttt{CBBCompleteMAG},\\
+\texttt{HighQualityH2AutotrophicCandidateMAG}&\equiv\texttt{H2AutotrophicCandidateMAG}\nonumber\\
+&\quad\sqcap\texttt{Quality90\_5MAG},\\
+\texttt{DualH2COAutotrophicCandidateMAG}&\equiv\texttt{H2AutotrophicCandidateMAG}\nonumber\\
+&\quad\sqcap\exists\texttt{hasMarkerGuild}.\texttt{RAK\_GUILD\_COXL\_FORMI}
+\end{align}
+\end{enumerate}
+Each reference MAG $g$ is declared as a subclass of \texttt{ReferenceMAG}, its domain and phylum classes, existential restrictions $\exists\texttt{hasKO}.k$ and $\exists\texttt{hasMarkerGuild}.m$ for its observed annotations, and \texttt{Quality90\_5MAG} when completeness $\geq90\%$ and contamination $<5\%$. We classified the ontology with Kobayashi-MaRust (\texttt{km classify} and \texttt{km profile}) and extracted verified, subset-minimal justifications with \texttt{km explain -{}-max-checks 2048}.
+
+\subsection{Two-layer ontological-causal and predictive architecture}
+Let $T_{\mathrm{ont}}$ denote the OWL 2 ontology and constitutive observation maps, $X_t=(W_t,N_t)$ the daily physical soil state, $U_t$ the exogenous daily forcing, $\beta$ the process parameters, and $Y_t$ the sample observations. The twin updates physical state, derives constitutive aggregates and predicts campaign-level genomic capacity via
+\begin{equation}
+X_{t+1}=F(X_t,U_t;\beta),\qquad
+Z_t=\Phi_{\mathrm{ont}}(X_t,Y_t),\qquad
+\widehat Y_{t+h}=G(Y_{\leq t},\text{covariates};\gamma).
+\end{equation}
+Interventions replace exogenous forcings $U_t$ or measured physical parameters in $\beta$ (such as prescribed post-compaction porosity $\phi$) while keeping constitutive maps $\Phi_{\mathrm{ont}}$ free of reverse leaf adjustments. Missing observations propagate to dependent aggregates without altering $X_t$ or $\beta$.
+
+\subsection{Water storage, salt transport and physiological activation}
+For soil depth $L$ (m) and porosity $\phi$, maximum pore storage is $W_{\max}=1000L\phi$~mm. On day $t$, forcing supplies water $I_t$ (mm, equivalent to L~m$^{-2}$), NaCl concentration $c_t$ (mol~L$^{-1}$), evaporation demand $E_t$ (mm) and temperature $T_t$ ($^\circ\mathrm{C}$). After mixing $W^*=W_t+I_t$ and $N^*=N_t+I_tc_t$, surface overflow is $O_t=\max(0,W^*-W_{\max})$ and drainage above field-capacity fraction $f$ is $D_t=d\max(0,\min(W^*,W_{\max})-fW_{\max})$ with daily drainage fraction $d$. Total liquid outflow $Q_t=O_t+D_t$ removes solute proportionally ($N^*Q_t/W^*$), and evaporation $\min(E_t,W^*-Q_t)$ removes water only:
+\begin{align}
+W_{t+1}&=W^*-Q_t-\min(E_t,W^*-Q_t),\\
+N_{t+1}&=N^*(1-Q_t/W^*).
+\end{align}
+
+Volumetric water content is $\theta=W/(1000L)$. Matric potential follows the Campbell retention relation \cite{campbell1974retention},
+\begin{equation}
+\psi_m=\psi_e(\theta/\phi)^{-b},
+\end{equation}
+with entry potential $\psi_e<0$ and retention exponent $b>0$. In dilute NaCl solutions ($c\leq0.1$~mol~L$^{-1}$), osmotic potential in MPa is $\psi_o=-2\varphi cRT\times10^{-3}$ with osmotic coefficient $\varphi$, gas constant $R=8.314462618$~J~mol$^{-1}$~K$^{-1}$ and absolute temperature $T$. Above $0.1$~mol~L$^{-1}$ or when salt remains in dry soil, gas-flux calculations abstain while preserving $(W_t,N_t)$. For total water potential $\psi=\psi_m+\psi_o$ and thresholds $\psi_d<\psi_w<0$ with shape exponent $a>0$, physiological activation is
+\begin{equation}
+A(\psi)=
+\begin{cases}
+0,&\psi\leq\psi_d,\\
+\left[\log(|\psi_d/\psi|)/\log(|\psi_d/\psi_w|)\right]^a,&\psi_d<\psi<\psi_w,\\
+1,&\psi\geq\psi_w.
+\end{cases}
+\end{equation}
+
+\subsection{Gas transport, energy and OWL-gated resource ceilings}
+Effective gas diffusivity in air-filled pores follows Millington and Quirk \cite{millington1961permeability,bertagni2021moisture}:
+\begin{equation}
+D_g=D_{0,g}\frac{(\phi-\theta)^{10/3}}{\phi^2},
+\end{equation}
+where $D_{0,g}$ is the free-air diffusivity of gas $g\in\{\mathrm{H_2},\mathrm{CO}\}$. For a homogeneous layer of depth $L$ with surface concentration $C_{a,g}$, zero basal flux and bulk reaction coefficient $k_g=k_{g,\mathrm{ref}}A(\psi)\allowbreak Q_{10}^{(T-T_{\mathrm{ref}})/10}$, steady reaction--diffusion obeys
+\begin{align}
+D_g\,C_g''-k_gC_g&=0,\quad C_g(0)=C_{a,g},\quad C_g'(L)=0,\\
+J_g&=C_{a,g}\sqrt{D_gk_g}\tanh\!\left(L\sqrt{k_g/D_g}\right).
+\end{align}
+Oxidation of $\mathrm{H_2}$ and $\mathrm{CO}$ requires $0.5(J_{\mathrm{H_2}}+J_{\mathrm{CO}})$ mol~$\mathrm{O_2}$~m$^{-2}$~s$^{-1}$; when this exceeds the oxygen supply limit, both fluxes scale proportionally. Apparent chemical power is $202000J_{\mathrm{H_2}}+243000J_{\mathrm{CO}}$~W~m$^{-2}$, multiplied by captured fraction $\eta$.
+
+The stoichiometric resource ceiling models three neutral reactions:
+\begin{align}
+\mathrm{H_2}+0.5\mathrm{O_2}&\rightarrow\mathrm{H_2O},\\
+\mathrm{CO}+0.5\mathrm{O_2}&\rightarrow\mathrm{CO_2},\\
+2\mathrm{H_2}+\mathrm{CO_2}&\rightarrow\mathrm{CH_2O}+\mathrm{H_2O}.
+\end{align}
+Given substrate supply bounds $(H,C_O,O,C_{\mathrm{ext}})$, maintenance demand $M$ and synthesis energy cost $\epsilon_C>0$, the linear program maximizes carbohydrate synthesis flux $v_C$ over nonnegative reaction fluxes $(v_H,v_{CO},v_C)$ subject to
+\begin{align}
+v_H+2v_C&\leq H,\quad v_{CO}\leq C_O,\quad
+(v_H+v_{CO})/2\leq O,\\
+v_C-v_{CO}&\leq C_{\mathrm{ext}},\\
+\eta(202000v_H+243000v_{CO})&\geq M+\epsilon_Cv_C.
+\end{align}
+Eligibility is determined by the OWL reasoner's entailment of \texttt{H2AutotrophicCandidateMAG} for the queried genome. We solve the scaled LP with HiGHS \cite{huangfu2018highs} and verify elemental ($\mathrm{C},\mathrm{H},\mathrm{O}$) and inequality residuals (Suppl. Section~S4).
+
+\subsection{Carbon accounting and multi-objective scenario comparison}
+Simulated trace-gas uptake is reported in molar and power units; net ecosystem carbon removal is unavailable without measured carbon stocks. When ecosystem carbon stock change $\Delta C$, imported carbon $C_{\mathrm{import}}$, geological carbon $C_{\mathrm{geological}}$, counterfactual stock change $\Delta C_0$, lifecycle emissions $E_{\mathrm{lifecycle}}$ and non-$\mathrm{CO_2}$ emissions $E_{\mathrm{nonCO_2}}$ are supplied with documented sources and boundaries, net balance in g~$\mathrm{CO_2}$e~m$^{-2}$ is
+\begin{equation}
+B=\frac{44}{12}(\Delta C-C_{\mathrm{import}}-C_{\mathrm{geological}}-\Delta C_0)
+-E_{\mathrm{lifecycle}}-E_{\mathrm{nonCO_2}}.
+\end{equation}
+
+Multi-objective scenario comparison evaluates candidate forcing schedules across the 24-member parameter grid ($b\in\{3,5\}$, $\psi_d\in\{-70,-100\}$~MPa, $a\in\{0.5,2\}$, rate multiplier $\in\{0.1,1,10\}$). Default settings use $k_{\mathrm{H_2,ref}}=k_{\mathrm{CO,ref}}=0.001$~s$^{-1}$, initial water 1.8~mm, $25~^\circ\mathrm{C}$ and 1~mm~day$^{-1}$ evaporation. Within each grid member, a scenario is Pareto-efficient if no alternative achieves higher $\mathrm{H_2}$ uptake with no greater water input, final salt inventory or disturbed area, with at least one strict improvement.
+
+\subsection{Campaign-blocked backtest, conformal calibration and external moisture test}
+For temporal prediction, biological replicates were averaged within each dated site-compartment-campaign visit to form $y=\log(1+\mathrm{GE})$. For each test campaign $c\in\{2,3,4,5\}$, training data comprised all visits from earlier campaigns whose collection dates preceded the first sample of campaign $c$. Ridge regression ($\alpha=10$) used training-standardized latitude and longitude, $\sin(2\pi\,\mathrm{DOY}/365.25)$, $\cos(2\pi\,\mathrm{DOY}/365.25)$ and one-hot compartment, compared against training global mean, training compartment mean and site-compartment persistence. To construct distribution-free $1-\alpha=90\%$ prediction intervals without future leakage, we partitioned the training visits by site into $K=\min(5,S_{\mathrm{train}})$ spatial folds and computed out-of-fold absolute residuals $r_i=|y_i-\hat y_i^{(-k(i))}|$ for all $n$ training visits. Setting $q_{0.90}$ to the $\lceil(n+1)(1-\alpha)\rceil/n$ empirical quantile of $\{r_1,\dots,r_n\}$ yielded test intervals $[\max(0,\hat y-q_{0.90}),\hat y+q_{0.90}]$.
+
+For the external moisture evaluation, we fitted $C(t)=C(0)e^{-kt}$ by nonlinear least squares to each of the 77 dilution-corrected headspace $\mathrm{H_2}$ time series from Reji et al.\ \cite{reji2025h2sink}. For each soil and held-out replicate, we fitted a nonnegative amplitude scaling the Millington--Quirk air-pore diffusivity ratio $(\phi-\theta)_+^{10/3}/\phi^2$ with or without $A(\psi)$ ($\psi_d=-85$~MPa) on the remaining replicates. We then evaluated rate RMSE on the held-out replicate.
+
+\section{Discussion}
+EQ-BioDT v0.3 demonstrates how separating OWL 2 ontological axioms, causal structural equations and observational predictors clarifies what metagenomic and physical data establish in an extreme desert ecosystem (Table~\ref{tab:statements}). By classifying all \ReferenceMAGs{} reference MAGs in OWL 2 with Kobayashi-MaRust, the twin enforces endpoint disjointness, derives multi-step pathway completeness and guild membership from raw annotations, and generates subset-minimal source-axiom justifications. Requiring all 11 KEGG M00165 reaction steps in the same MAG reduced candidate carbon fixers from 1,078 RuBisCO-positive MAGs to \CBBFull{} bacterial MAGs and reduced hydrogenase-coupled candidates from 322 to \HtwoCBB{} (\DualHtwoCO{} co-encoding form-I $\mathrm{CO}$ dehydrogenase). Crucially, eliminating the \ArchaealRuBisCO{} archaeal MAGs that carry non-autotrophic RuBisCO reversed the apparent soil-compartment ranking in the Rub' al-Khali: whereas maintenance $\mathrm{H_2}$ oxidation capacity peaks in deep bulk sand, complete $\mathrm{H_2}$-coupled chemolithoautotrophy concentrates in plant-root and deep-sand microhabitats inside \emph{Steroidobacterales}, \emph{Rhizobiales} and \emph{Mycobacteriales}. In the causal layer, coupling water-potential activation to porous-media diffusion accounted for the dry-end shutdown of $\mathrm{H_2}$ oxidation across 77 published soil incubations and showed that single, deeper wetting pulses dominate fractionated pulses across all 24 parameter combinations.
+
+Each layer's results carry explicit scope boundaries enforced by the model contract. In the constitutive and observational layers, metagenomic read mappings and marker genome equivalents measure encoded genetic capacity and relative read composition. Missing pathway steps can arise from incomplete genome assembly or unannotated orthologs as well as true absence, and OWL pathway eligibility gates the stoichiometric synthesis ceiling without implying in situ transcription or enzyme activity. In the predictive layer, campaign-blocked ridge regression improved on persistence in all four held-out campaigns, while the compartment mean remained competitive in two campaigns. Nominal 90\% site-blocked conformal intervals achieved \ConformalCoverage{} coverage across future campaigns, reflecting moderate temporal shift between sampling trips. In the process layer, the dry threshold $\psi_d=-85$~MPa was evaluated on the temperate-soil dataset from which the $-70$ to $-100$~MPa threshold range was reported \cite{reji2025h2sink}, so local retention curves and bulk rate constants ($k_{\mathrm{H_2,ref}},k_{\mathrm{CO,ref}}$) in Rub' al-Khali sands require chamber flux and matric-potential measurements.
+
+Because these boundaries are encoded directly in the executable contract, the twin supports immediate comparative analysis of wetting schedules, compaction porosity shifts, thermal regimes, dilute salinity accumulation and MAG-specific stoichiometric resource ceilings. When inputs exceed the represented domain, such as brines above $0.1$~mol~L$^{-1}$ or unmeasured ecosystem carbon stocks, the contract returns an explicit abstention. Extending the twin to vascular plant establishment, photosynthetic biocrust shading, multi-ion evaporite chemistry or microbial community turnover will follow the same contract pattern by adding explicit state variables, OWL quantity definitions and falsifiable structural equations as corresponding measurements become available.
+
+\section*{Data and code availability}
+Source code, bundled metagenomic evidence (\path{mag_evidence.tsv} and \path{sample_evidence.tsv}), the OWL 2 ontology (\path{eq_biodt_v03.ofn}), the executable model contract (\path{model_contract.json}), SHA-256 manifests and reproduction scripts are available in the \href{https://github.com/bio-ontology-research-group/empty-quarter-digital-twin}{EQ-BioDT repository}. OWL 2 classification and justification extraction use \href{https://github.com/bio-ontology-research-group/kobayashi-marust}{Kobayashi-MaRust}. Published incubation data are retrieved from a pinned commit of the \href{https://github.com/Linta-Reji/Reji2025_H2_SoilMoisture}{Reji et al.\ repository}. Suppl. Sections~S1--S4 provide the complete generated contract inventory, numerical conventions and reproduction commands.
+\bibliographystyle{unsrt}
+\bibliography{references}
+\end{document}
