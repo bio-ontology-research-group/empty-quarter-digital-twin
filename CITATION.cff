@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: Please cite the version of EQ-BioDT used in your analysis.
+type: software
+title: 'EQ-BioDT: evidence-aware conditional soil scenarios for the Rub al-Khali'
+version: 0.4.0
+date-released: 2026-10-28
+url: https://github.com/bio-ontology-research-group/empty-quarter-digital-twin
+repository-code: https://github.com/bio-ontology-research-group/empty-quarter-digital-twin
+license: MIT
+authors:
+  - family-names: Hoehndorf
+    given-names: Robert
+    orcid: https://orcid.org/0000-0001-8149-5890
+  - family-names: Rueping
+    given-names: Magnus

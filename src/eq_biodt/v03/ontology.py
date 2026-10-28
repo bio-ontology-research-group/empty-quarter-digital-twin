@@ -6,12 +6,14 @@ import os
 import shutil
 import subprocess
 import time
+import hashlib
+import tempfile
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
-from .evidence import CBB_STEPS
+from .evidence import CBB_STEPS, sha256
 
 RAK = "https://rubalkhali.science/kb/"
 KEGG = "https://www.kegg.jp/entry/"
@@ -35,6 +37,9 @@ def find_km() -> Path:
     env_bin = os.environ.get("KM_BIN")
     if env_bin and Path(env_bin).exists():
         return Path(env_bin)
+    pinned = Path(__file__).resolve().parents[3] / ".tools" / "km"
+    if pinned.exists():
+        return pinned
     which_bin = shutil.which("km")
     if which_bin:
         return Path(which_bin)
@@ -105,6 +110,8 @@ def _tbox_lines() -> list[str]:
         "DisjointUnion(rak:RAK_GUILD_TOTAL_TRACE_GAS rak:RAK_GUILD_TOTAL_H2ASE rak:RAK_GUILD_COXL_FORMI)",
         "Declaration(Class(rak:H2CarrierMAG))",
         "EquivalentClasses(rak:H2CarrierMAG ObjectSomeValuesFrom(rak:hasMarkerGuild rak:RAK_GUILD_TOTAL_H2ASE))",
+        "Declaration(Class(rak:COCarrierMAG))",
+        "EquivalentClasses(rak:COCarrierMAG ObjectSomeValuesFrom(rak:hasMarkerGuild rak:RAK_GUILD_COXL_FORMI))",
     ])
     for ko in ALL_CBB_KOS:
         lines.append(f"Declaration(Class(kegg:{ko}))")
@@ -161,12 +168,6 @@ def _mag_axiom_lines(row) -> list[str]:
     if isinstance(cbb_kos_str, str) and cbb_kos_str:
         for ko in cbb_kos_str.split(";"):
             lines.append(f"SubClassOf({m_iri} ObjectSomeValuesFrom(rak:hasKO kegg:{ko}))")
-    else:
-        for step, alts in CBB_STEPS.items():
-            if getattr(row, step, False):
-                lines.append(f"SubClassOf({m_iri} ObjectSomeValuesFrom(rak:hasKO kegg:{alts[0]}))")
-        if getattr(row, "three_gene_screen", False):
-            lines.append(f"SubClassOf({m_iri} ObjectSomeValuesFrom(rak:hasKO kegg:K01602))")
     if row.h2_1l:
         lines.append(f"SubClassOf({m_iri} ObjectSomeValuesFrom(rak:hasMarkerGuild rak:RAK_GUILD_HYDB_1L))")
     if row.h2_1h:
@@ -278,6 +279,7 @@ def evaluate_ontology_reasoning(mag: pd.DataFrame, panel: pd.DataFrame, ofn_path
         "ThreeGeneCBBMAG": entailed_mags("ThreeGeneCBBMAG"),
         "CBBCompleteMAG": entailed_mags("CBBCompleteMAG"),
         "H2CarrierMAG": entailed_mags("H2CarrierMAG"),
+        "COCarrierMAG": entailed_mags("COCarrierMAG"),
         "H2AutotrophicCandidateMAG": entailed_mags("H2AutotrophicCandidateMAG"),
         "HighQualityH2AutotrophicCandidateMAG": entailed_mags("HighQualityH2AutotrophicCandidateMAG"),
         "DualH2COAutotrophicCandidateMAG": entailed_mags("DualH2COAutotrophicCandidateMAG"),
@@ -290,6 +292,7 @@ def evaluate_ontology_reasoning(mag: pd.DataFrame, panel: pd.DataFrame, ofn_path
         "ThreeGeneCBBMAG": set(mag.loc[mag.three_gene_screen, "rep"]),
         "CBBCompleteMAG": set(mag.loc[mag.cbb_all_steps_detected, "rep"]),
         "H2CarrierMAG": set(mag.loc[mag.h2_carrier_union, "rep"]),
+        "COCarrierMAG": set(mag.loc[mag.co_form1, "rep"]),
         "H2AutotrophicCandidateMAG": set(mag.loc[mag.h2_cbb_all_steps, "rep"]),
         "HighQualityH2AutotrophicCandidateMAG": set(mag.loc[mag.h2_cbb_quality_90_5, "rep"]),
         "DualH2COAutotrophicCandidateMAG": set(mag.loc[mag.h2_cbb_all_steps & mag.co_form1, "rep"]),
@@ -300,13 +303,9 @@ def evaluate_ontology_reasoning(mag: pd.DataFrame, panel: pd.DataFrame, ofn_path
 
     # Extract subset-minimal explanation on the first candidate MAG in lexical order
     first_candidate = sorted(entailed["H2AutotrophicCandidateMAG"])[0]
-    tmp_dir = ofn_path.parent
-    mag_exp = explain_mag_entailment(mag, first_candidate, "H2AutotrophicCandidateMAG", tmp_dir)
-    conflict_exp = explain_endpoint_conflict("GenomicCapacityEndpoint", "MappedReadCompositionEndpoint", tmp_dir)
-    for p in tmp_dir.glob("explain_*.ofn"):
-        p.unlink(missing_ok=True)
-    for p in tmp_dir.glob("conflict_*.ofn"):
-        p.unlink(missing_ok=True)
+    with tempfile.TemporaryDirectory(prefix="reason-", dir=ofn_path.parent) as work:
+        mag_exp = explain_mag_entailment(mag, first_candidate, "H2AutotrophicCandidateMAG", Path(work))
+        conflict_exp = explain_endpoint_conflict("GenomicCapacityEndpoint", "MappedReadCompositionEndpoint", Path(work))
 
     if mag_exp.get("status") != "entailed" or not mag_exp.get("justifications"):
         raise RuntimeError("Failed to extract subset-minimal OWL justification for candidate MAG")
@@ -354,7 +353,9 @@ def evaluate_ontology_reasoning(mag: pd.DataFrame, panel: pd.DataFrame, ofn_path
 
     return {
         "reasoner": "Kobayashi-MaRust (km)",
-        "reasoner_version": mag_exp.get("reasonerVersion", "1.5.2"),
+        "reasoner_version": mag_exp.get("reasonerVersion"),
+        "reasoner_binary_sha256": sha256(find_km()),
+        "ontology_sha256": sha256(ofn_path),
         "selected_route": profile.get("selected_route"),
         "expressivity": profile.get("profile", {}).get("expressivity", {}).get("code"),
         "ontology_file": str(ofn_path.name),
@@ -363,11 +364,10 @@ def evaluate_ontology_reasoning(mag: pd.DataFrame, panel: pd.DataFrame, ofn_path
         "consistent": True,
         "unsatisfiable_classes": 0,
         "dropped_clauses": 0,
-        "classification_wall_seconds": round(run["wall_seconds"], 4),
         "entailed_class_counts": {k: len(v) for k, v in entailed.items()},
         "exact_agreement_all_5438_mags": True,
         "taxonomic_architecture": {
-            "archaeal_rubisco_false_positive_mags": len(entailed["ArchaealRuBisCOMAG"]),
+            "archaeal_rubisco_detected_mags": len(entailed["ArchaealRuBisCOMAG"]),
             "archaeal_rubisco_by_phylum": {k: int(v) for k, v in arch_rbcl_df["phylum"].value_counts().items()},
             "cbb_complete_by_phylum": {k: int(v) for k, v in cbb_df["phylum"].value_counts().items()},
             "h2_autotrophic_candidates_by_phylum": {k: int(v) for k, v in cand_df["phylum"].value_counts().items()},
@@ -402,15 +402,15 @@ def evaluate_ontology_reasoning(mag: pd.DataFrame, panel: pd.DataFrame, ofn_path
         "ablations": {
             "single_marker_rubisco_without_11_step_conjunction": {
                 "entailed_cbb_mags": len(entailed["RuBisCOMAG"]),
-                "false_positive_cbb_mags": len(entailed["RuBisCOMAG"] - entailed["CBBCompleteMAG"]),
+                "additional_incomplete_screen_mags": len(entailed["RuBisCOMAG"] - entailed["CBBCompleteMAG"]),
                 "entailed_h2_cbb_mags": len(rbcl_h2_mags),
-                "false_positive_h2_cbb_mags": len(rbcl_h2_mags - entailed["H2AutotrophicCandidateMAG"]),
+                "additional_h2_incomplete_screen_mags": len(rbcl_h2_mags - entailed["H2AutotrophicCandidateMAG"]),
             },
             "two_gene_rubisco_prk_without_11_step_conjunction": {
                 "entailed_cbb_mags": len(entailed["RuBisCOPRKMAG"]),
-                "false_positive_cbb_mags": len(entailed["RuBisCOPRKMAG"] - entailed["CBBCompleteMAG"]),
+                "additional_incomplete_screen_mags": len(entailed["RuBisCOPRKMAG"] - entailed["CBBCompleteMAG"]),
                 "entailed_h2_cbb_mags": len(prk_h2_mags),
-                "false_positive_h2_cbb_mags": len(prk_h2_mags - entailed["H2AutotrophicCandidateMAG"]),
+                "additional_h2_incomplete_screen_mags": len(prk_h2_mags - entailed["H2AutotrophicCandidateMAG"]),
             },
             "additive_hydrogenase_guilds_without_carrier_union": {
                 "multi_hydrogenase_mags_double_counted": multi_h2_mags,
@@ -430,4 +430,37 @@ def evaluate_ontology_reasoning(mag: pd.DataFrame, panel: pd.DataFrame, ofn_path
         },
         "entailed_candidate_mags": sorted(entailed["H2AutotrophicCandidateMAG"]),
         "entailed_high_quality_candidate_mags": sorted(entailed["HighQualityH2AutotrophicCandidateMAG"]),
+        "entailed_memberships": {str(rep): sorted(cls for cls, ids in entailed.items() if rep in ids)
+                                  for rep in mag.rep},
     }
+
+
+def rules_digest() -> str:
+    return hashlib.sha256("\n".join(_tbox_lines()).encode()).hexdigest()
+
+
+def export_classification(report: dict, data: Path) -> None:
+    """Publish actual reasoner outputs tied to their exact evidence and TBox."""
+    artifact = {"schema_version": 1, "rules_sha256": rules_digest(),
+                "evidence_sha256": sha256(data / "mag_evidence.tsv"),
+                "ontology_sha256": report["ontology_sha256"],
+                "reasoner_binary_sha256": report["reasoner_binary_sha256"],
+                "classes_by_mag": report["entailed_memberships"]}
+    (data / "entailed_memberships.json").write_text(json.dumps(artifact, indent=2, sort_keys=True) + "\n")
+    (data / "ontology_report.json").write_text(json.dumps(report, indent=2) + "\n")
+    manifest_path = data / "manifest.json"
+    manifest = json.loads(manifest_path.read_text())
+    for name in ("entailed_memberships.json", "ontology_report.json"):
+        manifest["artifacts"][name] = sha256(data / name)
+    manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
+
+
+def load_classification(data: Path) -> dict:
+    manifest = json.loads((data / "manifest.json").read_text())
+    for name in ("entailed_memberships.json", "ontology_report.json"):
+        if sha256(data / name) != manifest["artifacts"].get(name):
+            raise ValueError("OWL artifact checksum mismatch")
+    artifact = json.loads((data / "entailed_memberships.json").read_text())
+    if artifact["rules_sha256"] != rules_digest() or artifact["evidence_sha256"] != sha256(data / "mag_evidence.tsv"):
+        raise ValueError("Stale OWL classification: rebuild evidence and run the reasoner")
+    return artifact

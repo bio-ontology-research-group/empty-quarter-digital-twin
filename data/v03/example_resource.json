@@ -1,0 +1,10 @@
+{
+  "mag_id": "11Dr3__single_SemiBin_120",
+  "h2": 1e-09,
+  "co": 1e-08,
+  "oxygen": 1e-08,
+  "external_co2": 1e-08,
+  "capture_fraction": 0.25,
+  "maintenance_w_m2": 1e-05,
+  "synthesis_j_mol_c": 500000
+}

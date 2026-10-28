@@ -1,13 +1,14 @@
-"""Reproducible public commands for v0.3."""
+"""Reproducible public commands for v0.4."""
 import argparse
 import json
 from pathlib import Path
 
 import pandas as pd
 
-from .api import DATA
+from .api import DATA, resource
 from .contract import contract
-from .evidence import build_evidence
+from .interventions import intervene
+from .evidence import build_evidence, build_bundled_evidence
 from .forecast import backtest, freeze, score
 from .ontology import evaluate_ontology_reasoning
 from .planning import compare, experiment, parameter_ensemble
@@ -15,14 +16,16 @@ from .process import Parameters, State, simulate
 
 
 def main():
-    parser = argparse.ArgumentParser(description="EQ-BioDT v0.3: evidence, conditional scenarios and prospective tests")
+    parser = argparse.ArgumentParser(description="EQ-BioDT v0.4: evidence, conditional scenarios and prospective tests")
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("contract")
     p = sub.add_parser("reason")
-    p.add_argument("--ofn", type=Path, default=DATA.parent/"ontology"/"eq_biodt_v03.ofn")
+    p.add_argument("--ofn", "--output-ofn", type=Path, default=Path("eq_biodt.ofn"))
     p = sub.add_parser("build-evidence")
-    for field in ("full-ko", "quality", "metadata-panel", "output"):
+    for field in ("full-ko", "quality", "metadata-panel", "read-mapping", "marker-classification", "marker-ge", "output"):
         p.add_argument("--"+field, type=Path, required=True)
+    p = sub.add_parser("rebuild-evidence")
+    p.add_argument("--output", type=Path, required=True)
     p = sub.add_parser("backtest")
     p.add_argument("--panel", type=Path, default=DATA/"sample_evidence.tsv")
     p = sub.add_parser("freeze")
@@ -32,7 +35,7 @@ def main():
     p = sub.add_parser("score")
     p.add_argument("--forecast", required=True, type=Path)
     p.add_argument("--observations", required=True, type=Path)
-    for name in ("simulate", "compare", "experiment"):
+    for name in ("simulate", "compare", "experiment", "intervene", "resource-ceiling"):
         p = sub.add_parser(name)
         p.add_argument("--input", required=True, type=Path)
     p = sub.add_parser("serve")
@@ -50,7 +53,11 @@ def main():
         panel = pd.read_csv(DATA/"sample_evidence.tsv", sep="\t")
         result = evaluate_ontology_reasoning(mag, panel, args.ofn)
     elif args.command == "build-evidence":
-        result = build_evidence(full_ko=args.full_ko, quality=args.quality, metadata_panel=args.metadata_panel, output=args.output)
+        result = build_evidence(full_ko=args.full_ko, quality=args.quality, metadata_panel=args.metadata_panel,
+                                read_mapping=args.read_mapping, marker_classification=args.marker_classification,
+                                marker_ge=args.marker_ge, output=args.output)
+    elif args.command == "rebuild-evidence":
+        result = build_bundled_evidence(args.output)
     elif args.command == "backtest":
         result = backtest(pd.read_csv(args.panel, sep="\t"))
     elif args.command == "freeze":
@@ -59,9 +66,14 @@ def main():
         result = score(json.loads(args.forecast.read_text()), pd.read_csv(args.observations, sep="\t"))
     else:
         values = json.loads(args.input.read_text())
+        if args.command == "resource-ceiling":
+            print(json.dumps(resource(values), indent=2, allow_nan=False))
+            return 0
         params = Parameters(**values["parameters"])
         if args.command == "experiment":
             result = experiment(params)
+        elif args.command == "intervene":
+            result = intervene(State(**values["initial"]), values["forcing"], params, values["intervention"], DATA)
         elif args.command == "compare":
             result = compare(State(**values["initial"]), values["scenarios"], parameter_ensemble(params))
         else:

@@ -66,11 +66,11 @@ def predict(train: pd.DataFrame, target: pd.DataFrame) -> dict[str, np.ndarray]:
 
 
 def conformal_quantiles(train: pd.DataFrame, *, alpha: float = 0.10) -> dict[str, float]:
-    """Compute site-blocked cross-conformal residual quantiles on training visits only."""
+    """Compute site-blocked cross-validated residual quantiles on training visits only."""
     tr = train.reset_index(drop=True)
     n_splits = min(5, int(tr.site.nunique()))
     if n_splits < 2:
-        raise ValueError("At least two training sites required for site-blocked conformal calibration")
+        raise ValueError("At least two training sites required for site-held-out residual calibration")
     gkf = GroupKFold(n_splits=n_splits)
     models = ("geography_season_ridge", "persistence", "compartment_mean", "global_mean")
     residuals = {m: np.zeros(len(tr)) for m in models}
@@ -115,7 +115,7 @@ def backtest(panel: pd.DataFrame) -> dict:
                             "mean_width_90_log1p_ge": float(width.mean())})
     return {"target": TARGET, "unit": "log(1+marker genome equivalents)",
             "split": "whole_future_campaign", "metrics": metrics, "predictions": predictions,
-            "conformal_calibration": "5-fold site-blocked cross-conformal 90% intervals fitted strictly on prior-campaign training visits.",
+            "conformal_calibration": "Nominal 90% empirical intervals from site-held-out prior-campaign residuals; persistence uses its unseen-site fallback during calibration. No finite-sample coverage guarantee under temporal shift.",
             "reference_scope": "Retrospective fixed 2026 MAG/marker catalogue; catalogue discovery is not time-held-out.",
             "interpretation": "Genomic-capacity prediction; causal flux accuracy requires independent experiments."}
 
@@ -148,12 +148,12 @@ def freeze(panel_path: Path, target_date: str, output: Path, *, issued_on: str |
                                 float(np.expm1(float(v[i]) + quantiles[name]))]
                          for name, v in forecasts.items()
                      }})
-    payload = {"version": "0.3.0", "issued_on": issued.isoformat(), "target_date": target_date,
+    payload = {"version": "0.4.0", "issued_on": issued.isoformat(), "target_date": target_date,
                "window_days": window_days, "source_sha256": sha256(panel_path),
                "target": TARGET, "training_visits": len(train), "predictions": rows,
                "conformal_q90_log1p_ge": quantiles,
                "method": "ridge alpha=10; fixed geography, season, compartment; train-only preprocessing",
-               "uncertainty": "Site-blocked 90% cross-conformal intervals calibrated on training visits.",
+               "uncertainty": "Empirical intervals from site-held-out training residuals; no distribution-free guarantee under campaign shift.",
                "reference_catalogue": "fixed corrected v2 annotations (2026)",
                "status": "test_fixture" if issued_on is not None else "frozen_prospective_forecast"}
     payload["sha256"] = digest(payload)

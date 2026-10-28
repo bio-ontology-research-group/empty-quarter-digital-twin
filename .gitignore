@@ -8,7 +8,22 @@ dist/
 build/
 references
 references/
-paper/
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.bbl
+paper/*.blg
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz
+paper/*.pdf
 
 # Downloaded external source is pinned and checked by the reproduction script.
 reviews/v03/reji-source.txt
+
+.tools/
+reviews/archive-v02-paper/
+reviews/validation-2026-10-26/before/
+reviews/validation-2026-10-26/*server.log
+
+.work-temp/

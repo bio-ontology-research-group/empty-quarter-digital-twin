@@ -1,40 +1,43 @@
 {
-  "version": "0.3.0",
+  "version": "0.4.0",
   "sources": {
     "corrected_full_MAG_KOs": {
-      "path": "/home/leechuck/tmp/eq-biodt-v03/rep_ko_v2.tsv",
-      "sha256": "af1b7761527691d587a49d005816d8c5eba44df2f28d154b10d3bcb130e721f8"
+      "file": "rep_ko_v2.tsv.gz",
+      "sha256": "d96ea0a952666b79d455ed686f67f8c9aec1843a8d2c158b738c8cffa07e11cc"
     },
     "MAG_quality": {
-      "path": "/home/leechuck/Public/software/empty-quarter-workbench/results/rebuild_20260729/canonical_manifest_v1/refined_mag_manifest.tsv",
-      "sha256": "613e060a8c4cfe6e9add4168e9b9bc762262adf22b07210bc48454224213caad"
+      "file": "refined_mag_manifest.tsv.gz",
+      "sha256": "55bf9fa02a52f70ebbe435765d86341064836373534a47aedeb71a15f57c090c"
     },
     "read_mapping": {
-      "path": "/home/leechuck/Public/software/empty-quarter-lifeonair/lifeonair/results/inputs/coverm_rep_abundance_long.tsv.gz",
+      "file": "coverm_rep_abundance_long.tsv.gz",
       "sha256": "2536800baa7479dea190acd4f903154c4481cb57a8c90af4dd816ba902925856"
     },
     "gas_marker_classification": {
-      "path": "/home/leechuck/Public/software/empty-quarter-lifeonair/lifeonair/results/inputs/atmo_classification_v2.tsv",
-      "sha256": "edbb4360f1b4b5a924bdf5ef25948b71d6490e9db60f7db47ea3582a10ff62f8"
+      "file": "atmo_classification_v2.tsv.gz",
+      "sha256": "9381c10e20462658bbfa1d65342e91ee2c0485b7e161f4afcc104ed243a395a7"
     },
     "marker_genome_equivalents": {
-      "path": "/home/leechuck/Public/software/empty-quarter-lifeonair/lifeonair/results/reads/guild_genome_equivalents_v2_r3noflagged.tsv",
-      "sha256": "2e6f7790575daaf4515788b9251dd42ba2c60eb3eb30816218fe61c0b1c9bd6c"
+      "file": "guild_genome_equivalents_v2_r3noflagged.tsv.gz",
+      "sha256": "d797281108bfd7b8d60034f5848eeef231e05e40bfab25a5102d6e5e6a4d46ea"
     },
     "metadata_dates": {
-      "path": "data/processed/eq_wgs_validation_panel.parquet",
+      "file": "eq_wgs_validation_panel.parquet",
       "sha256": "a93dbb8d7f17452e7bbc33f58e61d448efa9cef8a9483a68c088f1fb5705f04c"
     }
   },
   "reference_MAGs": 5438,
   "samples": 551,
-  "all_CBB_steps_MAGs": 83,
-  "h2_CBB_all_steps_MAGs": 23,
-  "h2_CBB_quality_90_5_MAGs": 20,
+  "all_CBB_steps_MAGs": 232,
+  "h2_CBB_all_steps_MAGs": 136,
+  "h2_CBB_quality_90_5_MAGs": 100,
   "annotated_MAGs": 5438,
   "marker_GE_observed_samples": 550,
   "dated_samples": 546,
   "missing_mapping_samples": [
+    "F5Dr1"
+  ],
+  "source_missing_mapping_samples": [
     "F5Dr1",
     "SPositive"
   ],
@@ -66,10 +69,12 @@
     "transketolase": [
       "K00615"
     ],
-    "sedoheptulose_bisphosphatase": [
+    "sedoheptulose_regeneration": [
       "K01100",
       "K11532",
-      "K01086"
+      "K01086",
+      "K00616",
+      "K13810"
     ],
     "ribose_isomerase": [
       "K01807",
@@ -87,7 +92,9 @@
   "negative_screen_interpretation": "incomplete_genome_or_undetected_annotation_or_true_absence",
   "activity_absolute_biomass": "unobserved",
   "artifacts": {
-    "mag_evidence.tsv": "b30c1756d30e868cec8f1d0120d3d9875c7148d511f6ff67b7e69156bbc290c7",
-    "sample_evidence.tsv": "f8ecaf2ff4aaac604e8728024c522e75b2758f027b10a6378c1377fab281c486"
+    "mag_evidence.tsv": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+    "sample_evidence.tsv": "8524f9fcca268e74e143f31c34f98f02213468907bfaf5b9bbc279afc4cca38c",
+    "entailed_memberships.json": "e8f6cacb3742ace98de6ebc8a882ee133754fa75771f7e4619a2c39179b5a496",
+    "ontology_report.json": "54d9a8101d803e72f10c46691b6203015ec1df7e4cb06271683e7852d12576cb"
   }
 }

@@ -34,6 +34,7 @@ class Parameters:
     osmotic_coefficient: float = 1.
     osmotic_domain_mol_l: float = .1
     mechanism: str = "activation_diffusion"
+    integration_steps_per_day: int = 96
 
     def __post_init__(self):
         for k, v in asdict(self).items():
@@ -58,6 +59,8 @@ class Parameters:
             raise ValueError("Maintenance demand must be measured/specified and positive")
         if self.mechanism not in {"activation_diffusion", "diffusion_only"}:
             raise ValueError("Unknown competing mechanism")
+        if isinstance(self.integration_steps_per_day, bool) or not isinstance(self.integration_steps_per_day, int) or not 1 <= self.integration_steps_per_day <= 2880:
+            raise ValueError("integration_steps_per_day must be an integer in [1,2880]")
 
 
 def water_potential(theta: float, p: Parameters) -> float | None:
@@ -159,18 +162,49 @@ def simulate(initial: State, forcing: list[dict], p: Parameters) -> dict:
         mixed_water = state.water_mm + rain
         mixed_salt = state.salt_mol_m2 + rain*salt_c
         overflow = max(0., mixed_water-capacity)
-        drainage = max(0., min(mixed_water, capacity)-capacity*p.field_capacity_fraction)*p.drainage_fraction_day
-        outwater = overflow+drainage
-        outsalt = mixed_salt*outwater/mixed_water if mixed_water else 0.
-        evaporation = min(evap, mixed_water-outwater)
-        next_state = State(mixed_water-outwater-evaporation, mixed_salt-outsalt)
+        outwater = overflow
+        outsalt = mixed_salt*overflow/mixed_water if mixed_water else 0.
+        water, salt = mixed_water-overflow, mixed_salt-outsalt
+        evaporation = 0.
+        steps = p.integration_steps_per_day
+        drain_fraction = 1-(1-p.drainage_fraction_day)**(1/steps)
+        gas_sum = None
+        undefined = set()
+        chemistry_ok = True
+        for _ in range(steps):
+            previous_water, previous_salt = water, salt
+            drainage = max(0., water-capacity*p.field_capacity_fraction)*drain_fraction
+            salt_loss = salt*drainage/water if water else 0.
+            loss = min(evap/steps, water-drainage)
+            water = max(0., water-drainage-loss)
+            salt = max(0., salt-salt_loss)
+            outwater += drainage
+            outsalt += salt_loss
+            evaporation += loss
+            # Midpoint quadrature resolves within-day activation and drying.
+            mid_water, mid_salt = (water+previous_water)/2, (salt+previous_salt)/2
+            mid_c = mid_salt/mid_water if mid_water else None
+            end_c = salt/water if water else None
+            supported = ((mid_salt == 0 or (mid_c is not None and mid_c <= p.osmotic_domain_mol_l))
+                         and (salt == 0 or (end_c is not None and end_c <= p.osmotic_domain_mol_l)))
+            chemistry_ok &= supported
+            if supported:
+                osmotic = -2*p.osmotic_coefficient*(mid_c or 0)*1000*8.314462618*(f["temp_c"]+273.15)/1e6
+                sample = gas_exchange(mid_water/(1000*p.depth_m), f["temp_c"], p, osmotic_mpa=osmotic)
+                if gas_sum is None:
+                    gas_sum = {k: 0. for k,v in sample.items() if isinstance(v, (int, float))}
+                undefined.update(k for k,v in sample.items() if v is None)
+                for key in gas_sum:
+                    if sample[key] is not None:
+                        gas_sum[key] += sample[key]/steps
+        next_state = State(water, salt)
         concentration = next_state.salt_mol_m2/next_state.water_mm if next_state.water_mm else None
-        chemistry_ok = (next_state.salt_mol_m2 == 0 or
-                        (concentration is not None and concentration <= p.osmotic_domain_mol_l))
-        # van't Hoff: M * 1000 mol/m3 * R * K -> Pa, two ions per NaCl.
-        osmotic = -2*p.osmotic_coefficient*(concentration or 0)*1000*8.314462618*(f["temp_c"]+273.15)/1e6
-        gas = gas_exchange(next_state.water_mm/(1000*p.depth_m), f["temp_c"], p,
-                           osmotic_mpa=osmotic) if chemistry_ok else None
+        gas = ({**(gas_sum or {}), "status": "conditional_process_simulation",
+                "aggregation": "subdaily_midpoint_mean", "maintenance_coverage":
+                gas_sum.get("maintenance_coverage") if gas_sum else None} if chemistry_ok else None)
+        if gas is not None:
+            for key in undefined:
+                gas[key] = None
         rows.append({"day": day, **asdict(next_state), "water_input_mm": rain,
                      "salt_input_mol_m2": rain*salt_c, "outflow_mm": outwater,
                      "salt_outflow_mol_m2": outsalt, "evaporation_mm": evaporation,
@@ -180,7 +214,7 @@ def simulate(initial: State, forcing: list[dict], p: Parameters) -> dict:
                      "chemistry_status": "ideal_dilute_assumption" if chemistry_ok else "requires_nonideal_speciation"})
         state = next_state
     valid = all(r["gas"] is not None for r in rows)
-    return {"version": "0.3.0", "parameters": asdict(p), "initial": asdict(initial),
+    return {"version": "0.4.0", "parameters": asdict(p), "initial": asdict(initial),
             "forcing": forcing, "trajectory": rows,
             "summary": {"water_input_mm": sum(r["water_input_mm"] for r in rows),
                         "h2_uptake_mol_m2": sum(r["gas"]["h2_mol_m2_s"]*86400 for r in rows) if valid else None,

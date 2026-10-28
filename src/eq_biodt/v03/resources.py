@@ -17,7 +17,8 @@ ELEMENTS = np.array([[0, 1, 0, 1, 0, 1], [2, 0, 0, 0, 2, 2],
 
 def resource_ceiling(*, h2: float, co: float, oxygen: float, external_co2: float,
                      capture_fraction: float, maintenance_w_m2: float,
-                     synthesis_j_mol_c: float, pathway_supported: bool) -> dict:
+                     synthesis_j_mol_c: float, pathway_supported: bool,
+                     co_oxidation_supported: bool = False) -> dict:
     """Maximise CH2O-C with explicit mol m-2 s-1 substrate supplies.
 
     This is a three-reaction, open-boundary resource ceiling. Pathway support
@@ -38,7 +39,7 @@ def resource_ceiling(*, h2: float, co: float, oxygen: float, external_co2: float
     scale = max(h2, co, external_co2, maintenance_w_m2/202000, 1e-20)
     row_scale = np.maximum(np.max(np.abs(A), axis=1), 1)
     fit = linprog([0, 0, -1], A_ub=A/row_scale[:, None], b_ub=b/scale/row_scale,
-                  bounds=[(0, None)]*3, method="highs")
+                  bounds=[(0, None), (0, None if co_oxidation_supported else 0), (0, None)], method="highs")
     if fit.status == 2:
         return {"status": "infeasible_resource_or_maintenance_demand", "fluxes": None}
     if not fit.success:
@@ -53,6 +54,9 @@ def resource_ceiling(*, h2: float, co: float, oxygen: float, external_co2: float
             "net_species_exchange_mol_m2_s": dict(zip(SPECIES, exchange.tolist())),
             "element_residuals": residual.tolist(),
             "energy_slack_w_m2": float(-A[-1]@x-maintenance_w_m2),
+            "reaction_admission": {"h2_oxidation": True, "co_oxidation": bool(co_oxidation_supported),
+                                   "hydrogen_supported_carbohydrate": True},
+            "admission_scope": "Unentailed reactions are excluded from this evidence-supported model; biological absence is not asserted.",
             "net_carbon_removal": None}
 
 

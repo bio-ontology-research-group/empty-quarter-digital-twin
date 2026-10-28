@@ -15,14 +15,15 @@ import numpy as np
 import pandas as pd
 
 from eq_biodt.v03.contract import contract
-from eq_biodt.v03.evidence import sha256
+from eq_biodt.v03.evidence import sha256, build_bundled_evidence
 from eq_biodt.v03.forecast import backtest, visits
-from eq_biodt.v03.ontology import evaluate_ontology_reasoning
+from eq_biodt.v03.ontology import evaluate_ontology_reasoning, export_classification
 from eq_biodt.v03.planning import compare, experiment, parameter_ensemble
 from eq_biodt.v03.process import Parameters, State, gas_exchange
 
 sys.path.insert(0, str(Path(__file__).parent))
 from external_moisture import analyse
+from audit import analyse as audit
 
 
 def write(path, value):
@@ -111,7 +112,8 @@ def main():
     args = ap.parse_args()
     root = Path(__file__).resolve().parents[2]
     out = root / "reviews/v03"
-    out.mkdir(exist_ok=True)
+    out.mkdir(exist_ok=True, parents=True)
+    build_bundled_evidence(root / "data/v03")
     panel = pd.read_csv(root / "data/v03/sample_evidence.tsv", sep="\t")
     manifest = json.loads((root / "data/v03/manifest.json").read_text())
     for name, digest in manifest["artifacts"].items():
@@ -119,6 +121,7 @@ def main():
             raise ValueError("Evidence artifact digest mismatch")
     mag = pd.read_csv(root / "data/v03/mag_evidence.tsv", sep="\t", keep_default_na=False)
     ont = evaluate_ontology_reasoning(mag, panel, root / "data/ontology/eq_biodt_v03.ofn")
+    export_classification(ont, root / "data/v03")
     write(out / "ontology_reasoning.json", ont)
     bt = backtest(panel)
     write(out / "backtest.json", bt)
@@ -134,6 +137,7 @@ def main():
     write(root / "data/v03/example_scenario.json", {k: v for k, v in settings.items() if k != "scenarios"} | {"forcing": forces[2]["forcing"]})
     comparison = compare(State(1.8), forces, parameter_ensemble(p))
     write(out / "comparison.json", comparison)
+    audit_result = audit(root, out, bt, forces)
     design = experiment(p)
     write(out / "experiment.json", design)
     pd.DataFrame(design["schedule"]).to_csv(out / "experiment_schedule.tsv", sep="\t", index=False)
@@ -143,7 +147,7 @@ def main():
     pred_df = pd.DataFrame(bt["predictions"])
     ridge_cov = float(pred_df.loc[pred_df.model.eq("geography_season_ridge"), "covered_90"].mean())
     summary = {
-        "version": "0.3.0",
+        "version": "0.4.0",
         "samples": len(panel),
         "reference_MAGs": len(mag),
         "mapped_samples": int(panel.mapped_read_pct.notna().sum()),
@@ -154,11 +158,11 @@ def main():
             k: int(mag[k].sum())
             for k in ["rbcl_detected", "rbcl_prk_detected", "three_gene_screen", "cbb_all_steps_detected", "h2_cbb_all_steps", "h2_cbb_quality_90_5"]
         },
+        "independent_audit": audit_result,
         "owl_reasoning": {
             "reasoner": ont["reasoner"],
             "selected_route": ont["selected_route"],
             "logical_axioms": ont["logical_axioms"],
-            "classification_wall_seconds": ont["classification_wall_seconds"],
             "justification_axiom_count": ont["example_candidate_justification"]["axiom_count"],
         },
         "external_bottles": external["bottles"],
@@ -183,7 +187,7 @@ def main():
     soil_labels = {"Forest": "Forest", "Meadow": "Meadow", "PB_sand": "Pine Barrens"}
     axes[1].set(xticks=x, xticklabels=[soil_labels[s] for s in ef.index], ylabel="Held-replicate bottle-rate RMSE (min⁻¹)", title="B   Published bottle observations")
     axes[1].legend(frameon=False, fontsize=8)
-    fig.savefig(out / "process_validation.pdf")
+    fig.savefig(out / "process_validation.pdf", metadata={"CreationDate": None})
     fig.savefig(out / "process_validation.png", dpi=180)
     plt.close(fig)
 
@@ -199,7 +203,7 @@ def main():
         v = outcomes.loc[outcomes.scenario.eq(name), "h2_uptake_mol_m2"] * 1e6
         axes[1].plot([v.min(), v.max()], [i, i], lw=5, color="#007b83")
     axes[1].set(yticks=range(4), yticklabels=["Intact control", "One 12 mm pulse", "Four 3 mm pulses", "Daily 12/14 mm pulses"], xlabel="14-day H₂ uptake range (µmol m⁻²)", title="B   Explicit parameter sensitivity")
-    fig.savefig(out / "forecast_scenarios.pdf")
+    fig.savefig(out / "forecast_scenarios.pdf", metadata={"CreationDate": None})
     fig.savefig(out / "forecast_scenarios.png", dpi=180)
     plt.close(fig)
 
@@ -210,12 +214,13 @@ def main():
         for filename in ["process_validation.pdf", "forecast_scenarios.pdf"]:
             (dest / "figures" / filename).write_bytes((out / filename).read_bytes())
         body = [
-            "% Generated from the executable v0.3 contract; do not edit by hand.",
+            "% Generated from the executable v0.4 contract; do not edit by hand.",
             r"\section{Complete axioms, observation rules and assumptions}",
             "The following stable identifiers enumerate the implemented model contract. Ontological statements specify quantity types and constitutive relations. Causal statements specify conditional mechanisms; predictive and decision assumptions have separate roles.",
         ]
         body += [r"\subsection*{" + tex(c["id"] + ": " + c["kind"]) + "}\n" + tex_statement(c["statement"]) for c in model["clauses"]]
         parameter_labels = {
+            "integration_steps_per_day": "Subdaily integration steps per day",
             "k_h2_s": r"$\mathrm{H_2}$ reference reaction coefficient ($\mathrm{s}^{-1}$)",
             "k_co_s": r"$\mathrm{CO}$ reference reaction coefficient ($\mathrm{s}^{-1}$)",
             "porosity": r"Porosity $\phi$ (fraction)",
@@ -260,6 +265,17 @@ def main():
                 f"{int(campaign)} & {int(g.iloc[0].n_visits)} & {vals['geography_season_ridge']:.3f} & {vals['persistence']:.3f} & {vals['compartment_mean']:.3f} & {vals['global_mean']:.3f} & {cov:.1f}\\%" + r" \\"
             )
         (dest / "tables/v03_backtest.tex").write_text("\n".join(rows) + "\n")
+        contrast_rows = []
+        for r in audit_result["matched_compartment_contrasts"]:
+            endpoint = "CBB" if r["endpoint"].startswith("cbb_") else r"$\mathrm{H_2}$ + CBB"
+            lo, hi = r["site_bootstrap_95_percentile"]
+            contrast_rows.append(f"{endpoint} & {r['contrast'].replace('PlantRoot', 'Root')} & {r['matched_site_campaigns']} & {r['mean_difference_percentage_points']:.2f} & [{lo:.2f}, {hi:.2f}]" + r" \\")
+        (dest / "tables/v04_contrasts.tex").write_text("\n".join(contrast_rows)+"\n")
+        paired_rows = []
+        for r in audit_result["forecast_paired_comparisons"]:
+            lo, hi = r["site_bootstrap_95_percentile"]
+            paired_rows.append(f"{r['baseline'].replace('_',' ')} & {r['rmse_difference_ridge_minus_baseline']:.3f} & [{lo:.3f}, {hi:.3f}]" + r" \\")
+        (dest / "tables/v04_paired.tex").write_text("\n".join(paired_rows)+"\n")
         macros = {
             "ReferenceMAGs": len(mag),
             "CBBFull": summary["CBB_screens"]["cbb_all_steps_detected"],

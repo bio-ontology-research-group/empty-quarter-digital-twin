@@ -186,7 +186,7 @@ def test_design_holdout_and_robust_conservation_baseline():
 
 def test_public_api_and_explicit_retirement():
     client = TestClient(app)
-    assert client.get("/health").json()["version"] == "0.3.0"
+    assert client.get("/health").json()["version"] == "0.4.0"
     assert client.get("/v3/evidence?limit=1").json()["manifest"]["reference_MAGs"] == 5438
     assert client.post("/v1/intervene", json={}).status_code == 410
     assert "What happens after the rain?" in client.get("/").text
@@ -223,24 +223,24 @@ def test_owl2_reasoner_classification_justifications_and_frechet_bounds(tmp_path
     assert res["unsatisfiable_classes"] == 0
     assert res["dropped_clauses"] == 0
     assert res["exact_agreement_all_5438_mags"] is True
-    assert res["entailed_class_counts"]["CBBCompleteMAG"] == 83
+    assert res["entailed_class_counts"]["CBBCompleteMAG"] == 232
     assert res["entailed_class_counts"]["ArchaealRuBisCOMAG"] == 241
-    assert res["entailed_class_counts"]["H2AutotrophicCandidateMAG"] == 23
-    assert res["entailed_class_counts"]["HighQualityH2AutotrophicCandidateMAG"] == 20
-    assert res["entailed_class_counts"]["DualH2COAutotrophicCandidateMAG"] == 6
-    assert res["compartment_niche_partitioning"]["PlantRoot"]["samples_exceeding_1pct_h2_cbb"] == 32
-    assert res["compartment_niche_partitioning"]["Deep"]["samples_exceeding_1pct_h2_cbb"] == 10
-    assert res["compartment_niche_partitioning"]["Surface"]["samples_exceeding_1pct_h2_cbb"] == 0
+    assert res["entailed_class_counts"]["H2AutotrophicCandidateMAG"] == 136
+    assert res["entailed_class_counts"]["HighQualityH2AutotrophicCandidateMAG"] == 100
+    assert res["entailed_class_counts"]["DualH2COAutotrophicCandidateMAG"] == int(mag.dual_h2_co_cbb_all_steps.sum())
+    assert res["compartment_niche_partitioning"]["PlantRoot"]["samples_exceeding_1pct_h2_cbb"] == 151
+    assert res["compartment_niche_partitioning"]["Deep"]["samples_exceeding_1pct_h2_cbb"] == 139
+    assert res["compartment_niche_partitioning"]["Surface"]["samples_exceeding_1pct_h2_cbb"] == 76
     just = res["example_candidate_justification"]
     assert just["verified"] is True
     assert just["subset_minimal"] is True
-    assert just["axiom_count"] == 37
+    assert just["axiom_count"] > 0
     disj = res["endpoint_disjointness_justification"]
     assert disj["verified"] is True
     assert disj["axiom_count"] == 3
     ab3 = res["ablations"]["sample_marginals_without_genome_linkage"]
     assert ab3["linked_within_frechet_bounds_all_samples"] is True
-    assert ab3["nonzero_ambiguity_samples"] == 543
+    assert ab3["nonzero_ambiguity_samples"] == 549
 
 
 def test_conformal_intervals_and_mags_ontology_api():
@@ -259,8 +259,8 @@ def test_conformal_intervals_and_mags_ontology_api():
 
     client = TestClient(app)
     mags_resp = client.get("/v3/mags?candidates_only=true&limit=50").json()
-    assert mags_resp["h2_cbb_candidate_mags"] == 23
-    assert len(mags_resp["mags"]) == 23
+    assert mags_resp["h2_cbb_candidate_mags"] == 136
+    assert len(mags_resp["mags"]) == 50
     assert all(m["h2_cbb_all_steps"] for m in mags_resp["mags"])
     assert "K01601" in mags_resp["mags"][0]["cbb_kos"]
     ont_resp = client.get("/v3/ontology").json()

@@ -4,8 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "eq-biodt"
-version = "0.3.0"
-description = "Biodiversity Digital Twin for the Rub' al-Khali (Empty Quarter) grounded in EU BioDT standards and Ontological Causal Models"
+version = "0.4.0"
+description = "Evidence-aware conditional soil scenarios and metagenomic capacity forecasts for the Rub' al-Khali"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
@@ -48,6 +48,7 @@ packages = ["src/eq_biodt"]
 
 [tool.hatch.build.targets.wheel.force-include]
 "data/v03" = "eq_biodt/v03/data"
+"data/sources" = "eq_biodt/v03/sources"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

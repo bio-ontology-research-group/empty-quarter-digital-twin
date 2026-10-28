@@ -1,0 +1,46 @@
+{
+  "version": "0.4.0",
+  "sources": {
+    "corrected_full_MAG_KOs": {
+      "file": "rep_ko_v2.tsv.gz",
+      "sha256": "d96ea0a952666b79d455ed686f67f8c9aec1843a8d2c158b738c8cffa07e11cc",
+      "original_sha256": "af1b7761527691d587a49d005816d8c5eba44df2f28d154b10d3bcb130e721f8"
+    },
+    "MAG_quality": {
+      "file": "refined_mag_manifest.tsv.gz",
+      "sha256": "55bf9fa02a52f70ebbe435765d86341064836373534a47aedeb71a15f57c090c",
+      "original_sha256": "613e060a8c4cfe6e9add4168e9b9bc762262adf22b07210bc48454224213caad"
+    },
+    "read_mapping": {
+      "file": "coverm_rep_abundance_long.tsv.gz",
+      "sha256": "2536800baa7479dea190acd4f903154c4481cb57a8c90af4dd816ba902925856",
+      "original_sha256": "2536800baa7479dea190acd4f903154c4481cb57a8c90af4dd816ba902925856"
+    },
+    "gas_marker_classification": {
+      "file": "atmo_classification_v2.tsv.gz",
+      "sha256": "9381c10e20462658bbfa1d65342e91ee2c0485b7e161f4afcc104ed243a395a7",
+      "original_sha256": "edbb4360f1b4b5a924bdf5ef25948b71d6490e9db60f7db47ea3582a10ff62f8"
+    },
+    "marker_genome_equivalents": {
+      "file": "guild_genome_equivalents_v2_r3noflagged.tsv.gz",
+      "sha256": "d797281108bfd7b8d60034f5848eeef231e05e40bfab25a5102d6e5e6a4d46ea",
+      "original_sha256": "2e6f7790575daaf4515788b9251dd42ba2c60eb3eb30816218fe61c0b1c9bd6c"
+    },
+    "metadata_dates": {
+      "file": "eq_wgs_validation_panel.parquet",
+      "sha256": "a93dbb8d7f17452e7bbc33f58e61d448efa9cef8a9483a68c088f1fb5705f04c",
+      "original_sha256": "a93dbb8d7f17452e7bbc33f58e61d448efa9cef8a9483a68c088f1fb5705f04c"
+    },
+    "KEGG_M00165": {
+      "file": "M00165.txt",
+      "sha256": "0391d57d150e757af8e0fde5904ce87df8d5f5ce4f2dd879fb83a7bc92e8776b",
+      "url": "https://rest.kegg.jp/get/M00165",
+      "retrieved": "2026-10-28"
+    },
+    "Reji_bottles": {
+      "file": "reji-bottles.txt",
+      "sha256": "44bd240facea7db00348fe49046560784652b72a0b9cf43c84c863f80d48dcd0",
+      "url": "https://raw.githubusercontent.com/Linta-Reji/Reji2025_H2_SoilMoisture/1f860701b8572d3bef7f0657bd5e40862feca477/data/H2_experiments_allData_finalCorrected.txt"
+    }
+  }
+}

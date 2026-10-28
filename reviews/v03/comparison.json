@@ -24,7 +24,8 @@
       "drainage_fraction_day": 0.5,
       "osmotic_coefficient": 1.0,
       "osmotic_domain_mol_l": 0.1,
-      "mechanism": "activation_diffusion"
+      "mechanism": "activation_diffusion",
+      "integration_steps_per_day": 96
     },
     {
       "k_h2_s": 0.001,
@@ -49,7 +50,8 @@
       "drainage_fraction_day": 0.5,
       "osmotic_coefficient": 1.0,
       "osmotic_domain_mol_l": 0.1,
-      "mechanism": "activation_diffusion"
+      "mechanism": "activation_diffusion",
+      "integration_steps_per_day": 96
     },
     {
       "k_h2_s": 0.01,
@@ -74,7 +76,8 @@
       "drainage_fraction_day": 0.5,
       "osmotic_coefficient": 1.0,
       "osmotic_domain_mol_l": 0.1,
-      "mechanism": "activation_diffusion"
+      "mechanism": "activation_diffusion",
+      "integration_steps_per_day": 96
     },
     {
       "k_h2_s": 0.0001,
@@ -99,7 +102,8 @@
       "drainage_fraction_day": 0.5,
       "osmotic_coefficient": 1.0,
       "osmotic_domain_mol_l": 0.1,
-      "mechanism": "activation_diffusion"
+      "mechanism": "activation_diffusion",
+      "integration_steps_per_day": 96
     },
     {
       "k_h2_s": 0.001,
@@ -124,7 +128,8 @@
       "drainage_fraction_day": 0.5,
       "osmotic_coefficient": 1.0,
       "osmotic_domain_mol_l": 0.1,
-      "mechanism": "activation_diffusion"
+      "mechanism": "activation_diffusion",
+      "integration_steps_per_day": 96
     },
     {
       "k_h2_s": 0.01,
@@ -149,7 +154,8 @@
       "drainage_fraction_day": 0.5,
       "osmotic_coefficient": 1.0,
       "osmotic_domain_mol_l": 0.1,
-      "mechanism": "activation_diffusion"
+      "mechanism": "activation_diffusion",
+      "integration_steps_per_day": 96
     },
     {
       "k_h2_s": 0.0001,
@@ -174,7 +180,8 @@
       "drainage_fraction_day": 0.5,
       "osmotic_coefficient": 1.0,
       "osmotic_domain_mol_l": 0.1,
-      "mechanism": "activation_diffusion"
+      "mechanism": "activation_diffusion",
+      "integration_steps_per_day": 96
     },
     {
       "k_h2_s": 0.001,
@@ -199,7 +206,8 @@
       "drainage_fraction_day": 0.5,
       "osmotic_coefficient": 1.0,
       "osmotic_domain_mol_l": 0.1,
-      "mechanism": "activation_diffusion"
+      "mechanism": "activation_diffusion",
+      "integration_steps_per_day": 96
     },
     {
       "k_h2_s": 0.01,
@@ -224,7 +232,8 @@
       "drainage_fraction_day": 0.5,
       "osmotic_coefficient": 1.0,
       "osmotic_domain_mol_l": 0.1,
-      "mechanism": "activation_diffusion"
+      "mechanism": "activation_diffusion",
+      "integration_steps_per_day": 96
     },
     {
       "k_h2_s": 0.0001,
@@ -249,7 +258,8 @@
       "drainage_fraction_day": 0.5,
       "osmotic_coefficient": 1.0,
       "osmotic_domain_mol_l": 0.1,
-      "mechanism": "activation_diffusion"
+      "mechanism": "activation_diffusion",
+      "integration_steps_per_day": 96
     },
     {
       "k_h2_s": 0.001,
@@ -274,7 +284,8 @@
       "drainage_fraction_day": 0.5,
       "osmotic_coefficient": 1.0,
       "osmotic_domain_mol_l": 0.1,
-      "mechanism": "activation_diffusion"
+      "mechanism": "activation_diffusion",
+      "integration_steps_per_day": 96
     },
     {
       "k_h2_s": 0.01,
@@ -299,7 +310,8 @@
       "drainage_fraction_day": 0.5,
       "osmotic_coefficient": 1.0,
       "osmotic_domain_mol_l": 0.1,
-      "mechanism": "activation_diffusion"
+      "mechanism": "activation_diffusion",
+      "integration_steps_per_day": 96
     },
     {
       "k_h2_s": 0.0001,
@@ -324,7 +336,8 @@
       "drainage_fraction_day": 0.5,
       "osmotic_coefficient": 1.0,
       "osmotic_domain_mol_l": 0.1,
-      "mechanism": "activation_diffusion"
+      "mechanism": "activation_diffusion",
+      "integration_steps_per_day": 96
     },
     {
       "k_h2_s": 0.001,
@@ -349,7 +362,8 @@
       "drainage_fraction_day": 0.5,
       "osmotic_coefficient": 1.0,
       "osmotic_domain_mol_l": 0.1,
-      "mechanism": "activation_diffusion"
+      "mechanism": "activation_diffusion",
+      "integration_steps_per_day": 96
     },
     {
       "k_h2_s": 0.01,
@@ -374,7 +388,8 @@
       "drainage_fraction_day": 0.5,
       "osmotic_coefficient": 1.0,
       "osmotic_domain_mol_l": 0.1,
-      "mechanism": "activation_diffusion"
+      "mechanism": "activation_diffusion",
+      "integration_steps_per_day": 96
     },
     {
       "k_h2_s": 0.0001,
@@ -399,7 +414,8 @@
       "drainage_fraction_day": 0.5,
       "osmotic_coefficient": 1.0,
       "osmotic_domain_mol_l": 0.1,
-      "mechanism": "activation_diffusion"
+      "mechanism": "activation_diffusion",
+      "integration_steps_per_day": 96
     },
     {
       "k_h2_s": 0.001,
@@ -424,7 +440,8 @@
       "drainage_fraction_day": 0.5,
       "osmotic_coefficient": 1.0,
       "osmotic_domain_mol_l": 0.1,
-      "mechanism": "activation_diffusion"
+      "mechanism": "activation_diffusion",
+      "integration_steps_per_day": 96
     },
     {
       "k_h2_s": 0.01,
@@ -449,7 +466,8 @@
       "drainage_fraction_day": 0.5,
       "osmotic_coefficient": 1.0,
       "osmotic_domain_mol_l": 0.1,
-      "mechanism": "activation_diffusion"
+      "mechanism": "activation_diffusion",
+      "integration_steps_per_day": 96
     },
     {
       "k_h2_s": 0.0001,
@@ -474,7 +492,8 @@
       "drainage_fraction_day": 0.5,
       "osmotic_coefficient": 1.0,
       "osmotic_domain_mol_l": 0.1,
-      "mechanism": "activation_diffusion"
+      "mechanism": "activation_diffusion",
+      "integration_steps_per_day": 96
     },
     {
       "k_h2_s": 0.001,
@@ -499,7 +518,8 @@
       "drainage_fraction_day": 0.5,
       "osmotic_coefficient": 1.0,
       "osmotic_domain_mol_l": 0.1,
-      "mechanism": "activation_diffusion"
+      "mechanism": "activation_diffusion",
+      "integration_steps_per_day": 96
     },
     {
       "k_h2_s": 0.01,
@@ -524,7 +544,8 @@
       "drainage_fraction_day": 0.5,
       "osmotic_coefficient": 1.0,
       "osmotic_domain_mol_l": 0.1,
-      "mechanism": "activation_diffusion"
+      "mechanism": "activation_diffusion",
+      "integration_steps_per_day": 96
     },
     {
       "k_h2_s": 0.0001,
@@ -549,7 +570,8 @@
       "drainage_fraction_day": 0.5,
       "osmotic_coefficient": 1.0,
       "osmotic_domain_mol_l": 0.1,
-      "mechanism": "activation_diffusion"
+      "mechanism": "activation_diffusion",
+      "integration_steps_per_day": 96
     },
     {
       "k_h2_s": 0.001,
@@ -574,7 +596,8 @@
       "drainage_fraction_day": 0.5,
       "osmotic_coefficient": 1.0,
       "osmotic_domain_mol_l": 0.1,
-      "mechanism": "activation_diffusion"
+      "mechanism": "activation_diffusion",
+      "integration_steps_per_day": 96
     },
     {
       "k_h2_s": 0.01,
@@ -599,7 +622,8 @@
       "drainage_fraction_day": 0.5,
       "osmotic_coefficient": 1.0,
       "osmotic_domain_mol_l": 0.1,
-      "mechanism": "activation_diffusion"
+      "mechanism": "activation_diffusion",
+      "integration_steps_per_day": 96
     }
   ],
   "objectives": {
@@ -614,7 +638,7 @@
       "member": 0,
       "scenario": "intact",
       "water_input_mm": 0,
-      "h2_uptake_mol_m2": 0.0,
+      "h2_uptake_mol_m2": 5.700671404184259e-06,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -625,7 +649,7 @@
       "member": 0,
       "scenario": "single_pulse",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0001911018772691891,
+      "h2_uptake_mol_m2": 0.00020099451460827615,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -636,7 +660,7 @@
       "member": 0,
       "scenario": "four_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0001180507615252118,
+      "h2_uptake_mol_m2": 0.00014653901548148572,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -647,7 +671,7 @@
       "member": 0,
       "scenario": "daily_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 3.47209096319373e-05,
+      "h2_uptake_mol_m2": 7.230007401793716e-05,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -658,7 +682,7 @@
       "member": 1,
       "scenario": "intact",
       "water_input_mm": 0,
-      "h2_uptake_mol_m2": 0.0,
+      "h2_uptake_mol_m2": 5.374757773395365e-05,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -669,7 +693,7 @@
       "member": 1,
       "scenario": "single_pulse",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0015407940199482508,
+      "h2_uptake_mol_m2": 0.0016127045049516605,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -680,7 +704,7 @@
       "member": 1,
       "scenario": "four_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0010658176053401976,
+      "h2_uptake_mol_m2": 0.0013153652931662827,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -691,7 +715,7 @@
       "member": 1,
       "scenario": "daily_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.00032790542858435705,
+      "h2_uptake_mol_m2": 0.000673050489761886,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -702,7 +726,7 @@
       "member": 2,
       "scenario": "intact",
       "water_input_mm": 0,
-      "h2_uptake_mol_m2": 0.0,
+      "h2_uptake_mol_m2": 0.00035986356001503823,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -713,7 +737,7 @@
       "member": 2,
       "scenario": "single_pulse",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.006910961029927338,
+      "h2_uptake_mol_m2": 0.007225168934391057,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -724,7 +748,7 @@
       "member": 2,
       "scenario": "four_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.005984999062151794,
+      "h2_uptake_mol_m2": 0.007295670819164421,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -735,7 +759,7 @@
       "member": 2,
       "scenario": "daily_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0022090381126170723,
+      "h2_uptake_mol_m2": 0.0042623006135340796,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -746,7 +770,7 @@
       "member": 3,
       "scenario": "intact",
       "water_input_mm": 0,
-      "h2_uptake_mol_m2": 0.0,
+      "h2_uptake_mol_m2": 4.7039540917186754e-07,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -757,7 +781,7 @@
       "member": 3,
       "scenario": "single_pulse",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.00015371125581214467,
+      "h2_uptake_mol_m2": 0.00016234980943425698,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -768,7 +792,7 @@
       "member": 3,
       "scenario": "four_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 3.7398816244133214e-05,
+      "h2_uptake_mol_m2": 5.276726752109906e-05,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -779,7 +803,7 @@
       "member": 3,
       "scenario": "daily_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 2.590444499043993e-06,
+      "h2_uptake_mol_m2": 1.0279345811583426e-05,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -790,7 +814,7 @@
       "member": 4,
       "scenario": "intact",
       "water_input_mm": 0,
-      "h2_uptake_mol_m2": 0.0,
+      "h2_uptake_mol_m2": 4.668371237195025e-06,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -801,7 +825,7 @@
       "member": 4,
       "scenario": "single_pulse",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0012326234869627021,
+      "h2_uptake_mol_m2": 0.0012922740590143973,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -812,7 +836,7 @@
       "member": 4,
       "scenario": "four_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0003574245574220113,
+      "h2_uptake_mol_m2": 0.0004987594244274049,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -823,7 +847,7 @@
       "member": 4,
       "scenario": "daily_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 2.5736757628788115e-05,
+      "h2_uptake_mol_m2": 0.00010107394167462041,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -834,7 +858,7 @@
       "member": 5,
       "scenario": "intact",
       "water_input_mm": 0,
-      "h2_uptake_mol_m2": 0.0,
+      "h2_uptake_mol_m2": 4.349731532543939e-05,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -845,7 +869,7 @@
       "member": 5,
       "scenario": "single_pulse",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0056359281504025265,
+      "h2_uptake_mol_m2": 0.005850381374826001,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -856,7 +880,7 @@
       "member": 5,
       "scenario": "four_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0026000400343102192,
+      "h2_uptake_mol_m2": 0.0034357974312680833,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -867,7 +891,7 @@
       "member": 5,
       "scenario": "daily_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.00024211412745486226,
+      "h2_uptake_mol_m2": 0.0008753999041266314,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -878,7 +902,7 @@
       "member": 6,
       "scenario": "intact",
       "water_input_mm": 0,
-      "h2_uptake_mol_m2": 0.0,
+      "h2_uptake_mol_m2": 6.92688317000646e-06,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -889,7 +913,7 @@
       "member": 6,
       "scenario": "single_pulse",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.00019257162719675327,
+      "h2_uptake_mol_m2": 0.00020334865136489112,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -900,7 +924,7 @@
       "member": 6,
       "scenario": "four_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.00012227193301060017,
+      "h2_uptake_mol_m2": 0.0001534550663107573,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -911,7 +935,7 @@
       "member": 6,
       "scenario": "daily_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 4.355756438169282e-05,
+      "h2_uptake_mol_m2": 8.238358886352447e-05,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -922,7 +946,7 @@
       "member": 7,
       "scenario": "intact",
       "water_input_mm": 0,
-      "h2_uptake_mol_m2": 0.0,
+      "h2_uptake_mol_m2": 6.50657055935157e-05,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -933,7 +957,7 @@
       "member": 7,
       "scenario": "single_pulse",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0015526126833547917,
+      "h2_uptake_mol_m2": 0.001632888139340122,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -944,7 +968,7 @@
       "member": 7,
       "scenario": "four_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0011009374234873764,
+      "h2_uptake_mol_m2": 0.001375567583515104,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -955,7 +979,7 @@
       "member": 7,
       "scenario": "daily_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.00041002560528382746,
+      "h2_uptake_mol_m2": 0.0007648841792344637,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -966,7 +990,7 @@
       "member": 8,
       "scenario": "intact",
       "water_input_mm": 0,
-      "h2_uptake_mol_m2": 0.0,
+      "h2_uptake_mol_m2": 0.0004280460328588058,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -977,7 +1001,7 @@
       "member": 8,
       "scenario": "single_pulse",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.006953905073594164,
+      "h2_uptake_mol_m2": 0.007323893246401739,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -988,7 +1012,7 @@
       "member": 8,
       "scenario": "four_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.006119587698411917,
+      "h2_uptake_mol_m2": 0.007594657881787379,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -999,7 +1023,7 @@
       "member": 8,
       "scenario": "daily_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0027236273349254807,
+      "h2_uptake_mol_m2": 0.004788657780189971,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1010,7 +1034,7 @@
       "member": 9,
       "scenario": "intact",
       "water_input_mm": 0,
-      "h2_uptake_mol_m2": 0.0,
+      "h2_uptake_mol_m2": 6.982378188054197e-07,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1021,7 +1045,7 @@
       "member": 9,
       "scenario": "single_pulse",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0001559458162936492,
+      "h2_uptake_mol_m2": 0.0001646234061620897,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1032,7 +1056,7 @@
       "member": 9,
       "scenario": "four_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 4.1859341946509404e-05,
+      "h2_uptake_mol_m2": 5.7990527073878804e-05,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1043,7 +1067,7 @@
       "member": 9,
       "scenario": "daily_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 3.982199309852317e-06,
+      "h2_uptake_mol_m2": 1.3219694297486608e-05,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1054,7 +1078,7 @@
       "member": 10,
       "scenario": "intact",
       "water_input_mm": 0,
-      "h2_uptake_mol_m2": 0.0,
+      "h2_uptake_mol_m2": 6.914623847729017e-06,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1065,7 +1089,7 @@
       "member": 10,
       "scenario": "single_pulse",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0012518564207979674,
+      "h2_uptake_mol_m2": 0.0013118970103948467,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1076,7 +1100,7 @@
       "member": 10,
       "scenario": "four_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.00039893777667977456,
+      "h2_uptake_mol_m2": 0.0005467356523536292,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1087,7 +1111,7 @@
       "member": 10,
       "scenario": "daily_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 3.948220890494141e-05,
+      "h2_uptake_mol_m2": 0.00012967681684749406,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1098,7 +1122,7 @@
       "member": 11,
       "scenario": "intact",
       "water_input_mm": 0,
-      "h2_uptake_mol_m2": 0.0,
+      "h2_uptake_mol_m2": 6.325075038366983e-05,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1109,7 +1133,7 @@
       "member": 11,
       "scenario": "single_pulse",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.005731588518690128,
+      "h2_uptake_mol_m2": 0.0059502414937955,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1120,7 +1144,7 @@
       "member": 11,
       "scenario": "four_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0028571388086432335,
+      "h2_uptake_mol_m2": 0.0037195568587511064,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1131,7 +1155,7 @@
       "member": 11,
       "scenario": "daily_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.00036477310204268223,
+      "h2_uptake_mol_m2": 0.0011036724118388516,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1153,7 +1177,7 @@
       "member": 12,
       "scenario": "single_pulse",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0001108590121541105,
+      "h2_uptake_mol_m2": 0.00011859771936683665,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1164,7 +1188,7 @@
       "member": 12,
       "scenario": "four_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0,
+      "h2_uptake_mol_m2": 3.6209003595211748e-06,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1197,7 +1221,7 @@
       "member": 13,
       "scenario": "single_pulse",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0009006306972883819,
+      "h2_uptake_mol_m2": 0.0009539412786375126,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1208,7 +1232,7 @@
       "member": 13,
       "scenario": "four_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0,
+      "h2_uptake_mol_m2": 3.471685133147487e-05,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1241,7 +1265,7 @@
       "member": 14,
       "scenario": "single_pulse",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.004114178340066329,
+      "h2_uptake_mol_m2": 0.004299447845785013,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1252,7 +1276,7 @@
       "member": 14,
       "scenario": "four_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0,
+      "h2_uptake_mol_m2": 0.00025370519663254847,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1285,7 +1309,7 @@
       "member": 15,
       "scenario": "single_pulse",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 5.1689604036386385e-05,
+      "h2_uptake_mol_m2": 5.852790082949105e-05,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1296,7 +1320,7 @@
       "member": 15,
       "scenario": "four_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0,
+      "h2_uptake_mol_m2": 4.5617723755904126e-08,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1329,7 +1353,7 @@
       "member": 16,
       "scenario": "single_pulse",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0004400788738495754,
+      "h2_uptake_mol_m2": 0.0004904018161499046,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1340,7 +1364,7 @@
       "member": 16,
       "scenario": "four_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0,
+      "h2_uptake_mol_m2": 4.557799230488492e-07,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1373,7 +1397,7 @@
       "member": 17,
       "scenario": "single_pulse",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0022673309960721073,
+      "h2_uptake_mol_m2": 0.0024599107642221223,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1384,7 +1408,7 @@
       "member": 17,
       "scenario": "four_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0,
+      "h2_uptake_mol_m2": 4.5186037245479945e-06,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1417,7 +1441,7 @@
       "member": 18,
       "scenario": "single_pulse",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.00011457125072330651,
+      "h2_uptake_mol_m2": 0.00012338967484437792,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1428,7 +1452,7 @@
       "member": 18,
       "scenario": "four_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0,
+      "h2_uptake_mol_m2": 7.218457751411465e-06,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1461,7 +1485,7 @@
       "member": 19,
       "scenario": "single_pulse",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0009298175706909942,
+      "h2_uptake_mol_m2": 0.0009935106031608834,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1472,7 +1496,7 @@
       "member": 19,
       "scenario": "four_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0,
+      "h2_uptake_mol_m2": 6.854533950158941e-05,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1505,7 +1529,7 @@
       "member": 20,
       "scenario": "single_pulse",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.004223245818411919,
+      "h2_uptake_mol_m2": 0.004488171246341706,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1516,7 +1540,7 @@
       "member": 20,
       "scenario": "four_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0,
+      "h2_uptake_mol_m2": 0.000475859505578191,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1549,7 +1573,7 @@
       "member": 21,
       "scenario": "single_pulse",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 5.5029401404216e-05,
+      "h2_uptake_mol_m2": 6.195084272043338e-05,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1560,7 +1584,7 @@
       "member": 21,
       "scenario": "four_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0,
+      "h2_uptake_mol_m2": 1.787219014097846e-07,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1593,7 +1617,7 @@
       "member": 22,
       "scenario": "single_pulse",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0004677860838971485,
+      "h2_uptake_mol_m2": 0.0005185361282346878,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1604,7 +1628,7 @@
       "member": 22,
       "scenario": "four_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0,
+      "h2_uptake_mol_m2": 1.7834450147509148e-06,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1637,7 +1661,7 @@
       "member": 23,
       "scenario": "single_pulse",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0024040616502079277,
+      "h2_uptake_mol_m2": 0.002597175091484351,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1648,7 +1672,7 @@
       "member": 23,
       "scenario": "four_pulses",
       "water_input_mm": 12.0,
-      "h2_uptake_mol_m2": 0.0,
+      "h2_uptake_mol_m2": 1.746915164470812e-05,
       "final_water_mm": 0.0,
       "final_salt_mol_m2": 0.0,
       "net_co2_removal_g_m2": null,
@@ -1686,7 +1710,7 @@
       "member": 2,
       "pareto": [
         "intact",
-        "single_pulse"
+        "four_pulses"
       ]
     },
     {
@@ -1728,7 +1752,7 @@
       "member": 8,
       "pareto": [
         "intact",
-        "single_pulse"
+        "four_pulses"
       ]
     },
     {
@@ -1838,16 +1862,15 @@
     }
   ],
   "pareto_in_every_member": [
-    "intact",
-    "single_pulse"
+    "intact"
   ],
   "pairwise_uptake_comparisons": [
     {
       "a": "intact",
       "b": "single_pulse",
       "uptake_difference_range_mol_m2": [
-        -0.006953905073594164,
-        -5.1689604036386385e-05
+        -0.006895847213542933,
+        -5.852790082949105e-05
       ],
       "rank_reversal": false
     },
@@ -1855,8 +1878,8 @@
       "a": "intact",
       "b": "four_pulses",
       "uptake_difference_range_mol_m2": [
-        -0.006119587698411917,
-        0.0
+        -0.007166611848928573,
+        -4.5617723755904126e-08
       ],
       "rank_reversal": false
     },
@@ -1864,7 +1887,7 @@
       "a": "intact",
       "b": "daily_pulses",
       "uptake_difference_range_mol_m2": [
-        -0.0027236273349254807,
+        -0.004360611747331165,
         0.0
       ],
       "rank_reversal": false
@@ -1873,17 +1896,17 @@
       "a": "single_pulse",
       "b": "four_pulses",
       "uptake_difference_range_mol_m2": [
-        5.1689604036386385e-05,
-        0.004223245818411919
+        -0.00027076463538563966,
+        0.004045742649152464
       ],
-      "rank_reversal": false
+      "rank_reversal": true
     },
     {
       "a": "single_pulse",
       "b": "daily_pulses",
       "uptake_difference_range_mol_m2": [
-        5.1689604036386385e-05,
-        0.005393814022947664
+        5.852790082949105e-05,
+        0.00497498147069937
       ],
       "rank_reversal": false
     },
@@ -1891,8 +1914,8 @@
       "a": "four_pulses",
       "b": "daily_pulses",
       "uptake_difference_range_mol_m2": [
-        0.0,
-        0.0037759609495347213
+        4.5617723755904126e-08,
+        0.0030333702056303414
       ],
       "rank_reversal": false
     }

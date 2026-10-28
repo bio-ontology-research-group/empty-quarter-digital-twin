@@ -1,4 +1,4 @@
-> Historical v0.2 reproduction. The current v0.3 workflow is `reproducibility/v03/reproduce.py`, documented in the root README. Numerical claims below refer to the archived v0.2 manuscript.
+> Historical v0.2 reproduction. The current v0.4 workflow is `reproducibility/v03/reproduce.py`, documented in the root README. Numerical claims below refer to the archived v0.2 manuscript.
 
 # EQ-BioDT Manuscript Reproducibility Package (`reproducibility/`)
 

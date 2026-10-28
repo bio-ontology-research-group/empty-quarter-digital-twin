@@ -15734,7 +15734,7 @@
       "training_end": "2024-08-31"
     }
   ],
-  "conformal_calibration": "5-fold site-blocked cross-conformal 90% intervals fitted strictly on prior-campaign training visits.",
+  "conformal_calibration": "Nominal 90% empirical intervals from site-held-out prior-campaign residuals; persistence uses its unseen-site fallback during calibration. No finite-sample coverage guarantee under temporal shift.",
   "reference_scope": "Retrospective fixed 2026 MAG/marker catalogue; catalogue discovery is not time-held-out.",
   "interpretation": "Genomic-capacity prediction; causal flux accuracy requires independent experiments."
 }

@@ -1,0 +1,3 @@
+# Preserve exact upstream bytes, including CRLF, for checksum verification.
+data/sources/reji-bottles.txt -text -diff
+data/sources/M00165.txt -text -diff

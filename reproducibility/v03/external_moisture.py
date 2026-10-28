@@ -12,7 +12,7 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import least_squares
 
-from eq_biodt.v03.evidence import sha256
+from eq_biodt.v03.evidence import sha256, source_directory
 from eq_biodt.v03.process import Parameters, activation
 
 URL = "https://raw.githubusercontent.com/Linta-Reji/Reji2025_H2_SoilMoisture/1f860701b8572d3bef7f0657bd5e40862feca477/data/H2_experiments_allData_finalCorrected.txt"
@@ -22,10 +22,7 @@ SHA = "44bd240facea7db00348fe49046560784652b72a0b9cf43c84c863f80d48dcd0"
 def analyse(output: Path, source: Path | None = None) -> dict:
     output.mkdir(parents=True, exist_ok=True)
     if source is None:
-        source = output/"reji-source.txt"
-        if not source.exists():
-            with urllib.request.urlopen(URL, timeout=30) as response:
-                source.write_bytes(response.read())
+        source = source_directory()/"reji-bottles.txt"
     if sha256(source) != SHA:
         raise ValueError("External data digest mismatch")
     raw = pd.read_csv(source, sep="\t")

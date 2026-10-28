@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0",
+  "version": "0.4.0",
   "method": "ontological-causal reasoning with separate observation and prediction layers",
   "clauses": [
     {
@@ -35,7 +35,7 @@
     {
       "id": "M2",
       "kind": "observation",
-      "statement": "CBB support is defined in OWL 2 as the conjunction of all 11 KEGG M00165 reaction steps, where each step is satisfied by existential restriction over its alternative KOs and classified by Kobayashi-MaRust (km). K01602 is optional in M00165; a separate three-gene class requires it."
+      "statement": "CBB support is defined in OWL 2 as the conjunction of the 11 KEGG M00165 module requirements, including the alternative SBPase and transaldolase routes, where each step is satisfied by existential restriction over its alternative KOs and classified by Kobayashi-MaRust (km). K01602 is optional in M00165; a separate three-gene class requires it."
     },
     {
       "id": "M3",
@@ -90,7 +90,7 @@
     {
       "id": "C8",
       "kind": "causal assumption",
-      "statement": "Each daily step adds water and NaCl, mixes the layer, removes overflow and a fraction of water above field capacity with proportional salt, then evaporates water only. Pore capacity is 1000 L porosity mm. Daily gas uptake uses end-of-day state for 86400 seconds."
+      "statement": "Each day adds and mixes water and NaCl and removes proportional overflow. Within-day steps drain water above field capacity with proportional salt and evaporate water only. The substep drainage fraction is 1-(1-d)^(1/n), where d is the daily fraction and n defaults to 96. Gas uptake integrates midpoint rates over substeps. Pore capacity is 1000 L porosity mm."
     },
     {
       "id": "C9",
@@ -105,7 +105,7 @@
     {
       "id": "C11",
       "kind": "causal assumption",
-      "statement": "The resource ceiling has three balanced reactions: H2+0.5O2 -> H2O; CO+0.5O2 -> CO2; CO2+2H2 -> CH2O+H2O. It maximizes carbohydrate production with donor, O2, external CO2 and independently supplied energy/maintenance bounds. Genomic pathway support only permits a conditional ceiling; incomplete screens return unavailable. Nitrogen, growth and sulfate reduction are outside this network."
+      "statement": "The resource ceiling has three balanced reactions: H2+0.5O2 -> H2O; CO+0.5O2 -> CO2; CO2+2H2 -> CH2O+H2O. It maximizes carbohydrate production with donor, O2, external CO2 and independently supplied energy/maintenance bounds. Checksum-verified OWL entailments admit the conditional ceiling for H2-plus-CBB candidates and permit CO oxidation only with CO marker entailment. Incomplete screens return unavailable; lack of entailment is not biological absence. Nitrogen, growth and sulfate reduction are outside this network."
     },
     {
       "id": "C12",
@@ -130,7 +130,7 @@
     {
       "id": "F3",
       "kind": "predictive assumption",
-      "statement": "Backtests hold out whole later campaigns, using observations before the test campaign begins. Nominal 90-percent prediction intervals use 5-fold site-blocked cross-conformal residuals fitted strictly on training visits. The corrected 2026 reference catalogue is fixed throughout, so catalogue discovery is outside the temporal holdout."
+      "statement": "Backtests hold out whole later campaigns, using observations before the test campaign begins. Nominal 90-percent empirical intervals use 5-fold site-held-out residuals fitted on training visits. Persistence uses compartment fallback on unseen calibration sites. Dependence and temporal shift preclude a distribution-free coverage guarantee. The corrected 2026 reference catalogue is fixed throughout, so catalogue discovery is outside the temporal holdout."
     },
     {
       "id": "F4",
@@ -181,7 +181,8 @@
     "drainage_fraction_day": 0.5,
     "osmotic_coefficient": 1.0,
     "osmotic_domain_mol_l": 0.1,
-    "mechanism": "activation_diffusion"
+    "mechanism": "activation_diffusion",
+    "integration_steps_per_day": 96
   },
   "CBB_step_alternatives": {
     "carboxylation": [
@@ -211,10 +212,12 @@
     "transketolase": [
       "K00615"
     ],
-    "sedoheptulose_bisphosphatase": [
+    "sedoheptulose_regeneration": [
       "K01100",
       "K11532",
-      "K01086"
+      "K01086",
+      "K00616",
+      "K13810"
     ],
     "ribose_isomerase": [
       "K01807",

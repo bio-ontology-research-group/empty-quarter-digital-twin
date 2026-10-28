@@ -1,4 +1,4 @@
-% Generated from the executable v0.3 contract; do not edit by hand.
+% Generated from the executable v0.4 contract; do not edit by hand.
 
 \section{Complete axioms, observation rules and assumptions}
 
@@ -23,7 +23,7 @@ Missing measurements remain missing. Aggregates requiring a missing part are una
 MAG KO presence comes from corrected post-refinement annotation v2; quality joins use exact MAG identifiers. Missing pathway steps can reflect incompleteness or annotation failure.
 
 \subsection*{M2: observation}
-CBB support is defined in OWL 2 as the conjunction of all 11 KEGG M00165 reaction steps, where each step is satisfied by existential restriction over its alternative KOs and classified by Kobayashi-MaRust (km). K01602 is optional in M00165; a separate three-gene class requires it.
+CBB support is defined in OWL 2 as the conjunction of the 11 KEGG M00165 module requirements, including the alternative SBPase and transaldolase routes, where each step is satisfied by existential restriction over its alternative KOs and classified by Kobayashi-MaRust (km). K01602 is optional in M00165; a separate three-gene class requires it.
 
 \subsection*{M3: observation}
 Read percentages are relative mapping weights. Carrier shares divide by mapped reads, while unmapped reads remain explicit. Any nonfinite mapping observation makes that sample's composition unavailable. Shannon uses mapped MAG proportions.
@@ -56,7 +56,7 @@ $\mathrm{H_2}$ and CO oxidation each consume half a mole of $\mathrm{O_2}$ per m
 Chemical power uses fixed apparent energy yields of 202 and 243 kJ/mol $\mathrm{H_2}$ and CO. Captured power is a supplied fraction. Maintenance coverage is unavailable unless independent area-based demand is supplied; no biomass is inferred.
 
 \subsection*{C8: causal assumption}
-Each daily step adds water and NaCl, mixes the layer, removes overflow and a fraction of water above field capacity with proportional salt, then evaporates water only. Pore capacity is $1000\,L\phi$~mm. Daily gas uptake uses end-of-day state for 86400 seconds.
+Each day adds and mixes water and NaCl and removes proportional overflow. Within-day steps drain water above field capacity with proportional salt and evaporate water only. The substep drainage fraction is 1-(1-d)\textasciicircum{}(1/n), where d is the daily fraction and n defaults to 96. Gas uptake integrates midpoint rates over substeps. Pore capacity is $1000\,L\phi$~mm.
 
 \subsection*{C9: causal assumption}
 Salt is conservative NaCl formula units, not conductivity-derived salinity. Dilute osmotic potential is $-2\varphi c R T$; the specified coefficient is a sensitivity parameter. Above 0.1 mol/L or in dry saline soil, gas outputs abstain pending nonideal speciation. Salt inventory remains conserved.
@@ -65,7 +65,7 @@ Salt is conservative NaCl formula units, not conductivity-derived salinity. Dilu
 Compaction prescribes post-disturbance porosity and leaves the retention parameters fixed unless replaced. Temperature and evaporation are prescribed levers. Repeated pulses share water and salt memory; biomass, vegetation and community turnover are unmodelled.
 
 \subsection*{C11: causal assumption}
-The resource ceiling has three balanced reactions: $\mathrm{H_2}+0.5\mathrm{O_2}\rightarrow\mathrm{H_2O}$; $\mathrm{CO}+0.5\mathrm{O_2}\rightarrow\mathrm{CO_2}$; $\mathrm{CO_2}+2\mathrm{H_2}\rightarrow\mathrm{CH_2O}+\mathrm{H_2O}$. It maximizes carbohydrate production with donor, $\mathrm{O_2}$, external $\mathrm{CO_2}$ and independently supplied energy/maintenance bounds. Genomic pathway support only permits a conditional ceiling; incomplete screens return unavailable. Nitrogen, growth and sulfate reduction are outside this network.
+The resource ceiling has three balanced reactions: $\mathrm{H_2}+0.5\mathrm{O_2}\rightarrow\mathrm{H_2O}$; $\mathrm{CO}+0.5\mathrm{O_2}\rightarrow\mathrm{CO_2}$; $\mathrm{CO_2}+2\mathrm{H_2}\rightarrow\mathrm{CH_2O}+\mathrm{H_2O}$. It maximizes carbohydrate production with donor, $\mathrm{O_2}$, external $\mathrm{CO_2}$ and independently supplied energy/maintenance bounds. Checksum-verified OWL entailments admit the conditional ceiling for $\mathrm{H_2}$-plus-CBB candidates and permit CO oxidation only with CO marker entailment. Incomplete screens return unavailable; lack of entailment is not biological absence. Nitrogen, growth and sulfate reduction are outside this network.
 
 \subsection*{C12: causal assumption}
 Gas exchange is a conditional process calculation. The resource ceiling is a separate optimization over supplied potential flux bounds, not additional realized uptake. They must never be added. Solver infeasibility and numerical failure are separate outcomes.
@@ -80,7 +80,7 @@ Forecast observations are site-compartment-campaign means of marker GE. $\log(1+
 Ridge $\alpha=10$ uses standardized latitude/longitude, annual sine/cosine day-of-year on their natural $[-1,1]$ scale and one-hot compartment; preprocessing fits on training data only. Baselines are global mean, compartment mean and latest site-compartment observation, with compartment/global fallback for unvisited states.
 
 \subsection*{F3: predictive assumption}
-Backtests hold out whole later campaigns, using observations before the test campaign begins. Nominal 90-percent prediction intervals use 5-fold site-blocked cross-conformal residuals fitted strictly on training visits. The corrected 2026 reference catalogue is fixed throughout, so catalogue discovery is outside the temporal holdout.
+Backtests hold out whole later campaigns, using observations before the test campaign begins. Nominal 90-percent empirical intervals use 5-fold site-held-out residuals fitted on training visits. Persistence uses compartment fallback on unseen calibration sites. Dependence and temporal shift preclude a distribution-free coverage guarantee. The corrected 2026 reference catalogue is fixed throughout, so catalogue discovery is outside the temporal holdout.
 
 \subsection*{F4: predictive assumption}
 A forecast freezes issue date, later target date, scoring window (default $\pm 14$~days), source digest, all point predictions and methods. Existing forecasts cannot be overwritten. Scoring verifies the digest and uses only new observations after issuance inside the target window.
@@ -147,6 +147,8 @@ Dilute NaCl domain limit ($\mathrm{mol}\,\mathrm{L}^{-1}$) & $0.1$ \\
 
 Physiological mechanism & Activation and diffusion \\
 
+Subdaily integration steps per day & 96 \\
+
 \bottomrule\end{longtable}
 
 Required kinetic coefficients have no fitted default. The example workflows supply $0.001~\mathrm{s}^{-1}$ for each gas. All remaining defaults are scenario assumptions or physical constants with the scope stated in C1--C12.
@@ -169,7 +171,7 @@ Fructose bisphosphatase & K03841, K02446, K11532, K01086 \\
 
 Transketolase & K00615 \\
 
-Sedoheptulose bisphosphatase & K01100, K11532, K01086 \\
+Sedoheptulose regeneration & K01100, K11532, K01086, K00616, K13810 \\
 
 Ribose isomerase & K01807, K01808 \\
 

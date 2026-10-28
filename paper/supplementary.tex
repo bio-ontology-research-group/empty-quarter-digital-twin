@@ -5,24 +5,30 @@
 \usepackage{authblk,amsmath,amssymb,booktabs,longtable,array}
 \usepackage[hidelinks]{hyperref}
 \renewcommand{\thesection}{S\arabic{section}}
-\title{Supplementary methods: complete EQ-BioDT v0.3 model contract}
+\title{Supplementary methods: EQ-BioDT v0.4 model contract}
 \input{authors}
 \date{}
 \begin{document}
 \maketitle
 \input{assumptions}
 \section{Numerical conventions and reproduction}
-Physical inputs must be finite and obey their stated bounds. Negative water and solute inventories are rejected. Model comparison uses the same duration for every scenario. Missing chemistry makes integrated uptake unavailable for that scenario member and prevents a complete Pareto classification. The water and salt budgets retain their values through such abstentions.
+Physical inputs must be finite and obey their stated bounds. Negative water and solute inventories and initial states exceeding pore storage are rejected. Scenario comparison uses the same duration for every schedule. Gas uptake integrates midpoint rates over 96 within-day steps by default. The numerical audit compares 24, 96 and 384 steps for the four reference schedules and verifies the scenario-pair rank-reversal result across the 24-member grid at 96 and 384 steps. Missing chemistry makes integrated uptake unavailable and prevents a complete Pareto classification; the water and salt budgets continue.
 
-For OWL 2 classification, the export module generates \texttt{data/ontology/eq\_biodt\_v03.ofn} in OWL 2 Functional Syntax using verified project IRIs from the Rub' al-Khali ontology, NCBI Taxonomy, the Semantic Science Integrated Ontology and KEGG Orthology. Each of the 11 Calvin--Benson--Bassham enzymatic steps is represented by a step-level grouping class subsumed by its orthology identifiers and an existential role restriction on \texttt{rak:hasKO}. The \texttt{kobayashi-marust} reasoner (\texttt{km classify}) routes the resulting 59,447 logical axioms to its $\mathcal{EL}^{++}$ saturation engine and verifies consistency, class unsatisfiability and subsumption across all 5,438 MAGs. Minimal axiom justifications for individual guild memberships and disjointness violations are extracted with \texttt{km explain -{}-max-checks 2048}.
+The OWL exporter represents MAG annotations as existential restrictions and module support as a conjunction of 11 requirements. Alternatives within a requirement are disjunctive, including the bisphosphatase and transaldolase routes. Kobayashi-MaRust v1.5.3 verifies classification and source-axiom justifications. An independent parser evaluates the KEGG module expression against the original KO table. The numerical audit reports agreement among this parser, the tabular production implementation and reasoner entailments for every reference MAG. Source, rule, ontology and reasoner identities are provided in machine-readable manifests. Runtime resource queries reject stale or modified membership artifacts.
 
-For campaign-blocked prediction, 90\% conformal intervals are calibrated strictly within each prior-campaign training split using 5-fold site-blocked cross-validation (\texttt{GroupKFold} grouped by \texttt{site\_id}). When a training split contains fewer than two distinct sites, leave-one-out residuals are used; when five or more sites are present, five site-blocked folds are used. The finite-sample quantile of absolute out-of-fold residuals on $\log(1+\mathrm{GE})$ defines the half-width applied to held-out campaign predictions and rewritten onto the raw genome-equivalent scale via $\max(0,\exp(\hat{y}\pm q_{0.90})-1)$.
+Campaign intervals use prior-training residuals from up to five site-held-out folds. Fewer than two training sites cause an explicit error. Empirical quantiles centre intervals on refitted models, without a finite-sample coverage guarantee under temporal shift or dependence. Since held-out calibration sites have no persistence history, that baseline uses its compartment/global fallback during calibration. The audit reports coverage by compartment and paired error differences with site-bootstrap intervals; all visits from a resampled site remain together.
 
-For resource optimization, fluxes are divided by the maximum of supplied hydrogen, CO, external CO$_2$, maintenance demand divided by 202,000, and $10^{-20}$. Constraint rows are divided by the maximum of their absolute coefficients and one. HiGHS distinguishes infeasibility from other solver failures. The implementation checks elemental residuals at $10^{-10}$ times the flux scale and scaled resource violations at $10^{-7}$ times that scale. These are numerical tolerances, independent of empirical uncertainty.
+For resource optimization, fluxes are divided by the maximum of supplied hydrogen, CO, external carbon dioxide, maintenance divided by 202,000, and $10^{-20}$. Constraint rows are divided by the maximum of their absolute coefficients and one. HiGHS distinguishes infeasibility from numerical failure. Elemental residuals are checked at $10^{-10}$ times the flux scale and resource violations at $10^{-7}$ times that scale. Hydrogenase-plus-CBB entailment admits synthesis; CO-carrier entailment separately admits CO respiration. These gates express support for a conditional calculation.
 
-The command below runs the OWL 2 reasoner, executes the retrospective backtest and external moisture validation, solves the conditional process and pulse ensembles, and regenerates the manuscript's assumption inventory, figures, numerical macros and forecast table.
+A Linux x86\_64 checkout reproduces the analysis with:
 \begin{verbatim}
+uv sync --locked
+uv run python scripts/install_reasoner.py
 uv run python reproducibility/v03/reproduce.py --paper paper
+uv run pytest -q
+cd paper
+latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+latexmk -pdf -interaction=nonstopmode -halt-on-error supplementary.tex
 \end{verbatim}
-The source data retrieval is pinned to a specific upstream commit and checked against its recorded digest. The evidence rebuild command requires the corrected full KO table, quality manifest and metadata panel; their identities are recorded in \texttt{data/v03/manifest.json}. The public API and interactive console expose the same model contract, OWL classification tables, conformal forecast intervals and input validation used by the command-line workflows.
+The first two commands install locked Python dependencies and the checksum-pinned reasoner. Subsequent analysis uses the bundled source snapshot, including external bottle data and the KEGG module definition, without a network lookup. LaTeX requires a TeX installation. The analysis boundary begins with released MAG annotations, read summaries and sample metadata. It excludes primary sequencing, assembly and gene annotation. The repository includes a wheel for ordinary query, simulation and forecasting use without the reasoner binary; ontology rebuilding requires the pinned binary or an explicitly supplied compatible executable.
 \end{document}

@@ -1,0 +1,229 @@
+{
+  "seed": 42,
+  "bootstrap_draws": 2000,
+  "pathway_audit": {
+    "mags": 5438,
+    "full_module_candidates": 232,
+    "flat_vs_production_disagreements": 0,
+    "flat_vs_owl_disagreements": 0,
+    "transaldolase_route_without_sbpase": 149,
+    "archaeal_rubisco_with_prk": 2,
+    "scope": "Independent parser of pinned KEGG expression, same KO information; no experimental truth labels."
+  },
+  "matched_compartment_contrasts": [
+    {
+      "endpoint": "cbb_all_steps_detected_share_mapped",
+      "contrast": "Deep minus PlantRoot",
+      "matched_site_campaigns": 107,
+      "sites": 48,
+      "mean_difference_percentage_points": 4.378198220683834,
+      "site_bootstrap_95_percentile": [
+        2.9110725503186665,
+        6.002921262319323
+      ]
+    },
+    {
+      "endpoint": "cbb_all_steps_detected_share_mapped",
+      "contrast": "Deep minus Surface",
+      "matched_site_campaigns": 69,
+      "sites": 37,
+      "mean_difference_percentage_points": 3.204043057509656,
+      "site_bootstrap_95_percentile": [
+        1.3916731834701865,
+        4.741387293583059
+      ]
+    },
+    {
+      "endpoint": "cbb_all_steps_detected_share_mapped",
+      "contrast": "PlantRoot minus Surface",
+      "matched_site_campaigns": 85,
+      "sites": 46,
+      "mean_difference_percentage_points": -1.9132294573574222,
+      "site_bootstrap_95_percentile": [
+        -3.195671620093624,
+        -0.7717493971275085
+      ]
+    },
+    {
+      "endpoint": "h2_cbb_all_steps_share_mapped",
+      "contrast": "Deep minus PlantRoot",
+      "matched_site_campaigns": 107,
+      "sites": 48,
+      "mean_difference_percentage_points": 5.504266218480243,
+      "site_bootstrap_95_percentile": [
+        3.9535282417634026,
+        7.1053760879568735
+      ]
+    },
+    {
+      "endpoint": "h2_cbb_all_steps_share_mapped",
+      "contrast": "Deep minus Surface",
+      "matched_site_campaigns": 69,
+      "sites": 37,
+      "mean_difference_percentage_points": 3.7670622208609807,
+      "site_bootstrap_95_percentile": [
+        2.0489812641908247,
+        5.35544117026988
+      ]
+    },
+    {
+      "endpoint": "h2_cbb_all_steps_share_mapped",
+      "contrast": "PlantRoot minus Surface",
+      "matched_site_campaigns": 85,
+      "sites": 46,
+      "mean_difference_percentage_points": -2.1333064336393637,
+      "site_bootstrap_95_percentile": [
+        -3.652234236478871,
+        -0.8138343259435937
+      ]
+    }
+  ],
+  "forecast_paired_comparisons": [
+    {
+      "baseline": "persistence",
+      "visits": 278,
+      "sites": 58,
+      "rmse_difference_ridge_minus_baseline": -0.054833316889383865,
+      "site_bootstrap_95_percentile": [
+        -0.09080980871584407,
+        -0.018755187253585496
+      ]
+    },
+    {
+      "baseline": "compartment_mean",
+      "visits": 278,
+      "sites": 58,
+      "rmse_difference_ridge_minus_baseline": -0.005827812615655514,
+      "site_bootstrap_95_percentile": [
+        -0.013419734294618747,
+        0.001833635762707789
+      ]
+    },
+    {
+      "baseline": "global_mean",
+      "visits": 278,
+      "sites": 58,
+      "rmse_difference_ridge_minus_baseline": -0.040754691999335124,
+      "site_bootstrap_95_percentile": [
+        -0.057083001548154426,
+        -0.023822808061997162
+      ]
+    }
+  ],
+  "coverage_by_compartment": [
+    {
+      "model": "compartment_mean",
+      "compartment": "Deep",
+      "visits": 79,
+      "coverage": 0.8354430379746836
+    },
+    {
+      "model": "compartment_mean",
+      "compartment": "PlantRoot",
+      "visits": 142,
+      "coverage": 0.8943661971830986
+    },
+    {
+      "model": "compartment_mean",
+      "compartment": "Surface",
+      "visits": 57,
+      "coverage": 0.8947368421052632
+    },
+    {
+      "model": "geography_season_ridge",
+      "compartment": "Deep",
+      "visits": 79,
+      "coverage": 0.810126582278481
+    },
+    {
+      "model": "geography_season_ridge",
+      "compartment": "PlantRoot",
+      "visits": 142,
+      "coverage": 0.8873239436619719
+    },
+    {
+      "model": "geography_season_ridge",
+      "compartment": "Surface",
+      "visits": 57,
+      "coverage": 0.8245614035087719
+    },
+    {
+      "model": "global_mean",
+      "compartment": "Deep",
+      "visits": 79,
+      "coverage": 0.6962025316455697
+    },
+    {
+      "model": "global_mean",
+      "compartment": "PlantRoot",
+      "visits": 142,
+      "coverage": 0.9507042253521126
+    },
+    {
+      "model": "global_mean",
+      "compartment": "Surface",
+      "visits": 57,
+      "coverage": 0.8947368421052632
+    },
+    {
+      "model": "persistence",
+      "compartment": "Deep",
+      "visits": 79,
+      "coverage": 0.8354430379746836
+    },
+    {
+      "model": "persistence",
+      "compartment": "PlantRoot",
+      "visits": 142,
+      "coverage": 0.8028169014084507
+    },
+    {
+      "model": "persistence",
+      "compartment": "Surface",
+      "visits": 57,
+      "coverage": 0.7894736842105263
+    }
+  ],
+  "numerical_convergence": [
+    {
+      "scenario": "intact",
+      "h2_uptake_by_steps": {
+        "24": 0.0,
+        "96": 0.0,
+        "384": 0.0
+      },
+      "relative_error_96_vs_384": 0.0
+    },
+    {
+      "scenario": "single_pulse",
+      "h2_uptake_by_steps": {
+        "24": 0.0011023369925329035,
+        "96": 0.0011023333247692896,
+        "384": 0.0011023330715608471
+      },
+      "relative_error_96_vs_384": 2.2970230053611958e-07
+    },
+    {
+      "scenario": "four_pulses",
+      "h2_uptake_by_steps": {
+        "24": 0.00028263905374363763,
+        "96": 0.00028263236248340614,
+        "384": 0.0002826319442637866
+      },
+      "relative_error_96_vs_384": 1.4797323091534548e-06
+    },
+    {
+      "scenario": "daily_pulses",
+      "h2_uptake_by_steps": {
+        "24": 2.8611731715009615e-06,
+        "96": 2.872289645425456e-06,
+        "384": 2.8730446343668506e-06
+      },
+      "relative_error_96_vs_384": 0.0002627835754320514
+    }
+  ],
+  "intervention_flat_equivalence": true,
+  "grid_rank_reversals_stable_96_vs_384": true,
+  "grid_max_relative_integration_error": 0.0009509090255919693,
+  "uncertainty_scope": "Site resampling retains all within-site visits; intervals describe this observational cohort. No treatment randomization or adjustment for site selection."
+}

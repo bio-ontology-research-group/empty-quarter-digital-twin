@@ -1,96 +1,140 @@
-# Empty Quarter Digital Twin v0.3
+# EQ-BioDT v0.4.0
 
-EQ-BioDT connects metagenomic evidence to explicit ontological rules, conditional soil-process scenarios and testable forecasts. Its scientific contract distinguishes observations, constitutive relations, causal assumptions and decision objectives.
+EQ-BioDT is a research tool for metagenomic evidence, conditional soil trace-gas
+scenarios and future-campaign capacity prediction in the Rub’ al-Khali.
+It provides an interactive console, HTTP API and command-line interface.
 
-The release uses **551 soil metagenomes and 5,438 corrected reference MAG annotations**. The OWL 2 ontology (`data/ontology/eq_biodt_v03.ofn`, 5,513 classes and 48,568 logical axioms) is classified by **Kobayashi-MaRust** (`km`), entailing all eleven CBB reaction steps in **83** MAGs, **23** candidate chemolithoautotrophic MAGs that also carry a screened hydrogenase (**20** at completeness ≥90%, contamination <5%), and subset-minimal 37-axiom justifications. These are annotation-based capacity measurements. Local activity, absolute biomass and gas kinetics need independent measurements.
+The release contains 551 sample records and 5,438 reference MAGs. The complete
+KEGG M00165 annotation rule, including its transaldolase alternative, supports
+232 CBB candidates; 136 also carry screened hydrogenase markers. These are
+annotation-supported candidates, not measurements of activity or carbon removal.
 
-[Seven-concern disposition](reviews/v03/report.md) · [Complete executable contract](data/v03/model_contract.json) · [Results](reviews/v03/results.json) · [OWL reasoning results](reviews/v03/ontology_reasoning.json)
+## Install and open the tool
 
-## Run
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/), then:
 
-~~~bash
-uv sync
+```bash
+git clone https://github.com/bio-ontology-research-group/empty-quarter-digital-twin.git
+cd empty-quarter-digital-twin
+git checkout v0.4.0
+uv sync --locked
 uv run eq-biodt serve --port 8000
-~~~
+```
 
-Open http://127.0.0.1:8000/ for the process console or /docs for the API. The console runs the same Python model as the command line, includes an interactive MAG OWL classification and stoichiometric resource-ceiling explorer across all 5,438 MAGs, and exports inputs, assumptions and daily mass balances.
+Open <http://127.0.0.1:8000> for scenarios and evidence inspection, or
+<http://127.0.0.1:8000/docs> for the interactive API. The default server binds
+to localhost. Python 3.13 is the tested reproduction environment; package
+metadata permits Python 3.10 or later.
 
-~~~bash
+The [GitHub release](https://github.com/bio-ontology-research-group/empty-quarter-digital-twin/releases/tag/v0.4.0)
+also provides an installable wheel and manuscript PDFs. Install the downloaded
+wheel with `uv tool install path/to/eq_biodt-0.4.0-py3-none-any.whl`, then run
+`eq-biodt serve`. Normal tool use needs neither a separate ontology reasoner
+nor a sibling repository.
+
+## Run calculations
+
+```bash
 uv run eq-biodt contract
-uv run eq-biodt reason --output-ofn data/ontology/eq_biodt_v03.ofn
 uv run eq-biodt simulate --input data/v03/example_scenario.json
 uv run eq-biodt compare --input data/v03/example_comparison.json
-uv run eq-biodt experiment --input data/v03/example_scenario.json
+uv run eq-biodt intervene --input data/v03/example_intervention.json
+uv run eq-biodt resource-ceiling --input data/v03/example_resource.json
 uv run eq-biodt backtest
-~~~
+```
 
-Kinetic coefficients are required inputs. The examples supply 0.001 s⁻¹ for H₂ and CO; these are **assumptions**, not fitted Empty Quarter rates.
+`simulate` integrates a supplied water/NaCl history and conditional gas uptake.
+`compare` evaluates four explicit objectives across a 24-member sensitivity
+grid. `intervene` evaluates paired regimes with shared initial state and fixed
+definitions; see [intervention semantics](docs/causal-design.md).
+`resource-ceiling` uses a MAG's verified reasoner entailments to admit each
+reaction. It requires independent substrate and energy bounds.
 
-## Supported uses
+The console allows selection of every reference MAG and downloads complete
+scenario inputs, assumptions and outputs. The API exposes the same calculations:
+`/v3/simulate`, `/v3/compare`, `/v3/intervene`, `/v3/resource-ceiling`,
+`/v3/evidence`, `/v3/mags`, `/v3/ontology` and `/v3/contract`.
+The `/v3` API and `eq_biodt.v03` Python paths are retained for compatibility.
 
-- Compare repeated water pulses with a common water and salt history.
-- Examine prescribed porosity, temperature, evaporation and atmospheric trace-gas changes.
-- Screen pathways and hydrogenase carriers from full MAG annotations, with quality and missingness exposed.
-- Plan a randomized moisture × porosity experiment with a withheld condition.
-- Compare Pareto sets and uptake rankings across 24 explicit parameter alternatives.
-- Freeze and score genomic-capacity forecasts against persistence and mean baselines.
+For new observations, issue a forecast with a future target date:
 
-The gas model couples dry-end activation, retention, diffusion, concentration, oxygen and energy. Water and salt are conserved. A separate three-reaction ceiling balances atoms and substrate/energy supplies. Incomplete pathway evidence causes abstention.
-
-High-salinity states retain their water/salt ledger but abstain from gas prediction beyond the dilute NaCl domain. Species-specific growth, cloud-seeding efficacy, nitrogen cycling, sulfate reduction, mineral equilibria and community turnover require additional mechanisms and measurements. Carbon removal is unavailable from simulated gas uptake; a separate account requires measured stocks, carbon sources, a counterfactual and lifecycle emissions.
-
-## Forecast registration
-
-No next sampling date has been scheduled, so **no live prospective forecast is issued**. Once a date is known:
-
-~~~bash
+```bash
 uv run eq-biodt freeze --target-date YYYY-MM-DD --output forecast.json
 uv run eq-biodt score --forecast forecast.json --observations new_observations.tsv
-~~~
+```
 
-The target must be after issuance. Existing files cannot be overwritten. Scoring verifies integrity and matches observations after issuance within ±14 days of the target. New observations require site, compartment, collection_date and total_h2_marker_ge columns. Nominal 90% prediction intervals are calibrated via 5-fold site-blocked cross-conformal residuals strictly on training visits. A supplied issue-date override in the Python test interface labels the artifact as a fixture.
+Replace `YYYY-MM-DD` with a date after issuance. A forecast cannot overwrite
+an existing file. Validation observations require `site`, `compartment`,
+`collection_date`, and `total_h2_marker_ge`; matching observations must occur
+after issuance and within the forecast's target window. These predictions
+concern marker genome equivalents, not gas flux. The nominal 90% intervals
+are empirical training-residual intervals, with no guaranteed coverage under
+campaign shift.
 
-## Scientific evaluation
+## Reproduce the paper
 
-The campaign-blocked backtest has 409 visit means and 278 held-out visits. Geography/season ridge improves RMSE over persistence in all four test campaigns; compartment means perform better in two. Site-blocked 90% cross-conformal intervals achieve 85.3% empirical coverage (237/278 held-out visits). The corrected reference catalogue is fixed across this retrospective analysis.
+The analysis starts from the released MAG annotations, mapping summaries,
+marker counts and curated metadata. All these inputs, plus the KEGG definition
+and published bottle observations, are in [data/sources](data/sources/README.md).
+It does not rerun raw sequencing, assembly or primary annotation.
 
-Reanalysis of 77 published bottles supports dry-end activation in a directional moisture-envelope comparison. Its threshold comes from the same study. Local rate calibration and independent field intervention validation remain outstanding.
+On Linux x86_64:
 
-The full inventory is generated from [contract.py](src/eq_biodt/v03/contract.py). It covers causal assumptions, ontology rules, observation mappings, all default parameters, pathway rules, prediction and planning choices. The manuscript's supplement is generated from that same inventory.
-
-The OWL 2 reasoning module ([ontology.py](src/eq_biodt/v03/ontology.py)) classifies all 5,438 reference MAGs with `kobayashi-marust` (`km`), verifies exact agreement across all six pathway/guild classes, extracts a subset-minimal 37-axiom justification for `H2AutotrophicCandidateMAG`, and resolves the marginal Fréchet co-carriage ambiguity present in 543 of 550 mapped metagenomes (median width 2.02%) to exact genome-linked shares.
-
-## Reproduce
-
-~~~bash
+```bash
+uv sync --locked
+uv run python scripts/install_reasoner.py
 uv run python reproducibility/v03/reproduce.py --paper paper
-uv run pytest --basetemp="$HOME/tmp/eq-biodt-pytest"
-~~~
+uv run pytest -q
+```
 
-The paper argument is optional; the manuscript is a separate Overleaf repository. The script regenerates backtests, external bottle fits, example scenarios, the experiment schedule, figures, tables and assumptions. External data are retrieved from a pinned commit and checked by SHA-256.
+The installer downloads Kobayashi-MaRust v1.5.3 and verifies its pinned SHA-256.
+After dependencies and this binary are installed, the analysis runs offline.
+It rebuilds evidence from the source snapshot, classifies the ontology,
+exports verified memberships, runs the independent pathway audit, matched
+compartment comparisons, campaign backtests, bottle analysis, numerical
+convergence checks and scenario ensemble, and regenerates paper tables and
+figures. Outputs are in [reviews/v03](reviews/v03/report.md).
 
-Compact evidence is bundled in the wheel and source checkout. Its [manifest](data/v03/manifest.json) identifies annotation, quality, mapping, marker and metadata sources. Rebuild with:
+For other platforms, use the Linux GitHub Actions workflow or build the same
+[km release](https://github.com/bio-ontology-research-group/kobayashi-marust/releases/tag/v1.5.3)
+and set `KM_BIN` to its executable. The report records the binary digest.
 
-~~~bash
-uv run eq-biodt build-evidence \
-  --full-ko /path/to/rep_ko_v2.tsv \
-  --quality /path/to/refined_mag_manifest.tsv \
-  --metadata-panel data/processed/eq_wgs_validation_panel.parquet \
-  --output data/v03
-~~~
+With `latexmk` and TeX Live installed:
 
-The full KO source is at ibex:/ibex/scratch/projects/c2014/rob/metagenomics/04_functional/repko_clean/results/rep_ko_v2.tsv. Its [reconstruction notes](reviews/v03/repko-source-README.md) explain retained-contig corrections. No raw reads or annotation reruns are needed for the bundled analysis.
+```bash
+cd paper
+latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+latexmk -pdf -interaction=nonstopmode -halt-on-error supplementary.tex
+```
 
-The website export contains computed Python results without browser scenario multipliers:
+For a separate output directory, `eq-biodt rebuild-evidence --output DIR`
+recreates the evidence tables from bundled inputs without overwriting the
+installed package. `eq-biodt reason --ofn FILE` regenerates and classifies the
+ontology in a user-selected location. For alternative datasets,
+`eq-biodt build-evidence --help` lists all explicit required inputs.
 
-~~~bash
-uv run python reproducibility/v03/export_website.py /path/to/website/frontend/public/twin-data/eq_biodt_v03.json
-~~~
+## Scientific scope
 
-The website source update does not deploy the live service. Deployments can set VITE_TWIN_API_URL to link a live process console.
+- Logical classification establishes consequences of supplied annotations
+  and axioms. A separately implemented KEGG-expression parser gives identical
+  pathway calls with the same information.
+- Physical kinetics and retention parameters are supplied assumptions until
+  locally measured. The software is a digital-twin prototype without an
+  automated field-state assimilation loop.
+- Hydrogen uptake is integrated within each day. Wetting rankings can reverse
+  across the parameter grid; there is no universally preferred schedule.
+- A published bottle dataset tests a moisture envelope, with its threshold
+  informed by that same study. It does not validate the complete soil simulator.
+- High-salinity gas outputs and unsupported genomic resource ceilings return
+  unavailable. Water and salt ledgers remain explicit.
+- Net carbon removal requires independently measured stocks, sources,
+  counterfactual change and lifecycle emissions.
 
-## Version boundary
+See [the scientific audit](reviews/v03/report.md),
+[changes in v0.4](CHANGELOG.md) and [the manuscript](paper/main.tex).
+The old v0.2 modules and bundled historical analyses are retained for provenance;
+their heuristic intervention endpoints return HTTP 410 from the current server.
 
-The default CLI and API serve v0.3. Historical /v1/* heuristic routes return HTTP 410 with migration guidance. Old engines, state cubes and reproduction fixtures remain available as historical v0.2 artifacts, with labelled tests. Current scientific tests are in tests/test_v03.py.
-
-The manuscript is **“Ontological-causal reasoning for metagenomic evidence and soil trace-gas processes in a digital twin of the Rub' al-Khali”**, by Robert Hoehndorf and Magnus Rueping. This release is a research model with conditional process parameters; absolute field predictions require calibration.
+Code is [MIT licensed](LICENSE). External data and standards retain their
+original terms; source attribution is in the snapshot README. Cite this release
+using [CITATION.cff](CITATION.cff).

@@ -855,6 +855,11 @@ class CanonicalDataRegistry:
 
     def load_aquatic_water_chemistry(self) -> pd.DataFrame:
         """Load measured surface-water hydrochemistry for Sites 59 and 60 (Table S2 of aquatic study)."""
+        # The versioned table is the publication input. A workstation's mutable
+        # supplementary workbook must not silently override it.
+        fallback_tsv = self.paths.repro_data_dir / "aquatic_water_chemistry_s2.tsv"
+        if fallback_tsv.exists():
+            return pd.read_csv(fallback_tsv, sep="\t")
         if not self.paths.aquatic_supp_xlsx.exists():
             fallback_tsv = self.paths.repro_data_dir / "aquatic_water_chemistry_s2.tsv"
             if fallback_tsv.exists():
@@ -867,7 +872,7 @@ class CanonicalDataRegistry:
             sst = [
                 "".join(t.text or "" for t in si.findall(".//m:t", ns))
                 for si in ET.fromstring(z.read("xl/sharedStrings.xml")).findall("m:si", ns)
-            ]
+            ] if "xl/sharedStrings.xml" in z.namelist() else []
             sroot = ET.fromstring(z.read("xl/worksheets/sheet3.xml"))
             rows: List[List[str]] = []
             for r in sroot.findall(".//m:row", ns):
@@ -878,6 +883,8 @@ class CanonicalDataRegistry:
                     val = v.text if v is not None else ""
                     if t == "s" and val.isdigit():
                         val = sst[int(val)]
+                    elif t == "inlineStr":
+                        val = "".join(node.text or "" for node in c.findall(".//m:t", ns))
                     vals.append(val.strip())
                 if any(vals):
                     rows.append(vals)

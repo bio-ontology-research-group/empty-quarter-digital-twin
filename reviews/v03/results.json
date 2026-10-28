@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0",
+  "version": "0.4.0",
   "samples": 551,
   "reference_MAGs": 5438,
   "mapped_samples": 550,
@@ -10,31 +10,260 @@
     "rbcl_detected": 1078,
     "rbcl_prk_detected": 416,
     "three_gene_screen": 315,
-    "cbb_all_steps_detected": 83,
-    "h2_cbb_all_steps": 23,
-    "h2_cbb_quality_90_5": 20
+    "cbb_all_steps_detected": 232,
+    "h2_cbb_all_steps": 136,
+    "h2_cbb_quality_90_5": 100
+  },
+  "independent_audit": {
+    "seed": 42,
+    "bootstrap_draws": 2000,
+    "pathway_audit": {
+      "mags": 5438,
+      "full_module_candidates": 232,
+      "flat_vs_production_disagreements": 0,
+      "flat_vs_owl_disagreements": 0,
+      "transaldolase_route_without_sbpase": 149,
+      "archaeal_rubisco_with_prk": 2,
+      "scope": "Independent parser of pinned KEGG expression, same KO information; no experimental truth labels."
+    },
+    "matched_compartment_contrasts": [
+      {
+        "endpoint": "cbb_all_steps_detected_share_mapped",
+        "contrast": "Deep minus PlantRoot",
+        "matched_site_campaigns": 107,
+        "sites": 48,
+        "mean_difference_percentage_points": 4.378198220683834,
+        "site_bootstrap_95_percentile": [
+          2.9110725503186665,
+          6.002921262319323
+        ]
+      },
+      {
+        "endpoint": "cbb_all_steps_detected_share_mapped",
+        "contrast": "Deep minus Surface",
+        "matched_site_campaigns": 69,
+        "sites": 37,
+        "mean_difference_percentage_points": 3.204043057509656,
+        "site_bootstrap_95_percentile": [
+          1.3916731834701865,
+          4.741387293583059
+        ]
+      },
+      {
+        "endpoint": "cbb_all_steps_detected_share_mapped",
+        "contrast": "PlantRoot minus Surface",
+        "matched_site_campaigns": 85,
+        "sites": 46,
+        "mean_difference_percentage_points": -1.9132294573574222,
+        "site_bootstrap_95_percentile": [
+          -3.195671620093624,
+          -0.7717493971275085
+        ]
+      },
+      {
+        "endpoint": "h2_cbb_all_steps_share_mapped",
+        "contrast": "Deep minus PlantRoot",
+        "matched_site_campaigns": 107,
+        "sites": 48,
+        "mean_difference_percentage_points": 5.504266218480243,
+        "site_bootstrap_95_percentile": [
+          3.9535282417634026,
+          7.1053760879568735
+        ]
+      },
+      {
+        "endpoint": "h2_cbb_all_steps_share_mapped",
+        "contrast": "Deep minus Surface",
+        "matched_site_campaigns": 69,
+        "sites": 37,
+        "mean_difference_percentage_points": 3.7670622208609807,
+        "site_bootstrap_95_percentile": [
+          2.0489812641908247,
+          5.35544117026988
+        ]
+      },
+      {
+        "endpoint": "h2_cbb_all_steps_share_mapped",
+        "contrast": "PlantRoot minus Surface",
+        "matched_site_campaigns": 85,
+        "sites": 46,
+        "mean_difference_percentage_points": -2.1333064336393637,
+        "site_bootstrap_95_percentile": [
+          -3.652234236478871,
+          -0.8138343259435937
+        ]
+      }
+    ],
+    "forecast_paired_comparisons": [
+      {
+        "baseline": "persistence",
+        "visits": 278,
+        "sites": 58,
+        "rmse_difference_ridge_minus_baseline": -0.054833316889383865,
+        "site_bootstrap_95_percentile": [
+          -0.09080980871584407,
+          -0.018755187253585496
+        ]
+      },
+      {
+        "baseline": "compartment_mean",
+        "visits": 278,
+        "sites": 58,
+        "rmse_difference_ridge_minus_baseline": -0.005827812615655514,
+        "site_bootstrap_95_percentile": [
+          -0.013419734294618747,
+          0.001833635762707789
+        ]
+      },
+      {
+        "baseline": "global_mean",
+        "visits": 278,
+        "sites": 58,
+        "rmse_difference_ridge_minus_baseline": -0.040754691999335124,
+        "site_bootstrap_95_percentile": [
+          -0.057083001548154426,
+          -0.023822808061997162
+        ]
+      }
+    ],
+    "coverage_by_compartment": [
+      {
+        "model": "compartment_mean",
+        "compartment": "Deep",
+        "visits": 79,
+        "coverage": 0.8354430379746836
+      },
+      {
+        "model": "compartment_mean",
+        "compartment": "PlantRoot",
+        "visits": 142,
+        "coverage": 0.8943661971830986
+      },
+      {
+        "model": "compartment_mean",
+        "compartment": "Surface",
+        "visits": 57,
+        "coverage": 0.8947368421052632
+      },
+      {
+        "model": "geography_season_ridge",
+        "compartment": "Deep",
+        "visits": 79,
+        "coverage": 0.810126582278481
+      },
+      {
+        "model": "geography_season_ridge",
+        "compartment": "PlantRoot",
+        "visits": 142,
+        "coverage": 0.8873239436619719
+      },
+      {
+        "model": "geography_season_ridge",
+        "compartment": "Surface",
+        "visits": 57,
+        "coverage": 0.8245614035087719
+      },
+      {
+        "model": "global_mean",
+        "compartment": "Deep",
+        "visits": 79,
+        "coverage": 0.6962025316455697
+      },
+      {
+        "model": "global_mean",
+        "compartment": "PlantRoot",
+        "visits": 142,
+        "coverage": 0.9507042253521126
+      },
+      {
+        "model": "global_mean",
+        "compartment": "Surface",
+        "visits": 57,
+        "coverage": 0.8947368421052632
+      },
+      {
+        "model": "persistence",
+        "compartment": "Deep",
+        "visits": 79,
+        "coverage": 0.8354430379746836
+      },
+      {
+        "model": "persistence",
+        "compartment": "PlantRoot",
+        "visits": 142,
+        "coverage": 0.8028169014084507
+      },
+      {
+        "model": "persistence",
+        "compartment": "Surface",
+        "visits": 57,
+        "coverage": 0.7894736842105263
+      }
+    ],
+    "numerical_convergence": [
+      {
+        "scenario": "intact",
+        "h2_uptake_by_steps": {
+          "24": 0.0,
+          "96": 0.0,
+          "384": 0.0
+        },
+        "relative_error_96_vs_384": 0.0
+      },
+      {
+        "scenario": "single_pulse",
+        "h2_uptake_by_steps": {
+          "24": 0.0011023369925329035,
+          "96": 0.0011023333247692896,
+          "384": 0.0011023330715608471
+        },
+        "relative_error_96_vs_384": 2.2970230053611958e-07
+      },
+      {
+        "scenario": "four_pulses",
+        "h2_uptake_by_steps": {
+          "24": 0.00028263905374363763,
+          "96": 0.00028263236248340614,
+          "384": 0.0002826319442637866
+        },
+        "relative_error_96_vs_384": 1.4797323091534548e-06
+      },
+      {
+        "scenario": "daily_pulses",
+        "h2_uptake_by_steps": {
+          "24": 2.8611731715009615e-06,
+          "96": 2.872289645425456e-06,
+          "384": 2.8730446343668506e-06
+        },
+        "relative_error_96_vs_384": 0.0002627835754320514
+      }
+    ],
+    "intervention_flat_equivalence": true,
+    "grid_rank_reversals_stable_96_vs_384": true,
+    "grid_max_relative_integration_error": 0.0009509090255919693,
+    "uncertainty_scope": "Site resampling retains all within-site visits; intervals describe this observational cohort. No treatment randomization or adjustment for site selection."
   },
   "owl_reasoning": {
     "reasoner": "Kobayashi-MaRust (km)",
     "selected_route": "certified_el_production",
-    "logical_axioms": 59447,
-    "classification_wall_seconds": 0.4064,
-    "justification_axiom_count": 37
+    "logical_axioms": 64783,
+    "justification_axiom_count": 38
   },
   "external_bottles": 77,
   "ensemble_members": 24,
-  "uptake_rank_reversals": 0,
+  "uptake_rank_reversals": 1,
   "source_code_sha256": {
-    "src/eq_biodt/v03/__init__.py": "22051b90d2798c3228db0eb4cfef407495d1e8d73147e66e6e3d49f5d247e88d",
-    "src/eq_biodt/v03/api.py": "07244e11e5e8fe73a1081e3f1e363713d4c6f2718f9555a20a602ae0bbcdde9f",
-    "src/eq_biodt/v03/cli.py": "79654ea69c0b7d1be792945dd7137ab803f45c77e1025d368807656fdb5a96ca",
-    "src/eq_biodt/v03/contract.py": "6c40613c6507c940fdec969e90dd98f5379df719b94fde95eedaeaa873d5e643",
-    "src/eq_biodt/v03/evidence.py": "476d38b4ed105bf5f69670400bac73e2ca8dcabe2c65cde44c237d16a862a24a",
-    "src/eq_biodt/v03/forecast.py": "a37faa2454fef1614e0853dea977a8656862046293cd566c736f08e20acad042",
-    "src/eq_biodt/v03/ontology.py": "9335c01365024b4f0fd05847ca83b4f7a11609c6bcaa2dfc0d334c8f4d9a021a",
+    "src/eq_biodt/v03/__init__.py": "c4d601c5a047df792693014bd6006f7b7c16aacd1299c9ddc6cd8fa586b7f012",
+    "src/eq_biodt/v03/api.py": "0737c955de89467d4fa3fe2f4a3fbf0e194d1190784df914b13663aeffacfa4b",
+    "src/eq_biodt/v03/cli.py": "02543651ea10a261659cf83af23c1e485fc392615c71fa3724ffd05ea36167d0",
+    "src/eq_biodt/v03/contract.py": "ee54d0dc3d18a6b9249a6f063f2a270d2b297a2787339acc5bd0c5d376efe84b",
+    "src/eq_biodt/v03/evidence.py": "3a09ad22d861efbfb61bb95067aa535c9f318d1d45e209f89344150fe51114eb",
+    "src/eq_biodt/v03/forecast.py": "59f678d186ad1e37225d803d9ac1e56e01969f632ce5f839d70110012bc1a440",
+    "src/eq_biodt/v03/interventions.py": "d4da8aa505751be1a3e9088006038524cfa5c7739ac083e60eebf49ab1c9619e",
+    "src/eq_biodt/v03/ontology.py": "d73609350441b77486ee4d28509ef920a5d5ee1785febbf457e9e733c6b5f882",
     "src/eq_biodt/v03/planning.py": "c340fe8db83ebc5d445f93282aace1668106b4e5870417a706104fa6bca59415",
-    "src/eq_biodt/v03/process.py": "bac8656c6b3f44c1669b2e76fd87b95ea6472bb9eeae0b5c1bb72a073166d0ca",
-    "src/eq_biodt/v03/resources.py": "21fb8676a84400f9af3c56302f54cf9ed30b499d24d9428391dd374529148171",
+    "src/eq_biodt/v03/process.py": "91890dbea7a79ed3aa02317dcb44a40783cf18f340abc4d9e007466288d12eb3",
+    "src/eq_biodt/v03/resources.py": "d21bbea9047a4b88101437d5f66c9ada0f7ebecfc6e0ed34398fdbbdfb66177a",
     "src/eq_biodt/v03/semantics.py": "6792c3a3de516907c52808cc427ea4865bc4f233f4b9b0e261e00ca668778fa6"
   }
 }
