@@ -14,9 +14,9 @@
     {
       "@id": "./",
       "@type": "Dataset",
-      "name": "EQ-BioDT v0.4.0",
-      "version": "0.4.0",
-      "description": "Annotated analysis inputs, ontology entailments, conditional soil scenarios and campaign prediction. Reproduction starts from released annotations and read summaries.",
+      "name": "EQ-BioDT v0.5.0",
+      "version": "0.5.0",
+      "description": "Annotated analysis inputs, ontology entailments, conditional soil scenarios, primary Rub' al-Khali provenance and cross-desert transfer evaluation. Reproduction starts from released annotations, read summaries and bundled external supplements.",
       "license": {
         "@id": "LICENSE"
       },
@@ -28,6 +28,9 @@
           "@id": "data/sources/manifest.json"
         },
         {
+          "@id": "data/external/pmc-supplement-manifest.json"
+        },
+        {
           "@id": "data/v03/manifest.json"
         },
         {
@@ -37,10 +40,34 @@
           "@id": "reproducibility/v03/reproduce.py"
         },
         {
+          "@id": "reproducibility/v05/reproduce.py"
+        },
+        {
           "@id": "reviews/v03/results.json"
         },
         {
+          "@id": "reviews/v05/external-evaluation-protocol.md"
+        },
+        {
+          "@id": "reviews/v05/external_transfer.json"
+        },
+        {
+          "@id": "reviews/v05/primary_connection.json"
+        },
+        {
+          "@id": "reviews/v05/deduction_causal_trace.json"
+        },
+        {
+          "@id": "reviews/v05/independent_audit.json"
+        },
+        {
+          "@id": "reviews/v05/reproduction_manifest.json"
+        },
+        {
           "@id": "paper/main.tex"
+        },
+        {
+          "@id": "paper/supplementary.tex"
         }
       ]
     },
@@ -50,6 +77,10 @@
     },
     {
       "@id": "data/sources/manifest.json",
+      "@type": "File"
+    },
+    {
+      "@id": "data/external/pmc-supplement-manifest.json",
       "@type": "File"
     },
     {
@@ -65,11 +96,43 @@
       "@type": "File"
     },
     {
+      "@id": "reproducibility/v05/reproduce.py",
+      "@type": "File"
+    },
+    {
       "@id": "reviews/v03/results.json",
       "@type": "File"
     },
     {
+      "@id": "reviews/v05/external-evaluation-protocol.md",
+      "@type": "File"
+    },
+    {
+      "@id": "reviews/v05/external_transfer.json",
+      "@type": "File"
+    },
+    {
+      "@id": "reviews/v05/primary_connection.json",
+      "@type": "File"
+    },
+    {
+      "@id": "reviews/v05/deduction_causal_trace.json",
+      "@type": "File"
+    },
+    {
+      "@id": "reviews/v05/independent_audit.json",
+      "@type": "File"
+    },
+    {
+      "@id": "reviews/v05/reproduction_manifest.json",
+      "@type": "File"
+    },
+    {
       "@id": "paper/main.tex",
+      "@type": "File"
+    },
+    {
+      "@id": "paper/supplementary.tex",
       "@type": "File"
     }
   ]

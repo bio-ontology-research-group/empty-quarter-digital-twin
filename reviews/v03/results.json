@@ -1,5 +1,5 @@
 {
-  "version": "0.4.0",
+  "version": "0.5.0",
   "samples": 551,
   "reference_MAGs": 5438,
   "mapped_samples": 550,
@@ -253,16 +253,16 @@
   "ensemble_members": 24,
   "uptake_rank_reversals": 1,
   "source_code_sha256": {
-    "src/eq_biodt/v03/__init__.py": "c4d601c5a047df792693014bd6006f7b7c16aacd1299c9ddc6cd8fa586b7f012",
-    "src/eq_biodt/v03/api.py": "0737c955de89467d4fa3fe2f4a3fbf0e194d1190784df914b13663aeffacfa4b",
-    "src/eq_biodt/v03/cli.py": "02543651ea10a261659cf83af23c1e485fc392615c71fa3724ffd05ea36167d0",
-    "src/eq_biodt/v03/contract.py": "ee54d0dc3d18a6b9249a6f063f2a270d2b297a2787339acc5bd0c5d376efe84b",
-    "src/eq_biodt/v03/evidence.py": "3a09ad22d861efbfb61bb95067aa535c9f318d1d45e209f89344150fe51114eb",
-    "src/eq_biodt/v03/forecast.py": "59f678d186ad1e37225d803d9ac1e56e01969f632ce5f839d70110012bc1a440",
+    "src/eq_biodt/v03/__init__.py": "6628c0477d0f3134f8f81536b594c8fd3f478d4da553ebe2093f633407339e8c",
+    "src/eq_biodt/v03/api.py": "7bf24604d9755660d5b9d731619082075acfc6163e92b6c710d1c82d9b5a7bc7",
+    "src/eq_biodt/v03/cli.py": "745b77b9128352eaf7bf3084834f31b593ece35bd33765aadbf3ca245d9f6296",
+    "src/eq_biodt/v03/contract.py": "54e8c327e0992471367252f848021f914b01ee91cf5f8645811e85be5b970179",
+    "src/eq_biodt/v03/evidence.py": "be83d9c57a30d8b19bf2924838848a107613425a4f51d3fbbbef45a50b08401f",
+    "src/eq_biodt/v03/forecast.py": "4308e0cec6d3be233d982bf137e491a024137cf6b64f8bc48d92f48c8fa6b6e3",
     "src/eq_biodt/v03/interventions.py": "d4da8aa505751be1a3e9088006038524cfa5c7739ac083e60eebf49ab1c9619e",
     "src/eq_biodt/v03/ontology.py": "d73609350441b77486ee4d28509ef920a5d5ee1785febbf457e9e733c6b5f882",
     "src/eq_biodt/v03/planning.py": "c340fe8db83ebc5d445f93282aace1668106b4e5870417a706104fa6bca59415",
-    "src/eq_biodt/v03/process.py": "91890dbea7a79ed3aa02317dcb44a40783cf18f340abc4d9e007466288d12eb3",
+    "src/eq_biodt/v03/process.py": "00a7e1740b95e3def03d680592c4558eaf963d44194ddf8909af095eb37afb63",
     "src/eq_biodt/v03/resources.py": "d21bbea9047a4b88101437d5f66c9ada0f7ebecfc6e0ed34398fdbbdfb66177a",
     "src/eq_biodt/v03/semantics.py": "6792c3a3de516907c52808cc427ea4865bc4f233f4b9b0e261e00ca668778fa6"
   }

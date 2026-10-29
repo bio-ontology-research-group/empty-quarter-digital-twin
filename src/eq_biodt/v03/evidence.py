@@ -145,7 +145,7 @@ def build_evidence(*, full_ko: Path, quality: Path, metadata_panel: Path,
               "gas_marker_classification": marker_classification,
               "marker_genome_equivalents": marker_ge,
               "metadata_dates": metadata_panel}
-    manifest = {"version": "0.4.0", "sources": {k: {"file": p.name, "sha256": sha256(p)} for k,p in inputs.items()},
+    manifest = {"version": "0.5.0", "sources": {k: {"file": p.name, "sha256": sha256(p)} for k,p in inputs.items()},
                 "reference_MAGs": len(mag), "samples": len(panel),
                 "all_CBB_steps_MAGs": int(mag.cbb_all_steps_detected.sum()),
                 "h2_CBB_all_steps_MAGs": int(mag.h2_cbb_all_steps.sum()),

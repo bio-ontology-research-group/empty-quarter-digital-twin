@@ -1,0 +1,103 @@
+
+
+### RWH Project Data Compilation of Data loggers for 1 year jan-dec 2018
+
+```{r, echo=FALSE}
+
+############################################################################################################
+library(ggplot2)
+library(ggpubr)
+
+# load precip data data
+p<- read.csv("Buzzard-precip-data.csv", header=T)
+
+# Packages
+library("dplyr")
+library("lubridate")
+library("tidyverse")
+
+
+air.temp<- read.csv("Buzzard-AirTemp-data.csv", header=T)
+```
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(dpi=500,fig.width=12)
+
+```
+
+
+```{r, echo=FALSE}
+#melt air temp
+library(tidyr)
+library(stringi)
+library(reshape)
+
+myvars <- c('Measurement.Time', 'air_temp', 'DoY')
+rwh.data.air<- air.temp[myvars]
+
+rwh.data.air<- as.data.frame(rwh.data.air)
+rwh.data.air$air_temp<- as.numeric(rwh.data.air$air_temp)
+
+
+### All 12.5cm temp
+
+library(ggplot2)
+library(wesanderson)
+
+at<- ggplot(rwh.data.air,
+                aes(x=Measurement.Time, y=air_temp))+theme_bw() + theme(axis.text.x = element_text(face="bold", size=12),                                    axis.text.y = element_text(face="bold", size=12), axis.title=element_text(size=15,face="bold"))+
+  xlab("Day of Year")+ylab("Air \n Temperature (°C)")+
+  geom_vline(xintercept=as.POSIXct(as.Date(c("2018-06-08 09:00:00","2018-08-02 09:00:00", "2018-09-12 09:00:00", "2018-11-14 09:00:00"))), linetype=4, color= "red3", size=1.3)+
+  guides(color = guide_legend(override.aes = list(size = 3) ))+
+  geom_line(colour="slategrey", alpha = 0.4)+
+  geom_smooth(colour = "slategrey")
+
+
+at 
+
+```
+
+
+```{r, echo=FALSE}
+
+### Precip for 2018 merged data from UA AZ MET AG Farms for DoY= 165:239 when local logger stopped working
+
+library(ggplot2)
+library(wesanderson)
+
+p.plot<- ggplot(p,
+                aes(x=Measurement.Time, y=Precipitation.all))+theme_bw() + theme(axis.text.x = element_text(face="bold", size=12),                                    axis.text.y = element_text(face="bold", size=12), axis.title=element_text(size=15,face="bold"))+
+  xlab("Day of Year")+ylab("Precipitation \n (mm)")+
+  geom_vline(xintercept=as.POSIXct(as.Date(c("2018-06-08 09:00:00","2018-08-02 09:00:00", "2018-09-12 09:00:00", "2018-11-14 09:00:00"))), linetype=4, color= "red3", size=1.3)+
+  guides(color = guide_legend(override.aes = list(size = 3) ))+
+  geom_line(colour="slategrey")+geom_area(fill = "slategrey")
+  
+  
+p.plot
+
+```
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(dpi=500,fig.width=8, fig.height = 5)
+```
+
+
+Combine figures and print high resolution
+```{r, echo=FALSE}
+library(ggpubr)
+
+combined.fig<- ggarrange( at + rremove("xlab"),
+   p.plot, labels = c("A  ", "B  "), label.x = 0.9, label.y = 0.98, ncol=1, align="hv",
+  common.legend = TRUE, legend = "right"
+  )
+
+combined.fig
+
+#ggsave("Figure1.tiff", combined.fig, width = 8, height = 5, dpi = 600, units = "in")
+  
+```
+
+
+

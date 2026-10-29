@@ -1,0 +1,48 @@
+{
+  "study": "tribbia2026",
+  "doi": "10.1128/aem.00265-26",
+  "matches": [
+    {
+      "id": "42429763",
+      "source": "MED",
+      "pmid": "42429763",
+      "pmcid": "PMC13488325",
+      "fullTextIdList": {
+        "fullTextId": [
+          "PMC13488325"
+        ]
+      },
+      "doi": "10.1128/aem.00265-26",
+      "title": "Trace gas oxidation supports sub-surface microbial communities across Namib Desert fog and aridity gradients.",
+      "authorString": "Tribbia DZ, Lebre PH, V\u00e1zquez-Campos X, Ray AE, Laird T, Machado de Lima N, Maggs-K\u00f6lling G, Cowan DA, Ferrari BC.",
+      "journalTitle": "Appl Environ Microbiol",
+      "issue": "8",
+      "journalVolume": "92",
+      "pubYear": "2026",
+      "journalIssn": "0099-2240; 1098-5336; ",
+      "pageInfo": "e0026526",
+      "pubType": "research-article; journal article",
+      "isOpenAccess": "Y",
+      "inEPMC": "Y",
+      "inPMC": "Y",
+      "citedByCount": 0,
+      "hasReferences": "Y",
+      "hasTextMinedTerms": "Y",
+      "hasDbCrossReferences": "N",
+      "hasPDF": "Y",
+      "hasBook": "N",
+      "hasSuppl": "Y",
+      "hasLabsLinks": "N",
+      "hasTMAccessionNumbers": "Y",
+      "tmAccessionTypeList": {
+        "accessionType": [
+          "gen",
+          "doi"
+        ]
+      },
+      "firstPublicationDate": "2026-07-10",
+      "firstIndexDate": "2026-07-10"
+    }
+  ],
+  "fulltext_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13488325/fullTextXML"
+}

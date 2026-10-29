@@ -1,0 +1,47 @@
+{
+  "study": "jordaan2020",
+  "doi": "10.1128/mSystems.01131-20",
+  "matches": [
+    {
+      "id": "33203691",
+      "source": "MED",
+      "pmid": "33203691",
+      "pmcid": "PMC7677003",
+      "fullTextIdList": {
+        "fullTextId": [
+          "PMC7677003"
+        ]
+      },
+      "doi": "10.1128/msystems.01131-20",
+      "title": "Hydrogen-Oxidizing Bacteria Are Abundant in Desert Soils and Strongly Stimulated by Hydration.",
+      "authorString": "Jordaan K, Lappan R, Dong X, Aitkenhead IJ, Bay SK, Chiri E, Wieler N, Meredith LK, Cowan DA, Chown SL, Greening C.",
+      "journalTitle": "mSystems",
+      "issue": "6",
+      "journalVolume": "5",
+      "pubYear": "2020",
+      "journalIssn": "2379-5077",
+      "pageInfo": "e01131-20",
+      "pubType": "research-article; journal article",
+      "isOpenAccess": "Y",
+      "inEPMC": "Y",
+      "inPMC": "Y",
+      "citedByCount": 52,
+      "hasReferences": "Y",
+      "hasTextMinedTerms": "Y",
+      "hasDbCrossReferences": "N",
+      "hasPDF": "Y",
+      "hasBook": "N",
+      "hasSuppl": "Y",
+      "hasLabsLinks": "Y",
+      "hasTMAccessionNumbers": "Y",
+      "tmAccessionTypeList": {
+        "accessionType": [
+          "bioproject"
+        ]
+      },
+      "firstPublicationDate": "2020-11-17",
+      "firstIndexDate": "2020-11-19"
+    }
+  ],
+  "fulltext_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7677003/fullTextXML"
+}

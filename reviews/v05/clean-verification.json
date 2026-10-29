@@ -1,0 +1,48 @@
+{
+  "release": "0.5.0",
+  "verification_date": "2026-10-29",
+  "source": "Clean directory populated only from the reviewed Git index, with a new uv environment and checksum-pinned reasoner installation.",
+  "reproduction": "passed",
+  "analysis_outputs_compared": 21,
+  "byte_identical_outputs": 21,
+  "independent_audit": {
+    "status": "passed",
+    "independently_recomputed_field_predictions": 96,
+    "max_absolute_field_prediction_discrepancy": 8.881784197001252e-16,
+    "sonoran_lab_bottles": 48,
+    "namib_quantified_rates": 60,
+    "temperate_prediction_rows": 231,
+    "checks": [
+      "Corrected native source endpoint and sign",
+      "All source-batch conditions retained",
+      "Whole-campaign holdout boundaries and independent training-only grid refit",
+      "Independent diffusion-reaction equation",
+      "All field metrics",
+      "Unquantified dry Namib endpoints retained",
+      "Complete temperate denominator"
+    ]
+  },
+  "tests": {
+    "passed": 38,
+    "failed": 0,
+    "seconds": 140.24,
+    "warnings": [
+      "Upstream Starlette test-client deprecation for httpx; no scientific numerical warnings."
+    ]
+  },
+  "manuscripts": {
+    "main_pages": 14,
+    "supplement_pages": 8,
+    "unresolved_references": false,
+    "overfull_boxes": false
+  },
+  "packaging": {
+    "source_archive_contains_external_data_and_analysis": true,
+    "preexisting_untracked_files_absent": true,
+    "installed_wheel_loaded_outside_checkout": true,
+    "health_version": "0.5.0",
+    "resource_query_status": 200,
+    "resource_carbohydrate_ceiling_mol_m2_s": 6.738768718801996e-11
+  },
+  "public_release_check": "Performed separately after publication; this report records pre-release verification."
+}

@@ -186,7 +186,7 @@ def test_design_holdout_and_robust_conservation_baseline():
 
 def test_public_api_and_explicit_retirement():
     client = TestClient(app)
-    assert client.get("/health").json()["version"] == "0.4.0"
+    assert client.get("/health").json()["version"] == "0.5.0"
     assert client.get("/v3/evidence?limit=1").json()["manifest"]["reference_MAGs"] == 5438
     assert client.post("/v1/intervene", json={}).status_code == 410
     assert "What happens after the rain?" in client.get("/").text
@@ -266,3 +266,77 @@ def test_conformal_intervals_and_mags_ontology_api():
     ont_resp = client.get("/v3/ontology").json()
     assert ont_resp["consistent"] is True
 
+
+def test_v05_external_source_tampering_rejected(tmp_path):
+    import sys
+    repo_root = Path(__file__).resolve().parents[1]
+    sys.path.insert(0, str(repo_root / "reproducibility/v05"))
+    from external_transfer import verified
+
+    ext_root = repo_root / "data/external"
+    (tmp_path / "pmc-supplement-manifest.json").write_bytes((ext_root / "pmc-supplement-manifest.json").read_bytes())
+    (tmp_path / "buzzard2022").mkdir()
+    src = ext_root / "buzzard2022/peerj-10-12966-s007.csv"
+    dst = tmp_path / "buzzard2022/peerj-10-12966-s007.csv"
+    dst.write_bytes(src.read_bytes())
+    assert verified("buzzard2022", "peerj-10-12966-s007.csv", data_dir=tmp_path) == dst
+    # Same-length byte tampering must be rejected by digest verification.
+    body = bytearray(src.read_bytes())
+    body[-5] ^= 0x01
+    dst.write_bytes(bytes(body))
+    with pytest.raises(ValueError, match="digest mismatch"):
+        verified("buzzard2022", "peerj-10-12966-s007.csv", data_dir=tmp_path)
+
+
+def test_v05_grouped_holdout_boundaries_and_no_test_leakage():
+    import sys
+    repo_root = Path(__file__).resolve().parents[1]
+    sys.path.insert(0, str(repo_root / "reproducibility/v05"))
+    from external_transfer import evaluate_sonoran_fold, evaluate_temperate_folds
+
+    obs = pd.read_csv(repo_root / "reviews/v05/sonoran_field_observations.tsv", sep="\t")
+    held = "2018-08-02"
+    train = obs[obs.campaign.ne(held)].copy()
+    test = obs[obs.campaign.eq(held)].copy()
+    # Overlapping campaign rows between train and test must be rejected.
+    with pytest.raises(ValueError, match="disjoint"):
+        evaluate_sonoran_fold(obs, test)
+    preds_before, fit_before = evaluate_sonoran_fold(train, test)
+    perturbed_test = test.copy()
+    perturbed_test["y"] = perturbed_test["y"] * -50.0 + 100.0
+    preds_after, fit_after = evaluate_sonoran_fold(train, perturbed_test)
+    assert fit_before == fit_after
+    for model in preds_before:
+        assert np.array_equal(preds_before[model], preds_after[model])
+
+    rates = pd.read_csv(repo_root / "reviews/v03/external_bottle_rates.tsv", sep="\t")
+    assert (rates.bottle_k_min < 0).any()
+    temp_before = evaluate_temperate_folds(rates)
+    perturbed_rates = rates.copy()
+    perturbed_rates.loc[perturbed_rates.soil.eq("Meadow"), "bottle_k_min"] += 10.0
+    temp_after = evaluate_temperate_folds(perturbed_rates)
+    meadow_before = temp_before.loc[temp_before.heldout_soil.eq("Meadow"), "predicted_k_min"].to_numpy()
+    meadow_after = temp_after.loc[temp_after.heldout_soil.eq("Meadow"), "predicted_k_min"].to_numpy()
+    assert np.array_equal(meadow_before, meadow_after)
+
+
+def test_v05_native_unit_conversions_and_unquantified_endpoints():
+    repo_root = Path(__file__).resolve().parents[1]
+    # Incompatible external/internal units must not be pooled.
+    areal = Observation(1.5, "nmol H2 m-2 s-1", "collar", "buzzard2022", "areal_flux", "field")
+    bottle_mass = Observation(0.8, "nmol h-1 g-1", "soil_dry_g", "tribbia2026", "bottle_rate", "wet")
+    bottle_k = Observation(0.02, "min-1", "headspace", "reji2025", "first_order_rate", "forest")
+    with pytest.raises(ValueError):
+        additive_total([areal, bottle_mass], disjoint=True)
+    with pytest.raises(ValueError):
+        additive_total([bottle_mass, bottle_k], disjoint=True)
+
+    # Namib dry-soil gravimetric water addition and unquantified dry endpoints.
+    namib_pred = pd.read_csv(repo_root / "reviews/v05/namib_conditional_predictions.tsv", sep="\t")
+    dry_soil_g = 2.0 / (1.0 + namib_pred.dry_gwc)
+    water_g = 2.0 - dry_soil_g + 0.4
+    assert np.allclose(namib_pred.wet_gwc, water_g / dry_soil_g, rtol=1e-12, atol=1e-12)
+    namib_contrasts = pd.read_csv(repo_root / "reviews/v05/namib_hydration_contrasts.tsv", sep="\t")
+    unquantified = namib_contrasts.loc[namib_contrasts.n_dry_rates.eq(0)]
+    assert len(unquantified) == 8
+    assert unquantified[["dry_mean", "fold", "fold_lcl", "fold_ucl"]].isna().all().all()

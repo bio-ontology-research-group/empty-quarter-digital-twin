@@ -1,5 +1,5 @@
 {
-  "version": "0.4.0",
+  "version": "0.5.0",
   "sources": {
     "corrected_full_MAG_KOs": {
       "file": "rep_ko_v2.tsv.gz",

@@ -1,0 +1,137 @@
+{
+  "inputs": {
+    "mag_id": "11Dr3__single_SemiBin_120",
+    "h2": 1e-09,
+    "co": 1e-08,
+    "oxygen": 1e-08,
+    "external_co2": 1e-08,
+    "capture_fraction": 0.25,
+    "maintenance_w_m2": 1e-05,
+    "synthesis_j_mol_c": 500000
+  },
+  "declared_scenario": "Illustrative supplied substrate/energy limits; no field-flux calibration",
+  "mag_annotations": {
+    "rep": "11Dr3__single_SemiBin_120",
+    "cbb_kos": "K00134;K00615;K00616;K00855;K00927;K01086;K01601;K01602;K01623;K01624;K01783;K01803;K01807;K13810",
+    "h2_1l": false,
+    "h2_1h": false,
+    "h2_2a": true,
+    "co_form1": false,
+    "completeness": 95.07,
+    "contamination": 0.19
+  },
+  "entailed_classes": [
+    "CBBCompleteMAG",
+    "H2AutotrophicCandidateMAG",
+    "H2CarrierMAG",
+    "HighQualityH2AutotrophicCandidateMAG",
+    "RuBisCOMAG",
+    "RuBisCOPRKMAG",
+    "ThreeGeneCBBMAG"
+  ],
+  "ontology_supported": {
+    "status": "conditional_carbohydrate_production_ceiling",
+    "fluxes": {
+      "h2_respiration": 8.652246256239602e-10,
+      "co_respiration": 0.0,
+      "carbohydrate_c": 6.738768718801996e-11
+    },
+    "net_species_exchange_mol_m2_s": {
+      "H2": -1e-09,
+      "CO": 0.0,
+      "O2": -4.326123128119801e-10,
+      "CO2": -6.738768718801996e-11,
+      "H2O": 9.326123128119801e-10,
+      "CH2O": 6.738768718801996e-11
+    },
+    "element_residuals": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "energy_slack_w_m2": 1.1858461261560205e-20,
+    "reaction_admission": {
+      "h2_oxidation": true,
+      "co_oxidation": false,
+      "hydrogen_supported_carbohydrate": true
+    },
+    "admission_scope": "Unentailed reactions are excluded from this evidence-supported model; biological absence is not asserted.",
+    "net_carbon_removal": null,
+    "genomic_evidence": {
+      "mag_id": "11Dr3__single_SemiBin_120",
+      "h2_and_all_cbb_steps": true,
+      "owl_classes": [
+        "rak:ReferenceMAG",
+        "rak:CBBCompleteMAG",
+        "rak:H2AutotrophicCandidateMAG",
+        "rak:H2CarrierMAG",
+        "rak:HighQualityH2AutotrophicCandidateMAG",
+        "rak:RuBisCOMAG",
+        "rak:RuBisCOPRKMAG",
+        "rak:ThreeGeneCBBMAG"
+      ],
+      "ontology_sha256": "5a0c435fc3e88f4f024d5ef3237011f22426eb1b5d678b659d6af0e38323bcb8",
+      "completeness": 95.07,
+      "contamination": 0.19
+    }
+  },
+  "same_information_flat": {
+    "status": "conditional_carbohydrate_production_ceiling",
+    "fluxes": {
+      "h2_respiration": 8.652246256239602e-10,
+      "co_respiration": 0.0,
+      "carbohydrate_c": 6.738768718801996e-11
+    },
+    "net_species_exchange_mol_m2_s": {
+      "H2": -1e-09,
+      "CO": 0.0,
+      "O2": -4.326123128119801e-10,
+      "CO2": -6.738768718801996e-11,
+      "H2O": 9.326123128119801e-10,
+      "CH2O": 6.738768718801996e-11
+    },
+    "element_residuals": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "energy_slack_w_m2": 1.1858461261560205e-20,
+    "reaction_admission": {
+      "h2_oxidation": true,
+      "co_oxidation": false,
+      "hydrogen_supported_carbohydrate": true
+    },
+    "admission_scope": "Unentailed reactions are excluded from this evidence-supported model; biological absence is not asserted.",
+    "net_carbon_removal": null
+  },
+  "unsupported_CO_admission": {
+    "status": "conditional_carbohydrate_production_ceiling",
+    "fluxes": {
+      "h2_respiration": 0.0,
+      "co_respiration": 1e-08,
+      "carbohydrate_c": 5e-10
+    },
+    "net_species_exchange_mol_m2_s": {
+      "H2": -1e-09,
+      "CO": -1e-08,
+      "O2": -5e-09,
+      "CO2": 9.5e-09,
+      "H2O": 5e-10,
+      "CH2O": 5e-10
+    },
+    "element_residuals": [
+      5.169878828456423e-25,
+      0.0,
+      1.0339757656912846e-24
+    ],
+    "energy_slack_w_m2": 0.00034749999999999994,
+    "reaction_admission": {
+      "h2_oxidation": true,
+      "co_oxidation": true,
+      "hydrogen_supported_carbohydrate": true
+    },
+    "admission_scope": "Unentailed reactions are excluded from this evidence-supported model; biological absence is not asserted.",
+    "net_carbon_removal": null
+  },
+  "scope": "The contrast tests information admission. Missing CO entailment excludes that reaction from the declared model, without establishing biological absence."
+}

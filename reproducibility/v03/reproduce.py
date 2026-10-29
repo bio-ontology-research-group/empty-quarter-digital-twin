@@ -147,7 +147,7 @@ def main():
     pred_df = pd.DataFrame(bt["predictions"])
     ridge_cov = float(pred_df.loc[pred_df.model.eq("geography_season_ridge"), "covered_90"].mean())
     summary = {
-        "version": "0.4.0",
+        "version": "0.5.0",
         "samples": len(panel),
         "reference_MAGs": len(mag),
         "mapped_samples": int(panel.mapped_read_pct.notna().sum()),
@@ -214,7 +214,7 @@ def main():
         for filename in ["process_validation.pdf", "forecast_scenarios.pdf"]:
             (dest / "figures" / filename).write_bytes((out / filename).read_bytes())
         body = [
-            "% Generated from the executable v0.4 contract; do not edit by hand.",
+            "% Generated from the executable v0.5 contract; do not edit by hand.",
             r"\section{Complete axioms, observation rules and assumptions}",
             "The following stable identifiers enumerate the implemented model contract. Ontological statements specify quantity types and constitutive relations. Causal statements specify conditional mechanisms; predictive and decision assumptions have separate roles.",
         ]

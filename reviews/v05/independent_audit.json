@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "independently_recomputed_field_predictions": 96,
+  "max_absolute_field_prediction_discrepancy": 8.881784197001252e-16,
+  "sonoran_lab_bottles": 48,
+  "namib_quantified_rates": 60,
+  "temperate_prediction_rows": 231,
+  "checks": [
+    "Corrected native source endpoint and sign",
+    "All source-batch conditions retained",
+    "Whole-campaign holdout boundaries and independent training-only grid refit",
+    "Independent diffusion-reaction equation",
+    "All field metrics",
+    "Unquantified dry Namib endpoints retained",
+    "Complete temperate denominator"
+  ]
+}

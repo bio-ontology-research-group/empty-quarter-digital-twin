@@ -1,0 +1,11 @@
+site	n_dry_rates	n_wet_rates	dry_mean	wet_mean	fold	fold_lcl	fold_ucl	status
+C14-2	5	5	0.020321994944639998	0.8398903115533198	41.32912707838479	31.143031533850376	55.97461193477904	Independent wet/dry subsamples; within-site bootstrap
+C14-4	5	5	0.048672776861729994	0.9440043325657198	19.394914229928872	15.562211785544912	23.9669008908112	Independent wet/dry subsamples; within-site bootstrap
+C14-6	0	5		0.06599167613121999				Dry sub-atmospheric endpoint not attained within 1500 h; no numerical zero imputed
+C14-8	0	5		0.10884807639649999				Dry sub-atmospheric endpoint not attained within 1500 h; no numerical zero imputed
+C14-10	0	5		0.17001745213884994				Dry sub-atmospheric endpoint not attained within 1500 h; no numerical zero imputed
+C14-12	0	5		0.38638615870625				Dry sub-atmospheric endpoint not attained within 1500 h; no numerical zero imputed
+C14-14	0	5		0.25534634918711996				Dry sub-atmospheric endpoint not attained within 1500 h; no numerical zero imputed
+C14-16	0	5		0.42162055381593994				Dry sub-atmospheric endpoint not attained within 1500 h; no numerical zero imputed
+C14-18	0	5		0.19501291259251996				Dry sub-atmospheric endpoint not attained within 1500 h; no numerical zero imputed
+C14-20	0	5		0.81009945160967				Dry sub-atmospheric endpoint not attained within 1500 h; no numerical zero imputed

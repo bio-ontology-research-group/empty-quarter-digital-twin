@@ -16,7 +16,7 @@ from .resources import resource_ceiling, carbon_account
 
 PACKAGE = Path(__file__).parent
 DATA = PACKAGE/"data" if (PACKAGE/"data").exists() else PACKAGE.parents[2]/"data"/"v03"
-app = FastAPI(title="Empty Quarter Digital Twin", version="0.4.0",
+app = FastAPI(title="Empty Quarter Digital Twin", version="0.5.0",
               description="Metagenomic evidence and conditional, resource-conserving scenarios. See /v3/contract.")
 
 
@@ -60,7 +60,7 @@ def parameters(values: dict) -> Parameters:
 
 @app.get("/health")
 def health():
-    return {"status": "ok", "version": "0.4.0"}
+    return {"status": "ok", "version": "0.5.0"}
 
 
 @app.get("/", response_class=HTMLResponse)

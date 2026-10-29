@@ -1,0 +1,13 @@
+study	site	dry_gwc	wet_gwc	n_source_batches	difference	lcl	ucl	unit	scope
+Sonoran urban	Active	0.02	0.1	4	-0.00665783025	-0.0820381815	0.06872252100000001	nmol H2 m-2 s-1	Within-plot source-batch bootstrap; one residence
+Sonoran urban	Active	0.1	0.2	4	0.37570370525	0.18878430349999997	0.53312960725	nmol H2 m-2 s-1	Within-plot source-batch bootstrap; one residence
+Sonoran urban	Active	0.02	0.2	4	0.369045875	0.10407630425	0.60773318525	nmol H2 m-2 s-1	Within-plot source-batch bootstrap; one residence
+Sonoran urban	Control	0.02	0.1	4	0.11377032299999996	-0.011371601000000002	0.24603116574999997	nmol H2 m-2 s-1	Within-plot source-batch bootstrap; one residence
+Sonoran urban	Control	0.1	0.2	4	0.36243079025	0.27682700475000005	0.42500878500000006	nmol H2 m-2 s-1	Within-plot source-batch bootstrap; one residence
+Sonoran urban	Control	0.02	0.2	4	0.47620111325000003	0.36632829100000003	0.5783172465	nmol H2 m-2 s-1	Within-plot source-batch bootstrap; one residence
+Sonoran urban	Greywater	0.02	0.1	4	0.1913208185	0.057335830000000004	0.325305807	nmol H2 m-2 s-1	Within-plot source-batch bootstrap; one residence
+Sonoran urban	Greywater	0.1	0.2	4	0.31585237275000005	0.26314287199999997	0.366122349	nmol H2 m-2 s-1	Within-plot source-batch bootstrap; one residence
+Sonoran urban	Greywater	0.02	0.2	4	0.50717319125	0.42345817900000005	0.5908882035	nmol H2 m-2 s-1	Within-plot source-batch bootstrap; one residence
+Sonoran urban	Passive	0.02	0.1	4	0.034214584	-0.01434091775	0.07008849925	nmol H2 m-2 s-1	Within-plot source-batch bootstrap; one residence
+Sonoran urban	Passive	0.1	0.2	4	0.5123469155	0.43351328575000003	0.562387162	nmol H2 m-2 s-1	Within-plot source-batch bootstrap; one residence
+Sonoran urban	Passive	0.02	0.2	4	0.5465614995	0.47021140075	0.6127553265000001	nmol H2 m-2 s-1	Within-plot source-batch bootstrap; one residence

@@ -1,13 +1,31 @@
-# EQ-BioDT v0.4.0
+# EQ-BioDT v0.5.0
 
-EQ-BioDT is a research tool for metagenomic evidence, conditional soil trace-gas
-scenarios and future-campaign capacity prediction in the Rub’ al-Khali.
+EQ-BioDT is a causal–ontological digital twin of microbial processes in the
+Rub’ al-Khali, the world’s largest continuous sand desert. It connects primary
+genome-resolved observations, deductive pathway definitions and causal
+intervention calculations.
 It provides an interactive console, HTTP API and command-line interface.
 
 The release contains 551 sample records and 5,438 reference MAGs. The complete
 KEGG M00165 annotation rule, including its transaldolase alternative, supports
 232 CBB candidates; 136 also carry screened hydrogenase markers. These are
 annotation-supported candidates, not measurements of activity or carbon removal.
+
+
+The manuscript is **A causal–ontological digital twin of the world’s largest
+continuous sand desert**. Its principal external tests use independent Namib
+and Sonoran observations and contrasting temperate soils. The frozen response
+parameters do not transfer uniformly: environmental calibration improves
+Sonoran held-campaign RMSE to 0.69 nmol H₂ m⁻² s⁻¹, compared with 1.65 for the
+reference model and 0.79 for a training mean. Dry Namib activity and the Sonoran
+high-moisture response expose failures of the reference assumptions.
+
+Primary shotgun reads are deposited under [PRJEB125153](https://www.ebi.ac.uk/ena/browser/view/PRJEB125153),
+with public release scheduled for late November 2026. The derived inputs needed
+for the analyses are bundled, independently of that raw-read release schedule.
+See [external data and measurement definitions](data/external/README.md),
+[the retrospective protocol](reviews/v05/external-evaluation-protocol.md),
+and [the independent numerical audit](reviews/v05/independent_audit.json).
 
 ## Install and open the tool
 
@@ -16,7 +34,7 @@ Install [uv](https://docs.astral.sh/uv/getting-started/installation/), then:
 ```bash
 git clone https://github.com/bio-ontology-research-group/empty-quarter-digital-twin.git
 cd empty-quarter-digital-twin
-git checkout v0.4.0
+git checkout v0.5.0
 uv sync --locked
 uv run eq-biodt serve --port 8000
 ```
@@ -26,9 +44,9 @@ Open <http://127.0.0.1:8000> for scenarios and evidence inspection, or
 to localhost. Python 3.13 is the tested reproduction environment; package
 metadata permits Python 3.10 or later.
 
-The [GitHub release](https://github.com/bio-ontology-research-group/empty-quarter-digital-twin/releases/tag/v0.4.0)
+The [GitHub release](https://github.com/bio-ontology-research-group/empty-quarter-digital-twin/releases/tag/v0.5.0)
 also provides an installable wheel and manuscript PDFs. Install the downloaded
-wheel with `uv tool install path/to/eq_biodt-0.4.0-py3-none-any.whl`, then run
+wheel with `uv tool install path/to/eq_biodt-0.5.0-py3-none-any.whl`, then run
 `eq-biodt serve`. Normal tool use needs neither a separate ontology reasoner
 nor a sibling repository.
 
@@ -74,8 +92,9 @@ campaign shift.
 ## Reproduce the paper
 
 The analysis starts from the released MAG annotations, mapping summaries,
-marker counts and curated metadata. All these inputs, plus the KEGG definition
-and published bottle observations, are in [data/sources](data/sources/README.md).
+marker counts and curated metadata. All these inputs, plus the KEGG definition,
+published bottle observations and external desert supplements, are in
+[data/sources](data/sources/README.md) and [data/external](data/external/README.md).
 It does not rerun raw sequencing, assembly or primary annotation.
 
 On Linux x86_64:
@@ -83,7 +102,7 @@ On Linux x86_64:
 ```bash
 uv sync --locked
 uv run python scripts/install_reasoner.py
-uv run python reproducibility/v03/reproduce.py --paper paper
+uv run python reproducibility/v05/reproduce.py
 uv run pytest -q
 ```
 
@@ -92,8 +111,11 @@ After dependencies and this binary are installed, the analysis runs offline.
 It rebuilds evidence from the source snapshot, classifies the ontology,
 exports verified memberships, runs the independent pathway audit, matched
 compartment comparisons, campaign backtests, bottle analysis, numerical
-convergence checks and scenario ensemble, and regenerates paper tables and
-figures. Outputs are in [reviews/v03](reviews/v03/report.md).
+convergence checks, scenario ensemble, primary-provenance trace, cross-desert
+transfer evaluations and independent numerical audit, and regenerates paper
+tables and figures. Outputs are in
+[reviews/v05](reviews/v05/reproduction_manifest.json) and
+[reviews/v03](reviews/v03/report.md).
 
 For other platforms, use the Linux GitHub Actions workflow or build the same
 [km release](https://github.com/bio-ontology-research-group/kobayashi-marust/releases/tag/v1.5.3)
@@ -131,7 +153,7 @@ ontology in a user-selected location. For alternative datasets,
   counterfactual change and lifecycle emissions.
 
 See [the scientific audit](reviews/v03/report.md),
-[changes in v0.4](CHANGELOG.md) and [the manuscript](paper/main.tex).
+[changes in v0.5](CHANGELOG.md) and [the manuscript](paper/main.tex).
 The old v0.2 modules and bundled historical analyses are retained for provenance;
 their heuristic intervention endpoints return HTTP 410 from the current server.
 

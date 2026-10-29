@@ -1,4 +1,4 @@
-"""Reproducible public commands for v0.4."""
+"""Reproducible public commands for v0.5."""
 import argparse
 import json
 from pathlib import Path
@@ -16,7 +16,7 @@ from .process import Parameters, State, simulate
 
 
 def main():
-    parser = argparse.ArgumentParser(description="EQ-BioDT v0.4: evidence, conditional scenarios and prospective tests")
+    parser = argparse.ArgumentParser(description="EQ-BioDT v0.5: evidence, conditional scenarios and prospective tests")
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("contract")
     p = sub.add_parser("reason")

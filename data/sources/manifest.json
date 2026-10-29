@@ -1,5 +1,5 @@
 {
-  "version": "0.4.0",
+  "version": "0.5.0",
   "sources": {
     "corrected_full_MAG_KOs": {
       "file": "rep_ko_v2.tsv.gz",
@@ -41,6 +41,12 @@
       "file": "reji-bottles.txt",
       "sha256": "44bd240facea7db00348fe49046560784652b72a0b9cf43c84c863f80d48dcd0",
       "url": "https://raw.githubusercontent.com/Linta-Reji/Reji2025_H2_SoilMoisture/1f860701b8572d3bef7f0657bd5e40862feca477/data/H2_experiments_allData_finalCorrected.txt"
+    },
+    "primary_field_ledger": {
+      "file": "trip1-field-ledger.tsv",
+      "sha256": "b8589609285fb7f4f443ae3926b14dad1e2dade8912dea03724d017d8b620fb6",
+      "url": "https://raw.githubusercontent.com/bio-ontology-research-group/empty-quarter/8a68d0c51cf3517b2c43e0536904926e7d7562b9/data/metadata/samplesheets/trip1-2023.tsv",
+      "scope": "Original March 2023 field log; reference coordinates for core sites"
     }
   }
 }

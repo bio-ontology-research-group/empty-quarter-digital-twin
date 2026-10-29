@@ -2,10 +2,18 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[margin=2.5cm]{geometry}
-\usepackage{authblk,amsmath,amssymb,booktabs,longtable,array}
+\usepackage{authblk,amsmath,amssymb,booktabs,longtable,array,graphicx}
 \usepackage[hidelinks]{hyperref}
 \renewcommand{\thesection}{S\arabic{section}}
-\title{Supplementary methods: EQ-BioDT v0.4 model contract}
+\title{Supplementary methods and validation: causal--ontological desert digital twin}
+\input{tables/v03_numbers}
+\makeatletter
+\newcommand{\BacktestRows}{\@@input tables/v03_backtest.tex }
+\newcommand{\PairedRows}{\@@input tables/v04_paired.tex }
+\newcommand{\CampaignRows}{\@@input tables/v05_campaigns.tex }
+\newcommand{\MarkerRows}{\@@input tables/v05_markers.tex }
+\makeatother
+\renewcommand{\thetable}{S\arabic{table}}
 \input{authors}
 \date{}
 \begin{document}
@@ -24,11 +32,50 @@ A Linux x86\_64 checkout reproduces the analysis with:
 \begin{verbatim}
 uv sync --locked
 uv run python scripts/install_reasoner.py
-uv run python reproducibility/v03/reproduce.py --paper paper
+uv run python reproducibility/v05/reproduce.py
 uv run pytest -q
 cd paper
 latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
 latexmk -pdf -interaction=nonstopmode -halt-on-error supplementary.tex
 \end{verbatim}
 The first two commands install locked Python dependencies and the checksum-pinned reasoner. Subsequent analysis uses the bundled source snapshot, including external bottle data and the KEGG module definition, without a network lookup. LaTeX requires a TeX installation. The analysis boundary begins with released MAG annotations, read summaries and sample metadata. It excludes primary sequencing, assembly and gene annotation. The repository includes a wheel for ordinary query, simulation and forecasting use without the reasoner binary; ontology rebuilding requires the pinned binary or an explicitly supplied compatible executable.
+
+\section{Primary sampling and comparative genomic context}
+The released cohort contains 551 metagenomes at 61 sites, including 59 core transect sites and two auxiliary locations (sites 62 and 64). The date intervals below follow the curated source metadata used in the calculations. Primary reads are associated with ENA study PRJEB125153, whose public release is scheduled for late November 2026. The analysis starts from the released derived annotation and read-summary inputs.
+\begin{table}[ht]\centering\small
+\caption{The primary metagenomic cohort by campaign.}\begin{tabular}{rrrrr}\toprule
+Campaign & Samples & Sites & First date & Last date\\\midrule
+\CampaignRows
+\bottomrule\end{tabular}\end{table}
+
+The descriptive external genomic comparison uses the same three screened hydrogenase families, groups 1h, 1l and 2a. Each family is divided by their summed gene-copy abundance within a sample, which removes the shared normalizer while preserving differences in library preparation and marker detection. External observations are the Australian dry control C1 and the Namib, Gobi and Mojave metagenomes in Jordaan et al., Table S4 (doi:10.1128/mSystems.01131-20). These are single study profiles, whereas the Rub' al-Khali entry summarizes 550 samples. The comparison characterizes relative marker composition; it supplies neither genome-level carrier intersections nor a common activity scale. Component medians in the multi-sample cohort need not sum to 100\%.
+\begin{table}[ht]\centering\small
+\caption{Median proportions of the three screened hydrogenase families (\%).}\begin{tabular}{lrrrr}\toprule
+Environment & Profiles & Group 1h & Group 1l & Group 2a\\\midrule
+\MarkerRows
+\bottomrule\end{tabular}\end{table}
+
+\section{Invariance under specified interventions}
+The implementation separates fixed ontological knowledge $K$ and evidence $E$ from physical transition mechanisms. For any two regimes sharing $K$ and $E$, their entailed pathway memberships $D_K(E)$ are identical. A resource calculation uses those memberships to fix reaction admission in both regimes. For derived physical observations $y=H(x)$, the implementation recomputes $H$ after propagating the intervened state. The constitutive relation therefore holds in each admissible state. Induction over the transition sequence preserves this relation at every subsequent time step. Invalid pore volumes and unsupported chemistry produce explicit rejection or unavailable outputs.
+
+This invariant is an implementation property under the specified equations. The causal interpretation of a physical transition depends on the empirical adequacy of its mechanisms, which is evaluated separately. The same-information flat implementation has the same property. In the worked reaction-admission example, the controlled ablation changes the admitted network by supplying unsupported CO oxidation; it illustrates the consequence of additional biological assumptions.
+
+\section{Temporal prediction and external-transfer detail}
+The molecular observation forecast holds out later campaigns. Its source catalogue is fixed retrospectively. The table reports RMSE on $\log(1+\mathrm{GE})$, with nominal 90\% interval coverage for ridge regression.
+\begin{table}[ht]\centering\small
+\caption{Future-campaign molecular prediction.}\begin{tabular}{rrrrrrr}\toprule
+Campaign & Visits & Ridge & Persistence & Comp. mean & Global mean & Coverage\\\midrule
+\BacktestRows
+\bottomrule\end{tabular}\end{table}
+\begin{table}[ht]\centering\small
+\caption{Ridge-minus-baseline RMSE differences with site-bootstrap 95\% intervals.}\begin{tabular}{lrr}\toprule
+Baseline & Difference & Interval\\\midrule
+\PairedRows
+\bottomrule\end{tabular}\end{table}
+
+The Sonoran field grid contains 54 combinations of porosity, retention exponent, entry potential and temperature response. A kinetic coefficient is fitted separately within each combination and training fold. Training selects the best member before applying it to the held campaign. All four selected members have porosity 0.5, retention exponent 6 and $Q_{10}=1$; entry potential is $-0.001$~MPa when June is held out and $-0.01$~MPa in the other folds. These grid boundaries expose unresolved sensitivity, rather than uncertainty intervals on measured soil properties. Both the fixed and calibrated models assume that the reported sensor measurements represent a homogeneous active soil layer.
+
+For Sonoran incubations, the source data include small net emissions at dry or intermediate moisture. These observations retain their sign. Source-batch bootstrap intervals characterize the sampled plots and do not imply four independently replicated management treatments. In Namib, the two dry and wet conditions use distinct subsamples. The eight unquantified dry endpoints are retained in the site denominator but supply no numerical dry rate or fold change. The publisher's rounded headspace gas amount reproduces the reported mass-normalized rates to within five parts per million.
+
+The external response tables, all training parameter choices and held-out predictions are released under \texttt{reviews/v05/}. An independent implementation of the diffusion--reaction equation recomputes all 96 Sonoran field predictions and checks the source aggregation, corrected flux column, fold boundaries and error metrics. The source hashes and generated table hashes are recorded in the reproduction manifest.
 \end{document}

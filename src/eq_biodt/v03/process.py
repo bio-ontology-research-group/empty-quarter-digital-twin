@@ -214,7 +214,7 @@ def simulate(initial: State, forcing: list[dict], p: Parameters) -> dict:
                      "chemistry_status": "ideal_dilute_assumption" if chemistry_ok else "requires_nonideal_speciation"})
         state = next_state
     valid = all(r["gas"] is not None for r in rows)
-    return {"version": "0.4.0", "parameters": asdict(p), "initial": asdict(initial),
+    return {"version": "0.5.0", "parameters": asdict(p), "initial": asdict(initial),
             "forcing": forcing, "trajectory": rows,
             "summary": {"water_input_mm": sum(r["water_input_mm"] for r in rows),
                         "h2_uptake_mol_m2": sum(r["gas"]["h2_mol_m2_s"]*86400 for r in rows) if valid else None,

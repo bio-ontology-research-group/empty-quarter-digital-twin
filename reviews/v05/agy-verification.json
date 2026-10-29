@@ -1,0 +1,30 @@
+{
+  "release": "0.5.0",
+  "verified_at": "2026-10-29T15:20:07+03:00",
+  "reproduction": {
+    "command": "TMPDIR=$HOME/tmp MPLBACKEND=Agg OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 uv run python reproducibility/v05/reproduce.py",
+    "status": "passed",
+    "independent_audit_status": "passed",
+    "independently_recomputed_field_predictions": 96,
+    "max_absolute_field_prediction_discrepancy": 8.881784197001252e-16,
+    "sonoran_lab_bottles": 48,
+    "namib_quantified_rates": 60,
+    "temperate_prediction_rows": 231,
+    "warnings": 0
+  },
+  "pytest": {
+    "command": "TMPDIR=$HOME/tmp uv run pytest -q",
+    "passed": 38,
+    "failed": 0,
+    "duration_seconds": 143.04
+  },
+  "packaging": {
+    "uv_lock_offline": "passed",
+    "uv_sync_locked_offline": "passed",
+    "uv_build": [
+      "dist/eq_biodt-0.5.0.tar.gz",
+      "dist/eq_biodt-0.5.0-py3-none-any.whl"
+    ]
+  },
+  "numerical_discrepancies": "none"
+}

@@ -1,0 +1,173 @@
+[
+  {
+    "study": "tribbia2026",
+    "file": "aem.00265-26-s0001.pdf",
+    "url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC13488325.1/aem.00265-26-s0001.pdf",
+    "license": "CC BY",
+    "sha256": "7b31e4f3ae64b75dc613f51a7a50670a1d95cd374db143e745ce51d6847a5130",
+    "md5": "7c8f25767f270d167c34514b3dde21af",
+    "bytes": 712994
+  },
+  {
+    "study": "tribbia2026",
+    "file": "aem.00265-26-s0002.xlsx",
+    "url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC13488325.1/aem.00265-26-s0002.xlsx",
+    "license": "CC BY",
+    "sha256": "142ce302e049ed22216c973cbcbc786b233f2256acb3e11b5885d095ed845baa",
+    "md5": "c0f958ce952c8609431a636770c00d73",
+    "bytes": 820208
+  },
+  {
+    "study": "jordaan2020",
+    "file": "mSystems.01131-20-sf005.pdf",
+    "url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC7677003.1/mSystems.01131-20-sf005.pdf",
+    "license": "CC BY",
+    "sha256": "ca6de641424e7db10b103588daf9aa8a6fef43b48e938d8042994b62083f1fbf",
+    "md5": "ada48daf96564ebb0bbbc0e953d2a129",
+    "bytes": 59339
+  },
+  {
+    "study": "jordaan2020",
+    "file": "mSystems.01131-20-sf006.pdf",
+    "url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC7677003.1/mSystems.01131-20-sf006.pdf",
+    "license": "CC BY",
+    "sha256": "58ee0196df962829cf71db73dddf29b8bcb9938cc56efc7cf11e784bbd2b28ce",
+    "md5": "850ad1dcb7bf804bbc1610eb095cf4a7",
+    "bytes": 26750
+  },
+  {
+    "study": "jordaan2020",
+    "file": "mSystems.01131-20-st001.xlsx",
+    "url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC7677003.1/mSystems.01131-20-st001.xlsx",
+    "license": "CC BY",
+    "sha256": "c6c365f4f2090e5500e9f6b7b17c18c5bd6b9e427bbb27825804e537689b8a25",
+    "md5": "348bf36209672cabd8dc692d21630deb",
+    "bytes": 12847
+  },
+  {
+    "study": "jordaan2020",
+    "file": "mSystems.01131-20-st002.xlsx",
+    "url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC7677003.1/mSystems.01131-20-st002.xlsx",
+    "license": "CC BY",
+    "sha256": "a2ec02f959e599376d39f6c4ce3f73cff0b8d92e7f02f7f81b594a8170260065",
+    "md5": "b7da1a864a2cb10a08c1376a3c3a697f",
+    "bytes": 23356
+  },
+  {
+    "study": "jordaan2020",
+    "file": "mSystems.01131-20-st003.xlsx",
+    "url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC7677003.1/mSystems.01131-20-st003.xlsx",
+    "license": "CC BY",
+    "sha256": "f22a3bb66ebb0969f274f690062787c5bb60785b44d3eeca7b06d9c758407025",
+    "md5": "649ea01657bc47c85ded2e44edd741a5",
+    "bytes": 221449
+  },
+  {
+    "study": "jordaan2020",
+    "file": "mSystems.01131-20-st004.xlsx",
+    "url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC7677003.1/mSystems.01131-20-st004.xlsx",
+    "license": "CC BY",
+    "sha256": "9c31f8f4e0e181d333f6c0934a47dba69bfe2a18da1397cd9b3d23cd695cdb1c",
+    "md5": "4036fb7f59097ef7a330030c8a91f0b4",
+    "bytes": 3038633
+  },
+  {
+    "study": "buzzard2022",
+    "file": "peerj-10-12966-s001.docx",
+    "url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC8934528.1/peerj-10-12966-s001.docx",
+    "license": "CC BY",
+    "sha256": "a7b56561395982749df4a13cbcf20da94392d505a32bfd30e3832eed21522842",
+    "md5": "55520767750cff97c6164d56742a7402",
+    "bytes": 10735
+  },
+  {
+    "study": "buzzard2022",
+    "file": "peerj-10-12966-s002.docx",
+    "url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC8934528.1/peerj-10-12966-s002.docx",
+    "license": "CC BY",
+    "sha256": "326cfa72ffd170a7f16b2ea4baaac317a7e6284c108d518bb3d6ea7e64f7179f",
+    "md5": "e6a21f470dee8aba878f4067e3e6998d",
+    "bytes": 21507
+  },
+  {
+    "study": "buzzard2022",
+    "file": "peerj-10-12966-s003.docx",
+    "url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC8934528.1/peerj-10-12966-s003.docx",
+    "license": "CC BY",
+    "sha256": "bedaee8606ef3c98fe7b5d8c0d794f9d0161db9a0b2d3d2bd995402a0d79582c",
+    "md5": "d8165e79eac175257ef770cbe948f18b",
+    "bytes": 10603
+  },
+  {
+    "study": "buzzard2022",
+    "file": "peerj-10-12966-s004.docx",
+    "url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC8934528.1/peerj-10-12966-s004.docx",
+    "license": "CC BY",
+    "sha256": "54c234f085dc689d8265f24beff120c4369b7c9f3465963f6a9745e226cecef6",
+    "md5": "883e52b44b7798f1121e624cc8551b3c",
+    "bytes": 8440
+  },
+  {
+    "study": "buzzard2022",
+    "file": "peerj-10-12966-s005.csv",
+    "url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC8934528.1/peerj-10-12966-s005.csv",
+    "license": "CC BY",
+    "sha256": "bf7ed057f9ec6125e20f682d66b5ea6e22958da18f466f0eb0752ac5cf705147",
+    "md5": "0a3319ca570072b94b6c9d9456a8d389",
+    "bytes": 15403
+  },
+  {
+    "study": "buzzard2022",
+    "file": "peerj-10-12966-s006.csv",
+    "url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC8934528.1/peerj-10-12966-s006.csv",
+    "license": "CC BY",
+    "sha256": "4153e5b493d04db72a82e60f29046c567cdc3e31fab5ff5e192b791d771429c7",
+    "md5": "1e8b20e05db5e91683f78f1b4d56ff29",
+    "bytes": 337795
+  },
+  {
+    "study": "buzzard2022",
+    "file": "peerj-10-12966-s007.csv",
+    "url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC8934528.1/peerj-10-12966-s007.csv",
+    "license": "CC BY",
+    "sha256": "7d00696db2f8974d96a9605a6dc9256b7672b08f5f841356e8c00fefa2f25eda",
+    "md5": "71cb9b7ae542ef7babc35616a3979aa1",
+    "bytes": 4101
+  },
+  {
+    "study": "buzzard2022",
+    "file": "peerj-10-12966-s008.csv",
+    "url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC8934528.1/peerj-10-12966-s008.csv",
+    "license": "CC BY",
+    "sha256": "240945ab9d4ec9cf44f5ba5135c255f357347f2e7aa0c830227f9a00be43dec8",
+    "md5": "a2d7b41a606deb2dce1849e4f4bf75c2",
+    "bytes": 7359
+  },
+  {
+    "study": "buzzard2022",
+    "file": "peerj-10-12966-s009.rmd",
+    "url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC8934528.1/peerj-10-12966-s009.rmd",
+    "license": "CC BY",
+    "sha256": "f0fc7eea12ca710d67f5fd6e6c3c8f803b6d9bbd57d874532f52f36b43daf646",
+    "md5": "93ecd05fd6290a432bad80c3b10ae3b1",
+    "bytes": 2923
+  },
+  {
+    "study": "buzzard2022",
+    "file": "peerj-10-12966-s010.rmd",
+    "url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC8934528.1/peerj-10-12966-s010.rmd",
+    "license": "CC BY",
+    "sha256": "87be2a59ca3c45a59f51b4192357202319e7178f87395cfe119a954eb0288d08",
+    "md5": "4e3e14cb47e995492ee568cb233affd7",
+    "bytes": 21559
+  },
+  {
+    "study": "buzzard2022",
+    "file": "peerj-10-12966-s011.r",
+    "url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC8934528.1/peerj-10-12966-s011.r",
+    "license": "CC BY",
+    "sha256": "6f18436e6ba61c4bb545007e7a6455a12705ac98962cf537217397e1c7ac0d6a",
+    "md5": "86b743055366f432bf5b48557029bc3e",
+    "bytes": 6599
+  }
+]

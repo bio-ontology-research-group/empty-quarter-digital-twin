@@ -1,0 +1,30 @@
+{
+  "samples": 551,
+  "usable_mapping_samples": 550,
+  "sites": 61,
+  "core_sites": 59,
+  "auxiliary_sites": [
+    62,
+    64
+  ],
+  "site_campaigns": 217,
+  "compartments": {
+    "PlantRoot": 268,
+    "Deep": 166,
+    "Surface": 117
+  },
+  "latitude_range": [
+    19.1497705555556,
+    20.9201788888889
+  ],
+  "longitude_range": [
+    45.1665113888889,
+    54.7321055555556
+  ],
+  "mapping_overlap_samples": 550,
+  "ambiguous_marginals": 549,
+  "median_overlap_interval_percentage_points": 6.132427679449369,
+  "co_admission_ceiling_ratio": 7.419753086419754,
+  "data_boundary": "Primary samples and derived annotations/read summaries. No whole-desert spatial interpolation or raw-read reassembly is claimed.",
+  "campaign_dates": "Curated metadata snapshot; fourth-campaign dates are 2024-08-29 to 2024-08-31, differing from a companion draft narrative."
+}

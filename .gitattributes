@@ -1,3 +1,7 @@
 # Preserve exact upstream bytes, including CRLF, for checksum verification.
 data/sources/reji-bottles.txt -text -diff
 data/sources/M00165.txt -text -diff
+data/sources/trip1-field-ledger.tsv -text -diff
+data/external/*/* -text -diff
+# Empty terminal TSV fields carry missing observations, not stray whitespace.
+*.tsv whitespace=-blank-at-eol

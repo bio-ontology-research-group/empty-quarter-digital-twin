@@ -1,0 +1,281 @@
+{
+  "protocol": "reviews/v05/external-evaluation-protocol.md",
+  "seed": 20261029,
+  "sonoran": {
+    "lab_bottles": 48,
+    "field_collars": 64,
+    "field_plot_campaign_means": 16,
+    "independent_residences": 1,
+    "outcome_column": "Hydrogen.Uptake, updated response-factor calibration; uptake positive after sign reversal",
+    "field_validation": "Leave-one-campaign-out, four entire campaigns; descriptive errors on 16 plot-campaign means",
+    "field_metrics": [
+      {
+        "model": "calibrated_diffusion_only",
+        "rmse": 1.724459859526877,
+        "mae": 1.4399355592054186
+      },
+      {
+        "model": "calibrated_kinetics",
+        "rmse": 1.7168623144014412,
+        "mae": 1.4336621270086742
+      },
+      {
+        "model": "calibrated_retention",
+        "rmse": 0.6920747945963167,
+        "mae": 0.529130267812858
+      },
+      {
+        "model": "frozen_reference",
+        "rmse": 1.6461807856412043,
+        "mae": 1.4841947193181366
+      },
+      {
+        "model": "linear_moisture_temperature",
+        "rmse": 1.3532075209511443,
+        "mae": 1.1873796105726868
+      },
+      {
+        "model": "training_mean",
+        "rmse": 0.7879977758798986,
+        "mae": 0.6378125000000001
+      }
+    ],
+    "fits": [
+      {
+        "heldout_campaign": "2018-06-08",
+        "training_campaigns": [
+          "2018-08-02",
+          "2018-09-12",
+          "2018-11-14"
+        ],
+        "kinetics_k": 0.00392456566968688,
+        "diffusion_k": 0.00392456566968688,
+        "tuned": {
+          "k": 0.004260252144500067,
+          "phi": 0.5,
+          "b": 6.0,
+          "entry": -0.001,
+          "q10": 1.0
+        },
+        "tuned_training_mse": 0.06115274437614918,
+        "linear_coefficients": [
+          3.4068422121329154,
+          -0.9411834505724537,
+          -0.00824216414944734
+        ]
+      },
+      {
+        "heldout_campaign": "2018-08-02",
+        "training_campaigns": [
+          "2018-06-08",
+          "2018-09-12",
+          "2018-11-14"
+        ],
+        "kinetics_k": 0.0022213511800511423,
+        "diffusion_k": 0.0022095950298123023,
+        "tuned": {
+          "k": 0.008325145885426162,
+          "phi": 0.5,
+          "b": 6.0,
+          "entry": -0.01,
+          "q10": 1.0
+        },
+        "tuned_training_mse": 0.17465854056878238,
+        "linear_coefficients": [
+          0.04861796293277595,
+          19.108364421953524,
+          -0.013450406766864376
+        ]
+      },
+      {
+        "heldout_campaign": "2018-09-12",
+        "training_campaigns": [
+          "2018-06-08",
+          "2018-08-02",
+          "2018-11-14"
+        ],
+        "kinetics_k": 0.002041098419076225,
+        "diffusion_k": 0.0020304233772325407,
+        "tuned": {
+          "k": 0.008325640820621654,
+          "phi": 0.5,
+          "b": 6.0,
+          "entry": -0.01,
+          "q10": 1.0
+        },
+        "tuned_training_mse": 0.2242016823453529,
+        "linear_coefficients": [
+          2.2071658920217385,
+          8.307772630648383,
+          -0.03559491551313876
+        ]
+      },
+      {
+        "heldout_campaign": "2018-11-14",
+        "training_campaigns": [
+          "2018-06-08",
+          "2018-08-02",
+          "2018-09-12"
+        ],
+        "kinetics_k": 0.0018766235721387116,
+        "diffusion_k": 0.0018687077426213156,
+        "tuned": {
+          "k": 0.008786883113981528,
+          "phi": 0.5,
+          "b": 6.0,
+          "entry": -0.01,
+          "q10": 1.0
+        },
+        "tuned_training_mse": 0.2850929362699099,
+        "linear_coefficients": [
+          4.740644789780737,
+          13.11755880167755,
+          -0.13180491265065442
+        ]
+      }
+    ],
+    "lab_default_assumed_density_g_cm3": 1.5,
+    "lab_default_predictions": {
+      "0.02": 0.3039666321412258,
+      "0.1": 1.3139290105096562,
+      "0.2": 0.3183442190185835
+    },
+    "lab_scope": "Controlled hydration; same source batches at three water contents. Uncertainty is within plots, not among replicated treatments or desert sites."
+  },
+  "namib": {
+    "sites": 10,
+    "dry_sites_with_quantified_atmospheric_rates": 2,
+    "wet_sites_with_quantified_atmospheric_rates": 10,
+    "rate_rows": 60,
+    "contrasts": [
+      {
+        "site": "C14-2",
+        "n_dry_rates": 5,
+        "n_wet_rates": 5,
+        "dry_mean": 0.020321994944639998,
+        "wet_mean": 0.8398903115533198,
+        "fold": 41.32912707838479,
+        "fold_lcl": 31.143031533850376,
+        "fold_ucl": 55.97461193477904,
+        "status": "Independent wet/dry subsamples; within-site bootstrap"
+      },
+      {
+        "site": "C14-4",
+        "n_dry_rates": 5,
+        "n_wet_rates": 5,
+        "dry_mean": 0.048672776861729994,
+        "wet_mean": 0.9440043325657198,
+        "fold": 19.394914229928872,
+        "fold_lcl": 15.562211785544912,
+        "fold_ucl": 23.9669008908112,
+        "status": "Independent wet/dry subsamples; within-site bootstrap"
+      },
+      {
+        "site": "C14-6",
+        "n_dry_rates": 0,
+        "n_wet_rates": 5,
+        "wet_mean": 0.06599167613121999,
+        "status": "Dry sub-atmospheric endpoint not attained within 1500 h; no numerical zero imputed"
+      },
+      {
+        "site": "C14-8",
+        "n_dry_rates": 0,
+        "n_wet_rates": 5,
+        "wet_mean": 0.10884807639649999,
+        "status": "Dry sub-atmospheric endpoint not attained within 1500 h; no numerical zero imputed"
+      },
+      {
+        "site": "C14-10",
+        "n_dry_rates": 0,
+        "n_wet_rates": 5,
+        "wet_mean": 0.17001745213884994,
+        "status": "Dry sub-atmospheric endpoint not attained within 1500 h; no numerical zero imputed"
+      },
+      {
+        "site": "C14-12",
+        "n_dry_rates": 0,
+        "n_wet_rates": 5,
+        "wet_mean": 0.38638615870625,
+        "status": "Dry sub-atmospheric endpoint not attained within 1500 h; no numerical zero imputed"
+      },
+      {
+        "site": "C14-14",
+        "n_dry_rates": 0,
+        "n_wet_rates": 5,
+        "wet_mean": 0.25534634918711996,
+        "status": "Dry sub-atmospheric endpoint not attained within 1500 h; no numerical zero imputed"
+      },
+      {
+        "site": "C14-16",
+        "n_dry_rates": 0,
+        "n_wet_rates": 5,
+        "wet_mean": 0.42162055381593994,
+        "status": "Dry sub-atmospheric endpoint not attained within 1500 h; no numerical zero imputed"
+      },
+      {
+        "site": "C14-18",
+        "n_dry_rates": 0,
+        "n_wet_rates": 5,
+        "wet_mean": 0.19501291259251996,
+        "status": "Dry sub-atmospheric endpoint not attained within 1500 h; no numerical zero imputed"
+      },
+      {
+        "site": "C14-20",
+        "n_dry_rates": 0,
+        "n_wet_rates": 5,
+        "wet_mean": 0.81009945160967,
+        "status": "Dry sub-atmospheric endpoint not attained within 1500 h; no numerical zero imputed"
+      }
+    ],
+    "prediction_scope": "Hydration direction under declared density/retention assumptions. Areal model values are not scored against bottle units.",
+    "measurement_exclusion": "Historical site water potentials and climatological grid moisture do not measure incubation conditions; unavailable bottle potentials prevent a direct -85 MPa threshold test.",
+    "reference_failure": "Default retention and density conversion predict zero dry activity at sites where positive dry atmospheric oxidation was measured; this tests the assumed conversion plus activation, not a measured water-potential threshold alone."
+  },
+  "temperate_leave_soil_out": [
+    {
+      "soil": "Forest",
+      "model": "activation_diffusion",
+      "rmse": 0.04646070056291368
+    },
+    {
+      "soil": "Forest",
+      "model": "diffusion_only",
+      "rmse": 0.060184425153424446
+    },
+    {
+      "soil": "Forest",
+      "model": "training_mean",
+      "rmse": 0.051308403216642914
+    },
+    {
+      "soil": "Meadow",
+      "model": "activation_diffusion",
+      "rmse": 0.03359841588035703
+    },
+    {
+      "soil": "Meadow",
+      "model": "diffusion_only",
+      "rmse": 0.02492179695777472
+    },
+    {
+      "soil": "Meadow",
+      "model": "training_mean",
+      "rmse": 0.022240171730004865
+    },
+    {
+      "soil": "PB_sand",
+      "model": "activation_diffusion",
+      "rmse": 0.011688699307824454
+    },
+    {
+      "soil": "PB_sand",
+      "model": "diffusion_only",
+      "rmse": 0.0238152994370692
+    },
+    {
+      "soil": "PB_sand",
+      "model": "training_mean",
+      "rmse": 0.020761171136873622
+    }
+  ]
+}

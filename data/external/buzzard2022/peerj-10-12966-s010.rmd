@@ -1,0 +1,714 @@
+---
+title: "Buzzard-RWH-H2-stats"
+author: "Vanessa Buzzard"
+date: "11/21/2021"
+output: html_document
+---
+
+
+# Introduction for methods and data analyses
+
+## Updated hydrogen concentrations using response factors calculated for each sampling event to account for variation in instument stability based on the average and standard deviation of a working standard that was run in triplicates over the course of the sampling event (~21 measurements total). New value is added to final column of the original data file named "Hydrogen.Uptake". Original "Hydrogen.Flux" were calculated using a unique response factor that was calculated for each sample.
+
+This document contains analyses for the Rainwater Harvesting Soil Hydrogen Flux Project. Data are summarized across four time periods during the monsoon season for four representative water harvesting treatments 6 months following green infrastructure installation. Soil hydrogen fluxes were measured during the summer monsoon season to capture the effect of water harvesting on soil fluxes. Basic stats were performed and written based on guidance from Data Novia   (https://www.datanovia.com/en/courses/comparing-multiple-means-in-r/). 
+
+```{r setup, include=FALSE}
+#libraries
+library(tidyverse)
+library(ggpubr)
+library(rstatix)
+library(lme4)
+library(ggplot2)
+library(WRS2)
+library(multcompView)
+library(psych)
+library(broom)
+library(gvlma)
+library(knitr)
+library(rmarkdown)
+library(reghelper)
+library(emmeans)
+library(wesanderson)
+
+#load data
+
+# load soil hydrogen fluxes
+df.h2<- read.csv(file="Buzzard-RWH-H2-insitu-Fluxes20211119.csv", header = T)
+
+
+  df.mh2 <- read.csv(file="Buzzard-RWH-H2-mesocosm20211114.csv", header=T)
+
+```
+
+# Summary statistics
+Group the data by treatment and time, and then compute basic summary statistics of H2 fluxes: min, max, mean, median, sd (standard deviation), and iqr (interquartile range).
+
+### In situ soil H2 fluxes
+```{r, echo=FALSE, warning=FALSE}
+
+h2.table <- df.h2 %>%
+  group_by(Treatment, Season) %>%
+  get_summary_stats(Hydrogen.flux, show = c("min", "max", "mean", "median", "sd", "iqr"))
+
+#write.csv(h2.table, file = "insitu_h2_stat_table.csv")
+```
+
+
+#### Mesocosm H2 fluxes
+```{r, echo=FALSE, warning=FALSE}
+
+mh2.table <- df.mh2 %>%
+  group_by(Treatment, Moisture.level) %>%
+  get_summary_stats(Hydrogen.flux, show = c("min", "max", "mean", "median", "sd", "iqr"))
+
+#write.csv(mh2.table, file = "mesocosm_h2_stat_table.csv")
+
+```
+
+
+## Define and summarize linear model
+Individually calculated response factor
+```{r, echo=FALSE}
+fit.h2 <- lm(Hydrogen.flux ~ Treatment * Season, data = df.h2)
+library(jtools) # for summ()
+summ(fit.h2)
+```
+
+Sampling period calculated response factor
+```{r, echo=FALSE}
+fit.h2.rf <- lm(Hydrogen.Uptake ~ Treatment * Season, data = df.h2)
+library(jtools) # for summ()
+summ(fit.h2.rf)
+```
+
+
+### Check model assumptions
+
+##### Outliers
+
+```{r, echo=FALSE, tidy=TRUE}
+df.h2 %>%
+  group_by(Treatment, Season) %>%
+  identify_outliers(Hydrogen.flux)
+```
+
+There were 3 outliers and no extreme outliers.
+
+
+Response Factor calculated by sampling point
+```{r, echo=FALSE, tidy=TRUE}
+df.h2 %>%
+  group_by(Treatment, Season) %>%
+  identify_outliers(Hydrogen.Uptake)
+```
+Two outliers. No extreme.
+
+
+##### Normality assumption
+
+Check normality assumption by analyzing the model residuals. QQ plot and Shapiro-Wilk test of normality are used. QQ plot draws the correlation between a given data and the normal distribution.
+
+
+Create a QQ plot of residuals
+```{r, echo=FALSE, warning=FALSE}
+ggqqplot(residuals(fit.h2))
+```
+
+Compute Shapiro-Wilk test for each combinations of factor levels:
+
+```{r, echo=FALSE, warning=FALSE}
+df.h2 %>%
+  group_by(Treatment, Season) %>%
+  shapiro_test(Hydrogen.flux)
+```
+
+The in situ H2 measurements were not normally distributed  for control midmonsoon, greywater postmonsoon, and passive midmonsson, but p > 0.05 at all other times/treatments, as assessed by Shapiro-Wilk’s test.
+
+
+Response Factor calculated by sampling point
+```{r, echo=FALSE, warning=FALSE}
+df.h2 %>%
+  group_by(Treatment, Season) %>%
+  shapiro_test(Hydrogen.Uptake)
+```
+
+
+##### Homogeneity of variance assumption
+
+Compute the Levene’s test at each time of the within-subjects factor, here time variable:
+
+```{r, echo=FALSE, warning=FALSE}
+df.h2 %>%
+  levene_test(Hydrogen.flux ~ Season*Treatment)
+```
+Data meet homogeneity of variance.
+
+Response Factor calculated by sampling point
+```{r, echo=FALSE, warning=FALSE}
+df.h2 %>%
+  levene_test(Hydrogen.Uptake ~ Season*Treatment)
+```
+
+Group by season
+```{r, echo=FALSE, warning=FALSE}
+df.h2 %>%
+  group_by(Season) %>%
+  levene_test(Hydrogen.flux ~ Treatment)
+```
+
+There was homogeneity of variances, as assessed by Levene’s test of homogeneity of variance (p > .05) for all seasons except latemonsoon. Use an error term is assessing by season.
+
+Compute the Levene’s test at each treatment of the within-subjects factor, here time variable:
+
+```{r, echo=FALSE, warning=FALSE}
+df.h2 %>%
+  group_by(Treatment) %>%
+  levene_test(Hydrogen.flux ~ Season)
+```
+
+There was homogeneity of variances, as assessed by Levene’s test of homogeneity of variance (p > .05) for all treatments.
+
+Test all model assumptions and data meet most model assumptions. 
+
+```{r, echo=FALSE}
+
+assump.h2 <- gvlma(fit.h2)
+assump.h2
+
+```
+
+
+Response Factor calculated by sampling point
+```{r, echo=FALSE}
+
+assump.h2 <- gvlma(fit.h2.rf)
+assump.h2
+
+```
+
+
+```{r}
+plot(fit.h2)
+```
+
+Response Factor calculated by sampling point
+```{r}
+plot(fit.h2.rf)
+```
+
+
+#Mesocosm hydrogen fluxes
+
+## Build and summarize linear model
+```{r, echo=FALSE}
+fit.mh2 <- lm(Hydrogen.flux ~ Treatment * Moisture.level, data = df.mh2)
+summ(fit.mh2)
+```
+
+```{r, echo=FALSE}
+fit.mh2.rf <- lm(Hydrogen.Uptake ~ Treatment * Moisture.level, data = df.mh2)
+summ(fit.mh2.rf)
+```
+
+#### Check assumptions
+
+##### Outliers
+
+```{r, echo=FALSE, tidy=TRUE}
+df.mh2 %>%
+  group_by(Treatment, Moisture.level) %>%
+  identify_outliers(Hydrogen.flux)
+```
+
+There were 3 outliers and no extreme outliers.
+
+```{r, echo=FALSE, tidy=TRUE}
+df.mh2 %>%
+  group_by(Treatment, Moisture.level) %>%
+  identify_outliers(Hydrogen.Uptake)
+```
+
+##### Normality assumption
+
+Check normality assumption by analyzing the model residuals. QQ plot and Shapiro-Wilk test of normality are used. QQ plot draws the correlation between a given data and the normal distribution.
+
+Create a QQ plot of residuals
+```{r, echo=FALSE, warning=FALSE}
+ggqqplot(residuals(fit.mh2))
+```
+
+Many points fall outside of the QQ plot.
+
+Compute Shapiro-Wilk test for each combinations of factor levels:
+
+```{r, echo=FALSE, warning=FALSE}
+df.mh2 %>%
+  group_by(Treatment, Moisture.level) %>%
+  shapiro_test(Hydrogen.flux)
+```
+
+The mesocosm H2 measurements was not normally distributed  for Control	Dry (0.02 GWC) and Greywater Wet (0.2 GWC), but p > 0.05 at all other times/treatments, as assessed by Shapiro-Wilk’s test.
+
+
+```{r, echo=FALSE, warning=FALSE}
+df.mh2 %>%
+  group_by(Treatment, Moisture.level) %>%
+  shapiro_test(Hydrogen.Uptake)
+```
+
+##### Homogeneity of variance assumption
+
+Compute the Levene’s test at each time of the within-subjects factor, here time variable:
+
+```{r, echo=FALSE, warning=FALSE}
+df.mh2 %>%
+  levene_test(Hydrogen.flux ~ Moisture.level*Treatment)
+```
+Two-way model does not meet homogeneity of variance for mesocosm data. 
+
+
+
+```{r, echo=FALSE, warning=FALSE}
+df.mh2 %>%
+  levene_test(Hydrogen.Uptake ~ Moisture.level*Treatment)
+```
+
+
+Compute the Levene’s test at each moisture level of the within-subjects factor, here time variable:
+
+```{r, echo=FALSE, warning=FALSE}
+df.mh2 %>%
+  group_by(Moisture.level) %>%
+  levene_test(Hydrogen.flux ~ Treatment)
+```
+
+There was homogeneity of variances, as assessed by Levene’s test of homogeneity of variance (p > .05) for dry and wet, but not moist conditions.
+
+Compute the Levene’s test at each treatment of the within-subjects factor, here time variable:
+
+```{r, echo=FALSE, warning=FALSE}
+df.mh2 %>%
+  group_by(Treatment) %>%
+  levene_test(Hydrogen.flux ~ Moisture.level)
+```
+
+There was homogeneity of variances, as assessed by Levene’s test of homogeneity of variance (p > .05) for passive, but other treatments do not meet assumption.
+
+Test all model assumptions and data do not meet model assumptions. Data will need to be transformed for further analyses. 
+
+```{r, echo=FALSE}
+
+assump.mh2 <- gvlma(fit.mh2)
+assump.mh2
+
+
+```
+
+Does not meet most assumptions, use nonparametric tests for analyses.
+
+#### Build model with H2 data using new response factor
+```{r, echo=FALSE}
+
+assump.mh2.rf <- gvlma(fit.mh2.rf)
+assump.mh2.rf
+
+
+```
+
+#### Build model with log transformed data
+```{r, echo=FALSE, warning=FALSE}
+model.mh2.log  <- lm(H2.log~ Treatment*Moisture.level, data = df.mh2)
+summary(model.mh2.log)
+```
+
+```{r, echo=FALSE}
+
+assump.mh2 <- gvlma(model.mh2.log)
+assump.mh2
+
+
+```
+
+Log transformation does not meet assumptions.
+
+#### Box cox transformation and reran model
+```{r}
+library(caret)
+
+BCmh2 <- BoxCoxTrans(df.mh2$Hydrogen.flux)
+df.mh2.tranformed <- cbind(df.mh2, mh2_BC = predict(BCmh2, df.mh2$Hydrogen.flux))
+
+BClm.mh2 <- lm(mh2_BC ~ Treatment*Moisture.level, data = df.mh2.tranformed)
+gvlma(BClm.mh2)
+```
+
+Model with Box Cox transformation does not meet assumptions.
+
+Use nonparametric for analyses.
+
+# Computation
+
+#### Soil hydrogen fluxes
+
+In situ soil flux model met assumptions for ANOVA.
+
+```{r, echo=FALSE, message=FALSE}
+res.aov.h2 <- anova_test(
+  data = df.h2, dv = Hydrogen.flux,
+  between = c(Treatment, Season))
+get_anova_table(res.aov.h2)
+```
+
+In situ soil flux model met assumptions for ANOVA. Response Factor calculated by sampling point
+```{r, echo=FALSE, message=FALSE}
+res.aov.h2.rf <- anova_test(
+  data = df.h2, dv = Hydrogen.Uptake,
+  between = c(Treatment, Season))
+get_anova_table(res.aov.h2.rf)
+```
+
+
+
+##Test for simple main effects
+```{r, echo=FALSE, message=FALSE}
+# Group the data by treatment and fit  anova
+model.h2.lm <- lm(Hydrogen.flux ~ Treatment*Season, data = df.h2)
+df.h2 %>%
+  group_by(Treatment) %>%
+  anova_test(Hydrogen.flux ~ Season, error = model.h2.lm)
+
+```
+
+The simple main effect of monsoon season on hydrogen fluxes was statistically significant for all treatments (p < 0.001).
+
+There is a statistically significant difference in mean hydrogen fluxes for each treatment across the four sampling points. Control F(3, 48) = 39.73, p < 0.0001, ges = 0.713. Passive F(3, 48) = 24.8, p < 0.0001, ges = 0.608. Active F(3, 48) = 22.02, p < 0.0001, ges = 0.579. Greywater F(3, 48) = 6.15, p = 0.001, ges = 0.278. 
+
+```{r, echo=FALSE, message=FALSE}
+# Group the data by season and fit  anova
+model.h2.lm <- lm(Hydrogen.flux ~ Season, data = df.h2)
+df.h2 %>%
+  group_by(Season) %>%
+  anova_test(Hydrogen.flux ~ Treatment, error = model.h2.lm)
+
+```
+The simple main effect of treatment on in situ hydrogen fluxes was statistically significant for premonsoon (p = 0.0003) when error term is calculated based on season.
+
+```{r, echo=FALSE, message=FALSE}
+# Group the data by season and fit  anova
+model.h2.lm <- lm(Hydrogen.flux ~ Treatment*Season, data = df.h2)
+df.h2 %>%
+  group_by(Season) %>%
+  anova_test(Hydrogen.flux ~ Treatment, error = model.h2.lm)
+
+```
+
+The simple main effect of treatment on in situ hydrogen fluxes was statistically significant for premonsoon and latemonsoon when error term is calculated based on season the interaction term of treatment and season.
+
+There is a statistically significant difference in mean hydrogen fluxes between treatments for the premonsoon sampling period. Premonsoon F(3, 48) = 12.07, p < 0.0001, ges = 0.430. Latemonsoon F(3,	48)	= 3.282	p = 0.029	ges = 0.170.
+
+
+
+### pairwise comparisons
+
+
+Treatment using rstatix
+```{r, echo=FALSE, message=FALSE}
+pwc.h2 <- df.h2 %>% 
+  tukey_hsd(Hydrogen.flux ~Treatment*Season, p.adjust.method = "bonferroni")
+pwc.h2
+
+```
+
+Treatment using rstatx
+```{r, echo=FALSE, message=FALSE}
+pwc.t.h2 <- df.h2 %>% 
+  group_by(Treatment) %>%
+  tukey_hsd(Hydrogen.flux ~ Season, p.adjust.method = "bonferroni")
+pwc.t.h2
+
+#write.csv(pwc.t.h2, file="G:/My Drive/Meredith_Lab_Documents/Laptop/Documents/RWH/RWH-SoilH2Fluxes/PeerJ-H2PaperMaterials/Files for Submission on 20210621/Results/H2-pwc-Season-groupedT.csv") #Table not used
+```
+
+
+Season using rstatx from original submission using old RF 
+```{r, echo=FALSE, message=FALSE}
+pwc.s.h2 <- df.h2 %>% 
+  group_by(Season) %>%
+  tukey_hsd(Hydrogen.flux ~ Treatment, p.adjust.method = "bonferroni")
+pwc.s.h2
+
+#write.csv(pwc.s.h2, file="SupplementalTableS1.csv") #Supplemental Table S1
+```
+
+
+Season using rstatx for H2 calculated using new response factor 
+```{r, echo=FALSE, message=FALSE}
+pwc.s.h2.rf <- df.h2 %>% 
+  group_by(Season) %>%
+  tukey_hsd(Hydrogen.Uptake ~ Treatment, p.adjust.method = "bonferroni")
+pwc.s.h2.rf
+
+#write.csv(pwc.s.h2.rf, file="SupplementalTableS3-202111.csv") #Supplemental Table S3
+```
+
+
+#### Mesocosm hydrogen fluxes
+
+One-way nonparametric ANOVA was used since data did not meet all assumptions for parametric ANOVA.
+
+## ANOVA using nonparametric anova looking at the effect of moisture level on h2 fluxes.
+```{r, echo=FALSE, message=FALSE}
+res.KWtime.mh2 <- df.mh2 %>% 
+  kruskal_test(Hydrogen.flux ~Moisture.level)
+get_anova_table(res.KWtime.mh2)
+
+```
+
+## ANOVA using nonparametric anova looking at the effect of moisture level on h2 fluxes using new response factor.
+```{r, echo=FALSE, message=FALSE}
+res.KWtime.mh2.rf <- df.mh2 %>% 
+  kruskal_test(Hydrogen.Uptake ~Moisture.level)
+get_anova_table(res.KWtime.mh2.rf)
+
+```
+
+
+Moisture level effect size
+```{r, echo=FALSE, message=FALSE}
+res.KWEF.mh2 <- df.mh2 %>%
+  kruskal_effsize(Hydrogen.flux ~Moisture.level)
+get_anova_table(res.KWEF.mh2)
+
+```
+
+Moisture level effect size for new response factor
+```{r, echo=FALSE, message=FALSE}
+res.KWEF.mh2.rf <- df.mh2 %>%
+  kruskal_effsize(Hydrogen.Uptake ~Moisture.level)
+get_anova_table(res.KWEF.mh2.rf)
+
+```
+
+
+
+H2 uptake differs significantly with moisture level across treatments.
+
+
+## Simple main effects using nonparametric anova looking at the effect of treatment on h2 fluxes.
+
+```{r, echo=FALSE, message=FALSE}
+res.KWML.mh2 <- df.mh2 %>% 
+  kruskal_test(Hydrogen.flux ~Treatment)
+get_anova_table(res.KWML.mh2)
+
+```
+
+## Simple main effects using nonparametric anova looking at the effect of treatment on h2 fluxes using new response factor.
+
+```{r, echo=FALSE, message=FALSE}
+res.KWML.mh2.rf <- df.mh2 %>% 
+  kruskal_test(Hydrogen.Uptake ~Treatment)
+get_anova_table(res.KWML.mh2.rf)
+
+```
+
+
+Treatment effect size
+```{r, echo=FALSE, message=FALSE}
+res.KWEF.mh2 <- df.mh2 %>%
+  kruskal_effsize(Hydrogen.flux ~Treatment)
+get_anova_table(res.KWEF.mh2)
+
+```
+
+Treatment effect size using new response factor
+```{r, echo=FALSE, message=FALSE}
+res.KWEF.mh2.rf <- df.mh2 %>%
+  kruskal_effsize(Hydrogen.Uptake ~Treatment)
+get_anova_table(res.KWEF.mh2.rf)
+
+```
+
+
+H2 uptake does not differ significantly with treatment across moisture levels.
+
+Pairwise comparison using dunn test to assess the effect of moisture level on H2 fluxes. Using old RF from original submission.
+```{r, echo=FALSE, message=FALSE}
+pwc.dmoist.mh2 <- df.mh2 %>% 
+  dunn_test(Hydrogen.flux ~Moisture.level, p.adjust.method = "bonferroni")
+pwc.dmoist.mh2
+
+#write.csv(pwc.dmoist.mh2, file="SupplementalTableS2.csv") #supplemental Table S2
+
+```
+
+The wet soil moisture level differs significantly from both the dry and moist levels.
+
+Pairwise comparison using dunn test to assess the effect of moisture level on H2 fluxes. Using new response factor.
+```{r, echo=FALSE, message=FALSE}
+pwc.dmoist.mh2.rf <- df.mh2 %>% 
+  dunn_test(Hydrogen.Uptake ~Moisture.level, p.adjust.method = "bonferroni")
+pwc.dmoist.mh2.rf
+
+#write.csv(pwc.dmoist.mh2.rf, file="SupplementalTableS4-rf202111.csv") #supplemental Table S4
+
+```
+
+
+Pairwise comparison using dunn test to assess the effect of treatment on H2 fluxes.
+```{r, echo=FALSE, message=FALSE}
+pwc.t.mh2 <- df.mh2 %>% 
+  dunn_test(Hydrogen.flux ~Treatment, p.adjust.method = "bonferroni")
+pwc.t.mh2
+
+```
+Treatments do not significantly differ.
+
+```{r, echo=FALSE, message=FALSE}
+pwc.t.mh2 <- df.mh2 %>% 
+  dunn_test(Hydrogen.Uptake ~Treatment, p.adjust.method = "bonferroni")
+pwc.t.mh2
+
+```
+
+# Visualization: box plots with p-values
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(dpi=600,fig.width=8, fig.height = 5)
+```
+
+
+### Order data
+
+#### Soil H2 fluxes
+```{r, echo=FALSE, warning=FALSE}
+# Reorder data along treatment gradient new data frame
+treatment_ordered.h2 <- df.h2 %>%
+  mutate(Treatment = fct_relevel(Treatment, 
+            "Control", "Passive", "Active", 
+            "Greywater"))
+```
+
+Figure comparing treatment between sampling periods
+```{r, echo=FALSE}
+fig2.h2 <- ggboxplot(
+  treatment_ordered.h2, x = "Season", y = "Hydrogen.flux", 
+  color = "Treatment",  palette = "jco", add="jitter"
+  )+ theme(legend.position = "right")+
+  geom_hline(yintercept=0, linetype=4, color="grey", size=1)
+fig2.h2
+```
+
+##Hydrogen fluxes signicance by treatment
+```{r, echo=FALSE}
+#create new x labels
+SoilH2labs <- c("Pre-monsoon", "Mid-monsoon", "Late-monsoon", "Post-monsoon")
+
+#pwc.h2 <- pwc.h2 %>% add_xy_position(x = "Season")
+fig2.h2 <- fig2.h2 + 
+  #stat_pvalue_manual(pwc.h2, tip.length = 0, hide.ns = TRUE) +
+  labs(
+    subtitle = get_test_label(res.aov.h2, detailed = TRUE)
+  )
+library(wesanderson)
+fig2.h2.f<- fig2.h2 + scale_color_manual(values=rev(wes_palette("Moonrise2"))) +
+  ylab(expression("Hydrogen Fluxes (nmol H "['  2']*" m "^"-2"*" s "^"-1"*")")) +
+  scale_x_discrete(labels= SoilH2labs)
+# Visualization: box plots with p-values
+fig2.h2.f
+#ggplot2::ggsave("Fig2-H2-f.tiff",width = 7, height = 4, dpi = 600, units = "in")
+```
+
+
+```{r, echo=FALSE}
+fig2.h2 <- ggboxplot(
+  treatment_ordered.h2, x = "Season", y = "Hydrogen.Uptake", 
+  color = "Treatment",  palette = "jco", add="jitter"
+  )+ theme(legend.position = "right")+
+  geom_hline(yintercept=0, linetype=4, color="grey", size=1)
+fig2.h2
+```
+
+##Hydrogen fluxes signicance by treatment
+```{r, echo=FALSE}
+#create new x labels
+SoilH2labs <- c("Pre-monsoon", "Mid-monsoon", "Late-monsoon", "Post-monsoon")
+
+#pwc.h2 <- pwc.h2 %>% add_xy_position(x = "Season")
+fig2.h2 <- fig2.h2 + 
+  #stat_pvalue_manual(pwc.h2, tip.length = 0, hide.ns = TRUE) +
+  labs(
+    subtitle = get_test_label(res.aov.h2.rf, detailed = TRUE)
+  )
+library(wesanderson)
+fig2.h2.f<- fig2.h2 + scale_color_manual(values=rev(wes_palette("Moonrise2"))) +
+  ylab(expression("Hydrogen Fluxes (nmol H "['  2']*" m "^"-2"*" s "^"-1"*")")) +
+  scale_x_discrete(labels= SoilH2labs)
+# Visualization: box plots with p-values
+fig2.h2.f
+ggplot2::ggsave("Fig2-H2-f-rf-202111.tiff",width = 7, height = 4, dpi = 600, units = "in")
+```
+
+
+
+#### Mesocosm H2 fluxes
+```{r, echo=FALSE, warning=FALSE}
+# Reorder data along treatment gradient new data frame
+treatment_ordered.mh2 <- df.mh2 %>%
+  mutate(Treatment = fct_relevel(Treatment, 
+            "Control", "Passive", "Active", 
+            "Greywater"))
+```
+
+Figure comparing treatment between sampling periods
+```{r, echo=FALSE}
+fig3.mh2 <- ggboxplot(
+  treatment_ordered.mh2, x = "Moisture.level", y = "Hydrogen.flux", 
+  color = "Treatment",  palette = "jco", add="jitter"
+  ) + theme(legend.position = "right")+
+  scale_x_discrete(labels=c("Dry (0.02 GWC)" = "Dry (2% GWC)", "Moist (0.10 GWC)" = "Moist (10% GWC)",    "Wet (0.2 GWC)" = "Wet (20% GWC)"))+
+  geom_hline(yintercept=0, linetype=4, color="grey", size=1)
+fig3.mh2
+```
+
+##Mesocosm Hydrogen fluxes signicance by treatment
+```{r, echo=FALSE}
+fig3.mh2 <- fig3.mh2 + 
+  labs(
+    subtitle = get_test_label(res.KWML.mh2, detailed = F)
+  )
+fig3.mh2.f <- fig3.mh2 + scale_color_manual(values=rev(wes_palette("Moonrise2")))+
+  ylab(expression("Hydrogen Fluxes (nmol H "['2']*" m "^"-2"*" s "^"-1"*")")) +
+  xlab(expression("Soil Moisture"))
+# Visualization: box plots with p-values
+fig3.mh2.f 
+#ggplot2::ggsave("Fig3-MH2-f.tiff",width = 7, height = 4, dpi = 600, units = "in")
+```
+
+
+
+Figure comparing treatment between sampling periods
+```{r, echo=FALSE}
+fig3.mh2 <- ggboxplot(
+  treatment_ordered.mh2, x = "Moisture.level", y = "Hydrogen.Uptake", 
+  color = "Treatment",  palette = "jco", add="jitter"
+  ) + theme(legend.position = "right")+
+  scale_x_discrete(labels=c("Dry (0.02 GWC)" = "Dry (2% GWC)", "Moist (0.10 GWC)" = "Moist (10% GWC)",    "Wet (0.2 GWC)" = "Wet (20% GWC)"))+
+  geom_hline(yintercept=0, linetype=4, color="grey", size=1)
+fig3.mh2
+```
+
+
+##Mesocosm Hydrogen fluxes signicance by treatment
+```{r, echo=FALSE}
+fig3.mh2 <- fig3.mh2 + 
+  labs(
+    subtitle = get_test_label(res.KWML.mh2.rf, detailed = F)
+  )
+fig3.mh2.f <- fig3.mh2 + scale_color_manual(values=rev(wes_palette("Moonrise2")))+
+  ylab(expression("Hydrogen Fluxes (nmol H "['2']*" m "^"-2"*" s "^"-1"*")")) +
+  xlab(expression("Soil Moisture"))
+# Visualization: box plots with p-values
+fig3.mh2.f 
+ggplot2::ggsave("Fig3-MH2-f-rf-2021.tiff",width = 7, height = 4, dpi = 600, units = "in")
+```
+
