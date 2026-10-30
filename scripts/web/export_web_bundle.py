@@ -357,7 +357,7 @@ def main():
     ontology = build_ontology()
     scenarios = build_scenarios()
     commit = git("rev-parse", "HEAD")
-    dirty = bool(git("status", "--porcelain", "--", "src", "data/v03", "reviews", "paper/tables"))
+    dirty = bool(git("status", "--porcelain", "--untracked-files=no", "--", "src", "data/v03", "reviews", "paper/tables"))
     bundle = {
         "schema": 1, "version": version, "title": "EQ-BioDT v0.6",
         "provenance": {"source_repository": "https://github.com/bio-ontology-research-group/empty-quarter-digital-twin",
