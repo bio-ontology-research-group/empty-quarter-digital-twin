@@ -80,10 +80,10 @@ footer{margin:50px 0 10px;color:var(--muted);font-size:.92rem}
 </style></head><body><a class="skip" href="#evidence">Skip to the twin</a><main>
 <nav class="top" aria-label="Main"><strong>EQ-BioDT v0.6 · local console</strong><span><a href="#glossary">Glossary</a> &nbsp; <a href="/v3/contract">Model contract</a> &nbsp; <a href="/docs">API</a> &nbsp; <a href="https://github.com/bio-ontology-research-group/empty-quarter-digital-twin">Source</a></span></nav>
 <h1>EQ-BioDT v0.6: a causal–ontological digital twin of the Rub’ al-Khali</h1>
-<p class="lede">The twin links primary soil-metagenome evidence, OWL deduction of which genomes can carry which functions, a community factor that conditions the soil process model, and paired <code>do()</code> regimes that change only physical inputs. Follow the pipeline from left to right, or jump to a stage.</p>
+<p class="lede">The twin links primary soil-metagenome evidence, ontological (OWL) deduction of which genomes can carry which functions, a community factor that conditions the soil process model, and paired <code>do()</code> regimes that change only physical inputs. Follow the pipeline from left to right, or jump to a stage.</p>
 <ol class="pipeline" aria-label="Twin pipeline">
 <li><a href="#evidence"><b>1 · Evidence</b><span id="pl-evidence">551 metagenomes, 5,438 reference MAGs</span></a></li>
-<li><a href="#ontology"><b>2 · OWL deduction</b><span id="pl-owl">Reasoner entails classes from annotations</span></a></li>
+<li><a href="#ontology"><b>2 · Ontological deduction</b><span id="pl-owl">Reasoner entails classes from annotations</span></a></li>
 <li><a href="#gamma"><b>3 · Community factor γ</b><span>Entailed carrier shares set rate factors</span></a></li>
 <li><a href="#mechanisms"><b>4 · Mechanisms</b><span>Causal graph, admissible targets, versions</span></a></li>
 <li><a href="#regimes"><b>5 · Paired do() regimes</b><span>Baseline vs intervened, same unit</span></a></li>
@@ -108,7 +108,7 @@ footer{margin:50px 0 10px;color:var(--muted);font-size:.92rem}
 <div class="tablewrap"><table id="site-table"><caption class="mono" style="text-align:left;caption-side:top;padding-bottom:6px">Select a row to make it the active sample. Genome equivalents (GE): see glossary.</caption><thead><tr><th>Sample</th><th>Compartment</th><th>Campaign</th><th>Date</th><th class="num">Lat °N</th><th class="num">Lon °E</th><th class="num">H₂ marker GE</th></tr></thead><tbody></tbody></table></div></div>
 </section>
 
-<section class="panel" id="ontology"><h2 data-step="2">OWL deduction: what the reasoner entails about a genome</h2>
+<section class="panel" id="ontology"><h2 data-step="2">Ontological deduction: what the OWL reasoner entails about a genome</h2>
 <p id="owl-summary">The Kobayashi-MaRust reasoner classifies all 5,438 reference MAGs in OWL 2 against the full KEGG M00165 module (with its alternative regeneration routes) and hydrogenase guild axioms. The console never downloads all MAGs: search, or list the candidates, and request one genome’s entailments at a time.</p>
 <div class="grid">
 <div class="card plain"><h3 style="margin-top:0">Find a reference MAG</h3>
