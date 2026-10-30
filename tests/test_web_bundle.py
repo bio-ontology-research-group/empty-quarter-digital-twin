@@ -163,6 +163,29 @@ def test_graph_matches_theory(bundle):
     assert sum(v == "admissible" for v in adm.values()) == 9 and len(adm) == 40
 
 
+def test_identification_equals_review(bundle):
+    r = json.loads((ROOT / "reviews" / "v06" / "identification.json").read_text())
+    q = {x["query"]: x for x in bundle["identification"]["queries"]}
+    assert list(q) == ["deductive_null", "oxygen_context", "field_backdoor"]
+    dn, ox, fb = r["deductive_null"], r["oxygen_context"], r["field_backdoor"]
+    assert q["deductive_null"]["claim"] == dn["claim"] and q["deductive_null"]["rule"] == dn["rule"]
+    assert q["deductive_null"]["verdict"] == dn["verdict"]
+    assert q["deductive_null"]["open_path"] == dn["result"]["open_path_plain"]
+    assert q["deductive_null"]["plain_dsep_holds"] is False and q["deductive_null"]["closure_dsep_holds"] is True
+    chain = [(s["conclusion"], s["premises"]) for s in q["deductive_null"]["closure_steps"]]
+    assert chain == [("gamma_co", ["q_co"]), ("k_co@0", ["gamma_co"]), ("J_co@0", ["k_co@0"])]
+    assert all(s["rule"] for s in q["deductive_null"]["closure_steps"])
+    assert q["oxygen_context"]["claim"] == ox["claim"] and q["oxygen_context"]["verdict"] == ox["verdict"]
+    assert q["oxygen_context"]["open_path"] == ox["without_stratum"]["open_path_plain"]
+    assert q["oxygen_context"]["plain_dsep_holds"] is False and q["oxygen_context"]["closure_dsep_holds"] is True
+    assert q["oxygen_context"]["numerical_check"] == {"h2_invariant_gamma_co_0": True, "h2_invariant_gamma_co_1": False, "do_water_still_changes_h2": True}
+    assert q["field_backdoor"]["claim"] == fb["estimand"] and q["field_backdoor"]["verdict"] == fb["verdict"]
+    assert q["field_backdoor"]["open_path"] == fb["open_backdoor_path_without_adjustment"]
+    assert q["field_backdoor"]["adjustment_sets"] == {k: fb[k]["minimal_sets"] for k in ("all_measured", "T_unmeasured", "T_and_Ev_unmeasured", "phi_unmeasured")}
+    assert q["field_backdoor"]["adjustment_sets"]["T_and_Ev_unmeasured"] == []
+    assert q["field_backdoor"]["positivity_caveat"] == fb["positivity_caveat"]
+
+
 # ---- the browser driver, run natively against the same released modules ----
 def test_live_reference_daily_matches_paper(live):
     r = json.loads(live.run(json.dumps({"mode": "reference", "members": False,

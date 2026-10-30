@@ -334,6 +334,38 @@ def build_key_numbers(paper: dict, ont: dict, conn: dict, ref: dict) -> dict:
             "daily_lowest": int(paper["VersionDailyLowest"]), "co_admission_ceiling_ratio": rnd(conn["co_admission_ceiling_ratio"], 3)}
 
 
+def build_identification() -> dict:
+    """Compact view of reviews/v06/identification.json for the page: claim, plain and closure tests, derivation chain, adjustment sets."""
+    r = json.loads((V06 / "identification.json").read_text())
+
+    def steps(closure):
+        return [{"rule": d["rule"], "premises": d["premises"], "conclusion": d["node"], "value": d["value"]}
+                for d in closure["derivations"] if d["premises"]]
+
+    def constants(closure):
+        return sorted(d["node"] for d in closure["derivations"] if not d["premises"])
+
+    dn, ox, fb = r["deductive_null"], r["oxygen_context"], r["field_backdoor"]
+    ec = ox["executable_check"]
+    return {"note": r["note"], "queries": [
+        {"query": "deductive_null", "claim": dn["claim"], "rule": dn["rule"],
+         "plain_dsep_holds": dn["result"]["graph_test"], "closure_dsep_holds": dn["result"]["graph_test_Z_star_csi"],
+         "open_path": dn["result"]["open_path_plain"], "closure_steps": steps(dn["closure"]), "closure_constants": constants(dn["closure"]),
+         "adjustment_sets": None, "numerical_check": None, "verdict": dn["verdict"]},
+        {"query": "oxygen_context", "claim": ox["claim"], "rule": "Rule 3",
+         "plain_dsep_holds": ox["without_stratum"]["graph_test"], "closure_dsep_holds": ox["stratum"]["graph_test_Z_star_csi"],
+         "open_path": ox["without_stratum"]["open_path_plain"], "closure_steps": steps(ox["closure"]), "closure_constants": constants(ox["closure"]),
+         "adjustment_sets": None,
+         "numerical_check": {"h2_invariant_gamma_co_0": ec["gamma_co=0"]["h2_invariant"], "h2_invariant_gamma_co_1": ec["gamma_co=1"]["h2_invariant"],
+                             "do_water_still_changes_h2": not ox["control_water_still_affects_h2"]["holds"]},
+         "verdict": ox["verdict"]},
+        {"query": "field_backdoor", "claim": fb["estimand"], "rule": "back-door",
+         "plain_dsep_holds": False, "closure_dsep_holds": None,
+         "open_path": fb["open_backdoor_path_without_adjustment"], "closure_steps": [], "closure_constants": [],
+         "adjustment_sets": {k: fb[k]["minimal_sets"] for k in ("all_measured", "T_unmeasured", "T_and_Ev_unmeasured", "phi_unmeasured")},
+         "positivity_caveat": fb["positivity_caveat"], "limits": fb["limits"], "numerical_check": None, "verdict": fb["verdict"]}]}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", type=Path, default=DEFAULT_OUT)
@@ -371,7 +403,7 @@ def main():
                    "reaction rate coefficients are supplied scenario parameters, not fitted to Rub' al-Khali flux data, and no net carbon removal is estimated."),
         "key_numbers": build_key_numbers(paper, mags, sites["primary_connection"], scenarios["paired_summary"]["reference_uptake_mol_m2"]),
         "paper_numbers": paper,
-        "graph": build_graph(),
+        "graph": build_graph(), "identification": build_identification(),
         "medians": medians, "sample_columns": columns, "samples": samples, **{k: sites[k] for k in ("sites", "campaigns")},
         "primary_connection": sites["primary_connection"],
         "scenarios": scenarios, "candidates": mags, "ontology": ontology, "transfer": build_transfer(),
