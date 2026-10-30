@@ -244,6 +244,8 @@ def main():
             "osmotic_coefficient": r"Osmotic coefficient $\varphi$",
             "osmotic_domain_mol_l": r"Dilute NaCl domain limit ($\mathrm{mol}\,\mathrm{L}^{-1}$)",
             "mechanism": "Physiological mechanism",
+            "gamma_h2": r"Community factor $\gamma_{\mathrm{H_2}}$ for hydrogen (1 = reference community)",
+            "gamma_co": r"Community factor $\gamma_{\mathrm{CO}}$ for CO (1 = reference community)",
         }
         assert parameter_labels.keys() == model["parameter_defaults"].keys()
         body += [r"\section{Process parameters}", r"\begin{longtable}{p{0.63\textwidth}p{0.27\textwidth}}\toprule Parameter & Default \\\midrule\endhead"]

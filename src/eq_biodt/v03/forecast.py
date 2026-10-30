@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from datetime import date, datetime, timezone
 import hashlib
+from . import VERSION
 import json
 from pathlib import Path
 
@@ -148,7 +149,7 @@ def freeze(panel_path: Path, target_date: str, output: Path, *, issued_on: str |
                                 float(np.expm1(float(v[i]) + quantiles[name]))]
                          for name, v in forecasts.items()
                      }})
-    payload = {"version": "0.5.0", "issued_on": issued.isoformat(), "target_date": target_date,
+    payload = {"version": VERSION, "issued_on": issued.isoformat(), "target_date": target_date,
                "window_days": window_days, "source_sha256": sha256(panel_path),
                "target": TARGET, "training_visits": len(train), "predictions": rows,
                "conformal_q90_log1p_ge": quantiles,

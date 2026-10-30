@@ -1,4 +1,30 @@
-# v0.5.0 — Causal–ontological desert twin and external transfer
+# v0.6.0 — Stratified causal–ontological twin — 30 October 2026
+
+- Add the stratified causal–ontological graph (`theory.py`, `GET /v3/graph`,
+  `eq-biodt graph`): every node carries its zone, manipulability and equation.
+  The theory is stated in `docs/causal-ontological-theory.md`.
+- Couple rate coefficients to the selected community through reasoner-entailed
+  carrier shares (`community.py`; `reference`, `gate`, `proportional`;
+  `GET /v3/community/{sample}`, `eq-biodt community`).
+- Check admissibility of interventions, with zone-specific errors for ontology,
+  evidence, entailment, constituted and outcome targets and for infeasible regimes.
+- Add state interventions (`water_mm`, `theta`, `psi_mpa` with a matric or osmotic
+  version, `nacl_mol_m2`), version relevance (`POST /v3/version-relevance`) and a
+  treatment-version block in `compare`.
+- Replace hard-coded invariance flags by runtime checks of memberships, shares,
+  constitutive identities and balances in both arms; report deductive null effects.
+- `eq-biodt intervene` now accepts top-level `community`, `coupling` and `state`
+  as the API does.
+- Ontology: verified GO/ChEBI/ENVO/PATO/UO/SIO annotation mappings
+  (`data/v03/ontology_mappings.tsv`), measurement endpoint classes and declared
+  observation maps (`observation_maps.json`), runtime verification of ontology and
+  reasoner digests, and justifications for all 136 candidates and 198 CO carriers.
+- Move the v0.2 exploratory model to `legacy/` and remove it from the package.
+- Add `reproducibility/v06` analyses and figures; revise the manuscript.
+- Model version reported by the API, contract and outputs now comes from package
+  metadata. `/v3` paths, `eq_biodt.v03` and `data/v03` keep their names.
+
+## v0.5.0 — Causal–ontological desert twin and external transfer
 
 - Reframe the manuscript around ontological deduction, causal intervention
   mechanisms, primary Rub’ al-Khali data and independent environmental tests.
@@ -41,5 +67,5 @@
 - Regenerate the manuscript, tables and figures and state the experimental
   validation and analysis-reproduction boundaries explicitly.
 
-Earlier v0.2 implementations and their reproduction material remain historical.
+The earlier v0.2 implementations and their reproduction material are kept under `legacy/` (unpackaged, untested).
 The local v0.3 manuscript and implementation are preserved in commit `06347de`.

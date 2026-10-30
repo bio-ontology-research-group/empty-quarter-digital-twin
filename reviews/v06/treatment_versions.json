@@ -1,0 +1,488 @@
+{
+  "summary": {
+    "members": 24,
+    "total_water_mm": 12.0,
+    "versions": [
+      "single_pulse",
+      "four_pulses",
+      "daily_pulses"
+    ],
+    "control": "intact",
+    "ranking_changes_across_members": true,
+    "version_relevant": true,
+    "distinct_rankings": [
+      "four_pulses>single_pulse>daily_pulses",
+      "single_pulse>four_pulses>daily_pulses"
+    ],
+    "ranking_counts": {
+      "single_pulse>four_pulses>daily_pulses": 22,
+      "four_pulses>single_pulse>daily_pulses": 2
+    },
+    "members_where_single_beats_four": 22,
+    "members_where_four_beats_single": 2,
+    "members_where_daily_is_lowest": 24,
+    "effect_vs_control_range_mol_m2": [
+      0.0,
+      0.007166611848928573
+    ],
+    "effect_range_by_version_mol_m2": {
+      "single_pulse": [
+        5.852790082949105e-05,
+        0.006895847213542933
+      ],
+      "four_pulses": [
+        4.5617723755904126e-08,
+        0.007166611848928573
+      ],
+      "daily_pulses": [
+        0.0,
+        0.004360611747331165
+      ]
+    },
+    "pairwise": [
+      {
+        "a": "intact",
+        "b": "single_pulse",
+        "uptake_difference_range_mol_m2": [
+          -0.006895847213542933,
+          -5.852790082949105e-05
+        ],
+        "rank_reversal": false
+      },
+      {
+        "a": "intact",
+        "b": "four_pulses",
+        "uptake_difference_range_mol_m2": [
+          -0.007166611848928573,
+          -4.5617723755904126e-08
+        ],
+        "rank_reversal": false
+      },
+      {
+        "a": "intact",
+        "b": "daily_pulses",
+        "uptake_difference_range_mol_m2": [
+          -0.004360611747331165,
+          0.0
+        ],
+        "rank_reversal": false
+      },
+      {
+        "a": "single_pulse",
+        "b": "four_pulses",
+        "uptake_difference_range_mol_m2": [
+          -0.00027076463538563966,
+          0.004045742649152464
+        ],
+        "rank_reversal": true
+      },
+      {
+        "a": "single_pulse",
+        "b": "daily_pulses",
+        "uptake_difference_range_mol_m2": [
+          5.852790082949105e-05,
+          0.00497498147069937
+        ],
+        "rank_reversal": false
+      },
+      {
+        "a": "four_pulses",
+        "b": "daily_pulses",
+        "uptake_difference_range_mol_m2": [
+          4.5617723755904126e-08,
+          0.0030333702056303414
+        ],
+        "rank_reversal": false
+      }
+    ],
+    "pareto_in_every_member": [
+      "intact"
+    ]
+  },
+  "members": [
+    {
+      "member": 0,
+      "retention_b": 3.0,
+      "dry_threshold_mpa": -70.0,
+      "activation_shape": 0.5,
+      "k_h2_s": 0.0001,
+      "control": 5.700671404184259e-06,
+      "uptake_single_pulse": 0.00020099451460827615,
+      "uptake_four_pulses": 0.00014653901548148572,
+      "uptake_daily_pulses": 7.230007401793716e-05,
+      "ranking": "single_pulse>four_pulses>daily_pulses",
+      "top": "single_pulse",
+      "effect_single_pulse": 0.0001952938432040919,
+      "effect_four_pulses": 0.00014083834407730146,
+      "effect_daily_pulses": 6.65994026137529e-05
+    },
+    {
+      "member": 1,
+      "retention_b": 3.0,
+      "dry_threshold_mpa": -70.0,
+      "activation_shape": 0.5,
+      "k_h2_s": 0.001,
+      "control": 5.374757773395365e-05,
+      "uptake_single_pulse": 0.0016127045049516605,
+      "uptake_four_pulses": 0.0013153652931662827,
+      "uptake_daily_pulses": 0.000673050489761886,
+      "ranking": "single_pulse>four_pulses>daily_pulses",
+      "top": "single_pulse",
+      "effect_single_pulse": 0.001558956927217707,
+      "effect_four_pulses": 0.001261617715432329,
+      "effect_daily_pulses": 0.0006193029120279323
+    },
+    {
+      "member": 2,
+      "retention_b": 3.0,
+      "dry_threshold_mpa": -70.0,
+      "activation_shape": 0.5,
+      "k_h2_s": 0.01,
+      "control": 0.00035986356001503823,
+      "uptake_single_pulse": 0.007225168934391057,
+      "uptake_four_pulses": 0.007295670819164421,
+      "uptake_daily_pulses": 0.0042623006135340796,
+      "ranking": "four_pulses>single_pulse>daily_pulses",
+      "top": "four_pulses",
+      "effect_single_pulse": 0.006865305374376019,
+      "effect_four_pulses": 0.006935807259149383,
+      "effect_daily_pulses": 0.0039024370535190415
+    },
+    {
+      "member": 3,
+      "retention_b": 3.0,
+      "dry_threshold_mpa": -70.0,
+      "activation_shape": 2.0,
+      "k_h2_s": 0.0001,
+      "control": 4.7039540917186754e-07,
+      "uptake_single_pulse": 0.00016234980943425698,
+      "uptake_four_pulses": 5.276726752109906e-05,
+      "uptake_daily_pulses": 1.0279345811583426e-05,
+      "ranking": "single_pulse>four_pulses>daily_pulses",
+      "top": "single_pulse",
+      "effect_single_pulse": 0.0001618794140250851,
+      "effect_four_pulses": 5.229687211192719e-05,
+      "effect_daily_pulses": 9.808950402411559e-06
+    },
+    {
+      "member": 4,
+      "retention_b": 3.0,
+      "dry_threshold_mpa": -70.0,
+      "activation_shape": 2.0,
+      "k_h2_s": 0.001,
+      "control": 4.668371237195025e-06,
+      "uptake_single_pulse": 0.0012922740590143973,
+      "uptake_four_pulses": 0.0004987594244274049,
+      "uptake_daily_pulses": 0.00010107394167462041,
+      "ranking": "single_pulse>four_pulses>daily_pulses",
+      "top": "single_pulse",
+      "effect_single_pulse": 0.0012876056877772022,
+      "effect_four_pulses": 0.0004940910531902098,
+      "effect_daily_pulses": 9.640557043742539e-05
+    },
+    {
+      "member": 5,
+      "retention_b": 3.0,
+      "dry_threshold_mpa": -70.0,
+      "activation_shape": 2.0,
+      "k_h2_s": 0.01,
+      "control": 4.349731532543939e-05,
+      "uptake_single_pulse": 0.005850381374826001,
+      "uptake_four_pulses": 0.0034357974312680833,
+      "uptake_daily_pulses": 0.0008753999041266314,
+      "ranking": "single_pulse>four_pulses>daily_pulses",
+      "top": "single_pulse",
+      "effect_single_pulse": 0.005806884059500562,
+      "effect_four_pulses": 0.003392300115942644,
+      "effect_daily_pulses": 0.0008319025888011921
+    },
+    {
+      "member": 6,
+      "retention_b": 3.0,
+      "dry_threshold_mpa": -100.0,
+      "activation_shape": 0.5,
+      "k_h2_s": 0.0001,
+      "control": 6.92688317000646e-06,
+      "uptake_single_pulse": 0.00020334865136489112,
+      "uptake_four_pulses": 0.0001534550663107573,
+      "uptake_daily_pulses": 8.238358886352447e-05,
+      "ranking": "single_pulse>four_pulses>daily_pulses",
+      "top": "single_pulse",
+      "effect_single_pulse": 0.00019642176819488467,
+      "effect_four_pulses": 0.00014652818314075085,
+      "effect_daily_pulses": 7.545670569351802e-05
+    },
+    {
+      "member": 7,
+      "retention_b": 3.0,
+      "dry_threshold_mpa": -100.0,
+      "activation_shape": 0.5,
+      "k_h2_s": 0.001,
+      "control": 6.50657055935157e-05,
+      "uptake_single_pulse": 0.001632888139340122,
+      "uptake_four_pulses": 0.001375567583515104,
+      "uptake_daily_pulses": 0.0007648841792344637,
+      "ranking": "single_pulse>four_pulses>daily_pulses",
+      "top": "single_pulse",
+      "effect_single_pulse": 0.0015678224337466063,
+      "effect_four_pulses": 0.0013105018779215882,
+      "effect_daily_pulses": 0.000699818473640948
+    },
+    {
+      "member": 8,
+      "retention_b": 3.0,
+      "dry_threshold_mpa": -100.0,
+      "activation_shape": 0.5,
+      "k_h2_s": 0.01,
+      "control": 0.0004280460328588058,
+      "uptake_single_pulse": 0.007323893246401739,
+      "uptake_four_pulses": 0.007594657881787379,
+      "uptake_daily_pulses": 0.004788657780189971,
+      "ranking": "four_pulses>single_pulse>daily_pulses",
+      "top": "four_pulses",
+      "effect_single_pulse": 0.006895847213542933,
+      "effect_four_pulses": 0.007166611848928573,
+      "effect_daily_pulses": 0.004360611747331165
+    },
+    {
+      "member": 9,
+      "retention_b": 3.0,
+      "dry_threshold_mpa": -100.0,
+      "activation_shape": 2.0,
+      "k_h2_s": 0.0001,
+      "control": 6.982378188054197e-07,
+      "uptake_single_pulse": 0.0001646234061620897,
+      "uptake_four_pulses": 5.7990527073878804e-05,
+      "uptake_daily_pulses": 1.3219694297486608e-05,
+      "ranking": "single_pulse>four_pulses>daily_pulses",
+      "top": "single_pulse",
+      "effect_single_pulse": 0.00016392516834328426,
+      "effect_four_pulses": 5.7292289255073384e-05,
+      "effect_daily_pulses": 1.2521456478681188e-05
+    },
+    {
+      "member": 10,
+      "retention_b": 3.0,
+      "dry_threshold_mpa": -100.0,
+      "activation_shape": 2.0,
+      "k_h2_s": 0.001,
+      "control": 6.914623847729017e-06,
+      "uptake_single_pulse": 0.0013118970103948467,
+      "uptake_four_pulses": 0.0005467356523536292,
+      "uptake_daily_pulses": 0.00012967681684749406,
+      "ranking": "single_pulse>four_pulses>daily_pulses",
+      "top": "single_pulse",
+      "effect_single_pulse": 0.0013049823865471178,
+      "effect_four_pulses": 0.0005398210285059002,
+      "effect_daily_pulses": 0.00012276219299976504
+    },
+    {
+      "member": 11,
+      "retention_b": 3.0,
+      "dry_threshold_mpa": -100.0,
+      "activation_shape": 2.0,
+      "k_h2_s": 0.01,
+      "control": 6.325075038366983e-05,
+      "uptake_single_pulse": 0.0059502414937955,
+      "uptake_four_pulses": 0.0037195568587511064,
+      "uptake_daily_pulses": 0.0011036724118388516,
+      "ranking": "single_pulse>four_pulses>daily_pulses",
+      "top": "single_pulse",
+      "effect_single_pulse": 0.00588699074341183,
+      "effect_four_pulses": 0.0036563061083674368,
+      "effect_daily_pulses": 0.0010404216614551818
+    },
+    {
+      "member": 12,
+      "retention_b": 5.0,
+      "dry_threshold_mpa": -70.0,
+      "activation_shape": 0.5,
+      "k_h2_s": 0.0001,
+      "control": 0.0,
+      "uptake_single_pulse": 0.00011859771936683665,
+      "uptake_four_pulses": 3.6209003595211748e-06,
+      "uptake_daily_pulses": 0.0,
+      "ranking": "single_pulse>four_pulses>daily_pulses",
+      "top": "single_pulse",
+      "effect_single_pulse": 0.00011859771936683665,
+      "effect_four_pulses": 3.6209003595211748e-06,
+      "effect_daily_pulses": 0.0
+    },
+    {
+      "member": 13,
+      "retention_b": 5.0,
+      "dry_threshold_mpa": -70.0,
+      "activation_shape": 0.5,
+      "k_h2_s": 0.001,
+      "control": 0.0,
+      "uptake_single_pulse": 0.0009539412786375126,
+      "uptake_four_pulses": 3.471685133147487e-05,
+      "uptake_daily_pulses": 0.0,
+      "ranking": "single_pulse>four_pulses>daily_pulses",
+      "top": "single_pulse",
+      "effect_single_pulse": 0.0009539412786375126,
+      "effect_four_pulses": 3.471685133147487e-05,
+      "effect_daily_pulses": 0.0
+    },
+    {
+      "member": 14,
+      "retention_b": 5.0,
+      "dry_threshold_mpa": -70.0,
+      "activation_shape": 0.5,
+      "k_h2_s": 0.01,
+      "control": 0.0,
+      "uptake_single_pulse": 0.004299447845785013,
+      "uptake_four_pulses": 0.00025370519663254847,
+      "uptake_daily_pulses": 0.0,
+      "ranking": "single_pulse>four_pulses>daily_pulses",
+      "top": "single_pulse",
+      "effect_single_pulse": 0.004299447845785013,
+      "effect_four_pulses": 0.00025370519663254847,
+      "effect_daily_pulses": 0.0
+    },
+    {
+      "member": 15,
+      "retention_b": 5.0,
+      "dry_threshold_mpa": -70.0,
+      "activation_shape": 2.0,
+      "k_h2_s": 0.0001,
+      "control": 0.0,
+      "uptake_single_pulse": 5.852790082949105e-05,
+      "uptake_four_pulses": 4.5617723755904126e-08,
+      "uptake_daily_pulses": 0.0,
+      "ranking": "single_pulse>four_pulses>daily_pulses",
+      "top": "single_pulse",
+      "effect_single_pulse": 5.852790082949105e-05,
+      "effect_four_pulses": 4.5617723755904126e-08,
+      "effect_daily_pulses": 0.0
+    },
+    {
+      "member": 16,
+      "retention_b": 5.0,
+      "dry_threshold_mpa": -70.0,
+      "activation_shape": 2.0,
+      "k_h2_s": 0.001,
+      "control": 0.0,
+      "uptake_single_pulse": 0.0004904018161499046,
+      "uptake_four_pulses": 4.557799230488492e-07,
+      "uptake_daily_pulses": 0.0,
+      "ranking": "single_pulse>four_pulses>daily_pulses",
+      "top": "single_pulse",
+      "effect_single_pulse": 0.0004904018161499046,
+      "effect_four_pulses": 4.557799230488492e-07,
+      "effect_daily_pulses": 0.0
+    },
+    {
+      "member": 17,
+      "retention_b": 5.0,
+      "dry_threshold_mpa": -70.0,
+      "activation_shape": 2.0,
+      "k_h2_s": 0.01,
+      "control": 0.0,
+      "uptake_single_pulse": 0.0024599107642221223,
+      "uptake_four_pulses": 4.5186037245479945e-06,
+      "uptake_daily_pulses": 0.0,
+      "ranking": "single_pulse>four_pulses>daily_pulses",
+      "top": "single_pulse",
+      "effect_single_pulse": 0.0024599107642221223,
+      "effect_four_pulses": 4.5186037245479945e-06,
+      "effect_daily_pulses": 0.0
+    },
+    {
+      "member": 18,
+      "retention_b": 5.0,
+      "dry_threshold_mpa": -100.0,
+      "activation_shape": 0.5,
+      "k_h2_s": 0.0001,
+      "control": 0.0,
+      "uptake_single_pulse": 0.00012338967484437792,
+      "uptake_four_pulses": 7.218457751411465e-06,
+      "uptake_daily_pulses": 0.0,
+      "ranking": "single_pulse>four_pulses>daily_pulses",
+      "top": "single_pulse",
+      "effect_single_pulse": 0.00012338967484437792,
+      "effect_four_pulses": 7.218457751411465e-06,
+      "effect_daily_pulses": 0.0
+    },
+    {
+      "member": 19,
+      "retention_b": 5.0,
+      "dry_threshold_mpa": -100.0,
+      "activation_shape": 0.5,
+      "k_h2_s": 0.001,
+      "control": 0.0,
+      "uptake_single_pulse": 0.0009935106031608834,
+      "uptake_four_pulses": 6.854533950158941e-05,
+      "uptake_daily_pulses": 0.0,
+      "ranking": "single_pulse>four_pulses>daily_pulses",
+      "top": "single_pulse",
+      "effect_single_pulse": 0.0009935106031608834,
+      "effect_four_pulses": 6.854533950158941e-05,
+      "effect_daily_pulses": 0.0
+    },
+    {
+      "member": 20,
+      "retention_b": 5.0,
+      "dry_threshold_mpa": -100.0,
+      "activation_shape": 0.5,
+      "k_h2_s": 0.01,
+      "control": 0.0,
+      "uptake_single_pulse": 0.004488171246341706,
+      "uptake_four_pulses": 0.000475859505578191,
+      "uptake_daily_pulses": 0.0,
+      "ranking": "single_pulse>four_pulses>daily_pulses",
+      "top": "single_pulse",
+      "effect_single_pulse": 0.004488171246341706,
+      "effect_four_pulses": 0.000475859505578191,
+      "effect_daily_pulses": 0.0
+    },
+    {
+      "member": 21,
+      "retention_b": 5.0,
+      "dry_threshold_mpa": -100.0,
+      "activation_shape": 2.0,
+      "k_h2_s": 0.0001,
+      "control": 0.0,
+      "uptake_single_pulse": 6.195084272043338e-05,
+      "uptake_four_pulses": 1.787219014097846e-07,
+      "uptake_daily_pulses": 0.0,
+      "ranking": "single_pulse>four_pulses>daily_pulses",
+      "top": "single_pulse",
+      "effect_single_pulse": 6.195084272043338e-05,
+      "effect_four_pulses": 1.787219014097846e-07,
+      "effect_daily_pulses": 0.0
+    },
+    {
+      "member": 22,
+      "retention_b": 5.0,
+      "dry_threshold_mpa": -100.0,
+      "activation_shape": 2.0,
+      "k_h2_s": 0.001,
+      "control": 0.0,
+      "uptake_single_pulse": 0.0005185361282346878,
+      "uptake_four_pulses": 1.7834450147509148e-06,
+      "uptake_daily_pulses": 0.0,
+      "ranking": "single_pulse>four_pulses>daily_pulses",
+      "top": "single_pulse",
+      "effect_single_pulse": 0.0005185361282346878,
+      "effect_four_pulses": 1.7834450147509148e-06,
+      "effect_daily_pulses": 0.0
+    },
+    {
+      "member": 23,
+      "retention_b": 5.0,
+      "dry_threshold_mpa": -100.0,
+      "activation_shape": 2.0,
+      "k_h2_s": 0.01,
+      "control": 0.0,
+      "uptake_single_pulse": 0.002597175091484351,
+      "uptake_four_pulses": 1.746915164470812e-05,
+      "uptake_daily_pulses": 0.0,
+      "ranking": "single_pulse>four_pulses>daily_pulses",
+      "top": "single_pulse",
+      "effect_single_pulse": 0.002597175091484351,
+      "effect_four_pulses": 1.746915164470812e-05,
+      "effect_daily_pulses": 0.0
+    }
+  ]
+}

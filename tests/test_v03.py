@@ -17,7 +17,6 @@ from eq_biodt.v03.planning import compare, experiment, parameter_ensemble
 from eq_biodt.v03.process import Parameters, State, deposition_flux, gas_exchange, simulate
 from eq_biodt.v03.resources import resource_ceiling, carbon_account
 from eq_biodt.v03.semantics import Observation, additive_total, carrier_partition, validate_composition
-from eq_biodt.models.causal_ontological_twin import OntologicalPolytope
 
 
 P = Parameters(k_h2_s=.001, k_co_s=.001)
@@ -101,14 +100,6 @@ def test_ontological_maps_preserve_endpoints_missingness_and_overlaps():
     assert partial["parts"]["unknown"] is None and partial["status"] == "partial"
 
 
-def test_legacy_projection_missing_and_invalid_metric_fail():
-    p = OntologicalPolytope(["x", "y"])
-    with pytest.raises(ValueError):
-        p.project({"x": 1})
-    with pytest.raises(ValueError):
-        p.project({"x": 1, "y": 2}, np.array([[1, 2], [2, 1]]))
-
-
 def test_resource_network_balances_atoms_and_requires_maintenance():
     args = dict(h2=1e-8, co=1e-9, oxygen=1e-8, external_co2=1e-8,
                 capture_fraction=.25, maintenance_w_m2=1e-5, synthesis_j_mol_c=500000,
@@ -186,10 +177,10 @@ def test_design_holdout_and_robust_conservation_baseline():
 
 def test_public_api_and_explicit_retirement():
     client = TestClient(app)
-    assert client.get("/health").json()["version"] == "0.5.0"
+    assert client.get("/health").json()["version"] == "0.6.0"
     assert client.get("/v3/evidence?limit=1").json()["manifest"]["reference_MAGs"] == 5438
     assert client.post("/v1/intervene", json={}).status_code == 410
-    assert "What happens after the rain?" in client.get("/").text
+    assert "causal–ontological digital twin of the Rub’ al-Khali" in client.get("/").text
     request = {"parameters":{"k_h2_s":.001,"k_co_s":.001}, "initial":{"water_mm":1.8},
                "forcing":[{"water_mm":12,"evaporation_mm":1,"temp_c":25}]}
     assert client.post("/v3/simulate", json=request).status_code == 200

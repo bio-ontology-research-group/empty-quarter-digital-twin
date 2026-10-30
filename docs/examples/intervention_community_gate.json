@@ -1,0 +1,92 @@
+{
+  "parameters": {
+    "k_h2_s": 0.001,
+    "k_co_s": 0.001
+  },
+  "initial": {
+    "water_mm": 1.8
+  },
+  "forcing": [
+    {
+      "water_mm": 0,
+      "evaporation_mm": 1,
+      "temp_c": 25
+    },
+    {
+      "water_mm": 0,
+      "evaporation_mm": 1,
+      "temp_c": 25
+    },
+    {
+      "water_mm": 0,
+      "evaporation_mm": 1,
+      "temp_c": 25
+    },
+    {
+      "water_mm": 0,
+      "evaporation_mm": 1,
+      "temp_c": 25
+    },
+    {
+      "water_mm": 0,
+      "evaporation_mm": 1,
+      "temp_c": 25
+    },
+    {
+      "water_mm": 0,
+      "evaporation_mm": 1,
+      "temp_c": 25
+    },
+    {
+      "water_mm": 0,
+      "evaporation_mm": 1,
+      "temp_c": 25
+    },
+    {
+      "water_mm": 0,
+      "evaporation_mm": 1,
+      "temp_c": 25
+    },
+    {
+      "water_mm": 0,
+      "evaporation_mm": 1,
+      "temp_c": 25
+    },
+    {
+      "water_mm": 0,
+      "evaporation_mm": 1,
+      "temp_c": 25
+    },
+    {
+      "water_mm": 0,
+      "evaporation_mm": 1,
+      "temp_c": 25
+    },
+    {
+      "water_mm": 0,
+      "evaporation_mm": 1,
+      "temp_c": 25
+    },
+    {
+      "water_mm": 0,
+      "evaporation_mm": 1,
+      "temp_c": 25
+    },
+    {
+      "water_mm": 0,
+      "evaporation_mm": 1,
+      "temp_c": 25
+    }
+  ],
+  "intervention": {
+    "forcing": {
+      "0": {
+        "water_mm": 12
+      }
+    }
+  },
+  "community": {
+    "sample": "51PRr3"
+  },
+  "coupling": "gate"
+}

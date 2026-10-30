@@ -12,6 +12,8 @@
 \newcommand{\PairedRows}{\@@input tables/v04_paired.tex }
 \newcommand{\CampaignRows}{\@@input tables/v05_campaigns.tex }
 \newcommand{\MarkerRows}{\@@input tables/v05_markers.tex }
+\newcommand{\AdmissibilityRows}{\@@input tables/v06_admissibility.tex }
+\newcommand{\IdentificationRows}{\@@input tables/v06_identification.tex }
 \makeatother
 \renewcommand{\thetable}{S\arabic{table}}
 \input{authors}
@@ -22,7 +24,7 @@
 \section{Numerical conventions and reproduction}
 Physical inputs must be finite and obey their stated bounds. Negative water and solute inventories and initial states exceeding pore storage are rejected. Scenario comparison uses the same duration for every schedule. Gas uptake integrates midpoint rates over 96 within-day steps by default. The numerical audit compares 24, 96 and 384 steps for the four reference schedules and verifies the scenario-pair rank-reversal result across the 24-member grid at 96 and 384 steps. Missing chemistry makes integrated uptake unavailable and prevents a complete Pareto classification; the water and salt budgets continue.
 
-The OWL exporter represents MAG annotations as existential restrictions and module support as a conjunction of 11 requirements. Alternatives within a requirement are disjunctive, including the bisphosphatase and transaldolase routes. Kobayashi-MaRust v1.5.3 verifies classification and source-axiom justifications. An independent parser evaluates the KEGG module expression against the original KO table. The numerical audit reports agreement among this parser, the tabular production implementation and reasoner entailments for every reference MAG. Source, rule, ontology and reasoner identities are provided in machine-readable manifests. Runtime resource queries reject stale or modified membership artifacts.
+The OWL exporter represents MAG annotations as existential restrictions and module support as a conjunction of 11 requirements. Alternatives within a requirement are disjunctive, including the bisphosphatase and transaldolase routes. Kobayashi-MaRust v1.5.3 verifies classification and exports subset-minimal source-axiom justifications for all \HtwoCBB{} hydrogenase-plus-CBB candidates and all 198 CO-carrier MAGs (\texttt{data/v03/justifications.json}). Standard-ontology mappings, with verified labels and retrieval date, are listed in \texttt{data/v03/ontology\_mappings.tsv}; endpoint compatibility and declared observation maps are exported in \texttt{data/v03/observation\_maps.json}. An independent parser evaluates the KEGG module expression against the original KO table. The numerical audit reports agreement among this parser, the tabular production implementation and reasoner entailments for every reference MAG. Source, rule, ontology and reasoner identities are provided in machine-readable manifests. Runtime resource queries reject stale or modified membership artifacts.
 
 Campaign intervals use prior-training residuals from up to five site-held-out folds. Fewer than two training sites cause an explicit error. Empirical quantiles centre intervals on refitted models, without a finite-sample coverage guarantee under temporal shift or dependence. Since held-out calibration sites have no persistence history, that baseline uses its compartment/global fallback during calibration. The audit reports coverage by compartment and paired error differences with site-bootstrap intervals; all visits from a resampled site remain together.
 
@@ -32,7 +34,8 @@ A Linux x86\_64 checkout reproduces the analysis with:
 \begin{verbatim}
 uv sync --locked
 uv run python scripts/install_reasoner.py
-uv run python reproducibility/v05/reproduce.py
+uv run python reproducibility/v06/reproduce.py
+uv run python reproducibility/v06/verify_manuscript.py
 uv run pytest -q
 cd paper
 latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
@@ -41,7 +44,7 @@ latexmk -pdf -interaction=nonstopmode -halt-on-error supplementary.tex
 The first two commands install locked Python dependencies and the checksum-pinned reasoner. Subsequent analysis uses the bundled source snapshot, including external bottle data and the KEGG module definition, without a network lookup. LaTeX requires a TeX installation. The analysis boundary begins with released MAG annotations, read summaries and sample metadata. It excludes primary sequencing, assembly and gene annotation. The repository includes a wheel for ordinary query, simulation and forecasting use without the reasoner binary; ontology rebuilding requires the pinned binary or an explicitly supplied compatible executable.
 
 \section{Primary sampling and comparative genomic context}
-The released cohort contains 551 metagenomes at 61 sites, including 59 core transect sites and two auxiliary locations (sites 62 and 64). The date intervals below follow the curated source metadata used in the calculations. Primary reads are associated with ENA study PRJEB125153, whose public release is scheduled for late November 2026. The analysis starts from the released derived annotation and read-summary inputs.
+The released cohort contains 551 metagenomes at 61 sites, including 59 of the 60 core transect sites and two auxiliary locations (sites 62 and 64). Core site 56 belongs to the wider survey but has no metagenome in the released cohort. The date intervals below follow the curated source metadata used in the calculations. Primary reads are associated with ENA study PRJEB125153, whose public release is scheduled for late November 2026. The analysis starts from the released derived annotation and read-summary inputs.
 \begin{table}[ht]\centering\small
 \caption{The primary metagenomic cohort by campaign.}\begin{tabular}{rrrrr}\toprule
 Campaign & Samples & Sites & First date & Last date\\\midrule
@@ -55,10 +58,38 @@ Environment & Profiles & Group 1h & Group 1l & Group 2a\\\midrule
 \MarkerRows
 \bottomrule\end{tabular}\end{table}
 
-\section{Invariance under specified interventions}
-The implementation separates fixed ontological knowledge $K$ and evidence $E$ from physical transition mechanisms. For any two regimes sharing $K$ and $E$, their entailed pathway memberships $D_K(E)$ are identical. A resource calculation uses those memberships to fix reaction admission in both regimes. For derived physical observations $y=H(x)$, the implementation recomputes $H$ after propagating the intervened state. The constitutive relation therefore holds in each admissible state. Induction over the transition sequence preserves this relation at every subsequent time step. Invalid pore volumes and unsupported chemistry produce explicit rejection or unavailable outputs.
+\section{Invariance, admissibility and versions under intervention}
+The implementation follows the stratified causal--ontological design of the main Methods. Let $K$ be the OWL axioms, $E$ the evidence, $\Phi$ the constitutive maps and $F$ the mechanisms. A regime $a=\mathrm{do}(X_I=x_I)$ replaces the mechanisms or input values of $I$ and nothing else. The following properties are checked by executable assertions in every \texttt{/v3/intervene} call and by the test suite.
 
-This invariant is an implementation property under the specified equations. The causal interpretation of a physical transition depends on the empirical adequacy of its mechanisms, which is evaluated separately. The same-information flat implementation has the same property. In the worked reaction-admission example, the controlled ablation changes the admitted network by supplying unsupported CO oxidation; it illustrates the consequence of additional biological assumptions.
+\emph{Regime invariance of deduced quantities.} $D_K(E)$, the carrier shares $q_s(C)$ and the community factors $\gamma_g$ are functions of $K$ and $E$ alone and have no causal ancestors in the graph. They are therefore identical in every admissible regime. For every entailed subsumption $C\sqsubseteq C'$ between carrier classes, $q_s(C)\leq q_s(C')$ holds for every sample and in every regime; the release checks nine such inequalities over all 550 mapped samples.
+
+\emph{Constitutive identities.} No intervention replaces a map in $\Phi$. Along both trajectories of a paired regime the trace checks $\theta=W/(1000L)$, $0\leq W\leq W_{\max}$, water and salt balance closure, and the chemical-power identity.
+
+\emph{Deductive null effects.} If $\gamma_g=0$, then $k_g=0$ and $J_g=0$ in every regime, so every contrast on $J_g$ is zero. The trace reports such effects as derived from the closure and verifies that the simulated contrast is exactly zero.
+
+\emph{Constituted and ambiguous targets.} A target defined by a constitutive map is translated through its constituents. The translation is unique for water content and ambiguous for total water potential. For an outcome $Y$, an ambiguous target is version-relevant when a directed path from one of its constituents to $Y$ avoids the target; the graph gives the path $W\to\theta\to D_g\to J_g$ for uptake and none for activation.
+
+\emph{Counterfactual reading.} The model is deterministic and paired regimes share initial state, non-targeted inputs, parameters, $K$ and $E$, so their difference is a unit-level counterfactual contrast within the model. Composition holds: replacing an input by its baseline value reproduces the baseline trajectory exactly.
+
+\emph{Identification with deductive closure.} The module \texttt{identification.py} unrolls the graph over time, computes the deductive value closure of an observed stratum, and evaluates the three rules of the $\mathrm{do}$-calculus on the mutilated graphs with the closure-augmented conditioning set. Only quantities that every admissible regime leaves unsevered can enter the closure, and a test confirms that no admissible target is ever closed. Table~\ref{tab:identification} lists the three derivations reported in the main text; each symbolic result is also checked numerically against the process model.
+
+{\small\begin{longtable}{@{}p{3.6cm}p{1.6cm}p{1.6cm}p{4.2cm}p{3.6cm}@{}}
+\caption{Identification queries. Columns give the result of ordinary $d$-separation, the result with the closure-augmented conditioning set, the adjustment set and the verdict.}\label{tab:identification}\\\toprule
+Query & Plain graph & With closure & Adjustment & Verdict\\\midrule\endfirsthead
+\toprule Query & Plain graph & With closure & Adjustment & Verdict\\\midrule\endhead
+\IdentificationRows
+\bottomrule
+\end{longtable}}
+
+These are properties of the implementation under its equations, not results about the identification of effects from data. The causal interpretation of a mechanism depends on its empirical adequacy, which the external tests evaluate. The Boolean natural-deduction results available for stratified causal--ontological theories motivate the design but are not claimed for the continuous equations. In the worked reaction-admission example, the controlled ablation changes the admitted network by supplying unsupported CO oxidation; it illustrates the consequence of an additional biological assumption.
+
+{\small\begin{longtable}{@{}lp{2.8cm}lp{1.3cm}p{6.2cm}@{}}
+\caption{Admissibility of every node in the causal--ontological graph. Zones: ontological, evidence, deduced, exogenous (manipulable or fixed), constitutive and causal.}\\\toprule
+Node & Zone & Manipulable & Verdict & Reason\\\midrule\endfirsthead
+\toprule Node & Zone & Manipulable & Verdict & Reason\\\midrule\endhead
+\AdmissibilityRows
+\bottomrule
+\end{longtable}}
 
 \section{Temporal prediction and external-transfer detail}
 The molecular observation forecast holds out later campaigns. Its source catalogue is fixed retrospectively. The table reports RMSE on $\log(1+\mathrm{GE})$, with nominal 90\% interval coverage for ridge regression.
@@ -74,6 +105,8 @@ Baseline & Difference & Interval\\\midrule
 \bottomrule\end{tabular}\end{table}
 
 The Sonoran field grid contains 54 combinations of porosity, retention exponent, entry potential and temperature response. A kinetic coefficient is fitted separately within each combination and training fold. Training selects the best member before applying it to the held campaign. All four selected members have porosity 0.5, retention exponent 6 and $Q_{10}=1$; entry potential is $-0.001$~MPa when June is held out and $-0.01$~MPa in the other folds. These grid boundaries expose unresolved sensitivity, rather than uncertainty intervals on measured soil properties. Both the fixed and calibrated models assume that the reported sensor measurements represent a homogeneous active soil layer.
+
+For Namib hydration, the predicted direction depends on the assumed bulk density. At 1.2 and 1.5~g~cm$^{-3}$ the reference model predicts higher hydrated than dry uptake at all ten sites. At 1.8~g~cm$^{-3}$, the hydrated C14-2 soil (gravimetric water content 0.218~g~g$^{-1}$) reaches a volumetric water content of 0.39 against porosity 0.40; the predicted dry flux (0.277) then exceeds the hydrated flux (0.0046, both in the model's areal units), whereas the other nine sites retain the positive direction. Row-level values are in \texttt{reviews/v05/namib\_conditional\_predictions.tsv}.
 
 For Sonoran incubations, the source data include small net emissions at dry or intermediate moisture. These observations retain their sign. Source-batch bootstrap intervals characterize the sampled plots and do not imply four independently replicated management treatments. In Namib, the two dry and wet conditions use distinct subsamples. The eight unquantified dry endpoints are retained in the site denominator but supply no numerical dry rate or fold change. The publisher's rounded headspace gas amount reproduces the reported mass-normalized rates to within five parts per million.
 

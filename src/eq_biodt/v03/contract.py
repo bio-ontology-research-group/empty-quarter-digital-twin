@@ -1,6 +1,7 @@
 """Complete declared scientific contract, also rendered into the manuscript."""
 from dataclasses import MISSING, fields
 
+from . import VERSION
 from .evidence import CBB_STEPS
 from .process import Parameters
 
@@ -43,7 +44,7 @@ CLAUSES = [
 
 def contract() -> dict:
     defaults = {f.name: ("REQUIRED" if f.default is MISSING else f.default) for f in fields(Parameters)}
-    return {"version": "0.5.0", "method": "ontological-causal reasoning with separate observation and prediction layers",
+    return {"version": VERSION, "method": "ontological-causal reasoning with separate observation and prediction layers",
             "clauses": [{"id": i, "kind": k, "statement": s} for i,k,s in CLAUSES],
             "parameter_defaults": defaults, "CBB_step_alternatives": CBB_STEPS,
             "causal_identification": "Mechanisms are assumed structural equations; intervention effects are not identified by observational metagenomes.",

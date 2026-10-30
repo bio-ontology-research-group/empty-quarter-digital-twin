@@ -1,0 +1,1410 @@
+{
+ "declared_maps": {
+  "FirstOrderToBottleUptakeMap": {
+   "assumptions": [
+    "HeadspaceGasAmountInput",
+    "SoilMassInput"
+   ],
+   "definition": "Converts a first-order rate constant to a mass-normalised bottle uptake rate: rate = k * n_gas / m_soil; requires headspace gas amount and soil mass.",
+   "from": "FirstOrderRateConstantEndpoint",
+   "invertible": true,
+   "label": "first-order constant to bottle uptake map",
+   "to": "MassNormalizedBottleUptakeRateEndpoint"
+  },
+  "GravimetricToVolumetricMap": {
+   "assumptions": [
+    "BulkDensityAssumption"
+   ],
+   "definition": "Converts gravimetric to volumetric water content: theta_v = theta_g * rho_b / rho_w; requires a bulk-density assumption.",
+   "from": "GravimetricWaterContentEndpoint",
+   "invertible": true,
+   "label": "gravimetric to volumetric water content map",
+   "to": "VolumetricWaterContentEndpoint"
+  },
+  "MatricToTotalPotentialMap": {
+   "assumptions": [
+    "OsmoticPotentialAssumption"
+   ],
+   "definition": "Adds the osmotic (and other) components to the matric potential; requires a solute (here NaCl) osmotic-potential assumption.",
+   "from": "MatricWaterPotentialEndpoint",
+   "invertible": true,
+   "label": "matric to total water potential map",
+   "to": "TotalWaterPotentialEndpoint"
+  },
+  "VolumetricToMatricPotentialMap": {
+   "assumptions": [
+    "WaterRetentionCurveAssumption"
+   ],
+   "definition": "Converts volumetric water content to matric potential through a water-retention curve; requires retention-curve parameters (including porosity) as assumptions.",
+   "from": "VolumetricWaterContentEndpoint",
+   "invertible": true,
+   "label": "volumetric water content to matric potential map",
+   "to": "MatricWaterPotentialEndpoint"
+  }
+ },
+ "disjoint_pairs": 104,
+ "endpoints": {
+  "ArealH2FluxEndpoint": {
+   "definition": "Net exchange of dihydrogen between a soil surface and the atmosphere per unit ground area and time, in nmol H2 m-2 s-1 (negative = uptake in the source sign convention).",
+   "denominator": "ground surface area and time",
+   "label": "areal H2 flux endpoint",
+   "unit_ucum": "nmol.m-2.s-1",
+   "unit_uo": [
+    "http://purl.obolibrary.org/obo/UO_0000041",
+    "http://purl.obolibrary.org/obo/UO_0000080",
+    "http://purl.obolibrary.org/obo/UO_0000010"
+   ]
+  },
+  "BiomassEndpoint": {
+   "definition": "Living biomass of a stated organism group per unit sample.",
+   "denominator": null,
+   "label": "biomass endpoint",
+   "unit_ucum": null,
+   "unit_uo": []
+  },
+  "DNARecoveryEndpoint": {
+   "definition": "Total extractable DNA recovered per unit sample, including relic DNA.",
+   "denominator": null,
+   "label": "DNA recovery endpoint",
+   "unit_ucum": null,
+   "unit_uo": []
+  },
+  "FirstOrderRateConstantEndpoint": {
+   "definition": "Rate constant k of a first-order decline of headspace gas amount, in s-1 (convertible from h-1 by dividing by 3600).",
+   "denominator": "time (headspace amount is not a denominator)",
+   "label": "first-order rate constant endpoint",
+   "unit_ucum": "s-1",
+   "unit_uo": [
+    "http://purl.obolibrary.org/obo/UO_0000010"
+   ]
+  },
+  "GenomeEquivalentsEndpoint": {
+   "definition": "Estimated number of genome copies of a marker-defined guild from single-copy-gene-normalised read counts.",
+   "denominator": "sample as normalised in the source table",
+   "label": "genome equivalents endpoint",
+   "unit_ucum": "{genome_equivalent}",
+   "unit_uo": [
+    "http://purl.obolibrary.org/obo/UO_0000189"
+   ]
+  },
+  "GenomicCapacityEndpoint": {
+   "definition": "Presence or share of genomes encoding a capacity (gene content); says nothing about expression or activity.",
+   "denominator": null,
+   "label": "genomic capacity endpoint",
+   "unit_ucum": null,
+   "unit_uo": []
+  },
+  "GravimetricWaterContentEndpoint": {
+   "definition": "Mass of water per mass of dry soil (g g-1).",
+   "denominator": "dry soil mass",
+   "label": "gravimetric water content endpoint",
+   "unit_ucum": "g.g-1",
+   "unit_uo": [
+    "http://purl.obolibrary.org/obo/UO_0000191"
+   ]
+  },
+  "MappedReadCompositionEndpoint": {
+   "definition": "Composition of the mapped read pool (shares of reads mapped to reference genomes).",
+   "denominator": null,
+   "label": "mapped-read composition endpoint",
+   "unit_ucum": null,
+   "unit_uo": []
+  },
+  "MappedReadShareEndpoint": {
+   "definition": "Fraction of reads mapped to the reference MAG set that belong to a stated MAG class (denominator: mapped reads). A kind of mapped-read composition.",
+   "denominator": "mapped reads",
+   "label": "mapped-read share endpoint",
+   "unit_ucum": "1",
+   "unit_uo": [
+    "http://purl.obolibrary.org/obo/UO_0000191"
+   ]
+  },
+  "MassNormalizedBottleUptakeRateEndpoint": {
+   "definition": "Gas uptake rate measured in a closed bottle incubation and normalised by soil mass, in nmol H2 h-1 g-1 soil.",
+   "denominator": "soil mass and time",
+   "label": "mass-normalized bottle uptake rate endpoint",
+   "unit_ucum": "nmol.h-1.g-1",
+   "unit_uo": [
+    "http://purl.obolibrary.org/obo/UO_0000041",
+    "http://purl.obolibrary.org/obo/UO_0000032",
+    "http://purl.obolibrary.org/obo/UO_0000021"
+   ]
+  },
+  "MatricWaterPotentialEndpoint": {
+   "definition": "Matric component of soil water potential (pressure units; reported in MPa, negative when dry).",
+   "denominator": "none (energy per unit volume of water)",
+   "label": "matric water potential endpoint",
+   "unit_ucum": "Pa",
+   "unit_uo": [
+    "http://purl.obolibrary.org/obo/UO_0000110"
+   ]
+  },
+  "PhysiologicalActivityEndpoint": {
+   "definition": "Measured physiological rate (for example gas uptake) of a community.",
+   "denominator": null,
+   "label": "physiological activity endpoint",
+   "unit_ucum": null,
+   "unit_uo": []
+  },
+  "TotalWaterPotentialEndpoint": {
+   "definition": "Total soil water potential including at least matric and osmotic components (pressure units).",
+   "denominator": "none (energy per unit volume of water)",
+   "label": "total water potential endpoint",
+   "unit_ucum": "Pa",
+   "unit_uo": [
+    "http://purl.obolibrary.org/obo/UO_0000110"
+   ]
+  },
+  "ViableDNAEndpoint": {
+   "definition": "DNA from cells with intact membranes (viable fraction).",
+   "denominator": null,
+   "label": "viable DNA endpoint",
+   "unit_ucum": null,
+   "unit_uo": []
+  },
+  "VolumetricWaterContentEndpoint": {
+   "definition": "Volume of water per bulk soil volume (cm3 cm-3).",
+   "denominator": "bulk soil volume",
+   "label": "volumetric water content endpoint",
+   "unit_ucum": "cm3.cm-3",
+   "unit_uo": [
+    "http://purl.obolibrary.org/obo/UO_0000191"
+   ]
+  }
+ },
+ "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+ "pairs": {
+  "ArealH2FluxEndpoint|FirstOrderRateConstantEndpoint": {
+   "a": "ArealH2FluxEndpoint",
+   "b": "FirstOrderRateConstantEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:ArealH2FluxEndpoint)",
+    "SubClassOf(rak:Probe rak:FirstOrderRateConstantEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "ArealH2FluxEndpoint|GenomeEquivalentsEndpoint": {
+   "a": "ArealH2FluxEndpoint",
+   "b": "GenomeEquivalentsEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:ArealH2FluxEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomeEquivalentsEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "ArealH2FluxEndpoint|GravimetricWaterContentEndpoint": {
+   "a": "ArealH2FluxEndpoint",
+   "b": "GravimetricWaterContentEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:ArealH2FluxEndpoint)",
+    "SubClassOf(rak:Probe rak:GravimetricWaterContentEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "ArealH2FluxEndpoint|MappedReadShareEndpoint": {
+   "a": "ArealH2FluxEndpoint",
+   "b": "MappedReadShareEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "SubClassOf(rak:MappedReadShareEndpoint rak:MappedReadCompositionEndpoint)",
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:ArealH2FluxEndpoint)",
+    "SubClassOf(rak:Probe rak:MappedReadShareEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "ArealH2FluxEndpoint|MassNormalizedBottleUptakeRateEndpoint": {
+   "a": "ArealH2FluxEndpoint",
+   "b": "MassNormalizedBottleUptakeRateEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:ArealH2FluxEndpoint)",
+    "SubClassOf(rak:Probe rak:MassNormalizedBottleUptakeRateEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "ArealH2FluxEndpoint|MatricWaterPotentialEndpoint": {
+   "a": "ArealH2FluxEndpoint",
+   "b": "MatricWaterPotentialEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:ArealH2FluxEndpoint)",
+    "SubClassOf(rak:Probe rak:MatricWaterPotentialEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "ArealH2FluxEndpoint|TotalWaterPotentialEndpoint": {
+   "a": "ArealH2FluxEndpoint",
+   "b": "TotalWaterPotentialEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:ArealH2FluxEndpoint)",
+    "SubClassOf(rak:Probe rak:TotalWaterPotentialEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "ArealH2FluxEndpoint|VolumetricWaterContentEndpoint": {
+   "a": "ArealH2FluxEndpoint",
+   "b": "VolumetricWaterContentEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:ArealH2FluxEndpoint)",
+    "SubClassOf(rak:Probe rak:VolumetricWaterContentEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "BiomassEndpoint|ArealH2FluxEndpoint": {
+   "a": "BiomassEndpoint",
+   "b": "ArealH2FluxEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:BiomassEndpoint)",
+    "SubClassOf(rak:Probe rak:ArealH2FluxEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "BiomassEndpoint|FirstOrderRateConstantEndpoint": {
+   "a": "BiomassEndpoint",
+   "b": "FirstOrderRateConstantEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:BiomassEndpoint)",
+    "SubClassOf(rak:Probe rak:FirstOrderRateConstantEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "BiomassEndpoint|GenomeEquivalentsEndpoint": {
+   "a": "BiomassEndpoint",
+   "b": "GenomeEquivalentsEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:BiomassEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomeEquivalentsEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "BiomassEndpoint|GravimetricWaterContentEndpoint": {
+   "a": "BiomassEndpoint",
+   "b": "GravimetricWaterContentEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:BiomassEndpoint)",
+    "SubClassOf(rak:Probe rak:GravimetricWaterContentEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "BiomassEndpoint|MappedReadShareEndpoint": {
+   "a": "BiomassEndpoint",
+   "b": "MappedReadShareEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "SubClassOf(rak:MappedReadShareEndpoint rak:MappedReadCompositionEndpoint)",
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:BiomassEndpoint)",
+    "SubClassOf(rak:Probe rak:MappedReadShareEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "BiomassEndpoint|MassNormalizedBottleUptakeRateEndpoint": {
+   "a": "BiomassEndpoint",
+   "b": "MassNormalizedBottleUptakeRateEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:BiomassEndpoint)",
+    "SubClassOf(rak:Probe rak:MassNormalizedBottleUptakeRateEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "BiomassEndpoint|MatricWaterPotentialEndpoint": {
+   "a": "BiomassEndpoint",
+   "b": "MatricWaterPotentialEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:BiomassEndpoint)",
+    "SubClassOf(rak:Probe rak:MatricWaterPotentialEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "BiomassEndpoint|PhysiologicalActivityEndpoint": {
+   "a": "BiomassEndpoint",
+   "b": "PhysiologicalActivityEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:BiomassEndpoint)",
+    "SubClassOf(rak:Probe rak:PhysiologicalActivityEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "BiomassEndpoint|TotalWaterPotentialEndpoint": {
+   "a": "BiomassEndpoint",
+   "b": "TotalWaterPotentialEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:BiomassEndpoint)",
+    "SubClassOf(rak:Probe rak:TotalWaterPotentialEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "BiomassEndpoint|VolumetricWaterContentEndpoint": {
+   "a": "BiomassEndpoint",
+   "b": "VolumetricWaterContentEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:BiomassEndpoint)",
+    "SubClassOf(rak:Probe rak:VolumetricWaterContentEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "DNARecoveryEndpoint|ArealH2FluxEndpoint": {
+   "a": "DNARecoveryEndpoint",
+   "b": "ArealH2FluxEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:DNARecoveryEndpoint)",
+    "SubClassOf(rak:Probe rak:ArealH2FluxEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "DNARecoveryEndpoint|BiomassEndpoint": {
+   "a": "DNARecoveryEndpoint",
+   "b": "BiomassEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:DNARecoveryEndpoint)",
+    "SubClassOf(rak:Probe rak:BiomassEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "DNARecoveryEndpoint|FirstOrderRateConstantEndpoint": {
+   "a": "DNARecoveryEndpoint",
+   "b": "FirstOrderRateConstantEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:DNARecoveryEndpoint)",
+    "SubClassOf(rak:Probe rak:FirstOrderRateConstantEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "DNARecoveryEndpoint|GenomeEquivalentsEndpoint": {
+   "a": "DNARecoveryEndpoint",
+   "b": "GenomeEquivalentsEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:DNARecoveryEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomeEquivalentsEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "DNARecoveryEndpoint|GravimetricWaterContentEndpoint": {
+   "a": "DNARecoveryEndpoint",
+   "b": "GravimetricWaterContentEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:DNARecoveryEndpoint)",
+    "SubClassOf(rak:Probe rak:GravimetricWaterContentEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "DNARecoveryEndpoint|MappedReadShareEndpoint": {
+   "a": "DNARecoveryEndpoint",
+   "b": "MappedReadShareEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "SubClassOf(rak:MappedReadShareEndpoint rak:MappedReadCompositionEndpoint)",
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:DNARecoveryEndpoint)",
+    "SubClassOf(rak:Probe rak:MappedReadShareEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "DNARecoveryEndpoint|MassNormalizedBottleUptakeRateEndpoint": {
+   "a": "DNARecoveryEndpoint",
+   "b": "MassNormalizedBottleUptakeRateEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:DNARecoveryEndpoint)",
+    "SubClassOf(rak:Probe rak:MassNormalizedBottleUptakeRateEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "DNARecoveryEndpoint|MatricWaterPotentialEndpoint": {
+   "a": "DNARecoveryEndpoint",
+   "b": "MatricWaterPotentialEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:DNARecoveryEndpoint)",
+    "SubClassOf(rak:Probe rak:MatricWaterPotentialEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "DNARecoveryEndpoint|PhysiologicalActivityEndpoint": {
+   "a": "DNARecoveryEndpoint",
+   "b": "PhysiologicalActivityEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:DNARecoveryEndpoint)",
+    "SubClassOf(rak:Probe rak:PhysiologicalActivityEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "DNARecoveryEndpoint|TotalWaterPotentialEndpoint": {
+   "a": "DNARecoveryEndpoint",
+   "b": "TotalWaterPotentialEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:DNARecoveryEndpoint)",
+    "SubClassOf(rak:Probe rak:TotalWaterPotentialEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "DNARecoveryEndpoint|ViableDNAEndpoint": {
+   "a": "DNARecoveryEndpoint",
+   "b": "ViableDNAEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:DNARecoveryEndpoint)",
+    "SubClassOf(rak:Probe rak:ViableDNAEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "DNARecoveryEndpoint|VolumetricWaterContentEndpoint": {
+   "a": "DNARecoveryEndpoint",
+   "b": "VolumetricWaterContentEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:DNARecoveryEndpoint)",
+    "SubClassOf(rak:Probe rak:VolumetricWaterContentEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "FirstOrderRateConstantEndpoint|GenomeEquivalentsEndpoint": {
+   "a": "FirstOrderRateConstantEndpoint",
+   "b": "GenomeEquivalentsEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:FirstOrderRateConstantEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomeEquivalentsEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "FirstOrderRateConstantEndpoint|GravimetricWaterContentEndpoint": {
+   "a": "FirstOrderRateConstantEndpoint",
+   "b": "GravimetricWaterContentEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:FirstOrderRateConstantEndpoint)",
+    "SubClassOf(rak:Probe rak:GravimetricWaterContentEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "FirstOrderRateConstantEndpoint|MappedReadShareEndpoint": {
+   "a": "FirstOrderRateConstantEndpoint",
+   "b": "MappedReadShareEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "SubClassOf(rak:MappedReadShareEndpoint rak:MappedReadCompositionEndpoint)",
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:FirstOrderRateConstantEndpoint)",
+    "SubClassOf(rak:Probe rak:MappedReadShareEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "FirstOrderRateConstantEndpoint|MatricWaterPotentialEndpoint": {
+   "a": "FirstOrderRateConstantEndpoint",
+   "b": "MatricWaterPotentialEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:FirstOrderRateConstantEndpoint)",
+    "SubClassOf(rak:Probe rak:MatricWaterPotentialEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "FirstOrderRateConstantEndpoint|TotalWaterPotentialEndpoint": {
+   "a": "FirstOrderRateConstantEndpoint",
+   "b": "TotalWaterPotentialEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:FirstOrderRateConstantEndpoint)",
+    "SubClassOf(rak:Probe rak:TotalWaterPotentialEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "FirstOrderRateConstantEndpoint|VolumetricWaterContentEndpoint": {
+   "a": "FirstOrderRateConstantEndpoint",
+   "b": "VolumetricWaterContentEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:FirstOrderRateConstantEndpoint)",
+    "SubClassOf(rak:Probe rak:VolumetricWaterContentEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "GenomeEquivalentsEndpoint|MappedReadShareEndpoint": {
+   "a": "GenomeEquivalentsEndpoint",
+   "b": "MappedReadShareEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "SubClassOf(rak:MappedReadShareEndpoint rak:MappedReadCompositionEndpoint)",
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:MappedReadShareEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "GenomicCapacityEndpoint|ArealH2FluxEndpoint": {
+   "a": "GenomicCapacityEndpoint",
+   "b": "ArealH2FluxEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomicCapacityEndpoint)",
+    "SubClassOf(rak:Probe rak:ArealH2FluxEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "GenomicCapacityEndpoint|BiomassEndpoint": {
+   "a": "GenomicCapacityEndpoint",
+   "b": "BiomassEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomicCapacityEndpoint)",
+    "SubClassOf(rak:Probe rak:BiomassEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "GenomicCapacityEndpoint|DNARecoveryEndpoint": {
+   "a": "GenomicCapacityEndpoint",
+   "b": "DNARecoveryEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomicCapacityEndpoint)",
+    "SubClassOf(rak:Probe rak:DNARecoveryEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "GenomicCapacityEndpoint|FirstOrderRateConstantEndpoint": {
+   "a": "GenomicCapacityEndpoint",
+   "b": "FirstOrderRateConstantEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomicCapacityEndpoint)",
+    "SubClassOf(rak:Probe rak:FirstOrderRateConstantEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "GenomicCapacityEndpoint|GenomeEquivalentsEndpoint": {
+   "a": "GenomicCapacityEndpoint",
+   "b": "GenomeEquivalentsEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomicCapacityEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomeEquivalentsEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "GenomicCapacityEndpoint|GravimetricWaterContentEndpoint": {
+   "a": "GenomicCapacityEndpoint",
+   "b": "GravimetricWaterContentEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomicCapacityEndpoint)",
+    "SubClassOf(rak:Probe rak:GravimetricWaterContentEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "GenomicCapacityEndpoint|MappedReadCompositionEndpoint": {
+   "a": "GenomicCapacityEndpoint",
+   "b": "MappedReadCompositionEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomicCapacityEndpoint)",
+    "SubClassOf(rak:Probe rak:MappedReadCompositionEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "GenomicCapacityEndpoint|MappedReadShareEndpoint": {
+   "a": "GenomicCapacityEndpoint",
+   "b": "MappedReadShareEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "SubClassOf(rak:MappedReadShareEndpoint rak:MappedReadCompositionEndpoint)",
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomicCapacityEndpoint)",
+    "SubClassOf(rak:Probe rak:MappedReadShareEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "GenomicCapacityEndpoint|MassNormalizedBottleUptakeRateEndpoint": {
+   "a": "GenomicCapacityEndpoint",
+   "b": "MassNormalizedBottleUptakeRateEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomicCapacityEndpoint)",
+    "SubClassOf(rak:Probe rak:MassNormalizedBottleUptakeRateEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "GenomicCapacityEndpoint|MatricWaterPotentialEndpoint": {
+   "a": "GenomicCapacityEndpoint",
+   "b": "MatricWaterPotentialEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomicCapacityEndpoint)",
+    "SubClassOf(rak:Probe rak:MatricWaterPotentialEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "GenomicCapacityEndpoint|PhysiologicalActivityEndpoint": {
+   "a": "GenomicCapacityEndpoint",
+   "b": "PhysiologicalActivityEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomicCapacityEndpoint)",
+    "SubClassOf(rak:Probe rak:PhysiologicalActivityEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "GenomicCapacityEndpoint|TotalWaterPotentialEndpoint": {
+   "a": "GenomicCapacityEndpoint",
+   "b": "TotalWaterPotentialEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomicCapacityEndpoint)",
+    "SubClassOf(rak:Probe rak:TotalWaterPotentialEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "GenomicCapacityEndpoint|ViableDNAEndpoint": {
+   "a": "GenomicCapacityEndpoint",
+   "b": "ViableDNAEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomicCapacityEndpoint)",
+    "SubClassOf(rak:Probe rak:ViableDNAEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "GenomicCapacityEndpoint|VolumetricWaterContentEndpoint": {
+   "a": "GenomicCapacityEndpoint",
+   "b": "VolumetricWaterContentEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomicCapacityEndpoint)",
+    "SubClassOf(rak:Probe rak:VolumetricWaterContentEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "GravimetricWaterContentEndpoint|GenomeEquivalentsEndpoint": {
+   "a": "GravimetricWaterContentEndpoint",
+   "b": "GenomeEquivalentsEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:GravimetricWaterContentEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomeEquivalentsEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "GravimetricWaterContentEndpoint|MappedReadShareEndpoint": {
+   "a": "GravimetricWaterContentEndpoint",
+   "b": "MappedReadShareEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "SubClassOf(rak:MappedReadShareEndpoint rak:MappedReadCompositionEndpoint)",
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:GravimetricWaterContentEndpoint)",
+    "SubClassOf(rak:Probe rak:MappedReadShareEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "GravimetricWaterContentEndpoint|MatricWaterPotentialEndpoint": {
+   "a": "GravimetricWaterContentEndpoint",
+   "b": "MatricWaterPotentialEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:GravimetricWaterContentEndpoint)",
+    "SubClassOf(rak:Probe rak:MatricWaterPotentialEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "GravimetricWaterContentEndpoint|TotalWaterPotentialEndpoint": {
+   "a": "GravimetricWaterContentEndpoint",
+   "b": "TotalWaterPotentialEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:GravimetricWaterContentEndpoint)",
+    "SubClassOf(rak:Probe rak:TotalWaterPotentialEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "GravimetricWaterContentEndpoint|VolumetricWaterContentEndpoint": {
+   "a": "GravimetricWaterContentEndpoint",
+   "b": "VolumetricWaterContentEndpoint",
+   "declared_maps": [
+    {
+     "assumptions": [
+      "BulkDensityAssumption"
+     ],
+     "map": "GravimetricToVolumetricMap"
+    },
+    {
+     "assumptions": [
+      "BulkDensityAssumption"
+     ],
+     "map": "GravimetricToVolumetricMap"
+    }
+   ],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:GravimetricWaterContentEndpoint)",
+    "SubClassOf(rak:Probe rak:VolumetricWaterContentEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "MappedReadCompositionEndpoint|ArealH2FluxEndpoint": {
+   "a": "MappedReadCompositionEndpoint",
+   "b": "ArealH2FluxEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:MappedReadCompositionEndpoint)",
+    "SubClassOf(rak:Probe rak:ArealH2FluxEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "MappedReadCompositionEndpoint|BiomassEndpoint": {
+   "a": "MappedReadCompositionEndpoint",
+   "b": "BiomassEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:MappedReadCompositionEndpoint)",
+    "SubClassOf(rak:Probe rak:BiomassEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "MappedReadCompositionEndpoint|DNARecoveryEndpoint": {
+   "a": "MappedReadCompositionEndpoint",
+   "b": "DNARecoveryEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:MappedReadCompositionEndpoint)",
+    "SubClassOf(rak:Probe rak:DNARecoveryEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "MappedReadCompositionEndpoint|FirstOrderRateConstantEndpoint": {
+   "a": "MappedReadCompositionEndpoint",
+   "b": "FirstOrderRateConstantEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:MappedReadCompositionEndpoint)",
+    "SubClassOf(rak:Probe rak:FirstOrderRateConstantEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "MappedReadCompositionEndpoint|GenomeEquivalentsEndpoint": {
+   "a": "MappedReadCompositionEndpoint",
+   "b": "GenomeEquivalentsEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:MappedReadCompositionEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomeEquivalentsEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "MappedReadCompositionEndpoint|GravimetricWaterContentEndpoint": {
+   "a": "MappedReadCompositionEndpoint",
+   "b": "GravimetricWaterContentEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:MappedReadCompositionEndpoint)",
+    "SubClassOf(rak:Probe rak:GravimetricWaterContentEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "MappedReadCompositionEndpoint|MappedReadShareEndpoint": {
+   "a": "MappedReadCompositionEndpoint",
+   "b": "MappedReadShareEndpoint",
+   "declared_maps": [],
+   "relation": "subsumed",
+   "subsumption": "MappedReadShareEndpoint SubClassOf MappedReadCompositionEndpoint"
+  },
+  "MappedReadCompositionEndpoint|MassNormalizedBottleUptakeRateEndpoint": {
+   "a": "MappedReadCompositionEndpoint",
+   "b": "MassNormalizedBottleUptakeRateEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:MappedReadCompositionEndpoint)",
+    "SubClassOf(rak:Probe rak:MassNormalizedBottleUptakeRateEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "MappedReadCompositionEndpoint|MatricWaterPotentialEndpoint": {
+   "a": "MappedReadCompositionEndpoint",
+   "b": "MatricWaterPotentialEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:MappedReadCompositionEndpoint)",
+    "SubClassOf(rak:Probe rak:MatricWaterPotentialEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "MappedReadCompositionEndpoint|PhysiologicalActivityEndpoint": {
+   "a": "MappedReadCompositionEndpoint",
+   "b": "PhysiologicalActivityEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:MappedReadCompositionEndpoint)",
+    "SubClassOf(rak:Probe rak:PhysiologicalActivityEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "MappedReadCompositionEndpoint|TotalWaterPotentialEndpoint": {
+   "a": "MappedReadCompositionEndpoint",
+   "b": "TotalWaterPotentialEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:MappedReadCompositionEndpoint)",
+    "SubClassOf(rak:Probe rak:TotalWaterPotentialEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "MappedReadCompositionEndpoint|ViableDNAEndpoint": {
+   "a": "MappedReadCompositionEndpoint",
+   "b": "ViableDNAEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:MappedReadCompositionEndpoint)",
+    "SubClassOf(rak:Probe rak:ViableDNAEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "MappedReadCompositionEndpoint|VolumetricWaterContentEndpoint": {
+   "a": "MappedReadCompositionEndpoint",
+   "b": "VolumetricWaterContentEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:MappedReadCompositionEndpoint)",
+    "SubClassOf(rak:Probe rak:VolumetricWaterContentEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "MassNormalizedBottleUptakeRateEndpoint|FirstOrderRateConstantEndpoint": {
+   "a": "MassNormalizedBottleUptakeRateEndpoint",
+   "b": "FirstOrderRateConstantEndpoint",
+   "declared_maps": [
+    {
+     "assumptions": [
+      "HeadspaceGasAmountInput",
+      "SoilMassInput"
+     ],
+     "map": "FirstOrderToBottleUptakeMap"
+    },
+    {
+     "assumptions": [
+      "HeadspaceGasAmountInput",
+      "SoilMassInput"
+     ],
+     "map": "FirstOrderToBottleUptakeMap"
+    }
+   ],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:MassNormalizedBottleUptakeRateEndpoint)",
+    "SubClassOf(rak:Probe rak:FirstOrderRateConstantEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "MassNormalizedBottleUptakeRateEndpoint|GenomeEquivalentsEndpoint": {
+   "a": "MassNormalizedBottleUptakeRateEndpoint",
+   "b": "GenomeEquivalentsEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:MassNormalizedBottleUptakeRateEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomeEquivalentsEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "MassNormalizedBottleUptakeRateEndpoint|GravimetricWaterContentEndpoint": {
+   "a": "MassNormalizedBottleUptakeRateEndpoint",
+   "b": "GravimetricWaterContentEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:MassNormalizedBottleUptakeRateEndpoint)",
+    "SubClassOf(rak:Probe rak:GravimetricWaterContentEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "MassNormalizedBottleUptakeRateEndpoint|MappedReadShareEndpoint": {
+   "a": "MassNormalizedBottleUptakeRateEndpoint",
+   "b": "MappedReadShareEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "SubClassOf(rak:MappedReadShareEndpoint rak:MappedReadCompositionEndpoint)",
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:MassNormalizedBottleUptakeRateEndpoint)",
+    "SubClassOf(rak:Probe rak:MappedReadShareEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "MassNormalizedBottleUptakeRateEndpoint|MatricWaterPotentialEndpoint": {
+   "a": "MassNormalizedBottleUptakeRateEndpoint",
+   "b": "MatricWaterPotentialEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:MassNormalizedBottleUptakeRateEndpoint)",
+    "SubClassOf(rak:Probe rak:MatricWaterPotentialEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "MassNormalizedBottleUptakeRateEndpoint|TotalWaterPotentialEndpoint": {
+   "a": "MassNormalizedBottleUptakeRateEndpoint",
+   "b": "TotalWaterPotentialEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:MassNormalizedBottleUptakeRateEndpoint)",
+    "SubClassOf(rak:Probe rak:TotalWaterPotentialEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "MassNormalizedBottleUptakeRateEndpoint|VolumetricWaterContentEndpoint": {
+   "a": "MassNormalizedBottleUptakeRateEndpoint",
+   "b": "VolumetricWaterContentEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:MassNormalizedBottleUptakeRateEndpoint)",
+    "SubClassOf(rak:Probe rak:VolumetricWaterContentEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "MatricWaterPotentialEndpoint|GenomeEquivalentsEndpoint": {
+   "a": "MatricWaterPotentialEndpoint",
+   "b": "GenomeEquivalentsEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:MatricWaterPotentialEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomeEquivalentsEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "MatricWaterPotentialEndpoint|MappedReadShareEndpoint": {
+   "a": "MatricWaterPotentialEndpoint",
+   "b": "MappedReadShareEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "SubClassOf(rak:MappedReadShareEndpoint rak:MappedReadCompositionEndpoint)",
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:MatricWaterPotentialEndpoint)",
+    "SubClassOf(rak:Probe rak:MappedReadShareEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "MatricWaterPotentialEndpoint|TotalWaterPotentialEndpoint": {
+   "a": "MatricWaterPotentialEndpoint",
+   "b": "TotalWaterPotentialEndpoint",
+   "declared_maps": [
+    {
+     "assumptions": [
+      "OsmoticPotentialAssumption"
+     ],
+     "map": "MatricToTotalPotentialMap"
+    },
+    {
+     "assumptions": [
+      "OsmoticPotentialAssumption"
+     ],
+     "map": "MatricToTotalPotentialMap"
+    }
+   ],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:MatricWaterPotentialEndpoint)",
+    "SubClassOf(rak:Probe rak:TotalWaterPotentialEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "PhysiologicalActivityEndpoint|ArealH2FluxEndpoint": {
+   "a": "PhysiologicalActivityEndpoint",
+   "b": "ArealH2FluxEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:PhysiologicalActivityEndpoint)",
+    "SubClassOf(rak:Probe rak:ArealH2FluxEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "PhysiologicalActivityEndpoint|FirstOrderRateConstantEndpoint": {
+   "a": "PhysiologicalActivityEndpoint",
+   "b": "FirstOrderRateConstantEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:PhysiologicalActivityEndpoint)",
+    "SubClassOf(rak:Probe rak:FirstOrderRateConstantEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "PhysiologicalActivityEndpoint|GenomeEquivalentsEndpoint": {
+   "a": "PhysiologicalActivityEndpoint",
+   "b": "GenomeEquivalentsEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:PhysiologicalActivityEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomeEquivalentsEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "PhysiologicalActivityEndpoint|GravimetricWaterContentEndpoint": {
+   "a": "PhysiologicalActivityEndpoint",
+   "b": "GravimetricWaterContentEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:PhysiologicalActivityEndpoint)",
+    "SubClassOf(rak:Probe rak:GravimetricWaterContentEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "PhysiologicalActivityEndpoint|MappedReadShareEndpoint": {
+   "a": "PhysiologicalActivityEndpoint",
+   "b": "MappedReadShareEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "SubClassOf(rak:MappedReadShareEndpoint rak:MappedReadCompositionEndpoint)",
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:PhysiologicalActivityEndpoint)",
+    "SubClassOf(rak:Probe rak:MappedReadShareEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "PhysiologicalActivityEndpoint|MassNormalizedBottleUptakeRateEndpoint": {
+   "a": "PhysiologicalActivityEndpoint",
+   "b": "MassNormalizedBottleUptakeRateEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:PhysiologicalActivityEndpoint)",
+    "SubClassOf(rak:Probe rak:MassNormalizedBottleUptakeRateEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "PhysiologicalActivityEndpoint|MatricWaterPotentialEndpoint": {
+   "a": "PhysiologicalActivityEndpoint",
+   "b": "MatricWaterPotentialEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:PhysiologicalActivityEndpoint)",
+    "SubClassOf(rak:Probe rak:MatricWaterPotentialEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "PhysiologicalActivityEndpoint|TotalWaterPotentialEndpoint": {
+   "a": "PhysiologicalActivityEndpoint",
+   "b": "TotalWaterPotentialEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:PhysiologicalActivityEndpoint)",
+    "SubClassOf(rak:Probe rak:TotalWaterPotentialEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "PhysiologicalActivityEndpoint|VolumetricWaterContentEndpoint": {
+   "a": "PhysiologicalActivityEndpoint",
+   "b": "VolumetricWaterContentEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:PhysiologicalActivityEndpoint)",
+    "SubClassOf(rak:Probe rak:VolumetricWaterContentEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "TotalWaterPotentialEndpoint|GenomeEquivalentsEndpoint": {
+   "a": "TotalWaterPotentialEndpoint",
+   "b": "GenomeEquivalentsEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:TotalWaterPotentialEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomeEquivalentsEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "TotalWaterPotentialEndpoint|MappedReadShareEndpoint": {
+   "a": "TotalWaterPotentialEndpoint",
+   "b": "MappedReadShareEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "SubClassOf(rak:MappedReadShareEndpoint rak:MappedReadCompositionEndpoint)",
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:TotalWaterPotentialEndpoint)",
+    "SubClassOf(rak:Probe rak:MappedReadShareEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "ViableDNAEndpoint|ArealH2FluxEndpoint": {
+   "a": "ViableDNAEndpoint",
+   "b": "ArealH2FluxEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:ViableDNAEndpoint)",
+    "SubClassOf(rak:Probe rak:ArealH2FluxEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "ViableDNAEndpoint|BiomassEndpoint": {
+   "a": "ViableDNAEndpoint",
+   "b": "BiomassEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:ViableDNAEndpoint)",
+    "SubClassOf(rak:Probe rak:BiomassEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "ViableDNAEndpoint|FirstOrderRateConstantEndpoint": {
+   "a": "ViableDNAEndpoint",
+   "b": "FirstOrderRateConstantEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:ViableDNAEndpoint)",
+    "SubClassOf(rak:Probe rak:FirstOrderRateConstantEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "ViableDNAEndpoint|GenomeEquivalentsEndpoint": {
+   "a": "ViableDNAEndpoint",
+   "b": "GenomeEquivalentsEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:ViableDNAEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomeEquivalentsEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "ViableDNAEndpoint|GravimetricWaterContentEndpoint": {
+   "a": "ViableDNAEndpoint",
+   "b": "GravimetricWaterContentEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:ViableDNAEndpoint)",
+    "SubClassOf(rak:Probe rak:GravimetricWaterContentEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "ViableDNAEndpoint|MappedReadShareEndpoint": {
+   "a": "ViableDNAEndpoint",
+   "b": "MappedReadShareEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "SubClassOf(rak:MappedReadShareEndpoint rak:MappedReadCompositionEndpoint)",
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:ViableDNAEndpoint)",
+    "SubClassOf(rak:Probe rak:MappedReadShareEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "ViableDNAEndpoint|MassNormalizedBottleUptakeRateEndpoint": {
+   "a": "ViableDNAEndpoint",
+   "b": "MassNormalizedBottleUptakeRateEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:ViableDNAEndpoint)",
+    "SubClassOf(rak:Probe rak:MassNormalizedBottleUptakeRateEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "ViableDNAEndpoint|MatricWaterPotentialEndpoint": {
+   "a": "ViableDNAEndpoint",
+   "b": "MatricWaterPotentialEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:ViableDNAEndpoint)",
+    "SubClassOf(rak:Probe rak:MatricWaterPotentialEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "ViableDNAEndpoint|PhysiologicalActivityEndpoint": {
+   "a": "ViableDNAEndpoint",
+   "b": "PhysiologicalActivityEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:ViableDNAEndpoint)",
+    "SubClassOf(rak:Probe rak:PhysiologicalActivityEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "ViableDNAEndpoint|TotalWaterPotentialEndpoint": {
+   "a": "ViableDNAEndpoint",
+   "b": "TotalWaterPotentialEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:ViableDNAEndpoint)",
+    "SubClassOf(rak:Probe rak:TotalWaterPotentialEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "ViableDNAEndpoint|VolumetricWaterContentEndpoint": {
+   "a": "ViableDNAEndpoint",
+   "b": "VolumetricWaterContentEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:ViableDNAEndpoint)",
+    "SubClassOf(rak:Probe rak:VolumetricWaterContentEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "VolumetricWaterContentEndpoint|GenomeEquivalentsEndpoint": {
+   "a": "VolumetricWaterContentEndpoint",
+   "b": "GenomeEquivalentsEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:VolumetricWaterContentEndpoint)",
+    "SubClassOf(rak:Probe rak:GenomeEquivalentsEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "VolumetricWaterContentEndpoint|MappedReadShareEndpoint": {
+   "a": "VolumetricWaterContentEndpoint",
+   "b": "MappedReadShareEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "SubClassOf(rak:MappedReadShareEndpoint rak:MappedReadCompositionEndpoint)",
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:VolumetricWaterContentEndpoint)",
+    "SubClassOf(rak:Probe rak:MappedReadShareEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "VolumetricWaterContentEndpoint|MatricWaterPotentialEndpoint": {
+   "a": "VolumetricWaterContentEndpoint",
+   "b": "MatricWaterPotentialEndpoint",
+   "declared_maps": [
+    {
+     "assumptions": [
+      "WaterRetentionCurveAssumption"
+     ],
+     "map": "VolumetricToMatricPotentialMap"
+    },
+    {
+     "assumptions": [
+      "WaterRetentionCurveAssumption"
+     ],
+     "map": "VolumetricToMatricPotentialMap"
+    }
+   ],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:VolumetricWaterContentEndpoint)",
+    "SubClassOf(rak:Probe rak:MatricWaterPotentialEndpoint)"
+   ],
+   "relation": "disjoint"
+  },
+  "VolumetricWaterContentEndpoint|TotalWaterPotentialEndpoint": {
+   "a": "VolumetricWaterContentEndpoint",
+   "b": "TotalWaterPotentialEndpoint",
+   "declared_maps": [],
+   "disjointness_justification": [
+    "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
+    "SubClassOf(rak:Probe rak:VolumetricWaterContentEndpoint)",
+    "SubClassOf(rak:Probe rak:TotalWaterPotentialEndpoint)"
+   ],
+   "relation": "disjoint"
+  }
+ },
+ "probe_count": 105,
+ "rules_sha256": "497f6fcaa109561d28f1b7203c040ca0206dd5ab9ab312cd52b23220a21c7a3a",
+ "schema_version": 1,
+ "undeclared_maps": [
+  {
+   "from": "MassNormalizedBottleUptakeRateEndpoint",
+   "name": "BottleRateToArealFlux",
+   "note": "Not declared: a bottle (mass-normalised) rate does not map to an areal flux without soil geometry (depth, bulk density), gas transport (diffusion, boundary layer) and moisture-dependent reaction-layer assumptions. This is a process-model prediction, not an observation map.",
+   "to": "ArealH2FluxEndpoint",
+   "would_require": [
+    "TransportGeometryAssumption"
+   ]
+  }
+ ]
+}

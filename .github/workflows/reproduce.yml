@@ -19,7 +19,8 @@ jobs:
           version: '0.9.5'
       - run: uv sync --locked
       - run: uv run python scripts/install_reasoner.py
-      - run: uv run python reproducibility/v05/reproduce.py
+      - run: uv run python reproducibility/v06/reproduce.py
+      - run: uv run python reproducibility/v06/verify_manuscript.py
       - run: uv run pytest -q
       - run: uv build
       - run: |
@@ -36,9 +37,12 @@ jobs:
             paper/main.pdf
             paper/supplementary.pdf
             paper/figures/v05_*.pdf
-            paper/tables/v05_*.tex
+            paper/figures/v06_*.pdf
+            paper/tables/
             reviews/v03/
             reviews/v05/
+            reviews/v06/
             data/v03/manifest.json
             data/v03/entailed_memberships.json
             data/v03/model_contract.json
+            data/v03/justifications.json

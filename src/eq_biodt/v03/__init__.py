@@ -1,3 +1,7 @@
-"""Evidence-separated, resource-conserving EQ-BioDT v0.3."""
+"""EQ-BioDT causal-ontological twin (Python and HTTP paths keep the historical ``v03``/``/v3`` names)."""
+from importlib.metadata import PackageNotFoundError, version as _version
 
-VERSION = "0.5.0"
+try:
+    VERSION = _version("eq-biodt")
+except PackageNotFoundError:  # running from an uninstalled source tree
+    VERSION = "0.6.0"

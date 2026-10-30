@@ -1,0 +1,41 @@
+node	label	zone	manipulable	verdict	reason	physical_action
+K	OWL 2 TBox (KEGG step classes, carrier classes)	ontological	False	refused	K is in the ontological zone; change it by a model revision or an observation update, not an intervention	
+E	Evidence: MAG KOs, marker guilds, mapped weights w_sg	evidence	False	refused	E is in the evidence zone; change it by a model revision or an observation update, not an intervention	
+D_K	Deduced class memberships g in C	deduced	False	refused	D_K is in the deduced zone: carrier share is deduced from evidence and ontology; change evidence by an observation update, not an intervention	
+q_h2	H2 carrier share q_s(H2CarrierMAG)	deduced	False	refused	q_h2 is in the deduced zone: carrier share is deduced from evidence and ontology; change evidence by an observation update, not an intervention	
+q_co	CO carrier share q_s(COCarrierMAG)	deduced	False	refused	q_co is in the deduced zone: carrier share is deduced from evidence and ontology; change evidence by an observation update, not an intervention	
+gamma_h2	Community factor for H2	deduced	False	refused	gamma_h2 is in the deduced zone: carrier share is deduced from evidence and ontology; change evidence by an observation update, not an intervention	
+gamma_co	Community factor for CO	deduced	False	refused	gamma_co is in the deduced zone: carrier share is deduced from evidence and ontology; change evidence by an observation update, not an intervention	
+I	Added water	exogenous_manipulable	True	admissible		apply or withhold water (irrigation, rain event)
+c	NaCl concentration of added water	exogenous_manipulable	True	admissible		change the salinity of the applied water
+Evap	Prescribed evaporative demand	exogenous_manipulable	True	admissible		shade or mulch the surface
+T	Soil temperature	exogenous_manipulable	True	admissible		shade or warm the soil surface
+phi	Porosity	exogenous_manipulable	True	admissible		compact or loosen the soil (measured post-disturbance value)
+psi_e	Air-entry potential	exogenous_manipulable	True	admissible		change the soil texture class (measured retention)
+b	Campbell retention exponent	exogenous_manipulable	True	admissible		change the soil texture class (measured retention)
+L	Layer depth	exogenous_fixed	False	refused	L is an exogenous fixed constant of this release (zone exogenous_fixed); it has no physical handle in the intervention interface	
+C_a	Atmospheric gas concentrations	exogenous_fixed	False	refused	C_a is an exogenous fixed constant of this release (zone exogenous_fixed); it has no physical handle in the intervention interface	
+D0	Free-air diffusivities	exogenous_fixed	False	refused	D0 is an exogenous fixed constant of this release (zone exogenous_fixed); it has no physical handle in the intervention interface	
+k_ref	Reference reaction coefficients	exogenous_fixed	False	refused	k_ref is an exogenous fixed constant of this release (zone exogenous_fixed); it has no physical handle in the intervention interface	
+Q10	Temperature response	exogenous_fixed	False	refused	Q10 is an exogenous fixed constant of this release (zone exogenous_fixed); it has no physical handle in the intervention interface	
+act_par	Activation thresholds and shape	exogenous_fixed	False	refused	act_par is an exogenous fixed constant of this release (zone exogenous_fixed); it has no physical handle in the intervention interface	
+drain_par	Drainage and field-capacity constants	exogenous_fixed	False	refused	drain_par is an exogenous fixed constant of this release (zone exogenous_fixed); it has no physical handle in the intervention interface	
+osm_par	Osmotic coefficient, gas constant	exogenous_fixed	False	refused	osm_par is an exogenous fixed constant of this release (zone exogenous_fixed); it has no physical handle in the intervention interface	
+O2	Oxygen supply limit	exogenous_fixed	False	refused	O2 is an exogenous fixed constant of this release (zone exogenous_fixed); it has no physical handle in the intervention interface	
+capture	Energy capture fraction	exogenous_fixed	False	refused	capture is an exogenous fixed constant of this release (zone exogenous_fixed); it has no physical handle in the intervention interface	
+W	Water storage	causal	True	admissible		wet or dry the soil to a set-point (state intervention)
+N	Salt inventory	causal	True	admissible		add or leach salt to a set-point (state intervention)
+W_max	Pore storage	constitutive	False	refused	W_max is constitutive (W_max = 1000 L phi); intervene on its constituents 	
+theta	Volumetric water content	constitutive	False	refused	theta is constitutive (theta = W/(1000 L)); intervene on water storage W instead, or use a theta state target which is translated	
+psi_m	Matric potential	constitutive	False	refused	psi_m is constitutive (psi_m = psi_e (theta/phi)^(-b)); intervene on its constituents W	
+psi_o	Osmotic potential	constitutive	False	refused	psi_o is constitutive (psi_o = -2 varphi (N/W) R T 1e-3); intervene on its constituents N, W	
+psi	Total water potential	constitutive	False	refused	psi is constitutive (psi = psi_m + psi_o); use a psi state target with an explicit version ('matric' or 'osmotic'), which is translated to W or N	
+D_h2	Effective H2 diffusivity	constitutive	False	refused	D_h2 is constitutive (D_g = D_0,g (phi - theta)^(10/3) / phi^2); intervene on its constituents W	
+D_co	Effective CO diffusivity	constitutive	False	refused	D_co is constitutive (D_g = D_0,g (phi - theta)^(10/3) / phi^2); intervene on its constituents W	
+A	Activation	causal	False	refused	A is a causal outcome mechanism without physical handle; intervene on its inputs	
+k_h2	H2 reaction coefficient	causal	False	refused	k_h2 is a causal outcome mechanism without physical handle; intervene on its inputs	
+k_co	CO reaction coefficient	causal	False	refused	k_co is a causal outcome mechanism without physical handle; intervene on its inputs	
+J_h2	H2 uptake	causal	False	refused	J_h2 is a causal outcome mechanism without physical handle; intervene on its inputs	
+J_co	CO uptake	causal	False	refused	J_co is a causal outcome mechanism without physical handle; intervene on its inputs	
+P	Chemical power	constitutive	False	refused	P is constitutive (P = 202000 J_h2 + 243000 J_co); intervene on its constituents N, W	
+P_cap	Captured power	constitutive	False	refused	P_cap is constitutive (P_cap = eta P); intervene on its constituents N, W	

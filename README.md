@@ -1,4 +1,4 @@
-# EQ-BioDT v0.5.0
+# EQ-BioDT v0.6.0
 
 EQ-BioDT is a causal–ontological digital twin of microbial processes in the
 Rub’ al-Khali, the world’s largest continuous sand desert. It connects primary
@@ -34,7 +34,7 @@ Install [uv](https://docs.astral.sh/uv/getting-started/installation/), then:
 ```bash
 git clone https://github.com/bio-ontology-research-group/empty-quarter-digital-twin.git
 cd empty-quarter-digital-twin
-git checkout v0.5.0
+git checkout v0.6.0
 uv sync --locked
 uv run eq-biodt serve --port 8000
 ```
@@ -44,9 +44,9 @@ Open <http://127.0.0.1:8000> for scenarios and evidence inspection, or
 to localhost. Python 3.13 is the tested reproduction environment; package
 metadata permits Python 3.10 or later.
 
-The [GitHub release](https://github.com/bio-ontology-research-group/empty-quarter-digital-twin/releases/tag/v0.5.0)
+The [GitHub release](https://github.com/bio-ontology-research-group/empty-quarter-digital-twin/releases/tag/v0.6.0)
 also provides an installable wheel and manuscript PDFs. Install the downloaded
-wheel with `uv tool install path/to/eq_biodt-0.5.0-py3-none-any.whl`, then run
+wheel with `uv tool install path/to/eq_biodt-0.6.0-py3-none-any.whl`, then run
 `eq-biodt serve`. Normal tool use needs neither a separate ontology reasoner
 nor a sibling repository.
 
@@ -72,7 +72,69 @@ The console allows selection of every reference MAG and downloads complete
 scenario inputs, assumptions and outputs. The API exposes the same calculations:
 `/v3/simulate`, `/v3/compare`, `/v3/intervene`, `/v3/resource-ceiling`,
 `/v3/evidence`, `/v3/mags`, `/v3/ontology` and `/v3/contract`.
-The `/v3` API and `eq_biodt.v03` Python paths are retained for compatibility.
+The API additionally exposes `/v3/graph`, `/v3/community/{sample}`,
+`/v3/version-relevance`, `/v3/experiment` and `/v3/carbon-account`.
+The `/v3` API paths, the `eq_biodt.v03` Python package and the `data/v03`
+directory keep their names across v0.4 to v0.6 for compatibility; they do not
+denote the model version.
+
+## Causal–ontological design
+
+The full statement is in [docs/causal-ontological-theory.md](docs/causal-ontological-theory.md);
+the endpoint reference is [docs/causal-design.md](docs/causal-design.md).
+
+- **Three kinds of change.** An observation update changes evidence, a model
+  revision changes the ontology or a mechanism, and an intervention changes only
+  exogenous inputs or designated physical states. Choosing a community (a sample
+  or site visit) selects evidence; it conditions the twin and is not an intervention.
+- **Two zones.** The ontological zone holds the OWL classes, evidence, reasoner
+  entailments and constitutive definitions (for example `theta = W/(1000 L)`). The
+  causal zone holds the mechanisms for water, salt, activation and uptake. An
+  intervention replaces causal-zone assignments only.
+- **Admissible targets.** Forcing inputs, prescribed soil parameters
+  (`porosity`, `psi_entry_mpa`, `retention_b`) and the states `water_mm` and
+  `nacl_mol_m2`. `theta` is translated to `water_mm`; `psi_mpa` needs a named
+  version (`matric` or `osmotic`). Ontology, evidence, entailments, activation,
+  rate coefficients and uptake cannot be set, and infeasible regimes (for example
+  stored water above pore capacity) are rejected with a zone-specific error.
+- **Community coupling.** `reference` (default) leaves rate coefficients unchanged;
+  `gate` sets a gas's coefficient to zero when the selected community has no
+  reasoner-entailed carrier (`H2CarrierMAG`, `COCarrierMAG`); `proportional` scales
+  it by the carrier's read-weighted share relative to the median sample. The
+  proportional scaling is an assumption, not a validated law.
+- **Version relevance.** Whether a constituted target such as `psi` has a
+  version-dependent effect on an outcome is decided from the graph: it does if some
+  physical handle reaches the outcome by a path that avoids the target.
+- **Deductive null effects.** If a gate closes, uptake of that gas is zero in every
+  admissible regime. The response reports this as `zero_by_deduction` with its
+  derivation, checks that memberships and shares are identical in both arms, and
+  does not read absent entailment as biological absence.
+
+Worked examples (inputs in [docs/examples](docs/examples)):
+
+```bash
+# stratified graph: nodes with zone, manipulability and equation; edges with kind
+uv run eq-biodt graph | head
+curl -s http://127.0.0.1:8000/v3/graph | head -c 400
+
+# reasoner-entailed carrier shares and coupling factors for one sample
+uv run eq-biodt community --sample 51PRr3
+curl -s http://127.0.0.1:8000/v3/community/51PRr3
+
+# is the effect of do(psi) on H2 uptake version-dependent?
+curl -s -X POST http://127.0.0.1:8000/v3/version-relevance \
+  -H 'content-type: application/json' -d @docs/examples/version_relevance.json
+
+# paired intervention on a selected community with gate coupling
+uv run eq-biodt intervene --input docs/examples/intervention_community_gate.json
+curl -s -X POST http://127.0.0.1:8000/v3/intervene \
+  -H 'content-type: application/json' -d @docs/examples/intervention_community_gate.json
+```
+
+State interventions and a ψ target use the same request, for example
+`"state": {"0": {"psi_mpa": -2.0, "version": "matric"}}` (also `water_mm`, `theta`,
+`nacl_mol_m2`). `POST /v3/compare` accepts `community`, `coupling` and reports the
+treatment-version block.
 
 For new observations, issue a forecast with a future target date:
 
@@ -102,7 +164,7 @@ On Linux x86_64:
 ```bash
 uv sync --locked
 uv run python scripts/install_reasoner.py
-uv run python reproducibility/v05/reproduce.py
+uv run python reproducibility/v06/reproduce.py
 uv run pytest -q
 ```
 
@@ -113,7 +175,9 @@ exports verified memberships, runs the independent pathway audit, matched
 compartment comparisons, campaign backtests, bottle analysis, numerical
 convergence checks, scenario ensemble, primary-provenance trace, cross-desert
 transfer evaluations and independent numerical audit, and regenerates paper
-tables and figures. Outputs are in
+tables and figures. The v0.6 command runs the v0.5 reproduction first (`--skip-v05` reuses its outputs)
+and then the v0.6 admissibility, treatment-version and paired-regime analyses. Outputs are in
+[reviews/v06](reviews/v06/manifest.json),
 [reviews/v05](reviews/v05/reproduction_manifest.json) and
 [reviews/v03](reviews/v03/report.md).
 
@@ -153,9 +217,10 @@ ontology in a user-selected location. For alternative datasets,
   counterfactual change and lifecycle emissions.
 
 See [the scientific audit](reviews/v03/report.md),
-[changes in v0.5](CHANGELOG.md) and [the manuscript](paper/main.tex).
-The old v0.2 modules and bundled historical analyses are retained for provenance;
-their heuristic intervention endpoints return HTTP 410 from the current server.
+[changes in v0.6](CHANGELOG.md) and [the manuscript](paper/main.tex).
+The earlier v0.2 exploratory model is retained for provenance under
+[legacy/](legacy/README.md). It is neither packaged nor tested, and its heuristic
+intervention endpoints return HTTP 410 from the current server.
 
 Code is [MIT licensed](LICENSE). External data and standards retain their
 original terms; source attribution is in the snapshot README. Cite this release

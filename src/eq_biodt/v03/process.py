@@ -8,6 +8,8 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass, replace
 from math import isfinite, log, sqrt, tanh
 
+from . import VERSION
+
 
 @dataclass(frozen=True)
 class Parameters:
@@ -35,11 +37,15 @@ class Parameters:
     osmotic_domain_mol_l: float = .1
     mechanism: str = "activation_diffusion"
     integration_steps_per_day: int = 96
+    gamma_h2: float = 1.                 # community factors from ontology memberships (theory.py, community.py)
+    gamma_co: float = 1.
 
     def __post_init__(self):
         for k, v in asdict(self).items():
             if isinstance(v, (int, float)) and not isfinite(v):
                 raise ValueError(f"Non-finite parameter: {k}")
+        if self.gamma_h2 < 0 or self.gamma_co < 0:
+            raise ValueError("Community factors gamma must be non-negative")
         if not 0 < self.porosity < 1 or self.depth_m <= 0:
             raise ValueError("Invalid porosity/depth")
         if not self.dry_threshold_mpa < self.wet_activation_mpa < self.psi_entry_mpa < 0:
@@ -110,8 +116,8 @@ def gas_exchange(theta: float, temp_c: float, p: Parameters, *,
     a = activation(total_psi, p)
     mq = (p.porosity-theta)**(10/3)/p.porosity**2
     thermal = p.q10**((temp_c-p.reference_temp_c)/10)
-    h2 = deposition_flux(p.h2_mol_m3, p.d_h2_m2_s*mq, p.k_h2_s*a*thermal, p.depth_m)
-    co = deposition_flux(p.co_mol_m3, p.d_co_m2_s*mq, p.k_co_s*a*thermal, p.depth_m)
+    h2 = deposition_flux(p.h2_mol_m3, p.d_h2_m2_s*mq, p.k_h2_s*p.gamma_h2*a*thermal, p.depth_m)
+    co = deposition_flux(p.co_mol_m3, p.d_co_m2_s*mq, p.k_co_s*p.gamma_co*a*thermal, p.depth_m)
     demand = .5*(h2+co)
     fraction = min(1., p.oxygen_supply_mol_m2_s/demand) if demand else 1.
     h2 *= fraction
@@ -137,18 +143,26 @@ class State:
             raise ValueError("Invalid water/salt inventory")
 
 
-def simulate(initial: State, forcing: list[dict], p: Parameters) -> dict:
+def simulate(initial: State, forcing: list[dict], p: Parameters, state_overrides: dict | None = None) -> dict:
     """Daily, well-mixed bucket; water in mm equals L m-2.
 
     NaCl is a specified idealised solute, not inferred from EC. At >0.1 M the
     salt ledger continues but uptake abstains pending non-ideal speciation.
+    state_overrides maps a day to a function State -> State applied to the state entering
+    that day (an intervention on the causal state, do(W_t=w) / do(N_t=n)).
     """
     capacity = 1000*p.depth_m*p.porosity
     if initial.water_mm > capacity:
         raise ValueError("Initial water exceeds pore storage")
     state = initial
     rows = []
+    overridden = {}
     for day, f in enumerate(forcing):
+        if state_overrides and day in state_overrides:
+            state = state_overrides[day](state)
+            if state.water_mm > capacity:
+                raise ValueError("State intervention exceeds pore storage")
+            overridden[day] = asdict(state)
         allowed = {"water_mm", "nacl_mol_l", "evaporation_mm", "temp_c"}
         if set(f)-allowed:
             raise ValueError(f"Unsupported causal levers: {sorted(set(f)-allowed)}")
@@ -212,9 +226,11 @@ def simulate(initial: State, forcing: list[dict], p: Parameters) -> dict:
                      "salt_balance_residual_mol_m2": state.salt_mol_m2+rain*salt_c-outsalt-next_state.salt_mol_m2,
                      "nacl_mol_l": concentration, "gas": gas,
                      "chemistry_status": "ideal_dilute_assumption" if chemistry_ok else "requires_nonideal_speciation"})
+        if day in overridden:
+            rows[-1]["state_override"] = overridden[day]
         state = next_state
     valid = all(r["gas"] is not None for r in rows)
-    return {"version": "0.5.0", "parameters": asdict(p), "initial": asdict(initial),
+    return {"version": VERSION, "parameters": asdict(p), "initial": asdict(initial),
             "forcing": forcing, "trajectory": rows,
             "summary": {"water_input_mm": sum(r["water_input_mm"] for r in rows),
                         "h2_uptake_mol_m2": sum(r["gas"]["h2_mol_m2_s"]*86400 for r in rows) if valid else None,

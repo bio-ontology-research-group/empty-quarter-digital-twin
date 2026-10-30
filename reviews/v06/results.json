@@ -1,0 +1,248 @@
+{
+  "paired": {
+    "samples": 550,
+    "closed_gates": {
+      "mapped_samples": 550,
+      "co_closed": [
+        "51PRr3",
+        "55PRr1",
+        "55PRr3",
+        "55Sr1",
+        "58PRr3",
+        "F13Sr1",
+        "F57PRr2",
+        "S55PRr1"
+      ],
+      "h2_closed": [],
+      "co_closed_count": 8,
+      "h2_closed_count": 0,
+      "co_effect_exactly_zero_all_schedules_gate_and_proportional": true,
+      "co_uptake_exactly_zero_gate": true,
+      "h2_effect_exactly_zero_when_h2_closed": true
+    },
+    "contrasts": [
+      {
+        "coupling": "proportional",
+        "contrast": "Deep minus PlantRoot",
+        "matched_site_campaigns": 107,
+        "sites": 48,
+        "mean_difference_mol_m2": 0.0006799290111734823,
+        "site_bootstrap_95_percentile": [
+          0.0005383007204489527,
+          0.0008129781182745622
+        ],
+        "bootstrap_draws": 2000,
+        "seed": 42
+      },
+      {
+        "coupling": "proportional",
+        "contrast": "Deep minus Surface",
+        "matched_site_campaigns": 69,
+        "sites": 37,
+        "mean_difference_mol_m2": 0.0004249936301390019,
+        "site_bootstrap_95_percentile": [
+          0.0002888047759309027,
+          0.0005383423684037549
+        ],
+        "bootstrap_draws": 2000,
+        "seed": 42
+      },
+      {
+        "coupling": "proportional",
+        "contrast": "PlantRoot minus Surface",
+        "matched_site_campaigns": 85,
+        "sites": 46,
+        "mean_difference_mol_m2": -0.0003337616340008209,
+        "site_bootstrap_95_percentile": [
+          -0.0004807591026953209,
+          -0.00019488633040750292
+        ],
+        "bootstrap_draws": 2000,
+        "seed": 42
+      },
+      {
+        "coupling": "gate",
+        "contrast": "Deep minus PlantRoot",
+        "matched_site_campaigns": 107,
+        "sites": 48,
+        "mean_difference_mol_m2": 0.0,
+        "site_bootstrap_95_percentile": [
+          0.0,
+          0.0
+        ],
+        "bootstrap_draws": 2000,
+        "seed": 42
+      },
+      {
+        "coupling": "gate",
+        "contrast": "Deep minus Surface",
+        "matched_site_campaigns": 69,
+        "sites": 37,
+        "mean_difference_mol_m2": 0.0,
+        "site_bootstrap_95_percentile": [
+          0.0,
+          0.0
+        ],
+        "bootstrap_draws": 2000,
+        "seed": 42
+      },
+      {
+        "coupling": "gate",
+        "contrast": "PlantRoot minus Surface",
+        "matched_site_campaigns": 85,
+        "sites": 46,
+        "mean_difference_mol_m2": 0.0,
+        "site_bootstrap_95_percentile": [
+          0.0,
+          0.0
+        ],
+        "bootstrap_draws": 2000,
+        "seed": 42
+      }
+    ],
+    "distinct_gamma_pairs_simulated": 552
+  },
+  "treatment_versions": {
+    "members": 24,
+    "total_water_mm": 12.0,
+    "versions": [
+      "single_pulse",
+      "four_pulses",
+      "daily_pulses"
+    ],
+    "control": "intact",
+    "ranking_changes_across_members": true,
+    "version_relevant": true,
+    "distinct_rankings": [
+      "four_pulses>single_pulse>daily_pulses",
+      "single_pulse>four_pulses>daily_pulses"
+    ],
+    "ranking_counts": {
+      "single_pulse>four_pulses>daily_pulses": 22,
+      "four_pulses>single_pulse>daily_pulses": 2
+    },
+    "members_where_single_beats_four": 22,
+    "members_where_four_beats_single": 2,
+    "members_where_daily_is_lowest": 24,
+    "effect_vs_control_range_mol_m2": [
+      0.0,
+      0.007166611848928573
+    ],
+    "effect_range_by_version_mol_m2": {
+      "single_pulse": [
+        5.852790082949105e-05,
+        0.006895847213542933
+      ],
+      "four_pulses": [
+        4.5617723755904126e-08,
+        0.007166611848928573
+      ],
+      "daily_pulses": [
+        0.0,
+        0.004360611747331165
+      ]
+    },
+    "pairwise": [
+      {
+        "a": "intact",
+        "b": "single_pulse",
+        "uptake_difference_range_mol_m2": [
+          -0.006895847213542933,
+          -5.852790082949105e-05
+        ],
+        "rank_reversal": false
+      },
+      {
+        "a": "intact",
+        "b": "four_pulses",
+        "uptake_difference_range_mol_m2": [
+          -0.007166611848928573,
+          -4.5617723755904126e-08
+        ],
+        "rank_reversal": false
+      },
+      {
+        "a": "intact",
+        "b": "daily_pulses",
+        "uptake_difference_range_mol_m2": [
+          -0.004360611747331165,
+          0.0
+        ],
+        "rank_reversal": false
+      },
+      {
+        "a": "single_pulse",
+        "b": "four_pulses",
+        "uptake_difference_range_mol_m2": [
+          -0.00027076463538563966,
+          0.004045742649152464
+        ],
+        "rank_reversal": true
+      },
+      {
+        "a": "single_pulse",
+        "b": "daily_pulses",
+        "uptake_difference_range_mol_m2": [
+          5.852790082949105e-05,
+          0.00497498147069937
+        ],
+        "rank_reversal": false
+      },
+      {
+        "a": "four_pulses",
+        "b": "daily_pulses",
+        "uptake_difference_range_mol_m2": [
+          4.5617723755904126e-08,
+          0.0030333702056303414
+        ],
+        "rank_reversal": false
+      }
+    ],
+    "pareto_in_every_member": [
+      "intact"
+    ]
+  },
+  "admissibility_counts": [
+    {
+      "zone": "causal",
+      "verdict": "admissible",
+      "0": 2
+    },
+    {
+      "zone": "causal",
+      "verdict": "refused",
+      "0": 5
+    },
+    {
+      "zone": "constitutive",
+      "verdict": "refused",
+      "0": 9
+    },
+    {
+      "zone": "deduced",
+      "verdict": "refused",
+      "0": 5
+    },
+    {
+      "zone": "evidence",
+      "verdict": "refused",
+      "0": 1
+    },
+    {
+      "zone": "exogenous_fixed",
+      "verdict": "refused",
+      "0": 10
+    },
+    {
+      "zone": "exogenous_manipulable",
+      "verdict": "admissible",
+      "0": 7
+    },
+    {
+      "zone": "ontological",
+      "verdict": "refused",
+      "0": 1
+    }
+  ],
+  "runtime_seconds": 11.1
+}

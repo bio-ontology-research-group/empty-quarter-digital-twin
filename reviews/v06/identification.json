@@ -1,0 +1,715 @@
+{
+  "note": "Symbolic, deterministic derivations; no probabilistic estimation. Latent season S is an assumed structure.",
+  "deductive_null": {
+    "query": "deductive_null",
+    "coupling": "gate",
+    "days": 1,
+    "claim": "P(J_CO@0 | do(I@0), q_CO=0) = P(J_CO@0 | q_CO=0)",
+    "rule": "Rule 3",
+    "result": {
+      "rule": 3,
+      "holds": true,
+      "graph_test": false,
+      "graph_test_Z_star": false,
+      "graph_test_Z_star_csi": true,
+      "deterministic_outcome": true,
+      "Z_star": [
+        "C_a",
+        "D0",
+        "K",
+        "L",
+        "O2",
+        "Q10",
+        "act_par",
+        "capture",
+        "drain_par",
+        "gamma_co",
+        "k_co@0",
+        "k_ref",
+        "osm_par",
+        "q_co"
+      ],
+      "closed_by_deduction": [
+        "C_a",
+        "D0",
+        "J_co@0",
+        "K",
+        "L",
+        "O2",
+        "Q10",
+        "act_par",
+        "capture",
+        "drain_par",
+        "gamma_co",
+        "k_co@0",
+        "k_ref",
+        "osm_par"
+      ],
+      "open_path_plain": [
+        "J_co@0",
+        "D_h2@0",
+        "theta@0",
+        "W@0",
+        "I@0"
+      ],
+      "reason": "holds by d-separation in the stratum after pruning edges made inert by the closure: P(y|do(x),do(z),w) = P(y|do(x),w) with Z* = ['C_a', 'D0', 'K', 'L', 'O2', 'Q10', 'act_par', 'capture', 'drain_par', 'gamma_co', 'k_co@0', 'k_ref', 'osm_par', 'q_co']",
+      "statement": "P(y|do(x),do(z),w) = P(y|do(x),w)",
+      "mutilation": "G with edges into X and into Z(W) removed",
+      "csi_pruned_edges": [
+        "C_a->J_co@0",
+        "D_co@0->J_co@0",
+        "D_co@0->J_h2@0",
+        "D_h2@0->J_co@0",
+        "L->J_co@0",
+        "O2->J_co@0",
+        "k_co@0->J_co@0",
+        "k_co@0->J_h2@0",
+        "k_h2@0->J_co@0"
+      ]
+    },
+    "closure": {
+      "observed": {
+        "q_co": 0
+      },
+      "coupling": "gate",
+      "closed": {
+        "C_a": "constant",
+        "D0": "constant",
+        "K": "invariant",
+        "L": "constant",
+        "O2": "constant",
+        "Q10": "constant",
+        "act_par": "constant",
+        "capture": "constant",
+        "drain_par": "constant",
+        "k_ref": "constant",
+        "osm_par": "constant",
+        "gamma_co": 0.0,
+        "k_co@0": 0.0,
+        "J_co@0": 0.0
+      },
+      "derivations": [
+        {
+          "node": "C_a",
+          "value": "constant",
+          "rule": "release constant (not admissible, no handle)",
+          "premises": []
+        },
+        {
+          "node": "D0",
+          "value": "constant",
+          "rule": "release constant (not admissible, no handle)",
+          "premises": []
+        },
+        {
+          "node": "K",
+          "value": "invariant",
+          "rule": "invariant core K",
+          "premises": []
+        },
+        {
+          "node": "L",
+          "value": "constant",
+          "rule": "release constant (not admissible, no handle)",
+          "premises": []
+        },
+        {
+          "node": "O2",
+          "value": "constant",
+          "rule": "release constant (not admissible, no handle)",
+          "premises": []
+        },
+        {
+          "node": "Q10",
+          "value": "constant",
+          "rule": "release constant (not admissible, no handle)",
+          "premises": []
+        },
+        {
+          "node": "act_par",
+          "value": "constant",
+          "rule": "release constant (not admissible, no handle)",
+          "premises": []
+        },
+        {
+          "node": "capture",
+          "value": "constant",
+          "rule": "release constant (not admissible, no handle)",
+          "premises": []
+        },
+        {
+          "node": "drain_par",
+          "value": "constant",
+          "rule": "release constant (not admissible, no handle)",
+          "premises": []
+        },
+        {
+          "node": "k_ref",
+          "value": "constant",
+          "rule": "release constant (not admissible, no handle)",
+          "premises": []
+        },
+        {
+          "node": "osm_par",
+          "value": "constant",
+          "rule": "release constant (not admissible, no handle)",
+          "premises": []
+        },
+        {
+          "node": "gamma_co",
+          "value": 0.0,
+          "rule": "(b) q=0 => gamma=0 under gate coupling",
+          "premises": [
+            "q_co"
+          ]
+        },
+        {
+          "node": "k_co@0",
+          "value": 0.0,
+          "rule": "(b) gamma=0 => k = k_ref gamma A Q10^.. = 0",
+          "premises": [
+            "gamma_co"
+          ]
+        },
+        {
+          "node": "J_co@0",
+          "value": 0.0,
+          "rule": "(b) k=0 => J = C sqrt(D k) tanh(..) = 0",
+          "premises": [
+            "k_co@0"
+          ]
+        }
+      ],
+      "non_trivial_closed": {
+        "gamma_co": 0.0,
+        "k_co@0": 0.0,
+        "J_co@0": 0.0
+      }
+    },
+    "plain_graph_test_fails_because": [
+      "J_co@0",
+      "D_h2@0",
+      "theta@0",
+      "W@0",
+      "I@0"
+    ],
+    "context_specific_step": "Cl contains J_CO@0 = 0, a constant; a constant is independent of every intervention, so Y subset Cl gives the equality by determinism even though I@0 -> W -> theta -> D (D_CO or, through the shared oxygen demand, D_H2) -> J_CO stays open: D is not in Cl.",
+    "all_admissible_time0_targets": {
+      "I@0": true,
+      "c@0": true,
+      "Evap@0": true,
+      "T@0": true,
+      "W@0": true,
+      "N@0": true,
+      "phi": true,
+      "psi_e": true,
+      "b": true
+    },
+    "negative_control_reference_coupling": {
+      "holds": false,
+      "closed_by_deduction": [
+        "C_a",
+        "D0",
+        "K",
+        "L",
+        "O2",
+        "Q10",
+        "act_par",
+        "capture",
+        "drain_par",
+        "gamma_co",
+        "gamma_h2",
+        "k_ref",
+        "osm_par"
+      ],
+      "note": "gamma=1 under reference coupling, so q_CO=0 closes nothing"
+    },
+    "verdict": "holds with closure, fails without"
+  },
+  "oxygen_context": {
+    "query": "oxygen_context",
+    "coupling": "gate",
+    "days": 1,
+    "formulation": "Rule 3 with the CO-only probe Z = D_CO@0 (a sensitivity probe on the CO channel; check_admissible refuses it as a regime) for Y = J_H2@0. J_H2 has D_CO and k_CO as parents only through the shared oxygen demand .5(J_H2 + J_CO). k_CO is closed (= 0), so any path through it is blocked, and J_CO = 0 for every D_CO, so the direct edge D_CO -> J_H2 is inert in the stratum (context-specific independence, not graph d-separation).",
+    "claim": "P(J_H2@0 | do(D_CO@0), q_CO=0) = P(J_H2@0 | q_CO=0)",
+    "stratum": {
+      "rule": 3,
+      "holds": true,
+      "graph_test": false,
+      "graph_test_Z_star": false,
+      "graph_test_Z_star_csi": true,
+      "deterministic_outcome": false,
+      "Z_star": [
+        "C_a",
+        "D0",
+        "J_co@0",
+        "K",
+        "L",
+        "O2",
+        "Q10",
+        "act_par",
+        "capture",
+        "drain_par",
+        "gamma_co",
+        "k_co@0",
+        "k_ref",
+        "osm_par",
+        "q_co"
+      ],
+      "closed_by_deduction": [
+        "C_a",
+        "D0",
+        "J_co@0",
+        "K",
+        "L",
+        "O2",
+        "Q10",
+        "act_par",
+        "capture",
+        "drain_par",
+        "gamma_co",
+        "k_co@0",
+        "k_ref",
+        "osm_par"
+      ],
+      "open_path_plain": [
+        "J_h2@0",
+        "D_co@0"
+      ],
+      "reason": "holds by d-separation in the stratum after pruning edges made inert by the closure: P(y|do(x),do(z),w) = P(y|do(x),w) with Z* = ['C_a', 'D0', 'J_co@0', 'K', 'L', 'O2', 'Q10', 'act_par', 'capture', 'drain_par', 'gamma_co', 'k_co@0', 'k_ref', 'osm_par', 'q_co']",
+      "statement": "P(y|do(x),do(z),w) = P(y|do(x),w)",
+      "mutilation": "G with edges into X and into Z(W) removed",
+      "csi_pruned_edges": [
+        "C_a->J_co@0",
+        "D_co@0->J_co@0",
+        "D_co@0->J_h2@0",
+        "D_h2@0->J_co@0",
+        "L->J_co@0",
+        "O2->J_co@0",
+        "k_co@0->J_co@0",
+        "k_co@0->J_h2@0",
+        "k_h2@0->J_co@0"
+      ]
+    },
+    "without_stratum": {
+      "rule": 3,
+      "holds": false,
+      "graph_test": false,
+      "graph_test_Z_star": false,
+      "graph_test_Z_star_csi": false,
+      "deterministic_outcome": false,
+      "Z_star": [],
+      "closed_by_deduction": [],
+      "open_path_plain": [
+        "J_h2@0",
+        "D_co@0"
+      ],
+      "reason": "P(y|do(x),do(z),w) = P(y|do(x),w) not licensed: d-connected even given Z*",
+      "statement": "P(y|do(x),do(z),w) = P(y|do(x),w)",
+      "mutilation": "G with edges into X and into Z(W) removed",
+      "csi_pruned_edges": []
+    },
+    "csi_pruned_edges": [
+      "C_a->J_co@0",
+      "D_co@0->J_co@0",
+      "D_co@0->J_h2@0",
+      "D_h2@0->J_co@0",
+      "L->J_co@0",
+      "O2->J_co@0",
+      "k_co@0->J_co@0",
+      "k_co@0->J_h2@0",
+      "k_h2@0->J_co@0"
+    ],
+    "closure": {
+      "observed": {
+        "q_co": 0
+      },
+      "coupling": "gate",
+      "closed": {
+        "C_a": "constant",
+        "D0": "constant",
+        "K": "invariant",
+        "L": "constant",
+        "O2": "constant",
+        "Q10": "constant",
+        "act_par": "constant",
+        "capture": "constant",
+        "drain_par": "constant",
+        "k_ref": "constant",
+        "osm_par": "constant",
+        "gamma_co": 0.0,
+        "k_co@0": 0.0,
+        "J_co@0": 0.0
+      },
+      "derivations": [
+        {
+          "node": "C_a",
+          "value": "constant",
+          "rule": "release constant (not admissible, no handle)",
+          "premises": []
+        },
+        {
+          "node": "D0",
+          "value": "constant",
+          "rule": "release constant (not admissible, no handle)",
+          "premises": []
+        },
+        {
+          "node": "K",
+          "value": "invariant",
+          "rule": "invariant core K",
+          "premises": []
+        },
+        {
+          "node": "L",
+          "value": "constant",
+          "rule": "release constant (not admissible, no handle)",
+          "premises": []
+        },
+        {
+          "node": "O2",
+          "value": "constant",
+          "rule": "release constant (not admissible, no handle)",
+          "premises": []
+        },
+        {
+          "node": "Q10",
+          "value": "constant",
+          "rule": "release constant (not admissible, no handle)",
+          "premises": []
+        },
+        {
+          "node": "act_par",
+          "value": "constant",
+          "rule": "release constant (not admissible, no handle)",
+          "premises": []
+        },
+        {
+          "node": "capture",
+          "value": "constant",
+          "rule": "release constant (not admissible, no handle)",
+          "premises": []
+        },
+        {
+          "node": "drain_par",
+          "value": "constant",
+          "rule": "release constant (not admissible, no handle)",
+          "premises": []
+        },
+        {
+          "node": "k_ref",
+          "value": "constant",
+          "rule": "release constant (not admissible, no handle)",
+          "premises": []
+        },
+        {
+          "node": "osm_par",
+          "value": "constant",
+          "rule": "release constant (not admissible, no handle)",
+          "premises": []
+        },
+        {
+          "node": "gamma_co",
+          "value": 0.0,
+          "rule": "(b) q=0 => gamma=0 under gate coupling",
+          "premises": [
+            "q_co"
+          ]
+        },
+        {
+          "node": "k_co@0",
+          "value": 0.0,
+          "rule": "(b) gamma=0 => k = k_ref gamma A Q10^.. = 0",
+          "premises": [
+            "gamma_co"
+          ]
+        },
+        {
+          "node": "J_co@0",
+          "value": 0.0,
+          "rule": "(b) k=0 => J = C sqrt(D k) tanh(..) = 0",
+          "premises": [
+            "k_co@0"
+          ]
+        }
+      ],
+      "non_trivial_closed": {
+        "gamma_co": 0.0,
+        "k_co@0": 0.0,
+        "J_co@0": 0.0
+      }
+    },
+    "control_water_still_affects_h2": {
+      "holds": false,
+      "note": "do(I@0) still changes J_H2: only the CO channel is cut"
+    },
+    "executable_check": {
+      "gamma_co=0": {
+        "runs": [
+          {
+            "d_co_m2_s": 1e-05,
+            "h2": 6e-10,
+            "co": 0.0,
+            "oxygen_used": 3e-10
+          },
+          {
+            "d_co_m2_s": 2.1e-05,
+            "h2": 6e-10,
+            "co": 0.0,
+            "oxygen_used": 3e-10
+          },
+          {
+            "d_co_m2_s": 8e-05,
+            "h2": 6e-10,
+            "co": 0.0,
+            "oxygen_used": 3e-10
+          }
+        ],
+        "h2_invariant": true
+      },
+      "gamma_co=1": {
+        "runs": [
+          {
+            "d_co_m2_s": 1e-05,
+            "h2": 3.9047398659247655e-10,
+            "co": 2.0952601340752345e-10,
+            "oxygen_used": 3e-10
+          },
+          {
+            "d_co_m2_s": 2.1e-05,
+            "h2": 3.375340121438236e-10,
+            "co": 2.6246598785617646e-10,
+            "oxygen_used": 3e-10
+          },
+          {
+            "d_co_m2_s": 8e-05,
+            "h2": 2.3831112450000016e-10,
+            "co": 3.6168887549999994e-10,
+            "oxygen_used": 3.0000000000000005e-10
+          }
+        ],
+        "h2_invariant": false
+      }
+    },
+    "verdict": "independent in the stratum; dependent without it"
+  },
+  "field_backdoor": {
+    "query": "field_backdoor",
+    "days": 2,
+    "latent": {
+      "S": {
+        "children": [
+          "I",
+          "T",
+          "Evap"
+        ],
+        "observed": false,
+        "meaning": "latent season / synoptic regime (assumed structure)"
+      }
+    },
+    "estimand": "P(J_h2@1 | do(W@1))",
+    "assumptions": [
+      "season S is a latent common cause of I, T, Ev in every slice (assumed structure, not estimated)",
+      "I, T, Ev, W, J_H2 measured each day; phi measured as a site property; release constants known",
+      "lag edges W@t -> W@t+1 and N@t -> N@t+1 as in theory.graph(); N and psi are not measured"
+    ],
+    "open_backdoor_path_without_adjustment": [
+      "W@1",
+      "phi",
+      "D_co@1",
+      "J_h2@1"
+    ],
+    "all_measured": {
+      "x": "W@1",
+      "y": "J_h2@1",
+      "pool": [
+        "I@0",
+        "T@0",
+        "Evap@0",
+        "W@0",
+        "J_h2@0",
+        "I@1",
+        "T@1",
+        "Evap@1",
+        "W@1",
+        "J_h2@1",
+        "phi"
+      ],
+      "known_constants": [
+        "C_a",
+        "D0",
+        "L",
+        "O2",
+        "Q10",
+        "act_par",
+        "capture",
+        "drain_par",
+        "k_ref",
+        "osm_par"
+      ],
+      "minimal_sets": [
+        [
+          "I@0",
+          "I@1",
+          "T@1",
+          "W@0",
+          "phi"
+        ],
+        [
+          "Evap@0",
+          "Evap@1",
+          "I@0",
+          "I@1",
+          "W@0",
+          "phi"
+        ]
+      ],
+      "identified_by_backdoor": true
+    },
+    "T_unmeasured": {
+      "x": "W@1",
+      "y": "J_h2@1",
+      "pool": [
+        "I@0",
+        "Evap@0",
+        "W@0",
+        "J_h2@0",
+        "I@1",
+        "Evap@1",
+        "W@1",
+        "J_h2@1",
+        "phi"
+      ],
+      "known_constants": [
+        "C_a",
+        "D0",
+        "L",
+        "O2",
+        "Q10",
+        "act_par",
+        "capture",
+        "drain_par",
+        "k_ref",
+        "osm_par"
+      ],
+      "minimal_sets": [
+        [
+          "Evap@0",
+          "Evap@1",
+          "I@0",
+          "I@1",
+          "W@0",
+          "phi"
+        ]
+      ],
+      "identified_by_backdoor": true
+    },
+    "T_and_Ev_unmeasured": {
+      "x": "W@1",
+      "y": "J_h2@1",
+      "pool": [
+        "I@0",
+        "W@0",
+        "J_h2@0",
+        "I@1",
+        "W@1",
+        "J_h2@1",
+        "phi"
+      ],
+      "known_constants": [
+        "C_a",
+        "D0",
+        "L",
+        "O2",
+        "Q10",
+        "act_par",
+        "capture",
+        "drain_par",
+        "k_ref",
+        "osm_par"
+      ],
+      "minimal_sets": [],
+      "identified_by_backdoor": false
+    },
+    "phi_unmeasured": {
+      "x": "W@1",
+      "y": "J_h2@1",
+      "pool": [
+        "I@0",
+        "T@0",
+        "Evap@0",
+        "W@0",
+        "J_h2@0",
+        "I@1",
+        "T@1",
+        "Evap@1",
+        "W@1",
+        "J_h2@1"
+      ],
+      "known_constants": [
+        "C_a",
+        "D0",
+        "L",
+        "O2",
+        "Q10",
+        "act_par",
+        "capture",
+        "drain_par",
+        "k_ref",
+        "osm_par"
+      ],
+      "minimal_sets": [],
+      "identified_by_backdoor": false
+    },
+    "effect_of_T": {
+      "x": "T@1",
+      "y": "J_h2@1",
+      "pool": [
+        "I@0",
+        "T@0",
+        "Evap@0",
+        "W@0",
+        "J_h2@0",
+        "I@1",
+        "T@1",
+        "Evap@1",
+        "W@1",
+        "J_h2@1",
+        "phi"
+      ],
+      "known_constants": [
+        "C_a",
+        "D0",
+        "L",
+        "O2",
+        "Q10",
+        "act_par",
+        "capture",
+        "drain_par",
+        "k_ref",
+        "osm_par"
+      ],
+      "minimal_sets": [
+        [
+          "Evap@0",
+          "Evap@1",
+          "I@0",
+          "I@1"
+        ],
+        [
+          "I@0",
+          "I@1",
+          "W@0",
+          "W@1",
+          "phi"
+        ]
+      ],
+      "identified_by_backdoor": true
+    },
+    "formula": "P(J_h2@1 | do(W@1=w)) = sum_z P(J_h2@1 | W@1=w, z) P(z) over z in each minimal set",
+    "reading": "Back-door paths leave W@t through its parents I@t, Ev@t, W@(t-1) and W_max (phi). S opens W <- Ev <- S -> T -> k -> J, W <- I <- S -> T -> k -> J and, through the previous slice, W(t) <- Ev(t) <- S -> I(t-1) -> N(t-1) -> N(t) -> psi_o -> psi -> A -> k -> J. Adjusting for T@t alone leaves the last route open; I@(t-1), I@t and W@(t-1) are also needed (W <- I -> N and W(t-1) -> N(t-1) -> N(t)). The search finds two minimal sets: one contains T@t, the other replaces T@t by Ev@(t-1), Ev@t. Temperature is therefore a sufficient blocker, not a necessary one: without T the effect is still identified through the evaporation record, and it is lost by back-door only if both T and Ev are unmeasured (or phi is).",
+    "positivity_caveat": "Identification here is graphical. The Sonoran campaigns have near-collinear moisture and temperature across seasons, so the strata of the adjustment set are almost empty at the contrasts of interest (a positivity violation); that, not the graph, is why the Q10 question was not resolved.",
+    "limits": "back-door only: no front-door or full ID-algorithm; absence of a set is not a proof of non-identifiability",
+    "verdict": "identified by back-door given phi, I@(t-1), I@t, W@(t-1) and either T@t or Ev@(t-1), Ev@t; no back-door set otherwise"
+  }
+}

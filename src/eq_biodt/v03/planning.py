@@ -6,7 +6,47 @@ from itertools import combinations, product
 
 import numpy as np
 
+from .interventions import community_factors
 from .process import Parameters, State, gas_exchange, simulate
+
+
+def treatment_versions(scenarios: list[dict], outcomes: list[dict], n_members: int, tol: float = 1e-12) -> dict:
+    """Wetting schedules with equal total added water are versions of one superclass intervention.
+
+    Reports each version's uptake per parameter member, the ranking of versions, and whether the
+    versions differ (version relevance), with the effect range against a no-water control.
+    """
+    totals = {s["name"]: sum(f.get("water_mm", 0.) for f in s["forcing"]) for s in scenarios}
+    groups: dict[float, list[str]] = {}
+    for name, total in totals.items():
+        key = next((k for k in groups if abs(k-total) <= 1e-9*max(1., abs(k))), total)
+        groups.setdefault(key, []).append(name)
+    control = next((n for n, t in totals.items() if t == 0), None)
+    up = {(r["member"], r["scenario"]): r["h2_uptake_mol_m2"] for r in outcomes}
+    out, effects = [], []
+    for total, names in sorted(groups.items()):
+        if len(names) < 2:
+            continue
+        members, rankings, differs = [], set(), False
+        for i in range(n_members):
+            values = {n: up[(i, n)] for n in names}
+            if any(v is None for v in values.values()):
+                members.append({"member": i, "uptake_mol_m2": values, "ranking": None})
+                continue
+            ranking = sorted(names, key=lambda n: (-values[n], n))
+            rankings.add(tuple(ranking))
+            top = max(abs(v) for v in values.values())
+            differs |= (max(values.values())-min(values.values())) > tol*max(top, 1e-300)
+            members.append({"member": i, "uptake_mol_m2": values, "ranking": ranking})
+            if control is not None and up[(i, control)] is not None:
+                effects.extend(v-up[(i, control)] for v in values.values())
+        out.append({"total_water_mm": total, "versions": names, "members": members,
+                    "ranking_changes_across_members": len(rankings) > 1,
+                    "version_relevant": bool(len(rankings) > 1 or differs)})
+    return {"groups": out, "control": control,
+            "version_relevant": any(g["version_relevant"] for g in out),
+            "effect_vs_control_range_mol_m2": [min(effects), max(effects)] if effects else None,
+            "note": "Versions share total added water and differ in timing; the effect of the superclass is the set over versions and members."}
 
 
 def parameter_ensemble(base: Parameters) -> list[Parameters]:
@@ -17,7 +57,11 @@ def parameter_ensemble(base: Parameters) -> list[Parameters]:
             for b, dry, shape, rate in product((3., 5.), (-70., -100.), (.5, 2.), (.1, 1., 10.))]
 
 
-def compare(initial: State, scenarios: list[dict], members: list[Parameters]) -> dict:
+def compare(initial: State, scenarios: list[dict], members: list[Parameters],
+            community: dict | None = None, coupling: str | None = None) -> dict:
+    factors = community_factors(community, coupling)
+    if factors["community"]:
+        members = [replace(m, gamma_h2=factors["gamma"]["h2"], gamma_co=factors["gamma"]["co"]) for m in members]
     if not scenarios or not members:
         raise ValueError("Scenarios and explicit parameter members required")
     names = [s["name"] for s in scenarios]
@@ -69,7 +113,9 @@ def compare(initial: State, scenarios: list[dict], members: list[Parameters]) ->
                            "residual_salt": "minimise", "disturbed_area": "minimise"},
             "interpretation": "Equal enumeration is sensitivity, not probability. No biodiversity desirability score.",
             "outcomes": outcomes, "pareto_by_member": fronts,
-            "pareto_in_every_member": persistent, "pairwise_uptake_comparisons": reversals}
+            "pareto_in_every_member": persistent, "pairwise_uptake_comparisons": reversals,
+            "treatment_versions": treatment_versions(scenarios, outcomes, len(members)),
+            "community": {k: factors[k] for k in ("mode", "community", "gamma", "shares", "samples", "provenance")}}
 
 
 def experiment(p: Parameters, *, replicates: int = 3, seed: int = 42,
