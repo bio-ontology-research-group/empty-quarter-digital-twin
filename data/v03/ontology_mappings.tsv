@@ -1,0 +1,61 @@
+rak_term	axiom_type	target_iri	target_curie	verified_label	source_ontology	retrieved_ols4
+rak:CBBCompleteMAG	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/GO_0019253	GO:0019253	reductive pentose-phosphate cycle	go	2026-10-30
+rak:H2AutotrophicCandidateMAG	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/GO_0015977	GO:0015977	carbon fixation	go	2026-10-30
+rak:RuBisCOMAG	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/GO_0016984	GO:0016984	ribulose-bisphosphate carboxylase activity	go	2026-10-30
+rak:RuBisCOPRKMAG	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/GO_0016984	GO:0016984	ribulose-bisphosphate carboxylase activity	go	2026-10-30
+rak:RuBisCOPRKMAG	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/GO_0008974	GO:0008974	phosphoribulokinase activity	go	2026-10-30
+rak:CBBStep_carboxylation	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/GO_0016984	GO:0016984	ribulose-bisphosphate carboxylase activity	go	2026-10-30
+rak:CBBStep_phosphoribulokinase	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/GO_0008974	GO:0008974	phosphoribulokinase activity	go	2026-10-30
+rak:H2CarrierMAG	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/GO_0033748	GO:0033748	hydrogenase (acceptor) activity	go	2026-10-30
+rak:H2CarrierMAG	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/GO_1902421	GO:1902421	hydrogen metabolic process	go	2026-10-30
+rak:RAK_GUILD_TOTAL_H2ASE	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/GO_0033748	GO:0033748	hydrogenase (acceptor) activity	go	2026-10-30
+rak:RAK_FLUX_H2_OXIDATION_POWER	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/GO_1902421	GO:1902421	hydrogen metabolic process	go	2026-10-30
+rak:COCarrierMAG	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/GO_0008805	GO:0008805	aerobic carbon monoxide dehydrogenase activity	go	2026-10-30
+rak:RAK_GUILD_COXL_FORMI	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/GO_0008805	GO:0008805	aerobic carbon monoxide dehydrogenase activity	go	2026-10-30
+rak:RAK_FLUX_CO_OXIDATION_POWER	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/GO_0019410	GO:0019410	aerobic respiration, using carbon monoxide as electron donor	go	2026-10-30
+rak:RAK_FLUX_H2_OXIDATION_POWER	AnnotationAssertion(rak:measuredEntity)	http://purl.obolibrary.org/obo/CHEBI_18276	CHEBI:18276	dihydrogen	chebi	2026-10-30
+rak:RAK_FLUX_H2_OXIDATION_POWER	AnnotationAssertion(rak:measuredEntity)	http://purl.obolibrary.org/obo/CHEBI_15379	CHEBI:15379	dioxygen	chebi	2026-10-30
+rak:RAK_FLUX_H2_OXIDATION_POWER	AnnotationAssertion(rak:measuredEntity)	http://purl.obolibrary.org/obo/CHEBI_15377	CHEBI:15377	water	chebi	2026-10-30
+rak:RAK_FLUX_CO_OXIDATION_POWER	AnnotationAssertion(rak:measuredEntity)	http://purl.obolibrary.org/obo/CHEBI_17245	CHEBI:17245	carbon monoxide	chebi	2026-10-30
+rak:RAK_FLUX_CO_OXIDATION_POWER	AnnotationAssertion(rak:measuredEntity)	http://purl.obolibrary.org/obo/CHEBI_15379	CHEBI:15379	dioxygen	chebi	2026-10-30
+rak:RAK_FLUX_CO_OXIDATION_POWER	AnnotationAssertion(rak:measuredEntity)	http://purl.obolibrary.org/obo/CHEBI_16526	CHEBI:16526	carbon dioxide	chebi	2026-10-30
+rak:OsmoticPotentialAssumption	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/CHEBI_26710	CHEBI:26710	sodium chloride	chebi	2026-10-30
+rak:SurfaceSoilCompartment	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/ENVO_00001998	ENVO:00001998	soil	envo	2026-10-30
+rak:SurfaceSoilCompartment	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/ENVO_01000017	ENVO:01000017	sand	envo	2026-10-30
+rak:DeepSoilCompartment	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/ENVO_00001998	ENVO:00001998	soil	envo	2026-10-30
+rak:PlantRootCompartment	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/ENVO_00005801	ENVO:00005801	rhizosphere	envo	2026-10-30
+rak:BulkDensityAssumption	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/ENVO_00010005	ENVO:00010005	soil bulk density	envo	2026-10-30
+rak:VolumetricWaterContentEndpoint	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/ENVO_09000026	ENVO:09000026	concentration of liquid water in soil	envo	2026-10-30
+rak:MeasuredQuantity	SubClassOf	http://semanticscience.org/resource/SIO_000070	SIO:000070	measurement value	sio	2026-10-30
+rak:RAK_TAXON_TOTAL_PROKARYOTA	existing SubClassOf(external rak:parent) usage	http://purl.obolibrary.org/obo/NCBITaxon_201174	NCBITaxon:201174	Actinomycetota	ncbitaxon	2026-10-30
+rak:RAK_TAXON_TOTAL_PROKARYOTA	existing SubClassOf(external rak:parent) usage	http://purl.obolibrary.org/obo/NCBITaxon_2283796	NCBITaxon:2283796	Thermoplasmatota	ncbitaxon	2026-10-30
+rak:RAK_TAXON_TOTAL_PROKARYOTA	existing SubClassOf(external rak:parent) usage	http://purl.obolibrary.org/obo/NCBITaxon_3100166	NCBITaxon:3100166	Halobacteriota	ncbitaxon	2026-10-30
+rak:ArealH2FluxEndpoint	AnnotationAssertion(rak:unit)	http://purl.obolibrary.org/obo/UO_0000041	UO:0000041	nanomole	uo	2026-10-30
+rak:ArealH2FluxEndpoint	AnnotationAssertion(rak:unit)	http://purl.obolibrary.org/obo/UO_0000080	UO:0000080	square meter	uo	2026-10-30
+rak:ArealH2FluxEndpoint	AnnotationAssertion(rak:unit)	http://purl.obolibrary.org/obo/UO_0000010	UO:0000010	second	uo	2026-10-30
+rak:ArealH2FluxEndpoint	AnnotationAssertion(rak:measuredEntity)	http://purl.obolibrary.org/obo/CHEBI_18276	CHEBI:18276	dihydrogen	chebi	2026-10-30
+rak:ArealH2FluxEndpoint	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/PATO_0000161	PATO:0000161	rate	pato	2026-10-30
+rak:MassNormalizedBottleUptakeRateEndpoint	AnnotationAssertion(rak:unit)	http://purl.obolibrary.org/obo/UO_0000041	UO:0000041	nanomole	uo	2026-10-30
+rak:MassNormalizedBottleUptakeRateEndpoint	AnnotationAssertion(rak:unit)	http://purl.obolibrary.org/obo/UO_0000032	UO:0000032	hour	uo	2026-10-30
+rak:MassNormalizedBottleUptakeRateEndpoint	AnnotationAssertion(rak:unit)	http://purl.obolibrary.org/obo/UO_0000021	UO:0000021	gram	uo	2026-10-30
+rak:MassNormalizedBottleUptakeRateEndpoint	AnnotationAssertion(rak:measuredEntity)	http://purl.obolibrary.org/obo/CHEBI_18276	CHEBI:18276	dihydrogen	chebi	2026-10-30
+rak:MassNormalizedBottleUptakeRateEndpoint	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/PATO_0000161	PATO:0000161	rate	pato	2026-10-30
+rak:FirstOrderRateConstantEndpoint	AnnotationAssertion(rak:unit)	http://purl.obolibrary.org/obo/UO_0000010	UO:0000010	second	uo	2026-10-30
+rak:FirstOrderRateConstantEndpoint	AnnotationAssertion(rak:measuredEntity)	http://purl.obolibrary.org/obo/CHEBI_18276	CHEBI:18276	dihydrogen	chebi	2026-10-30
+rak:FirstOrderRateConstantEndpoint	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/PATO_0000161	PATO:0000161	rate	pato	2026-10-30
+rak:GravimetricWaterContentEndpoint	AnnotationAssertion(rak:unit)	http://purl.obolibrary.org/obo/UO_0000191	UO:0000191	fraction	uo	2026-10-30
+rak:GravimetricWaterContentEndpoint	AnnotationAssertion(rak:measuredEntity)	http://purl.obolibrary.org/obo/CHEBI_15377	CHEBI:15377	water	chebi	2026-10-30
+rak:GravimetricWaterContentEndpoint	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/PATO_0001470	PATO:0001470	ratio	pato	2026-10-30
+rak:VolumetricWaterContentEndpoint	AnnotationAssertion(rak:unit)	http://purl.obolibrary.org/obo/UO_0000191	UO:0000191	fraction	uo	2026-10-30
+rak:VolumetricWaterContentEndpoint	AnnotationAssertion(rak:measuredEntity)	http://purl.obolibrary.org/obo/CHEBI_15377	CHEBI:15377	water	chebi	2026-10-30
+rak:VolumetricWaterContentEndpoint	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/PATO_0001470	PATO:0001470	ratio	pato	2026-10-30
+rak:MatricWaterPotentialEndpoint	AnnotationAssertion(rak:unit)	http://purl.obolibrary.org/obo/UO_0000110	UO:0000110	pascal	uo	2026-10-30
+rak:MatricWaterPotentialEndpoint	AnnotationAssertion(rak:measuredEntity)	http://purl.obolibrary.org/obo/CHEBI_15377	CHEBI:15377	water	chebi	2026-10-30
+rak:TotalWaterPotentialEndpoint	AnnotationAssertion(rak:unit)	http://purl.obolibrary.org/obo/UO_0000110	UO:0000110	pascal	uo	2026-10-30
+rak:TotalWaterPotentialEndpoint	AnnotationAssertion(rak:measuredEntity)	http://purl.obolibrary.org/obo/CHEBI_15377	CHEBI:15377	water	chebi	2026-10-30
+rak:GenomeEquivalentsEndpoint	AnnotationAssertion(rak:unit)	http://purl.obolibrary.org/obo/UO_0000189	UO:0000189	count unit	uo	2026-10-30
+rak:MappedReadShareEndpoint	AnnotationAssertion(rak:unit)	http://purl.obolibrary.org/obo/UO_0000191	UO:0000191	fraction	uo	2026-10-30
+rak:MappedReadShareEndpoint	AnnotationAssertion(skos:relatedMatch)	http://purl.obolibrary.org/obo/PATO_0001470	PATO:0001470	ratio	pato	2026-10-30
+(vocabulary)	term used by the ontology/export	http://www.w3.org/2004/02/skos/core#relatedMatch	SKOS:relatedMatch	has related match	skos	2026-10-30
+(vocabulary)	term used by the ontology/export	http://purl.obolibrary.org/obo/IAO_0000115	IAO:0000115	definition	iao	2026-10-30
+(vocabulary)	term used by the ontology/export	http://semanticscience.org/resource/SIO_000070	SIO:000070	measurement value	sio	2026-10-30

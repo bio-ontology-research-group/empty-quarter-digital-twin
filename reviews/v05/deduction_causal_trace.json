@@ -70,7 +70,7 @@
         "rak:RuBisCOPRKMAG",
         "rak:ThreeGeneCBBMAG"
       ],
-      "ontology_sha256": "5a0c435fc3e88f4f024d5ef3237011f22426eb1b5d678b659d6af0e38323bcb8",
+      "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
       "completeness": 95.07,
       "contamination": 0.19
     }

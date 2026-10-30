@@ -1,0 +1,512 @@
+{
+ "source": "reviews/v05 (external_transfer.json and companion tables); protocol in reviews/v05/external-evaluation-protocol.md",
+ "seed": 20261029,
+ "namib": {
+  "sites": 10,
+  "dry_sites_with_quantified_atmospheric_rates": 2,
+  "contrasts_quantified": [
+   {
+    "site": "C14-2",
+    "n_dry_rates": 5,
+    "n_wet_rates": 5,
+    "dry_mean": 0.0203219949,
+    "wet_mean": 0.8398903116,
+    "fold": 41.3291270784,
+    "fold_lcl": 31.1430315339,
+    "fold_ucl": 55.9746119348,
+    "status": "Independent wet/dry subsamples; within-site bootstrap"
+   },
+   {
+    "site": "C14-4",
+    "n_dry_rates": 5,
+    "n_wet_rates": 5,
+    "dry_mean": 0.0486727769,
+    "wet_mean": 0.9440043326,
+    "fold": 19.3949142299,
+    "fold_lcl": 15.5622117855,
+    "fold_ucl": 23.9669008908,
+    "status": "Independent wet/dry subsamples; within-site bootstrap"
+   }
+  ],
+  "other_sites": [
+   {
+    "site": "C14-6",
+    "n_dry_rates": 0,
+    "n_wet_rates": 5,
+    "wet_mean": 0.0659916761,
+    "status": "Dry sub-atmospheric endpoint not attained within 1500 h; no numerical zero imputed"
+   },
+   {
+    "site": "C14-8",
+    "n_dry_rates": 0,
+    "n_wet_rates": 5,
+    "wet_mean": 0.1088480764,
+    "status": "Dry sub-atmospheric endpoint not attained within 1500 h; no numerical zero imputed"
+   },
+   {
+    "site": "C14-10",
+    "n_dry_rates": 0,
+    "n_wet_rates": 5,
+    "wet_mean": 0.1700174521,
+    "status": "Dry sub-atmospheric endpoint not attained within 1500 h; no numerical zero imputed"
+   },
+   {
+    "site": "C14-12",
+    "n_dry_rates": 0,
+    "n_wet_rates": 5,
+    "wet_mean": 0.3863861587,
+    "status": "Dry sub-atmospheric endpoint not attained within 1500 h; no numerical zero imputed"
+   },
+   {
+    "site": "C14-14",
+    "n_dry_rates": 0,
+    "n_wet_rates": 5,
+    "wet_mean": 0.2553463492,
+    "status": "Dry sub-atmospheric endpoint not attained within 1500 h; no numerical zero imputed"
+   },
+   {
+    "site": "C14-16",
+    "n_dry_rates": 0,
+    "n_wet_rates": 5,
+    "wet_mean": 0.4216205538,
+    "status": "Dry sub-atmospheric endpoint not attained within 1500 h; no numerical zero imputed"
+   },
+   {
+    "site": "C14-18",
+    "n_dry_rates": 0,
+    "n_wet_rates": 5,
+    "wet_mean": 0.1950129126,
+    "status": "Dry sub-atmospheric endpoint not attained within 1500 h; no numerical zero imputed"
+   },
+   {
+    "site": "C14-20",
+    "n_dry_rates": 0,
+    "n_wet_rates": 5,
+    "wet_mean": 0.8100994516,
+    "status": "Dry sub-atmospheric endpoint not attained within 1500 h; no numerical zero imputed"
+   }
+  ],
+  "reference_predictions": [
+   {
+    "site": "C14-2",
+    "assumed_bulk_density_g_cm3": 1.2,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.6477302419,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-2",
+    "assumed_bulk_density_g_cm3": 1.5,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.2217319833,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-2",
+    "assumed_bulk_density_g_cm3": 1.8,
+    "dry_reference_flux": 0.2766824049,
+    "wet_reference_flux": 0.0045582698,
+    "predicted_direction": -1
+   },
+   {
+    "site": "C14-4",
+    "assumed_bulk_density_g_cm3": 1.2,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.8025796809,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-4",
+    "assumed_bulk_density_g_cm3": 1.5,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.3557384953,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-4",
+    "assumed_bulk_density_g_cm3": 1.8,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.0677046198,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-6",
+    "assumed_bulk_density_g_cm3": 1.2,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.7284854091,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-6",
+    "assumed_bulk_density_g_cm3": 1.5,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.2897907128,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-6",
+    "assumed_bulk_density_g_cm3": 1.8,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.030861395,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-8",
+    "assumed_bulk_density_g_cm3": 1.2,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.7996048864,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-8",
+    "assumed_bulk_density_g_cm3": 1.5,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.3530311256,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-8",
+    "assumed_bulk_density_g_cm3": 1.8,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.0660372626,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-10",
+    "assumed_bulk_density_g_cm3": 1.2,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.7303941167,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-10",
+    "assumed_bulk_density_g_cm3": 1.5,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.2914494872,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-10",
+    "assumed_bulk_density_g_cm3": 1.8,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.031677375,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-12",
+    "assumed_bulk_density_g_cm3": 1.2,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.7765261576,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-12",
+    "assumed_bulk_density_g_cm3": 1.5,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.332193251,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-12",
+    "assumed_bulk_density_g_cm3": 1.8,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.0536076407,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-14",
+    "assumed_bulk_density_g_cm3": 1.2,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.7676585808,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-14",
+    "assumed_bulk_density_g_cm3": 1.5,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.3242660138,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-14",
+    "assumed_bulk_density_g_cm3": 1.8,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.0490791547,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-16",
+    "assumed_bulk_density_g_cm3": 1.2,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.7846523401,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-16",
+    "assumed_bulk_density_g_cm3": 1.5,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.339496615,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-16",
+    "assumed_bulk_density_g_cm3": 1.8,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.0578800509,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-18",
+    "assumed_bulk_density_g_cm3": 1.2,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.7945386524,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-18",
+    "assumed_bulk_density_g_cm3": 1.5,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.3484315139,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-18",
+    "assumed_bulk_density_g_cm3": 1.8,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.0632313059,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-20",
+    "assumed_bulk_density_g_cm3": 1.2,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.7896654572,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-20",
+    "assumed_bulk_density_g_cm3": 1.5,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.3440205187,
+    "predicted_direction": 1
+   },
+   {
+    "site": "C14-20",
+    "assumed_bulk_density_g_cm3": 1.8,
+    "dry_reference_flux": 0.0,
+    "wet_reference_flux": 0.0605727895,
+    "predicted_direction": 1
+   }
+  ],
+  "prediction_scope": "Hydration direction under declared density/retention assumptions. Areal model values are not scored against bottle units.",
+  "reference_failure": "Default retention and density conversion predict zero dry activity at sites where positive dry atmospheric oxidation was measured; this tests the assumed conversion plus activation, not a measured water-potential threshold alone.",
+  "measurement_exclusion": "Historical site water potentials and climatological grid moisture do not measure incubation conditions; unavailable bottle potentials prevent a direct -85 MPa threshold test.",
+  "rate_unit": "bottle rate in the native units of the source study (not equated with areal flux)"
+ },
+ "sonoran": {
+  "lab_bottles": 48,
+  "field_collars": 64,
+  "field_plot_campaign_means": 16,
+  "field_validation": "Leave-one-campaign-out, four entire campaigns; descriptive errors on 16 plot-campaign means",
+  "field_metrics": [
+   {
+    "model": "calibrated_diffusion_only",
+    "rmse": 1.724459859526877,
+    "mae": 1.4399355592054186
+   },
+   {
+    "model": "calibrated_kinetics",
+    "rmse": 1.7168623144014412,
+    "mae": 1.4336621270086742
+   },
+   {
+    "model": "calibrated_retention",
+    "rmse": 0.6920747945963167,
+    "mae": 0.529130267812858
+   },
+   {
+    "model": "frozen_reference",
+    "rmse": 1.6461807856412043,
+    "mae": 1.4841947193181366
+   },
+   {
+    "model": "linear_moisture_temperature",
+    "rmse": 1.3532075209511443,
+    "mae": 1.1873796105726868
+   },
+   {
+    "model": "training_mean",
+    "rmse": 0.7879977758798986,
+    "mae": 0.6378125000000001
+   }
+  ],
+  "field_metric_unit": "nmol H2 m-2 s-1",
+  "lab_contrasts": [
+   {
+    "site": "Active",
+    "dry_gwc": 0.02,
+    "wet_gwc": 0.1,
+    "difference": -0.0066578302,
+    "lcl": -0.0820381815,
+    "ucl": 0.068722521,
+    "unit": "nmol H2 m-2 s-1"
+   },
+   {
+    "site": "Active",
+    "dry_gwc": 0.1,
+    "wet_gwc": 0.2,
+    "difference": 0.3757037052,
+    "lcl": 0.1887843035,
+    "ucl": 0.5331296072,
+    "unit": "nmol H2 m-2 s-1"
+   },
+   {
+    "site": "Active",
+    "dry_gwc": 0.02,
+    "wet_gwc": 0.2,
+    "difference": 0.369045875,
+    "lcl": 0.1040763042,
+    "ucl": 0.6077331852,
+    "unit": "nmol H2 m-2 s-1"
+   },
+   {
+    "site": "Control",
+    "dry_gwc": 0.02,
+    "wet_gwc": 0.1,
+    "difference": 0.113770323,
+    "lcl": -0.011371601,
+    "ucl": 0.2460311657,
+    "unit": "nmol H2 m-2 s-1"
+   },
+   {
+    "site": "Control",
+    "dry_gwc": 0.1,
+    "wet_gwc": 0.2,
+    "difference": 0.3624307902,
+    "lcl": 0.2768270048,
+    "ucl": 0.425008785,
+    "unit": "nmol H2 m-2 s-1"
+   },
+   {
+    "site": "Control",
+    "dry_gwc": 0.02,
+    "wet_gwc": 0.2,
+    "difference": 0.4762011132,
+    "lcl": 0.366328291,
+    "ucl": 0.5783172465,
+    "unit": "nmol H2 m-2 s-1"
+   },
+   {
+    "site": "Greywater",
+    "dry_gwc": 0.02,
+    "wet_gwc": 0.1,
+    "difference": 0.1913208185,
+    "lcl": 0.05733583,
+    "ucl": 0.325305807,
+    "unit": "nmol H2 m-2 s-1"
+   },
+   {
+    "site": "Greywater",
+    "dry_gwc": 0.1,
+    "wet_gwc": 0.2,
+    "difference": 0.3158523728,
+    "lcl": 0.263142872,
+    "ucl": 0.366122349,
+    "unit": "nmol H2 m-2 s-1"
+   },
+   {
+    "site": "Greywater",
+    "dry_gwc": 0.02,
+    "wet_gwc": 0.2,
+    "difference": 0.5071731912,
+    "lcl": 0.423458179,
+    "ucl": 0.5908882035,
+    "unit": "nmol H2 m-2 s-1"
+   },
+   {
+    "site": "Passive",
+    "dry_gwc": 0.02,
+    "wet_gwc": 0.1,
+    "difference": 0.034214584,
+    "lcl": -0.0143409178,
+    "ucl": 0.0700884992,
+    "unit": "nmol H2 m-2 s-1"
+   },
+   {
+    "site": "Passive",
+    "dry_gwc": 0.1,
+    "wet_gwc": 0.2,
+    "difference": 0.5123469155,
+    "lcl": 0.4335132858,
+    "ucl": 0.562387162,
+    "unit": "nmol H2 m-2 s-1"
+   },
+   {
+    "site": "Passive",
+    "dry_gwc": 0.02,
+    "wet_gwc": 0.2,
+    "difference": 0.5465614995,
+    "lcl": 0.4702114008,
+    "ucl": 0.6127553265,
+    "unit": "nmol H2 m-2 s-1"
+   }
+  ],
+  "lab_scope": "Controlled hydration; same source batches at three water contents. Uncertainty is within plots, not among replicated treatments or desert sites.",
+  "lab_default_predictions": {
+   "0.02": 0.3039666321412258,
+   "0.1": 1.3139290105096562,
+   "0.2": 0.3183442190185835
+  }
+ },
+ "temperate": {
+  "design": "leave-one-soil-out; common response amplitude fitted on two soils, third predicted",
+  "rmse": [
+   {
+    "soil": "Forest",
+    "model": "activation_diffusion",
+    "rmse": 0.04646070056291368
+   },
+   {
+    "soil": "Forest",
+    "model": "diffusion_only",
+    "rmse": 0.060184425153424446
+   },
+   {
+    "soil": "Forest",
+    "model": "training_mean",
+    "rmse": 0.051308403216642914
+   },
+   {
+    "soil": "Meadow",
+    "model": "activation_diffusion",
+    "rmse": 0.03359841588035703
+   },
+   {
+    "soil": "Meadow",
+    "model": "diffusion_only",
+    "rmse": 0.02492179695777472
+   },
+   {
+    "soil": "Meadow",
+    "model": "training_mean",
+    "rmse": 0.022240171730004865
+   },
+   {
+    "soil": "PB_sand",
+    "model": "activation_diffusion",
+    "rmse": 0.011688699307824454
+   },
+   {
+    "soil": "PB_sand",
+    "model": "diffusion_only",
+    "rmse": 0.0238152994370692
+   },
+   {
+    "soil": "PB_sand",
+    "model": "training_mean",
+    "rmse": 0.020761171136873622
+   }
+  ],
+  "unit": "bottle first-order rate (min-1)"
+ }
+}

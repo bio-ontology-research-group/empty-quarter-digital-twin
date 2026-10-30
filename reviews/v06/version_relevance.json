@@ -1,0 +1,178 @@
+{
+  "state_entering_day_1": {
+    "water_mm": 12.800000000000058,
+    "salt_mol_m2": 0.0
+  },
+  "relevance": {
+    "A": {
+      "target": "psi",
+      "outcome": "A",
+      "handles": [
+        "N",
+        "W"
+      ],
+      "relevant": false,
+      "bypass_paths": [],
+      "unique_translation": false,
+      "reading": "version-independent: every route from the handles to the outcome passes through the target"
+    },
+    "D_h2": {
+      "target": "psi",
+      "outcome": "D_h2",
+      "handles": [
+        "N",
+        "W"
+      ],
+      "relevant": true,
+      "bypass_paths": [
+        [
+          "W",
+          "theta",
+          "D_h2"
+        ]
+      ],
+      "unique_translation": false,
+      "reading": "version-dependent: handles reach the outcome without passing through the target"
+    },
+    "J_h2": {
+      "target": "psi",
+      "outcome": "J_h2",
+      "handles": [
+        "N",
+        "W"
+      ],
+      "relevant": true,
+      "bypass_paths": [
+        [
+          "W",
+          "theta",
+          "D_h2",
+          "J_h2"
+        ],
+        [
+          "W",
+          "theta",
+          "D_co",
+          "J_h2"
+        ]
+      ],
+      "unique_translation": false,
+      "reading": "version-dependent: handles reach the outcome without passing through the target"
+    },
+    "J_co": {
+      "target": "psi",
+      "outcome": "J_co",
+      "handles": [
+        "N",
+        "W"
+      ],
+      "relevant": true,
+      "bypass_paths": [
+        [
+          "W",
+          "theta",
+          "D_h2",
+          "J_co"
+        ],
+        [
+          "W",
+          "theta",
+          "D_co",
+          "J_co"
+        ]
+      ],
+      "unique_translation": false,
+      "reading": "version-dependent: handles reach the outcome without passing through the target"
+    }
+  },
+  "targets": [
+    {
+      "psi_mpa": -1.0,
+      "versions": {
+        "matric": {
+          "handle": "W",
+          "water_mm": 7.113117640155691,
+          "salt_mol_m2": 0.0,
+          "theta": 0.07113117640155692,
+          "nacl_mol_l": 0.0,
+          "psi_total_mpa": -0.9999999999999998,
+          "A": 0.6586353726255914,
+          "D_h2_m2_s": 1.1815345487406444e-05,
+          "J_h2_mol_m2_s": 1.1896432827510937e-09,
+          "within_ideal_dilute_domain": true,
+          "h2_uptake_3d_mol_m2": 0.0002500320607713617,
+          "h2_uptake_3d_baseline_mol_m2": 0.0003706372437264531,
+          "intervene_checks_passed": true,
+          "intervene_reports_version_relevance": {
+            "A": false,
+            "J_h2": true,
+            "J_co": true
+          }
+        },
+        "osmotic": {
+          "handle": "N",
+          "water_mm": 12.800000000000058,
+          "salt_mol_m2": 2.3355178683897453,
+          "theta": 0.12800000000000059,
+          "nacl_mol_l": 0.18246233346794802,
+          "psi_total_mpa": -1.0,
+          "A": 0.6586353726255914,
+          "D_h2_m2_s": 6.274807726259532e-06,
+          "J_h2_mol_m2_s": 1.056701927408402e-09,
+          "within_ideal_dilute_domain": false,
+          "h2_uptake_3d_mol_m2": null,
+          "note": "NaCl concentration exceeds the ideal-dilute domain (0.1 mol/L): the process model abstains"
+        }
+      },
+      "A_equal": true,
+      "J_h2_ratio_matric_over_osmotic": 1.125807810030909
+    },
+    {
+      "psi_mpa": -0.4,
+      "versions": {
+        "matric": {
+          "handle": "W",
+          "water_mm": 8.94427190999916,
+          "salt_mol_m2": 0.0,
+          "theta": 0.08944271909999159,
+          "nacl_mol_l": 0.0,
+          "psi_total_mpa": -0.4000000000000001,
+          "A": 0.7944780154032904,
+          "D_h2_m2_s": 9.761347964671601e-06,
+          "J_h2_mol_m2_s": 1.3455716797267837e-09,
+          "within_ideal_dilute_domain": true,
+          "h2_uptake_3d_mol_m2": 0.00031453481005654685,
+          "h2_uptake_3d_baseline_mol_m2": 0.0003706372437264531,
+          "intervene_checks_passed": true,
+          "intervene_reports_version_relevance": {
+            "A": false,
+            "J_h2": true,
+            "J_co": true
+          }
+        },
+        "osmotic": {
+          "handle": "N",
+          "water_mm": 12.800000000000058,
+          "salt_mol_m2": 0.7864793194292143,
+          "theta": 0.12800000000000059,
+          "nacl_mol_l": 0.061443696830407096,
+          "psi_total_mpa": -0.4,
+          "A": 0.7944780154032904,
+          "D_h2_m2_s": 6.274807726259532e-06,
+          "J_h2_mol_m2_s": 1.2172314721001207e-09,
+          "within_ideal_dilute_domain": true,
+          "h2_uptake_3d_mol_m2": 0.0003177365340671567,
+          "h2_uptake_3d_baseline_mol_m2": 0.0003706372437264531,
+          "intervene_checks_passed": true,
+          "intervene_reports_version_relevance": {
+            "A": false,
+            "J_h2": true,
+            "J_co": true
+          }
+        }
+      },
+      "A_equal": true,
+      "J_h2_ratio_matric_over_osmotic": 1.1054361562022663
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "version": "0.5.0",
+  "version": "0.6.0",
   "method": "ontological-causal reasoning with separate observation and prediction layers",
   "clauses": [
     {
@@ -182,7 +182,9 @@
     "osmotic_coefficient": 1.0,
     "osmotic_domain_mol_l": 0.1,
     "mechanism": "activation_diffusion",
-    "integration_steps_per_day": 96
+    "integration_steps_per_day": 96,
+    "gamma_h2": 1.0,
+    "gamma_co": 1.0
   },
   "CBB_step_alternatives": {
     "carboxylation": [

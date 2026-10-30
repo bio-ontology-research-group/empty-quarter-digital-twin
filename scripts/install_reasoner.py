@@ -4,6 +4,7 @@ import hashlib
 import platform
 import urllib.request
 
+# Keep in sync with KM_VERSION/KM_SHA256 in src/eq_biodt/v03/ontology.py (runtime digest check; tests assert equality).
 VERSION = '1.5.3'
 SHA256 = '2470b0415f1a78533024e15b5c317f9e743a98916b597739db93b9452a8dd8d4'
 URL = f'https://github.com/bio-ontology-research-group/kobayashi-marust/releases/download/v{VERSION}/km-v{VERSION}-linux-x86_64'

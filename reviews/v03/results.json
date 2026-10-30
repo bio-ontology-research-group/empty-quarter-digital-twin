@@ -246,24 +246,26 @@
   "owl_reasoning": {
     "reasoner": "Kobayashi-MaRust (km)",
     "selected_route": "certified_el_production",
-    "logical_axioms": 64783,
+    "logical_axioms": 64824,
     "justification_axiom_count": 38
   },
   "external_bottles": 77,
   "ensemble_members": 24,
   "uptake_rank_reversals": 1,
   "source_code_sha256": {
-    "src/eq_biodt/v03/__init__.py": "6628c0477d0f3134f8f81536b594c8fd3f478d4da553ebe2093f633407339e8c",
-    "src/eq_biodt/v03/api.py": "7bf24604d9755660d5b9d731619082075acfc6163e92b6c710d1c82d9b5a7bc7",
-    "src/eq_biodt/v03/cli.py": "745b77b9128352eaf7bf3084834f31b593ece35bd33765aadbf3ca245d9f6296",
-    "src/eq_biodt/v03/contract.py": "54e8c327e0992471367252f848021f914b01ee91cf5f8645811e85be5b970179",
-    "src/eq_biodt/v03/evidence.py": "be83d9c57a30d8b19bf2924838848a107613425a4f51d3fbbbef45a50b08401f",
-    "src/eq_biodt/v03/forecast.py": "4308e0cec6d3be233d982bf137e491a024137cf6b64f8bc48d92f48c8fa6b6e3",
-    "src/eq_biodt/v03/interventions.py": "d4da8aa505751be1a3e9088006038524cfa5c7739ac083e60eebf49ab1c9619e",
-    "src/eq_biodt/v03/ontology.py": "d73609350441b77486ee4d28509ef920a5d5ee1785febbf457e9e733c6b5f882",
-    "src/eq_biodt/v03/planning.py": "c340fe8db83ebc5d445f93282aace1668106b4e5870417a706104fa6bca59415",
-    "src/eq_biodt/v03/process.py": "00a7e1740b95e3def03d680592c4558eaf963d44194ddf8909af095eb37afb63",
+    "src/eq_biodt/v03/__init__.py": "7e8e898ca3f6b29e96f040bf01b24363ceb82f895bee31a25c9a270876938b99",
+    "src/eq_biodt/v03/api.py": "e531cfdbee00cafb9899e60b3b5989bd7ad2c4c9082841a3e20a8da52062859f",
+    "src/eq_biodt/v03/cli.py": "844c5d74b52c0ef222e5d0c01d9b8a12b35ad996f23160169796f1acb69b2405",
+    "src/eq_biodt/v03/community.py": "461c991729759d8994d2d91c94a761868f4b9a230b3a58fc8cdb3f7f6dd66ad2",
+    "src/eq_biodt/v03/contract.py": "3331f5690b0c5630f801866c484daf7191fe5b5366ef253dbaf1965c4d911b4a",
+    "src/eq_biodt/v03/evidence.py": "93c7fba039d2f22ce54ddad47e1d8cace4d99768a8182e75791a7b19be0d30f0",
+    "src/eq_biodt/v03/forecast.py": "f6f131ee1c39644472235c7b223825eb257fbe3741767cb5e599fd0537b18fcb",
+    "src/eq_biodt/v03/interventions.py": "4f288ed58ddf3ea03b378b206edc3f2166d7d8ecf6defc645d9fe7ac9a8401cf",
+    "src/eq_biodt/v03/ontology.py": "0ddb1f439e3124952471fcacb7309dbbbe36a7e50357fb2f41de1aa88d90d403",
+    "src/eq_biodt/v03/planning.py": "9882dacad16b2258aa84fb7edd332dee4b9d1c300e419cd45574844e30bdec24",
+    "src/eq_biodt/v03/process.py": "1c3b71774549d23701d88390d3fcd2f306734d50f92f5b8db4f97f4928c06de9",
     "src/eq_biodt/v03/resources.py": "d21bbea9047a4b88101437d5f66c9ada0f7ebecfc6e0ed34398fdbbdfb66177a",
-    "src/eq_biodt/v03/semantics.py": "6792c3a3de516907c52808cc427ea4865bc4f233f4b9b0e261e00ca668778fa6"
+    "src/eq_biodt/v03/semantics.py": "6792c3a3de516907c52808cc427ea4865bc4f233f4b9b0e261e00ca668778fa6",
+    "src/eq_biodt/v03/theory.py": "acf5ea42a74bc950344b8a7da66722f9fc115340d45f12a6ba8b2ce98699a01d"
   }
 }

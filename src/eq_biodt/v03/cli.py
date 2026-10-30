@@ -1,4 +1,4 @@
-"""Reproducible public commands for v0.5."""
+"""Reproducible public commands for v0.6."""
 import argparse
 import json
 from pathlib import Path
@@ -6,6 +6,8 @@ from pathlib import Path
 import pandas as pd
 
 from .api import DATA, resource
+from . import community as comm
+from . import theory
 from .contract import contract
 from .interventions import intervene
 from .evidence import build_evidence, build_bundled_evidence
@@ -19,6 +21,9 @@ def main():
     parser = argparse.ArgumentParser(description="EQ-BioDT v0.5: evidence, conditional scenarios and prospective tests")
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("contract")
+    sub.add_parser("graph")
+    p = sub.add_parser("community")
+    p.add_argument("--sample", required=True)
     p = sub.add_parser("reason")
     p.add_argument("--ofn", "--output-ofn", type=Path, default=Path("eq_biodt.ofn"))
     p = sub.add_parser("build-evidence")
@@ -48,6 +53,10 @@ def main():
         return 0
     if args.command == "contract":
         result = contract()
+    elif args.command == "graph":
+        result = theory.graph()
+    elif args.command == "community":
+        result = comm.describe(args.sample)
     elif args.command == "reason":
         mag = pd.read_csv(DATA/"mag_evidence.tsv", sep="\t", keep_default_na=False)
         panel = pd.read_csv(DATA/"sample_evidence.tsv", sep="\t")
@@ -73,9 +82,16 @@ def main():
         if args.command == "experiment":
             result = experiment(params)
         elif args.command == "intervene":
-            result = intervene(State(**values["initial"]), values["forcing"], params, values["intervention"], DATA)
+            spec = dict(values["intervention"])
+            for key in ("community", "coupling", "state"):
+                if key in values:
+                    if key in spec:
+                        raise ValueError(f"{key} given both at top level and in the intervention")
+                    spec[key] = values[key]
+            result = intervene(State(**values["initial"]), values["forcing"], params, spec, DATA)
         elif args.command == "compare":
-            result = compare(State(**values["initial"]), values["scenarios"], parameter_ensemble(params))
+            result = compare(State(**values["initial"]), values["scenarios"], parameter_ensemble(params),
+                             values.get("community"), values.get("coupling"))
         else:
             result = simulate(State(**values["initial"]), values["forcing"], params)
     print(json.dumps(result, indent=2, allow_nan=False))

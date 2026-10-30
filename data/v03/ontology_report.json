@@ -2,12 +2,12 @@
   "reasoner": "Kobayashi-MaRust (km)",
   "reasoner_version": "1.5.3",
   "reasoner_binary_sha256": "2470b0415f1a78533024e15b5c317f9e743a98916b597739db93b9452a8dd8d4",
-  "ontology_sha256": "5a0c435fc3e88f4f024d5ef3237011f22426eb1b5d678b659d6af0e38323bcb8",
+  "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
   "selected_route": "certified_el_production",
   "expressivity": "SI",
   "ontology_file": "eq_biodt_v03.ofn",
-  "logical_axioms": 64783,
-  "declared_classes": 5520,
+  "logical_axioms": 64824,
+  "declared_classes": 5545,
   "consistent": true,
   "unsatisfiable_classes": 0,
   "dropped_clauses": 0,
@@ -164,7 +164,7 @@
     "verified": true,
     "subset_minimal": true,
     "axiom_count": 38,
-    "classification_checks": 752,
+    "classification_checks": 792,
     "axioms": [
       "DisjointUnion(rak:RAK_GUILD_TOTAL_H2ASE rak:RAK_GUILD_HYDB_1L rak:RAK_GUILD_HYDB_1H rak:RAK_GUILD_HYDB_2A)",
       "EquivalentClasses(rak:H2CarrierMAG ObjectSomeValuesFrom(rak:hasMarkerGuild rak:RAK_GUILD_TOTAL_H2ASE))",
@@ -217,7 +217,7 @@
     "subset_minimal": true,
     "axiom_count": 3,
     "axioms": [
-      "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint)",
+      "DisjointClasses(rak:GenomicCapacityEndpoint rak:MappedReadCompositionEndpoint rak:DNARecoveryEndpoint rak:ViableDNAEndpoint rak:BiomassEndpoint rak:PhysiologicalActivityEndpoint rak:ArealH2FluxEndpoint rak:MassNormalizedBottleUptakeRateEndpoint rak:FirstOrderRateConstantEndpoint rak:GravimetricWaterContentEndpoint rak:VolumetricWaterContentEndpoint rak:MatricWaterPotentialEndpoint rak:TotalWaterPotentialEndpoint rak:GenomeEquivalentsEndpoint)",
       "SubClassOf(rak:ConflatedObservationProbe rak:GenomicCapacityEndpoint)",
       "SubClassOf(rak:ConflatedObservationProbe rak:MappedReadCompositionEndpoint)"
     ]
@@ -248,6 +248,24 @@
       "linked_intersection_max": 0.5752309920225614,
       "linked_within_frechet_bounds_all_samples": true
     }
+  },
+  "observation_maps_summary": {
+    "endpoints": 15,
+    "disjoint_pairs": 104,
+    "declared_maps": [
+      "FirstOrderToBottleUptakeMap",
+      "GravimetricToVolumetricMap",
+      "MatricToTotalPotentialMap",
+      "VolumetricToMatricPotentialMap"
+    ]
+  },
+  "justification_summary": {
+    "counts": {
+      "H2AutotrophicCandidateMAG": 136,
+      "COCarrierMAG": 198
+    },
+    "wall_seconds": 170.9,
+    "workers": 8
   },
   "entailed_candidate_mags": [
     "11Dr3__single_SemiBin_120",

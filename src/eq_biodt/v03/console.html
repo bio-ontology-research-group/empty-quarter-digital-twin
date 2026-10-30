@@ -1,45 +1,475 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Empty Quarter | Digital Twin v0.5</title>
+<title>EQ-BioDT v0.6 | Causal–ontological digital twin of the Rub’ al-Khali</title>
 <style>
-:root{color-scheme:light;--ink:#163b4a;--muted:#506474;--sand:#a75d20;--sea:#007b83;--line:#ccd9df;--paper:#f5f8fa}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 'Segoe UI',sans-serif}main{max-width:1160px;margin:auto;padding:30px}nav{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}a{color:var(--sea)}h1{font:500 clamp(2.2rem,5vw,3.7rem)/1.12 Georgia,serif;margin:45px 0 20px;max-width:780px}h2{font:500 1.8rem Georgia,serif}p{max-width:75ch}.intro{font-size:1.15rem;max-width:760px}.workspace{display:grid;grid-template-columns:310px 1fr;gap:35px;margin-top:35px}section{margin:35px 0}label{display:block;margin:18px 0 5px}input,select,button{font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:5px;width:100%;background:white;color:var(--ink)}button{background:var(--ink);color:white;margin:22px 0 0;cursor:pointer}button:disabled{opacity:.6}input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--sea);outline-offset:3px}.assumption{border-left:4px solid var(--sand);padding:12px 18px;background:#fff}.results{background:white;padding:24px;border-top:4px solid var(--sea);min-width:0}svg{display:block;width:100%;height:auto}dl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px 16px}dt{color:var(--muted)}dd{min-width:0;overflow-wrap:anywhere;margin:0;text-align:right;font-variant-numeric:tabular-nums}#status{min-height:1.6em;color:var(--sand)}details{margin:25px 0}summary{cursor:pointer}pre{overflow:auto;max-height:350px;font-size:13px}table{width:100%;border-collapse:collapse;text-align:left;font-size:15px}th,td{padding:10px;border-bottom:1px solid var(--line)}footer{margin:60px 0 10px;color:var(--muted)}@media(max-width:760px){main{padding:20px}.workspace{grid-template-columns:1fr}dl{grid-template-columns:1fr}dd{text-align:left}h1{margin-top:30px}.tablewrap{overflow:auto}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
-</style></head><body><main>
-<nav aria-label="Main"><strong>Rub’ al-Khali / Digital Twin v0.5</strong><span><a href="#evidence">Metagenomic evidence</a> &nbsp; <a href="/v3/contract">All assumptions</a> &nbsp; <a href="/docs">API</a></span></nav>
-<h1>What happens after the rain?</h1>
-<p class="intro">Explore how repeated water pulses, pore space and salt affect a conditional hydrogen-uptake model. Inspect the metagenomic evidence separately, then use the model to plan measurements.</p>
-<p class="assumption">These are process scenarios with supplied kinetics and soil properties. Local gas-flux calibration is still needed. Metagenomes establish encoded capacity; net carbon removal and species-specific growth remain unavailable.</p>
-<div class="workspace"><form id="scenario"><h2>Water and soil</h2>
-<label for="water">Total added water (mm)</label><input id="water" type="number" min="0" max="100" value="12" step="1" required>
-<label for="schedule">Pulse schedule over 14 days</label><select id="schedule"><option value="1">One pulse on day 1</option><option value="4">Four equal pulses</option><option value="14">Daily equal pulses</option></select>
-<label for="porosity">Prescribed porosity</label><input id="porosity" type="number" min="0.2" max="0.6" value="0.4" step="0.01" required>
-<label for="salt">Added NaCl (mol/L)</label><input id="salt" type="number" min="0" max="5" value="0" step="0.01" required>
-<label for="temp">Temperature (°C)</label><input id="temp" type="number" min="0" max="50" value="25" required>
-<label for="kinetic">Assumed H₂ reaction coefficient (s⁻¹)</label><input id="kinetic" type="number" min="0" max="1" value="0.001" step="0.0001" required>
-<button id="run" type="submit">Run water-pulse scenario</button><p id="status" role="status" aria-live="polite"></p></form>
-<div class="results"><h2>Shared water and salt history</h2><p id="outcome">Run a scenario to inspect its daily trajectory.</p>
-<svg id="chart" viewBox="0 0 650 300" role="img" aria-label="Daily modelled hydrogen uptake"></svg><dl id="metrics"></dl>
-<details><summary>Inputs, units and daily balances</summary><pre id="raw"></pre></details>
-<p>Common assumptions: 10 cm soil layer; initial water 1.8 mm; evaporation 1 mm/day; CO kinetics 0.001 s⁻¹; fixed atmospheric trace-gas concentrations. Salt above the dilute model domain produces an explicit missing uptake result.</p>
-<button id="download" type="button" disabled>Download this run</button></div></div>
-<section id="evidence"><h2>What the metagenomes and OWL reasoner establish</h2><p id="evidence-summary" role="status">Loading the annotation, OWL classification and mapping evidence…</p>
-<div class="workspace">
-<div><label for="sample">Metagenomic sample (551 samples)</label><select id="sample" disabled></select><dl id="sample-values"></dl>
-<p>Carrier shares use mapped reads as the denominator; unmapped reads are reported separately.</p></div>
-<div class="results"><h3 style="margin-top:0">MAG OWL classification &amp; resource ceiling</h3>
-<label for="mag">Reference MAG (classified by Kobayashi-MaRust)</label><select id="mag" disabled></select><dl id="mag-values"></dl>
-<button id="run-ceiling" type="button" disabled>Compute example resource ceiling</button>
-<p>Example supply bounds: H₂, O₂ and external CO₂ each 10 nmol m⁻² s⁻¹; CO 1 nmol m⁻² s⁻¹; capture fraction 0.25; maintenance 10⁻⁶ W m⁻²; synthesis cost 500 kJ mol⁻¹ C. Use the API for other bounds. CO oxidation is admitted only with CO marker evidence.</p>
-<dl id="ceiling-values" style="margin-top:14px"></dl></div>
-</div></section>
-<section><h2>Model evaluation</h2><p>Kobayashi-MaRust classifies all 5,438 reference MAGs in OWL 2 against the complete KEGG M00165 module (including alternative regeneration routes) and hydrogenase guild axioms, emits subset-minimal source-axiom justifications, and gates the three-reaction stoichiometric resource ceiling. Campaign-blocked backtests evaluate genomic-capacity prediction with nominal 90% empirical residual intervals (85.3% observed temporal coverage) across 278 held-out visits, and Pareto comparisons evaluate water-addition regimes across 24 parameter settings.</p>
-<p><a href="/v3/contract">Read the complete causal and ontological contract</a> · <a href="/v3/ontology">OWL reasoning report</a> · <a href="/v3/mags?candidates_only=true">Inspect candidate MAGs</a>.</p></section>
-<footer>EQ-BioDT v0.5 · Ontological-causal reasoning · <a href="https://github.com/bio-ontology-research-group/empty-quarter-digital-twin">Code and evidence</a></footer>
-</main><script>
-const $=id=>document.getElementById(id);let result=null;const format=(x,d=3)=>x===null||x===undefined?'Unavailable':Number(x).toLocaleString(undefined,{maximumFractionDigits:d});
-function values(id,entries){$(id).replaceChildren();for(const [label,value] of entries){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=value;$(id).append(dt,dd)}}
-$('scenario').addEventListener('submit',async event=>{event.preventDefault();$('run').disabled=true;$('status').textContent='Computing daily water, salt and gas balances…';$('download').disabled=true;result=null;try{const n=Number($('schedule').value),total=Number($('water').value);const days=new Set(Array.from({length:n},(_,i)=>Math.floor(i*14/n)));const request={parameters:{k_h2_s:Number($('kinetic').value),k_co_s:.001,porosity:Number($('porosity').value)},initial:{water_mm:1.8},forcing:Array.from({length:14},(_,day)=>({water_mm:days.has(day)?total/n:0,nacl_mol_l:Number($('salt').value),evaporation_mm:1,temp_c:Number($('temp').value)}))};const response=await fetch('/v3/simulate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(request)});const data=await response.json();if(!response.ok)throw Error(typeof data.detail==='string'?data.detail:JSON.stringify(data.detail));result=data;$('raw').textContent=JSON.stringify(data,null,2);$('download').disabled=false;const s=data.summary;$('outcome').textContent=s.h2_uptake_mol_m2===null?'Salt exceeded the dilute chemistry domain. Uptake is unavailable; the water and salt ledger remains valid.':'Conditional daily H₂ uptake (nmol m⁻² s⁻¹)';values('metrics',[['Total added water',format(s.water_input_mm)+' mm'],['Total H₂ uptake',s.h2_uptake_mol_m2===null?'Unavailable':format(s.h2_uptake_mol_m2*1e6)+' µmol/m²'],['Water remaining',format(s.final_water_mm)+' mm'],['Salt remaining',format(s.final_salt_mol_m2)+' mol/m²'],['Net carbon removal','Unavailable']]);const vv=data.trajectory.map(r=>r.gas?r.gas.h2_mol_m2_s*1e9:null),max=Math.max(...vv.filter(x=>x!==null),.001);const svg=$('chart');svg.replaceChildren();const ns='http://www.w3.org/2000/svg';const el=(tag,attrs,text)=>{const e=document.createElementNS(ns,tag);for(const [k,v]of Object.entries(attrs))e.setAttribute(k,v);if(text)e.textContent=text;svg.append(e);return e};el('path',{d:'M50 20 V250 H620',fill:'none',stroke:'#839ba6'});[0,.5,1].forEach(f=>el('text',{x:4,y:255-f*220,fill:'#506474','font-size':13},format(max*f)));vv.forEach((v,i)=>{if(v!==null)el('rect',{x:58+i*40,y:250-v/max*220,width:24,height:Math.max(1,v/max*220),fill:'#007b83'});el('text',{x:60+i*40,y:275,fill:'#506474','font-size':12},String(i+1))});el('text',{x:275,y:296,fill:'#506474','font-size':14},'Day after first pulse');$('status').textContent='Scenario complete. Assumptions and balances are included in the download.'}catch(e){$('status').textContent=e.message;$('outcome').textContent='No result for these inputs.';$('chart').replaceChildren();$('metrics').replaceChildren();$('raw').textContent=''}finally{$('run').disabled=false}});
-$('download').addEventListener('click',()=>{if(!result)return;const url=URL.createObjectURL(new Blob([JSON.stringify(result,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='eq-biodt-v04-scenario.json';a.click();URL.revokeObjectURL(url)});
-fetch('/v3/evidence').then(r=>{if(!r.ok)throw Error('Evidence request failed');return r.json()}).then(data=>{const m=data.manifest;$('evidence-summary').textContent=`${m.samples} metagenomic samples; ${m.reference_MAGs.toLocaleString()} reference MAGs classified in OWL 2 by Kobayashi-MaRust. ${m.all_CBB_steps_MAGs} satisfy the complete CBB module; ${m.h2_CBB_all_steps_MAGs} also carry a screened hydrogenase.`;const select=$('sample');for(const row of data.observations){const o=document.createElement('option');o.value=row.sample;o.textContent=`${row.sample} — ${row.compartment}`;select.append(o)}select.disabled=false;const show=()=>{const row=data.observations.find(r=>r.sample===select.value);values('sample-values',[['H₂ marker genome equivalents',format(row.total_h2_marker_ge)],['Unmapped reads',row.unmapped_read_pct===null?'Unavailable':format(row.unmapped_read_pct)+'%'],['CBB carrier share of mapped reads',row.cbb_all_steps_detected_share_mapped===null?'Unavailable':format(100*row.cbb_all_steps_detected_share_mapped)+'%'],['H₂ + CBB co-carrier share of mapped reads',row.h2_cbb_all_steps_share_mapped===null?'Unavailable':format(100*row.h2_cbb_all_steps_share_mapped)+'%'],['Mapped MAG Shannon',format(row.mapped_mag_shannon)]])};select.addEventListener('change',show);show()}).catch(e=>{$('evidence-summary').textContent=e.message});
-fetch('/v3/mags?limit=5438').then(r=>{if(!r.ok)throw Error('MAG request failed');return r.json()}).then(data=>{const select=$('mag');for(const row of data.mags){const o=document.createElement('option');o.value=row.rep;const tag=row.h2_cbb_all_steps?'H2AutotrophicCandidateMAG':row.cbb_all_steps_detected?'CBBCompleteMAG':'IncompleteCBB';o.textContent=`${row.rep} (${tag}, ${row.cbb_steps_detected}/11 CBB)`;select.append(o)}select.disabled=false;$('run-ceiling').disabled=false;const showMag=()=>{const row=data.mags.find(r=>r.rep===select.value);$('ceiling-values').replaceChildren();values('mag-values',[['OWL class',row.h2_cbb_all_steps?'rak:H2AutotrophicCandidateMAG':row.cbb_all_steps_detected?'rak:CBBCompleteMAG':'rak:ReferenceMAG'],['CBB module requirements',`${row.cbb_steps_detected} / 11`],['Hydrogenase carrier',row.h2_carrier_union?'Supported (rak:H2CarrierMAG)':'Not entailed'],['Completeness / contamination',`${format(row.completeness,2)}% / ${format(row.contamination,2)}%`],['Detected pathway KOs',row.cbb_kos||'None']])};select.addEventListener('change',showMag);showMag();$('run-ceiling').addEventListener('click',async()=>{try{$('run-ceiling').disabled=true;const res=await fetch('/v3/resource-ceiling',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({mag_id:select.value,h2:1e-8,co:1e-9,oxygen:1e-8,external_co2:1e-8,capture_fraction:.25,maintenance_w_m2:1e-6,synthesis_j_mol_c:500000})});const out=await res.json();if(!res.ok)throw Error(typeof out.detail==='string'?out.detail:JSON.stringify(out.detail));values('ceiling-values',[['Eligibility status',out.status.replaceAll('_',' ')],['Max CH₂O synthesis ceiling',out.fluxes?format(out.fluxes.carbohydrate_c*1e9,3)+' nmol C m⁻² s⁻¹':'Unavailable (OWL gate abstains)'],['H₂ respiration flux',out.fluxes?format(out.fluxes.h2_respiration*1e9,3)+' nmol m⁻² s⁻¹':'Unavailable'],['CO respiration flux',out.fluxes?format(out.fluxes.co_respiration*1e9,3)+' nmol m⁻² s⁻¹':'Unavailable']])}catch(e){values('ceiling-values',[['Request failed',e.message]])}finally{$('run-ceiling').disabled=false}})}).catch(e=>{values('mag-values',[['Could not load MAGs',e.message]])});
+:root{color-scheme:light;--ink:#163b4a;--muted:#506474;--sand:#a75d20;--sea:#007b83;--line:#ccd9df;--paper:#f5f8fa;--ok:#1b6e3c;--bad:#a12b2b;--base:#5b6f7c;--cmp0:#0072B2;--cmp1:#009E73;--cmp2:#E69F00}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 'Segoe UI',system-ui,sans-serif}
+main{max-width:1180px;margin:auto;padding:24px 28px 40px}
+a{color:#00666d}
+h1{font:500 clamp(1.7rem,4vw,2.7rem)/1.15 Georgia,serif;margin:22px 0 10px;max-width:900px}
+h2{font:500 1.6rem Georgia,serif;margin:0 0 6px}
+h3{font:600 1.05rem 'Segoe UI',sans-serif;margin:18px 0 6px}
+p{max-width:78ch;margin:.5em 0}
+.skip{position:absolute;left:-999px;top:0;background:#fff;padding:8px 12px;z-index:9}.skip:focus{left:8px;top:8px}
+nav.top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.95rem}
+.lede{font-size:1.08rem;max-width:80ch}
+.assumption{border-left:4px solid var(--sand);padding:10px 16px;background:#fff;margin:14px 0}
+ol.pipeline{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:10px;padding:0;margin:20px 0 10px;counter-reset:s}
+ol.pipeline li{position:relative}
+ol.pipeline a{display:block;height:100%;background:#fff;border:1px solid var(--line);border-top:4px solid var(--sea);border-radius:5px;padding:10px 12px;text-decoration:none;color:var(--ink)}
+ol.pipeline a:hover{background:#eef6f7}
+ol.pipeline b{display:block;font-size:.98rem}
+ol.pipeline span{display:block;font-size:.84rem;color:var(--muted);line-height:1.35;margin-top:2px}
+ol.pipeline li:not(:last-child)::after{content:"\2192";position:absolute;right:-10px;top:42%;color:var(--sea);font-weight:700;z-index:2;background:var(--paper);line-height:1}
+section.panel{margin:40px 0;padding-top:6px;scroll-margin-top:10px}
+section.panel>h2::before{content:attr(data-step);color:var(--sea);font:600 .9rem 'Segoe UI',sans-serif;margin-right:10px;vertical-align:middle;border:1px solid var(--sea);border-radius:50%;display:inline-block;width:1.7em;height:1.7em;text-align:center;line-height:1.6em}
+.grid{display:grid;grid-template-columns:330px minmax(0,1fr);gap:28px;margin-top:16px}
+.grid.even{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.card{background:#fff;padding:18px 20px;border-top:4px solid var(--sea);min-width:0}
+.card.plain{border-top:1px solid var(--line)}
+label{display:block;margin:12px 0 4px;font-size:.95rem}
+input,select,button{font:inherit;padding:7px 9px;border:1px solid #9db0ba;border-radius:5px;width:100%;background:#fff;color:var(--ink)}
+input[type=checkbox]{width:auto;margin-right:8px}
+label.check{display:flex;align-items:center;margin-top:12px}
+button{background:var(--ink);color:#fff;margin-top:16px;cursor:pointer;border-color:var(--ink)}
+button.secondary{background:#fff;color:var(--ink);border-color:#9db0ba}
+button:disabled{opacity:.55;cursor:default}
+button.linkish{background:none;border:0;color:#00666d;text-decoration:underline;padding:2px 0;margin:0;width:auto;text-align:left}
+input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--sea);outline-offset:2px}
+.status{min-height:1.5em;color:var(--sand);margin:8px 0 0;font-size:.95rem}
+.status.err{color:var(--bad)}
+svg{display:block;width:100%;height:auto}svg[role=img]{max-width:760px}
+dl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px 14px;margin:8px 0}
+dt{color:var(--muted)}dd{min-width:0;overflow-wrap:anywhere;margin:0;text-align:right;font-variant-numeric:tabular-nums}
+dl.gloss{grid-template-columns:minmax(120px,220px) minmax(0,1fr)}dl.gloss dd{text-align:left}dl.gloss dt{color:var(--ink);font-weight:600}
+table{width:100%;border-collapse:collapse;text-align:left;font-size:.9rem}
+th,td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;background:#f0f5f7}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.tablewrap{overflow:auto;max-width:100%}
+code,.mono{font:12.5px/1.45 ui-monospace,Menlo,Consolas,monospace}
+code{background:#eef3f5;padding:1px 4px;border-radius:3px;overflow-wrap:anywhere}
+pre{overflow:auto;max-height:320px;font-size:12px;background:#f0f5f7;padding:10px}
+details{margin:12px 0}summary{cursor:pointer}
+.badge{display:inline-block;padding:2px 9px;border-radius:12px;font-size:.82rem;font-weight:600;color:#fff;background:var(--base)}
+.badge.ok{background:var(--ok)}.badge.bad{background:var(--bad)}.badge.warn{background:#8a5a00}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:10px 0}
+.tile{border:1px solid var(--line);padding:10px 12px;background:#fbfdfe}
+.tile small{display:block;color:var(--muted)}.tile strong{font-size:1.25rem;font-variant-numeric:tabular-nums}
+.charts{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.charts figure{margin:0}.charts figcaption{font-size:.88rem;color:var(--muted)}
+.callout{border:1px solid var(--line);border-left:4px solid var(--sea);background:#f3fafa;padding:8px 14px;margin:10px 0}
+.callout.warn{border-left-color:var(--sand);background:#fff8f2}
+.axiom{margin:4px 0 8px;padding:6px 10px;background:#f6f9fa;border-left:3px solid var(--line)}
+.axiom code{display:block;font-size:11.5px;color:var(--muted);background:none;padding:0;margin-top:2px}
+ul.plain{list-style:none;padding:0;margin:6px 0}
+ul.plain li{padding:2px 0}
+.maglist button{margin:0;width:100%;text-align:left;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:0;padding:6px 8px;font-size:.88rem}
+.maglist button[aria-pressed=true]{background:#e6f3f4;border-color:var(--sea)}
+.maglist li{margin:-1px 0 0}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.85rem;color:var(--muted);margin:4px 0}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+.mapsite{cursor:pointer}.mapsite:focus-visible{outline:none}.mapsite:focus-visible .ring{stroke:#000;stroke-width:3}
+.hbar{fill:var(--sea)}.hbar.ref{fill:var(--sand)}
+footer{margin:50px 0 10px;color:var(--muted);font-size:.92rem}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:900px){ol.pipeline{grid-template-columns:1fr}ol.pipeline li:not(:last-child)::after{content:"\2193";right:auto;left:calc(50% - 6px);top:auto;bottom:-14px}.charts{grid-template-columns:1fr}}
+@media(max-width:760px){main{padding:16px}.grid,.grid.even,.two{grid-template-columns:1fr}dl{grid-template-columns:1fr}dd{text-align:left}dl.gloss{grid-template-columns:1fr}.tiles{grid-template-columns:1fr}.card{padding:14px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style></head><body><a class="skip" href="#evidence">Skip to the twin</a><main>
+<nav class="top" aria-label="Main"><strong>EQ-BioDT v0.6 · local console</strong><span><a href="#glossary">Glossary</a> &nbsp; <a href="/v3/contract">Model contract</a> &nbsp; <a href="/docs">API</a> &nbsp; <a href="https://github.com/bio-ontology-research-group/empty-quarter-digital-twin">Source</a></span></nav>
+<h1>EQ-BioDT v0.6: a causal–ontological digital twin of the Rub’ al-Khali</h1>
+<p class="lede">The twin links primary soil-metagenome evidence, OWL deduction of which genomes can carry which functions, a community factor that conditions the soil process model, and paired <code>do()</code> regimes that change only physical inputs. Follow the pipeline from left to right, or jump to a stage.</p>
+<ol class="pipeline" aria-label="Twin pipeline">
+<li><a href="#evidence"><b>1 · Evidence</b><span id="pl-evidence">551 metagenomes, 5,438 reference MAGs</span></a></li>
+<li><a href="#ontology"><b>2 · OWL deduction</b><span id="pl-owl">Reasoner entails classes from annotations</span></a></li>
+<li><a href="#gamma"><b>3 · Community factor γ</b><span>Entailed carrier shares set rate factors</span></a></li>
+<li><a href="#mechanisms"><b>4 · Mechanisms</b><span>Causal graph, admissible targets, versions</span></a></li>
+<li><a href="#regimes"><b>5 · Paired do() regimes</b><span>Baseline vs intervened, same unit</span></a></li>
+</ol>
+<p class="assumption">Scenarios are conditional process calculations with supplied kinetics and soil properties; the metagenomes establish encoded capacity, not activity. Net carbon removal and species-specific growth are not available from this release. Interventional quantities are model-derived, not identified from the observational metagenomes.</p>
+
+<section class="panel" id="evidence"><h2 data-step="1">Evidence: where the 551 samples come from</h2>
+<p id="evidence-summary" role="status">Loading the evidence panel…</p>
+<div class="grid">
+<div class="card plain"><h3 style="margin-top:0">Select a sample</h3>
+<label for="site-select">Site</label><select id="site-select" disabled></select>
+<label for="sample">Metagenomic sample</label><select id="sample" disabled></select>
+<dl id="sample-values"></dl>
+<p class="mono" style="max-width:none">Carrier shares use mapped reads as the denominator; unmapped reads are reported separately. “corr. n d” marks a collection date that was corrected by n days from the nominal trip date; it is not an uncertainty.</p></div>
+<div class="card"><h3 style="margin-top:0">Sampling footprint <small style="font-weight:400;color:var(--muted)">(equirectangular, latitude stretched; no map tiles)</small></h3>
+<div class="two"><div><label for="map-filter">Show samples from</label><select id="map-filter"></select></div>
+<div><label for="map-color">Colour by</label><select id="map-color"><option value="compartment">Compartment (wedges)</option><option value="campaigns">Number of campaigns</option></select></div></div>
+<svg id="map" viewBox="0 0 700 260" role="group" aria-label="Sampling sites; each site is a focusable button that selects its samples"></svg>
+<div id="map-legend" class="legend"></div>
+<p class="mono" style="max-width:none">Symbol area grows with the number of samples per site. Click or press Enter on a site to select its samples.</p></div></div>
+<div class="card plain" style="margin-top:20px"><h3 style="margin-top:0">Samples at <span id="site-name">the selected site</span></h3>
+<div class="tablewrap"><table id="site-table"><caption class="mono" style="text-align:left;caption-side:top;padding-bottom:6px">Select a row to make it the active sample. Genome equivalents (GE): see glossary.</caption><thead><tr><th>Sample</th><th>Compartment</th><th>Campaign</th><th>Date</th><th class="num">Lat °N</th><th class="num">Lon °E</th><th class="num">H₂ marker GE</th></tr></thead><tbody></tbody></table></div></div>
+</section>
+
+<section class="panel" id="ontology"><h2 data-step="2">OWL deduction: what the reasoner entails about a genome</h2>
+<p id="owl-summary">The Kobayashi-MaRust reasoner classifies all 5,438 reference MAGs in OWL 2 against the full KEGG M00165 module (with its alternative regeneration routes) and hydrogenase guild axioms. The console never downloads all MAGs: search, or list the candidates, and request one genome’s entailments at a time.</p>
+<div class="grid">
+<div class="card plain"><h3 style="margin-top:0">Find a reference MAG</h3>
+<label for="mag-q">Search id, phylum, order, family or genus</label><input id="mag-q" type="search" autocomplete="off" placeholder="e.g. Actinomycetota, Steroidobacterales">
+<label class="check"><input id="mag-cand" type="checkbox" checked> Candidates only (H₂ carrier with all 11 CBB steps)</label>
+<button id="mag-go" type="button" class="secondary">Search</button>
+<p id="mag-count" class="status" role="status" aria-live="polite"></p>
+<ul id="mag-list" class="plain maglist" aria-label="Matching MAGs"></ul></div>
+<div class="card" aria-live="polite"><h3 style="margin-top:0">Entailed classes and justification <span id="mag-title" class="mono"></span></h3><div id="mag-detail"><p>Select a MAG.</p></div></div></div>
+<div class="card plain" style="margin-top:20px"><h3 style="margin-top:0">Resource ceiling for the selected MAG</h3>
+<p>The ceiling is the largest steady carbohydrate-carbon synthesis rate that element balance, the supplied substrate fluxes and an energy budget (captured fraction of H₂/CO oxidation energy minus maintenance) can support, found by linear programming over three reactions: H₂ oxidation, CO oxidation and CH₂O synthesis. It is an upper bound, not a prediction. It is computed only when the reasoner entails <code>rak:H2AutotrophicCandidateMAG</code> for this genome; CO oxidation is admitted only if <code>rak:COCarrierMAG</code> is also entailed. Otherwise the gate abstains, which is not a claim of biological absence.</p>
+<div class="grid even" style="margin-top:0"><div>
+<div class="two"><div><label for="rc-h2">H₂ supply (nmol m⁻² s⁻¹)</label><input id="rc-h2" type="number" value="10" min="0" step="any"></div><div><label for="rc-co">CO supply (nmol m⁻² s⁻¹)</label><input id="rc-co" type="number" value="1" min="0" step="any"></div></div>
+<div class="two"><div><label for="rc-o2">O₂ supply (nmol m⁻² s⁻¹)</label><input id="rc-o2" type="number" value="10" min="0" step="any"></div><div><label for="rc-co2">External CO₂ (nmol m⁻² s⁻¹)</label><input id="rc-co2" type="number" value="10" min="0" step="any"></div></div>
+<div class="two"><div><label for="rc-cap">Capture fraction (0–1)</label><input id="rc-cap" type="number" value="0.25" min="0" max="1" step="any"></div><div><label for="rc-maint">Maintenance (µW m⁻²)</label><input id="rc-maint" type="number" value="1" min="0" step="any"></div></div>
+<label for="rc-cost">Synthesis cost (kJ mol⁻¹ C)</label><input id="rc-cost" type="number" value="500" min="1" step="any">
+<button id="run-ceiling" type="button" disabled>Compute resource ceiling</button></div>
+<div><dl id="ceiling-values"></dl><p id="ceiling-status" class="status" role="status" aria-live="polite"></p></div></div></div>
+</section>
+
+<section class="panel" id="gamma"><h2 data-step="3">Community factor γ: how deduction enters the process model</h2>
+<p>For the active sample, the share of mapped reads from genomes in each entailed class gives <code>q<sub>s</sub>(C)</code>. The community factor γ multiplies the gas-specific reaction coefficient: <b>reference</b> leaves it at 1, <b>gate</b> sets it to 1 if any carrier is present and 0 otherwise, and <b>proportional</b> scales it by the share relative to the median sample (an assumption, not a validated law). Choosing a community conditions the twin; it is not an intervention.</p>
+<div class="card"><p id="gamma-status" class="status" role="status" aria-live="polite">Select a sample above.</p>
+<div class="grid even" style="margin-top:0"><div><h3 style="margin-top:0">Entailed carrier shares for <span id="gamma-sample" class="mono"></span></h3><div class="tablewrap"><table id="share-table"><thead><tr><th>Class</th><th class="num">Share of mapped reads</th><th class="num">Median sample</th></tr></thead><tbody></tbody></table></div></div>
+<div><h3 style="margin-top:0">γ by coupling mode</h3><div class="tablewrap"><table id="gamma-table"><thead><tr><th>Gas</th><th class="num">reference</th><th class="num">gate</th><th class="num">proportional</th></tr></thead><tbody></tbody></table></div><div id="gamma-note"></div></div></div></div>
+</section>
+
+<section class="panel" id="mechanisms"><h2 data-step="4">Mechanisms: the causal graph, admissible targets and treatment versions</h2>
+<p>The graph has one node per quantity in a single time slice. Only manipulable inputs and the physical states <code>W</code> (water) and <code>N</code> (salt) can be clamped; ontology, evidence, deduced memberships, constitutive definitions and the activation and uptake mechanisms cannot. <span id="graph-summary"></span></p>
+<div class="grid even">
+<div class="card"><h3 style="margin-top:0">Admissibility explorer</h3>
+<label for="adm-node">Graph node to clamp</label><select id="adm-node" disabled></select>
+<div class="two"><div><label for="adm-value">Value (optional; checks feasibility)</label><input id="adm-value" type="number" step="any"></div><div id="adm-version-wrap" hidden><label for="adm-version">Version for ψ</label><select id="adm-version"><option value="">(none named)</option><option value="matric">matric (handle W)</option><option value="osmotic">osmotic (handle N)</option></select></div></div>
+<button id="adm-go" type="button" disabled>Ask the server</button>
+<div id="adm-result" role="status" aria-live="polite"></div>
+<details><summary>All nodes by zone</summary><div class="tablewrap"><table id="graph-table"><thead><tr><th>Node</th><th>Zone</th><th>Unit</th><th>Equation</th><th>Can be clamped</th></tr></thead><tbody></tbody></table></div></details></div>
+<div class="card"><h3 style="margin-top:0">Version relevance: do(ψ) is ambiguous</h3>
+<p>Total water potential ψ = ψ<sub>m</sub> + ψ<sub>o</sub> is constituted, so “set ψ” can be realised by changing water (matric version, handle <code>W</code>) or salt (osmotic version, handle <code>N</code>). Activation depends on ψ alone, so its effect is version-independent. Uptake also depends on the diffusivity of the gas, which depends on water content θ, so water has a path θ → D → J that bypasses ψ and the effect on uptake is version-dependent.</p>
+<div class="two"><div><label for="psi-target">ψ target (MPa)</label><input id="psi-target" type="number" value="-0.5" min="-20" max="-0.001" step="0.1"></div><div><label for="psi-w0">Initial soil water (mm)</label><input id="psi-w0" type="number" value="10" min="0.5" max="40" step="0.5"></div></div>
+<button id="psi-go" type="button">Compare matric and osmotic versions</button>
+<p id="psi-status" class="status" role="status" aria-live="polite"></p><div id="psi-out"></div></div></div>
+</section>
+
+<section class="panel" id="regimes"><h2 data-step="5">Paired do() regimes: baseline versus intervened</h2>
+<p>Both regimes share the initial state, the non-targeted forcing, the parameters, the community and the ontology. Only the target is replaced, so the difference is a counterfactual contrast for the same specified unit. Setting a target to its current value leaves the trajectory unchanged.</p>
+<div class="grid"><form id="scenario" novalidate class="card plain"><h3 style="margin-top:0">Regime</h3>
+<label for="target">Intervention target</label><select id="target"><option value="schedule">Wetting schedule (version of a total water addition)</option><option value="nacl">NaCl in added water</option><option value="temp">Soil temperature</option><option value="porosity">Porosity (compaction)</option></select>
+<p id="target-help" class="mono" style="max-width:none"></p>
+<label for="water">Total added water over 14 days (mm)</label><input id="water" type="number" min="0" max="100" value="12" step="1" required>
+<label for="schedule" id="schedule-label">Wetting schedule</label><select id="schedule"><option value="1">One pulse on day 1</option><option value="4">Four equal pulses</option><option value="14">Daily equal pulses</option></select>
+<div id="value-wrap" hidden><label for="tvalue" id="tvalue-label">Value</label><input id="tvalue" type="number" step="any"></div>
+<label for="kinetic">Assumed H₂ and CO reaction coefficient (s⁻¹)</label><input id="kinetic" type="number" min="0" max="1" value="0.001" step="0.0001" required>
+<label for="community">Community (conditions both arms)</label><select id="community"><option value="">Reference: no community</option></select>
+<label for="coupling">Coupling mode (applies when a community is chosen; otherwise γ = 1)</label><select id="coupling"><option value="gate">gate (γ = 0 if no carrier)</option><option value="reference">reference (γ = 1)</option><option value="proportional">proportional (assumption)</option></select>
+<button id="run" type="submit">Run paired regimes</button><p id="status" class="status" role="status" aria-live="polite"></p></form>
+<div class="card" id="regime-out"><h3 style="margin-top:0" id="outcome">Run the paired regimes to inspect both trajectories.</h3><div id="regime-body"></div></div></div>
+
+<h3 style="margin-top:34px">Treatment versions: one total, four reference schedules, 24 parameter members</h3>
+<p>“Add 12 mm of water” is a superclass of schedules. The comparison reports each version’s uptake in all 24 parameter members, which versions are Pareto-optimal (maximise uptake; minimise water input, residual salt and disturbed area), and whether the ranking of versions changes across members.</p>
+<div class="card plain"><button id="cmp-go" type="button" style="margin-top:0;width:auto">Compare treatment versions with the selected community</button><p id="cmp-status" class="status" role="status" aria-live="polite"></p><div id="cmp-out"></div></div>
+</section>
+
+<section class="panel" id="transfer"><h2 data-step="✓">External transfer tests: does the mechanism travel to other deserts?</h2>
+<p>These are retrospective tests on independent observations. The Namib and Sonoran hydration microcosms are interventional data of the form do(θ) on bottled soil; the Sonoran field campaigns are observational. Numbers are the reviewed tables bundled with the package (<code>/v3/transfer</code>).</p>
+<p id="transfer-status" class="status" role="status">Loading…</p><div id="transfer-out"></div></section>
+
+<section class="panel" id="evaluation"><h2 data-step="✓">Model evaluation scope</h2>
+<p><b>Molecular forecast backtest.</b> Campaign-blocked backtests of the ridge forecast of genomic capacity (an associational model, not the causal model) use nominal 90% empirical residual intervals; the observed temporal coverage is 85.3% across 278 held-out visits. This backtest does not evaluate any intervention. <b>Intervention comparisons.</b> Pareto comparisons of water-addition regimes use the 24 parameter members above and are sensitivity sets, not probabilities.</p>
+<p><a href="/v3/contract">Complete causal and ontological contract</a> · <a href="/v3/ontology">OWL reasoning report</a> · <a href="/v3/graph">Causal graph (JSON)</a> · <a href="/docs">Interactive API</a></p></section>
+
+<section class="panel" id="glossary"><h2 data-step="?">Glossary</h2>
+<dl class="gloss">
+<dt>Kobayashi-MaRust</dt><dd>The OWL 2 reasoner (a Rust implementation) used to classify the reference MAGs. Its entailments, not table flags, decide class membership.</dd>
+<dt>M00165</dt><dd>The KEGG module for the reductive pentose phosphate (Calvin–Benson–Bassham, CBB) cycle. “All 11 steps” means each step has at least one accepted KEGG ortholog, including alternative routes such as transaldolase-based regeneration.</dd>
+<dt>rak:</dt><dd>Namespace prefix of the Rub’ al-Khali knowledge base, <code>https://rubalkhali.science/kb/</code>; <code>kegg:</code> names KEGG orthologs.</dd>
+<dt>MAG</dt><dd>Metagenome-assembled genome. 5,438 dereplicated reference MAGs are classified.</dd>
+<dt>Genome equivalents (GE)</dt><dd>Marker-gene read counts normalised by reads on single-copy core genes, so that a value of 1 corresponds to roughly one genome’s worth of the marker per cell-equivalent. A capacity measure, not activity.</dd>
+<dt>γ (community factor)</dt><dd>Multiplier on a gas’s reaction coefficient derived from the entailed carrier share of the chosen community (reference, gate or proportional).</dd>
+<dt><code>do()</code></dt><dd>Intervention operator: <code>do(X = x)</code> replaces the mechanism of X by a constant and leaves definitions, evidence and ontology untouched.</dd>
+<dt>Admissible</dt><dd>A target that is manipulable (an exogenous input, or the state W or N) and for which the resulting regime is physically feasible.</dd>
+<dt>Version</dt><dd>A concrete way to realise a constituted or aggregate intervention, such as a pulse schedule for a total water amount, or the matric versus osmotic realisation of ψ.</dd>
+<dt>zero_by_deduction</dt><dd>The selected community has no entailed carrier of a gas, so its uptake is zero in every admissible regime. This reflects missing annotation evidence, not proven biological absence.</dd>
+<dt>θ, ψ, W, N</dt><dd>Volumetric water content, total water potential (MPa), stored water (mm) and salt inventory (mol m⁻²).</dd>
+<dt>Pareto membership</dt><dd>A schedule is Pareto-optimal in a member if no other schedule is at least as good on all four objectives and better on one.</dd>
+<dt>RMSE</dt><dd>Root-mean-square error of held-out predictions, here in nmol H₂ m⁻² s⁻¹ unless noted.</dd>
+</dl></section>
+<footer>EQ-BioDT v0.6 · causal–ontological digital twin · <a href="https://github.com/bio-ontology-research-group/empty-quarter-digital-twin">Code and evidence</a> · <a href="https://rubalkhali.science/model">rubalkhali.science/model</a></footer>
+</main>
+<script>
+"use strict";
+const $=id=>document.getElementById(id);
+const NS='http://www.w3.org/2000/svg';
+const state={evidence:[],bySample:{},sites:{},sample:'51PRr3',site:null,graph:null,mag:null,run:null,magReq:0};
+const fmt=(x,d=3)=>x===null||x===undefined||Number.isNaN(x)?'Unavailable':Number(x).toLocaleString(undefined,{maximumFractionDigits:d});
+const sig=(x,n=3)=>x===null||x===undefined||!Number.isFinite(x)?'Unavailable':(x===0?'0':Number(x.toPrecision(n)).toLocaleString(undefined,{maximumSignificantDigits:n}));
+const pct=x=>x===null||x===undefined?'Unavailable':fmt(100*x,2)+'%';
+function h(tag,props,...kids){const e=document.createElement(tag);for(const [k,v] of Object.entries(props||{})){if(v===undefined||v===null)continue;if(k==='text')e.textContent=v;else if(k==='class')e.className=v;else if(k.startsWith('on'))e.addEventListener(k.slice(2),v);else e.setAttribute(k,v)}for(const c of kids.flat()){if(c===null||c===undefined)continue;e.append(c.nodeType?c:document.createTextNode(String(c)))}return e}
+function sv(tag,attrs,text){const e=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs||{}))e.setAttribute(k,v);if(text!==undefined)e.textContent=text;return e}
+function kv(id,entries){const d=$(id);d.replaceChildren();for(const [l,v] of entries){d.append(h('dt',{text:l}),h('dd',{text:v}))}}
+async function api(path,body){const opt=body===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)};const r=await fetch(path,opt);let data=null;try{data=await r.json()}catch(e){}if(!r.ok){const d=data&&data.detail;throw Error(typeof d==='string'?d:d?JSON.stringify(d):'Request failed ('+r.status+')')}return data}
+function say(id,msg,err){const e=$(id);e.textContent=msg||'';e.classList.toggle('err',!!err)}
+function table(head,rows,numCols=[]){const t=h('table'),th=h('tr');head.forEach((c,i)=>th.append(h('th',{class:numCols.includes(i)?'num':'',scope:'col',text:c})));t.append(h('thead',{},th));const tb=h('tbody');for(const r of rows){const tr=h('tr');r.forEach((c,i)=>{const td=h('td',{class:numCols.includes(i)?'num':''});if(c&&c.nodeType)td.append(c);else td.textContent=c===null||c===undefined?'—':c;tr.append(td)});tb.append(tr)}t.append(tb);return h('div',{class:'tablewrap'},t)}
+
+/* ---------- charts ---------- */
+function tick(v){if(v===0)return '0';const a=Math.abs(v);return (a>=1000||a<0.01)?v.toExponential(1).replace('e+','e'):String(+v.toPrecision(3))}
+function lineChart(svg,series,o){svg.replaceChildren();const W=640,H=270,L=70,R=14,T=14,B=62;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+const vals=series.flatMap(s=>s.y).filter(v=>v!==null&&Number.isFinite(v));
+svg.setAttribute('aria-label',o.title+'. '+series.map(s=>s.name+': '+(s.y.filter(v=>v!==null).length?'min '+tick(Math.min(...s.y.filter(v=>v!==null)))+', max '+tick(Math.max(...s.y.filter(v=>v!==null))):'no finite values')).join('; ')+' ('+o.ylabel+')');
+if(!vals.length){svg.append(sv('text',{x:20,y:60,fill:'#506474','font-size':15},'No finite values for these inputs.'));return}
+let lo=Math.min(0,...vals),hi=Math.max(...vals);if(hi===lo)hi=lo+1e-9;const pad=(hi-lo)*0.06;hi+=pad;
+const n=series[0].y.length,X=i=>L+i*(W-L-R)/Math.max(n-1,1),Y=v=>T+(H-T-B)*(1-(v-lo)/(hi-lo));
+svg.append(sv('path',{d:`M${L} ${T}V${H-B}H${W-R}`,fill:'none',stroke:'#839ba6'}));
+for(let k=0;k<=4;k++){const v=lo+(hi-lo)*k/4,y=Y(v);svg.append(sv('line',{x1:L,x2:W-R,y1:y,y2:y,stroke:'#e1e9ed'}),sv('text',{x:L-6,y:y+5,'text-anchor':'end',fill:'#506474','font-size':14},tick(v)))}
+for(let i=0;i<n;i+=(n>8?2:1))svg.append(sv('text',{x:X(i),y:H-B+18,'text-anchor':'middle',fill:'#506474','font-size':14},String(o.x?o.x[i]:i+1)));
+svg.append(sv('text',{x:(L+W-R)/2,y:H-B+38,'text-anchor':'middle',fill:'#506474','font-size':14},o.xlabel||'Day'));
+svg.append(sv('text',{transform:`translate(16 ${(T+H-B)/2}) rotate(-90)`,'text-anchor':'middle',fill:'#506474','font-size':14},o.ylabel));
+series.forEach((s,k)=>{let d='';s.y.forEach((v,i)=>{d+=(v===null||!Number.isFinite(v))?'':((i===0||s.y[i-1]===null||!Number.isFinite(s.y[i-1])?'M':'L')+X(i).toFixed(1)+' '+Y(v).toFixed(1))});
+svg.append(sv('path',{d,fill:'none',stroke:s.color,'stroke-width':2.4,'stroke-dasharray':s.dash||'0'}));
+s.y.forEach((v,i)=>{if(v!==null&&Number.isFinite(v))svg.append(sv('circle',{cx:X(i),cy:Y(v),r:s.dash?2.6:3.2,fill:s.dash?'#fff':s.color,stroke:s.color,'stroke-width':1.6}))});
+const lx=L+10+k*190,ly=H-10;svg.append(sv('line',{x1:lx,x2:lx+26,y1:ly-4,y2:ly-4,stroke:s.color,'stroke-width':2.4,'stroke-dasharray':s.dash||'0'}),sv('text',{x:lx+32,y:ly,fill:'#163b4a','font-size':14},s.name))})}
+
+/* ---------- evidence: map, samples ---------- */
+const COMP={Deep:'#0072B2',PlantRoot:'#009E73',Surface:'#E69F00'};
+const SEQ=['#d6e9ee','#9ccfd8','#4faab8','#007b83','#0b4a56'];
+function buildSites(){state.sites={};for(const r of state.evidence){const s=state.sites[r.site]||(state.sites[r.site]={site:r.site,rows:[],lat:0,lon:0});s.rows.push(r)}
+for(const s of Object.values(state.sites)){s.lat=s.rows.reduce((a,r)=>a+r.lat,0)/s.rows.length;s.lon=s.rows.reduce((a,r)=>a+r.lon,0)/s.rows.length}}
+function mapSubset(){const f=$('map-filter').value;return state.evidence.filter(r=>f==='all'||(f.startsWith('c:')?r.compartment===f.slice(2):String(r.trip_num)===f.slice(2)))}
+function wedge(cx,cy,r,a0,a1,fill){if(a1-a0>=2*Math.PI-1e-6)return sv('circle',{cx,cy,r,fill});const p=a=>[cx+r*Math.sin(a),cy-r*Math.cos(a)];const [x0,y0]=p(a0),[x1,y1]=p(a1);return sv('path',{d:`M${cx} ${cy}L${x0.toFixed(2)} ${y0.toFixed(2)}A${r} ${r} 0 ${a1-a0>Math.PI?1:0} 1 ${x1.toFixed(2)} ${y1.toFixed(2)}Z`,fill})}
+function drawMap(){const svg=$('map');svg.replaceChildren();const all=Object.values(state.sites);if(!all.length)return;
+const lat0=all.reduce((a,s)=>a+s.lat,0)/all.length,k=Math.cos(lat0*Math.PI/180);
+const xs=all.map(s=>s.lon*k),ys=all.map(s=>s.lat);const x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys);
+const W=700,pad=34,H=300,sc=(W-2*pad)/Math.max(x1-x0,1e-6),sy=(H-2*pad)/Math.max(y1-y0,1e-6);
+svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+const PX=s=>pad+(s.lon*k-x0)*sc,PY=s=>H-pad-(s.lat-y0)*sy;
+svg.append(sv('rect',{x:0,y:0,width:W,height:H,fill:'#fbfdfe',stroke:'#ccd9df'}));
+const lonT=[...new Set(all.map(s=>Math.round(s.lon)))].sort((a,b)=>a-b);
+for(const lon of lonT){const x=pad+(lon*k-x0)*sc;if(x>10&&x<W-10){svg.append(sv('line',{x1:x,x2:x,y1:8,y2:H-24,stroke:'#e4ecef'}),sv('text',{x,y:H-8,'text-anchor':'middle','font-size':12,fill:'#506474'},lon+'°E'))}}
+for(const lat of [...new Set(all.map(s=>Math.round(s.lat*2)/2))]){const y=PY({lat});if(y>10&&y<H-30){svg.append(sv('line',{x1:30,x2:W-8,y1:y,y2:y,stroke:'#e4ecef'}),sv('text',{x:4,y:y+4,'font-size':12,fill:'#506474'},lat+'°N'))}}
+const sub=mapSubset(),mode=$('map-color').value,groups={};for(const r of sub){(groups[r.site]||(groups[r.site]=[])).push(r)}
+const sites=all.filter(s=>groups[s.site]).sort((a,b)=>groups[b.site].length-groups[a.site].length);
+for(const s of sites){const rows=groups[s.site],n=rows.length,r=3.5+1.55*Math.sqrt(n),cx=PX(s),cy=PY(s);
+const camp=new Set(rows.map(q=>q.trip_num));
+const g=sv('g',{class:'mapsite',tabindex:0,role:'button','aria-label':`Site ${s.site}: ${n} samples, ${camp.size} campaigns`,'aria-pressed':String(state.site==s.site)});
+g.append(sv('title',{},`Site ${s.site}: ${n} samples, ${camp.size} campaign(s); ${s.lat.toFixed(3)} N, ${s.lon.toFixed(3)} E`));
+if(mode==='compartment'){const cnt={};rows.forEach(q=>cnt[q.compartment]=(cnt[q.compartment]||0)+1);let a=0;for(const c of Object.keys(COMP)){if(!cnt[c])continue;const da=2*Math.PI*cnt[c]/n;g.append(wedge(cx,cy,r,a,a+da,COMP[c]));a+=da}}
+else g.append(sv('circle',{cx,cy,r,fill:SEQ[Math.min(camp.size,5)-1]}));
+g.append(sv('circle',{class:'ring',cx,cy,r,fill:'none',stroke:state.site==s.site?'#000':'#fff','stroke-width':state.site==s.site?3:1.2}));
+if(state.site==s.site)g.append(sv('text',{x:cx>W-90?cx-r-4:cx+r+4,y:cy-r-2,'text-anchor':cx>W-90?'end':'start','font-size':13,fill:'#000','font-weight':700,stroke:'#fbfdfe','stroke-width':3,'paint-order':'stroke'},'site '+s.site));
+const pick=()=>setSite(s.site);g.addEventListener('click',pick);g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick()}});svg.append(g)}
+const lg=$('map-legend');lg.replaceChildren();
+if(mode==='compartment')for(const [c,col] of Object.entries(COMP))lg.append(h('span',{},h('i',{style:'background:'+col}),c));
+else SEQ.forEach((col,i)=>lg.append(h('span',{},h('i',{style:'background:'+col}),`${i+1} campaign${i?'s':''}`)));
+lg.append(h('span',{text:`${sites.length} sites, ${sub.length} samples shown`}))}
+function setSite(site,keepSample){state.site=site;const rows=state.sites[site].rows;$('site-select').value=site;$('site-name').textContent='site '+site;
+const sel=$('sample');sel.replaceChildren();for(const r of rows)sel.append(h('option',{value:r.sample,text:`${r.sample} · ${r.compartment} · campaign ${r.trip_num}`}));
+const target=keepSample&&rows.find(r=>r.sample===state.sample)?state.sample:rows[0].sample;setSample(target,true);drawMap();renderSiteTable()}
+function renderSiteTable(){const tb=$('site-table').tBodies[0];tb.replaceChildren();for(const r of state.sites[state.site].rows){const tr=h('tr',{});const b=h('button',{class:'linkish',type:'button','aria-pressed':String(r.sample===state.sample),text:r.sample,onclick:()=>setSample(r.sample)});
+tr.append(h('td',{},b),h('td',{text:r.compartment}),h('td',{text:'#'+r.trip_num}),h('td',{text:dateText(r,true),title:dateText(r)}),h('td',{class:'num',text:fmt(r.lat,4)}),h('td',{class:'num',text:fmt(r.lon,4)}),h('td',{class:'num',text:fmt(r.total_h2_marker_ge)}));tb.append(tr)}}
+function dateText(r,short){if(!r.collection_date)return 'Unavailable';const sub=r.date_substitution_days;return r.collection_date+(sub?(short?` (corr. ${fmt(sub,0)} d)`:` (curated date; nominal trip date corrected by ${fmt(sub,0)} d)`):'')}
+function setSample(id,fromSite){state.sample=id;const row=state.bySample[id];if(!row)return;if(!fromSite&&state.site!=row.site){setSite(row.site,true);return}
+$('sample').value=id;const cs=$('community');if(cs.value!==''||cs.dataset.touched!=='1')cs.value=id;
+kv('sample-values',[['Site / compartment',`${row.site} / ${row.compartment}`],['Campaign',`#${row.trip_num}`],['Collected',dateText(row)],['Latitude, longitude',`${fmt(row.lat,4)}°N, ${fmt(row.lon,4)}°E`],['H₂ marker genome equivalents',fmt(row.total_h2_marker_ge)],['Unmapped reads',row.unmapped_read_pct===null?'Unavailable':fmt(row.unmapped_read_pct)+'%'],['CBB carrier share of mapped reads',pct(row.cbb_all_steps_detected_share_mapped)],['H₂ + CBB co-carrier share of mapped reads',pct(row.h2_cbb_all_steps_share_mapped)],['Mapped MAG Shannon',fmt(row.mapped_mag_shannon)]]);
+if(state.site!==null)renderSiteTable();drawMap();loadGamma(id)}
+async function loadGamma(id){const token=id;say('gamma-status','Loading entailed carrier shares…');$('gamma-sample').textContent=id;
+try{const d=await api('/v3/community/'+encodeURIComponent(id));if(state.sample!==token)return;
+const med=d.medians||{};const tb=$('share-table').tBodies[0];tb.replaceChildren();for(const [c,v] of Object.entries(d.shares))tb.append(h('tr',{},h('td',{},h('code',{text:'rak:'+c})),h('td',{class:'num',text:pct(v)}),h('td',{class:'num',text:pct(med[c])})));
+const gt=$('gamma-table').tBodies[0];gt.replaceChildren();for(const gas of ['h2','co'])gt.append(h('tr',{},h('td',{text:gas==='h2'?'H₂':'CO'}),...['reference','gate','proportional'].map(m=>h('td',{class:'num',text:sig(d.gamma[m][gas])}))));
+const okAll=Object.values(d.consistency||{}).every(Boolean);const note=$('gamma-note');note.replaceChildren();
+if(d.shares.COCarrierMAG===0)note.append(h('div',{class:'callout warn'},h('b',{text:'CO gate closed. '}),`No genome mapped in ${id} is entailed as rak:COCarrierMAG, so γ_CO = 0 under gate coupling and CO uptake is zero in every admissible regime (zero by deduction). This reflects annotation evidence, not proven absence.`));
+if(d.shares.H2CarrierMAG===0)note.append(h('div',{class:'callout warn'},h('b',{text:'H₂ gate closed. '}),`No entailed H₂ carrier in ${id}; H₂ uptake is zero by deduction.`));
+note.append(h('p',{class:'mono',text:`Subsumption consistency of shares: ${okAll?'all hold':'VIOLATED'}. ${d.mapping_check}.`}));
+say('gamma-status',`Entailed shares for ${id} (${state.bySample[id].compartment}, site ${state.bySample[id].site}).`)}catch(e){if(state.sample===token){say('gamma-status',e.message,true);$('share-table').tBodies[0].replaceChildren();$('gamma-table').tBodies[0].replaceChildren()}}}
+
+/* ---------- ontology panel ---------- */
+let magTimer=null;
+async function searchMags(){const req=++state.magReq;const q=$('mag-q').value.trim(),cand=$('mag-cand').checked;say('mag-count','Searching…');
+try{const d=await api(`/v3/mags?limit=25&candidates_only=${cand}`+(q?'&q='+encodeURIComponent(q):''));if(req!==state.magReq)return;
+const ul=$('mag-list');ul.replaceChildren();for(const m of d.mags){const tag=m.h2_cbb_all_steps?'H₂ candidate':m.cbb_all_steps_detected?'CBB complete':`${m.cbb_steps_detected}/11 CBB`;
+ul.append(h('li',{},h('button',{type:'button','aria-pressed':String(state.mag===m.rep),onclick:()=>showMag(m.rep),text:`${m.rep} · ${m.phylum||'unclassified'} · ${tag}`})))}
+say('mag-count',`Showing ${d.mags.length} of ${d.matching_mags.toLocaleString()} matching MAGs (${d.total_reference_mags.toLocaleString()} classified, ${d.h2_cbb_candidate_mags} H₂ + CBB candidates).`);
+if(!state.mag&&d.mags.length)showMag(d.mags[0].rep)}catch(e){if(req===state.magReq)say('mag-count',e.message,true)}}
+const KNOWN={hasKO:'has a gene assigned to',hasMarkerGuild:'carries the marker guild'};
+function readable(ax){let m;
+if(m=ax.match(/^SubClassOf\(\?mag ObjectSomeValuesFrom\(rak:(\w+) (\S+)\)\)$/))return `This genome ${KNOWN[m[1]]||m[1]} ${m[2]}.`;
+if(m=ax.match(/^SubClassOf\((kegg:\w+) (rak:StepKO_(\w+))\)$/))return `${m[1]} is accepted evidence for CBB step “${m[3].replaceAll('_',' ')}”.`;
+if(m=ax.match(/^EquivalentClasses\((rak:\w+) ObjectSomeValuesFrom\(rak:(\w+) (\S+)\)\)$/))return `${m[1]} is exactly the class of genomes that ${KNOWN[m[2]]||m[2]} ${m[3]}.`;
+if(m=ax.match(/^EquivalentClasses\((rak:\w+) ObjectIntersectionOf\((.*)\)\)$/))return `${m[1]} is exactly the class of genomes in all of: ${m[2].split(' ').join(', ')}.`;
+if(m=ax.match(/^DisjointUnion\((\S+) (.*)\)$/))return `${m[1]} is the disjoint union of ${m[2].split(' ').join(', ')}.`;
+return ax}
+async function showMag(id){state.mag=id;document.querySelectorAll('#mag-list button').forEach(b=>b.setAttribute('aria-pressed',String(b.textContent.startsWith(id+' '))));
+$('mag-title').textContent=id;const box=$('mag-detail');box.replaceChildren(h('p',{text:'Loading entailments…'}));$('ceiling-values').replaceChildren();say('ceiling-status','');$('run-ceiling').disabled=true;
+try{const d=await api('/v3/mags/'+encodeURIComponent(id));if(state.mag!==id)return;box.replaceChildren();
+const tx=d.taxonomy;box.append(h('p',{text:[tx.domain,tx.phylum,tx.order,tx.family,tx.genus].filter(Boolean).join(' › ')+` · completeness ${fmt(d.completeness,1)}%, contamination ${fmt(d.contamination,1)}%`}));
+box.append(h('h3',{text:'Classes entailed by the reasoner'}));
+const cls=d.entailed_classes;box.append(cls.length?h('ul',{class:'plain'},cls.map(c=>h('li',{},h('code',{text:c.class}),' ',h('span',{title:c.definition,text:c.label})))):h('p',{text:'Only rak:ReferenceMAG: no further class is entailed.'}));
+box.append(h('h3',{text:`CBB module M00165: ${d.cbb_steps_detected} of 11 steps have a detected KO`}));
+box.append(table(['Step','Status','Detected KOs','Accepted alternatives'],d.cbb_steps.map(s=>[s.step.replaceAll('_',' '),h('span',{class:'badge '+(s.present?'ok':'bad'),text:s.present?'present':'missing'}),s.detected_kos.join(', ')||'—',s.alternatives.join(', ')])));
+box.append(h('h3',{text:'Hydrogenase and CO dehydrogenase markers'}));
+const hg=d.hydrogenase_groups;box.append(table(['Marker group','Detected'],[['[NiFe] group 1l',hg.group_1l?'yes':'no'],['[NiFe] group 1h',hg.group_1h?'yes':'no'],['[NiFe] group 2a',hg.group_2a?'yes':'no'],['Form I CO dehydrogenase (CoxL)',hg.co_dehydrogenase_form_I?'yes':'no']]));
+box.append(h('h3',{text:'Why: justification axioms'}));
+const js=Object.entries(d.justifications);
+if(!js.length)box.append(h('p',{text:'Subset-minimal justifications are stored for the H₂ autotrophic candidate and CO carrier classes only; this genome has neither.'}));
+for(const [c,j] of js){const det=h('details',{open:''},h('summary',{text:`rak:${c} follows from ${j.mag_axioms.length} genome facts and ${j.tbox_axioms.length} ontology axioms`}));
+det.append(h('p',{class:'mono',style:'max-width:none',text:`One subset-minimal justification${j.subset_minimal?' (each axiom is necessary)':''}; other justifications may exist (enumeration complete: ${j.enumeration_complete}).`}));
+const d1=h('details',{open:''},h('summary',{text:`Genome facts (evidence): ${j.mag_axioms.length}`}));j.mag_axioms.forEach(a=>d1.append(h('div',{class:'axiom'},readable(a),h('code',{text:a}))));det.append(d1);
+const d2=h('details',{},h('summary',{text:`Ontology axioms (definitions): ${j.tbox_axioms.length}`}));j.tbox_axioms.forEach(a=>d2.append(h('div',{class:'axiom'},readable(a),h('code',{text:a}))));det.append(d2);box.append(det)}
+box.append(h('p',{class:'mono',style:'max-width:none',text:'Ontology SHA-256 '+d.ontology_sha256.slice(0,16)+'… · '+d.note}));
+$('run-ceiling').disabled=false}catch(e){if(state.mag===id)box.replaceChildren(h('p',{class:'status err',text:e.message}))}}
+$('mag-go').addEventListener('click',searchMags);$('mag-cand').addEventListener('change',()=>{state.mag=null;searchMags()});
+$('mag-q').addEventListener('input',()=>{clearTimeout(magTimer);magTimer=setTimeout(()=>{state.mag=null;searchMags()},300)});
+$('mag-q').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();clearTimeout(magTimer);state.mag=null;searchMags()}});
+$('run-ceiling').addEventListener('click',async()=>{const num=id=>Number($(id).value);$('ceiling-values').replaceChildren();say('ceiling-status','Computing…');
+try{$('run-ceiling').disabled=true;const body={mag_id:state.mag,h2:num('rc-h2')*1e-9,co:num('rc-co')*1e-9,oxygen:num('rc-o2')*1e-9,external_co2:num('rc-co2')*1e-9,capture_fraction:num('rc-cap'),maintenance_w_m2:num('rc-maint')*1e-6,synthesis_j_mol_c:num('rc-cost')*1e3};
+if(Object.values(body).some(v=>typeof v==='number'&&!Number.isFinite(v)))throw Error('Enter a number in every field.');
+const out=await api('/v3/resource-ceiling',body);const f=out.fluxes;
+kv('ceiling-values',[['Gate decision',out.status.replaceAll('_',' ')],['Entailed classes',(out.genomic_evidence.owl_classes||[]).join(', ')],['Max CH₂O synthesis (ceiling)',f?fmt(f.carbohydrate_c*1e9,3)+' nmol C m⁻² s⁻¹':'Unavailable: the OWL gate abstains'],['H₂ oxidation flux',f?fmt(f.h2_respiration*1e9,3)+' nmol m⁻² s⁻¹':'Unavailable'],['CO oxidation flux',f?fmt(f.co_respiration*1e9,3)+' nmol m⁻² s⁻¹ ('+(out.reaction_admission.co_oxidation?'admitted':'not admitted')+')':'Unavailable'],['Net carbon removal','Unavailable (needs stock-change measurements)']]);
+say('ceiling-status',out.reason||out.admission_scope||'')}catch(e){say('ceiling-status',e.message,true)}finally{$('run-ceiling').disabled=!state.mag}});
+
+/* ---------- mechanisms ---------- */
+async function loadGraph(){try{const g=await api('/v3/graph');state.graph=g;
+$('graph-summary').textContent=`This release exports ${g.nodes.length} nodes and ${g.edges.length} edges in ${g.zones.length} zones.`;
+const sel=$('adm-node');sel.replaceChildren();for(const z of g.zones){const og=h('optgroup',{label:z.replaceAll('_',' ')});for(const n of g.nodes.filter(n=>n.zone===z))og.append(h('option',{value:n.id,text:`${n.id} — ${n.label}`}));sel.append(og)}
+sel.value='I';sel.disabled=false;$('adm-go').disabled=false;
+const tb=$('graph-table').tBodies[0];for(const n of g.nodes)tb.append(h('tr',{},h('td',{},h('code',{text:n.id}),' ',n.label),h('td',{text:n.zone.replaceAll('_',' ')}),h('td',{text:n.unit}),h('td',{},h('code',{text:n.equation})),h('td',{text:n.manipulable?n.physical_action||'yes':'no'})));
+admUpdate()}catch(e){$('graph-summary').textContent='Graph unavailable: '+e.message}}
+function admUpdate(){$('adm-version-wrap').hidden=$('adm-node').value!=='psi'}
+$('adm-node').addEventListener('change',()=>{admUpdate();$('adm-result').replaceChildren()});
+$('adm-go').addEventListener('click',async()=>{const box=$('adm-result');box.replaceChildren(h('p',{text:'Asking the server…'}));const node=$('adm-node').value,v=$('adm-value').value;
+try{const body={node};if(v!=='')body.value=Number(v);if(node==='psi'&&$('adm-version').value)body.version=$('adm-version').value;
+const d=await api('/v3/admissibility',body);const n=state.graph.nodes.find(x=>x.id===node);box.replaceChildren();
+box.append(h('p',{},h('span',{class:'badge '+(d.admissible?'ok':'bad'),text:d.admissible?'Admissible':'Not admissible'}),' ',h('span',{class:'mono',text:'checked at stage: '+d.stage})),h('div',{class:'callout'+(d.admissible?'':' warn'),text:d.message}));
+if(n)box.append(h('p',{class:'mono',style:'max-width:none',text:`${n.id} (${n.zone.replaceAll('_',' ')}): ${n.equation}`+(n.parents.length?` ← ${n.parents.join(', ')}`:'')}));
+if(d.admissible&&d.h2_uptake_difference_mol_m2!==undefined)box.append(h('p',{text:`Effect on 14-day H₂ uptake in the reference scenario: ${sig(d.h2_uptake_difference_mol_m2*1e6)} µmol m⁻² relative to no change.`}))}catch(e){box.replaceChildren(h('p',{class:'status err',text:e.message}))}});
+function schedDays(n){return new Set(Array.from({length:n},(_,i)=>Math.floor(i*14/n)))}
+function baseRequest(water0,k){return{parameters:{k_h2_s:k,k_co_s:k},initial:{water_mm:water0}}}
+function flat14(water){return Array.from({length:14},(_,d)=>({water_mm:water?water(d):0,evaporation_mm:1,temp_c:25}))}
+$('psi-go').addEventListener('click',async()=>{const out=$('psi-out');out.replaceChildren();const psi=Number($('psi-target').value),w0=Number($('psi-w0').value);
+if(!(psi<0&&psi>=-20)||!(w0>0&&w0<=40)){say('psi-status','Enter ψ between −20 and 0 MPa and initial water between 0 and 40 mm.',true);return}
+say('psi-status','Computing both versions…');$('psi-go').disabled=true;
+try{const rel={};for(const o of ['A','J_h2'])rel[o]=await api('/v3/version-relevance',{target:'psi',outcome:o});
+const run={};for(const ver of ['matric','osmotic']){try{run[ver]=await api('/v3/intervene',{...baseRequest(w0,0.001),forcing:flat14(),intervention:{state:{'0':{psi_mpa:psi,version:ver}}}})}catch(e){run[ver]={error:e.message}}}
+const row=ver=>{const r=run[ver];if(r.error)return[ver,'—','—','—','Infeasible: '+r.error];const s=r.state_interventions[0].resolved.psi_mpa,tr=r.intervened.trajectory;const act=tr[0].gas?tr[0].gas.activation:null;const u=r.intervened.summary.h2_uptake_mol_m2;
+return[ver,s.handle,`${fmt(s.water_mm,2)} mm water, ${fmt(s.salt_mol_m2,3)} mol m⁻² salt`,act===null?'Unavailable':fmt(act,3),u===null?'Unavailable (salt beyond dilute domain)':sig(u*1e6)+' µmol m⁻²']};
+out.append(table(['ψ version','Handle','Resulting state','Activation, day 1','H₂ uptake, 14 days'],[row('matric'),row('osmotic')]));
+for(const o of ['A','J_h2']){const r=rel[o];out.append(h('div',{class:'callout'+(r.relevant?' warn':'')},h('b',{text:`Effect on ${o==='A'?'activation A':'H₂ uptake J_H2'}: `}),r.reading+'.',r.bypass_paths.length?h('div',{class:'mono'},'Bypass paths: '+r.bypass_paths.map(p=>p.join(' → ')).join('; ')):null))}
+out.append(h('p',{text:'Same ψ, different physical realisation. The two versions agree on what activation can see (ψ) but differ in the water content that sets gas diffusivity, so the uptake contrast is not determined by ψ alone. A request to do(ψ) therefore has to name its version.'}));
+say('psi-status','Done.')}catch(e){say('psi-status',e.message,true);out.replaceChildren()}finally{$('psi-go').disabled=false}});
+
+/* ---------- paired regimes ---------- */
+const TARGETS={schedule:{help:'Baseline: no water added. Intervened: the total water is added by the chosen schedule (a version of the 12 mm superclass). Both arms: 1 mm/day evaporation, 25 °C, 1.8 mm initial water.'},
+nacl:{label:'NaCl in the added water (mol/L)',val:0.1,min:0,max:5,help:'Both arms receive the chosen water schedule. Baseline NaCl is 0; the intervened arm replaces it on every watering day.'},
+temp:{label:'Soil temperature (°C)',val:35,min:0,max:50,help:'Both arms receive the chosen water schedule. Baseline temperature is 25 °C; the intervened arm replaces it on all 14 days.'},
+porosity:{label:'Post-disturbance porosity',val:0.3,min:0.2,max:0.6,help:'Both arms receive the chosen water schedule. Baseline porosity is 0.40; the intervened arm uses the new value with retention parameters unchanged (a compaction scenario, not mechanics).'}};
+function syncTarget(){const t=$('target').value,c=TARGETS[t];$('target-help').textContent=c.help;$('value-wrap').hidden=t==='schedule';$('schedule-label').textContent=t==='schedule'?'Wetting schedule (the version being applied)':'Background wetting schedule (both arms)';
+if(t!=='schedule'){$('tvalue-label').textContent=c.label;$('tvalue').min=c.min;$('tvalue').max=c.max;$('tvalue').value=c.val}}
+$('target').addEventListener('change',()=>{syncTarget();clearRegime()});
+$('community').addEventListener('change',e=>{e.target.dataset.touched='1'});
+function clearRegime(){$('regime-body').replaceChildren();$('outcome').textContent='Run the paired regimes to inspect both trajectories.';state.run=null;say('status','')}
+function buildRegime(){const t=$('target').value,n=Number($('schedule').value),total=Number($('water').value),k=Number($('kinetic').value);
+if(!Number.isFinite(total)||total<0||total>100)throw Error('Total added water must be between 0 and 100 mm.');
+if(!Number.isFinite(k)||k<0||k>1)throw Error('The reaction coefficient must be between 0 and 1 s⁻¹.');
+const days=schedDays(n),amt=total/n;
+const req={...baseRequest(1.8,k)};let inter,desc;
+if(t==='schedule'){req.forcing=flat14();inter={forcing:Object.fromEntries([...days].map(d=>[String(d),{water_mm:amt}]))};desc=`do(added water := ${fmt(total,2)} mm as ${n===1?'one pulse':n===4?'four pulses':'daily pulses'}); baseline: no water`}
+else{const v=Number($('tvalue').value),c=TARGETS[t];if(!Number.isFinite(v)||v<c.min||v>c.max)throw Error(`${c.label} must be between ${c.min} and ${c.max}.`);
+req.forcing=flat14(d=>days.has(d)?amt:0);
+if(t==='nacl'){inter={forcing:Object.fromEntries([...days].map(d=>[String(d),{nacl_mol_l:v}]))};desc=`do(NaCl in added water := ${v} mol/L)`}
+else if(t==='temp'){inter={forcing:Object.fromEntries(Array.from({length:14},(_,d)=>[String(d),{temp_c:v}]))};desc=`do(temperature := ${v} °C)`}
+else{inter={parameters:{porosity:v}};desc=`do(porosity := ${v})`}}
+req.intervention=inter;const comm=$('community').value;if(comm){req.community={sample:comm};req.coupling=$('coupling').value}
+return{req,desc}}
+$('scenario').addEventListener('submit',async event=>{event.preventDefault();clearRegime();$('run').disabled=true;
+try{const {req,desc}=buildRegime();say('status','Computing both regimes…');const data=await api('/v3/intervene',req);state.run={request:req,response:data};renderRegime(req,desc,data);say('status','Done. Both arms and the checks are included in the download.')}
+catch(e){clearRegime();say('status',e.message,true);$('outcome').textContent='No result for these inputs.'}finally{$('run').disabled=false}});
+function renderRegime(req,desc,d){const body=$('regime-body');body.replaceChildren();$('outcome').textContent='Result: '+desc;
+const gu=d.gas_uptake,um=x=>sig(x*1e6)+' µmol m⁻²';
+body.append(h('div',{class:'tiles'},h('div',{class:'tile'},h('small',{text:'Baseline H₂ uptake'}),h('strong',{text:um(gu.h2_mol_m2.baseline)})),h('div',{class:'tile'},h('small',{text:'Intervened H₂ uptake'}),h('strong',{text:um(gu.h2_mol_m2.intervened)})),h('div',{class:'tile'},h('small',{text:'Difference (intervened − baseline)'}),h('strong',{text:um(gu.h2_mol_m2.difference)}))));
+body.append(h('div',{class:'tiles'},h('div',{class:'tile'},h('small',{text:'Baseline CO uptake'}),h('strong',{text:um(gu.co_mol_m2.baseline)})),h('div',{class:'tile'},h('small',{text:'Intervened CO uptake'}),h('strong',{text:um(gu.co_mol_m2.intervened)})),h('div',{class:'tile'},h('small',{text:'Difference'}),h('strong',{text:um(gu.co_mol_m2.difference)}))));
+if(d.baseline.summary.h2_uptake_mol_m2===null||d.intervened.summary.h2_uptake_mol_m2===null)body.append(h('div',{class:'callout warn',text:'Salt exceeded the dilute chemistry domain in at least one arm, so uptake there is unavailable; the water and salt ledger remains valid.'}));
+for(const x of d.deduced)body.append(h('div',{class:'callout'},h('b',{text:`${x.gas.toUpperCase()}: ${x.effect.replaceAll('_',' ')}. `}),`Class rak:${x.class}, share ${pct(x.share)}. Simulated contrast ${sig(x.simulated_contrast_mol_m2*1e6)} µmol m⁻². `,h('div',{class:'mono',text:x.derivation})));
+if(d.community&&d.community.mode&&d.community.community)body.append(h('p',{class:'mono',style:'max-width:none',text:`Community ${d.community.community.sample||JSON.stringify(d.community.community)}, coupling ${d.community.mode}: γ_H2 = ${sig(d.community.gamma.h2)}, γ_CO = ${sig(d.community.gamma.co)}.`}));
+const days=d.baseline.trajectory.map(r=>r.day),series=(f,u)=>[{name:'Baseline',y:d.baseline.trajectory.map(r=>f(r)),color:'#5b6f7c',dash:'6 4'},{name:'Intervened',y:d.intervened.trajectory.map(r=>f(r)),color:'#007b83'}];
+const figs=h('div',{class:'charts'});
+const add=(id,cap,f,ylabel)=>{const svg=sv('svg',{id,role:'img'});figs.append(h('figure',{},svg,h('figcaption',{text:cap})));lineChart(svg,series(f),{title:cap,ylabel,x:days,xlabel:'Day after the start'})};
+add('ch-h2','Daily H₂ uptake rate',r=>r.gas&&r.gas.h2_mol_m2_s!==null?r.gas.h2_mol_m2_s*1e9:null,'nmol H₂ m⁻² s⁻¹');
+add('ch-w','Soil water (end of day)',r=>r.water_mm,'mm in the 10 cm layer');
+add('ch-n','Salt inventory (end of day)',r=>r.salt_mol_m2,'mol NaCl m⁻²');
+body.append(figs);
+const rows=d.baseline.trajectory.map((r,i)=>{const q=d.intervened.trajectory[i];return[r.day,fmt(r.gas?r.gas.h2_mol_m2_s*1e9:null,4),fmt(q.gas?q.gas.h2_mol_m2_s*1e9:null,4),fmt(r.water_mm,3),fmt(q.water_mm,3),fmt(r.salt_mol_m2,4),fmt(q.salt_mol_m2,4)]});
+body.append(h('details',{},h('summary',{text:'Daily values (table equivalent of the charts)'}),table(['Day','H₂ base (nmol m⁻² s⁻¹)','H₂ interv.','Water base (mm)','Water interv.','Salt base (mol m⁻²)','Salt interv.'],rows,[0,1,2,3,4,5,6])));
+const checks=Object.entries(d.checks),good=checks.filter(c=>c[1]).length;
+body.append(h('h3',{text:'Invariance and identity checks'}),h('p',{},h('span',{class:'badge '+(good===checks.length?'ok':'bad'),text:`${good} of ${checks.length} pass`}),' Deduced memberships, shares and γ are identical in both arms; constitutive identities and balances hold along both trajectories.'),
+h('details',{},h('summary',{text:'List every check'}),h('ul',{class:'plain'},checks.map(([k,v])=>h('li',{},h('span',{class:'badge '+(v?'ok':'bad'),text:v?'pass':'FAIL'}),' ',h('code',{text:k}))))));
+const tr=d.trace;
+body.append(h('h3',{text:'Trace: what was replaced'}),h('dl',{},h('dt',{text:'Targets replaced'}),h('dd',{text:tr.targets_replaced.join(', ')||'none'}),h('dt',{text:'Admissible graph nodes'}),h('dd',{text:tr.admissible_nodes.join(', ')}),h('dt',{text:'Initial state shared'}),h('dd',{text:String(tr.initial_state_shared)}),h('dt',{text:'Definitions and annotations invariant'}),h('dd',{text:String(tr.definitions_and_annotations_invariant)})),
+h('details',{},h('summary',{text:'Digests of evidence, ontology, contract, graph and process code'}),h('dl',{},['evidence','ontology','contract','graph','process_code'].flatMap(k=>[h('dt',{text:k.replace('_',' ')}),h('dd',{},h('code',{text:(tr[k+'_sha256']||'').slice(0,16)+'…'}))]))),
+h('p',{class:'mono',style:'max-width:none',text:tr.scope}));
+if(d.state_interventions&&d.state_interventions.length)body.append(h('pre',{text:JSON.stringify(d.state_interventions,null,2)}));
+const dl=h('button',{type:'button',class:'secondary',text:'Download this run (eq-biodt-v06-scenario.json)',onclick:downloadRun});body.append(dl)}
+function downloadRun(){if(!state.run)return;const url=URL.createObjectURL(new Blob([JSON.stringify(state.run,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='eq-biodt-v06-scenario.json';a.click();URL.revokeObjectURL(url)}
+
+/* treatment versions */
+const VERS=[['intact',0,0,null],['single_pulse',1,1,1],['four_pulses',4,1,4],['daily_pulses',14,1,14]];
+$('cmp-go').addEventListener('click',async()=>{const out=$('cmp-out');out.replaceChildren();say('cmp-status','Running 4 schedules × 24 parameter members…');$('cmp-go').disabled=true;
+try{const total=Number($('water').value);if(!(total>0&&total<=100))throw Error('Set a total added water between 0 and 100 mm above.');const k=Number($('kinetic').value);
+const scenarios=VERS.map(([name,n,dist])=>{const sd=n?schedDays(n):new Set();return{name,disturbance_m2:dist,forcing:flat14(d=>sd.has(d)?total/n:0)}});
+const body={initial:{water_mm:1.8},parameters:{k_h2_s:k,k_co_s:k},scenarios};const comm=$('community').value;if(comm){body.community={sample:comm};body.coupling=$('coupling').value}
+const d=await api('/v3/compare',body);renderCompare(d,total);say('cmp-status','Done.')}catch(e){say('cmp-status',e.message,true)}finally{$('cmp-go').disabled=false}});
+function renderCompare(d,total){const out=$('cmp-out');out.replaceChildren();const names=VERS.map(v=>v[0]),M=d.parameters.length;
+const by={};for(const o of d.outcomes){(by[o.member]||(by[o.member]={}))[o.scenario]=o.h2_uptake_mol_m2}
+const pareto=Object.fromEntries(d.pareto_by_member.map(p=>[p.member,p.pareto]));
+const grp=d.treatment_versions.groups[0];
+const varying=Object.keys(d.parameters[0]).filter(k=>new Set(d.parameters.map(p=>JSON.stringify(p[k]))).size>1);
+const ranges=names.map(n=>{const v=Array.from({length:M},(_,m)=>by[m][n]).filter(x=>x!==null);return[n,v.length?Math.min(...v):null,v.length?Math.max(...v):null,Array.from({length:M},(_,m)=>pareto[m].includes(n)).filter(Boolean).length]});
+const status=h('div',{class:'callout'+(d.treatment_versions.version_relevant?' warn':'')},h('b',{text:grp&&grp.ranking_changes_across_members?'Rank reversal across members: yes. ':'Rank reversal across members: no. '}),
+grp&&grp.ranking_changes_across_members?`The best schedule for ${fmt(grp.total_water_mm)} mm depends on the parameter member, so “add ${fmt(grp.total_water_mm)} mm” is not a well-defined treatment without a version.`:'The ranking of schedules is the same in every member.',
+h('div',{class:'mono'},d.treatment_versions.note));
+out.append(status);
+out.append(h('h3',{text:'Range of 14-day H₂ uptake over the 24 members'}),table(['Schedule','Min (µmol m⁻²)','Max (µmol m⁻²)','Pareto-optimal in members'],ranges.map(r=>[r[0].replaceAll('_',' '),sig(r[1]===null?null:r[1]*1e6),sig(r[2]===null?null:r[2]*1e6),`${r[3]} of ${M}`]),[1,2,3]));
+out.append(h('p',{},'Pareto-optimal in every member: ',h('b',{text:(d.pareto_in_every_member.join(', ')||'none').replaceAll('_',' ')}),'. Objectives: ',Object.entries(d.objectives).map(([k,v])=>`${k.replaceAll('_',' ')} (${v})`).join(', '),'.'));
+const rowsM=Array.from({length:M},(_,m)=>{const vals=names.slice(1).map(n=>by[m][n]);const best=names.slice(1)[vals.indexOf(Math.max(...vals.map(v=>v===null?-Infinity:v)))];
+return[String(m),varying.map(k=>`${k}=${sig(d.parameters[m][k])}`).join(', '),...names.map(n=>sig(by[m][n]===null?null:by[m][n]*1e6)),best.replaceAll('_',' '),pareto[m].map(x=>x.replaceAll('_',' ')).join(', ')]});
+out.append(h('details',{},h('summary',{text:'Per-member uptake, best version and Pareto set'}),table(['Member','Varying parameters',...names.map(n=>n.replaceAll('_',' ')+' (µmol m⁻²)'),'Best of the three versions','Pareto set'],rowsM,[0,2,3,4,5])));
+out.append(h('details',{},h('summary',{text:'Pairwise uptake differences'}),table(['A','B','Difference range B−A (µmol m⁻²)','Rank reversal'],d.pairwise_uptake_comparisons.map(p=>[p.a.replaceAll('_',' '),p.b.replaceAll('_',' '),`${sig(p.uptake_difference_range_mol_m2[0]*1e6)} to ${sig(p.uptake_difference_range_mol_m2[1]*1e6)}`,p.rank_reversal?'yes':'no']))));
+out.append(h('p',{class:'mono',style:'max-width:none',text:d.interpretation}))}
+
+/* ---------- transfer ---------- */
+async function loadTransfer(){try{const t=await api('/v3/transfer');const box=$('transfer-out');box.replaceChildren();
+const nm=t.namib;box.append(h('h3',{text:'Namib Desert: hydration increases atmospheric H₂ oxidation'}));
+box.append(table(['Site','Dry rate (mean)','Wet rate (mean)','Wet/dry ratio [95% bootstrap interval]','Replicates dry / wet'],nm.contrasts_quantified.map(c=>[c.site,fmt(c.dry_mean,3),fmt(c.wet_mean,3),`${c.fold.toFixed(1)} [${c.fold_lcl.toFixed(1)}–${c.fold_ucl.toFixed(1)}]`,`${c.n_dry_rates} / ${c.n_wet_rates}`]),[1,2,3]));
+box.append(h('p',{},`Wet-soil microcosms from all ${nm.sites} sites reached sub-atmospheric H₂; the other ${nm.other_sites.length} sites had no quantified dry atmospheric-rate endpoint within the observation period, so no ratio is formed and no zero is imputed. Rates are ${nm.rate_unit}.`));
+const dens=[...new Set(nm.reference_predictions.map(p=>p.assumed_bulk_density_g_cm3))].sort();
+const act=nm.reference_predictions.filter(p=>nm.contrasts_quantified.some(c=>c.site===p.site));
+box.append(h('h3',{text:'What the reference model predicts at the two active sites'}),table(['Site','Bulk density (g cm⁻³)','Predicted dry flux','Predicted wet flux','Predicted direction of hydration'],act.map(p=>[p.site,p.assumed_bulk_density_g_cm3,fmt(p.dry_reference_flux,3),fmt(p.wet_reference_flux,3),p.predicted_direction>0?'increase (matches)':'decrease (reversal)']),[1,2,3]));
+box.append(h('div',{class:'callout warn'},h('b',{text:'Where the reference fails: '}),nm.reference_failure+' ',h('span',{text:nm.measurement_exclusion})));
+const sn=t.sonoran;box.append(h('h3',{text:`Sonoran field campaigns: leave-one-campaign-out error (${sn.field_metric_unit})`}));
+const label={frozen_reference:'Frozen reference model',calibrated_kinetics:'Kinetic coefficient calibrated',calibrated_diffusion_only:'Diffusion-only coefficient calibrated',training_mean:'Training mean',linear_moisture_temperature:'Linear moisture and temperature',calibrated_retention:'Soil-response parameters calibrated'};
+const order=['frozen_reference','calibrated_kinetics','calibrated_diffusion_only','training_mean','linear_moisture_temperature','calibrated_retention'];const fm=Object.fromEntries(sn.field_metrics.map(m=>[m.model,m]));
+const maxv=Math.max(...sn.field_metrics.map(m=>m.rmse)),svg=sv('svg',{role:'img',viewBox:`0 0 640 ${order.length*34+10}`,'aria-label':'RMSE by model: '+order.map(k=>label[k]+' '+fmt(fm[k].rmse,2)).join('; ')});
+order.forEach((k,i)=>{const y=6+i*34,w=(fm[k].rmse/maxv)*300;svg.append(sv('text',{x:0,y:y+17,'font-size':14,fill:'#163b4a'},label[k]),sv('rect',{x:280,y,width:w,height:22,class:'hbar'+(k==='frozen_reference'?' ref':'')}),sv('text',{x:286+w,y:y+17,'font-size':14,fill:'#163b4a'},fmt(fm[k].rmse,2)))});
+box.append(svg);
+box.append(table(['Model','RMSE','MAE'],order.map(k=>[label[k],fmt(fm[k].rmse,2),fmt(fm[k].mae,2)]),[1,2]));
+box.append(h('p',{text:`${sn.field_validation} (${sn.field_collars} collar measurements). Calibrating the soil-response parameters (0.69) beats the training mean (0.79) overall but not in every held campaign; one site and one season sequence cannot separate temperature and moisture responses.`}));
+box.append(h('details',{},h('summary',{text:`Sonoran laboratory hydration contrasts (${sn.lab_bottles} bottles; difference in ${sn.lab_contrasts[0].unit})`}),table(['Plot','Dry → wet water content (g/g)','Difference [95% interval]'],sn.lab_contrasts.map(c=>[c.site,`${c.dry_gwc} → ${c.wet_gwc}`,`${fmt(c.difference,2)} [${fmt(c.lcl,2)}, ${fmt(c.ucl,2)}]`]),[2]),h('p',{class:'mono',text:sn.lab_scope})));
+const tp=t.temperate;box.append(h('h3',{text:'Temperate soils: leave-one-soil-out bottle-rate RMSE'}));
+const soils=[...new Set(tp.rmse.map(r=>r.soil))],models=['activation_diffusion','diffusion_only','training_mean'];
+box.append(table(['Held-out soil',...models.map(m=>m.replace('_',' '))],soils.map(s=>{const v=models.map(m=>tp.rmse.find(r=>r.soil===s&&r.model===m).rmse),best=Math.min(...v);return[s.replace('PB_sand','Sand'),...v.map(x=>h('span',{style:x===best?'font-weight:700':'',text:fmt(x,4)+(x===best?' (best)':'')}))]}),[1,2,3]));
+box.append(h('p',{text:'The activation–diffusion model wins for forest and sand soils and loses for meadow: transfer between environments is uneven, and the parameters that differ are the soil-retention and activation-threshold mechanisms.'}));
+say('transfer-status','')}catch(e){say('transfer-status',e.message,true)}}
+
+/* ---------- boot ---------- */
+async function boot(){syncTarget();
+const ev=api('/v3/evidence').then(data=>{const m=data.manifest;state.evidence=data.observations;for(const r of state.evidence)state.bySample[r.sample]=r;buildSites();
+$('evidence-summary').textContent=`${m.samples} metagenomic samples from ${Object.keys(state.sites).length} sites and five campaigns; ${m.reference_MAGs.toLocaleString()} reference MAGs classified in OWL 2 by Kobayashi-MaRust. ${m.all_CBB_steps_MAGs} satisfy the complete CBB module; ${m.h2_CBB_all_steps_MAGs} also carry a screened hydrogenase.`;
+$('pl-evidence').textContent=`${m.samples} metagenomes, ${m.reference_MAGs.toLocaleString()} reference MAGs`;$('pl-owl').textContent=`${m.h2_CBB_all_steps_MAGs} H₂ + CBB candidates entailed`;
+const ss=$('site-select');for(const s of Object.values(state.sites).sort((a,b)=>a.site-b.site))ss.append(h('option',{value:s.site,text:`Site ${s.site} (${s.rows.length} samples)`}));ss.disabled=false;ss.addEventListener('change',()=>setSite(Number(ss.value)));
+$('sample').disabled=false;$('sample').addEventListener('change',e=>setSample(e.target.value));
+const mf=$('map-filter');mf.append(h('option',{value:'all',text:'All 551 samples'}));for(const c of Object.keys(COMP))mf.append(h('option',{value:'c:'+c,text:'Compartment: '+c}));for(const t of [1,2,3,4,5])mf.append(h('option',{value:'t:'+t,text:'Campaign '+t}));
+mf.addEventListener('change',drawMap);$('map-color').addEventListener('change',drawMap);
+const cs=$('community');for(const r of state.evidence)cs.append(h('option',{value:r.sample,text:`${r.sample} · ${r.compartment} · site ${r.site}`}));
+if(!state.bySample[state.sample])state.sample=state.evidence[0].sample;setSite(state.bySample[state.sample].site,true)}).catch(e=>{$('evidence-summary').textContent='Evidence unavailable: '+e.message});
+await ev;await Promise.allSettled([searchMags(),loadGraph(),loadTransfer()])}
+boot();
 </script></body></html>

@@ -1,5 +1,5 @@
 {
-  "version": "0.5.0",
+  "version": "0.6.0",
   "sources": {
     "corrected_full_MAG_KOs": {
       "file": "rep_ko_v2.tsv.gz",
@@ -94,7 +94,10 @@
   "artifacts": {
     "mag_evidence.tsv": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
     "sample_evidence.tsv": "8524f9fcca268e74e143f31c34f98f02213468907bfaf5b9bbc279afc4cca38c",
-    "entailed_memberships.json": "e8f6cacb3742ace98de6ebc8a882ee133754fa75771f7e4619a2c39179b5a496",
-    "ontology_report.json": "54d9a8101d803e72f10c46691b6203015ec1df7e4cb06271683e7852d12576cb"
+    "entailed_memberships.json": "48525353e48d60ba655b8af48c2d06f81f680706ec37e261dc59368d9494cd8d",
+    "ontology_report.json": "00f0553b43fb82a3391dca2512da1c2a61cdb6d67553038c235fad37c5ab566b",
+    "observation_maps.json": "8fd10624df0fc2c964e624f3b9e60e98cd5815f9c23de2881de17b5c533fce0c",
+    "justifications.json": "69ffbb81f733e5101c761cf329f08884dff04ddca133af8fd12b08f42e21b2aa",
+    "ontology_mappings.tsv": "509bcce249801fe274c6b2ffc8029ec0f5f34d0c3a4b4f11ab67388468cca4e0"
   }
 }
