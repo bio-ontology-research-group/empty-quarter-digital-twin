@@ -1,11 +1,11 @@
 {
   "release": "0.6.0-dev",
-  "v05_rerun": true,
+  "v05_rerun": false,
   "timings_seconds": {
-    "v05_reproduce": 200.7,
-    "analyse": 11.5,
-    "figures": 3.9,
-    "tables": 0.4
+    "analyse": 10.5,
+    "figures": 3.0,
+    "tables": 0.5,
+    "identification": 0.8
   },
   "bootstrap": {
     "draws": 2000,
@@ -25,13 +25,15 @@
     "data/v03/ontology_mappings.tsv": "509bcce249801fe274c6b2ffc8029ec0f5f34d0c3a4b4f11ab67388468cca4e0",
     "data/v03/ontology_report.json": "00f0553b43fb82a3391dca2512da1c2a61cdb6d67553038c235fad37c5ab566b",
     "data/v03/sample_evidence.tsv": "8524f9fcca268e74e143f31c34f98f02213468907bfaf5b9bbc279afc4cca38c",
+    "data/v03/transfer_summary.json": "7c12fdbf5063e45c01f3cca56c68f73beba9bd8f6604bae4bd6200f1781695b6",
     "src/eq_biodt/v03/__init__.py": "7e8e898ca3f6b29e96f040bf01b24363ceb82f895bee31a25c9a270876938b99",
-    "src/eq_biodt/v03/api.py": "e531cfdbee00cafb9899e60b3b5989bd7ad2c4c9082841a3e20a8da52062859f",
-    "src/eq_biodt/v03/cli.py": "844c5d74b52c0ef222e5d0c01d9b8a12b35ad996f23160169796f1acb69b2405",
+    "src/eq_biodt/v03/api.py": "4ec6b017ed477a6ffef91df1aec824e30cd446e2e278b1fc013d2969f70abc8a",
+    "src/eq_biodt/v03/cli.py": "113e1f8ae0afcdb8c0ced89ec0a60e2faac77a4015db434395f6d462929145c1",
     "src/eq_biodt/v03/community.py": "461c991729759d8994d2d91c94a761868f4b9a230b3a58fc8cdb3f7f6dd66ad2",
     "src/eq_biodt/v03/contract.py": "3331f5690b0c5630f801866c484daf7191fe5b5366ef253dbaf1965c4d911b4a",
     "src/eq_biodt/v03/evidence.py": "93c7fba039d2f22ce54ddad47e1d8cace4d99768a8182e75791a7b19be0d30f0",
     "src/eq_biodt/v03/forecast.py": "f6f131ee1c39644472235c7b223825eb257fbe3741767cb5e599fd0537b18fcb",
+    "src/eq_biodt/v03/identification.py": "36f1d1c3fddbac852fa9c42c2dc5314875a92022af0a189f1a71d750f359c8ca",
     "src/eq_biodt/v03/interventions.py": "4f288ed58ddf3ea03b378b206edc3f2166d7d8ecf6defc645d9fe7ac9a8401cf",
     "src/eq_biodt/v03/ontology.py": "0ddb1f439e3124952471fcacb7309dbbbe36a7e50357fb2f41de1aa88d90d403",
     "src/eq_biodt/v03/planning.py": "9882dacad16b2258aa84fb7edd332dee4b9d1c300e419cd45574844e30bdec24",
@@ -46,16 +48,18 @@
     "data/sources/manifest.json": "0123df4652378e05b5b60ed00ed2d627dddeacb076f498c31328e069803acdf3",
     "reproducibility/v06/analyse.py": "5c88e7c104ad763ad0db023dea4d23502a4567e84c79a74a4c83d1735b8c7d2e",
     "reproducibility/v06/figures.py": "946aab17e957e21d6c3d71e9d5c060029b4bb1f40b5451e42913bab5d41382a4",
+    "reproducibility/v06/identification.py": "47fe7cd64ca8c66a59270b594ca7badd083e206ea40d68be94f4da341e6ffc3b",
     "reproducibility/v06/manuscript_text.py": "8eed0a59e940d60858e92f861d74a40854d71d1bf9bc8284fa73746df2432474",
-    "reproducibility/v06/reproduce.py": "959cd1659aadc35a7356e3bb822ca605f0790d5bbdcaf6c570d7d82f2a5cf349",
+    "reproducibility/v06/reproduce.py": "6b774300486043d76fcd9fa1afff74ae7160aee3eb53d280bd0f71a81f89b5f9",
     "reproducibility/v06/tables.py": "9142e728be51e54f6417d2523c970af61d3bbff6e76c6ea89cf401617bdea150",
-    "reproducibility/v06/verify_manuscript.py": "cd8ead7a2082b4946bb3fd90039363316cbd6970c29612b8026c876d73d38330"
+    "reproducibility/v06/verify_manuscript.py": "00edbb99b30195730baaf4223bf7ec35b6c05343e73f4e3b3b250463c6ee4c2a"
   },
   "outputs": {
     "reviews/v06/admissibility.tsv": "faf26c7176d2aa82f456b00a1a8a074f9d2419055722681aa25ac9f1065b99d6",
+    "reviews/v06/identification.json": "29a362b42784d5dee09e3334d60fcf48d6ab36ae30d2bbdba6283f88c8ea9e52",
     "reviews/v06/paired_regimes_by_sample.tsv": "cc6bdb55fcc6f5d9e50206da518bf25ed6f91c6ee6ef353fb87aac06f69f38a2",
     "reviews/v06/paired_regimes_summary.json": "ca1d5f96f85c09e4451257a3008c2a259a2b3c0cf18b1de8310b59516bfceb29",
-    "reviews/v06/results.json": "072b0afd932aa346afc60d3edcef10fe13cdf431d64ad621dca4c909e59e06cc",
+    "reviews/v06/results.json": "7f97c17a8ad5bfbc7fcba345bf4e6b13a3afdfaa5d4462d4814b69e049a521d3",
     "reviews/v06/treatment_versions.json": "a1b9f559040b84ae8fcbfef13e18db4c3bac084b7a52675cbf9ebc88ea281ecf",
     "reviews/v06/treatment_versions.tsv": "c7380e56cc1b445aa87b7aa4f37156e9d54888ff7953eb591233ae45d27554ae",
     "reviews/v06/v06_graph.png": "b60598964be3328ddb045fafb9ad04ec9d3b32da647425984abceffd22ee8ec1",
@@ -66,7 +70,8 @@
     "paper/figures/v06_scenarios.pdf": "dddb648334aaac0992f819bd30232aba74800763d9a55b2003d34f70782f86a9",
     "paper/figures/v06_primary_twin.pdf": "8eae0f14ad081d1b484890e50b2c3c3b55e3d1058b695afbc60608a2aadd0611",
     "paper/tables/v06_numbers.tex": "af340a19503299e5198c402426900436fdc6ca8757b66765e1f067aa42e809d5",
-    "paper/tables/v06_admissibility.tex": "8765e9637a78a6b601584841f3d9e5264d7799fb0fcbfb4bcc8bd78f24dd92ae"
+    "paper/tables/v06_admissibility.tex": "8765e9637a78a6b601584841f3d9e5264d7799fb0fcbfb4bcc8bd78f24dd92ae",
+    "paper/tables/v06_identification.tex": "133fb17de51b8467e0e6fe663c33b503a0d20fceea4dd38f7aa9dbeeb6e63bfd"
   },
   "note": "PDF digests may vary with matplotlib version; JSON/TSV/TeX outputs are deterministic."
 }

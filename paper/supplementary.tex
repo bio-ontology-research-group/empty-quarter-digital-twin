@@ -13,6 +13,7 @@
 \newcommand{\CampaignRows}{\@@input tables/v05_campaigns.tex }
 \newcommand{\MarkerRows}{\@@input tables/v05_markers.tex }
 \newcommand{\AdmissibilityRows}{\@@input tables/v06_admissibility.tex }
+\newcommand{\IdentificationRows}{\@@input tables/v06_identification.tex }
 \makeatother
 \renewcommand{\thetable}{S\arabic{table}}
 \input{authors}
@@ -70,7 +71,17 @@ The implementation follows the stratified causal--ontological design of the main
 
 \emph{Counterfactual reading.} The model is deterministic and paired regimes share initial state, non-targeted inputs, parameters, $K$ and $E$, so their difference is a unit-level counterfactual contrast within the model. Composition holds: replacing an input by its baseline value reproduces the baseline trajectory exactly.
 
-These are properties of the implementation under its equations, not identification results. The causal interpretation of a mechanism depends on its empirical adequacy, which the external tests evaluate. The Boolean natural-deduction results available for stratified causal--ontological theories motivate the design but are not claimed for the continuous equations. In the worked reaction-admission example, the controlled ablation changes the admitted network by supplying unsupported CO oxidation; it illustrates the consequence of an additional biological assumption.
+\emph{Identification with deductive closure.} The module \texttt{identification.py} unrolls the graph over time, computes the deductive value closure of an observed stratum, and evaluates the three rules of the $\mathrm{do}$-calculus on the mutilated graphs with the closure-augmented conditioning set. Only quantities that every admissible regime leaves unsevered can enter the closure, and a test confirms that no admissible target is ever closed. Table~\ref{tab:identification} lists the three derivations reported in the main text; each symbolic result is also checked numerically against the process model.
+
+{\small\begin{longtable}{@{}p{3.6cm}p{1.6cm}p{1.6cm}p{4.2cm}p{3.6cm}@{}}
+\caption{Identification queries. Columns give the result of ordinary $d$-separation, the result with the closure-augmented conditioning set, the adjustment set and the verdict.}\label{tab:identification}\\\toprule
+Query & Plain graph & With closure & Adjustment & Verdict\\\midrule\endfirsthead
+\toprule Query & Plain graph & With closure & Adjustment & Verdict\\\midrule\endhead
+\IdentificationRows
+\bottomrule
+\end{longtable}}
+
+These are properties of the implementation under its equations, not results about the identification of effects from data. The causal interpretation of a mechanism depends on its empirical adequacy, which the external tests evaluate. The Boolean natural-deduction results available for stratified causal--ontological theories motivate the design but are not claimed for the continuous equations. In the worked reaction-admission example, the controlled ablation changes the admitted network by supplying unsupported CO oxidation; it illustrates the consequence of an additional biological assumption.
 
 {\small\begin{longtable}{@{}lp{2.8cm}lp{1.3cm}p{6.2cm}@{}}
 \caption{Admissibility of every node in the causal--ontological graph. Zones: ontological, evidence, deduced, exogenous (manipulable or fixed), constitutive and causal.}\\\toprule

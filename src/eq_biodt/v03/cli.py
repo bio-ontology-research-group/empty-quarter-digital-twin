@@ -8,6 +8,7 @@ import pandas as pd
 from .api import DATA, resource
 from . import community as comm
 from . import theory
+from . import identification
 from .contract import contract
 from .interventions import intervene
 from .evidence import build_evidence, build_bundled_evidence
@@ -22,6 +23,9 @@ def main():
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("contract")
     sub.add_parser("graph")
+    p = sub.add_parser("identify")
+    p.add_argument("--query", required=True, choices=sorted(identification.QUERIES))
+    p.add_argument("--coupling", default=None, choices=["reference", "gate", "proportional"])
     p = sub.add_parser("community")
     p.add_argument("--sample", required=True)
     p = sub.add_parser("reason")
@@ -55,6 +59,9 @@ def main():
         result = contract()
     elif args.command == "graph":
         result = theory.graph()
+    elif args.command == "identify":
+        kw = {"coupling": args.coupling} if args.coupling and args.query != "field_backdoor" else {}
+        result = identification.identify(args.query, **kw)
     elif args.command == "community":
         result = comm.describe(args.sample)
     elif args.command == "reason":

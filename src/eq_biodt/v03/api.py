@@ -11,6 +11,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from . import community as comm
 from . import theory
+from . import identification
 from .contract import contract
 from .interventions import intervene
 from .evidence import CBB_STEPS
@@ -284,6 +285,39 @@ def community_factors(sample: str):
 @app.post("/v3/version-relevance")
 def version_relevance(request: VersionRelevanceRequest):
     return theory.version_relevance(request.target, request.outcome)
+
+
+class IdentifyRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    query: str
+    coupling: str | None = None
+    days: int | None = Field(default=None, ge=1, le=10)
+
+
+class ClosureRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    observed: dict[str, float]
+    coupling: str = "gate"
+    days: int = Field(default=1, ge=1, le=10)
+
+
+@app.post("/v3/identify")
+def identify(request: IdentifyRequest):
+    kw = {k: v for k, v in (("coupling", request.coupling), ("days", request.days)) if v is not None}
+    if request.query == "field_backdoor":
+        kw.pop("coupling", None)
+    return identification.identify(request.query, **kw)
+
+
+@app.get("/v3/closure")
+def closure_get(q_co: float | None = None, q_h2: float | None = None, coupling: str = "gate"):
+    observed = {k: v for k, v in (("q_co", q_co), ("q_h2", q_h2)) if v is not None}
+    return identification.closure(observed, coupling)
+
+
+@app.post("/v3/closure")
+def closure_post(request: ClosureRequest):
+    return identification.closure(request.observed, request.coupling, identification.unrolled_graph(request.days))
 
 
 @app.post("/v3/experiment")

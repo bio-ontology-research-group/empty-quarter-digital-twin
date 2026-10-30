@@ -435,6 +435,9 @@ def _src_tuple(d, fname, rx):
 # ----------------------------------------------------------------------------------------------- allow-list
 def build_allow():
     # Literals that are definitions, arithmetic constants or fixed inputs of the cited experiments or the sampling programme.
+    allow("propagates zeros: $q_s(C_g)=[[a]]$ entails $\\gamma_g=[[b]]$, $k_g=[[c]]$ and $J_g=[[d]]$, and $\\psi\\leq\\psi_d$ entails $A=[[e]]$",
+          "definition: zero propagation rules of the deductive closure (identification.closure)")
+    allow("licenses the deletion of the intervention (Rule [[a]])", "name of do-calculus rule 3, not a quantity")
     allow("site-bootstrap [[a]] interval", "interval level; key site_bootstrap_95_percentile in the audit outputs",
           lambda d: all("site_bootstrap_95_percentile" in c for c in d.aud["matched_compartment_contrasts"]))
     allow("within-site bootstrap [[a]] interval", "interval level; percentile bootstrap, see reviews/v05/namib_hydration_contrasts.tsv")

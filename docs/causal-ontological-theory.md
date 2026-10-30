@@ -147,9 +147,87 @@ When a prediction fails, the stratification says where the fault is. `K` and
 assumed parameter in `F`, or an observation map. The failed Namib dry-activity
 prediction implicates the activation threshold and the retention relation.
 
-## 6. Scope
+## 6. Identification with deductive closure
 
-The calculus here is the deterministic, single-unit case: point-mass exogenous
+`src/eq_biodt/v03/identification.py` implements the interaction between the
+do-calculus and deduction from the context-specific ontological d-separation
+theorem. It is symbolic and deterministic: it checks graph conditions and
+derives entailed values; it estimates no probability.
+
+**Graphs.** `unrolled_graph(days, latent)` unrolls the slice of `theory.graph()`
+over days (`W@t`, with `W@t -> W@t+1` and `N@t -> N@t+1`) and keeps the
+within-slice edges exactly. An optional latent node, for the field setting a
+season `S` with edges `S -> I@t, T@t, Ev@t`, is declared unobserved.
+`d_separated` is d-separation on the moral graph of the ancestral set;
+`d_connecting_path` returns a witness path.
+
+**Closure.** `closure(observed, coupling)` returns `Cl_O`, the values entailed
+by the invariant core (`K`, the release constants) and the mechanisms of the
+non-admissible nodes. `check_admissible` refuses `do()` on `A`, `k`, `J`, `q`,
+`gamma`, the constitutive nodes, `K`, `E` and the constants, so no admissible
+regime severs their mechanisms. An entailment that uses only those mechanisms
+and observed values therefore holds in every admissible regime, which is the
+regime-universality the theorem needs. Manipulable nodes are never closed by
+rule. The rules are (a) determination: a non-admissible node with all parents
+observed or closed is closed (`determined`); (b) zero propagation: `q_g = 0`
+gives `gamma_g = 0` under gate or proportional coupling, then `k_g = 0`, then
+`J_g = 0` (the flux `C_a sqrt(D k) tanh(...)` vanishes at `k = 0`, and the
+shared oxygen limit only scales it), then `P = P_cap = 0`; (c) `psi <= psi_d`
+gives `A = 0` and the same chain. Under `reference` coupling `gamma = 1` and
+`q = 0` closes nothing.
+
+**Rules 1-3.** `rule1`, `rule2`, `rule3` test the usual conditions on the
+mutilated graphs with the conditioning set `Z* = Z u Cl(observed)`. Each returns
+`holds`, the plain `graph_test`, the test with `Z*`, the test with `Z*` after
+removing the edges that the closure makes inert (`J_g` with `k_g = 0` is the
+constant 0, so its inputs and the oxygen coupling edges `D_g, k_g -> J_other`
+are pruned), whether the outcome is a deductive constant, `Z_star`,
+`closed_by_deduction` and a reason. A closure node that is a collider or a
+descendant of one opens paths when conditioned on; plain d-separation already
+handles this.
+
+**Queries** (`identify`; `POST /v3/identify`, `eq-biodt identify --query`;
+`GET /v3/closure?q_co=0&coupling=gate`, `POST /v3/closure`):
+
+* `deductive_null` (Q1). With `q_CO = 0`, `P(J_CO | do(I@0), q_CO = 0) =
+  P(J_CO | q_CO = 0)` by Rule 3. The plain test fails: `I@0 -> W -> theta -> D
+  -> J_CO` is open. The closure fixes `gamma_CO = k_CO = J_CO = 0`; a deductive
+  constant is independent of every intervention, so Rule 3 holds. The same
+  holds for every admissible time-0 target (`I, c, Ev, T, W, N, phi, psi_e,
+  b`) and under gate and proportional coupling. Under reference coupling it does
+  not hold.
+* `oxygen_context` (Q2). `J_H2` depends on the CO channel (`D_CO`, `k_CO`)
+  only through the shared oxygen demand. In the stratum `q_CO = 0`, `k_CO` is
+  closed and `J_CO = 0` for every `D_CO`, so the probe `do(D_CO)` leaves
+  `J_H2` unchanged: Rule 3 fails with `Z*` alone (the direct edge remains) and
+  holds after the closure prunes the inert edges. Without the stratum it fails.
+  `D_CO` is not an admissible regime; it is a formal probe of the CO channel.
+  Water still changes `J_H2`. A check with `process.gas_exchange` and a binding
+  oxygen limit confirms it numerically.
+* `field_backdoor` (Q3). In observational field data (`I, T, Ev, W, J_H2`
+  measured, `phi` a measured site property, season `S` latent), `P(J_H2@t |
+  do(W@t))` is identified by back-door. For `days = 2` the minimal sets are
+  `{I@0, I@1, T@1, W@0, phi}` and `{Ev@0, Ev@1, I@0, I@1, W@0, phi}`. Without
+  `T` the second set still works; there is no back-door set if `T` and `Ev`
+  are both unmeasured, or if `phi` is unmeasured. The effect of `T` needs the
+  moisture state or its drivers (`{Ev@0, Ev@1, I@0, I@1}` or `{I@0, I@1, W@0,
+  W@1, phi}`). The identification is graphical. The Sonoran campaigns have
+  near-collinear moisture and temperature, so the strata of these sets are
+  nearly empty; the positivity violation, not the graph, is why the `Q10`
+  question stays unresolved.
+
+Reproduce with `reproducibility/v06/identification.py`, which writes
+`reviews/v06/identification.json` and `paper/tables/v06_identification.tex`.
+
+**Limits.** The reasoning is deterministic and symbolic. The latent season is
+an assumed structure, not an estimate. Q3 uses back-door search only; failing to
+find a set is not a proof of non-identifiability. The value rules cover the
+zero chain and the dry-threshold chain, not every entailment of the continuous
+equations.
+
+## 7. Scope
+
+The do-calculus identification of section 6 is implemented for the three queries above. The calculus here is the deterministic, single-unit case: point-mass exogenous
 inputs, with paired regimes treated as counterfactuals. Probabilistic `do()`
 over uncertain parameters is represented as a sensitivity set, not as a
 probability distribution. The Boolean natural-deduction results of the

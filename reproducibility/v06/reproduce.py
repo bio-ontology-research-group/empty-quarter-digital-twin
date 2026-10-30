@@ -35,7 +35,7 @@ def main():
     timings = {}
     if not args.skip_v05:
         timings["v05_reproduce"] = run("reproducibility/v05/reproduce.py")
-    for step in ("analyse", "figures", "tables"):
+    for step in ("analyse", "figures", "tables", "identification"):
         timings[step] = run(f"reproducibility/v06/{step}.py")
     out = ROOT / "reviews/v06"
     inputs = sorted((ROOT / "data/v03").glob("*")) + sorted((ROOT / "src/eq_biodt/v03").glob("*.py")) \
@@ -44,7 +44,7 @@ def main():
         + sorted((ROOT / "reproducibility/v06").glob("*.py"))
     outputs = sorted(p for p in out.glob("*") if p.name != "manifest.json" and p.suffix in (".json", ".tsv", ".png")) \
         + [ROOT / "paper/figures" / f for f in ("v06_graph.pdf", "v06_scenarios.pdf", "v06_primary_twin.pdf")] \
-        + [ROOT / "paper/tables" / f for f in ("v06_numbers.tex", "v06_admissibility.tex")]
+        + [ROOT / "paper/tables" / f for f in ("v06_numbers.tex", "v06_admissibility.tex", "v06_identification.tex")]
     manifest = {"release": "0.6.0-dev", "v05_rerun": not args.skip_v05, "timings_seconds": timings,
                 "bootstrap": {"draws": 2000, "seed": 42},
                 "inputs": {str(p.relative_to(ROOT)): digest(p) for p in inputs if p.exists() and p.is_file()},
