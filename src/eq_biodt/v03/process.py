@@ -163,13 +163,19 @@ def simulate(initial: State, forcing: list[dict], p: Parameters, state_overrides
             if state.water_mm > capacity:
                 raise ValueError("State intervention exceeds pore storage")
             overridden[day] = asdict(state)
-        allowed = {"water_mm", "nacl_mol_l", "evaporation_mm", "temp_c"}
+        allowed = {"water_mm", "nacl_mol_l", "evaporation_mm", "temp_c", "h2_mol_m3", "co_mol_m3"}
         if set(f)-allowed:
             raise ValueError(f"Unsupported causal levers: {sorted(set(f)-allowed)}")
         if "temp_c" not in f or "evaporation_mm" not in f:
             raise ValueError("Each day requires temperature and prescribed evaporation")
         if any(not isfinite(v) for v in f.values()):
             raise ValueError("Non-finite forcing")
+        if min(f.get("h2_mol_m3", 0.), f.get("co_mol_m3", 0.)) < 0:
+            raise ValueError("Invalid forcing")
+        # per-day atmospheric boundary concentration (exogenous forcing); absent -> the Parameters value (v0.6 behaviour)
+        day_p = p
+        if "h2_mol_m3" in f or "co_mol_m3" in f:
+            day_p = replace(p, h2_mol_m3=f.get("h2_mol_m3", p.h2_mol_m3), co_mol_m3=f.get("co_mol_m3", p.co_mol_m3))
         rain, salt_c, evap = (f.get("water_mm", 0.), f.get("nacl_mol_l", 0.), f["evaporation_mm"])
         if min(rain, salt_c, evap) < 0 or not 0 <= f["temp_c"] <= 50:
             raise ValueError("Invalid forcing")
@@ -204,7 +210,7 @@ def simulate(initial: State, forcing: list[dict], p: Parameters, state_overrides
             chemistry_ok &= supported
             if supported:
                 osmotic = -2*p.osmotic_coefficient*(mid_c or 0)*1000*8.314462618*(f["temp_c"]+273.15)/1e6
-                sample = gas_exchange(mid_water/(1000*p.depth_m), f["temp_c"], p, osmotic_mpa=osmotic)
+                sample = gas_exchange(mid_water/(1000*p.depth_m), f["temp_c"], day_p, osmotic_mpa=osmotic)
                 if gas_sum is None:
                     gas_sum = {k: 0. for k,v in sample.items() if isinstance(v, (int, float))}
                 undefined.update(k for k,v in sample.items() if v is None)

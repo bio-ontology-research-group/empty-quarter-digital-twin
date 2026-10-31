@@ -19,10 +19,10 @@ from .contract import contract
 from .ontology import load_classification
 from .process import Parameters, State, simulate
 
-FORCING_TARGETS = {'water_mm', 'nacl_mol_l', 'evaporation_mm', 'temp_c'}
+FORCING_TARGETS = {'water_mm', 'nacl_mol_l', 'evaporation_mm', 'temp_c', 'h2_mol_m3', 'co_mol_m3'}
 PARAMETER_TARGETS = {'porosity', 'psi_entry_mpa', 'retention_b'}
 STATE_TARGETS = {'water_mm', 'nacl_mol_m2', 'theta', 'psi_mpa'}
-TOP_KEYS = {'forcing', 'parameters', 'state', 'community', 'coupling'}
+TOP_KEYS = {'forcing', 'parameters', 'state', 'community', 'coupling', 'inoculation'}
 
 
 def fingerprint(value):
@@ -146,7 +146,7 @@ def intervene(initial: State, forcing: list[dict], p: Parameters, intervention: 
             raise ValueError('Forcing intervention must be an object')
         nodes |= set(theory.check_admissible(list(replacements)))
         if set(replacements) - FORCING_TARGETS:
-            raise ValueError('Only water, specified NaCl, evaporation and temperature can be clamped')
+            raise ValueError('Only water, specified NaCl, evaporation, temperature and atmospheric H2/CO concentration can be clamped')
         for v in replacements.values():
             _number(v, 'Forcing interventions')
         modified[d].update(replacements)
@@ -155,7 +155,20 @@ def intervene(initial: State, forcing: list[dict], p: Parameters, intervention: 
     # community selects evidence; it conditions both arms identically
     factors = community_factors(intervention.get('community'), intervention.get('coupling'))
     base = replace(p, gamma_h2=factors['gamma']['h2'], gamma_co=factors['gamma']['co']) if factors['community'] else p
+    # inoculation is a constitutive intervention on the community of the intervened arm only: K and E are unchanged,
+    # D_K is recomputed for the counterfactual unit (community.inoculate); the baseline arm keeps the observed community
+    inoc = None
+    if 'inoculation' in intervention:
+        spec = intervention['inoculation']
+        if not factors['community']:
+            raise ValueError('Inoculation needs a community (sample or site visit) to add the organism to')
+        if not isinstance(spec, dict) or set(spec) != {'mag_id', 'share'}:
+            raise ValueError("inoculation must be {'mag_id': ..., 'share': ...}")
+        inoc = comm.inoculate(factors['samples'], spec['mag_id'], spec['share'], mode=factors['mode'])
+        targets.append('community.inoculation')
     changed_p = replace(base, **changes)
+    if inoc:
+        changed_p = replace(changed_p, gamma_h2=inoc['gamma']['h2'], gamma_co=inoc['gamma']['co'])
     records, overrides, psi_used = [], {}, False
     for key, spec in state_spec.items():
         d = _day(key, len(forcing))
@@ -184,7 +197,7 @@ def intervene(initial: State, forcing: list[dict], p: Parameters, intervention: 
     # deduced block: gamma = 0 closes the gas in every admissible regime
     deduced = []
     for gas, cls in comm.GAS_CLASS.items():
-        if factors['community'] and factors['gamma'][gas] == 0:
+        if factors['community'] and factors['gamma'][gas] == 0 and (inoc is None or inoc['gamma'][gas] == 0):
             d = uptake[gas+'_mol_m2']['difference']
             deduced.append({'gas': gas, 'effect': 'zero_by_deduction', 'class': cls, 'share': factors['shares'][cls],
                             'samples': factors['samples'], 'simulated_contrast_mol_m2': d,
@@ -203,12 +216,20 @@ def intervene(initial: State, forcing: list[dict], p: Parameters, intervention: 
                                           and (baseline['parameters']['gamma_h2'], baseline['parameters']['gamma_co'])
                                           == (changed['parameters']['gamma_h2'], changed['parameters']['gamma_co'])
                                           == (arms['intervened']['gamma']['h2'], arms['intervened']['gamma']['co'])
-                                          if factors['community'] else True),
+                                          if factors['community'] and inoc is None else
+                                          (arms['baseline']['gamma'] == arms['intervened']['gamma']
+                                           and (baseline['parameters']['gamma_h2'], baseline['parameters']['gamma_co'])
+                                           == (arms['baseline']['gamma']['h2'], arms['baseline']['gamma']['co'])
+                                           and (changed['parameters']['gamma_h2'], changed['parameters']['gamma_co'])
+                                           == (inoc['gamma']['h2'], inoc['gamma']['co']))
+                                          if inoc is not None else True),
               'initial_state_shared': baseline['initial'] == changed['initial'],
               'untargeted_forcing_shared': all(forcing[i] == modified[i] for i in range(len(forcing)) if str(i) not in days)}
     sub = comm.membership_consistency(arms['baseline']['classes'])
     if factors['community']:
         sub.update(comm.lifted_consistency(factors['shares']))
+        if inoc:
+            sub.update({'inoculated.' + k: v for k, v in inoc['consistency'].items()})
     checks['subsumption_inequalities_hold'] = all(sub.values())
     checks.update(_arm_checks('baseline', baseline, base))
     checks.update(_arm_checks('intervened', changed, changed_p))
@@ -221,6 +242,11 @@ def intervene(initial: State, forcing: list[dict], p: Parameters, intervention: 
             'intervention': deepcopy(intervention),
             'gas_uptake': uptake, 'deduced': deduced,
             'community': {k: factors[k] for k in ('mode', 'community', 'gamma', 'shares', 'samples', 'provenance')},
+            'inoculation': None if inoc is None else {
+                'spec': intervention['inoculation'], 'mag_classes': inoc['mag_classes'], 'shares': inoc['shares'],
+                'baseline_gamma': inoc['baseline_gamma'], 'gamma': inoc['gamma'],
+                'gate_opened': {g: inoc['baseline_gamma'][g] == 0 and inoc['gamma'][g] > 0 for g in ('h2', 'co')},
+                'kind': inoc['kind']},
             'state_interventions': [{'day': d, **r} for d, rec in records for r in rec],
             'version_relevance': relevance,
             'checks': checks, 'subsumption_checks': sub,

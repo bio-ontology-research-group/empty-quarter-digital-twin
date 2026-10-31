@@ -49,8 +49,12 @@ def _nodes() -> list[dict]:
            action="change the soil texture class (measured retention)"),
         _n("b", "Campbell retention exponent", ex, "-", "b", manipulable=True,
            action="change the soil texture class (measured retention)"),
+        _n("C_h2", "Atmospheric H2 concentration (boundary condition)", ex, "mol m-3", "C_h2,t (default C_a,h2)", ["C_a"],
+           manipulable=True, action="raise or lower the ambient H2 concentration (e.g. a hydrogen-economy leakage scenario)"),
+        _n("C_co", "Atmospheric CO concentration (boundary condition)", ex, "mol m-3", "C_co,t (default C_a,co)", ["C_a"],
+           manipulable=True, action="raise or lower the ambient CO concentration"),
         _n("L", "Layer depth", fx, "m", "L"),
-        _n("C_a", "Atmospheric gas concentrations", fx, "mol m-3", "C_a,g"),
+        _n("C_a", "Default atmospheric gas concentrations", fx, "mol m-3", "C_a,g"),
         _n("D0", "Free-air diffusivities", fx, "m2 s-1", "D_0,g"),
         _n("k_ref", "Reference reaction coefficients", fx, "s-1", "k_g,ref"),
         _n("Q10", "Temperature response", fx, "-", "Q10, T_ref"),
@@ -82,9 +86,9 @@ def _nodes() -> list[dict]:
         _n("k_co", "CO reaction coefficient", "causal", "s-1",
            "k_g,t = k_g,ref gamma_g A_t Q10^((T_t - T_ref)/10)", ["k_ref", "gamma_co", "A", "Q10", "T"]),
         _n("J_h2", "H2 uptake", "causal", "mol m-2 s-1",
-           "J_g = C_a sqrt(D_g k_g) tanh(L sqrt(k_g/D_g)), proportional oxygen limit (shared demand couples both gases)", ["C_a", "D_h2", "k_h2", "D_co", "k_co", "L", "O2"]),
+           "J_g = C_a sqrt(D_g k_g) tanh(L sqrt(k_g/D_g)), proportional oxygen limit (shared demand couples both gases)", ["C_h2", "D_h2", "k_h2", "D_co", "k_co", "L", "O2"]),
         _n("J_co", "CO uptake", "causal", "mol m-2 s-1",
-           "J_g = C_a sqrt(D_g k_g) tanh(L sqrt(k_g/D_g)), proportional oxygen limit (shared demand couples both gases)", ["C_a", "D_co", "k_co", "D_h2", "k_h2", "L", "O2"]),
+           "J_g = C_a sqrt(D_g k_g) tanh(L sqrt(k_g/D_g)), proportional oxygen limit (shared demand couples both gases)", ["C_co", "D_co", "k_co", "D_h2", "k_h2", "L", "O2"]),
         _n("P", "Chemical power", "constitutive", "W m-2", "P = 202000 J_h2 + 243000 J_co", ["J_h2", "J_co"]),
         _n("P_cap", "Captured power", "constitutive", "W m-2", "P_cap = eta P", ["P", "capture"]),
     ]
@@ -123,7 +127,7 @@ def node(id: str) -> dict:
 # Request keys -> node ids.
 ALIASES = {"water_mm": "I", "nacl_mol_l": "c", "evaporation_mm": "Evap", "temp_c": "T",
            "porosity": "phi", "psi_entry_mpa": "psi_e", "retention_b": "b",
-           "psi_mpa": "psi", "carrier_share": "q_h2", "membership": "D_K", "memberships": "D_K",
+           "psi_mpa": "psi", "h2_mol_m3": "C_h2", "co_mol_m3": "C_co", "carrier_share": "q_h2", "membership": "D_K", "memberships": "D_K",
            "h2_uptake_mol_m2": "J_h2", "co_uptake_mol_m2": "J_co", "activation": "A"}
 
 

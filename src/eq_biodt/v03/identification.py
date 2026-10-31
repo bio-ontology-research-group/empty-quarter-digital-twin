@@ -149,7 +149,7 @@ def d_connecting_path(G, X, Y, Z=()):
 
 
 # time-varying nodes of the slice; every other node is static
-TIME_VARYING = ("I", "c", "Evap", "T", "W", "N", "theta", "psi_m", "psi_o", "psi", "D_h2", "D_co", "A",
+TIME_VARYING = ("I", "c", "Evap", "T", "C_h2", "C_co", "W", "N", "theta", "psi_m", "psi_o", "psi", "D_h2", "D_co", "A",
                 "k_h2", "k_co", "J_h2", "J_co", "P", "P_cap")
 FIELD_LATENT = {"S": {"children": ["I", "T", "Evap"], "observed": False,
                       "meaning": "latent season / synoptic regime (assumed structure)"}}

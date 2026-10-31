@@ -193,7 +193,8 @@ def build_graph() -> dict:
                     "theta": "\u03b8", "psi_m": "\u03c8_m", "psi_o": "\u03c8_o", "psi": "\u03c8", "D_h2": "D_H\u2082", "D_co": "D_CO",
                     "A": "A_t", "k_h2": "k_H\u2082", "k_co": "k_CO", "J_h2": "J_H\u2082", "J_co": "J_CO", "P": "P", "P_cap": "P_cap",
                     "W": "W_t", "N": "N_t"}}
-    assert set(layout["xpos"]) == {n["id"] for n in g["nodes"] if n["zone"] != "exogenous_fixed"}
+    v07_inputs = {"C_h2", "C_co"}   # v0.7 atmospheric boundary-condition nodes; not drawn in the v0.6 figure layout
+    assert set(layout["xpos"]) == {n["id"] for n in g["nodes"] if n["zone"] != "exogenous_fixed" and n["id"] not in v07_inputs}
     return {**g, "layout": layout, "admissibility": adm, "version_relevance_psi": {
         o: {k: r[k] for k in ("handles", "relevant", "bypass_paths", "reading")}
         for o in ("A", "D_h2", "J_h2", "J_co") for r in [theory.version_relevance("psi", o)]}}

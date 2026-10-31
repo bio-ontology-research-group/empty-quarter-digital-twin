@@ -97,6 +97,41 @@ def carrier_shares(sample_id: str | None = None, *, community: dict | None = Non
             "read_mapping_sha256": c["read_mapping_sha256"]}
 
 
+def inoculate(samples, mag_id: str, share: float, *, mode: str = "gate") -> dict:
+    """Constitutive intervention: the community of `samples` plus reference MAG `mag_id` at relative share `share`.
+
+    `samples` is a sample id, a community object (as carrier_shares) or a list of sample ids (mean of their
+    shares). The existing community is rescaled by (1 - share) and the MAG adds `share` to every class it is
+    entailed to belong to (reasoner memberships via load_classification, never table flags). The TBox and the
+    evidence are untouched; the deduction D_K is recomputed for the counterfactual unit, so q and gamma follow
+    through the same code path as for an observed sample (gamma(), lifted_consistency()).
+    """
+    if isinstance(share, bool) or not isinstance(share, (int, float)) or not 0 <= share <= 1:
+        raise ValueError("Inoculum share must be a number in [0, 1]")
+    c = _load()
+    classes = c["classes"]
+    if mag_id not in classes:
+        raise ValueError(f"Unknown reference MAG {mag_id!r}")
+    if isinstance(samples, str):
+        base = carrier_shares(samples)
+    elif isinstance(samples, dict):
+        base = carrier_shares(community=samples)
+    else:
+        ids = [i for s in samples for i in samples_of({"sample": s})]
+        q = c["table"].loc[ids].mean()
+        base = {"samples": ids, "shares": {k: float(q[k]) for k in CLASSES}, "evidence_sha256": c["evidence_sha256"],
+                "ontology_sha256": c["ontology_sha256"], "read_mapping_sha256": c["read_mapping_sha256"]}
+    members = set(classes[mag_id])
+    shares = {k: (1 - share) * v + (share if k in members else 0.) for k, v in base["shares"].items()}
+    return {"samples": base["samples"], "mag_id": mag_id, "inoculum_share": float(share),
+            "mag_classes": sorted(members), "baseline_shares": base["shares"], "shares": shares,
+            "gamma": gamma(shares, mode), "baseline_gamma": gamma(base["shares"], mode), "mode": mode,
+            "consistency": lifted_consistency(shares),
+            "evidence_sha256": base["evidence_sha256"], "ontology_sha256": base["ontology_sha256"],
+            "read_mapping_sha256": base["read_mapping_sha256"],
+            "kind": "constitutive intervention: K and E unchanged, D_K recomputed for a counterfactual unit"}
+
+
 def gamma(shares: dict, mode: str) -> dict[str, float]:
     """gamma_h2, gamma_co from class shares under a coupling mode."""
     if mode not in MODES:

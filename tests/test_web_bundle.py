@@ -160,7 +160,7 @@ def test_graph_matches_theory(bundle):
     g = theory.graph()
     assert [n["id"] for n in bundle["graph"]["nodes"]] == [n["id"] for n in g["nodes"]]
     adm = {a["node"]: a["verdict"] for a in bundle["graph"]["admissibility"]}
-    assert sum(v == "admissible" for v in adm.values()) == 9 and len(adm) == 40
+    assert sum(v == "admissible" for v in adm.values()) == 11 and len(adm) == 42   # v0.7 adds C_h2, C_co
 
 
 def test_identification_equals_review(bundle):
