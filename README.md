@@ -1,4 +1,4 @@
-# EQ-BioDT v0.6.0
+# EQ-BioDT v0.7.0
 
 EQ-BioDT is a causal–ontological digital twin of microbial processes in the
 Rub’ al-Khali, the world’s largest continuous sand desert. It connects primary
@@ -46,6 +46,51 @@ self-hosted Pyodide, and the page checks them against the release manifest.
 The page data are exported by `scripts/web/export_web_bundle.py`, which records
 the source commit; `tests/test_web_bundle.py` checks the export against the
 analysis outputs and the manuscript.
+
+## Chained what-ifs (v0.7)
+
+The twin answers management questions it cannot answer alone by chaining
+itself with published models: an **upstream** model turns an action into twin
+inputs (water, salt, temperature, evaporation, porosity, atmospheric H₂/CO, an
+inoculated community), and a **downstream** model turns twin outputs into an
+endpoint such as crop relative yield or an upper bound on carbon fixed.
+
+- `src/eq_biodt/v03/composition.py` runs a chain. Ports are typed with the
+  twin's ontology terms and units; inputs outside a model's validity domain are
+  refused; a downstream model gated on an ontology class returns zero *by
+  deduction* when the reasoner entails no such organism in the community; chains
+  must be acyclic; every value carries its provenance (`twin`,
+  `external:<model>`, `deduced`) and a low–high range from moving one literature
+  constant at a time.
+- `src/eq_biodt/v03/external_models.py` holds the external models (FAO-29
+  leaching, Maas–Hoffman crop salt tolerance, FAO-56 water demand and mulch,
+  knallgas stoichiometry, solar-park microclimate, cloud seeding, off-road
+  compaction, warming, SA187 inoculation benefit).
+- `data/external/composition_constants.json` is the only place literature
+  constants live. Each has a value, range, source and a status:
+  `verified_in_source` (23), `modeller_assumption` (10) or `source_not_checked` (9).
+- Two twin extensions: atmospheric H₂/CO are exogenous intervention targets,
+  and inoculation is a constitutive intervention (ontology and evidence fixed,
+  deduction recomputed for a hypothetical community; `community.inoculate`).
+  See section 7 of [the theory note](docs/causal-ontological-theory.md).
+
+Twelve experiments (brackish irrigation, drip vs flood, mulch and shade nets,
+biochar, inoculation, carbon-fixation bound, hydrogen leakage, solar parks,
+cloud seeding, compaction, warming, and SA187-inoculated alfalfa under saline
+irrigation) are in `reproducibility/v07/composition.py`, with results in
+[reviews/v07/composition](reviews/v07/composition/IMPLEMENTATION_NOTES.md).
+The alfalfa experiment uses the KSA field trial of de Zélicourt et al. 2018
+(PLoS Genet 14:e1007273), digitised by `reproducibility/v07/digitise_fig1.py`
+from the pinned figure and checked against its printed percentages.
+
+```bash
+uv run python reproducibility/v07/reproduce.py   # digitise, 12 experiments, figure, table, digests
+```
+
+Two runs give byte-identical outputs; digests are in
+`reviews/v07/reproducibility.json`. Plant yields and carbon are the external
+models' numbers, never the twin's; the experiments use the v0.6 14-day
+single-pulse baseline.
 
 ## Install and open the tool
 
@@ -185,6 +230,7 @@ On Linux x86_64:
 uv sync --locked
 uv run python scripts/install_reasoner.py
 uv run python reproducibility/v06/reproduce.py
+uv run python reproducibility/v07/reproduce.py
 uv run pytest -q
 ```
 

@@ -1,10 +1,18 @@
-# v0.7.0-dev — Composition with external models (in development)
+# v0.7.0 — Chained what-ifs: composition with external models — 31 October 2026
 
 - Add `composition.py` and `external_models.py`: chained what-ifs `action -> upstream -> twin -> downstream`
   with typed ports, validity domains as refusals, deductive gates carried through, acyclicity check and
   one-at-a-time low/high envelopes. Values carry provenance (`twin`, `external:<id>`, `deduced`).
-- Add the registry of literature constants `data/external/composition_constants.json` (all entries
-  `verified: false` until checked against their sources).
+- Add the registry of literature constants `data/external/composition_constants.json`; each entry was checked
+  independently and carries a status (23 verified in source, 10 modeller assumptions, 9 source not checked).
+  Corrections: H2 background DOI, tomato slope (9.5, range 9.0–9.9), alfalfa slope cited to FAO-56, FAO-29
+  leaching range 1.0–2.1, evaporation scaling bound.
+- Add twelve experiments (`reproducibility/v07/composition.py`, `reviews/v07/composition/`), figure, table and
+  `reproducibility/v07/reproduce.py` with input/output digests; two runs are byte-identical.
+- Add a reproducible digitisation of the SA187 alfalfa field trial (de Zélicourt et al. 2018, Fig 1), pinned by
+  hash and checked against the printed percentages; fit of the root-zone/irrigation salinity factor.
+- v0.6 scripts read a v0.6 view of the graph (`reproducibility/v06/v06_graph.py`) so v0.6 outputs are unchanged;
+  the d-connecting witness path is now deterministic.
 - Atmospheric H2 and CO concentrations (`h2_mol_m3`, `co_mol_m3`) are exogenous forcing targets, per day,
   defaulting to the Parameters value; new graph nodes `C_h2`, `C_co`. v0.6 results are unchanged when the keys
   are absent.
