@@ -27,6 +27,8 @@ SRC = ROOT / "src"
 DATA = ROOT / "data" / "v03"
 V05 = ROOT / "reviews" / "v05"
 V06 = ROOT / "reviews" / "v06"
+V07 = ROOT / "reviews" / "v07" / "composition"
+REGISTRY = ROOT / "data" / "external" / "composition_constants.json"
 PAPER_TABLES = ROOT / "paper" / "tables"
 sys.path.insert(0, str(SRC))
 
@@ -367,6 +369,39 @@ def build_identification() -> dict:
          "positivity_caveat": fb["positivity_caveat"], "limits": fb["limits"], "numerical_check": None, "verdict": fb["verdict"]}]}
 
 
+WHATIF_ORDER = ("brackish_irrigation", "drip_vs_flood", "mulch_shade", "biochar", "inoculation", "carbon_fixation_bound",
+                "h2_leakage", "solar_park", "cloud_seeding", "compaction", "warming", "inoculated_alfalfa_salinity")
+WHATIF_DROP = {"trace", "twin", "twin_baseline", "result", "upstream", "registry_sha256"}
+
+
+def _strip(x):
+    if isinstance(x, dict):
+        return {k: _strip(v) for k, v in x.items() if k not in WHATIF_DROP}
+    if isinstance(x, list):
+        return [_strip(v) for v in x]
+    return x
+
+
+def build_whatifs() -> dict:
+    """v0.7 chained what-ifs: experiment results (reviews/v07/composition) without per-run traces, the external models
+    and the literature-constant registry with its verification status. Numbers are copied, never recomputed."""
+    from eq_biodt.v03 import external_models  # noqa: E402  (imports composition, process, community)
+    reg = json.loads(REGISTRY.read_text())["constants"]
+    summary = json.loads((V07 / "summary.json").read_text())
+    exps = []
+    for name in WHATIF_ORDER:
+        d = json.loads((V07 / f"{name}.json").read_text())
+        d["constants_used"] = sorted(d.get("constants_used", {}) if isinstance(d.get("constants_used"), list)
+                                     else d.get("constants_used", {}).keys())
+        exps.append(_strip(d))
+    models = {m.id: {"name": m.name, "kind": m.kind, "gate": m.gate, "constants": list(m.constants),
+                     "inputs": [p.name for p in m.inputs], "outputs": [p.name for p in m.outputs]}
+              for m in external_models.MODELS.values()}
+    constants = [{k: e.get(k) for k in ("id", "value", "low", "high", "unit", "meaning", "status", "source", "note")} for e in reg]
+    return {"summary": summary["experiments"], "experiments": exps, "models": models, "constants": constants,
+            "registry_sha256": sha256(REGISTRY), "reproducibility": json.loads((ROOT / "reviews" / "v07" / "reproducibility.json").read_text()).get("outputs")}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", type=Path, default=DEFAULT_OUT)
@@ -390,7 +425,7 @@ def main():
     ontology = build_ontology()
     scenarios = build_scenarios()
     commit = git("rev-parse", "HEAD")
-    dirty = bool(git("status", "--porcelain", "--untracked-files=no", "--", "src", "data/v03", "reviews", "paper/tables"))
+    dirty = bool(git("status", "--porcelain", "--untracked-files=no", "--", "src", "data/v03", "data/external", "reviews", "paper/tables"))
     bundle = {
         "schema": 1, "version": version, "title": "EQ-BioDT v0.6",
         "provenance": {"source_repository": "https://github.com/bio-ontology-research-group/empty-quarter-digital-twin",
@@ -399,7 +434,7 @@ def main():
                        "ontology_sha256": ontology["ontology_sha256"],
                        "inputs_sha256": {str(p.relative_to(ROOT)): sha256(p) for p in sorted(
                            [*DATA.glob("*.tsv"), *DATA.glob("*.json"), V06 / "paired_regimes_by_sample.tsv", V06 / "treatment_versions.json",
-                            V05 / "external_transfer.json"])}},
+                            V05 / "external_transfer.json", REGISTRY, *V07.glob("*.json")])}},
         "notice": ("Conditional process model. It reports what follows from the evidence, the ontology and stated mechanisms; "
                    "reaction rate coefficients are supplied scenario parameters, not fitted to Rub' al-Khali flux data, and no net carbon removal is estimated."),
         "key_numbers": build_key_numbers(paper, mags, sites["primary_connection"], scenarios["paired_summary"]["reference_uptake_mol_m2"]),
@@ -407,7 +442,7 @@ def main():
         "graph": build_graph(), "identification": build_identification(),
         "medians": medians, "sample_columns": columns, "samples": samples, **{k: sites[k] for k in ("sites", "campaigns")},
         "primary_connection": sites["primary_connection"],
-        "scenarios": scenarios, "candidates": mags, "ontology": ontology, "transfer": build_transfer(),
+        "scenarios": scenarios, "whatifs": build_whatifs(), "candidates": mags, "ontology": ontology, "transfer": build_transfer(),
         "reference_schedule": {"horizon_days": 14, "total_water_mm": 12, "initial_water_mm": 1.8, "evaporation_mm": 1.0,
                                "temperature_c": 25.0, "k_h2_s": 0.001, "k_co_s": 0.001,
                                "schedules": {"intact": [], "single_pulse": [0], "four_pulses": [0, 3, 7, 10],
