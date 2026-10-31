@@ -27,6 +27,26 @@ See [external data and measurement definitions](data/external/README.md),
 [the retrospective protocol](reviews/v05/external-evaluation-protocol.md),
 and [the independent numerical audit](reviews/v05/independent_audit.json).
 
+## Use it online
+
+The twin runs in the browser at <https://rubalkhali.science/model>, with no
+installation. The released `process.py` and `theory.py` run there through
+self-hosted Pyodide, and the page checks them against the release manifest.
+
+- **What if…?** (default) shows interventions in plain terms: one heavy rain
+  versus drizzle with the same total, salty water, heat, compacted sand, and
+  places where the genes for carbon-monoxide uptake were not found.
+- **Research view** (`/model?view=research`) shows the sampling footprint, the
+  causal–ontological graph, live paired `do()` regimes, treatment versions,
+  community coupling, reasoner justifications, identification with deductive
+  closure, transfer tests and ontology mappings.
+- **How to read the twin** (`/model/guide`) explains every term, with an A–Z
+  glossary. The same definitions appear in the info buttons of the research view.
+
+The page data are exported by `scripts/web/export_web_bundle.py`, which records
+the source commit; `tests/test_web_bundle.py` checks the export against the
+analysis outputs and the manuscript.
+
 ## Install and open the tool
 
 Install [uv](https://docs.astral.sh/uv/getting-started/installation/), then:

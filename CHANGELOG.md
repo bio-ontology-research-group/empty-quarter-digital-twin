@@ -19,6 +19,20 @@
   (`data/v03/ontology_mappings.tsv`), measurement endpoint classes and declared
   observation maps (`observation_maps.json`), runtime verification of ontology and
   reasoner digests, and justifications for all 136 candidates and 198 CO carriers.
+- Add do-calculus identification with deductive value closure
+  (`identification.py`, `POST /v3/identify`, `GET|POST /v3/closure`,
+  `eq-biodt identify`). It derives the deductive CO null as Rule 3, the
+  independence of hydrogen uptake from the CO pathway where no CO carrier is
+  mapped, and back-door identification of the water effect under a latent season.
+- Rebuild the local console around the pipeline. It adds paired regimes,
+  treatment versions, a sampling map, reasoner justifications, a ψ-version
+  example, an admissibility explorer, transfer tests and a glossary. New
+  endpoints are `/v3/mags/{id}`, `/v3/transfer` and `/v3/admissibility`.
+- Check every number in the manuscript against the outputs
+  (`reproducibility/v06/verify_manuscript.py`, also run in CI).
+- Export the public web page bundle (`scripts/web/export_web_bundle.py`). The
+  page at https://rubalkhali.science/model has a plain-language "What if…?"
+  view, a research view, and a guide with a glossary at `/model/guide`.
 - Move the v0.2 exploratory model to `legacy/` and remove it from the package.
 - Add `reproducibility/v06` analyses and figures; revise the manuscript.
 - Model version reported by the API, contract and outputs now comes from package
