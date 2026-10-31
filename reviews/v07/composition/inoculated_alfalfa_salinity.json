@@ -25,41 +25,47 @@
     "alfalfa_etc_mm_per_day": {
       "high": 12.0,
       "low": 5.0,
+      "status": "modeller_assumption",
       "unit": "mm/day",
       "value": 8.0,
       "verified": false
     },
     "fao29_ece_per_ecw": {
-      "high": 2.0,
+      "high": 2.1,
       "low": 1.0,
+      "status": "verified_in_source",
       "unit": "dimensionless",
       "value": 1.5,
-      "verified": false
+      "verified": true
     },
     "fao29_ecsw_per_ece": {
       "high": 2.5,
       "low": 1.5,
+      "status": "verified_in_source",
       "unit": "dimensionless",
       "value": 2.0,
-      "verified": false
+      "verified": true
     },
     "mh_alfalfa_slope_pct_per_dS_m": {
       "high": 8.76,
       "low": 5.84,
+      "status": "verified_in_source",
       "unit": "% yield per dS/m",
       "value": 7.3,
-      "verified": false
+      "verified": true
     },
     "mh_alfalfa_threshold_dS_m": {
       "high": 2.4,
       "low": 1.6,
+      "status": "verified_in_source",
       "unit": "dS/m",
       "value": 2.0,
-      "verified": false
+      "verified": true
     },
     "nacl_mol_l_per_dS_m": {
       "high": 0.011,
       "low": 0.0085,
+      "status": "source_not_checked",
       "unit": "mol/L per dS/m",
       "value": 0.01,
       "verified": false
@@ -67,37 +73,42 @@
     "sa187_benefit_b": {
       "high": 0.17,
       "low": 0.12,
+      "status": "verified_in_source",
       "unit": "fraction",
       "value": 0.15,
-      "verified": false
+      "verified": true
     },
     "sa187_ecw_high_dS_m": {
       "high": 7.81,
       "low": 7.81,
+      "status": "verified_in_source",
       "unit": "dS/m",
       "value": 7.81,
-      "verified": false
+      "verified": true
     },
     "sa187_ecw_low_dS_m": {
       "high": 3.12,
       "low": 3.12,
+      "status": "verified_in_source",
       "unit": "dS/m",
       "value": 3.12,
-      "verified": false
+      "verified": true
     },
     "sa187_mock_ratio_dry": {
       "high": 0.8554,
       "low": 0.8018,
+      "status": "verified_in_source",
       "unit": "-",
       "value": 0.8282,
-      "verified": false
+      "verified": true
     },
     "sa187_mock_ratio_fresh": {
       "high": 0.8141,
       "low": 0.7779,
+      "status": "verified_in_source",
       "unit": "-",
       "value": 0.7958,
-      "verified": false
+      "verified": true
     }
   },
   "deduced_nulls": [],
@@ -121,10 +132,10 @@
         "label": "A fao fixed leaching",
         "low": [
           1.12,
-          0.9821,
-          0.794052,
-          0.6463,
-          0.006601,
+          0.96531,
+          0.76786,
+          0.61272,
+          0.0,
           0.0,
           0.0
         ],
@@ -333,7 +344,7 @@
         "sa187_benefit_b"
       ],
       "high": 0.662251,
-      "low": 0.006601,
+      "low": 0.0,
       "provenance": "external:sa187_benefit",
       "unit": "-",
       "value": 0.334426
@@ -456,7 +467,7 @@
             "constants": [
               "fao29_ece_per_ecw"
             ],
-            "high": 1.0,
+            "high": 1.05,
             "low": 0.5,
             "provenance": "external:fao29_leaching",
             "unit": "dS/m",
@@ -662,7 +673,7 @@
             "constants": [
               "fao29_ece_per_ecw"
             ],
-            "high": 4.0,
+            "high": 4.2,
             "low": 2.0,
             "provenance": "external:fao29_leaching",
             "unit": "dS/m",
@@ -677,7 +688,7 @@
               "mh_alfalfa_threshold_dS_m"
             ],
             "high": 1.0,
-            "low": 0.854,
+            "low": 0.8394,
             "provenance": "external:maas_hoffman_alfalfa",
             "unit": "-",
             "value": 0.927
@@ -692,7 +703,7 @@
               "sa187_benefit_b"
             ],
             "high": 1.15,
-            "low": 0.9821,
+            "low": 0.96531,
             "provenance": "external:sa187_benefit",
             "unit": "-",
             "value": 1.06605
@@ -711,7 +722,7 @@
           "mh_alfalfa_threshold_dS_m"
         ],
         "high": 1.0,
-        "low": 0.854,
+        "low": 0.8394,
         "provenance": "external:maas_hoffman_alfalfa",
         "unit": "-",
         "value": 0.927
@@ -724,7 +735,7 @@
           "sa187_benefit_b"
         ],
         "high": 1.15,
-        "low": 0.9821,
+        "low": 0.96531,
         "provenance": "external:sa187_benefit",
         "unit": "-",
         "value": 1.06605
@@ -868,7 +879,7 @@
             "constants": [
               "fao29_ece_per_ecw"
             ],
-            "high": 6.24,
+            "high": 6.552,
             "low": 3.12,
             "provenance": "external:fao29_leaching",
             "unit": "dS/m",
@@ -883,7 +894,7 @@
               "mh_alfalfa_threshold_dS_m"
             ],
             "high": 0.91824,
-            "low": 0.69048,
+            "low": 0.667704,
             "provenance": "external:maas_hoffman_alfalfa",
             "unit": "-",
             "value": 0.80436
@@ -898,7 +909,7 @@
               "sa187_benefit_b"
             ],
             "high": 1.05598,
-            "low": 0.794052,
+            "low": 0.76786,
             "provenance": "external:sa187_benefit",
             "unit": "-",
             "value": 0.925014
@@ -917,7 +928,7 @@
           "mh_alfalfa_threshold_dS_m"
         ],
         "high": 0.91824,
-        "low": 0.69048,
+        "low": 0.667704,
         "provenance": "external:maas_hoffman_alfalfa",
         "unit": "-",
         "value": 0.80436
@@ -930,7 +941,7 @@
           "sa187_benefit_b"
         ],
         "high": 1.05598,
-        "low": 0.794052,
+        "low": 0.76786,
         "provenance": "external:sa187_benefit",
         "unit": "-",
         "value": 0.925014
@@ -1074,7 +1085,7 @@
             "constants": [
               "fao29_ece_per_ecw"
             ],
-            "high": 8.0,
+            "high": 8.4,
             "low": 4.0,
             "provenance": "external:fao29_leaching",
             "unit": "dS/m",
@@ -1089,7 +1100,7 @@
               "mh_alfalfa_threshold_dS_m"
             ],
             "high": 0.854,
-            "low": 0.562,
+            "low": 0.5328,
             "provenance": "external:maas_hoffman_alfalfa",
             "unit": "-",
             "value": 0.708
@@ -1104,7 +1115,7 @@
               "sa187_benefit_b"
             ],
             "high": 0.9821,
-            "low": 0.6463,
+            "low": 0.61272,
             "provenance": "external:sa187_benefit",
             "unit": "-",
             "value": 0.8142
@@ -1123,7 +1134,7 @@
           "mh_alfalfa_threshold_dS_m"
         ],
         "high": 0.854,
-        "low": 0.562,
+        "low": 0.5328,
         "provenance": "external:maas_hoffman_alfalfa",
         "unit": "-",
         "value": 0.708
@@ -1136,7 +1147,7 @@
           "sa187_benefit_b"
         ],
         "high": 0.9821,
-        "low": 0.6463,
+        "low": 0.61272,
         "provenance": "external:sa187_benefit",
         "unit": "-",
         "value": 0.8142
@@ -1280,7 +1291,7 @@
             "constants": [
               "fao29_ece_per_ecw"
             ],
-            "high": 15.62,
+            "high": 16.401,
             "low": 7.81,
             "provenance": "external:fao29_leaching",
             "unit": "dS/m",
@@ -1295,7 +1306,7 @@
               "mh_alfalfa_threshold_dS_m"
             ],
             "high": 0.57587,
-            "low": 0.00574,
+            "low": 0.0,
             "provenance": "external:maas_hoffman_alfalfa",
             "unit": "-",
             "value": 0.290805
@@ -1310,7 +1321,7 @@
               "sa187_benefit_b"
             ],
             "high": 0.662251,
-            "low": 0.006601,
+            "low": 0.0,
             "provenance": "external:sa187_benefit",
             "unit": "-",
             "value": 0.334426
@@ -1329,7 +1340,7 @@
           "mh_alfalfa_threshold_dS_m"
         ],
         "high": 0.57587,
-        "low": 0.00574,
+        "low": 0.0,
         "provenance": "external:maas_hoffman_alfalfa",
         "unit": "-",
         "value": 0.290805
@@ -1342,7 +1353,7 @@
           "sa187_benefit_b"
         ],
         "high": 0.662251,
-        "low": 0.006601,
+        "low": 0.0,
         "provenance": "external:sa187_benefit",
         "unit": "-",
         "value": 0.334426
@@ -1486,7 +1497,7 @@
             "constants": [
               "fao29_ece_per_ecw"
             ],
-            "high": 16.0,
+            "high": 16.8,
             "low": 8.0,
             "provenance": "external:fao29_leaching",
             "unit": "dS/m",
@@ -1692,7 +1703,7 @@
             "constants": [
               "fao29_ece_per_ecw"
             ],
-            "high": 24.0,
+            "high": 25.2,
             "low": 12.0,
             "provenance": "external:fao29_leaching",
             "unit": "dS/m",
@@ -7343,7 +7354,7 @@
   "plain_language": "At the field trial's two salinities the seed-coated bacterium gave roughly 12 to 17 percent more alfalfa than uncoated seed. The trial's own yields fall by about 20 percent (fresh weight) from 3.12 to 7.81 dS/m irrigation water. The prediction of how salty the root zone gets, and how a crop reacts, comes from three alternative models; the twin contributes only one of them, a salt balance of a bare sandy desert soil, and plant growth is the crop model's and the field trial's, not the twin's. Whether the bacterium's benefit grows with salinity cannot be told from these data, which come from one trial at two salinities.",
   "question": "What if we irrigate alfalfa with brackish water and coat the seed with the desert bacterium Enterobacter sp. SA187?",
   "refusals": [],
-  "registry_sha256": "0b781d9258a62e42c2e7edb3e86259e1db67afc4e6d31bc265935e67c5aa8bfb",
+  "registry_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578",
   "validation_mock_ratio": {
     "A_fao_fixed_leaching": {
       "gap_to_observed_dry": -0.466649,
@@ -7352,7 +7363,7 @@
       "observed_fresh": 0.795786,
       "predicted_ratio": {
         "high": 0.627145,
-        "low": 0.00831306,
+        "low": 0.0,
         "value": 0.361536
       }
     },

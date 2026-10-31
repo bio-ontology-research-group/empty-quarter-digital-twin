@@ -23,6 +23,7 @@
     "knallgas_co2_per_h2": {
       "high": 0.25,
       "low": 0.1,
+      "status": "source_not_checked",
       "unit": "mol CO2 per mol H2",
       "value": 0.166667,
       "verified": false
@@ -30,6 +31,7 @@
     "molar_mass_c_g_mol": {
       "high": 12.02,
       "low": 12.0,
+      "status": "source_not_checked",
       "unit": "g/mol",
       "value": 12.011,
       "verified": false
@@ -1082,5 +1084,5 @@
   "plain_language": "If the soil's hydrogen eaters used all of that hydrogen to build biomass, the most carbon they could fix is about 0.0576 grams per square metre per year, in a typical sample (the twin supplies the hydrogen uptake; the carbon yield is another model's number). In a sample where the ontology finds no such organism (14PRr2) the answer is exactly zero by deduction. For scale, desert biological soil crusts are reported to fix roughly 10 g C per square metre per year (context only), and CO oxidation just turns CO into CO2 without changing the atmosphere's carbon.",
   "question": "How much CO2 could the H2 oxidisers fix?",
   "refusals": [],
-  "registry_sha256": "0b781d9258a62e42c2e7edb3e86259e1db67afc4e6d31bc265935e67c5aa8bfb"
+  "registry_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578"
 }

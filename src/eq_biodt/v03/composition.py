@@ -449,7 +449,7 @@ def run_chain(action: dict, upstream: list, twin_req: dict, downstream: list, sc
                              for w_k, w in wrapped.items() if w["provenance"] == "deduced"],
            "envelope_refusals": env_ref,
            "constants_used": {i: {"value": consts[i], "low": reg[i]["low"], "high": reg[i]["high"], "unit": reg[i]["unit"],
-                                  "verified": reg[i]["verified"]} for i in ids},
+                                  "verified": reg[i]["verified"], "status": reg[i].get("status", "source_not_checked")} for i in ids},
            "registry_sha256": constants_sha256()}
     if twin is not None:
         out["twin"] = {"outputs": by_stage.get("twin", {}), "baseline_outputs": central.get("baseline_outputs"),

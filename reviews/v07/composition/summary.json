@@ -21,7 +21,7 @@
       "headline": {
         "detail": "equal seasonal total, 14-day window",
         "high": -5.54739,
-        "label": "H2 uptake change vs unirrigated baseline, flood-type (every 10 days)",
+        "label": "H2 uptake change vs rain-only baseline (one 12 mm pulse), flood-type (every 10 days)",
         "low": -5.54739,
         "provenance": "twin",
         "unit": "% of baseline H2 uptake",
@@ -166,7 +166,7 @@
         "detail": "",
         "high": 15.096,
         "label": "H2 uptake change, +4 C, rain unchanged",
-        "low": -2.88769,
+        "low": 0.244997,
         "provenance": "twin",
         "unit": "% of baseline H2 uptake",
         "value": 7.15843
@@ -194,5 +194,5 @@
     }
   ],
   "note": "One row per experiment. Provenance 'twin' = process model; 'external:<id>' = another published model; 'deduced' = ontology.",
-  "registry_sha256": "0b781d9258a62e42c2e7edb3e86259e1db67afc4e6d31bc265935e67c5aa8bfb"
+  "registry_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578"
 }

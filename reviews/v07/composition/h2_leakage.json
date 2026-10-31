@@ -21,9 +21,10 @@
     "h2_background_ppm": {
       "high": 0.55,
       "low": 0.5,
+      "status": "verified_in_source",
       "unit": "ppm (mole fraction)",
       "value": 0.53,
-      "verified": false
+      "verified": true
     }
   },
   "deduced_nulls": [],
@@ -852,5 +853,5 @@
   "plain_language": "If the air's hydrogen doubles, the soil's hydrogen uptake doubles too (2,205 instead of 1,102 micromole per square metre over two weeks): the twin's soil sink grows in proportion to the concentration. At ten times background the uptake is 11,023 and oxygen does not run short. The atmospheric concentrations are scenarios from the hydrogen-economy literature (another source, about 1.1 ppm for a global hydrogen economy), not twin outputs.",
   "question": "What if a hydrogen economy raises atmospheric H2?",
   "refusals": [],
-  "registry_sha256": "0b781d9258a62e42c2e7edb3e86259e1db67afc4e6d31bc265935e67c5aa8bfb"
+  "registry_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578"
 }

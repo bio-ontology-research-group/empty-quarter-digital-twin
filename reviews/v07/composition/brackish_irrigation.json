@@ -28,6 +28,7 @@
     "crop_etc_mm_per_day": {
       "high": 9.0,
       "low": 4.0,
+      "status": "modeller_assumption",
       "unit": "mm/day",
       "value": 6.0,
       "verified": false
@@ -35,69 +36,79 @@
     "fao29_ecsw_per_ece": {
       "high": 2.5,
       "low": 1.5,
+      "status": "verified_in_source",
       "unit": "dimensionless",
       "value": 2.0,
-      "verified": false
+      "verified": true
     },
     "mh_alfalfa_slope_pct_per_dS_m": {
       "high": 8.76,
       "low": 5.84,
+      "status": "verified_in_source",
       "unit": "% yield per dS/m",
       "value": 7.3,
-      "verified": false
+      "verified": true
     },
     "mh_alfalfa_threshold_dS_m": {
       "high": 2.4,
       "low": 1.6,
+      "status": "verified_in_source",
       "unit": "dS/m",
       "value": 2.0,
-      "verified": false
+      "verified": true
     },
     "mh_barley_slope_pct_per_dS_m": {
       "high": 6.0,
       "low": 4.0,
+      "status": "verified_in_source",
       "unit": "% yield per dS/m",
       "value": 5.0,
-      "verified": false
+      "verified": true
     },
     "mh_barley_threshold_dS_m": {
       "high": 9.6,
       "low": 6.4,
+      "status": "verified_in_source",
       "unit": "dS/m",
       "value": 8.0,
-      "verified": false
+      "verified": true
     },
     "mh_date_palm_slope_pct_per_dS_m": {
       "high": 4.32,
       "low": 2.88,
+      "status": "verified_in_source",
       "unit": "% yield per dS/m",
       "value": 3.6,
-      "verified": false
+      "verified": true
     },
     "mh_date_palm_threshold_dS_m": {
       "high": 4.8,
       "low": 3.2,
+      "status": "verified_in_source",
       "unit": "dS/m",
       "value": 4.0,
-      "verified": false
+      "verified": true
     },
     "mh_tomato_slope_pct_per_dS_m": {
-      "high": 11.88,
-      "low": 7.92,
+      "high": 9.9,
+      "low": 9.0,
+      "status": "verified_in_source",
       "unit": "% yield per dS/m",
-      "value": 9.9,
-      "verified": false
+      "value": 9.5,
+      "verified": true
     },
     "mh_tomato_threshold_dS_m": {
       "high": 3.0,
       "low": 2.0,
+      "status": "verified_in_source",
       "unit": "dS/m",
       "value": 2.5,
-      "verified": false
+      "verified": true
     },
     "nacl_mol_l_per_dS_m": {
       "high": 0.011,
       "low": 0.0085,
+      "status": "source_not_checked",
       "unit": "mol/L per dS/m",
       "value": 0.01,
       "verified": false
@@ -193,14 +204,14 @@
           1.0,
           1.0,
           1.0,
-          0.966054
+          0.967426
         ],
         "label": "tomato",
         "low": [
           1.0,
           1.0,
           1.0,
-          0.778424
+          0.787377
         ],
         "x": [
           0.5,
@@ -212,7 +223,7 @@
           1.0,
           1.0,
           1.0,
-          0.895693
+          0.899907
         ]
       }
     ],
@@ -1313,11 +1324,11 @@
               "mh_tomato_threshold_dS_m",
               "nacl_mol_l_per_dS_m"
             ],
-            "high": 0.966054,
-            "low": 0.778424,
+            "high": 0.967426,
+            "low": 0.787377,
             "provenance": "external:maas_hoffman_tomato",
             "unit": "-",
-            "value": 0.895693
+            "value": 0.899907
           }
         },
         "twin_solution_to_ece": {
@@ -1513,5 +1524,5 @@
   "plain_language": "We irrigated a sandy desert soil every day with water of increasing saltiness. The twin shows how much salt builds up in the soil (mean 71.1 mmol/L at 8 dS/m) and that the soil microbes' hydrogen uptake falls 43.9 % compared with the unirrigated dry soil, mostly because the soil stays wet. How much a crop would suffer (e.g. alfalfa relative yield 0.887 at 8 dS/m; none of the crops loses yield below 4 dS/m here, because the twin's bucket leaches most of the salt) comes from published crop-salinity curves, not from the twin; the twin does not model plants.",
   "question": "What if we irrigate with brackish groundwater or treated wastewater?",
   "refusals": [],
-  "registry_sha256": "0b781d9258a62e42c2e7edb3e86259e1db67afc4e6d31bc265935e67c5aa8bfb"
+  "registry_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578"
 }

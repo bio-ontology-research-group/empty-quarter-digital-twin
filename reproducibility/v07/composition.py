@@ -212,7 +212,7 @@ def exp02_drip_vs_flood():
     u = {k: l["twin"]["h2_uptake_mol_m2"]["value"] for k, l in zip(ks, levels)}
     contrast = {"h2_uptake_10d_over_1d": u[10] / u[1], "h2_uptake_3d_over_1d": u[3] / u[1],
                 "v06_finding_reproduced_daily_lowest": u[1] < u[3] < u[10] or (u[1] < u[10] and u[1] < u[3])}
-    h = h2_head("H2 uptake change vs unirrigated baseline, flood-type (every 10 days)", levels[2], "equal seasonal total, 14-day window")
+    h = h2_head("H2 uptake change vs rain-only baseline (one 12 mm pulse), flood-type (every 10 days)", levels[2], "equal seasonal total, 14-day window")
     plain = (f"We gave the soil the same total amount of water either every day, every 3 days or only every 10 days. The twin says hydrogen uptake is "
              f"{fmt(u[1] * UM, 3)}, {fmt(u[3] * UM, 3)} and {fmt(u[10] * UM, 3)} micromole per square metre over two weeks, so "
              f"{'rare big irrigations keep more soil activity than daily small ones' if u[10] > u[1] else 'delivery pattern matters little here'}. "

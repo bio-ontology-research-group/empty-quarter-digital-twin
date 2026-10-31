@@ -21,6 +21,7 @@
     "panel_wash_interval_days": {
       "high": 30,
       "low": 7,
+      "status": "modeller_assumption",
       "unit": "day",
       "value": 14,
       "verified": false
@@ -28,6 +29,7 @@
     "panel_wash_l_m2_per_wash": {
       "high": 2.0,
       "low": 0.5,
+      "status": "source_not_checked",
       "unit": "L per m2 of panel per wash",
       "value": 1.0,
       "verified": false
@@ -35,6 +37,7 @@
     "solar_panel_evap_reduction_frac": {
       "high": 0.5,
       "low": 0.15,
+      "status": "modeller_assumption",
       "unit": "fraction",
       "value": 0.3,
       "verified": false
@@ -42,6 +45,7 @@
     "solar_panel_soil_temp_reduction_c": {
       "high": 6.0,
       "low": 1.0,
+      "status": "modeller_assumption",
       "unit": "degC",
       "value": 3.0,
       "verified": false
@@ -867,5 +871,5 @@
   "plain_language": "Under a full solar-panel cover the twin's hydrogen uptake changes by 16.6 % over two weeks. How much cooler and less evaporative it is under panels, and how much water panel washing adds, are published ranges (other models); the soil's response to them is the twin's.",
   "question": "What if we build a solar park?",
   "refusals": [],
-  "registry_sha256": "0b781d9258a62e42c2e7edb3e86259e1db67afc4e6d31bc265935e67c5aa8bfb"
+  "registry_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578"
 }

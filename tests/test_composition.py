@@ -27,10 +27,14 @@ C = constant_values(sorted(REG))                  # central values of every regi
 
 # ---------------------------------------------------------------- registry
 
-def test_registry_complete_and_unverified():
+STATUSES = {"verified_in_source", "modeller_assumption", "source_not_checked"}
+
+
+def test_registry_complete_and_labelled():
     assert len(REG) == 42 and constants_sha256()
     for e in REG.values():
-        assert e["verified"] is False and e["low"] <= e["value"] <= e["high"]
+        assert e["status"] in STATUSES and e["verified"] is (e["status"] == "verified_in_source")
+        assert e["low"] <= e["value"] <= e["high"]
         assert set(e["source"]) == {"authors", "year", "title", "doi_or_url", "page_or_table"}
     used = {c for m in M.values() for c in m.constants}
     assert used <= set(REG)
@@ -169,23 +173,26 @@ def test_envelope_is_one_at_a_time_and_wraps_every_value():
     r = _brackish()
     assert r["refused"] is None and r["twin"]["checks_passed"]
     ry = r["outputs"]["maas_hoffman_alfalfa:relative_yield_alfalfa"]
-    assert ry["value"] == pytest.approx(1 - 0.073 * (1.5 * 4.0 - 2.0))
+    lf, sl, th = REG["fao29_ece_per_ecw"], C["mh_alfalfa_slope_pct_per_dS_m"] / 100, C["mh_alfalfa_threshold_dS_m"]
+    assert ry["value"] == pytest.approx(1 - sl * (lf["value"] * 4.0 - th))
     # one constant at a time: the widest single effect is the leaching factor (ECe = 2.0 x 4 or 1.0 x 4); slope and
     # threshold (+-20%) move the value less, and the envelope is not the joint worst case
-    assert ry["low"] == pytest.approx(1 - 0.073 * (2.0 * 4.0 - 2.0))
-    assert ry["high"] == pytest.approx(1 - 0.073 * (1.0 * 4.0 - 2.0))
+    assert ry["low"] == pytest.approx(1 - sl * (lf["high"] * 4.0 - th))
+    assert ry["high"] == pytest.approx(1 - sl * (lf["low"] * 4.0 - th))
     for w in r["outputs"].values():
         assert set(w) >= {"value", "low", "high", "unit", "provenance", "constants"}
     assert r["outputs"]["twin:h2_uptake_mol_m2"]["provenance"] == "twin"
     assert r["twin"]["trace"]["graph_sha256"] and r["registry_sha256"] == constants_sha256()
-    assert r["constants_used"]["fao29_ece_per_ecw"]["verified"] is False
+    assert r["constants_used"]["fao29_ece_per_ecw"]["verified"] is (lf["status"] == "verified_in_source")
 
 
 def test_scenario_low_high_and_no_envelope():
     lo = run_chain({"ec_w_dS_m": 4.}, [], twin_request(FLAT), [M["fao29_leaching"]], scenario="low")
     hi = run_chain({"ec_w_dS_m": 4.}, [], twin_request(FLAT), [M["fao29_leaching"]], scenario="high")
-    assert lo["outputs"]["fao29_leaching:ece_dS_m"]["value"] == 4.0 and hi["outputs"]["fao29_leaching:ece_dS_m"]["value"] == 8.0
-    assert lo["outputs"]["fao29_leaching:ece_dS_m"]["low"] == lo["outputs"]["fao29_leaching:ece_dS_m"]["high"] == 4.0
+    lf = REG["fao29_ece_per_ecw"]
+    assert lo["outputs"]["fao29_leaching:ece_dS_m"]["value"] == pytest.approx(lf["low"] * 4.0)
+    assert hi["outputs"]["fao29_leaching:ece_dS_m"]["value"] == pytest.approx(lf["high"] * 4.0)
+    assert lo["outputs"]["fao29_leaching:ece_dS_m"]["low"] == lo["outputs"]["fao29_leaching:ece_dS_m"]["high"]
 
 
 def test_determinism():
@@ -312,8 +319,9 @@ def test_water_demand_models():
 
 
 def test_fao29_and_maas_hoffman():
-    assert M["fao29_leaching"].fn({"ec_w_dS_m": 4.}, C)["ece_dS_m"] == pytest.approx(6.0)
-    for crop, thr, slope in (("date_palm", 4.0, 3.6), ("barley", 8.0, 5.0), ("alfalfa", 2.0, 7.3), ("tomato", 2.5, 9.9)):
+    assert M["fao29_leaching"].fn({"ec_w_dS_m": 4.}, C)["ece_dS_m"] == pytest.approx(4.0 * C["fao29_ece_per_ecw"])
+    for crop in ("date_palm", "barley", "alfalfa", "tomato"):
+        thr, slope = C[f"mh_{crop}_threshold_dS_m"], C[f"mh_{crop}_slope_pct_per_dS_m"]
         m = M[f"maas_hoffman_{crop}"]
         assert m.fn({"ece_dS_m": thr}, C)[f"relative_yield_{crop}"] == 1.0
         assert m.fn({"ece_dS_m": thr + 1}, C)[f"relative_yield_{crop}"] == pytest.approx(1 - slope / 100)

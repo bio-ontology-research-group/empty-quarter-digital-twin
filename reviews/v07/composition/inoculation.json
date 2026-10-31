@@ -3556,5 +3556,5 @@
   "plain_language": "In the sample 51PRr3 the ontology finds no carbon-monoxide-oxidising organism, so the twin predicts no CO uptake at all. Adding even a tiny share of a genome known to oxidise CO opens that process (CO uptake 144 micromole per square metre over two weeks). The 'gate' result says only whether the process can run at all; the 'proportional' result says how much, assuming the rate scales with the share of such organisms. Adding an organism that is not a carrier changes nothing under the gate. Whether the added microbes would survive and establish in desert soil is not modelled: the share is an assumption of the scenario.",
   "question": "What if we add microbes that oxidise CO or H2?",
   "refusals": [],
-  "registry_sha256": "0b781d9258a62e42c2e7edb3e86259e1db67afc4e6d31bc265935e67c5aa8bfb"
+  "registry_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578"
 }

@@ -20,6 +20,7 @@
     "biochar_porosity_increase_per_pct": {
       "high": 0.01,
       "low": 0.002,
+      "status": "source_not_checked",
       "unit": "porosity (absolute) per % w/w",
       "value": 0.006,
       "verified": false
@@ -734,5 +735,5 @@
   "plain_language": "Adding 5 % biochar by weight changes the soil's hydrogen uptake by -2.26 % over two weeks (twin). How much the biochar opens up the soil pores is a published average (another model); the twin only converts the new pore space into gas uptake.",
   "question": "What if we add biochar?",
   "refusals": [],
-  "registry_sha256": "0b781d9258a62e42c2e7edb3e86259e1db67afc4e6d31bc265935e67c5aa8bfb"
+  "registry_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578"
 }

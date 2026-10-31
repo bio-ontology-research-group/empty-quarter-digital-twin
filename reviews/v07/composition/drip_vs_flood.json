@@ -22,6 +22,7 @@
     "crop_etc_mm_per_day": {
       "high": 9.0,
       "low": 4.0,
+      "status": "modeller_assumption",
       "unit": "mm/day",
       "value": 6.0,
       "verified": false
@@ -68,7 +69,7 @@
     {
       "detail": "equal seasonal total, 14-day window",
       "high": -5.54739,
-      "label": "H2 uptake change vs unirrigated baseline, flood-type (every 10 days)",
+      "label": "H2 uptake change vs rain-only baseline (one 12 mm pulse), flood-type (every 10 days)",
       "low": -5.54739,
       "provenance": "twin",
       "unit": "% of baseline H2 uptake",
@@ -741,5 +742,5 @@
   "plain_language": "We gave the soil the same total amount of water either every day, every 3 days or only every 10 days. The twin says hydrogen uptake is 680, 692 and 1,041 micromole per square metre over two weeks, so rare big irrigations keep more soil activity than daily small ones. The total water amount comes from a published crop-water-demand figure (another model); everything about the soil response is the twin's.",
   "question": "Same water, delivered as daily drip or occasional flooding?",
   "refusals": [],
-  "registry_sha256": "0b781d9258a62e42c2e7edb3e86259e1db67afc4e6d31bc265935e67c5aa8bfb"
+  "registry_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578"
 }

@@ -21,6 +21,7 @@
     "offroad_bd_max_increase_g_cm3": {
       "high": 0.35,
       "low": 0.15,
+      "status": "source_not_checked",
       "unit": "g/cm3",
       "value": 0.25,
       "verified": false
@@ -28,6 +29,7 @@
     "offroad_bd_passes_efold": {
       "high": 10.0,
       "low": 3.0,
+      "status": "modeller_assumption",
       "unit": "passes",
       "value": 5.0,
       "verified": false
@@ -35,6 +37,7 @@
     "particle_density_g_cm3": {
       "high": 2.7,
       "low": 2.6,
+      "status": "source_not_checked",
       "unit": "g/cm3",
       "value": 2.65,
       "verified": false
@@ -853,5 +856,5 @@
   "plain_language": "After 50 vehicle passes the soil packs down and its hydrogen uptake changes by -1.49 % over two weeks (twin). How much a pass compacts desert sand is a published relationship (another model); the twin converts the smaller pore space into gas uptake.",
   "question": "What if off-road traffic compacts the soil?",
   "refusals": [],
-  "registry_sha256": "0b781d9258a62e42c2e7edb3e86259e1db67afc4e6d31bc265935e67c5aa8bfb"
+  "registry_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578"
 }

@@ -21,6 +21,7 @@
     "mulch_evap_reduction_frac": {
       "high": 0.6,
       "low": 0.3,
+      "status": "modeller_assumption",
       "unit": "fraction",
       "value": 0.5,
       "verified": false
@@ -28,6 +29,7 @@
     "shade_net_soil_temp_reduction_c": {
       "high": 8.0,
       "low": 2.0,
+      "status": "source_not_checked",
       "unit": "degC",
       "value": 5.0,
       "verified": false
@@ -1401,5 +1403,5 @@
   "plain_language": "Full mulch changes the soil's hydrogen uptake by 50.1 % and a full shade net by -24.8 % over two weeks (twin). How much mulch cuts evaporation and how much a net cools the soil are published ranges (other models), not twin results; neither changes how much water the soil receives.",
   "question": "What if we mulch or put up shade nets?",
   "refusals": [],
-  "registry_sha256": "0b781d9258a62e42c2e7edb3e86259e1db67afc4e6d31bc265935e67c5aa8bfb"
+  "registry_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578"
 }
