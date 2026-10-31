@@ -1,3 +1,17 @@
+# v0.7.0-dev — Composition with external models (in development)
+
+- Add `composition.py` and `external_models.py`: chained what-ifs `action -> upstream -> twin -> downstream`
+  with typed ports, validity domains as refusals, deductive gates carried through, acyclicity check and
+  one-at-a-time low/high envelopes. Values carry provenance (`twin`, `external:<id>`, `deduced`).
+- Add the registry of literature constants `data/external/composition_constants.json` (all entries
+  `verified: false` until checked against their sources).
+- Atmospheric H2 and CO concentrations (`h2_mol_m3`, `co_mol_m3`) are exogenous forcing targets, per day,
+  defaulting to the Parameters value; new graph nodes `C_h2`, `C_co`. v0.6 results are unchanged when the keys
+  are absent.
+- Add `community.inoculate` and an `inoculation` intervention key: a constitutive intervention on the community
+  (K and E unchanged, D_K recomputed for a counterfactual unit).
+- Theory note section 7 "Composition with external models" (scope is now section 8).
+
 # v0.6.0 — Stratified causal–ontological twin — 30 October 2026
 
 - Add the stratified causal–ontological graph (`theory.py`, `GET /v3/graph`,

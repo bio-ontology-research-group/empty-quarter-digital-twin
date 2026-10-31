@@ -225,7 +225,63 @@ find a set is not a proof of non-identifiability. The value rules cover the
 zero chain and the dry-threshold chain, not every entailment of the continuous
 equations.
 
-## 7. Scope
+## 7. Composition with external models
+
+`src/eq_biodt/v03/composition.py` composes the twin with other published models so that a management
+question the twin cannot answer alone becomes a chain `action -> upstream -> twin -> downstream`. An
+upstream model translates the action into twin inputs (forcing series, prescribed soil parameters, state,
+atmospheric gas concentration, inoculation); a downstream model translates twin outputs into an endpoint.
+The external models are in `external_models.py`; their literature constants are only in
+`data/external/composition_constants.json` (central value, low, high, source, `verified`).
+
+**Typed ports.** A model declares input and output ports `(name, term, unit)`. A value moves from a producer
+to a consumer only if the name and the pair `(term, unit)` agree; otherwise the chain is not built
+(`CompositionError`). Twin inputs and outputs are ports too: the exogenous targets of section 2 plus the new
+`h2_mol_m3` and `co_mol_m3`. This is the contract of the composition, not a claim about the models.
+
+**Validity domains are admissibility.** Section 4 makes an intervention admissible only on manipulable
+nodes. The same idea applies at each external model: it is a conditional claim on a closed interval of each
+input. An input outside the interval gives a refusal object (model, port, value, interval), reported as
+a result. The twin's own checks (`check_admissible`, domain checks of the process model) apply unchanged,
+and a twin refusal or an abstention (NaCl above the ideal-dilute domain) is carried downstream as a refusal,
+never as a number.
+
+**Gates carried through.** A downstream model can name an ontology class `C` as a gate. If the
+reasoner-entailed share `q_s(C)` in the chosen community is 0, its output is 0 with provenance `deduced`
+and a derivation string, and the model function is not called; this is the zero chain of section 6
+(`q = 0 => gamma = 0 => J = 0`) extended along the chain. Absence of entailment is not read as biological
+absence. Every value carries provenance `twin`, `external:<id>` or `deduced`.
+
+**Acyclicity.** The composed graph (upstream -> twin -> downstream, with an edge from a model to every model
+whose input port it produces) must be a DAG. A downstream output that feeds an upstream input is refused;
+feedback between management endpoints and the twin's inputs is outside the model, because the within-slice
+acyclicity of `theory.graph()` is what the do-calculus of section 6 relies on.
+
+**Uncertain constants.** Low and high values are propagated by rerunning the whole chain with one constant at
+a time at its end values; the reported interval is the envelope. It is a sensitivity range, not a
+probability.
+
+**Atmospheric forcing.** `C_h2` and `C_co` are manipulable exogenous nodes (default `C_a`), parents of
+`J_h2` and `J_co`; a `do(C_h2)` is an intervention on an exogenous node like water or temperature.
+
+**Inoculation: a constitutive intervention.** Choosing a community (section 3) selects evidence; both arms
+share it. Inoculation adds an organism, which none of the earlier changes does. Let `K` be the TBox,
+`E` the evidence and `D_K(E)` the entailed memberships. Inoculating MAG `g*` at relative share `s` leaves
+`K` and `E` unchanged and does not touch `D_K(E)` of any observed MAG (the memberships of `g*` are
+those the reasoner already entails). It changes the *unit*: the counterfactual community has shares
+`q'_C = (1-s) q_C + s [g* in C]`, and the deduction is recomputed for it, giving `gamma'`. The change is
+therefore constitutive (it changes what the unit is) and not causal (no mechanism is replaced), and the
+gate can open: `q_CO = 0` in sample `51PRr3` with the gate closed; inoculated with a `COCarrierMAG`
+member, `q'_CO = s > 0`, `gamma'_CO = 1`. In `intervene()` the baseline arm keeps the observed community and
+the intervened arm uses `gamma'`; the invariance checks recompute memberships and the subsumption inequalities
+for both. Whether the added organism is active in the field is a separate, causal question that the gate does
+not answer.
+
+**Limits.** External models are other people's models; their outputs are labelled with their source and are
+never twin predictions. The twin contributes the soil water and salt balance and the trace-gas uptake; it does
+not model plants, biomass, nitrogen or net carbon.
+
+## 8. Scope
 
 The do-calculus identification of section 6 is implemented for the three queries above. The calculus here is the deterministic, single-unit case: point-mass exogenous
 inputs, with paired regimes treated as counterfactuals. Probabilistic `do()`
