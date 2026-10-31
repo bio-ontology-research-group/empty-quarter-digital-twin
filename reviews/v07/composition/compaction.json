@@ -1,0 +1,857 @@
+{
+  "baseline": {
+    "community": "none (coupling 'reference': gamma = 1) unless the experiment names one",
+    "forcing": "14 days; 12 mm rain on day 0, none after; evaporation 1 mm/day; soil temperature 25 C; no NaCl in rain",
+    "initial_water_mm": 1.8,
+    "parameters": "Parameters(k_h2_s=0.001, k_co_s=0.001); other parameters at their defaults (Rub' al Khali sand: porosity 0.4)",
+    "period_days": 14,
+    "source": "reproducibility/v06/analyse.py reference_schedules()[1] ('single_pulse')"
+  },
+  "caveats": [
+    "Compaction is represented only by a porosity decrease with unchanged retention parameters.",
+    "Crust destruction and surface disturbance (which may matter more) are not modelled.",
+    "The response is not monotone: in the dry baseline a little compaction raises activation (the same water fills less pore space, so the soil is wetter) while diffusion falls; uptake peaks near porosity 0.36 and falls beyond (checked by direct porosity scan). Biochar (higher porosity) moves the other way.",
+    "Rub' al Khali soil and community; not a prediction for other soils"
+  ],
+  "chain": [
+    "offroad_compaction",
+    "twin"
+  ],
+  "constants_used": {
+    "offroad_bd_max_increase_g_cm3": {
+      "high": 0.35,
+      "low": 0.15,
+      "unit": "g/cm3",
+      "value": 0.25,
+      "verified": false
+    },
+    "offroad_bd_passes_efold": {
+      "high": 10.0,
+      "low": 3.0,
+      "unit": "passes",
+      "value": 5.0,
+      "verified": false
+    },
+    "particle_density_g_cm3": {
+      "high": 2.7,
+      "low": 2.6,
+      "unit": "g/cm3",
+      "value": 2.65,
+      "verified": false
+    }
+  },
+  "deduced_nulls": [],
+  "figure": {
+    "baseline_y": 1102.33,
+    "series": [
+      {
+        "high": [
+          1102.33,
+          1114.23,
+          1115.2,
+          1113.4
+        ],
+        "label": "twin H2 uptake",
+        "low": [
+          1102.33,
+          1107.51,
+          1057.19,
+          1018.77
+        ],
+        "x": [
+          0,
+          1,
+          10,
+          50
+        ],
+        "y": [
+          1102.33,
+          1111.19,
+          1098.89,
+          1085.87
+        ]
+      }
+    ],
+    "title": "10 Compaction",
+    "xlabel": "vehicle passes",
+    "ylabel": "H2 uptake (umol m$^{-2}$)"
+  },
+  "headline": [
+    {
+      "detail": "",
+      "high": 1.00392,
+      "label": "H2 uptake change, 50 passes",
+      "low": -7.58051,
+      "provenance": "twin",
+      "unit": "% of baseline H2 uptake",
+      "value": -1.49364
+    }
+  ],
+  "id": "compaction",
+  "levels": [
+    {
+      "action": {
+        "offroad_passes": 0
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "0 passes",
+      "porosity_after": {
+        "constants": [
+          "offroad_bd_max_increase_g_cm3",
+          "offroad_bd_passes_efold",
+          "particle_density_g_cm3"
+        ],
+        "high": 0.4,
+        "low": 0.4,
+        "provenance": "external:offroad_compaction",
+        "unit": "-",
+        "value": 0.4
+      },
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "parameters.porosity"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "offroad_bd_max_increase_g_cm3",
+            "offroad_bd_passes_efold",
+            "particle_density_g_cm3"
+          ],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "offroad_bd_max_increase_g_cm3",
+            "offroad_bd_passes_efold",
+            "particle_density_g_cm3"
+          ],
+          "high": 0.000144407,
+          "low": 0.000144407,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000144407
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "offroad_bd_max_increase_g_cm3",
+            "offroad_bd_passes_efold",
+            "particle_density_g_cm3"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "offroad_bd_max_increase_g_cm3",
+            "offroad_bd_passes_efold",
+            "particle_density_g_cm3"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "offroad_bd_max_increase_g_cm3",
+            "offroad_bd_passes_efold",
+            "particle_density_g_cm3"
+          ],
+          "high": 0.00110233,
+          "low": 0.00110233,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00110233
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "offroad_bd_max_increase_g_cm3",
+            "offroad_bd_passes_efold",
+            "particle_density_g_cm3"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "offroad_compaction": {
+          "porosity": {
+            "constants": [
+              "offroad_bd_max_increase_g_cm3",
+              "offroad_bd_passes_efold",
+              "particle_density_g_cm3"
+            ],
+            "high": 0.4,
+            "low": 0.4,
+            "provenance": "external:offroad_compaction",
+            "unit": "-",
+            "value": 0.4
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "offroad_passes": 1
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": -7.50219e-07,
+          "low": -2.7064e-06,
+          "percent": {
+            "high": -0.519518,
+            "low": -1.87415,
+            "value": -1.08443
+          },
+          "unit": "mol/m2",
+          "value": -1.56599e-06
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 1.19009e-05,
+          "low": 5.18103e-06,
+          "percent": {
+            "high": 1.07961,
+            "low": 0.470006,
+            "value": 0.803746
+          },
+          "unit": "mol/m2",
+          "value": 8.85996e-06
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "1 passes",
+      "porosity_after": {
+        "constants": [
+          "offroad_bd_max_increase_g_cm3",
+          "offroad_bd_passes_efold",
+          "particle_density_g_cm3"
+        ],
+        "high": 0.391022,
+        "low": 0.373258,
+        "provenance": "external:offroad_compaction",
+        "unit": "-",
+        "value": 0.382899
+      },
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "parameters.porosity"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "offroad_bd_max_increase_g_cm3",
+            "offroad_bd_passes_efold",
+            "particle_density_g_cm3"
+          ],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "offroad_bd_max_increase_g_cm3",
+            "offroad_bd_passes_efold",
+            "particle_density_g_cm3"
+          ],
+          "high": 0.000143656,
+          "low": 0.0001417,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000142841
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "offroad_bd_max_increase_g_cm3",
+            "offroad_bd_passes_efold",
+            "particle_density_g_cm3"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "offroad_bd_max_increase_g_cm3",
+            "offroad_bd_passes_efold",
+            "particle_density_g_cm3"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "offroad_bd_max_increase_g_cm3",
+            "offroad_bd_passes_efold",
+            "particle_density_g_cm3"
+          ],
+          "high": 0.00111423,
+          "low": 0.00110751,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00111119
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "offroad_bd_max_increase_g_cm3",
+            "offroad_bd_passes_efold",
+            "particle_density_g_cm3"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "offroad_compaction": {
+          "porosity": {
+            "constants": [
+              "offroad_bd_max_increase_g_cm3",
+              "offroad_bd_passes_efold",
+              "particle_density_g_cm3"
+            ],
+            "high": 0.391022,
+            "low": 0.373258,
+            "provenance": "external:offroad_compaction",
+            "unit": "-",
+            "value": 0.382899
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "offroad_passes": 10
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 1,
+          "low": 0,
+          "percent": {
+            "high": 8.33333,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": -6.0661e-06,
+          "low": -2.22337e-05,
+          "percent": {
+            "high": -4.20071,
+            "low": -15.3966,
+            "value": -8.96161
+          },
+          "unit": "mol/m2",
+          "value": -1.29412e-05
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 1.28709e-05,
+          "low": -4.51474e-05,
+          "percent": {
+            "high": 1.16761,
+            "low": -4.09562,
+            "value": -0.312252
+          },
+          "unit": "mol/m2",
+          "value": -3.44206e-06
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "10 passes",
+      "porosity_after": {
+        "constants": [
+          "offroad_bd_max_increase_g_cm3",
+          "offroad_bd_passes_efold",
+          "particle_density_g_cm3"
+        ],
+        "high": 0.351057,
+        "low": 0.285799,
+        "provenance": "external:offroad_compaction",
+        "unit": "-",
+        "value": 0.318428
+      },
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "parameters.porosity"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "offroad_bd_max_increase_g_cm3",
+            "offroad_bd_passes_efold",
+            "particle_density_g_cm3"
+          ],
+          "high": 13,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "offroad_bd_max_increase_g_cm3",
+            "offroad_bd_passes_efold",
+            "particle_density_g_cm3"
+          ],
+          "high": 0.000138341,
+          "low": 0.000122173,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000131466
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "offroad_bd_max_increase_g_cm3",
+            "offroad_bd_passes_efold",
+            "particle_density_g_cm3"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "offroad_bd_max_increase_g_cm3",
+            "offroad_bd_passes_efold",
+            "particle_density_g_cm3"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "offroad_bd_max_increase_g_cm3",
+            "offroad_bd_passes_efold",
+            "particle_density_g_cm3"
+          ],
+          "high": 0.0011152,
+          "low": 0.00105719,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00109889
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "offroad_bd_max_increase_g_cm3",
+            "offroad_bd_passes_efold",
+            "particle_density_g_cm3"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "offroad_compaction": {
+          "porosity": {
+            "constants": [
+              "offroad_bd_max_increase_g_cm3",
+              "offroad_bd_passes_efold",
+              "particle_density_g_cm3"
+            ],
+            "high": 0.351057,
+            "low": 0.285799,
+            "provenance": "external:offroad_compaction",
+            "unit": "-",
+            "value": 0.318428
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "offroad_passes": 50
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 1,
+          "low": 0,
+          "percent": {
+            "high": 8.33333,
+            "low": 0.0,
+            "value": 8.33333
+          },
+          "unit": "day",
+          "value": 1
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": -7.46872e-06,
+          "low": -2.86934e-05,
+          "percent": {
+            "high": -5.17201,
+            "low": -19.8698,
+            "value": -11.2753
+          },
+          "unit": "mol/m2",
+          "value": -1.62822e-05
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 1.10665e-05,
+          "low": -8.35625e-05,
+          "percent": {
+            "high": 1.00392,
+            "low": -7.58051,
+            "value": -1.49364
+          },
+          "unit": "mol/m2",
+          "value": -1.64649e-05
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "50 passes",
+      "porosity_after": {
+        "constants": [
+          "offroad_bd_max_increase_g_cm3",
+          "offroad_bd_passes_efold",
+          "particle_density_g_cm3"
+        ],
+        "high": 0.343399,
+        "low": 0.267931,
+        "provenance": "external:offroad_compaction",
+        "unit": "-",
+        "value": 0.305665
+      },
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "parameters.porosity"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "offroad_bd_max_increase_g_cm3",
+            "offroad_bd_passes_efold",
+            "particle_density_g_cm3"
+          ],
+          "high": 13,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 13
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "offroad_bd_max_increase_g_cm3",
+            "offroad_bd_passes_efold",
+            "particle_density_g_cm3"
+          ],
+          "high": 0.000136938,
+          "low": 0.000115713,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000128124
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "offroad_bd_max_increase_g_cm3",
+            "offroad_bd_passes_efold",
+            "particle_density_g_cm3"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "offroad_bd_max_increase_g_cm3",
+            "offroad_bd_passes_efold",
+            "particle_density_g_cm3"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "offroad_bd_max_increase_g_cm3",
+            "offroad_bd_passes_efold",
+            "particle_density_g_cm3"
+          ],
+          "high": 0.0011134,
+          "low": 0.00101877,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00108587
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "offroad_bd_max_increase_g_cm3",
+            "offroad_bd_passes_efold",
+            "particle_density_g_cm3"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "offroad_compaction": {
+          "porosity": {
+            "constants": [
+              "offroad_bd_max_increase_g_cm3",
+              "offroad_bd_passes_efold",
+              "particle_density_g_cm3"
+            ],
+            "high": 0.343399,
+            "low": 0.267931,
+            "provenance": "external:offroad_compaction",
+            "unit": "-",
+            "value": 0.305665
+          }
+        }
+      }
+    }
+  ],
+  "plain_language": "After 50 vehicle passes the soil packs down and its hydrogen uptake changes by -1.49 % over two weeks (twin). How much a pass compacts desert sand is a published relationship (another model); the twin converts the smaller pore space into gas uptake.",
+  "question": "What if off-road traffic compacts the soil?",
+  "refusals": [],
+  "registry_sha256": "0b781d9258a62e42c2e7edb3e86259e1db67afc4e6d31bc265935e67c5aa8bfb"
+}

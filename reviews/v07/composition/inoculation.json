@@ -1,0 +1,3560 @@
+{
+  "baseline": {
+    "community": "none (coupling 'reference': gamma = 1) unless the experiment names one",
+    "forcing": "14 days; 12 mm rain on day 0, none after; evaporation 1 mm/day; soil temperature 25 C; no NaCl in rain",
+    "initial_water_mm": 1.8,
+    "parameters": "Parameters(k_h2_s=0.001, k_co_s=0.001); other parameters at their defaults (Rub' al Khali sand: porosity 0.4)",
+    "period_days": 14,
+    "source": "reproducibility/v06/analyse.py reference_schedules()[1] ('single_pulse')"
+  },
+  "caveats": [
+    "Share is an assumption of the scenario; survival, establishment, competition and activity of the inoculum in desert soil are not modelled.",
+    "Gate mode: any share > 0 sets gamma = 1, so the dose has no graded effect; the dose-response is the proportional mode, gamma = q/median(q) (assumes rate scales with carrier share).",
+    "Proportional mode: a non-carrier inoculum displaces the existing community and lowers uptake by about its share (a model artefact of renormalisation, not a biological prediction).",
+    "Memberships come from reasoner entailment (K and E unchanged); absence of entailment is not biological absence.",
+    "Rub' al Khali soil and community; not a prediction for other soils"
+  ],
+  "chain": [
+    "inoculant",
+    "twin"
+  ],
+  "constants_used": {},
+  "deduced_nulls": [],
+  "figure": {
+    "baseline_y": null,
+    "series": [
+      {
+        "high": [
+          144.407,
+          144.407,
+          144.407
+        ],
+        "label": "51PRr3 gate",
+        "low": [
+          144.407,
+          144.407,
+          144.407
+        ],
+        "x": [
+          0.1,
+          1.0,
+          5.0
+        ],
+        "y": [
+          144.407,
+          144.407,
+          144.407
+        ]
+      },
+      {
+        "high": [
+          10.3703,
+          77.3745,
+          221.424
+        ],
+        "label": "51PRr3 proportional",
+        "low": [
+          10.3703,
+          77.3745,
+          221.424
+        ],
+        "x": [
+          0.1,
+          1.0,
+          5.0
+        ],
+        "y": [
+          10.3703,
+          77.3745,
+          221.424
+        ]
+      },
+      {
+        "high": [
+          144.407,
+          144.407,
+          144.407
+        ],
+        "label": "V53PRr2 gate",
+        "low": [
+          144.407,
+          144.407,
+          144.407
+        ],
+        "x": [
+          0.1,
+          1.0,
+          5.0
+        ],
+        "y": [
+          144.407,
+          144.407,
+          144.407
+        ]
+      },
+      {
+        "high": [
+          723.673,
+          727.246,
+          742.915
+        ],
+        "label": "V53PRr2 proportional",
+        "low": [
+          723.673,
+          727.246,
+          742.915
+        ],
+        "x": [
+          0.1,
+          1.0,
+          5.0
+        ],
+        "y": [
+          723.673,
+          727.246,
+          742.915
+        ]
+      }
+    ],
+    "title": "5 Inoculation (CO uptake)",
+    "xlabel": "inoculum share (%)",
+    "ylabel": "CO uptake (umol m$^{-2}$)"
+  },
+  "gate": {
+    "closed_sample": "51PRr3",
+    "co_gate_opened_by_carrier": true,
+    "co_uptake_after_umol_m2": 144.407,
+    "co_uptake_before_umol_m2": 0.0,
+    "gate_already_open": true,
+    "negative_control_co_change_gate_umol_m2": 0.0,
+    "negative_control_h2_change_gate_umol_m2": 0.0,
+    "negative_control_h2_change_proportional_percent": -4.91219,
+    "negative_control_note": "gate: exactly no change. proportional: the inoculum displaces the existing community (shares rescaled by 1-share), so uptake falls by about the share.",
+    "open_sample": "V53PRr2",
+    "open_sample_co_change_gate_umol_m2": 0.0
+  },
+  "headline": [
+    {
+      "detail": "baseline CO uptake of this sample is exactly 0 (gate closed)",
+      "high": 144.407,
+      "label": "CO uptake after 1 % CO-carrier inoculation of 51PRr3 (gate)",
+      "low": 144.407,
+      "provenance": "twin",
+      "unit": "umol m-2 over 14 d",
+      "value": 144.407
+    }
+  ],
+  "id": "inoculation",
+  "inoculum_mags": {
+    "co_carrier": "11Dr3__single_SemiBin_57",
+    "non_carrier": "10Dr2__single_SemiBin_0"
+  },
+  "levels": [
+    {
+      "action": {
+        "inoculum_mag_id": "11Dr3__single_SemiBin_57",
+        "inoculum_share": 0.001
+      },
+      "case": "51PRr3 (CO gate closed) + CO carrier",
+      "community": {
+        "community": {
+          "sample": "51PRr3"
+        },
+        "gamma": {
+          "co": 0.0,
+          "h2": 1.0
+        },
+        "mode": "gate",
+        "samples": [
+          "51PRr3"
+        ]
+      },
+      "coupling": "gate",
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.000144407,
+          "low": 0.000144407,
+          "unit": "mol/m2",
+          "value": 0.000144407
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "inoculation": {
+        "baseline_gamma": {
+          "co": 0.0,
+          "h2": 1.0
+        },
+        "gamma": {
+          "co": 1.0,
+          "h2": 1.0
+        },
+        "gate_opened": {
+          "co": true,
+          "h2": false
+        },
+        "mag_classes": [
+          "COCarrierMAG"
+        ],
+        "spec": {
+          "mag_id": "11Dr3__single_SemiBin_57",
+          "share": 0.001
+        }
+      },
+      "label": "51PRr3 (CO gate closed) + CO carrier; gate; share 0.001",
+      "mag_id": "11Dr3__single_SemiBin_57",
+      "refused": null,
+      "sample": "51PRr3",
+      "share": 0.001,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "community.inoculation"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.000144407,
+          "low": 0.000144407,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000144407
+        },
+        "final_salt_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.00110233,
+          "low": 0.00110233,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00110233
+        },
+        "mean_nacl_mol_l": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.0,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "inoculant": {
+          "inoculation": {
+            "constants": [],
+            "high": null,
+            "low": null,
+            "provenance": "external:inoculant",
+            "unit": "-",
+            "value": {
+              "mag_id": "11Dr3__single_SemiBin_57",
+              "share": 0.001
+            }
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "inoculum_mag_id": "11Dr3__single_SemiBin_57",
+        "inoculum_share": 0.01
+      },
+      "case": "51PRr3 (CO gate closed) + CO carrier",
+      "community": {
+        "community": {
+          "sample": "51PRr3"
+        },
+        "gamma": {
+          "co": 0.0,
+          "h2": 1.0
+        },
+        "mode": "gate",
+        "samples": [
+          "51PRr3"
+        ]
+      },
+      "coupling": "gate",
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.000144407,
+          "low": 0.000144407,
+          "unit": "mol/m2",
+          "value": 0.000144407
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "inoculation": {
+        "baseline_gamma": {
+          "co": 0.0,
+          "h2": 1.0
+        },
+        "gamma": {
+          "co": 1.0,
+          "h2": 1.0
+        },
+        "gate_opened": {
+          "co": true,
+          "h2": false
+        },
+        "mag_classes": [
+          "COCarrierMAG"
+        ],
+        "spec": {
+          "mag_id": "11Dr3__single_SemiBin_57",
+          "share": 0.01
+        }
+      },
+      "label": "51PRr3 (CO gate closed) + CO carrier; gate; share 0.01",
+      "mag_id": "11Dr3__single_SemiBin_57",
+      "refused": null,
+      "sample": "51PRr3",
+      "share": 0.01,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "community.inoculation"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.000144407,
+          "low": 0.000144407,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000144407
+        },
+        "final_salt_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.00110233,
+          "low": 0.00110233,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00110233
+        },
+        "mean_nacl_mol_l": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.0,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "inoculant": {
+          "inoculation": {
+            "constants": [],
+            "high": null,
+            "low": null,
+            "provenance": "external:inoculant",
+            "unit": "-",
+            "value": {
+              "mag_id": "11Dr3__single_SemiBin_57",
+              "share": 0.01
+            }
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "inoculum_mag_id": "11Dr3__single_SemiBin_57",
+        "inoculum_share": 0.05
+      },
+      "case": "51PRr3 (CO gate closed) + CO carrier",
+      "community": {
+        "community": {
+          "sample": "51PRr3"
+        },
+        "gamma": {
+          "co": 0.0,
+          "h2": 1.0
+        },
+        "mode": "gate",
+        "samples": [
+          "51PRr3"
+        ]
+      },
+      "coupling": "gate",
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.000144407,
+          "low": 0.000144407,
+          "unit": "mol/m2",
+          "value": 0.000144407
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "inoculation": {
+        "baseline_gamma": {
+          "co": 0.0,
+          "h2": 1.0
+        },
+        "gamma": {
+          "co": 1.0,
+          "h2": 1.0
+        },
+        "gate_opened": {
+          "co": true,
+          "h2": false
+        },
+        "mag_classes": [
+          "COCarrierMAG"
+        ],
+        "spec": {
+          "mag_id": "11Dr3__single_SemiBin_57",
+          "share": 0.05
+        }
+      },
+      "label": "51PRr3 (CO gate closed) + CO carrier; gate; share 0.05",
+      "mag_id": "11Dr3__single_SemiBin_57",
+      "refused": null,
+      "sample": "51PRr3",
+      "share": 0.05,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "community.inoculation"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.000144407,
+          "low": 0.000144407,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000144407
+        },
+        "final_salt_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.00110233,
+          "low": 0.00110233,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00110233
+        },
+        "mean_nacl_mol_l": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.0,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "inoculant": {
+          "inoculation": {
+            "constants": [],
+            "high": null,
+            "low": null,
+            "provenance": "external:inoculant",
+            "unit": "-",
+            "value": {
+              "mag_id": "11Dr3__single_SemiBin_57",
+              "share": 0.05
+            }
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "inoculum_mag_id": "11Dr3__single_SemiBin_57",
+        "inoculum_share": 0.001
+      },
+      "case": "51PRr3 (CO gate closed) + CO carrier",
+      "community": {
+        "community": {
+          "sample": "51PRr3"
+        },
+        "gamma": {
+          "co": 0.0,
+          "h2": 0.0595495
+        },
+        "mode": "proportional",
+        "samples": [
+          "51PRr3"
+        ]
+      },
+      "coupling": "proportional",
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.0,
+          "high": 1.03703e-05,
+          "low": 1.03703e-05,
+          "unit": "mol/m2",
+          "value": 1.03703e-05
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 8.26849e-05,
+          "high": -8.116e-08,
+          "low": -8.116e-08,
+          "percent": {
+            "high": -0.0981557,
+            "low": -0.0981557,
+            "value": -0.0981557
+          },
+          "unit": "mol/m2",
+          "value": -8.116e-08
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "inoculation": {
+        "baseline_gamma": {
+          "co": 0.0,
+          "h2": 0.0595495
+        },
+        "gamma": {
+          "co": 0.0406566,
+          "h2": 0.05949
+        },
+        "gate_opened": {
+          "co": true,
+          "h2": false
+        },
+        "mag_classes": [
+          "COCarrierMAG"
+        ],
+        "spec": {
+          "mag_id": "11Dr3__single_SemiBin_57",
+          "share": 0.001
+        }
+      },
+      "label": "51PRr3 (CO gate closed) + CO carrier; proportional; share 0.001",
+      "mag_id": "11Dr3__single_SemiBin_57",
+      "refused": null,
+      "sample": "51PRr3",
+      "share": 0.001,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "community.inoculation"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [],
+          "high": 1.03703e-05,
+          "low": 1.03703e-05,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 1.03703e-05
+        },
+        "final_salt_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [],
+          "high": 8.26037e-05,
+          "low": 8.26037e-05,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 8.26037e-05
+        },
+        "mean_nacl_mol_l": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.0,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 8.26849e-05,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "inoculant": {
+          "inoculation": {
+            "constants": [],
+            "high": null,
+            "low": null,
+            "provenance": "external:inoculant",
+            "unit": "-",
+            "value": {
+              "mag_id": "11Dr3__single_SemiBin_57",
+              "share": 0.001
+            }
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "inoculum_mag_id": "11Dr3__single_SemiBin_57",
+        "inoculum_share": 0.01
+      },
+      "case": "51PRr3 (CO gate closed) + CO carrier",
+      "community": {
+        "community": {
+          "sample": "51PRr3"
+        },
+        "gamma": {
+          "co": 0.0,
+          "h2": 0.0595495
+        },
+        "mode": "proportional",
+        "samples": [
+          "51PRr3"
+        ]
+      },
+      "coupling": "proportional",
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.0,
+          "high": 7.73745e-05,
+          "low": 7.73745e-05,
+          "unit": "mol/m2",
+          "value": 7.73745e-05
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 8.26849e-05,
+          "high": -8.11733e-07,
+          "low": -8.11733e-07,
+          "percent": {
+            "high": -0.981719,
+            "low": -0.981719,
+            "value": -0.981719
+          },
+          "unit": "mol/m2",
+          "value": -8.11733e-07
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "inoculation": {
+        "baseline_gamma": {
+          "co": 0.0,
+          "h2": 0.0595495
+        },
+        "gamma": {
+          "co": 0.406566,
+          "h2": 0.058954
+        },
+        "gate_opened": {
+          "co": true,
+          "h2": false
+        },
+        "mag_classes": [
+          "COCarrierMAG"
+        ],
+        "spec": {
+          "mag_id": "11Dr3__single_SemiBin_57",
+          "share": 0.01
+        }
+      },
+      "label": "51PRr3 (CO gate closed) + CO carrier; proportional; share 0.01",
+      "mag_id": "11Dr3__single_SemiBin_57",
+      "refused": null,
+      "sample": "51PRr3",
+      "share": 0.01,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "community.inoculation"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [],
+          "high": 7.73745e-05,
+          "low": 7.73745e-05,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 7.73745e-05
+        },
+        "final_salt_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [],
+          "high": 8.18731e-05,
+          "low": 8.18731e-05,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 8.18731e-05
+        },
+        "mean_nacl_mol_l": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.0,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 8.26849e-05,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "inoculant": {
+          "inoculation": {
+            "constants": [],
+            "high": null,
+            "low": null,
+            "provenance": "external:inoculant",
+            "unit": "-",
+            "value": {
+              "mag_id": "11Dr3__single_SemiBin_57",
+              "share": 0.01
+            }
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "inoculum_mag_id": "11Dr3__single_SemiBin_57",
+        "inoculum_share": 0.05
+      },
+      "case": "51PRr3 (CO gate closed) + CO carrier",
+      "community": {
+        "community": {
+          "sample": "51PRr3"
+        },
+        "gamma": {
+          "co": 0.0,
+          "h2": 0.0595495
+        },
+        "mode": "proportional",
+        "samples": [
+          "51PRr3"
+        ]
+      },
+      "coupling": "proportional",
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.000221424,
+          "low": 0.000221424,
+          "unit": "mol/m2",
+          "value": 0.000221424
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 8.26849e-05,
+          "high": -4.06164e-06,
+          "low": -4.06164e-06,
+          "percent": {
+            "high": -4.91219,
+            "low": -4.91219,
+            "value": -4.91219
+          },
+          "unit": "mol/m2",
+          "value": -4.06164e-06
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "inoculation": {
+        "baseline_gamma": {
+          "co": 0.0,
+          "h2": 0.0595495
+        },
+        "gamma": {
+          "co": 2.03283,
+          "h2": 0.056572
+        },
+        "gate_opened": {
+          "co": true,
+          "h2": false
+        },
+        "mag_classes": [
+          "COCarrierMAG"
+        ],
+        "spec": {
+          "mag_id": "11Dr3__single_SemiBin_57",
+          "share": 0.05
+        }
+      },
+      "label": "51PRr3 (CO gate closed) + CO carrier; proportional; share 0.05",
+      "mag_id": "11Dr3__single_SemiBin_57",
+      "refused": null,
+      "sample": "51PRr3",
+      "share": 0.05,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "community.inoculation"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.000221424,
+          "low": 0.000221424,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000221424
+        },
+        "final_salt_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [],
+          "high": 7.86232e-05,
+          "low": 7.86232e-05,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 7.86232e-05
+        },
+        "mean_nacl_mol_l": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.0,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 8.26849e-05,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "inoculant": {
+          "inoculation": {
+            "constants": [],
+            "high": null,
+            "low": null,
+            "provenance": "external:inoculant",
+            "unit": "-",
+            "value": {
+              "mag_id": "11Dr3__single_SemiBin_57",
+              "share": 0.05
+            }
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "inoculum_mag_id": "11Dr3__single_SemiBin_57",
+        "inoculum_share": 0.001
+      },
+      "case": "V53PRr2 (CO gate already open) + CO carrier",
+      "community": {
+        "community": {
+          "sample": "V53PRr2"
+        },
+        "gamma": {
+          "co": 1.0,
+          "h2": 1.0
+        },
+        "mode": "gate",
+        "samples": [
+          "V53PRr2"
+        ]
+      },
+      "coupling": "gate",
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "inoculation": {
+        "baseline_gamma": {
+          "co": 1.0,
+          "h2": 1.0
+        },
+        "gamma": {
+          "co": 1.0,
+          "h2": 1.0
+        },
+        "gate_opened": {
+          "co": false,
+          "h2": false
+        },
+        "mag_classes": [
+          "COCarrierMAG"
+        ],
+        "spec": {
+          "mag_id": "11Dr3__single_SemiBin_57",
+          "share": 0.001
+        }
+      },
+      "label": "V53PRr2 (CO gate already open) + CO carrier; gate; share 0.001",
+      "mag_id": "11Dr3__single_SemiBin_57",
+      "refused": null,
+      "sample": "V53PRr2",
+      "share": 0.001,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "community.inoculation"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.000144407,
+          "low": 0.000144407,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000144407
+        },
+        "final_salt_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.00110233,
+          "low": 0.00110233,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00110233
+        },
+        "mean_nacl_mol_l": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "inoculant": {
+          "inoculation": {
+            "constants": [],
+            "high": null,
+            "low": null,
+            "provenance": "external:inoculant",
+            "unit": "-",
+            "value": {
+              "mag_id": "11Dr3__single_SemiBin_57",
+              "share": 0.001
+            }
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "inoculum_mag_id": "11Dr3__single_SemiBin_57",
+        "inoculum_share": 0.01
+      },
+      "case": "V53PRr2 (CO gate already open) + CO carrier",
+      "community": {
+        "community": {
+          "sample": "V53PRr2"
+        },
+        "gamma": {
+          "co": 1.0,
+          "h2": 1.0
+        },
+        "mode": "gate",
+        "samples": [
+          "V53PRr2"
+        ]
+      },
+      "coupling": "gate",
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "inoculation": {
+        "baseline_gamma": {
+          "co": 1.0,
+          "h2": 1.0
+        },
+        "gamma": {
+          "co": 1.0,
+          "h2": 1.0
+        },
+        "gate_opened": {
+          "co": false,
+          "h2": false
+        },
+        "mag_classes": [
+          "COCarrierMAG"
+        ],
+        "spec": {
+          "mag_id": "11Dr3__single_SemiBin_57",
+          "share": 0.01
+        }
+      },
+      "label": "V53PRr2 (CO gate already open) + CO carrier; gate; share 0.01",
+      "mag_id": "11Dr3__single_SemiBin_57",
+      "refused": null,
+      "sample": "V53PRr2",
+      "share": 0.01,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "community.inoculation"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.000144407,
+          "low": 0.000144407,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000144407
+        },
+        "final_salt_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.00110233,
+          "low": 0.00110233,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00110233
+        },
+        "mean_nacl_mol_l": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "inoculant": {
+          "inoculation": {
+            "constants": [],
+            "high": null,
+            "low": null,
+            "provenance": "external:inoculant",
+            "unit": "-",
+            "value": {
+              "mag_id": "11Dr3__single_SemiBin_57",
+              "share": 0.01
+            }
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "inoculum_mag_id": "11Dr3__single_SemiBin_57",
+        "inoculum_share": 0.05
+      },
+      "case": "V53PRr2 (CO gate already open) + CO carrier",
+      "community": {
+        "community": {
+          "sample": "V53PRr2"
+        },
+        "gamma": {
+          "co": 1.0,
+          "h2": 1.0
+        },
+        "mode": "gate",
+        "samples": [
+          "V53PRr2"
+        ]
+      },
+      "coupling": "gate",
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "inoculation": {
+        "baseline_gamma": {
+          "co": 1.0,
+          "h2": 1.0
+        },
+        "gamma": {
+          "co": 1.0,
+          "h2": 1.0
+        },
+        "gate_opened": {
+          "co": false,
+          "h2": false
+        },
+        "mag_classes": [
+          "COCarrierMAG"
+        ],
+        "spec": {
+          "mag_id": "11Dr3__single_SemiBin_57",
+          "share": 0.05
+        }
+      },
+      "label": "V53PRr2 (CO gate already open) + CO carrier; gate; share 0.05",
+      "mag_id": "11Dr3__single_SemiBin_57",
+      "refused": null,
+      "sample": "V53PRr2",
+      "share": 0.05,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "community.inoculation"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.000144407,
+          "low": 0.000144407,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000144407
+        },
+        "final_salt_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.00110233,
+          "low": 0.00110233,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00110233
+        },
+        "mean_nacl_mol_l": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "inoculant": {
+          "inoculation": {
+            "constants": [],
+            "high": null,
+            "low": null,
+            "provenance": "external:inoculant",
+            "unit": "-",
+            "value": {
+              "mag_id": "11Dr3__single_SemiBin_57",
+              "share": 0.05
+            }
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "inoculum_mag_id": "11Dr3__single_SemiBin_57",
+        "inoculum_share": 0.001
+      },
+      "case": "V53PRr2 (CO gate already open) + CO carrier",
+      "community": {
+        "community": {
+          "sample": "V53PRr2"
+        },
+        "gamma": {
+          "co": 19.4225,
+          "h2": 0.156087
+        },
+        "mode": "proportional",
+        "samples": [
+          "V53PRr2"
+        ]
+      },
+      "coupling": "proportional",
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000723275,
+          "high": 3.98044e-07,
+          "low": 3.98044e-07,
+          "percent": {
+            "high": 0.0550335,
+            "low": 0.0550335,
+            "value": 0.0550335
+          },
+          "unit": "mol/m2",
+          "value": 3.98044e-07
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.000210517,
+          "high": -2.00906e-07,
+          "low": -2.00906e-07,
+          "percent": {
+            "high": -0.0954348,
+            "low": -0.0954348,
+            "value": -0.0954348
+          },
+          "unit": "mol/m2",
+          "value": -2.00906e-07
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "inoculation": {
+        "baseline_gamma": {
+          "co": 19.4225,
+          "h2": 0.156087
+        },
+        "gamma": {
+          "co": 19.4438,
+          "h2": 0.155931
+        },
+        "gate_opened": {
+          "co": false,
+          "h2": false
+        },
+        "mag_classes": [
+          "COCarrierMAG"
+        ],
+        "spec": {
+          "mag_id": "11Dr3__single_SemiBin_57",
+          "share": 0.001
+        }
+      },
+      "label": "V53PRr2 (CO gate already open) + CO carrier; proportional; share 0.001",
+      "mag_id": "11Dr3__single_SemiBin_57",
+      "refused": null,
+      "sample": "V53PRr2",
+      "share": 0.001,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "community.inoculation"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.000723673,
+          "low": 0.000723673,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000723673
+        },
+        "final_salt_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.000210316,
+          "low": 0.000210316,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000210316
+        },
+        "mean_nacl_mol_l": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000723275,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.000210517,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "inoculant": {
+          "inoculation": {
+            "constants": [],
+            "high": null,
+            "low": null,
+            "provenance": "external:inoculant",
+            "unit": "-",
+            "value": {
+              "mag_id": "11Dr3__single_SemiBin_57",
+              "share": 0.001
+            }
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "inoculum_mag_id": "11Dr3__single_SemiBin_57",
+        "inoculum_share": 0.01
+      },
+      "case": "V53PRr2 (CO gate already open) + CO carrier",
+      "community": {
+        "community": {
+          "sample": "V53PRr2"
+        },
+        "gamma": {
+          "co": 19.4225,
+          "h2": 0.156087
+        },
+        "mode": "proportional",
+        "samples": [
+          "V53PRr2"
+        ]
+      },
+      "coupling": "proportional",
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000723275,
+          "high": 3.97057e-06,
+          "low": 3.97057e-06,
+          "percent": {
+            "high": 0.54897,
+            "low": 0.54897,
+            "value": 0.54897
+          },
+          "unit": "mol/m2",
+          "value": 3.97057e-06
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.000210517,
+          "high": -2.00987e-06,
+          "low": -2.00987e-06,
+          "percent": {
+            "high": -0.954732,
+            "low": -0.954732,
+            "value": -0.954732
+          },
+          "unit": "mol/m2",
+          "value": -2.00987e-06
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "inoculation": {
+        "baseline_gamma": {
+          "co": 19.4225,
+          "h2": 0.156087
+        },
+        "gamma": {
+          "co": 19.6349,
+          "h2": 0.154526
+        },
+        "gate_opened": {
+          "co": false,
+          "h2": false
+        },
+        "mag_classes": [
+          "COCarrierMAG"
+        ],
+        "spec": {
+          "mag_id": "11Dr3__single_SemiBin_57",
+          "share": 0.01
+        }
+      },
+      "label": "V53PRr2 (CO gate already open) + CO carrier; proportional; share 0.01",
+      "mag_id": "11Dr3__single_SemiBin_57",
+      "refused": null,
+      "sample": "V53PRr2",
+      "share": 0.01,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "community.inoculation"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.000727246,
+          "low": 0.000727246,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000727246
+        },
+        "final_salt_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.000208507,
+          "low": 0.000208507,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000208507
+        },
+        "mean_nacl_mol_l": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000723275,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.000210517,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "inoculant": {
+          "inoculation": {
+            "constants": [],
+            "high": null,
+            "low": null,
+            "provenance": "external:inoculant",
+            "unit": "-",
+            "value": {
+              "mag_id": "11Dr3__single_SemiBin_57",
+              "share": 0.01
+            }
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "inoculum_mag_id": "11Dr3__single_SemiBin_57",
+        "inoculum_share": 0.05
+      },
+      "case": "V53PRr2 (CO gate already open) + CO carrier",
+      "community": {
+        "community": {
+          "sample": "V53PRr2"
+        },
+        "gamma": {
+          "co": 19.4225,
+          "h2": 0.156087
+        },
+        "mode": "proportional",
+        "samples": [
+          "V53PRr2"
+        ]
+      },
+      "coupling": "proportional",
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000723275,
+          "high": 1.96393e-05,
+          "low": 1.96393e-05,
+          "percent": {
+            "high": 2.71532,
+            "low": 2.71532,
+            "value": 2.71532
+          },
+          "unit": "mol/m2",
+          "value": 1.96393e-05
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.000210517,
+          "high": -1.00673e-05,
+          "low": -1.00673e-05,
+          "percent": {
+            "high": -4.78221,
+            "low": -4.78221,
+            "value": -4.78221
+          },
+          "unit": "mol/m2",
+          "value": -1.00673e-05
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "inoculation": {
+        "baseline_gamma": {
+          "co": 19.4225,
+          "h2": 0.156087
+        },
+        "gamma": {
+          "co": 20.4842,
+          "h2": 0.148283
+        },
+        "gate_opened": {
+          "co": false,
+          "h2": false
+        },
+        "mag_classes": [
+          "COCarrierMAG"
+        ],
+        "spec": {
+          "mag_id": "11Dr3__single_SemiBin_57",
+          "share": 0.05
+        }
+      },
+      "label": "V53PRr2 (CO gate already open) + CO carrier; proportional; share 0.05",
+      "mag_id": "11Dr3__single_SemiBin_57",
+      "refused": null,
+      "sample": "V53PRr2",
+      "share": 0.05,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "community.inoculation"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.000742915,
+          "low": 0.000742915,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000742915
+        },
+        "final_salt_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.000200449,
+          "low": 0.000200449,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000200449
+        },
+        "mean_nacl_mol_l": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000723275,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.000210517,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "inoculant": {
+          "inoculation": {
+            "constants": [],
+            "high": null,
+            "low": null,
+            "provenance": "external:inoculant",
+            "unit": "-",
+            "value": {
+              "mag_id": "11Dr3__single_SemiBin_57",
+              "share": 0.05
+            }
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "inoculum_mag_id": "10Dr2__single_SemiBin_0",
+        "inoculum_share": 0.001
+      },
+      "case": "51PRr3 + non-carrier MAG (negative control)",
+      "community": {
+        "community": {
+          "sample": "51PRr3"
+        },
+        "gamma": {
+          "co": 0.0,
+          "h2": 1.0
+        },
+        "mode": "gate",
+        "samples": [
+          "51PRr3"
+        ]
+      },
+      "coupling": "gate",
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "inoculation": {
+        "baseline_gamma": {
+          "co": 0.0,
+          "h2": 1.0
+        },
+        "gamma": {
+          "co": 0.0,
+          "h2": 1.0
+        },
+        "gate_opened": {
+          "co": false,
+          "h2": false
+        },
+        "mag_classes": [],
+        "spec": {
+          "mag_id": "10Dr2__single_SemiBin_0",
+          "share": 0.001
+        }
+      },
+      "label": "51PRr3 + non-carrier MAG (negative control); gate; share 0.001",
+      "mag_id": "10Dr2__single_SemiBin_0",
+      "refused": null,
+      "sample": "51PRr3",
+      "share": 0.001,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "community.inoculation"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.00110233,
+          "low": 0.00110233,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00110233
+        },
+        "mean_nacl_mol_l": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.0,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "inoculant": {
+          "inoculation": {
+            "constants": [],
+            "high": null,
+            "low": null,
+            "provenance": "external:inoculant",
+            "unit": "-",
+            "value": {
+              "mag_id": "10Dr2__single_SemiBin_0",
+              "share": 0.001
+            }
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "inoculum_mag_id": "10Dr2__single_SemiBin_0",
+        "inoculum_share": 0.01
+      },
+      "case": "51PRr3 + non-carrier MAG (negative control)",
+      "community": {
+        "community": {
+          "sample": "51PRr3"
+        },
+        "gamma": {
+          "co": 0.0,
+          "h2": 1.0
+        },
+        "mode": "gate",
+        "samples": [
+          "51PRr3"
+        ]
+      },
+      "coupling": "gate",
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "inoculation": {
+        "baseline_gamma": {
+          "co": 0.0,
+          "h2": 1.0
+        },
+        "gamma": {
+          "co": 0.0,
+          "h2": 1.0
+        },
+        "gate_opened": {
+          "co": false,
+          "h2": false
+        },
+        "mag_classes": [],
+        "spec": {
+          "mag_id": "10Dr2__single_SemiBin_0",
+          "share": 0.01
+        }
+      },
+      "label": "51PRr3 + non-carrier MAG (negative control); gate; share 0.01",
+      "mag_id": "10Dr2__single_SemiBin_0",
+      "refused": null,
+      "sample": "51PRr3",
+      "share": 0.01,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "community.inoculation"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.00110233,
+          "low": 0.00110233,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00110233
+        },
+        "mean_nacl_mol_l": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.0,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "inoculant": {
+          "inoculation": {
+            "constants": [],
+            "high": null,
+            "low": null,
+            "provenance": "external:inoculant",
+            "unit": "-",
+            "value": {
+              "mag_id": "10Dr2__single_SemiBin_0",
+              "share": 0.01
+            }
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "inoculum_mag_id": "10Dr2__single_SemiBin_0",
+        "inoculum_share": 0.05
+      },
+      "case": "51PRr3 + non-carrier MAG (negative control)",
+      "community": {
+        "community": {
+          "sample": "51PRr3"
+        },
+        "gamma": {
+          "co": 0.0,
+          "h2": 1.0
+        },
+        "mode": "gate",
+        "samples": [
+          "51PRr3"
+        ]
+      },
+      "coupling": "gate",
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "inoculation": {
+        "baseline_gamma": {
+          "co": 0.0,
+          "h2": 1.0
+        },
+        "gamma": {
+          "co": 0.0,
+          "h2": 1.0
+        },
+        "gate_opened": {
+          "co": false,
+          "h2": false
+        },
+        "mag_classes": [],
+        "spec": {
+          "mag_id": "10Dr2__single_SemiBin_0",
+          "share": 0.05
+        }
+      },
+      "label": "51PRr3 + non-carrier MAG (negative control); gate; share 0.05",
+      "mag_id": "10Dr2__single_SemiBin_0",
+      "refused": null,
+      "sample": "51PRr3",
+      "share": 0.05,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "community.inoculation"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.00110233,
+          "low": 0.00110233,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00110233
+        },
+        "mean_nacl_mol_l": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.0,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "inoculant": {
+          "inoculation": {
+            "constants": [],
+            "high": null,
+            "low": null,
+            "provenance": "external:inoculant",
+            "unit": "-",
+            "value": {
+              "mag_id": "10Dr2__single_SemiBin_0",
+              "share": 0.05
+            }
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "inoculum_mag_id": "10Dr2__single_SemiBin_0",
+        "inoculum_share": 0.001
+      },
+      "case": "51PRr3 + non-carrier MAG (negative control)",
+      "community": {
+        "community": {
+          "sample": "51PRr3"
+        },
+        "gamma": {
+          "co": 0.0,
+          "h2": 0.0595495
+        },
+        "mode": "proportional",
+        "samples": [
+          "51PRr3"
+        ]
+      },
+      "coupling": "proportional",
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 8.26849e-05,
+          "high": -8.116e-08,
+          "low": -8.116e-08,
+          "percent": {
+            "high": -0.0981557,
+            "low": -0.0981557,
+            "value": -0.0981557
+          },
+          "unit": "mol/m2",
+          "value": -8.116e-08
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "inoculation": {
+        "baseline_gamma": {
+          "co": 0.0,
+          "h2": 0.0595495
+        },
+        "gamma": {
+          "co": 0.0,
+          "h2": 0.05949
+        },
+        "gate_opened": {
+          "co": false,
+          "h2": false
+        },
+        "mag_classes": [],
+        "spec": {
+          "mag_id": "10Dr2__single_SemiBin_0",
+          "share": 0.001
+        }
+      },
+      "label": "51PRr3 + non-carrier MAG (negative control); proportional; share 0.001",
+      "mag_id": "10Dr2__single_SemiBin_0",
+      "refused": null,
+      "sample": "51PRr3",
+      "share": 0.001,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "community.inoculation"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [],
+          "high": 8.26037e-05,
+          "low": 8.26037e-05,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 8.26037e-05
+        },
+        "mean_nacl_mol_l": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.0,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 8.26849e-05,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "inoculant": {
+          "inoculation": {
+            "constants": [],
+            "high": null,
+            "low": null,
+            "provenance": "external:inoculant",
+            "unit": "-",
+            "value": {
+              "mag_id": "10Dr2__single_SemiBin_0",
+              "share": 0.001
+            }
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "inoculum_mag_id": "10Dr2__single_SemiBin_0",
+        "inoculum_share": 0.01
+      },
+      "case": "51PRr3 + non-carrier MAG (negative control)",
+      "community": {
+        "community": {
+          "sample": "51PRr3"
+        },
+        "gamma": {
+          "co": 0.0,
+          "h2": 0.0595495
+        },
+        "mode": "proportional",
+        "samples": [
+          "51PRr3"
+        ]
+      },
+      "coupling": "proportional",
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 8.26849e-05,
+          "high": -8.11733e-07,
+          "low": -8.11733e-07,
+          "percent": {
+            "high": -0.981719,
+            "low": -0.981719,
+            "value": -0.981719
+          },
+          "unit": "mol/m2",
+          "value": -8.11733e-07
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "inoculation": {
+        "baseline_gamma": {
+          "co": 0.0,
+          "h2": 0.0595495
+        },
+        "gamma": {
+          "co": 0.0,
+          "h2": 0.058954
+        },
+        "gate_opened": {
+          "co": false,
+          "h2": false
+        },
+        "mag_classes": [],
+        "spec": {
+          "mag_id": "10Dr2__single_SemiBin_0",
+          "share": 0.01
+        }
+      },
+      "label": "51PRr3 + non-carrier MAG (negative control); proportional; share 0.01",
+      "mag_id": "10Dr2__single_SemiBin_0",
+      "refused": null,
+      "sample": "51PRr3",
+      "share": 0.01,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "community.inoculation"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [],
+          "high": 8.18731e-05,
+          "low": 8.18731e-05,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 8.18731e-05
+        },
+        "mean_nacl_mol_l": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.0,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 8.26849e-05,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "inoculant": {
+          "inoculation": {
+            "constants": [],
+            "high": null,
+            "low": null,
+            "provenance": "external:inoculant",
+            "unit": "-",
+            "value": {
+              "mag_id": "10Dr2__single_SemiBin_0",
+              "share": 0.01
+            }
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "inoculum_mag_id": "10Dr2__single_SemiBin_0",
+        "inoculum_share": 0.05
+      },
+      "case": "51PRr3 + non-carrier MAG (negative control)",
+      "community": {
+        "community": {
+          "sample": "51PRr3"
+        },
+        "gamma": {
+          "co": 0.0,
+          "h2": 0.0595495
+        },
+        "mode": "proportional",
+        "samples": [
+          "51PRr3"
+        ]
+      },
+      "coupling": "proportional",
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 8.26849e-05,
+          "high": -4.06164e-06,
+          "low": -4.06164e-06,
+          "percent": {
+            "high": -4.91219,
+            "low": -4.91219,
+            "value": -4.91219
+          },
+          "unit": "mol/m2",
+          "value": -4.06164e-06
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "inoculation": {
+        "baseline_gamma": {
+          "co": 0.0,
+          "h2": 0.0595495
+        },
+        "gamma": {
+          "co": 0.0,
+          "h2": 0.056572
+        },
+        "gate_opened": {
+          "co": false,
+          "h2": false
+        },
+        "mag_classes": [],
+        "spec": {
+          "mag_id": "10Dr2__single_SemiBin_0",
+          "share": 0.05
+        }
+      },
+      "label": "51PRr3 + non-carrier MAG (negative control); proportional; share 0.05",
+      "mag_id": "10Dr2__single_SemiBin_0",
+      "refused": null,
+      "sample": "51PRr3",
+      "share": 0.05,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "community.inoculation"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [],
+          "high": 7.86232e-05,
+          "low": 7.86232e-05,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 7.86232e-05
+        },
+        "mean_nacl_mol_l": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.0,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 8.26849e-05,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "inoculant": {
+          "inoculation": {
+            "constants": [],
+            "high": null,
+            "low": null,
+            "provenance": "external:inoculant",
+            "unit": "-",
+            "value": {
+              "mag_id": "10Dr2__single_SemiBin_0",
+              "share": 0.05
+            }
+          }
+        }
+      }
+    }
+  ],
+  "plain_language": "In the sample 51PRr3 the ontology finds no carbon-monoxide-oxidising organism, so the twin predicts no CO uptake at all. Adding even a tiny share of a genome known to oxidise CO opens that process (CO uptake 144 micromole per square metre over two weeks). The 'gate' result says only whether the process can run at all; the 'proportional' result says how much, assuming the rate scales with the share of such organisms. Adding an organism that is not a carrier changes nothing under the gate. Whether the added microbes would survive and establish in desert soil is not modelled: the share is an assumption of the scenario.",
+  "question": "What if we add microbes that oxidise CO or H2?",
+  "refusals": [],
+  "registry_sha256": "0b781d9258a62e42c2e7edb3e86259e1db67afc4e6d31bc265935e67c5aa8bfb"
+}

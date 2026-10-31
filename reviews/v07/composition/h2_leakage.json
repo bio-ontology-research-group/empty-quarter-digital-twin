@@ -1,0 +1,856 @@
+{
+  "baseline": {
+    "community": "none (coupling 'reference': gamma = 1) unless the experiment names one",
+    "forcing": "14 days; 12 mm rain on day 0, none after; evaporation 1 mm/day; soil temperature 25 C; no NaCl in rain",
+    "initial_water_mm": 1.8,
+    "parameters": "Parameters(k_h2_s=0.001, k_co_s=0.001); other parameters at their defaults (Rub' al Khali sand: porosity 0.4)",
+    "period_days": 14,
+    "source": "reproducibility/v06/analyse.py reference_schedules()[1] ('single_pulse')"
+  },
+  "caveats": [
+    "Linear response follows from the first-order uptake law at fixed activity; a larger sink does not change the atmosphere (no feedback, no mass balance with the atmosphere).",
+    "Only soil uptake is modelled: no leakage rates, no atmospheric chemistry, no other sinks.",
+    "10x is a hypothetical near-source plume.",
+    "Rub' al Khali soil and community; not a prediction for other soils"
+  ],
+  "chain": [
+    "h2_atmosphere",
+    "twin"
+  ],
+  "constants_used": {
+    "h2_background_ppm": {
+      "high": 0.55,
+      "low": 0.5,
+      "unit": "ppm (mole fraction)",
+      "value": 0.53,
+      "verified": false
+    }
+  },
+  "deduced_nulls": [],
+  "figure": {
+    "baseline_y": null,
+    "series": [
+      {
+        "high": [
+          1102.33,
+          1653.5,
+          2204.67,
+          11023.3
+        ],
+        "label": "twin H2 uptake",
+        "low": [
+          1102.33,
+          1653.5,
+          2204.67,
+          11023.3
+        ],
+        "x": [
+          1,
+          1.5,
+          2,
+          10
+        ],
+        "y": [
+          1102.33,
+          1653.5,
+          2204.67,
+          11023.3
+        ]
+      }
+    ],
+    "title": "7 H$_2$ leakage",
+    "xlabel": "H$_2$ multiple of background",
+    "ylabel": "H2 uptake (umol m$^{-2}$)"
+  },
+  "headline": [
+    {
+      "detail": "sink per m2 of soil, 14 days",
+      "high": 100.0,
+      "label": "H2 sink change at 2x background",
+      "low": 100.0,
+      "provenance": "twin",
+      "unit": "% of baseline H2 uptake",
+      "value": 100.0
+    }
+  ],
+  "id": "h2_leakage",
+  "levels": [
+    {
+      "action": {
+        "h2_multiplier": 1
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "1x background",
+      "oxygen_used_over_supply_max": 8.05448e-07,
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "forcing[0].h2_mol_m3",
+          "forcing[1].h2_mol_m3",
+          "forcing[2].h2_mol_m3",
+          "forcing[3].h2_mol_m3",
+          "forcing[4].h2_mol_m3",
+          "forcing[5].h2_mol_m3",
+          "forcing[6].h2_mol_m3",
+          "forcing[7].h2_mol_m3",
+          "forcing[8].h2_mol_m3",
+          "forcing[9].h2_mol_m3",
+          "forcing[10].h2_mol_m3",
+          "forcing[11].h2_mol_m3",
+          "forcing[12].h2_mol_m3",
+          "forcing[13].h2_mol_m3"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "h2_background_ppm"
+          ],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "h2_background_ppm"
+          ],
+          "high": 0.000144407,
+          "low": 0.000144407,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000144407
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "h2_background_ppm"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "h2_background_ppm"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "h2_background_ppm"
+          ],
+          "high": 0.00110233,
+          "low": 0.00110233,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00110233
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "h2_background_ppm"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "h2_atmosphere": {
+          "h2_mixing_ratio_ppm": {
+            "constants": [
+              "h2_background_ppm"
+            ],
+            "high": 0.55,
+            "low": 0.5,
+            "provenance": "external:h2_atmosphere",
+            "unit": "ppm",
+            "value": 0.53
+          },
+          "h2_mol_m3": {
+            "constants": [
+              "h2_background_ppm"
+            ],
+            "high": 2.13e-05,
+            "low": 2.13e-05,
+            "provenance": "external:h2_atmosphere",
+            "unit": "mol/m3",
+            "value": 2.13e-05
+          }
+        }
+      },
+      "upstream_ppm": {
+        "constants": [
+          "h2_background_ppm"
+        ],
+        "high": 0.55,
+        "low": 0.5,
+        "provenance": "external:h2_atmosphere",
+        "unit": "ppm",
+        "value": 0.53
+      }
+    },
+    {
+      "action": {
+        "h2_multiplier": 1.5
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.000551167,
+          "low": 0.000551167,
+          "percent": {
+            "high": 50.0,
+            "low": 50.0,
+            "value": 50.0
+          },
+          "unit": "mol/m2",
+          "value": 0.000551167
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "1.5x background",
+      "oxygen_used_over_supply_max": 1.1665e-06,
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "forcing[0].h2_mol_m3",
+          "forcing[1].h2_mol_m3",
+          "forcing[2].h2_mol_m3",
+          "forcing[3].h2_mol_m3",
+          "forcing[4].h2_mol_m3",
+          "forcing[5].h2_mol_m3",
+          "forcing[6].h2_mol_m3",
+          "forcing[7].h2_mol_m3",
+          "forcing[8].h2_mol_m3",
+          "forcing[9].h2_mol_m3",
+          "forcing[10].h2_mol_m3",
+          "forcing[11].h2_mol_m3",
+          "forcing[12].h2_mol_m3",
+          "forcing[13].h2_mol_m3"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "h2_background_ppm"
+          ],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "h2_background_ppm"
+          ],
+          "high": 0.000144407,
+          "low": 0.000144407,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000144407
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "h2_background_ppm"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "h2_background_ppm"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "h2_background_ppm"
+          ],
+          "high": 0.0016535,
+          "low": 0.0016535,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0016535
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "h2_background_ppm"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "h2_atmosphere": {
+          "h2_mixing_ratio_ppm": {
+            "constants": [
+              "h2_background_ppm"
+            ],
+            "high": 0.825,
+            "low": 0.75,
+            "provenance": "external:h2_atmosphere",
+            "unit": "ppm",
+            "value": 0.795
+          },
+          "h2_mol_m3": {
+            "constants": [
+              "h2_background_ppm"
+            ],
+            "high": 3.195e-05,
+            "low": 3.195e-05,
+            "provenance": "external:h2_atmosphere",
+            "unit": "mol/m3",
+            "value": 3.195e-05
+          }
+        }
+      },
+      "upstream_ppm": {
+        "constants": [
+          "h2_background_ppm"
+        ],
+        "high": 0.825,
+        "low": 0.75,
+        "provenance": "external:h2_atmosphere",
+        "unit": "ppm",
+        "value": 0.795
+      }
+    },
+    {
+      "action": {
+        "h2_multiplier": 2
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.00110233,
+          "low": 0.00110233,
+          "percent": {
+            "high": 100.0,
+            "low": 100.0,
+            "value": 100.0
+          },
+          "unit": "mol/m2",
+          "value": 0.00110233
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "2x background",
+      "oxygen_used_over_supply_max": 1.52755e-06,
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "forcing[0].h2_mol_m3",
+          "forcing[1].h2_mol_m3",
+          "forcing[2].h2_mol_m3",
+          "forcing[3].h2_mol_m3",
+          "forcing[4].h2_mol_m3",
+          "forcing[5].h2_mol_m3",
+          "forcing[6].h2_mol_m3",
+          "forcing[7].h2_mol_m3",
+          "forcing[8].h2_mol_m3",
+          "forcing[9].h2_mol_m3",
+          "forcing[10].h2_mol_m3",
+          "forcing[11].h2_mol_m3",
+          "forcing[12].h2_mol_m3",
+          "forcing[13].h2_mol_m3"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "h2_background_ppm"
+          ],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "h2_background_ppm"
+          ],
+          "high": 0.000144407,
+          "low": 0.000144407,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000144407
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "h2_background_ppm"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "h2_background_ppm"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "h2_background_ppm"
+          ],
+          "high": 0.00220467,
+          "low": 0.00220467,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00220467
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "h2_background_ppm"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "h2_atmosphere": {
+          "h2_mixing_ratio_ppm": {
+            "constants": [
+              "h2_background_ppm"
+            ],
+            "high": 1.1,
+            "low": 1.0,
+            "provenance": "external:h2_atmosphere",
+            "unit": "ppm",
+            "value": 1.06
+          },
+          "h2_mol_m3": {
+            "constants": [
+              "h2_background_ppm"
+            ],
+            "high": 4.26e-05,
+            "low": 4.26e-05,
+            "provenance": "external:h2_atmosphere",
+            "unit": "mol/m3",
+            "value": 4.26e-05
+          }
+        }
+      },
+      "upstream_ppm": {
+        "constants": [
+          "h2_background_ppm"
+        ],
+        "high": 1.1,
+        "low": 1.0,
+        "provenance": "external:h2_atmosphere",
+        "unit": "ppm",
+        "value": 1.06
+      }
+    },
+    {
+      "action": {
+        "h2_multiplier": 10
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.009921,
+          "low": 0.009921,
+          "percent": {
+            "high": 900.0,
+            "low": 900.0,
+            "value": 900.0
+          },
+          "unit": "mol/m2",
+          "value": 0.009921
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "10x background",
+      "oxygen_used_over_supply_max": 7.3044e-06,
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "forcing[0].h2_mol_m3",
+          "forcing[1].h2_mol_m3",
+          "forcing[2].h2_mol_m3",
+          "forcing[3].h2_mol_m3",
+          "forcing[4].h2_mol_m3",
+          "forcing[5].h2_mol_m3",
+          "forcing[6].h2_mol_m3",
+          "forcing[7].h2_mol_m3",
+          "forcing[8].h2_mol_m3",
+          "forcing[9].h2_mol_m3",
+          "forcing[10].h2_mol_m3",
+          "forcing[11].h2_mol_m3",
+          "forcing[12].h2_mol_m3",
+          "forcing[13].h2_mol_m3"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "h2_background_ppm"
+          ],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "h2_background_ppm"
+          ],
+          "high": 0.000144407,
+          "low": 0.000144407,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000144407
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "h2_background_ppm"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "h2_background_ppm"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "h2_background_ppm"
+          ],
+          "high": 0.0110233,
+          "low": 0.0110233,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0110233
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "h2_background_ppm"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "h2_atmosphere": {
+          "h2_mixing_ratio_ppm": {
+            "constants": [
+              "h2_background_ppm"
+            ],
+            "high": 5.5,
+            "low": 5.0,
+            "provenance": "external:h2_atmosphere",
+            "unit": "ppm",
+            "value": 5.3
+          },
+          "h2_mol_m3": {
+            "constants": [
+              "h2_background_ppm"
+            ],
+            "high": 0.000213,
+            "low": 0.000213,
+            "provenance": "external:h2_atmosphere",
+            "unit": "mol/m3",
+            "value": 0.000213
+          }
+        }
+      },
+      "upstream_ppm": {
+        "constants": [
+          "h2_background_ppm"
+        ],
+        "high": 5.5,
+        "low": 5.0,
+        "provenance": "external:h2_atmosphere",
+        "unit": "ppm",
+        "value": 5.3
+      }
+    }
+  ],
+  "linearity": {
+    "linear": true,
+    "max_oxygen_used_over_supply": 7.3044e-06,
+    "max_relative_deviation_from_linear": 2.22045e-16,
+    "note": "Deposition flux is linear in the atmospheric concentration; oxygen limits only if H2+CO demand exceeds the oxygen supply.",
+    "oxygen_limited": false,
+    "uptake_per_multiplier_mol_m2": [
+      0.00110233,
+      0.00110233,
+      0.00110233,
+      0.00110233
+    ]
+  },
+  "plain_language": "If the air's hydrogen doubles, the soil's hydrogen uptake doubles too (2,205 instead of 1,102 micromole per square metre over two weeks): the twin's soil sink grows in proportion to the concentration. At ten times background the uptake is 11,023 and oxygen does not run short. The atmospheric concentrations are scenarios from the hydrogen-economy literature (another source, about 1.1 ppm for a global hydrogen economy), not twin outputs.",
+  "question": "What if a hydrogen economy raises atmospheric H2?",
+  "refusals": [],
+  "registry_sha256": "0b781d9258a62e42c2e7edb3e86259e1db67afc4e6d31bc265935e67c5aa8bfb"
+}

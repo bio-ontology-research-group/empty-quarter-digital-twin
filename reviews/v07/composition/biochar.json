@@ -1,0 +1,738 @@
+{
+  "baseline": {
+    "community": "none (coupling 'reference': gamma = 1) unless the experiment names one",
+    "forcing": "14 days; 12 mm rain on day 0, none after; evaporation 1 mm/day; soil temperature 25 C; no NaCl in rain",
+    "initial_water_mm": 1.8,
+    "parameters": "Parameters(k_h2_s=0.001, k_co_s=0.001); other parameters at their defaults (Rub' al Khali sand: porosity 0.4)",
+    "period_days": 14,
+    "source": "reproducibility/v06/analyse.py reference_schedules()[1] ('single_pulse')"
+  },
+  "caveats": [
+    "Only porosity is changed (registry: absolute porosity per % w/w); water retention and biochar's own chemistry/microbiology are not modelled.",
+    "Higher porosity also raises the water capacity in the twin, which can change moisture and activation.",
+    "Rub' al Khali soil and community; not a prediction for other soils"
+  ],
+  "chain": [
+    "biochar_porosity",
+    "twin"
+  ],
+  "constants_used": {
+    "biochar_porosity_increase_per_pct": {
+      "high": 0.01,
+      "low": 0.002,
+      "unit": "porosity (absolute) per % w/w",
+      "value": 0.006,
+      "verified": false
+    }
+  },
+  "deduced_nulls": [],
+  "figure": {
+    "baseline_y": 1102.33,
+    "series": [
+      {
+        "high": [
+          1102.33,
+          1101.03,
+          1099.67,
+          1095.27
+        ],
+        "label": "twin H2 uptake",
+        "low": [
+          1102.33,
+          1095.27,
+          1086.95,
+          1055.61
+        ],
+        "x": [
+          0,
+          1,
+          2,
+          5
+        ],
+        "y": [
+          1102.33,
+          1098.25,
+          1093.71,
+          1077.44
+        ]
+      }
+    ],
+    "title": "4 Biochar",
+    "xlabel": "dose (% w/w)",
+    "ylabel": "H2 uptake (umol m$^{-2}$)"
+  },
+  "headline": [
+    {
+      "detail": "",
+      "high": -0.640549,
+      "label": "H2 uptake change, 5 % w/w biochar",
+      "low": -4.23849,
+      "provenance": "twin",
+      "unit": "% of baseline H2 uptake",
+      "value": -2.25803
+    }
+  ],
+  "id": "biochar",
+  "levels": [
+    {
+      "action": {
+        "biochar_dose_pct_w_w": 0
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "0 % w/w",
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "parameters.porosity"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "biochar_porosity_increase_per_pct"
+          ],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "biochar_porosity_increase_per_pct"
+          ],
+          "high": 0.000144407,
+          "low": 0.000144407,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000144407
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "biochar_porosity_increase_per_pct"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "biochar_porosity_increase_per_pct"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "biochar_porosity_increase_per_pct"
+          ],
+          "high": 0.00110233,
+          "low": 0.00110233,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00110233
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "biochar_porosity_increase_per_pct"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "biochar_porosity": {
+          "porosity": {
+            "constants": [
+              "biochar_porosity_increase_per_pct"
+            ],
+            "high": 0.4,
+            "low": 0.4,
+            "provenance": "external:biochar_porosity",
+            "unit": "-",
+            "value": 0.4
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "biochar_dose_pct_w_w": 1
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": 6.5293e-07,
+          "low": 1.4583e-07,
+          "percent": {
+            "high": 0.452146,
+            "low": 0.100985,
+            "value": 0.287024
+          },
+          "unit": "mol/m2",
+          "value": 4.14482e-07
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": -1.30644e-06,
+          "low": -7.06099e-06,
+          "percent": {
+            "high": -0.118516,
+            "low": -0.640549,
+            "value": -0.370108
+          },
+          "unit": "mol/m2",
+          "value": -4.07983e-06
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "1 % w/w",
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "parameters.porosity"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "biochar_porosity_increase_per_pct"
+          ],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "biochar_porosity_increase_per_pct"
+          ],
+          "high": 0.00014506,
+          "low": 0.000144553,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000144821
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "biochar_porosity_increase_per_pct"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "biochar_porosity_increase_per_pct"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "biochar_porosity_increase_per_pct"
+          ],
+          "high": 0.00110103,
+          "low": 0.00109527,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00109825
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "biochar_porosity_increase_per_pct"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "biochar_porosity": {
+          "porosity": {
+            "constants": [
+              "biochar_porosity_increase_per_pct"
+            ],
+            "high": 0.41,
+            "low": 0.402,
+            "provenance": "external:biochar_porosity",
+            "unit": "-",
+            "value": 0.406
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "biochar_dose_pct_w_w": 2
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": 1.11823e-06,
+          "low": 2.83977e-07,
+          "percent": {
+            "high": 0.774361,
+            "low": 0.196651,
+            "value": 0.526892
+          },
+          "unit": "mol/m2",
+          "value": 7.60867e-07
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": -2.66664e-06,
+          "low": -1.5388e-05,
+          "percent": {
+            "high": -0.241909,
+            "low": -1.39595,
+            "value": -0.782695
+          },
+          "unit": "mol/m2",
+          "value": -8.62791e-06
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "2 % w/w",
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "parameters.porosity"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "biochar_porosity_increase_per_pct"
+          ],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "biochar_porosity_increase_per_pct"
+          ],
+          "high": 0.000145525,
+          "low": 0.000144691,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000145168
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "biochar_porosity_increase_per_pct"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "biochar_porosity_increase_per_pct"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "biochar_porosity_increase_per_pct"
+          ],
+          "high": 0.00109967,
+          "low": 0.00108695,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00109371
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "biochar_porosity_increase_per_pct"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "biochar_porosity": {
+          "porosity": {
+            "constants": [
+              "biochar_porosity_increase_per_pct"
+            ],
+            "high": 0.42,
+            "low": 0.404,
+            "provenance": "external:biochar_porosity",
+            "unit": "-",
+            "value": 0.412
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "biochar_dose_pct_w_w": 5
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": 1.47343e-06,
+          "low": 6.5293e-07,
+          "percent": {
+            "high": 1.02033,
+            "low": 0.452146,
+            "value": 0.97022
+          },
+          "unit": "mol/m2",
+          "value": 1.40106e-06
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": -7.06099e-06,
+          "low": -4.67223e-05,
+          "percent": {
+            "high": -0.640549,
+            "low": -4.23849,
+            "value": -2.25803
+          },
+          "unit": "mol/m2",
+          "value": -2.48911e-05
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "5 % w/w",
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "parameters.porosity"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "biochar_porosity_increase_per_pct"
+          ],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "biochar_porosity_increase_per_pct"
+          ],
+          "high": 0.00014588,
+          "low": 0.00014506,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000145808
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "biochar_porosity_increase_per_pct"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "biochar_porosity_increase_per_pct"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "biochar_porosity_increase_per_pct"
+          ],
+          "high": 0.00109527,
+          "low": 0.00105561,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00107744
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "biochar_porosity_increase_per_pct"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "biochar_porosity": {
+          "porosity": {
+            "constants": [
+              "biochar_porosity_increase_per_pct"
+            ],
+            "high": 0.45,
+            "low": 0.41,
+            "provenance": "external:biochar_porosity",
+            "unit": "-",
+            "value": 0.43
+          }
+        }
+      }
+    }
+  ],
+  "plain_language": "Adding 5 % biochar by weight changes the soil's hydrogen uptake by -2.26 % over two weeks (twin). How much the biochar opens up the soil pores is a published average (another model); the twin only converts the new pore space into gas uptake.",
+  "question": "What if we add biochar?",
+  "refusals": [],
+  "registry_sha256": "0b781d9258a62e42c2e7edb3e86259e1db67afc4e6d31bc265935e67c5aa8bfb"
+}

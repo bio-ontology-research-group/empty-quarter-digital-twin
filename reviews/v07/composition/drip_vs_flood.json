@@ -1,0 +1,745 @@
+{
+  "baseline": {
+    "community": "none (coupling 'reference': gamma = 1) unless the experiment names one",
+    "forcing": "14 days; 12 mm rain on day 0, none after; evaporation 1 mm/day; soil temperature 25 C; no NaCl in rain",
+    "initial_water_mm": 1.8,
+    "parameters": "Parameters(k_h2_s=0.001, k_co_s=0.001); other parameters at their defaults (Rub' al Khali sand: porosity 0.4)",
+    "period_days": 14,
+    "source": "reproducibility/v06/analyse.py reference_schedules()[1] ('single_pulse')"
+  },
+  "caveats": [
+    "Contrasts with no-irrigation baseline are large because 8-fold more water than the 12 mm rain keeps the soil near saturation; compare the three levels with each other.",
+    "Total = FAO-56 generic demand x 14 days (registry range 4-9 mm/day) and is applied on top of the 12 mm rain pulse.",
+    "Consistent with the v0.6 finding that daily pulses give the lowest uptake (wet soil limits gas diffusion).",
+    "Rub' al Khali soil and community; not a prediction for other soils"
+  ],
+  "chain": [
+    "crop_water_demand_generic",
+    "irrigation_schedule",
+    "twin"
+  ],
+  "constants_used": {
+    "crop_etc_mm_per_day": {
+      "high": 9.0,
+      "low": 4.0,
+      "unit": "mm/day",
+      "value": 6.0,
+      "verified": false
+    }
+  },
+  "contrast": {
+    "h2_uptake_10d_over_1d": 1.5322,
+    "h2_uptake_3d_over_1d": 1.01766,
+    "v06_finding_reproduced_daily_lowest": true
+  },
+  "deduced_nulls": [],
+  "figure": {
+    "baseline_y": 1102.33,
+    "series": [
+      {
+        "high": [
+          907.302,
+          893.141,
+          1041.18
+        ],
+        "label": "twin H2 uptake",
+        "low": [
+          403.722,
+          585.419,
+          1041.18
+        ],
+        "x": [
+          1,
+          3,
+          10
+        ],
+        "y": [
+          679.532,
+          691.531,
+          1041.18
+        ]
+      }
+    ],
+    "title": "2 Drip vs flood",
+    "xlabel": "irrigation interval (days)",
+    "ylabel": "H2 uptake (umol m$^{-2}$)"
+  },
+  "headline": [
+    {
+      "detail": "equal seasonal total, 14-day window",
+      "high": -5.54739,
+      "label": "H2 uptake change vs unirrigated baseline, flood-type (every 10 days)",
+      "low": -5.54739,
+      "provenance": "twin",
+      "unit": "% of baseline H2 uptake",
+      "value": -5.54739
+    }
+  ],
+  "id": "drip_vs_flood",
+  "levels": [
+    {
+      "action": {
+        "irrigation_interval_days": 1,
+        "irrigation_nacl_mol_l": 0.0
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 2,
+          "low": 2,
+          "percent": {
+            "high": 16.6667,
+            "low": 16.6667,
+            "value": 16.6667
+          },
+          "unit": "day",
+          "value": 2
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": -5.3678e-05,
+          "low": -0.000104488,
+          "percent": {
+            "high": -37.1714,
+            "low": -72.3567,
+            "value": -53.3094
+          },
+          "unit": "mol/m2",
+          "value": -7.69824e-05
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 27.5513,
+          "low": 22.5514,
+          "unit": "mm",
+          "value": 24.5514
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": -0.000195032,
+          "low": -0.000698611,
+          "percent": {
+            "high": -17.6926,
+            "low": -63.3757,
+            "value": -38.3551
+          },
+          "unit": "mol/m2",
+          "value": -0.000422801
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "every 1 d",
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "forcing[0].nacl_mol_l",
+          "forcing[0].water_mm",
+          "forcing[1].nacl_mol_l",
+          "forcing[1].water_mm",
+          "forcing[2].nacl_mol_l",
+          "forcing[2].water_mm",
+          "forcing[3].nacl_mol_l",
+          "forcing[3].water_mm",
+          "forcing[4].nacl_mol_l",
+          "forcing[4].water_mm",
+          "forcing[5].nacl_mol_l",
+          "forcing[5].water_mm",
+          "forcing[6].nacl_mol_l",
+          "forcing[6].water_mm",
+          "forcing[7].nacl_mol_l",
+          "forcing[7].water_mm",
+          "forcing[8].nacl_mol_l",
+          "forcing[8].water_mm",
+          "forcing[9].nacl_mol_l",
+          "forcing[9].water_mm",
+          "forcing[10].nacl_mol_l",
+          "forcing[10].water_mm",
+          "forcing[11].nacl_mol_l",
+          "forcing[11].water_mm",
+          "forcing[12].nacl_mol_l",
+          "forcing[12].water_mm",
+          "forcing[13].nacl_mol_l",
+          "forcing[13].water_mm"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "crop_etc_mm_per_day"
+          ],
+          "high": 14,
+          "low": 14,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 14
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "crop_etc_mm_per_day"
+          ],
+          "high": 9.07287e-05,
+          "low": 3.99187e-05,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 6.74243e-05
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "crop_etc_mm_per_day"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "crop_etc_mm_per_day"
+          ],
+          "high": 27.5513,
+          "low": 22.5514,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 24.5514
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "crop_etc_mm_per_day"
+          ],
+          "high": 0.000907302,
+          "low": 0.000403722,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000679532
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "crop_etc_mm_per_day"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "crop_water_demand_generic": {
+          "irrigation_mm_per_day": {
+            "constants": [
+              "crop_etc_mm_per_day"
+            ],
+            "high": 9.0,
+            "low": 4.0,
+            "provenance": "external:crop_water_demand_generic",
+            "unit": "mm/day",
+            "value": 6.0
+          }
+        },
+        "irrigation_schedule": {
+          "nacl_mol_l": {
+            "constants": [
+              "crop_etc_mm_per_day"
+            ],
+            "days": 14,
+            "provenance": "external:irrigation_schedule",
+            "series_total": {
+              "high": 0.0,
+              "low": 0.0,
+              "value": 0.0
+            },
+            "unit": "mol/L"
+          },
+          "water_mm": {
+            "constants": [
+              "crop_etc_mm_per_day"
+            ],
+            "days": 14,
+            "provenance": "external:irrigation_schedule",
+            "series_total": {
+              "high": 138.0,
+              "low": 68.0,
+              "value": 96.0
+            },
+            "unit": "mm/day"
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "irrigation_interval_days": 3,
+        "irrigation_nacl_mol_l": 0.0
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 2,
+          "low": 2,
+          "percent": {
+            "high": 16.6667,
+            "low": 16.6667,
+            "value": 16.6667
+          },
+          "unit": "day",
+          "value": 2
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": -5.51112e-05,
+          "low": -8.6343e-05,
+          "percent": {
+            "high": -38.1638,
+            "low": -59.7915,
+            "value": -52.3835
+          },
+          "unit": "mol/m2",
+          "value": -7.56453e-05
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 23.9141,
+          "low": 21.7516,
+          "unit": "mm",
+          "value": 23.3517
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": -0.000209192,
+          "low": -0.000516914,
+          "percent": {
+            "high": -18.9772,
+            "low": -46.8928,
+            "value": -37.2666
+          },
+          "unit": "mol/m2",
+          "value": -0.000410802
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "every 3 d",
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "forcing[0].nacl_mol_l",
+          "forcing[0].water_mm",
+          "forcing[1].nacl_mol_l",
+          "forcing[1].water_mm",
+          "forcing[2].nacl_mol_l",
+          "forcing[2].water_mm",
+          "forcing[3].nacl_mol_l",
+          "forcing[3].water_mm",
+          "forcing[4].nacl_mol_l",
+          "forcing[4].water_mm",
+          "forcing[5].nacl_mol_l",
+          "forcing[5].water_mm",
+          "forcing[6].nacl_mol_l",
+          "forcing[6].water_mm",
+          "forcing[7].nacl_mol_l",
+          "forcing[7].water_mm",
+          "forcing[8].nacl_mol_l",
+          "forcing[8].water_mm",
+          "forcing[9].nacl_mol_l",
+          "forcing[9].water_mm",
+          "forcing[10].nacl_mol_l",
+          "forcing[10].water_mm",
+          "forcing[11].nacl_mol_l",
+          "forcing[11].water_mm",
+          "forcing[12].nacl_mol_l",
+          "forcing[12].water_mm",
+          "forcing[13].nacl_mol_l",
+          "forcing[13].water_mm"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "crop_etc_mm_per_day"
+          ],
+          "high": 14,
+          "low": 14,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 14
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "crop_etc_mm_per_day"
+          ],
+          "high": 8.92956e-05,
+          "low": 5.80637e-05,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 6.87614e-05
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "crop_etc_mm_per_day"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "crop_etc_mm_per_day"
+          ],
+          "high": 23.9141,
+          "low": 21.7516,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 23.3517
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "crop_etc_mm_per_day"
+          ],
+          "high": 0.000893141,
+          "low": 0.000585419,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000691531
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "crop_etc_mm_per_day"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "crop_water_demand_generic": {
+          "irrigation_mm_per_day": {
+            "constants": [
+              "crop_etc_mm_per_day"
+            ],
+            "high": 9.0,
+            "low": 4.0,
+            "provenance": "external:crop_water_demand_generic",
+            "unit": "mm/day",
+            "value": 6.0
+          }
+        },
+        "irrigation_schedule": {
+          "nacl_mol_l": {
+            "constants": [
+              "crop_etc_mm_per_day"
+            ],
+            "days": 14,
+            "provenance": "external:irrigation_schedule",
+            "series_total": {
+              "high": 0.0,
+              "low": 0.0,
+              "value": 0.0
+            },
+            "unit": "mol/L"
+          },
+          "water_mm": {
+            "constants": [
+              "crop_etc_mm_per_day"
+            ],
+            "days": 14,
+            "provenance": "external:irrigation_schedule",
+            "series_total": {
+              "high": 138.0,
+              "low": 68.0,
+              "value": 96.0
+            },
+            "unit": "mm/day"
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "irrigation_interval_days": 10,
+        "irrigation_nacl_mol_l": 0.0
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 2,
+          "low": 2,
+          "percent": {
+            "high": 16.6667,
+            "low": 16.6667,
+            "value": 16.6667
+          },
+          "unit": "day",
+          "value": 2
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": -3.64899e-05,
+          "low": -3.64899e-05,
+          "percent": {
+            "high": -25.2688,
+            "low": -25.2688,
+            "value": -25.2688
+          },
+          "unit": "mol/m2",
+          "value": -3.64899e-05
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 19.8888,
+          "low": 19.8888,
+          "unit": "mm",
+          "value": 19.8888
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": -6.11508e-05,
+          "low": -6.11508e-05,
+          "percent": {
+            "high": -5.54739,
+            "low": -5.54739,
+            "value": -5.54739
+          },
+          "unit": "mol/m2",
+          "value": -6.11508e-05
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "every 10 d",
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "forcing[0].nacl_mol_l",
+          "forcing[0].water_mm",
+          "forcing[1].nacl_mol_l",
+          "forcing[1].water_mm",
+          "forcing[2].nacl_mol_l",
+          "forcing[2].water_mm",
+          "forcing[3].nacl_mol_l",
+          "forcing[3].water_mm",
+          "forcing[4].nacl_mol_l",
+          "forcing[4].water_mm",
+          "forcing[5].nacl_mol_l",
+          "forcing[5].water_mm",
+          "forcing[6].nacl_mol_l",
+          "forcing[6].water_mm",
+          "forcing[7].nacl_mol_l",
+          "forcing[7].water_mm",
+          "forcing[8].nacl_mol_l",
+          "forcing[8].water_mm",
+          "forcing[9].nacl_mol_l",
+          "forcing[9].water_mm",
+          "forcing[10].nacl_mol_l",
+          "forcing[10].water_mm",
+          "forcing[11].nacl_mol_l",
+          "forcing[11].water_mm",
+          "forcing[12].nacl_mol_l",
+          "forcing[12].water_mm",
+          "forcing[13].nacl_mol_l",
+          "forcing[13].water_mm"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "crop_etc_mm_per_day"
+          ],
+          "high": 14,
+          "low": 14,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 14
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "crop_etc_mm_per_day"
+          ],
+          "high": 0.000107917,
+          "low": 0.000107917,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000107917
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "crop_etc_mm_per_day"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "crop_etc_mm_per_day"
+          ],
+          "high": 19.8888,
+          "low": 19.8888,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 19.8888
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "crop_etc_mm_per_day"
+          ],
+          "high": 0.00104118,
+          "low": 0.00104118,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00104118
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "crop_etc_mm_per_day"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "crop_water_demand_generic": {
+          "irrigation_mm_per_day": {
+            "constants": [
+              "crop_etc_mm_per_day"
+            ],
+            "high": 9.0,
+            "low": 4.0,
+            "provenance": "external:crop_water_demand_generic",
+            "unit": "mm/day",
+            "value": 6.0
+          }
+        },
+        "irrigation_schedule": {
+          "nacl_mol_l": {
+            "constants": [
+              "crop_etc_mm_per_day"
+            ],
+            "days": 14,
+            "provenance": "external:irrigation_schedule",
+            "series_total": {
+              "high": 0.0,
+              "low": 0.0,
+              "value": 0.0
+            },
+            "unit": "mol/L"
+          },
+          "water_mm": {
+            "constants": [
+              "crop_etc_mm_per_day"
+            ],
+            "days": 14,
+            "provenance": "external:irrigation_schedule",
+            "series_total": {
+              "high": 138.0,
+              "low": 68.0,
+              "value": 96.0
+            },
+            "unit": "mm/day"
+          }
+        }
+      }
+    }
+  ],
+  "plain_language": "We gave the soil the same total amount of water either every day, every 3 days or only every 10 days. The twin says hydrogen uptake is 680, 692 and 1,041 micromole per square metre over two weeks, so rare big irrigations keep more soil activity than daily small ones. The total water amount comes from a published crop-water-demand figure (another model); everything about the soil response is the twin's.",
+  "question": "Same water, delivered as daily drip or occasional flooding?",
+  "refusals": [],
+  "registry_sha256": "0b781d9258a62e42c2e7edb3e86259e1db67afc4e6d31bc265935e67c5aa8bfb"
+}

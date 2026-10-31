@@ -1,0 +1,198 @@
+{
+  "experiments": [
+    {
+      "deduced_nulls": 0,
+      "headline": {
+        "detail": "soil salinity from the twin's salt balance (14-day window) via FAO-29",
+        "high": 0.938469,
+        "label": "Alfalfa relative yield, EC_w = 8 dS/m (daily irrigation)",
+        "low": 0.800116,
+        "provenance": "external:maas_hoffman_alfalfa",
+        "unit": "fraction of unsalted yield",
+        "value": 0.886587
+      },
+      "id": "brackish_irrigation",
+      "n": 1,
+      "question": "What if we irrigate with brackish groundwater or treated wastewater?",
+      "refused_levels": 0
+    },
+    {
+      "deduced_nulls": 0,
+      "headline": {
+        "detail": "equal seasonal total, 14-day window",
+        "high": -5.54739,
+        "label": "H2 uptake change vs unirrigated baseline, flood-type (every 10 days)",
+        "low": -5.54739,
+        "provenance": "twin",
+        "unit": "% of baseline H2 uptake",
+        "value": -5.54739
+      },
+      "id": "drip_vs_flood",
+      "n": 2,
+      "question": "Same water, delivered as daily drip or occasional flooding?",
+      "refused_levels": 0
+    },
+    {
+      "deduced_nulls": 0,
+      "headline": {
+        "detail": "evaporation reduced by registry fraction",
+        "high": 53.9129,
+        "label": "H2 uptake change, full mulch cover",
+        "low": 36.3151,
+        "provenance": "twin",
+        "unit": "% of baseline H2 uptake",
+        "value": 50.0764
+      },
+      "id": "mulch_shade",
+      "n": 3,
+      "question": "What if we mulch or put up shade nets?",
+      "refused_levels": 0
+    },
+    {
+      "deduced_nulls": 0,
+      "headline": {
+        "detail": "",
+        "high": -0.640549,
+        "label": "H2 uptake change, 5 % w/w biochar",
+        "low": -4.23849,
+        "provenance": "twin",
+        "unit": "% of baseline H2 uptake",
+        "value": -2.25803
+      },
+      "id": "biochar",
+      "n": 4,
+      "question": "What if we add biochar?",
+      "refused_levels": 0
+    },
+    {
+      "deduced_nulls": 0,
+      "headline": {
+        "detail": "baseline CO uptake of this sample is exactly 0 (gate closed)",
+        "high": 144.407,
+        "label": "CO uptake after 1 % CO-carrier inoculation of 51PRr3 (gate)",
+        "low": 144.407,
+        "provenance": "twin",
+        "unit": "umol m-2 over 14 d",
+        "value": 144.407
+      },
+      "id": "inoculation",
+      "n": 5,
+      "question": "What if we add microbes that oxidise CO or H2?",
+      "refused_levels": 0
+    },
+    {
+      "deduced_nulls": 4,
+      "headline": {
+        "detail": "bound = H2 uptake (twin) x yield; annualised linearly from the 14-day period",
+        "high": 86356.4,
+        "label": "Upper bound of C fixed by H2 oxidisers, sample F14Dr1",
+        "low": 34542.5,
+        "provenance": "external:knallgas_carbon_fixation",
+        "unit": "ug C m-2 yr-1 (annualised)",
+        "value": 57570.9
+      },
+      "id": "carbon_fixation_bound",
+      "n": 6,
+      "question": "How much CO2 could the H2 oxidisers fix?",
+      "refused_levels": 0
+    },
+    {
+      "deduced_nulls": 0,
+      "headline": {
+        "detail": "sink per m2 of soil, 14 days",
+        "high": 100.0,
+        "label": "H2 sink change at 2x background",
+        "low": 100.0,
+        "provenance": "twin",
+        "unit": "% of baseline H2 uptake",
+        "value": 100.0
+      },
+      "id": "h2_leakage",
+      "n": 7,
+      "question": "What if a hydrogen economy raises atmospheric H2?",
+      "refused_levels": 0
+    },
+    {
+      "deduced_nulls": 0,
+      "headline": {
+        "detail": "cooling, shading of evaporation and one washing pulse",
+        "high": 30.5432,
+        "label": "H2 uptake change, full panel cover",
+        "low": -1.90248,
+        "provenance": "twin",
+        "unit": "% of baseline H2 uptake",
+        "value": 16.6443
+      },
+      "id": "solar_park",
+      "n": 8,
+      "question": "What if we build a solar park?",
+      "refused_levels": 0
+    },
+    {
+      "deduced_nulls": 0,
+      "headline": {
+        "detail": "baseline has one rain day (12 mm) in 14",
+        "high": 24.7016,
+        "label": "H2 uptake change, full-intensity seeding (+10 % rain on rain days)",
+        "low": 0.0,
+        "provenance": "twin",
+        "unit": "% of baseline H2 uptake",
+        "value": 12.6874
+      },
+      "id": "cloud_seeding",
+      "n": 9,
+      "question": "What if cloud seeding adds rain?",
+      "refused_levels": 0
+    },
+    {
+      "deduced_nulls": 0,
+      "headline": {
+        "detail": "",
+        "high": 1.00392,
+        "label": "H2 uptake change, 50 passes",
+        "low": -7.58051,
+        "provenance": "twin",
+        "unit": "% of baseline H2 uptake",
+        "value": -1.49364
+      },
+      "id": "compaction",
+      "n": 10,
+      "question": "What if off-road traffic compacts the soil?",
+      "refused_levels": 0
+    },
+    {
+      "deduced_nulls": 0,
+      "headline": {
+        "detail": "",
+        "high": 15.096,
+        "label": "H2 uptake change, +4 C, rain unchanged",
+        "low": -2.88769,
+        "provenance": "twin",
+        "unit": "% of baseline H2 uptake",
+        "value": 7.15843
+      },
+      "id": "warming",
+      "n": 11,
+      "question": "What if the climate warms?",
+      "refused_levels": 0
+    },
+    {
+      "deduced_nulls": 0,
+      "headline": {
+        "detail": "fitted leaching model; relative yield is the crop model's and the field trial's, not the twin's",
+        "high": 0.936215,
+        "label": "Inoculated alfalfa relative yield at EC_w 7.81 dS/m (salinity fitted to the field trial, fresh weight)",
+        "low": 0.891296,
+        "provenance": "external:sa187_benefit",
+        "unit": "fraction of unsalted, uninoculated yield",
+        "value": 0.91517
+      },
+      "id": "inoculated_alfalfa_salinity",
+      "n": 12,
+      "question": "What if we irrigate alfalfa with brackish water and coat the seed with the desert bacterium Enterobacter sp. SA187?",
+      "refused_levels": 0
+    }
+  ],
+  "note": "One row per experiment. Provenance 'twin' = process model; 'external:<id>' = another published model; 'deduced' = ontology.",
+  "registry_sha256": "0b781d9258a62e42c2e7edb3e86259e1db67afc4e6d31bc265935e67c5aa8bfb"
+}

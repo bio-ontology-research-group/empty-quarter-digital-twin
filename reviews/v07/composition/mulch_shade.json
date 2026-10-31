@@ -1,0 +1,1405 @@
+{
+  "baseline": {
+    "community": "none (coupling 'reference': gamma = 1) unless the experiment names one",
+    "forcing": "14 days; 12 mm rain on day 0, none after; evaporation 1 mm/day; soil temperature 25 C; no NaCl in rain",
+    "initial_water_mm": 1.8,
+    "parameters": "Parameters(k_h2_s=0.001, k_co_s=0.001); other parameters at their defaults (Rub' al Khali sand: porosity 0.4)",
+    "period_days": 14,
+    "source": "reproducibility/v06/analyse.py reference_schedules()[1] ('single_pulse')"
+  },
+  "caveats": [
+    "Mulch effect is bounded by the single 12 mm pulse of the baseline: little water to save in 14 days.",
+    "Shade-net cooling is applied as a constant offset on soil temperature; the twin's Q10 domain is 0-50 C.",
+    "Rub' al Khali soil and community; not a prediction for other soils"
+  ],
+  "chain": [
+    "mulch_evaporation",
+    "shade_net_temperature",
+    "twin"
+  ],
+  "constants_used": {
+    "mulch_evap_reduction_frac": {
+      "high": 0.6,
+      "low": 0.3,
+      "unit": "fraction",
+      "value": 0.5,
+      "verified": false
+    },
+    "shade_net_soil_temp_reduction_c": {
+      "high": 8.0,
+      "low": 2.0,
+      "unit": "degC",
+      "value": 5.0,
+      "verified": false
+    }
+  },
+  "deduced_nulls": [],
+  "figure": {
+    "baseline_y": 1102.33,
+    "series": [
+      {
+        "high": [
+          1102.33,
+          1502.65,
+          1696.63
+        ],
+        "label": "mulch (no shade)",
+        "low": [
+          1102.33,
+          1296.86,
+          1502.65
+        ],
+        "x": [
+          0,
+          0.5,
+          1
+        ],
+        "y": [
+          1102.33,
+          1445.2,
+          1654.34
+        ]
+      },
+      {
+        "high": [
+          1102.33,
+          1042.42,
+          985.189
+        ],
+        "label": "shade net (no mulch)",
+        "low": [
+          1102.33,
+          878.5,
+          694.093
+        ],
+        "x": [
+          0,
+          0.5,
+          1
+        ],
+        "y": [
+          1102.33,
+          957.56,
+          828.891
+        ]
+      }
+    ],
+    "title": "3 Mulch / shade net",
+    "xlabel": "cover fraction",
+    "ylabel": "H2 uptake (umol m$^{-2}$)"
+  },
+  "headline": [
+    {
+      "detail": "evaporation reduced by registry fraction",
+      "high": 53.9129,
+      "label": "H2 uptake change, full mulch cover",
+      "low": 36.3151,
+      "provenance": "twin",
+      "unit": "% of baseline H2 uptake",
+      "value": 50.0764
+    }
+  ],
+  "id": "mulch_shade",
+  "levels": [
+    {
+      "action": {
+        "mulch_cover_fraction": 0,
+        "shade_net_cover_fraction": 0
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "mulch 0, shade 0",
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "forcing[0].evaporation_mm",
+          "forcing[0].temp_c",
+          "forcing[1].evaporation_mm",
+          "forcing[1].temp_c",
+          "forcing[2].evaporation_mm",
+          "forcing[2].temp_c",
+          "forcing[3].evaporation_mm",
+          "forcing[3].temp_c",
+          "forcing[4].evaporation_mm",
+          "forcing[4].temp_c",
+          "forcing[5].evaporation_mm",
+          "forcing[5].temp_c",
+          "forcing[6].evaporation_mm",
+          "forcing[6].temp_c",
+          "forcing[7].evaporation_mm",
+          "forcing[7].temp_c",
+          "forcing[8].evaporation_mm",
+          "forcing[8].temp_c",
+          "forcing[9].evaporation_mm",
+          "forcing[9].temp_c",
+          "forcing[10].evaporation_mm",
+          "forcing[10].temp_c",
+          "forcing[11].evaporation_mm",
+          "forcing[11].temp_c",
+          "forcing[12].evaporation_mm",
+          "forcing[12].temp_c",
+          "forcing[13].evaporation_mm",
+          "forcing[13].temp_c"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.000144407,
+          "low": 0.000144407,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000144407
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.00110233,
+          "low": 0.00110233,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00110233
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "mulch_evaporation": {
+          "evaporation_mm": {
+            "constants": [
+              "mulch_evap_reduction_frac"
+            ],
+            "days": 14,
+            "provenance": "external:mulch_evaporation",
+            "series_total": {
+              "high": 14.0,
+              "low": 14.0,
+              "value": 14.0
+            },
+            "unit": "mm/day"
+          }
+        },
+        "shade_net_temperature": {
+          "temp_c": {
+            "constants": [
+              "shade_net_soil_temp_reduction_c"
+            ],
+            "days": 14,
+            "provenance": "external:shade_net_temperature",
+            "series_total": {
+              "high": 350.0,
+              "low": 350.0,
+              "value": 350.0
+            },
+            "unit": "degC"
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "mulch_cover_fraction": 0.5,
+        "shade_net_cover_fraction": 0
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 2,
+          "low": 2,
+          "percent": {
+            "high": 16.6667,
+            "low": 16.6667,
+            "value": 16.6667
+          },
+          "unit": "day",
+          "value": 2
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": 4.95798e-05,
+          "low": 2.54835e-05,
+          "percent": {
+            "high": 34.3334,
+            "low": 17.647,
+            "value": 30.3213
+          },
+          "unit": "mol/m2",
+          "value": 4.37859e-05
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 4.0,
+          "low": 1.9,
+          "unit": "mm",
+          "value": 3.3
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.000400313,
+          "low": 0.000194529,
+          "percent": {
+            "high": 36.3151,
+            "low": 17.647,
+            "value": 31.1037
+          },
+          "unit": "mol/m2",
+          "value": 0.000342867
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "mulch 0.5, shade 0",
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "forcing[0].evaporation_mm",
+          "forcing[0].temp_c",
+          "forcing[1].evaporation_mm",
+          "forcing[1].temp_c",
+          "forcing[2].evaporation_mm",
+          "forcing[2].temp_c",
+          "forcing[3].evaporation_mm",
+          "forcing[3].temp_c",
+          "forcing[4].evaporation_mm",
+          "forcing[4].temp_c",
+          "forcing[5].evaporation_mm",
+          "forcing[5].temp_c",
+          "forcing[6].evaporation_mm",
+          "forcing[6].temp_c",
+          "forcing[7].evaporation_mm",
+          "forcing[7].temp_c",
+          "forcing[8].evaporation_mm",
+          "forcing[8].temp_c",
+          "forcing[9].evaporation_mm",
+          "forcing[9].temp_c",
+          "forcing[10].evaporation_mm",
+          "forcing[10].temp_c",
+          "forcing[11].evaporation_mm",
+          "forcing[11].temp_c",
+          "forcing[12].evaporation_mm",
+          "forcing[12].temp_c",
+          "forcing[13].evaporation_mm",
+          "forcing[13].temp_c"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 14,
+          "low": 14,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 14
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.000193986,
+          "low": 0.00016989,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000188193
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 4.0,
+          "low": 1.9,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 3.3
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.00150265,
+          "low": 0.00129686,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0014452
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "mulch_evaporation": {
+          "evaporation_mm": {
+            "constants": [
+              "mulch_evap_reduction_frac"
+            ],
+            "days": 14,
+            "provenance": "external:mulch_evaporation",
+            "series_total": {
+              "high": 11.9,
+              "low": 9.8,
+              "value": 10.5
+            },
+            "unit": "mm/day"
+          }
+        },
+        "shade_net_temperature": {
+          "temp_c": {
+            "constants": [
+              "shade_net_soil_temp_reduction_c"
+            ],
+            "days": 14,
+            "provenance": "external:shade_net_temperature",
+            "series_total": {
+              "high": 350.0,
+              "low": 350.0,
+              "value": 350.0
+            },
+            "unit": "degC"
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "mulch_cover_fraction": 1,
+        "shade_net_cover_fraction": 0
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 2,
+          "low": 2,
+          "percent": {
+            "high": 16.6667,
+            "low": 16.6667,
+            "value": 16.6667
+          },
+          "unit": "day",
+          "value": 2
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": 6.01759e-05,
+          "low": 4.95798e-05,
+          "percent": {
+            "high": 41.6711,
+            "low": 34.3334,
+            "value": 41.4195
+          },
+          "unit": "mol/m2",
+          "value": 5.98125e-05
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 8.2,
+          "low": 4.0,
+          "unit": "mm",
+          "value": 6.8
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.0005943,
+          "low": 0.000400313,
+          "percent": {
+            "high": 53.9129,
+            "low": 36.3151,
+            "value": 50.0764
+          },
+          "unit": "mol/m2",
+          "value": 0.000552009
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "mulch 1, shade 0",
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "forcing[0].evaporation_mm",
+          "forcing[0].temp_c",
+          "forcing[1].evaporation_mm",
+          "forcing[1].temp_c",
+          "forcing[2].evaporation_mm",
+          "forcing[2].temp_c",
+          "forcing[3].evaporation_mm",
+          "forcing[3].temp_c",
+          "forcing[4].evaporation_mm",
+          "forcing[4].temp_c",
+          "forcing[5].evaporation_mm",
+          "forcing[5].temp_c",
+          "forcing[6].evaporation_mm",
+          "forcing[6].temp_c",
+          "forcing[7].evaporation_mm",
+          "forcing[7].temp_c",
+          "forcing[8].evaporation_mm",
+          "forcing[8].temp_c",
+          "forcing[9].evaporation_mm",
+          "forcing[9].temp_c",
+          "forcing[10].evaporation_mm",
+          "forcing[10].temp_c",
+          "forcing[11].evaporation_mm",
+          "forcing[11].temp_c",
+          "forcing[12].evaporation_mm",
+          "forcing[12].temp_c",
+          "forcing[13].evaporation_mm",
+          "forcing[13].temp_c"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 14,
+          "low": 14,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 14
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.000204583,
+          "low": 0.000193986,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000204219
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 8.2,
+          "low": 4.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 6.8
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.00169663,
+          "low": 0.00150265,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00165434
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "mulch_evaporation": {
+          "evaporation_mm": {
+            "constants": [
+              "mulch_evap_reduction_frac"
+            ],
+            "days": 14,
+            "provenance": "external:mulch_evaporation",
+            "series_total": {
+              "high": 9.8,
+              "low": 5.6,
+              "value": 7.0
+            },
+            "unit": "mm/day"
+          }
+        },
+        "shade_net_temperature": {
+          "temp_c": {
+            "constants": [
+              "shade_net_soil_temp_reduction_c"
+            ],
+            "days": 14,
+            "provenance": "external:shade_net_temperature",
+            "series_total": {
+              "high": 350.0,
+              "low": 350.0,
+              "value": 350.0
+            },
+            "unit": "degC"
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "mulch_cover_fraction": 0,
+        "shade_net_cover_fraction": 0.5
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": -6.28665e-06,
+          "low": -2.39591e-05,
+          "percent": {
+            "high": -4.35344,
+            "low": -16.5914,
+            "value": -10.6241
+          },
+          "unit": "mol/m2",
+          "value": -1.5342e-05
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": -5.99151e-05,
+          "low": -0.000223833,
+          "percent": {
+            "high": -5.4353,
+            "low": -20.3054,
+            "value": -13.1334
+          },
+          "unit": "mol/m2",
+          "value": -0.000144774
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "mulch 0, shade 0.5",
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "forcing[0].evaporation_mm",
+          "forcing[0].temp_c",
+          "forcing[1].evaporation_mm",
+          "forcing[1].temp_c",
+          "forcing[2].evaporation_mm",
+          "forcing[2].temp_c",
+          "forcing[3].evaporation_mm",
+          "forcing[3].temp_c",
+          "forcing[4].evaporation_mm",
+          "forcing[4].temp_c",
+          "forcing[5].evaporation_mm",
+          "forcing[5].temp_c",
+          "forcing[6].evaporation_mm",
+          "forcing[6].temp_c",
+          "forcing[7].evaporation_mm",
+          "forcing[7].temp_c",
+          "forcing[8].evaporation_mm",
+          "forcing[8].temp_c",
+          "forcing[9].evaporation_mm",
+          "forcing[9].temp_c",
+          "forcing[10].evaporation_mm",
+          "forcing[10].temp_c",
+          "forcing[11].evaporation_mm",
+          "forcing[11].temp_c",
+          "forcing[12].evaporation_mm",
+          "forcing[12].temp_c",
+          "forcing[13].evaporation_mm",
+          "forcing[13].temp_c"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.00013812,
+          "low": 0.000120448,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000129065
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.00104242,
+          "low": 0.0008785,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00095756
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "mulch_evaporation": {
+          "evaporation_mm": {
+            "constants": [
+              "mulch_evap_reduction_frac"
+            ],
+            "days": 14,
+            "provenance": "external:mulch_evaporation",
+            "series_total": {
+              "high": 14.0,
+              "low": 14.0,
+              "value": 14.0
+            },
+            "unit": "mm/day"
+          }
+        },
+        "shade_net_temperature": {
+          "temp_c": {
+            "constants": [
+              "shade_net_soil_temp_reduction_c"
+            ],
+            "days": 14,
+            "provenance": "external:shade_net_temperature",
+            "series_total": {
+              "high": 336.0,
+              "low": 294.0,
+              "value": 315.0
+            },
+            "unit": "degC"
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "mulch_cover_fraction": 0,
+        "shade_net_cover_fraction": 1
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": -1.23728e-05,
+          "low": -4.48858e-05,
+          "percent": {
+            "high": -8.56804,
+            "low": -31.0829,
+            "value": -20.4052
+          },
+          "unit": "mol/m2",
+          "value": -2.94665e-05
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": -0.000117144,
+          "low": -0.00040824,
+          "percent": {
+            "high": -10.6269,
+            "low": -37.0342,
+            "value": -24.8058
+          },
+          "unit": "mol/m2",
+          "value": -0.000273442
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "mulch 0, shade 1",
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "forcing[0].evaporation_mm",
+          "forcing[0].temp_c",
+          "forcing[1].evaporation_mm",
+          "forcing[1].temp_c",
+          "forcing[2].evaporation_mm",
+          "forcing[2].temp_c",
+          "forcing[3].evaporation_mm",
+          "forcing[3].temp_c",
+          "forcing[4].evaporation_mm",
+          "forcing[4].temp_c",
+          "forcing[5].evaporation_mm",
+          "forcing[5].temp_c",
+          "forcing[6].evaporation_mm",
+          "forcing[6].temp_c",
+          "forcing[7].evaporation_mm",
+          "forcing[7].temp_c",
+          "forcing[8].evaporation_mm",
+          "forcing[8].temp_c",
+          "forcing[9].evaporation_mm",
+          "forcing[9].temp_c",
+          "forcing[10].evaporation_mm",
+          "forcing[10].temp_c",
+          "forcing[11].evaporation_mm",
+          "forcing[11].temp_c",
+          "forcing[12].evaporation_mm",
+          "forcing[12].temp_c",
+          "forcing[13].evaporation_mm",
+          "forcing[13].temp_c"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.000132034,
+          "low": 9.9521e-05,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00011494
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.000985189,
+          "low": 0.000694093,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000828891
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "mulch_evaporation": {
+          "evaporation_mm": {
+            "constants": [
+              "mulch_evap_reduction_frac"
+            ],
+            "days": 14,
+            "provenance": "external:mulch_evaporation",
+            "series_total": {
+              "high": 14.0,
+              "low": 14.0,
+              "value": 14.0
+            },
+            "unit": "mm/day"
+          }
+        },
+        "shade_net_temperature": {
+          "temp_c": {
+            "constants": [
+              "shade_net_soil_temp_reduction_c"
+            ],
+            "days": 14,
+            "provenance": "external:shade_net_temperature",
+            "series_total": {
+              "high": 322.0,
+              "low": 238.0,
+              "value": 280.0
+            },
+            "unit": "degC"
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "mulch_cover_fraction": 1,
+        "shade_net_cover_fraction": 1
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 2,
+          "low": 2,
+          "percent": {
+            "high": 16.6667,
+            "low": 16.6667,
+            "value": 16.6667
+          },
+          "unit": "day",
+          "value": 2
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": 4.36582e-05,
+          "low": 3.43159e-07,
+          "percent": {
+            "high": 30.2328,
+            "low": 0.237634,
+            "value": 14.5842
+          },
+          "unit": "mol/m2",
+          "value": 2.10605e-05
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 8.2,
+          "low": 4.0,
+          "unit": "mm",
+          "value": 6.8
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.000383124,
+          "low": -4.33907e-05,
+          "percent": {
+            "high": 34.7558,
+            "low": -3.93626,
+            "value": 14.0932
+          },
+          "unit": "mol/m2",
+          "value": 0.000155354
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "mulch 1, shade 1",
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "forcing[0].evaporation_mm",
+          "forcing[0].temp_c",
+          "forcing[1].evaporation_mm",
+          "forcing[1].temp_c",
+          "forcing[2].evaporation_mm",
+          "forcing[2].temp_c",
+          "forcing[3].evaporation_mm",
+          "forcing[3].temp_c",
+          "forcing[4].evaporation_mm",
+          "forcing[4].temp_c",
+          "forcing[5].evaporation_mm",
+          "forcing[5].temp_c",
+          "forcing[6].evaporation_mm",
+          "forcing[6].temp_c",
+          "forcing[7].evaporation_mm",
+          "forcing[7].temp_c",
+          "forcing[8].evaporation_mm",
+          "forcing[8].temp_c",
+          "forcing[9].evaporation_mm",
+          "forcing[9].temp_c",
+          "forcing[10].evaporation_mm",
+          "forcing[10].temp_c",
+          "forcing[11].evaporation_mm",
+          "forcing[11].temp_c",
+          "forcing[12].evaporation_mm",
+          "forcing[12].temp_c",
+          "forcing[13].evaporation_mm",
+          "forcing[13].temp_c"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 14,
+          "low": 14,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 14
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.000188065,
+          "low": 0.00014475,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000165467
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 8.2,
+          "low": 4.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 6.8
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.00148546,
+          "low": 0.00105894,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00125769
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "mulch_evap_reduction_frac",
+            "shade_net_soil_temp_reduction_c"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "mulch_evaporation": {
+          "evaporation_mm": {
+            "constants": [
+              "mulch_evap_reduction_frac"
+            ],
+            "days": 14,
+            "provenance": "external:mulch_evaporation",
+            "series_total": {
+              "high": 9.8,
+              "low": 5.6,
+              "value": 7.0
+            },
+            "unit": "mm/day"
+          }
+        },
+        "shade_net_temperature": {
+          "temp_c": {
+            "constants": [
+              "shade_net_soil_temp_reduction_c"
+            ],
+            "days": 14,
+            "provenance": "external:shade_net_temperature",
+            "series_total": {
+              "high": 322.0,
+              "low": 238.0,
+              "value": 280.0
+            },
+            "unit": "degC"
+          }
+        }
+      }
+    }
+  ],
+  "plain_language": "Full mulch changes the soil's hydrogen uptake by 50.1 % and a full shade net by -24.8 % over two weeks (twin). How much mulch cuts evaporation and how much a net cools the soil are published ranges (other models), not twin results; neither changes how much water the soil receives.",
+  "question": "What if we mulch or put up shade nets?",
+  "refusals": [],
+  "registry_sha256": "0b781d9258a62e42c2e7edb3e86259e1db67afc4e6d31bc265935e67c5aa8bfb"
+}

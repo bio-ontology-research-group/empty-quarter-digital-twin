@@ -1,0 +1,802 @@
+{
+  "baseline": {
+    "community": "none (coupling 'reference': gamma = 1) unless the experiment names one",
+    "forcing": "14 days; 12 mm rain on day 0, none after; evaporation 1 mm/day; soil temperature 25 C; no NaCl in rain",
+    "initial_water_mm": 1.8,
+    "parameters": "Parameters(k_h2_s=0.001, k_co_s=0.001); other parameters at their defaults (Rub' al Khali sand: porosity 0.4)",
+    "period_days": 14,
+    "source": "reproducibility/v06/analyse.py reference_schedules()[1] ('single_pulse')"
+  },
+  "caveats": [
+    "Seeding cannot create rain on dry days; with one rain day in the baseline the possible effect is small by construction.",
+    "Efficacy range 0-20 % (registry; WMO statement says evidence is weak); low end is no effect.",
+    "Rub' al Khali soil and community; not a prediction for other soils"
+  ],
+  "chain": [
+    "cloud_seeding",
+    "twin"
+  ],
+  "constants_used": {
+    "cloud_seeding_rain_increase_frac": {
+      "high": 0.2,
+      "low": 0.0,
+      "unit": "fraction",
+      "value": 0.1,
+      "verified": false
+    }
+  },
+  "deduced_nulls": [],
+  "figure": {
+    "baseline_y": 1102.33,
+    "series": [
+      {
+        "high": [
+          1102.33,
+          1242.19,
+          1374.63,
+          1528.06
+        ],
+        "label": "twin H2 uptake",
+        "low": [
+          1102.33,
+          1102.33,
+          1102.33,
+          1102.33
+        ],
+        "x": [
+          0,
+          0.5,
+          1,
+          2
+        ],
+        "y": [
+          1102.33,
+          1173.16,
+          1242.19,
+          1374.63
+        ]
+      }
+    ],
+    "title": "9 Cloud seeding",
+    "xlabel": "seeding intensity (1 = +10 % rain)",
+    "ylabel": "H2 uptake (umol m$^{-2}$)"
+  },
+  "headline": [
+    {
+      "detail": "baseline has one rain day (12 mm) in 14",
+      "high": 24.7016,
+      "label": "H2 uptake change, full-intensity seeding (+10 % rain on rain days)",
+      "low": 0.0,
+      "provenance": "twin",
+      "unit": "% of baseline H2 uptake",
+      "value": 12.6874
+    }
+  ],
+  "id": "cloud_seeding",
+  "levels": [
+    {
+      "action": {
+        "seeding_intensity": 0
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "intensity 0",
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "forcing[0].water_mm",
+          "forcing[1].water_mm",
+          "forcing[2].water_mm",
+          "forcing[3].water_mm",
+          "forcing[4].water_mm",
+          "forcing[5].water_mm",
+          "forcing[6].water_mm",
+          "forcing[7].water_mm",
+          "forcing[8].water_mm",
+          "forcing[9].water_mm",
+          "forcing[10].water_mm",
+          "forcing[11].water_mm",
+          "forcing[12].water_mm",
+          "forcing[13].water_mm"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "cloud_seeding_rain_increase_frac"
+          ],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "cloud_seeding_rain_increase_frac"
+          ],
+          "high": 0.000144407,
+          "low": 0.000144407,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000144407
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "cloud_seeding_rain_increase_frac"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "cloud_seeding_rain_increase_frac"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "cloud_seeding_rain_increase_frac"
+          ],
+          "high": 0.00110233,
+          "low": 0.00110233,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00110233
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "cloud_seeding_rain_increase_frac"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "cloud_seeding": {
+          "water_mm": {
+            "constants": [
+              "cloud_seeding_rain_increase_frac"
+            ],
+            "days": 14,
+            "provenance": "external:cloud_seeding",
+            "series_total": {
+              "high": 12.0,
+              "low": 12.0,
+              "value": 12.0
+            },
+            "unit": "mm/day"
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "seeding_intensity": 0.5
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 1,
+          "low": 0,
+          "percent": {
+            "high": 8.33333,
+            "low": 0.0,
+            "value": 8.33333
+          },
+          "unit": "day",
+          "value": 1
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": 1.54378e-05,
+          "low": 0.0,
+          "percent": {
+            "high": 10.6905,
+            "low": 0.0,
+            "value": 5.44426
+          },
+          "unit": "mol/m2",
+          "value": 7.86187e-06
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 1.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.4
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.000139857,
+          "low": 0.0,
+          "percent": {
+            "high": 12.6874,
+            "low": 0.0,
+            "value": 6.42502
+          },
+          "unit": "mol/m2",
+          "value": 7.08251e-05
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "intensity 0.5",
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "forcing[0].water_mm",
+          "forcing[1].water_mm",
+          "forcing[2].water_mm",
+          "forcing[3].water_mm",
+          "forcing[4].water_mm",
+          "forcing[5].water_mm",
+          "forcing[6].water_mm",
+          "forcing[7].water_mm",
+          "forcing[8].water_mm",
+          "forcing[9].water_mm",
+          "forcing[10].water_mm",
+          "forcing[11].water_mm",
+          "forcing[12].water_mm",
+          "forcing[13].water_mm"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "cloud_seeding_rain_increase_frac"
+          ],
+          "high": 13,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 13
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "cloud_seeding_rain_increase_frac"
+          ],
+          "high": 0.000159845,
+          "low": 0.000144407,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000152269
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "cloud_seeding_rain_increase_frac"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "cloud_seeding_rain_increase_frac"
+          ],
+          "high": 1.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.4
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "cloud_seeding_rain_increase_frac"
+          ],
+          "high": 0.00124219,
+          "low": 0.00110233,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00117316
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "cloud_seeding_rain_increase_frac"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "cloud_seeding": {
+          "water_mm": {
+            "constants": [
+              "cloud_seeding_rain_increase_frac"
+            ],
+            "days": 14,
+            "provenance": "external:cloud_seeding",
+            "series_total": {
+              "high": 13.2,
+              "low": 12.0,
+              "value": 12.6
+            },
+            "unit": "mm/day"
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "seeding_intensity": 1
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 2,
+          "low": 0,
+          "percent": {
+            "high": 16.6667,
+            "low": 0.0,
+            "value": 8.33333
+          },
+          "unit": "day",
+          "value": 1
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": 2.97376e-05,
+          "low": 0.0,
+          "percent": {
+            "high": 20.593,
+            "low": 0.0,
+            "value": 10.6905
+          },
+          "unit": "mol/m2",
+          "value": 1.54378e-05
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 2.2,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 1.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.000272294,
+          "low": 0.0,
+          "percent": {
+            "high": 24.7016,
+            "low": 0.0,
+            "value": 12.6874
+          },
+          "unit": "mol/m2",
+          "value": 0.000139857
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "intensity 1",
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "forcing[0].water_mm",
+          "forcing[1].water_mm",
+          "forcing[2].water_mm",
+          "forcing[3].water_mm",
+          "forcing[4].water_mm",
+          "forcing[5].water_mm",
+          "forcing[6].water_mm",
+          "forcing[7].water_mm",
+          "forcing[8].water_mm",
+          "forcing[9].water_mm",
+          "forcing[10].water_mm",
+          "forcing[11].water_mm",
+          "forcing[12].water_mm",
+          "forcing[13].water_mm"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "cloud_seeding_rain_increase_frac"
+          ],
+          "high": 14,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 13
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "cloud_seeding_rain_increase_frac"
+          ],
+          "high": 0.000174144,
+          "low": 0.000144407,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000159845
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "cloud_seeding_rain_increase_frac"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "cloud_seeding_rain_increase_frac"
+          ],
+          "high": 2.2,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 1.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "cloud_seeding_rain_increase_frac"
+          ],
+          "high": 0.00137463,
+          "low": 0.00110233,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00124219
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "cloud_seeding_rain_increase_frac"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "cloud_seeding": {
+          "water_mm": {
+            "constants": [
+              "cloud_seeding_rain_increase_frac"
+            ],
+            "days": 14,
+            "provenance": "external:cloud_seeding",
+            "series_total": {
+              "high": 14.4,
+              "low": 12.0,
+              "value": 13.2
+            },
+            "unit": "mm/day"
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "seeding_intensity": 2
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 2,
+          "low": 0,
+          "percent": {
+            "high": 16.6667,
+            "low": 0.0,
+            "value": 16.6667
+          },
+          "unit": "day",
+          "value": 2
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": 4.04791e-05,
+          "low": 0.0,
+          "percent": {
+            "high": 28.0313,
+            "low": 0.0,
+            "value": 20.593
+          },
+          "unit": "mol/m2",
+          "value": 2.97376e-05
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 4.6,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 2.2
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.000425725,
+          "low": 0.0,
+          "percent": {
+            "high": 38.6204,
+            "low": 0.0,
+            "value": 24.7016
+          },
+          "unit": "mol/m2",
+          "value": 0.000272294
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "intensity 2",
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "forcing[0].water_mm",
+          "forcing[1].water_mm",
+          "forcing[2].water_mm",
+          "forcing[3].water_mm",
+          "forcing[4].water_mm",
+          "forcing[5].water_mm",
+          "forcing[6].water_mm",
+          "forcing[7].water_mm",
+          "forcing[8].water_mm",
+          "forcing[9].water_mm",
+          "forcing[10].water_mm",
+          "forcing[11].water_mm",
+          "forcing[12].water_mm",
+          "forcing[13].water_mm"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "cloud_seeding_rain_increase_frac"
+          ],
+          "high": 14,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 14
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "cloud_seeding_rain_increase_frac"
+          ],
+          "high": 0.000184886,
+          "low": 0.000144407,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000174144
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "cloud_seeding_rain_increase_frac"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "cloud_seeding_rain_increase_frac"
+          ],
+          "high": 4.6,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 2.2
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "cloud_seeding_rain_increase_frac"
+          ],
+          "high": 0.00152806,
+          "low": 0.00110233,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00137463
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "cloud_seeding_rain_increase_frac"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "cloud_seeding": {
+          "water_mm": {
+            "constants": [
+              "cloud_seeding_rain_increase_frac"
+            ],
+            "days": 14,
+            "provenance": "external:cloud_seeding",
+            "series_total": {
+              "high": 16.8,
+              "low": 12.0,
+              "value": 14.4
+            },
+            "unit": "mm/day"
+          }
+        }
+      }
+    }
+  ],
+  "plain_language": "Adding 10 % to the rain that already falls changes the soil's hydrogen uptake by 12.7 % over two weeks (twin). In this baseline there is a single rain day, so the honest answer is a small effect; how much extra rain seeding really yields is uncertain and comes from the weather-modification literature, not the twin.",
+  "question": "What if cloud seeding adds rain?",
+  "refusals": [],
+  "registry_sha256": "0b781d9258a62e42c2e7edb3e86259e1db67afc4e6d31bc265935e67c5aa8bfb"
+}

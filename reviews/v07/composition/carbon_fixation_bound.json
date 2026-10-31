@@ -1,0 +1,1086 @@
+{
+  "baseline": {
+    "community": "none (coupling 'reference': gamma = 1) unless the experiment names one",
+    "forcing": "14 days; 12 mm rain on day 0, none after; evaporation 1 mm/day; soil temperature 25 C; no NaCl in rain",
+    "initial_water_mm": 1.8,
+    "parameters": "Parameters(k_h2_s=0.001, k_co_s=0.001); other parameters at their defaults (Rub' al Khali sand: porosity 0.4)",
+    "period_days": 14,
+    "source": "reproducibility/v06/analyse.py reference_schedules()[1] ('single_pulse')"
+  },
+  "caveats": [
+    "An upper bound, not a prediction or net carbon removal: autotroph growth, respiration, turnover and community composition are not modelled; yield 1/6 is a registry value with range 0.1-0.25.",
+    "Annualisation is linear scaling of the 14-day total (days_per_year registry): a labelled extrapolation, not a forecast; real activity depends on the year's wetting events.",
+    "Zero for the sample with no H2AutotrophicCandidateMAG share is deduced from the ontology (absence of entailment is not biological absence).",
+    "Context value is a literature figure for biocrusts, unverified in the registry.",
+    "Rub' al Khali soil and community; not a prediction for other soils"
+  ],
+  "chain": [
+    "twin",
+    "knallgas_carbon_fixation",
+    "co_oxidation_carbon_balance"
+  ],
+  "constants_used": {
+    "knallgas_co2_per_h2": {
+      "high": 0.25,
+      "low": 0.1,
+      "unit": "mol CO2 per mol H2",
+      "value": 0.166667,
+      "verified": false
+    },
+    "molar_mass_c_g_mol": {
+      "high": 12.02,
+      "low": 12.0,
+      "unit": "g/mol",
+      "value": 12.011,
+      "verified": false
+    }
+  },
+  "deduced_nulls": [
+    {
+      "derivation": "q_s(H2AutotrophicCandidateMAG) = 0 under the reasoner memberships of the chosen community, so the gate of knallgas_carbon_fixation is closed and its output is 0 in every admissible regime; absence of entailment is not read as biological absence.",
+      "level": "baseline (12 mm pulse); 14PRr2",
+      "model": "knallgas_carbon_fixation",
+      "port": "co2_fixed_upper_bound_mol_m2"
+    },
+    {
+      "derivation": "q_s(H2AutotrophicCandidateMAG) = 0 under the reasoner memberships of the chosen community, so the gate of knallgas_carbon_fixation is closed and its output is 0 in every admissible regime; absence of entailment is not read as biological absence.",
+      "level": "baseline (12 mm pulse); 14PRr2",
+      "model": "knallgas_carbon_fixation",
+      "port": "c_fixed_upper_bound_ug_m2"
+    },
+    {
+      "derivation": "q_s(H2AutotrophicCandidateMAG) = 0 under the reasoner memberships of the chosen community, so the gate of knallgas_carbon_fixation is closed and its output is 0 in every admissible regime; absence of entailment is not read as biological absence.",
+      "level": "wet (36 mm pulse); 14PRr2",
+      "model": "knallgas_carbon_fixation",
+      "port": "co2_fixed_upper_bound_mol_m2"
+    },
+    {
+      "derivation": "q_s(H2AutotrophicCandidateMAG) = 0 under the reasoner memberships of the chosen community, so the gate of knallgas_carbon_fixation is closed and its output is 0 in every admissible regime; absence of entailment is not read as biological absence.",
+      "level": "wet (36 mm pulse); 14PRr2",
+      "model": "knallgas_carbon_fixation",
+      "port": "c_fixed_upper_bound_ug_m2"
+    }
+  ],
+  "figure": {
+    "baseline_y": null,
+    "series": [
+      {
+        "high": [
+          86356.4
+        ],
+        "label": "baseline",
+        "low": [
+          34542.5
+        ],
+        "x": [
+          0
+        ],
+        "y": [
+          57570.9
+        ]
+      },
+      {
+        "high": [
+          105014.0
+        ],
+        "label": "wet",
+        "low": [
+          42005.8
+        ],
+        "x": [
+          1
+        ],
+        "y": [
+          70009.6
+        ]
+      }
+    ],
+    "title": "6 Carbon-fixation bound",
+    "xlabel": "scenario (0 baseline, 1 wet)",
+    "ylabel": "C bound (ug C m$^{-2}$ yr$^{-1}$)"
+  },
+  "gate": {
+    "positive_sample_share": 0.0264166,
+    "positive_share_sample": "F14Dr1",
+    "zero_sample_bound_provenance": "deduced",
+    "zero_share_sample": "14PRr2"
+  },
+  "headline": [
+    {
+      "detail": "bound = H2 uptake (twin) x yield; annualised linearly from the 14-day period",
+      "high": 86356.4,
+      "label": "Upper bound of C fixed by H2 oxidisers, sample F14Dr1",
+      "low": 34542.5,
+      "provenance": "external:knallgas_carbon_fixation",
+      "unit": "ug C m-2 yr-1 (annualised)",
+      "value": 57570.9
+    }
+  ],
+  "id": "carbon_fixation_bound",
+  "levels": [
+    {
+      "action": {},
+      "bound_over_context": 0.0,
+      "c_fixed_upper_bound": {
+        "per_period_ug_c_m2": {
+          "high": 0.0,
+          "low": 0.0,
+          "value": 0.0
+        },
+        "per_year_ug_c_m2": {
+          "high": 0.0,
+          "low": 0.0,
+          "value": 0.0
+        },
+        "provenance": "deduced"
+      },
+      "co2_fixed_upper_bound": {
+        "per_period_umol_m2": {
+          "high": 0.0,
+          "low": 0.0,
+          "value": 0.0
+        },
+        "per_year_umol_m2": {
+          "high": 0.0,
+          "low": 0.0,
+          "value": 0.0
+        },
+        "provenance": "deduced"
+      },
+      "co_oxidation": {
+        "co2_from_co_umol_m2": 144.407,
+        "net_atmospheric_c_change_mol_m2": 0.0,
+        "note": "CO + 1/2 O2 -> CO2: each CO carbon atom reappears as CO2; no net change in atmospheric carbon atoms."
+      },
+      "community": {
+        "community": {
+          "sample": "14PRr2"
+        },
+        "gamma": {
+          "co": 1.0,
+          "h2": 1.0
+        },
+        "mode": "gate",
+        "samples": [
+          "14PRr2"
+        ]
+      },
+      "context": {
+        "constant": "biocrust_net_c_fixation_g_c_m2_yr",
+        "high": 30000000.0,
+        "label": "context (not a twin result): desert biocrust net C fixation",
+        "low": 2000000.0,
+        "unit": "ug C m-2 yr-1",
+        "value_ug_c_m2_yr": 10000000.0
+      },
+      "deduced_nulls": [
+        {
+          "derivation": "q_s(H2AutotrophicCandidateMAG) = 0 under the reasoner memberships of the chosen community, so the gate of knallgas_carbon_fixation is closed and its output is 0 in every admissible regime; absence of entailment is not read as biological absence.",
+          "model": "knallgas_carbon_fixation",
+          "port": "co2_fixed_upper_bound_mol_m2"
+        },
+        {
+          "derivation": "q_s(H2AutotrophicCandidateMAG) = 0 under the reasoner memberships of the chosen community, so the gate of knallgas_carbon_fixation is closed and its output is 0 in every admissible regime; absence of entailment is not read as biological absence.",
+          "model": "knallgas_carbon_fixation",
+          "port": "c_fixed_upper_bound_ug_m2"
+        }
+      ],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {
+        "co_oxidation_carbon_balance": {
+          "co2_from_co_mol_m2": {
+            "constants": [],
+            "high": 0.000144407,
+            "low": 0.000144407,
+            "provenance": "external:co_oxidation_carbon_balance",
+            "unit": "mol/m2",
+            "value": 0.000144407
+          },
+          "net_atmospheric_c_change_mol_m2": {
+            "constants": [],
+            "high": 0.0,
+            "low": 0.0,
+            "provenance": "external:co_oxidation_carbon_balance",
+            "unit": "mol/m2",
+            "value": 0.0
+          }
+        },
+        "knallgas_carbon_fixation": {
+          "c_fixed_upper_bound_ug_m2": {
+            "constants": [],
+            "derivation": "q_s(H2AutotrophicCandidateMAG) = 0 under the reasoner memberships of the chosen community, so the gate of knallgas_carbon_fixation is closed and its output is 0 in every admissible regime; absence of entailment is not read as biological absence.",
+            "high": 0.0,
+            "low": 0.0,
+            "provenance": "deduced",
+            "unit": "ug/m2",
+            "value": 0.0
+          },
+          "co2_fixed_upper_bound_mol_m2": {
+            "constants": [],
+            "derivation": "q_s(H2AutotrophicCandidateMAG) = 0 under the reasoner memberships of the chosen community, so the gate of knallgas_carbon_fixation is closed and its output is 0 in every admissible regime; absence of entailment is not read as biological absence.",
+            "high": 0.0,
+            "low": 0.0,
+            "provenance": "deduced",
+            "unit": "mol/m2",
+            "value": 0.0
+          }
+        }
+      },
+      "envelope_refusals": [],
+      "h2_autotroph_share": 0.0,
+      "label": "baseline (12 mm pulse); 14PRr2",
+      "refused": null,
+      "sample": "14PRr2",
+      "scenario": "baseline (12 mm pulse)",
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": []
+      },
+      "twin": {
+        "active_days": {
+          "constants": [],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.000144407,
+          "low": 0.000144407,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000144407
+        },
+        "final_salt_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.00110233,
+          "low": 0.00110233,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00110233
+        },
+        "mean_nacl_mol_l": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {}
+    },
+    {
+      "action": {},
+      "bound_over_context": 0.00575709,
+      "c_fixed_upper_bound": {
+        "per_period_ug_c_m2": {
+          "high": 3310.03,
+          "low": 1324.01,
+          "value": 2206.69
+        },
+        "per_year_ug_c_m2": {
+          "high": 86356.4,
+          "low": 34542.5,
+          "value": 57570.9
+        },
+        "provenance": "external:knallgas_carbon_fixation"
+      },
+      "co2_fixed_upper_bound": {
+        "per_period_umol_m2": {
+          "high": 275.583,
+          "low": 110.233,
+          "value": 183.722
+        },
+        "per_year_umol_m2": {
+          "high": 7189.77,
+          "low": 2875.91,
+          "value": 4793.18
+        },
+        "provenance": "external:knallgas_carbon_fixation"
+      },
+      "co_oxidation": {
+        "co2_from_co_umol_m2": 144.407,
+        "net_atmospheric_c_change_mol_m2": 0.0,
+        "note": "CO + 1/2 O2 -> CO2: each CO carbon atom reappears as CO2; no net change in atmospheric carbon atoms."
+      },
+      "community": {
+        "community": {
+          "sample": "F14Dr1"
+        },
+        "gamma": {
+          "co": 1.0,
+          "h2": 1.0
+        },
+        "mode": "gate",
+        "samples": [
+          "F14Dr1"
+        ]
+      },
+      "context": {
+        "constant": "biocrust_net_c_fixation_g_c_m2_yr",
+        "high": 30000000.0,
+        "label": "context (not a twin result): desert biocrust net C fixation",
+        "low": 2000000.0,
+        "unit": "ug C m-2 yr-1",
+        "value_ug_c_m2_yr": 10000000.0
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {
+        "co_oxidation_carbon_balance": {
+          "co2_from_co_mol_m2": {
+            "constants": [],
+            "high": 0.000144407,
+            "low": 0.000144407,
+            "provenance": "external:co_oxidation_carbon_balance",
+            "unit": "mol/m2",
+            "value": 0.000144407
+          },
+          "net_atmospheric_c_change_mol_m2": {
+            "constants": [],
+            "high": 0.0,
+            "low": 0.0,
+            "provenance": "external:co_oxidation_carbon_balance",
+            "unit": "mol/m2",
+            "value": 0.0
+          }
+        },
+        "knallgas_carbon_fixation": {
+          "c_fixed_upper_bound_ug_m2": {
+            "constants": [
+              "knallgas_co2_per_h2",
+              "molar_mass_c_g_mol"
+            ],
+            "high": 3310.03,
+            "low": 1324.01,
+            "provenance": "external:knallgas_carbon_fixation",
+            "unit": "ug/m2",
+            "value": 2206.69
+          },
+          "co2_fixed_upper_bound_mol_m2": {
+            "constants": [
+              "knallgas_co2_per_h2",
+              "molar_mass_c_g_mol"
+            ],
+            "high": 0.000275583,
+            "low": 0.000110233,
+            "provenance": "external:knallgas_carbon_fixation",
+            "unit": "mol/m2",
+            "value": 0.000183722
+          }
+        }
+      },
+      "envelope_refusals": [],
+      "h2_autotroph_share": 0.0264166,
+      "label": "baseline (12 mm pulse); F14Dr1",
+      "refused": null,
+      "sample": "F14Dr1",
+      "scenario": "baseline (12 mm pulse)",
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": []
+      },
+      "twin": {
+        "active_days": {
+          "constants": [],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.000144407,
+          "low": 0.000144407,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000144407
+        },
+        "final_salt_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.00110233,
+          "low": 0.00110233,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00110233
+        },
+        "mean_nacl_mol_l": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {}
+    },
+    {
+      "action": {},
+      "bound_over_context": 0.0,
+      "c_fixed_upper_bound": {
+        "per_period_ug_c_m2": {
+          "high": 0.0,
+          "low": 0.0,
+          "value": 0.0
+        },
+        "per_year_ug_c_m2": {
+          "high": 0.0,
+          "low": 0.0,
+          "value": 0.0
+        },
+        "provenance": "deduced"
+      },
+      "co2_fixed_upper_bound": {
+        "per_period_umol_m2": {
+          "high": 0.0,
+          "low": 0.0,
+          "value": 0.0
+        },
+        "per_year_umol_m2": {
+          "high": 0.0,
+          "low": 0.0,
+          "value": 0.0
+        },
+        "provenance": "deduced"
+      },
+      "co_oxidation": {
+        "co2_from_co_umol_m2": 146.813,
+        "net_atmospheric_c_change_mol_m2": 0.0,
+        "note": "CO + 1/2 O2 -> CO2: each CO carbon atom reappears as CO2; no net change in atmospheric carbon atoms."
+      },
+      "community": {
+        "community": {
+          "sample": "14PRr2"
+        },
+        "gamma": {
+          "co": 1.0,
+          "h2": 1.0
+        },
+        "mode": "gate",
+        "samples": [
+          "14PRr2"
+        ]
+      },
+      "context": {
+        "constant": "biocrust_net_c_fixation_g_c_m2_yr",
+        "high": 30000000.0,
+        "label": "context (not a twin result): desert biocrust net C fixation",
+        "low": 2000000.0,
+        "unit": "ug C m-2 yr-1",
+        "value_ug_c_m2_yr": 10000000.0
+      },
+      "deduced_nulls": [
+        {
+          "derivation": "q_s(H2AutotrophicCandidateMAG) = 0 under the reasoner memberships of the chosen community, so the gate of knallgas_carbon_fixation is closed and its output is 0 in every admissible regime; absence of entailment is not read as biological absence.",
+          "model": "knallgas_carbon_fixation",
+          "port": "co2_fixed_upper_bound_mol_m2"
+        },
+        {
+          "derivation": "q_s(H2AutotrophicCandidateMAG) = 0 under the reasoner memberships of the chosen community, so the gate of knallgas_carbon_fixation is closed and its output is 0 in every admissible regime; absence of entailment is not read as biological absence.",
+          "model": "knallgas_carbon_fixation",
+          "port": "c_fixed_upper_bound_ug_m2"
+        }
+      ],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 14,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000146813,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 9.73265,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.0013405,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {
+        "co_oxidation_carbon_balance": {
+          "co2_from_co_mol_m2": {
+            "constants": [],
+            "high": 0.000146813,
+            "low": 0.000146813,
+            "provenance": "external:co_oxidation_carbon_balance",
+            "unit": "mol/m2",
+            "value": 0.000146813
+          },
+          "net_atmospheric_c_change_mol_m2": {
+            "constants": [],
+            "high": 0.0,
+            "low": 0.0,
+            "provenance": "external:co_oxidation_carbon_balance",
+            "unit": "mol/m2",
+            "value": 0.0
+          }
+        },
+        "knallgas_carbon_fixation": {
+          "c_fixed_upper_bound_ug_m2": {
+            "constants": [],
+            "derivation": "q_s(H2AutotrophicCandidateMAG) = 0 under the reasoner memberships of the chosen community, so the gate of knallgas_carbon_fixation is closed and its output is 0 in every admissible regime; absence of entailment is not read as biological absence.",
+            "high": 0.0,
+            "low": 0.0,
+            "provenance": "deduced",
+            "unit": "ug/m2",
+            "value": 0.0
+          },
+          "co2_fixed_upper_bound_mol_m2": {
+            "constants": [],
+            "derivation": "q_s(H2AutotrophicCandidateMAG) = 0 under the reasoner memberships of the chosen community, so the gate of knallgas_carbon_fixation is closed and its output is 0 in every admissible regime; absence of entailment is not read as biological absence.",
+            "high": 0.0,
+            "low": 0.0,
+            "provenance": "deduced",
+            "unit": "mol/m2",
+            "value": 0.0
+          }
+        }
+      },
+      "envelope_refusals": [],
+      "h2_autotroph_share": 0.0,
+      "label": "wet (36 mm pulse); 14PRr2",
+      "refused": null,
+      "sample": "14PRr2",
+      "scenario": "wet (36 mm pulse)",
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": []
+      },
+      "twin": {
+        "active_days": {
+          "constants": [],
+          "high": 14,
+          "low": 14,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 14
+        },
+        "co_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.000146813,
+          "low": 0.000146813,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000146813
+        },
+        "final_salt_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [],
+          "high": 9.73265,
+          "low": 9.73265,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 9.73265
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.0013405,
+          "low": 0.0013405,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0013405
+        },
+        "mean_nacl_mol_l": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 14,
+        "co_uptake_mol_m2": 0.000146813,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 9.73265,
+        "h2_uptake_mol_m2": 0.0013405,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {}
+    },
+    {
+      "action": {},
+      "bound_over_context": 0.00700096,
+      "c_fixed_upper_bound": {
+        "per_period_ug_c_m2": {
+          "high": 4025.19,
+          "low": 1610.08,
+          "value": 2683.46
+        },
+        "per_year_ug_c_m2": {
+          "high": 105014.0,
+          "low": 42005.8,
+          "value": 70009.6
+        },
+        "provenance": "external:knallgas_carbon_fixation"
+      },
+      "co2_fixed_upper_bound": {
+        "per_period_umol_m2": {
+          "high": 335.126,
+          "low": 134.05,
+          "value": 223.417
+        },
+        "per_year_umol_m2": {
+          "high": 8743.19,
+          "low": 3497.28,
+          "value": 5828.79
+        },
+        "provenance": "external:knallgas_carbon_fixation"
+      },
+      "co_oxidation": {
+        "co2_from_co_umol_m2": 146.813,
+        "net_atmospheric_c_change_mol_m2": 0.0,
+        "note": "CO + 1/2 O2 -> CO2: each CO carbon atom reappears as CO2; no net change in atmospheric carbon atoms."
+      },
+      "community": {
+        "community": {
+          "sample": "F14Dr1"
+        },
+        "gamma": {
+          "co": 1.0,
+          "h2": 1.0
+        },
+        "mode": "gate",
+        "samples": [
+          "F14Dr1"
+        ]
+      },
+      "context": {
+        "constant": "biocrust_net_c_fixation_g_c_m2_yr",
+        "high": 30000000.0,
+        "label": "context (not a twin result): desert biocrust net C fixation",
+        "low": 2000000.0,
+        "unit": "ug C m-2 yr-1",
+        "value_ug_c_m2_yr": 10000000.0
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 14,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000146813,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 9.73265,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.0013405,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {
+        "co_oxidation_carbon_balance": {
+          "co2_from_co_mol_m2": {
+            "constants": [],
+            "high": 0.000146813,
+            "low": 0.000146813,
+            "provenance": "external:co_oxidation_carbon_balance",
+            "unit": "mol/m2",
+            "value": 0.000146813
+          },
+          "net_atmospheric_c_change_mol_m2": {
+            "constants": [],
+            "high": 0.0,
+            "low": 0.0,
+            "provenance": "external:co_oxidation_carbon_balance",
+            "unit": "mol/m2",
+            "value": 0.0
+          }
+        },
+        "knallgas_carbon_fixation": {
+          "c_fixed_upper_bound_ug_m2": {
+            "constants": [
+              "knallgas_co2_per_h2",
+              "molar_mass_c_g_mol"
+            ],
+            "high": 4025.19,
+            "low": 1610.08,
+            "provenance": "external:knallgas_carbon_fixation",
+            "unit": "ug/m2",
+            "value": 2683.46
+          },
+          "co2_fixed_upper_bound_mol_m2": {
+            "constants": [
+              "knallgas_co2_per_h2",
+              "molar_mass_c_g_mol"
+            ],
+            "high": 0.000335126,
+            "low": 0.00013405,
+            "provenance": "external:knallgas_carbon_fixation",
+            "unit": "mol/m2",
+            "value": 0.000223417
+          }
+        }
+      },
+      "envelope_refusals": [],
+      "h2_autotroph_share": 0.0264166,
+      "label": "wet (36 mm pulse); F14Dr1",
+      "refused": null,
+      "sample": "F14Dr1",
+      "scenario": "wet (36 mm pulse)",
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": []
+      },
+      "twin": {
+        "active_days": {
+          "constants": [],
+          "high": 14,
+          "low": 14,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 14
+        },
+        "co_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.000146813,
+          "low": 0.000146813,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000146813
+        },
+        "final_salt_mol_m2": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [],
+          "high": 9.73265,
+          "low": 9.73265,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 9.73265
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [],
+          "high": 0.0013405,
+          "low": 0.0013405,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0013405
+        },
+        "mean_nacl_mol_l": {
+          "constants": [],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 14,
+        "co_uptake_mol_m2": 0.000146813,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 9.73265,
+        "h2_uptake_mol_m2": 0.0013405,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {}
+    }
+  ],
+  "plain_language": "If the soil's hydrogen eaters used all of that hydrogen to build biomass, the most carbon they could fix is about 0.0576 grams per square metre per year, in a typical sample (the twin supplies the hydrogen uptake; the carbon yield is another model's number). In a sample where the ontology finds no such organism (14PRr2) the answer is exactly zero by deduction. For scale, desert biological soil crusts are reported to fix roughly 10 g C per square metre per year (context only), and CO oxidation just turns CO into CO2 without changing the atmosphere's carbon.",
+  "question": "How much CO2 could the H2 oxidisers fix?",
+  "refusals": [],
+  "registry_sha256": "0b781d9258a62e42c2e7edb3e86259e1db67afc4e6d31bc265935e67c5aa8bfb"
+}

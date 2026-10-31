@@ -1,0 +1,871 @@
+{
+  "baseline": {
+    "community": "none (coupling 'reference': gamma = 1) unless the experiment names one",
+    "forcing": "14 days; 12 mm rain on day 0, none after; evaporation 1 mm/day; soil temperature 25 C; no NaCl in rain",
+    "initial_water_mm": 1.8,
+    "parameters": "Parameters(k_h2_s=0.001, k_co_s=0.001); other parameters at their defaults (Rub' al Khali sand: porosity 0.4)",
+    "period_days": 14,
+    "source": "reproducibility/v06/analyse.py reference_schedules()[1] ('single_pulse')"
+  },
+  "caveats": [
+    "Washing is one wash per 14 days (registry) so at most one pulse falls in the window; its water is tiny against the 12 mm rain.",
+    "Cover fraction scales effects linearly; panel shading of rain, dust and soil disturbance during construction are not modelled.",
+    "Rub' al Khali soil and community; not a prediction for other soils"
+  ],
+  "chain": [
+    "solar_park_microclimate",
+    "panel_washing",
+    "twin"
+  ],
+  "constants_used": {
+    "panel_wash_interval_days": {
+      "high": 30,
+      "low": 7,
+      "unit": "day",
+      "value": 14,
+      "verified": false
+    },
+    "panel_wash_l_m2_per_wash": {
+      "high": 2.0,
+      "low": 0.5,
+      "unit": "L per m2 of panel per wash",
+      "value": 1.0,
+      "verified": false
+    },
+    "solar_panel_evap_reduction_frac": {
+      "high": 0.5,
+      "low": 0.15,
+      "unit": "fraction",
+      "value": 0.3,
+      "verified": false
+    },
+    "solar_panel_soil_temp_reduction_c": {
+      "high": 6.0,
+      "low": 1.0,
+      "unit": "degC",
+      "value": 3.0,
+      "verified": false
+    }
+  },
+  "deduced_nulls": [],
+  "figure": {
+    "baseline_y": 1102.33,
+    "series": [
+      {
+        "high": [
+          1102.33,
+          1340.27,
+          1439.02
+        ],
+        "label": "twin H2 uptake",
+        "low": [
+          1102.33,
+          1095.65,
+          1081.36
+        ],
+        "x": [
+          0,
+          0.5,
+          1
+        ],
+        "y": [
+          1102.33,
+          1206.12,
+          1285.81
+        ]
+      }
+    ],
+    "title": "8 Solar park",
+    "xlabel": "panel cover fraction",
+    "ylabel": "H2 uptake (umol m$^{-2}$)"
+  },
+  "headline": [
+    {
+      "detail": "cooling, shading of evaporation and one washing pulse",
+      "high": 30.5432,
+      "label": "H2 uptake change, full panel cover",
+      "low": -1.90248,
+      "provenance": "twin",
+      "unit": "% of baseline H2 uptake",
+      "value": 16.6443
+    }
+  ],
+  "id": "solar_park",
+  "levels": [
+    {
+      "action": {
+        "panel_cover_fraction": 0
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 0,
+          "low": 0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "day",
+          "value": 0
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.0,
+          "low": 0.0,
+          "percent": {
+            "high": 0.0,
+            "low": 0.0,
+            "value": 0.0
+          },
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "panel cover 0",
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "forcing[0].evaporation_mm",
+          "forcing[0].temp_c",
+          "forcing[0].water_mm",
+          "forcing[1].evaporation_mm",
+          "forcing[1].temp_c",
+          "forcing[1].water_mm",
+          "forcing[2].evaporation_mm",
+          "forcing[2].temp_c",
+          "forcing[2].water_mm",
+          "forcing[3].evaporation_mm",
+          "forcing[3].temp_c",
+          "forcing[3].water_mm",
+          "forcing[4].evaporation_mm",
+          "forcing[4].temp_c",
+          "forcing[4].water_mm",
+          "forcing[5].evaporation_mm",
+          "forcing[5].temp_c",
+          "forcing[5].water_mm",
+          "forcing[6].evaporation_mm",
+          "forcing[6].temp_c",
+          "forcing[6].water_mm",
+          "forcing[7].evaporation_mm",
+          "forcing[7].temp_c",
+          "forcing[7].water_mm",
+          "forcing[8].evaporation_mm",
+          "forcing[8].temp_c",
+          "forcing[8].water_mm",
+          "forcing[9].evaporation_mm",
+          "forcing[9].temp_c",
+          "forcing[9].water_mm",
+          "forcing[10].evaporation_mm",
+          "forcing[10].temp_c",
+          "forcing[10].water_mm",
+          "forcing[11].evaporation_mm",
+          "forcing[11].temp_c",
+          "forcing[11].water_mm",
+          "forcing[12].evaporation_mm",
+          "forcing[12].temp_c",
+          "forcing[12].water_mm",
+          "forcing[13].evaporation_mm",
+          "forcing[13].temp_c",
+          "forcing[13].water_mm"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "panel_wash_interval_days",
+            "panel_wash_l_m2_per_wash",
+            "solar_panel_evap_reduction_frac",
+            "solar_panel_soil_temp_reduction_c"
+          ],
+          "high": 12,
+          "low": 12,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 12
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "panel_wash_interval_days",
+            "panel_wash_l_m2_per_wash",
+            "solar_panel_evap_reduction_frac",
+            "solar_panel_soil_temp_reduction_c"
+          ],
+          "high": 0.000144407,
+          "low": 0.000144407,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000144407
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "panel_wash_interval_days",
+            "panel_wash_l_m2_per_wash",
+            "solar_panel_evap_reduction_frac",
+            "solar_panel_soil_temp_reduction_c"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "panel_wash_interval_days",
+            "panel_wash_l_m2_per_wash",
+            "solar_panel_evap_reduction_frac",
+            "solar_panel_soil_temp_reduction_c"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 0.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "panel_wash_interval_days",
+            "panel_wash_l_m2_per_wash",
+            "solar_panel_evap_reduction_frac",
+            "solar_panel_soil_temp_reduction_c"
+          ],
+          "high": 0.00110233,
+          "low": 0.00110233,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00110233
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "panel_wash_interval_days",
+            "panel_wash_l_m2_per_wash",
+            "solar_panel_evap_reduction_frac",
+            "solar_panel_soil_temp_reduction_c"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "panel_washing": {
+          "water_mm": {
+            "constants": [
+              "panel_wash_interval_days",
+              "panel_wash_l_m2_per_wash"
+            ],
+            "days": 14,
+            "provenance": "external:panel_washing",
+            "series_total": {
+              "high": 12.0,
+              "low": 12.0,
+              "value": 12.0
+            },
+            "unit": "mm/day"
+          }
+        },
+        "solar_park_microclimate": {
+          "evaporation_mm": {
+            "constants": [
+              "solar_panel_evap_reduction_frac",
+              "solar_panel_soil_temp_reduction_c"
+            ],
+            "days": 14,
+            "provenance": "external:solar_park_microclimate",
+            "series_total": {
+              "high": 14.0,
+              "low": 14.0,
+              "value": 14.0
+            },
+            "unit": "mm/day"
+          },
+          "temp_c": {
+            "constants": [
+              "solar_panel_evap_reduction_frac",
+              "solar_panel_soil_temp_reduction_c"
+            ],
+            "days": 14,
+            "provenance": "external:solar_park_microclimate",
+            "series_total": {
+              "high": 350.0,
+              "low": 350.0,
+              "value": 350.0
+            },
+            "unit": "degC"
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "panel_cover_fraction": 0.5
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 2,
+          "low": 1,
+          "percent": {
+            "high": 16.6667,
+            "low": 8.33333,
+            "value": 16.6667
+          },
+          "unit": "day",
+          "value": 2
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": 3.33184e-05,
+          "low": 1.59562e-06,
+          "percent": {
+            "high": 23.0726,
+            "low": 1.10495,
+            "value": 11.7174
+          },
+          "unit": "mol/m2",
+          "value": 1.69208e-05
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 3.8,
+          "low": 1.35,
+          "unit": "mm",
+          "value": 2.4
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.000237935,
+          "low": -6.68743e-06,
+          "percent": {
+            "high": 21.5847,
+            "low": -0.606661,
+            "value": 9.41537
+          },
+          "unit": "mol/m2",
+          "value": 0.000103789
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "panel cover 0.5",
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "forcing[0].evaporation_mm",
+          "forcing[0].temp_c",
+          "forcing[0].water_mm",
+          "forcing[1].evaporation_mm",
+          "forcing[1].temp_c",
+          "forcing[1].water_mm",
+          "forcing[2].evaporation_mm",
+          "forcing[2].temp_c",
+          "forcing[2].water_mm",
+          "forcing[3].evaporation_mm",
+          "forcing[3].temp_c",
+          "forcing[3].water_mm",
+          "forcing[4].evaporation_mm",
+          "forcing[4].temp_c",
+          "forcing[4].water_mm",
+          "forcing[5].evaporation_mm",
+          "forcing[5].temp_c",
+          "forcing[5].water_mm",
+          "forcing[6].evaporation_mm",
+          "forcing[6].temp_c",
+          "forcing[6].water_mm",
+          "forcing[7].evaporation_mm",
+          "forcing[7].temp_c",
+          "forcing[7].water_mm",
+          "forcing[8].evaporation_mm",
+          "forcing[8].temp_c",
+          "forcing[8].water_mm",
+          "forcing[9].evaporation_mm",
+          "forcing[9].temp_c",
+          "forcing[9].water_mm",
+          "forcing[10].evaporation_mm",
+          "forcing[10].temp_c",
+          "forcing[10].water_mm",
+          "forcing[11].evaporation_mm",
+          "forcing[11].temp_c",
+          "forcing[11].water_mm",
+          "forcing[12].evaporation_mm",
+          "forcing[12].temp_c",
+          "forcing[12].water_mm",
+          "forcing[13].evaporation_mm",
+          "forcing[13].temp_c",
+          "forcing[13].water_mm"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "panel_wash_interval_days",
+            "panel_wash_l_m2_per_wash",
+            "solar_panel_evap_reduction_frac",
+            "solar_panel_soil_temp_reduction_c"
+          ],
+          "high": 14,
+          "low": 13,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 14
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "panel_wash_interval_days",
+            "panel_wash_l_m2_per_wash",
+            "solar_panel_evap_reduction_frac",
+            "solar_panel_soil_temp_reduction_c"
+          ],
+          "high": 0.000177725,
+          "low": 0.000146002,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000161327
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "panel_wash_interval_days",
+            "panel_wash_l_m2_per_wash",
+            "solar_panel_evap_reduction_frac",
+            "solar_panel_soil_temp_reduction_c"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "panel_wash_interval_days",
+            "panel_wash_l_m2_per_wash",
+            "solar_panel_evap_reduction_frac",
+            "solar_panel_soil_temp_reduction_c"
+          ],
+          "high": 3.8,
+          "low": 1.35,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 2.4
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "panel_wash_interval_days",
+            "panel_wash_l_m2_per_wash",
+            "solar_panel_evap_reduction_frac",
+            "solar_panel_soil_temp_reduction_c"
+          ],
+          "high": 0.00134027,
+          "low": 0.00109565,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00120612
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "panel_wash_interval_days",
+            "panel_wash_l_m2_per_wash",
+            "solar_panel_evap_reduction_frac",
+            "solar_panel_soil_temp_reduction_c"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "panel_washing": {
+          "water_mm": {
+            "constants": [
+              "panel_wash_interval_days",
+              "panel_wash_l_m2_per_wash"
+            ],
+            "days": 14,
+            "provenance": "external:panel_washing",
+            "series_total": {
+              "high": 13.5,
+              "low": 12.0,
+              "value": 12.5
+            },
+            "unit": "mm/day"
+          }
+        },
+        "solar_park_microclimate": {
+          "evaporation_mm": {
+            "constants": [
+              "solar_panel_evap_reduction_frac",
+              "solar_panel_soil_temp_reduction_c"
+            ],
+            "days": 14,
+            "provenance": "external:solar_park_microclimate",
+            "series_total": {
+              "high": 12.95,
+              "low": 10.5,
+              "value": 11.9
+            },
+            "unit": "mm/day"
+          },
+          "temp_c": {
+            "constants": [
+              "solar_panel_evap_reduction_frac",
+              "solar_panel_soil_temp_reduction_c"
+            ],
+            "days": 14,
+            "provenance": "external:solar_park_microclimate",
+            "series_total": {
+              "high": 343.0,
+              "low": 308.0,
+              "value": 329.0
+            },
+            "unit": "degC"
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "panel_cover_fraction": 1
+      },
+      "deduced_nulls": [],
+      "difference_vs_baseline": {
+        "active_days": {
+          "baseline": 12,
+          "high": 2,
+          "low": 2,
+          "percent": {
+            "high": 16.6667,
+            "low": 16.6667,
+            "value": 16.6667
+          },
+          "unit": "day",
+          "value": 2
+        },
+        "co_uptake_mol_m2": {
+          "baseline": 0.000144407,
+          "high": 4.34672e-05,
+          "low": 5.46661e-06,
+          "percent": {
+            "high": 30.1005,
+            "low": 3.78556,
+            "value": 19.0768
+          },
+          "unit": "mol/m2",
+          "value": 2.75482e-05
+        },
+        "final_salt_mol_m2": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "baseline": 0.0,
+          "high": 7.8,
+          "low": 2.9,
+          "unit": "mm",
+          "value": 5.0
+        },
+        "h2_uptake_mol_m2": {
+          "baseline": 0.00110233,
+          "high": 0.000336687,
+          "low": -2.09717e-05,
+          "percent": {
+            "high": 30.5432,
+            "low": -1.90248,
+            "value": 16.6443
+          },
+          "unit": "mol/m2",
+          "value": 0.000183476
+        },
+        "mean_nacl_mol_l": {
+          "baseline": 0.0,
+          "high": 0.0,
+          "low": 0.0,
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "downstream": {},
+      "envelope_refusals": [],
+      "label": "panel cover 1",
+      "refused": null,
+      "trace": {
+        "contract_sha256": "6ed048729305fe284b29ce9400c747516382c82318a5e5b56de2b65c53d9dfb5",
+        "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
+        "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
+        "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
+        "process_code_sha256": "3b57486f7b52b21d3cf4b4f2b37d685252b8760dcfdbf618afcff65886b41c36",
+        "targets_replaced": [
+          "forcing[0].evaporation_mm",
+          "forcing[0].temp_c",
+          "forcing[0].water_mm",
+          "forcing[1].evaporation_mm",
+          "forcing[1].temp_c",
+          "forcing[1].water_mm",
+          "forcing[2].evaporation_mm",
+          "forcing[2].temp_c",
+          "forcing[2].water_mm",
+          "forcing[3].evaporation_mm",
+          "forcing[3].temp_c",
+          "forcing[3].water_mm",
+          "forcing[4].evaporation_mm",
+          "forcing[4].temp_c",
+          "forcing[4].water_mm",
+          "forcing[5].evaporation_mm",
+          "forcing[5].temp_c",
+          "forcing[5].water_mm",
+          "forcing[6].evaporation_mm",
+          "forcing[6].temp_c",
+          "forcing[6].water_mm",
+          "forcing[7].evaporation_mm",
+          "forcing[7].temp_c",
+          "forcing[7].water_mm",
+          "forcing[8].evaporation_mm",
+          "forcing[8].temp_c",
+          "forcing[8].water_mm",
+          "forcing[9].evaporation_mm",
+          "forcing[9].temp_c",
+          "forcing[9].water_mm",
+          "forcing[10].evaporation_mm",
+          "forcing[10].temp_c",
+          "forcing[10].water_mm",
+          "forcing[11].evaporation_mm",
+          "forcing[11].temp_c",
+          "forcing[11].water_mm",
+          "forcing[12].evaporation_mm",
+          "forcing[12].temp_c",
+          "forcing[12].water_mm",
+          "forcing[13].evaporation_mm",
+          "forcing[13].temp_c",
+          "forcing[13].water_mm"
+        ]
+      },
+      "twin": {
+        "active_days": {
+          "constants": [
+            "panel_wash_interval_days",
+            "panel_wash_l_m2_per_wash",
+            "solar_panel_evap_reduction_frac",
+            "solar_panel_soil_temp_reduction_c"
+          ],
+          "high": 14,
+          "low": 14,
+          "provenance": "twin",
+          "unit": "day",
+          "value": 14
+        },
+        "co_uptake_mol_m2": {
+          "constants": [
+            "panel_wash_interval_days",
+            "panel_wash_l_m2_per_wash",
+            "solar_panel_evap_reduction_frac",
+            "solar_panel_soil_temp_reduction_c"
+          ],
+          "high": 0.000187874,
+          "low": 0.000149873,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.000171955
+        },
+        "final_salt_mol_m2": {
+          "constants": [
+            "panel_wash_interval_days",
+            "panel_wash_l_m2_per_wash",
+            "solar_panel_evap_reduction_frac",
+            "solar_panel_soil_temp_reduction_c"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.0
+        },
+        "final_water_mm": {
+          "constants": [
+            "panel_wash_interval_days",
+            "panel_wash_l_m2_per_wash",
+            "solar_panel_evap_reduction_frac",
+            "solar_panel_soil_temp_reduction_c"
+          ],
+          "high": 7.8,
+          "low": 2.9,
+          "provenance": "twin",
+          "unit": "mm",
+          "value": 5.0
+        },
+        "h2_uptake_mol_m2": {
+          "constants": [
+            "panel_wash_interval_days",
+            "panel_wash_l_m2_per_wash",
+            "solar_panel_evap_reduction_frac",
+            "solar_panel_soil_temp_reduction_c"
+          ],
+          "high": 0.00143902,
+          "low": 0.00108136,
+          "provenance": "twin",
+          "unit": "mol/m2",
+          "value": 0.00128581
+        },
+        "mean_nacl_mol_l": {
+          "constants": [
+            "panel_wash_interval_days",
+            "panel_wash_l_m2_per_wash",
+            "solar_panel_evap_reduction_frac",
+            "solar_panel_soil_temp_reduction_c"
+          ],
+          "high": 0.0,
+          "low": 0.0,
+          "provenance": "twin",
+          "unit": "mol/L",
+          "value": 0.0
+        }
+      },
+      "twin_baseline": {
+        "active_days": 12,
+        "co_uptake_mol_m2": 0.000144407,
+        "final_salt_mol_m2": 0.0,
+        "final_water_mm": 0.0,
+        "h2_uptake_mol_m2": 0.00110233,
+        "mean_nacl_mol_l": 0.0
+      },
+      "twin_checks_passed": true,
+      "upstream": {
+        "panel_washing": {
+          "water_mm": {
+            "constants": [
+              "panel_wash_interval_days",
+              "panel_wash_l_m2_per_wash"
+            ],
+            "days": 14,
+            "provenance": "external:panel_washing",
+            "series_total": {
+              "high": 15.0,
+              "low": 12.0,
+              "value": 13.0
+            },
+            "unit": "mm/day"
+          }
+        },
+        "solar_park_microclimate": {
+          "evaporation_mm": {
+            "constants": [
+              "solar_panel_evap_reduction_frac",
+              "solar_panel_soil_temp_reduction_c"
+            ],
+            "days": 14,
+            "provenance": "external:solar_park_microclimate",
+            "series_total": {
+              "high": 11.9,
+              "low": 7.0,
+              "value": 9.8
+            },
+            "unit": "mm/day"
+          },
+          "temp_c": {
+            "constants": [
+              "solar_panel_evap_reduction_frac",
+              "solar_panel_soil_temp_reduction_c"
+            ],
+            "days": 14,
+            "provenance": "external:solar_park_microclimate",
+            "series_total": {
+              "high": 336.0,
+              "low": 266.0,
+              "value": 308.0
+            },
+            "unit": "degC"
+          }
+        }
+      }
+    }
+  ],
+  "plain_language": "Under a full solar-panel cover the twin's hydrogen uptake changes by 16.6 % over two weeks. How much cooler and less evaporative it is under panels, and how much water panel washing adds, are published ranges (other models); the soil's response to them is the twin's.",
+  "question": "What if we build a solar park?",
+  "refusals": [],
+  "registry_sha256": "0b781d9258a62e42c2e7edb3e86259e1db67afc4e6d31bc265935e67c5aa8bfb"
+}
