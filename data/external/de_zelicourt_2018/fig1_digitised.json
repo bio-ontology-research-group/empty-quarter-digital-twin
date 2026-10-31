@@ -1,0 +1,74 @@
+{
+ "check_against_printed_percentages": {
+  "high_7.81/dry_s1": {
+   "abs_diff": 0.0011,
+   "digitised": 0.1311,
+   "printed": 0.13
+  },
+  "high_7.81/dry_s2": {
+   "abs_diff": 0.0009,
+   "digitised": 0.1709,
+   "printed": 0.17
+  },
+  "high_7.81/fresh_s1": {
+   "abs_diff": 0.0026,
+   "digitised": 0.1526,
+   "printed": 0.15
+  },
+  "high_7.81/fresh_s2": {
+   "abs_diff": 0.0016,
+   "digitised": 0.1216,
+   "printed": 0.12
+  },
+  "low_3.12/dry_s1": {
+   "abs_diff": 0.0038,
+   "digitised": 0.1438,
+   "printed": 0.14
+  },
+  "low_3.12/dry_s2": {
+   "abs_diff": 0.0025,
+   "digitised": 0.1675,
+   "printed": 0.17
+  },
+  "low_3.12/fresh_s1": {
+   "abs_diff": 0.0083,
+   "digitised": 0.1517,
+   "printed": 0.16
+  },
+  "low_3.12/fresh_s2": {
+   "abs_diff": 0.0052,
+   "digitised": 0.1148,
+   "printed": 0.12
+  }
+ },
+ "image_sha256": "2ec2c32c63f7cdafea3c43916138593af5d571989ee13269cd2e0227a35eb839",
+ "max_abs_diff": 0.0083,
+ "method": "Digitise bar heights in de Zelicourt et al. 2018 PLoS Genet Fig 1 (alfalfa biomass, t/ha).\nCalibration: y-axis tick marks (0..14 t/ha, step 2) detected at x=156; bars detected by fill colour\n(mock grey, SA187 green); top = first fill row from above (excluding error-bar pixels, which are darker grey).",
+ "note": "Bar means read from pixels; per-plot data are not published. Season 2 is confounded by rainfall (authors).",
+ "season1_mock_ratio_high_over_low": {
+  "dry": 0.8282,
+  "fresh": 0.7958
+ },
+ "source": "de Zelicourt A et al. (2018) PLoS Genet 14:e1007273, doi:10.1371/journal.pgen.1007273, Fig 1 (CC BY 4.0)",
+ "unit": "t/ha",
+ "values": {
+  "high_7.81/calibration_max_residual_t_ha": 0.0131,
+  "high_7.81/dry_s1/mock": 1.716,
+  "high_7.81/dry_s1/sa187": 1.941,
+  "high_7.81/dry_s2/mock": 3.405,
+  "high_7.81/dry_s2/sa187": 3.987,
+  "high_7.81/fresh_s1/mock": 4.306,
+  "high_7.81/fresh_s1/sa187": 4.963,
+  "high_7.81/fresh_s2/mock": 9.26,
+  "high_7.81/fresh_s2/sa187": 10.386,
+  "low_3.12/calibration_max_residual_t_ha": 0.0148,
+  "low_3.12/dry_s1/mock": 2.072,
+  "low_3.12/dry_s1/sa187": 2.37,
+  "low_3.12/dry_s2/mock": 3.564,
+  "low_3.12/dry_s2/sa187": 4.161,
+  "low_3.12/fresh_s1/mock": 5.411,
+  "low_3.12/fresh_s1/sa187": 6.232,
+  "low_3.12/fresh_s2/mock": 9.757,
+  "low_3.12/fresh_s2/sa187": 10.877
+ }
+}
