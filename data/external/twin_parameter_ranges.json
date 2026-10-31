@@ -1,0 +1,240 @@
+{
+ "schema": "eq-biodt twin parameter ranges v1",
+ "note": "Parameter-uncertainty ranges for the EQ-BioDT process model (src/eq_biodt/v03/process.py). Bounds reuse the v0.6 sensitivity grid (src/eq_biodt/v03/planning.py:parameter_ensemble) and the v0.5 cross-desert transfer grid (reproducibility/v05/external_transfer.py:CANDIDATES) where defined; remaining parameters carry explicit modeller-assumption bounds.",
+ "parameters": [
+  {
+   "id": "k_h2_s",
+   "dist": "loguniform",
+   "low": 0.0001,
+   "value": 0.001,
+   "high": 0.01,
+   "unit": "1/s",
+   "meaning": "Bulk-soil first-order H2 reaction rate coefficient at reference temperature and full activation",
+   "status": "modeller_assumption",
+   "source": {
+    "authors": "EQ-BioDT v0.6 scenario ensemble",
+    "year": 2026,
+    "title": "Scenario sensitivity grid (rate multipliers 0.1 to 10 around 0.001 s-1)",
+    "doi_or_url": "",
+    "page_or_table": "src/eq_biodt/v03/planning.py:parameter_ensemble"
+   },
+   "note": "Log-uniform over one order of magnitude below and above the 0.001 s-1 reference rate, matching the 0.1x-10x multipliers in planning.parameter_ensemble."
+  },
+  {
+   "id": "k_co_s",
+   "dist": "loguniform",
+   "low": 0.0001,
+   "value": 0.001,
+   "high": 0.01,
+   "unit": "1/s",
+   "meaning": "Bulk-soil first-order CO reaction rate coefficient at reference temperature and full activation",
+   "status": "modeller_assumption",
+   "source": {
+    "authors": "EQ-BioDT v0.6 scenario ensemble",
+    "year": 2026,
+    "title": "Scenario sensitivity grid (rate multipliers 0.1 to 10 around 0.001 s-1)",
+    "doi_or_url": "",
+    "page_or_table": "src/eq_biodt/v03/planning.py:parameter_ensemble"
+   },
+   "note": "Log-uniform over one order of magnitude below and above the 0.001 s-1 reference rate, matching the 0.1x-10x multipliers in planning.parameter_ensemble."
+  },
+  {
+   "id": "psi_entry_mpa",
+   "dist": "loguniform",
+   "low": -0.01,
+   "value": -0.001,
+   "high": -0.0001,
+   "unit": "MPa",
+   "meaning": "Campbell water-retention air-entry potential",
+   "status": "modeller_assumption",
+   "source": {
+    "authors": "EQ-BioDT v0.5 external transfer protocol",
+    "year": 2026,
+    "title": "Cross-desert retention candidate grid",
+    "doi_or_url": "",
+    "page_or_table": "reproducibility/v05/external_transfer.py:CANDIDATES"
+   },
+   "note": "Log-uniform on magnitude over [-0.01, -0.0001] MPa centered on -0.001 MPa, reusing the entry-potential grid in external_transfer.py:CANDIDATES."
+  },
+  {
+   "id": "retention_b",
+   "dist": "triangular",
+   "low": 2.0,
+   "value": 4.0,
+   "high": 6.0,
+   "unit": "-",
+   "meaning": "Campbell water-retention pore-size distribution exponent b",
+   "status": "modeller_assumption",
+   "source": {
+    "authors": "EQ-BioDT v0.5/v0.6 sensitivity grids",
+    "year": 2026,
+    "title": "Scenario ensemble (3-5) widened to the cross-desert transfer grid (2-6)",
+    "doi_or_url": "",
+    "page_or_table": "src/eq_biodt/v03/planning.py:parameter_ensemble; reproducibility/v05/external_transfer.py:CANDIDATES"
+   },
+   "note": "Bounds [2.0, 6.0] with mode 4.0 reuse the transfer grid in external_transfer.py:CANDIDATES (widening planning.parameter_ensemble [3.0, 5.0])."
+  },
+  {
+   "id": "wet_activation_mpa",
+   "dist": "loguniform",
+   "low": -0.3,
+   "value": -0.1,
+   "high": -0.03,
+   "unit": "MPa",
+   "meaning": "Water potential above which microbial moisture activation reaches 1",
+   "status": "modeller_assumption",
+   "source": {
+    "authors": "EQ-BioDT v0.6 model contract",
+    "year": 2026,
+    "title": "Clause C2 wet-activation endpoint assumption",
+    "doi_or_url": "",
+    "page_or_table": "src/eq_biodt/v03/process.py:Parameters"
+   },
+   "note": "Log-uniform on magnitude over [-0.3, -0.03] MPa around the -0.1 MPa reference threshold (half an order of magnitude each side, strictly between dry_threshold_mpa and psi_entry_mpa)."
+  },
+  {
+   "id": "dry_threshold_mpa",
+   "dist": "triangular",
+   "low": -100.0,
+   "value": -85.0,
+   "high": -70.0,
+   "unit": "MPa",
+   "meaning": "Dry water-potential threshold below which moisture activation is zero",
+   "status": "modeller_assumption",
+   "source": {
+    "authors": "EQ-BioDT v0.6 scenario ensemble (informed by Reji et al. 2025)",
+    "year": 2026,
+    "title": "Scenario sensitivity grid for dry activation threshold",
+    "doi_or_url": "https://doi.org/10.1038/s41467-025-67208-3",
+    "page_or_table": "src/eq_biodt/v03/planning.py:parameter_ensemble"
+   },
+   "note": "Bounds [-100.0, -70.0] MPa around -85.0 MPa from planning.parameter_ensemble and contract clause C2."
+  },
+  {
+   "id": "activation_shape",
+   "dist": "triangular",
+   "low": 0.5,
+   "value": 1.0,
+   "high": 2.0,
+   "unit": "-",
+   "meaning": "Exponent of the logarithmic moisture-activation ramp between dry and wet thresholds",
+   "status": "modeller_assumption",
+   "source": {
+    "authors": "EQ-BioDT v0.6 scenario ensemble",
+    "year": 2026,
+    "title": "Scenario sensitivity grid for activation shape exponent",
+    "doi_or_url": "",
+    "page_or_table": "src/eq_biodt/v03/planning.py:parameter_ensemble"
+   },
+   "note": "Bounds [0.5, 2.0] around 1.0 from planning.parameter_ensemble."
+  },
+  {
+   "id": "q10",
+   "dist": "uniform",
+   "low": 1.0,
+   "value": 2.0,
+   "high": 2.0,
+   "unit": "-",
+   "meaning": "Thermal Q10 factor per 10 degC above the 25 degC reference temperature",
+   "status": "modeller_assumption",
+   "source": {
+    "authors": "EQ-BioDT v0.5 external transfer protocol",
+    "year": 2026,
+    "title": "Cross-desert Q10 candidate grid",
+    "doi_or_url": "",
+    "page_or_table": "reproducibility/v05/external_transfer.py:CANDIDATES"
+   },
+   "note": "Bounds [1.0, 2.0] from external_transfer.py:CANDIDATES (spanning no thermal amplification Q10=1 to the reference Q10=2)."
+  },
+  {
+   "id": "d_h2_m2_s",
+   "dist": "triangular",
+   "low": 6.16e-05,
+   "value": 7.7e-05,
+   "high": 9.24e-05,
+   "unit": "m2/s",
+   "meaning": "Free-air binary molecular diffusivity of H2 before Millington-Quirk tortuosity scaling",
+   "status": "modeller_assumption",
+   "source": {
+    "authors": "EQ-BioDT v0.8 parameter range",
+    "year": 2026,
+    "title": "Effective free-air diffusivity allowance (+-20 % around 7.7e-5 m2/s)",
+    "doi_or_url": "https://doi.org/10.1039/TF9615701200",
+    "page_or_table": "src/eq_biodt/v03/process.py:Parameters"
+   },
+   "note": "+-20 % around the 7.7e-5 m2/s reference diffusivity to represent temperature/packing tortuosity uncertainty."
+  },
+  {
+   "id": "d_co_m2_s",
+   "dist": "triangular",
+   "low": 1.68e-05,
+   "value": 2.1e-05,
+   "high": 2.52e-05,
+   "unit": "m2/s",
+   "meaning": "Free-air binary molecular diffusivity of CO before Millington-Quirk tortuosity scaling",
+   "status": "modeller_assumption",
+   "source": {
+    "authors": "EQ-BioDT v0.8 parameter range",
+    "year": 2026,
+    "title": "Effective free-air diffusivity allowance (+-20 % around 2.1e-5 m2/s)",
+    "doi_or_url": "https://doi.org/10.1039/TF9615701200",
+    "page_or_table": "src/eq_biodt/v03/process.py:Parameters"
+   },
+   "note": "+-20 % around the 2.1e-5 m2/s reference diffusivity to represent temperature/packing tortuosity uncertainty."
+  },
+  {
+   "id": "drainage_fraction_day",
+   "dist": "triangular",
+   "low": 0.3,
+   "value": 0.5,
+   "high": 0.7,
+   "unit": "1/day",
+   "meaning": "Daily fraction of water above field capacity drained from the 10 cm sand layer",
+   "status": "modeller_assumption",
+   "source": {
+    "authors": "EQ-BioDT v0.8 parameter range",
+    "year": 2026,
+    "title": "Bucket-model daily drainage fraction assumption",
+    "doi_or_url": "",
+    "page_or_table": "src/eq_biodt/v03/process.py:Parameters"
+   },
+   "note": "Modeller assumption [0.3, 0.7] day-1 around the 0.5 day-1 reference drainage fraction."
+  },
+  {
+   "id": "field_capacity_fraction",
+   "dist": "triangular",
+   "low": 0.4,
+   "value": 0.5,
+   "high": 0.6,
+   "unit": "-",
+   "meaning": "Fraction of pore storage below which gravitational drainage ceases",
+   "status": "modeller_assumption",
+   "source": {
+    "authors": "EQ-BioDT v0.8 parameter range",
+    "year": 2026,
+    "title": "Bucket-model field-capacity fraction assumption",
+    "doi_or_url": "",
+    "page_or_table": "src/eq_biodt/v03/process.py:Parameters"
+   },
+   "note": "Modeller assumption [0.4, 0.6] around the 0.5 reference field-capacity fraction."
+  },
+  {
+   "id": "porosity",
+   "dist": "triangular",
+   "low": 0.35,
+   "value": 0.4,
+   "high": 0.5,
+   "unit": "-",
+   "meaning": "Total pore volume fraction of undisturbed Rub' al-Khali sand (excluded when porosity is intervened on)",
+   "status": "modeller_assumption",
+   "source": {
+    "authors": "EQ-BioDT v0.5 external transfer protocol",
+    "year": 2026,
+    "title": "Cross-desert porosity candidate grid",
+    "doi_or_url": "",
+    "page_or_table": "reproducibility/v05/external_transfer.py:CANDIDATES"
+   },
+   "note": "Bounds [0.35, 0.5] around 0.4 from external_transfer.py:CANDIDATES; excluded whenever an experiment intervenes on porosity."
+  }
+ ]
+}
