@@ -427,7 +427,7 @@ def main():
     commit = git("rev-parse", "HEAD")
     dirty = bool(git("status", "--porcelain", "--untracked-files=no", "--", "src", "data/v03", "data/external", "reviews", "paper/tables"))
     bundle = {
-        "schema": 1, "version": version, "title": "EQ-BioDT v0.6",
+        "schema": 1, "version": version, "title": "EQ-BioDT v" + ".".join(version.split(".")[:2]),
         "provenance": {"source_repository": "https://github.com/bio-ontology-research-group/empty-quarter-digital-twin",
                        "commit": commit, "branch": git("rev-parse", "--abbrev-ref", "HEAD"), "tree_dirty": dirty,
                        "generated_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),

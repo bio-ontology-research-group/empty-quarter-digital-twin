@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "eq-biodt"
-version = "0.6.0"
+version = "0.7.0"
 description = "Evidence-aware conditional soil scenarios and metagenomic capacity forecasts for the Rub' al-Khali"
 readme = "README.md"
 requires-python = ">=3.10"

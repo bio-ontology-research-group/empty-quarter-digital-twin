@@ -177,7 +177,7 @@ def test_design_holdout_and_robust_conservation_baseline():
 
 def test_public_api_and_explicit_retirement():
     client = TestClient(app)
-    assert client.get("/health").json()["version"] == "0.6.0"
+    assert client.get("/health").json()["version"] == "0.7.0"
     assert client.get("/v3/evidence?limit=1").json()["manifest"]["reference_MAGs"] == 5438
     assert client.post("/v1/intervene", json={}).status_code == 410
     assert "causal–ontological digital twin of the Rub’ al-Khali" in client.get("/").text
