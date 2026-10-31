@@ -1,0 +1,754 @@
+{
+  "schema": "eq-biodt composition constants v1",
+  "note": "Every entry has verified:false until a human checks it against its source. No literature constant may appear in code outside this registry.",
+  "constants": [
+    {
+      "id": "nacl_mol_l_per_dS_m",
+      "value": 0.01,
+      "low": 0.0085,
+      "high": 0.011,
+      "unit": "mol/L per dS/m",
+      "meaning": "NaCl concentration equivalent to 1 dS/m of electrical conductivity (approx. 10 mmol/L per dS/m; pure NaCl solutions are about 8.5-9)",
+      "source": {
+        "authors": "Richards LA (ed.)",
+        "year": 1954,
+        "title": "Diagnosis and improvement of saline and alkali soils (USDA Agriculture Handbook 60)",
+        "doi_or_url": "",
+        "page_or_table": "approximate conversion between EC and salt concentration (about 640 mg/L TDS and ~10 meq/L per dS/m)"
+      },
+      "verified": false,
+      "note": "uncertain: page and exact conversion to be checked; low = pure-NaCl conductivity"
+    },
+    {
+      "id": "fao29_ece_per_ecw",
+      "value": 1.5,
+      "low": 1.0,
+      "high": 2.0,
+      "unit": "dimensionless",
+      "meaning": "Saturation-extract EC over irrigation-water EC at a leaching fraction of 15-20% (ECe = 1.5 EC_w); low/high span leaching fractions about 30% and 10%",
+      "source": {
+        "authors": "Ayers RS, Westcot DW",
+        "year": 1985,
+        "title": "Water quality for agriculture (FAO Irrigation and Drainage Paper 29 Rev. 1)",
+        "doi_or_url": "https://www.fao.org/3/t0234e/t0234e00.htm",
+        "page_or_table": ""
+      },
+      "verified": false,
+      "note": "uncertain: Table 4 / leaching-requirement section; the factor 1.5 is the spec's value; low/high are scenario bounds, not read from the source"
+    },
+    {
+      "id": "fao29_ecsw_per_ece",
+      "value": 2.0,
+      "low": 1.5,
+      "high": 2.5,
+      "unit": "dimensionless",
+      "meaning": "Soil-water EC at field capacity over saturation-extract EC (EC_sw ~ 2 ECe)",
+      "source": {
+        "authors": "Ayers RS, Westcot DW",
+        "year": 1985,
+        "title": "Water quality for agriculture (FAO Irrigation and Drainage Paper 29 Rev. 1)",
+        "doi_or_url": "https://www.fao.org/3/t0234e/t0234e00.htm",
+        "page_or_table": ""
+      },
+      "verified": false,
+      "note": "verify page; low/high are scenario bounds"
+    },
+    {
+      "id": "mh_date_palm_threshold_dS_m",
+      "value": 4.0,
+      "low": 3.2,
+      "high": 4.8,
+      "unit": "dS/m",
+      "meaning": "Maas-Hoffman salinity threshold (ECe at which yield starts to decline), date palm",
+      "source": {
+        "authors": "Ayers RS, Westcot DW (after Maas EV, Hoffman GJ 1977)",
+        "year": 1985,
+        "title": "Water quality for agriculture (FAO Irrigation and Drainage Paper 29 Rev. 1)",
+        "doi_or_url": "https://www.fao.org/3/t0234e/t0234e00.htm",
+        "page_or_table": "Table 4 (fruit crops: date palm)"
+      },
+      "verified": false,
+      "note": "uncertain value; low/high = +-20% reporting range (tabulated values are rounded)"
+    },
+    {
+      "id": "mh_date_palm_slope_pct_per_dS_m",
+      "value": 3.6,
+      "low": 2.88,
+      "high": 4.32,
+      "unit": "% yield per dS/m",
+      "meaning": "Maas-Hoffman slope of relative-yield decline above the threshold, date palm",
+      "source": {
+        "authors": "Ayers RS, Westcot DW (after Maas EV, Hoffman GJ 1977)",
+        "year": 1985,
+        "title": "Water quality for agriculture (FAO Irrigation and Drainage Paper 29 Rev. 1)",
+        "doi_or_url": "https://www.fao.org/3/t0234e/t0234e00.htm",
+        "page_or_table": "Table 4 (fruit crops: date palm)"
+      },
+      "verified": false,
+      "note": "uncertain value; low/high = +-20% reporting range (tabulated values are rounded)"
+    },
+    {
+      "id": "mh_barley_threshold_dS_m",
+      "value": 8.0,
+      "low": 6.4,
+      "high": 9.6,
+      "unit": "dS/m",
+      "meaning": "Maas-Hoffman salinity threshold (ECe at which yield starts to decline), barley",
+      "source": {
+        "authors": "Ayers RS, Westcot DW (after Maas EV, Hoffman GJ 1977)",
+        "year": 1985,
+        "title": "Water quality for agriculture (FAO Irrigation and Drainage Paper 29 Rev. 1)",
+        "doi_or_url": "https://www.fao.org/3/t0234e/t0234e00.htm",
+        "page_or_table": "Table 4 (field crops: barley, grain)"
+      },
+      "verified": false,
+      "note": "uncertain value; low/high = +-20% reporting range (tabulated values are rounded)"
+    },
+    {
+      "id": "mh_barley_slope_pct_per_dS_m",
+      "value": 5.0,
+      "low": 4.0,
+      "high": 6.0,
+      "unit": "% yield per dS/m",
+      "meaning": "Maas-Hoffman slope of relative-yield decline above the threshold, barley",
+      "source": {
+        "authors": "Ayers RS, Westcot DW (after Maas EV, Hoffman GJ 1977)",
+        "year": 1985,
+        "title": "Water quality for agriculture (FAO Irrigation and Drainage Paper 29 Rev. 1)",
+        "doi_or_url": "https://www.fao.org/3/t0234e/t0234e00.htm",
+        "page_or_table": "Table 4 (field crops: barley, grain)"
+      },
+      "verified": false,
+      "note": "uncertain value; low/high = +-20% reporting range (tabulated values are rounded)"
+    },
+    {
+      "id": "mh_alfalfa_threshold_dS_m",
+      "value": 2.0,
+      "low": 1.6,
+      "high": 2.4,
+      "unit": "dS/m",
+      "meaning": "Maas-Hoffman salinity threshold (ECe at which yield starts to decline), alfalfa",
+      "source": {
+        "authors": "Ayers RS, Westcot DW (after Maas EV, Hoffman GJ 1977)",
+        "year": 1985,
+        "title": "Water quality for agriculture (FAO Irrigation and Drainage Paper 29 Rev. 1)",
+        "doi_or_url": "https://www.fao.org/3/t0234e/t0234e00.htm",
+        "page_or_table": "Table 4 (forage crops: alfalfa)"
+      },
+      "verified": false,
+      "note": "verify (spec); low/high = +-20% reporting range"
+    },
+    {
+      "id": "mh_alfalfa_slope_pct_per_dS_m",
+      "value": 7.3,
+      "low": 5.84,
+      "high": 8.76,
+      "unit": "% yield per dS/m",
+      "meaning": "Maas-Hoffman slope of relative-yield decline above the threshold, alfalfa",
+      "source": {
+        "authors": "Ayers RS, Westcot DW (after Maas EV, Hoffman GJ 1977)",
+        "year": 1985,
+        "title": "Water quality for agriculture (FAO Irrigation and Drainage Paper 29 Rev. 1)",
+        "doi_or_url": "https://www.fao.org/3/t0234e/t0234e00.htm",
+        "page_or_table": "Table 4 (forage crops: alfalfa)"
+      },
+      "verified": false,
+      "note": "verify (spec); low/high = +-20% reporting range"
+    },
+    {
+      "id": "mh_tomato_threshold_dS_m",
+      "value": 2.5,
+      "low": 2.0,
+      "high": 3.0,
+      "unit": "dS/m",
+      "meaning": "Maas-Hoffman salinity threshold (ECe at which yield starts to decline), tomato",
+      "source": {
+        "authors": "Ayers RS, Westcot DW (after Maas EV, Hoffman GJ 1977)",
+        "year": 1985,
+        "title": "Water quality for agriculture (FAO Irrigation and Drainage Paper 29 Rev. 1)",
+        "doi_or_url": "https://www.fao.org/3/t0234e/t0234e00.htm",
+        "page_or_table": "Table 4 (vegetable crops: tomato)"
+      },
+      "verified": false,
+      "note": "uncertain value; low/high = +-20% reporting range (tabulated values are rounded)"
+    },
+    {
+      "id": "mh_tomato_slope_pct_per_dS_m",
+      "value": 9.9,
+      "low": 7.92,
+      "high": 11.88,
+      "unit": "% yield per dS/m",
+      "meaning": "Maas-Hoffman slope of relative-yield decline above the threshold, tomato",
+      "source": {
+        "authors": "Ayers RS, Westcot DW (after Maas EV, Hoffman GJ 1977)",
+        "year": 1985,
+        "title": "Water quality for agriculture (FAO Irrigation and Drainage Paper 29 Rev. 1)",
+        "doi_or_url": "https://www.fao.org/3/t0234e/t0234e00.htm",
+        "page_or_table": "Table 4 (vegetable crops: tomato)"
+      },
+      "verified": false,
+      "note": "uncertain value; low/high = +-20% reporting range (tabulated values are rounded)"
+    },
+    {
+      "id": "crop_etc_mm_per_day",
+      "value": 6.0,
+      "low": 4.0,
+      "high": 9.0,
+      "unit": "mm/day",
+      "meaning": "Order-of-magnitude crop water demand in a hot desert irrigated system, used only to set the seasonal irrigation total in the delivery-schedule experiment",
+      "source": {
+        "authors": "Allen RG, Pereira LS, Raes D, Smith M",
+        "year": 1998,
+        "title": "Crop evapotranspiration: guidelines for computing crop water requirements (FAO Irrigation and Drainage Paper 56)",
+        "doi_or_url": "https://www.fao.org/3/x0490e/x0490e00.htm",
+        "page_or_table": ""
+      },
+      "verified": false,
+      "note": "uncertain: order of magnitude only (ETc = Kc ET0); chapter 6/Table 12 not checked"
+    },
+    {
+      "id": "alfalfa_etc_mm_per_day",
+      "value": 8.0,
+      "low": 5.0,
+      "high": 12.0,
+      "unit": "mm/day",
+      "meaning": "Representative peak-season irrigation demand of drip-irrigated alfalfa in an arid climate (sets the irrigation depth rate of the alfalfa chain)",
+      "source": {
+        "authors": "Allen RG, Pereira LS, Raes D, Smith M",
+        "year": 1998,
+        "title": "Crop evapotranspiration: guidelines for computing crop water requirements (FAO Irrigation and Drainage Paper 56)",
+        "doi_or_url": "https://www.fao.org/3/x0490e/x0490e00.htm",
+        "page_or_table": ""
+      },
+      "verified": false,
+      "note": "uncertain: ET0 x Kc (alfalfa Kc ~1.0-1.2) for hot-desert ET0 of 7-10 mm/day; not read from a site-specific source"
+    },
+    {
+      "id": "mulch_evap_reduction_frac",
+      "value": 0.5,
+      "low": 0.3,
+      "high": 0.6,
+      "unit": "fraction",
+      "meaning": "Fractional reduction of soil evaporation under full mulch cover",
+      "source": {
+        "authors": "Allen RG, Pereira LS, Raes D, Smith M",
+        "year": 1998,
+        "title": "Crop evapotranspiration: guidelines for computing crop water requirements (FAO Irrigation and Drainage Paper 56)",
+        "doi_or_url": "https://www.fao.org/3/x0490e/x0490e00.htm",
+        "page_or_table": ""
+      },
+      "verified": false,
+      "note": "uncertain: FAO-56 chapter 7 states roughly 5% reduction per 10% mulch cover; page not checked"
+    },
+    {
+      "id": "shade_net_soil_temp_reduction_c",
+      "value": 5.0,
+      "low": 2.0,
+      "high": 8.0,
+      "unit": "degC",
+      "meaning": "Daytime soil-surface temperature reduction under a shade net",
+      "source": {
+        "authors": "Castellano S, Mugnozza GS, Russo G, Briassoulis D, Mistriotis A, Hemming S, Waaijenberg D",
+        "year": 2008,
+        "title": "Plastic nets in agriculture: a general review of types and applications",
+        "doi_or_url": "",
+        "page_or_table": "microclimate section"
+      },
+      "verified": false,
+      "note": "uncertain: review of nets; soil-temperature magnitude not confirmed"
+    },
+    {
+      "id": "biochar_porosity_increase_per_pct",
+      "value": 0.006,
+      "low": 0.002,
+      "high": 0.01,
+      "unit": "porosity (absolute) per % w/w",
+      "meaning": "Absolute increase in total porosity per 1% (w/w) biochar added",
+      "source": {
+        "authors": "Omondi MO, Xia X, Nahayo A, Liu X, Korai PK, Pan G",
+        "year": 2016,
+        "title": "Quantification of biochar effects on soil hydrological properties using meta-analysis of literature data",
+        "doi_or_url": "10.1016/j.geoderma.2016.03.029",
+        "page_or_table": "results on bulk density and porosity"
+      },
+      "verified": false,
+      "note": "uncertain: meta-analysis reports bulk-density and water-retention effects; the per-percent porosity slope is my conversion and must be checked"
+    },
+    {
+      "id": "knallgas_co2_per_h2",
+      "value": 0.16666666666666666,
+      "low": 0.1,
+      "high": 0.25,
+      "unit": "mol CO2 per mol H2",
+      "meaning": "CO2 fixed per H2 oxidised by knallgas (hydrogen-oxidising) autotrophs via the Calvin-Benson-Bassham cycle (theoretical 6 H2 : 2 O2 : 1 CO2)",
+      "source": {
+        "authors": "Bongers L",
+        "year": 1970,
+        "title": "Energy generation and utilization in hydrogen bacteria",
+        "doi_or_url": "",
+        "page_or_table": "stoichiometry"
+      },
+      "verified": false,
+      "note": "uncertain: DOI left blank, and the 1/6 stoichiometric figure to be verified; low/high allow real growth efficiencies"
+    },
+    {
+      "id": "molar_mass_c_g_mol",
+      "value": 12.011,
+      "low": 12.0,
+      "high": 12.02,
+      "unit": "g/mol",
+      "meaning": "Molar mass of carbon",
+      "source": {
+        "authors": "IUPAC",
+        "year": 2021,
+        "title": "Standard atomic weights",
+        "doi_or_url": "https://iupac.qmul.ac.uk/AtWt/",
+        "page_or_table": "carbon"
+      },
+      "verified": false,
+      "note": "physical constant; value 12.011"
+    },
+    {
+      "id": "days_per_year",
+      "value": 365.25,
+      "low": 365.0,
+      "high": 366.0,
+      "unit": "day/year",
+      "meaning": "Days per year used to annualise period totals",
+      "source": {
+        "authors": "IAU",
+        "year": 1976,
+        "title": "Julian year",
+        "doi_or_url": "",
+        "page_or_table": ""
+      },
+      "verified": false,
+      "note": "convention"
+    },
+    {
+      "id": "biocrust_net_c_fixation_g_c_m2_yr",
+      "value": 10.0,
+      "low": 2.0,
+      "high": 30.0,
+      "unit": "g C m-2 yr-1",
+      "meaning": "Context value only: net carbon uptake of dryland biological soil crusts (not a twin quantity)",
+      "source": {
+        "authors": "Elbert W, Weber B, Burrows S, Steinkamp J, Budel B, Andreae MO, Poschl U",
+        "year": 2012,
+        "title": "Contribution of cryptogamic covers to the global cycles of carbon and nitrogen",
+        "doi_or_url": "10.1038/ngeo1486",
+        "page_or_table": "carbon uptake estimates"
+      },
+      "verified": false,
+      "note": "uncertain: biocrust-specific desert value to be located; global figure is for all cryptogamic covers"
+    },
+    {
+      "id": "h2_background_ppm",
+      "value": 0.53,
+      "low": 0.5,
+      "high": 0.55,
+      "unit": "ppm (mole fraction)",
+      "meaning": "Present-day tropospheric background H2 mixing ratio",
+      "source": {
+        "authors": "Novelli PC, Lang PM, Masarie KA, Hurst DF, Myers R, Elkins JW",
+        "year": 1999,
+        "title": "Molecular hydrogen in the troposphere: global distribution and budget",
+        "doi_or_url": "10.1029/1999JD900949",
+        "page_or_table": "global mean mixing ratio"
+      },
+      "verified": false,
+      "note": "uncertain: DOI to be verified; ~530 ppb is the commonly quoted value"
+    },
+    {
+      "id": "h2_hydrogen_economy_global_ppm",
+      "value": 1.1,
+      "low": 0.8,
+      "high": 2.0,
+      "unit": "ppm (mole fraction)",
+      "meaning": "Context value: global-mean H2 mixing ratio in hydrogen-economy leakage scenarios (about 2x background)",
+      "source": {
+        "authors": "Derwent R, Simmonds P, O'Doherty S, Manning A, Collins W, Stevenson D",
+        "year": 2006,
+        "title": "Global environmental impacts of the hydrogen economy",
+        "doi_or_url": "",
+        "page_or_table": "scenario results"
+      },
+      "verified": false,
+      "note": "uncertain: figure order of magnitude from memory; DOI not given"
+    },
+    {
+      "id": "solar_panel_soil_temp_reduction_c",
+      "value": 3.0,
+      "low": 1.0,
+      "high": 6.0,
+      "unit": "degC",
+      "meaning": "Under-panel reduction of daytime summer soil temperature relative to open ground",
+      "source": {
+        "authors": "Armstrong A, Ostle NJ, Whitaker J",
+        "year": 2016,
+        "title": "Solar park microclimate and vegetation management effects on grassland carbon cycling",
+        "doi_or_url": "10.1088/1748-9326/11/7/074016",
+        "page_or_table": "microclimate results"
+      },
+      "verified": false,
+      "note": "uncertain: temperate grassland site, not a desert; magnitude to be verified"
+    },
+    {
+      "id": "solar_panel_evap_reduction_frac",
+      "value": 0.3,
+      "low": 0.15,
+      "high": 0.5,
+      "unit": "fraction",
+      "meaning": "Reduction of soil evaporation under solar panels",
+      "source": {
+        "authors": "Hassanpour Adeh E, Selker JS, Higgins CW",
+        "year": 2018,
+        "title": "Remarkable agrivoltaic influence on soil moisture, micrometeorology and water-use efficiency",
+        "doi_or_url": "10.1371/journal.pone.0203256",
+        "page_or_table": "soil moisture results"
+      },
+      "verified": false,
+      "note": "uncertain: effect is reported as soil-moisture difference; evaporation fraction is an interpretation"
+    },
+    {
+      "id": "panel_wash_l_m2_per_wash",
+      "value": 1.0,
+      "low": 0.5,
+      "high": 2.0,
+      "unit": "L per m2 of panel per wash",
+      "meaning": "Water used to clean one square metre of panel in one wash",
+      "source": {
+        "authors": "Ilse KK, Micheli L, Figgis BW, Lange K, Dassler D, Hanifi H, Wolfertstetter F, Naumann V, Hagendorf C, Gottschalg R, Bagdahn J",
+        "year": 2019,
+        "title": "Techno-economic assessment of soiling losses and mitigation strategies for solar power generation",
+        "doi_or_url": "10.1016/j.joule.2019.08.019",
+        "page_or_table": "water use for cleaning"
+      },
+      "verified": false,
+      "note": "uncertain: value from memory; assumes all wash water reaches the soil beneath the panel"
+    },
+    {
+      "id": "panel_wash_interval_days",
+      "value": 14,
+      "low": 7,
+      "high": 30,
+      "unit": "day",
+      "meaning": "Interval between panel washes in a dusty desert site",
+      "source": {
+        "authors": "Ilse KK et al.",
+        "year": 2019,
+        "title": "Techno-economic assessment of soiling losses and mitigation strategies for solar power generation",
+        "doi_or_url": "10.1016/j.joule.2019.08.019",
+        "page_or_table": "cleaning frequency"
+      },
+      "verified": false,
+      "note": "uncertain: scenario value"
+    },
+    {
+      "id": "cloud_seeding_rain_increase_frac",
+      "value": 0.1,
+      "low": 0.0,
+      "high": 0.2,
+      "unit": "fraction",
+      "meaning": "Relative increase in rainfall attributed to cloud seeding on seeded events; efficacy is disputed, zero is inside the range",
+      "source": {
+        "authors": "World Meteorological Organization",
+        "year": 2018,
+        "title": "WMO Statement on Weather Modification (Executive Council statement)",
+        "doi_or_url": "",
+        "page_or_table": "statement text"
+      },
+      "verified": false,
+      "note": "uncertain: efficacy unproven; no DOI/URL given because the exact document version is not confirmed"
+    },
+    {
+      "id": "particle_density_g_cm3",
+      "value": 2.65,
+      "low": 2.6,
+      "high": 2.7,
+      "unit": "g/cm3",
+      "meaning": "Mineral soil particle density (quartz-dominated sand)",
+      "source": {
+        "authors": "Brady NC, Weil RR",
+        "year": 2008,
+        "title": "The nature and properties of soils, 14th edition",
+        "doi_or_url": "",
+        "page_or_table": "soil density chapter"
+      },
+      "verified": false,
+      "note": "standard textbook value 2.65"
+    },
+    {
+      "id": "offroad_bd_max_increase_g_cm3",
+      "value": 0.25,
+      "low": 0.15,
+      "high": 0.35,
+      "unit": "g/cm3",
+      "meaning": "Asymptotic increase of bulk density of desert sand after many off-road vehicle passes",
+      "source": {
+        "authors": "Webb RH",
+        "year": 1983,
+        "title": "Compaction of desert soils by off-road vehicles, in Webb RH, Wilshire HG (eds) Environmental effects of off-road vehicles",
+        "doi_or_url": "",
+        "page_or_table": "bulk density vs passes (Mojave)"
+      },
+      "verified": false,
+      "note": "uncertain: DOI and magnitude not checked"
+    },
+    {
+      "id": "offroad_bd_passes_efold",
+      "value": 5.0,
+      "low": 3.0,
+      "high": 10.0,
+      "unit": "passes",
+      "meaning": "Number of passes after which about 63% of the asymptotic compaction is reached (exponential approach)",
+      "source": {
+        "authors": "Webb RH",
+        "year": 1983,
+        "title": "Compaction of desert soils by off-road vehicles",
+        "doi_or_url": "",
+        "page_or_table": "bulk density vs passes (Mojave)"
+      },
+      "verified": false,
+      "note": "uncertain: functional form and e-fold are my fit to the qualitative finding that most compaction occurs in the first passes"
+    },
+    {
+      "id": "evap_scaling_per_c",
+      "value": 0.04,
+      "low": 0.02,
+      "high": 0.07,
+      "unit": "fraction per degC",
+      "meaning": "Fractional increase of potential evaporation per degree of warming",
+      "source": {
+        "authors": "Scheff J, Frierson DMW",
+        "year": 2014,
+        "title": "Scaling potential evapotranspiration with greenhouse warming",
+        "doi_or_url": "10.1175/JCLI-D-13-00233.1",
+        "page_or_table": "scaling of PET with temperature"
+      },
+      "verified": false,
+      "note": "uncertain: 2-7 %/degC range from memory"
+    },
+    {
+      "id": "soil_temp_per_air_temp_warming",
+      "value": 1.0,
+      "low": 0.8,
+      "high": 1.2,
+      "unit": "degC per degC",
+      "meaning": "Soil-temperature warming per degree of air-temperature warming",
+      "source": {
+        "authors": "Assumption (unity pass-through)",
+        "year": 2026,
+        "title": "Soil temperature tracks air temperature at long time scales",
+        "doi_or_url": "",
+        "page_or_table": "assumption"
+      },
+      "verified": false,
+      "note": "uncertain: assumption, not a literature value"
+    },
+    {
+      "id": "sa187_effect_fresh_low_s1",
+      "value": 0.16,
+      "low": 0.16,
+      "high": 0.16,
+      "unit": "fraction",
+      "meaning": "Relative yield increase of alfalfa with Enterobacter sp. SA187 vs mock, fresh-weight, 3.12 dS/m, season 1",
+      "source": {
+        "authors": "de Zélicourt A, Synek L, Saad MM, Alzubaidy H, Jalal R, Xie Y, Andrés-Barrao C, Rolli E, Guerard F, Mariappan KG, Daur I, Colcombet J, Benhamed M, Depaepe T, Van Der Straeten D, Hirt H",
+        "year": 2018,
+        "title": "Ethylene induced plant stress tolerance by Enterobacter sp. SA187 is mediated by 2-keto-4-methylthiobutyric acid production",
+        "doi_or_url": "10.1371/journal.pgen.1007273",
+        "page_or_table": "Results text, relative increase at 3.12 dS/m; high salinity 'similar'"
+      },
+      "verified": false,
+      "note": "value from the spec; verify against paper"
+    },
+    {
+      "id": "sa187_effect_fresh_low_s2",
+      "value": 0.12,
+      "low": 0.12,
+      "high": 0.12,
+      "unit": "fraction",
+      "meaning": "Relative yield increase of alfalfa with Enterobacter sp. SA187 vs mock, fresh-weight, 3.12 dS/m, season 2",
+      "source": {
+        "authors": "de Zélicourt A, Synek L, Saad MM, Alzubaidy H, Jalal R, Xie Y, Andrés-Barrao C, Rolli E, Guerard F, Mariappan KG, Daur I, Colcombet J, Benhamed M, Depaepe T, Van Der Straeten D, Hirt H",
+        "year": 2018,
+        "title": "Ethylene induced plant stress tolerance by Enterobacter sp. SA187 is mediated by 2-keto-4-methylthiobutyric acid production",
+        "doi_or_url": "10.1371/journal.pgen.1007273",
+        "page_or_table": "Results text, relative increase at 3.12 dS/m; high salinity 'similar'"
+      },
+      "verified": false,
+      "note": "value from the spec; verify against paper"
+    },
+    {
+      "id": "sa187_effect_dry_low_s1",
+      "value": 0.14,
+      "low": 0.14,
+      "high": 0.14,
+      "unit": "fraction",
+      "meaning": "Relative yield increase of alfalfa with Enterobacter sp. SA187 vs mock, dry-weight, 3.12 dS/m, season 1",
+      "source": {
+        "authors": "de Zélicourt A, Synek L, Saad MM, Alzubaidy H, Jalal R, Xie Y, Andrés-Barrao C, Rolli E, Guerard F, Mariappan KG, Daur I, Colcombet J, Benhamed M, Depaepe T, Van Der Straeten D, Hirt H",
+        "year": 2018,
+        "title": "Ethylene induced plant stress tolerance by Enterobacter sp. SA187 is mediated by 2-keto-4-methylthiobutyric acid production",
+        "doi_or_url": "10.1371/journal.pgen.1007273",
+        "page_or_table": "Results text, relative increase at 3.12 dS/m; high salinity 'similar'"
+      },
+      "verified": false,
+      "note": "value from the spec; verify against paper"
+    },
+    {
+      "id": "sa187_effect_dry_low_s2",
+      "value": 0.17,
+      "low": 0.17,
+      "high": 0.17,
+      "unit": "fraction",
+      "meaning": "Relative yield increase of alfalfa with Enterobacter sp. SA187 vs mock, dry-weight, 3.12 dS/m, season 2",
+      "source": {
+        "authors": "de Zélicourt A, Synek L, Saad MM, Alzubaidy H, Jalal R, Xie Y, Andrés-Barrao C, Rolli E, Guerard F, Mariappan KG, Daur I, Colcombet J, Benhamed M, Depaepe T, Van Der Straeten D, Hirt H",
+        "year": 2018,
+        "title": "Ethylene induced plant stress tolerance by Enterobacter sp. SA187 is mediated by 2-keto-4-methylthiobutyric acid production",
+        "doi_or_url": "10.1371/journal.pgen.1007273",
+        "page_or_table": "Results text, relative increase at 3.12 dS/m; high salinity 'similar'"
+      },
+      "verified": false,
+      "note": "value from the spec; verify against paper"
+    },
+    {
+      "id": "sa187_benefit_b",
+      "value": 0.15,
+      "low": 0.12,
+      "high": 0.17,
+      "unit": "fraction",
+      "meaning": "Multiplicative benefit b of SA187 on yield (yield x (1+b)); central and range from the four season/trait effects",
+      "source": {
+        "authors": "de Zélicourt A, Synek L, Saad MM, Alzubaidy H, Jalal R, Xie Y, Andrés-Barrao C, Rolli E, Guerard F, Mariappan KG, Daur I, Colcombet J, Benhamed M, Depaepe T, Van Der Straeten D, Hirt H",
+        "year": 2018,
+        "title": "Ethylene induced plant stress tolerance by Enterobacter sp. SA187 is mediated by 2-keto-4-methylthiobutyric acid production",
+        "doi_or_url": "10.1371/journal.pgen.1007273",
+        "page_or_table": "Results text (summary of the four effects)"
+      },
+      "verified": false,
+      "note": "central 0.15, low 0.12, high 0.17 as in the spec"
+    },
+    {
+      "id": "sa187_mock_fresh_low_s1_t_ha",
+      "value": 5.4,
+      "low": 5.25,
+      "high": 5.55,
+      "unit": "t/ha",
+      "meaning": "Mock (uninoculated) alfalfa fresh-weight yield, mock, 3.12 dS/m, season 1",
+      "source": {
+        "authors": "de Zélicourt A, Synek L, Saad MM, Alzubaidy H, Jalal R, Xie Y, Andrés-Barrao C, Rolli E, Guerard F, Mariappan KG, Daur I, Colcombet J, Benhamed M, Depaepe T, Van Der Straeten D, Hirt H",
+        "year": 2018,
+        "title": "Ethylene induced plant stress tolerance by Enterobacter sp. SA187 is mediated by 2-keto-4-methylthiobutyric acid production",
+        "doi_or_url": "10.1371/journal.pgen.1007273",
+        "page_or_table": "Fig 1, read by eye +-0.15"
+      },
+      "verified": false,
+      "note": "digitised from figure, not a published table"
+    },
+    {
+      "id": "sa187_mock_fresh_high_s1_t_ha",
+      "value": 4.3,
+      "low": 4.15,
+      "high": 4.45,
+      "unit": "t/ha",
+      "meaning": "Mock (uninoculated) alfalfa fresh-weight yield, mock, 7.81 dS/m, season 1",
+      "source": {
+        "authors": "de Zélicourt A, Synek L, Saad MM, Alzubaidy H, Jalal R, Xie Y, Andrés-Barrao C, Rolli E, Guerard F, Mariappan KG, Daur I, Colcombet J, Benhamed M, Depaepe T, Van Der Straeten D, Hirt H",
+        "year": 2018,
+        "title": "Ethylene induced plant stress tolerance by Enterobacter sp. SA187 is mediated by 2-keto-4-methylthiobutyric acid production",
+        "doi_or_url": "10.1371/journal.pgen.1007273",
+        "page_or_table": "Fig 1, read by eye +-0.15"
+      },
+      "verified": false,
+      "note": "digitised from figure, not a published table"
+    },
+    {
+      "id": "sa187_mock_dry_low_s1_t_ha",
+      "value": 2.1,
+      "low": 1.95,
+      "high": 2.25,
+      "unit": "t/ha",
+      "meaning": "Mock (uninoculated) alfalfa dry-weight yield, mock, 3.12 dS/m, season 1",
+      "source": {
+        "authors": "de Zélicourt A, Synek L, Saad MM, Alzubaidy H, Jalal R, Xie Y, Andrés-Barrao C, Rolli E, Guerard F, Mariappan KG, Daur I, Colcombet J, Benhamed M, Depaepe T, Van Der Straeten D, Hirt H",
+        "year": 2018,
+        "title": "Ethylene induced plant stress tolerance by Enterobacter sp. SA187 is mediated by 2-keto-4-methylthiobutyric acid production",
+        "doi_or_url": "10.1371/journal.pgen.1007273",
+        "page_or_table": "Fig 1, read by eye +-0.15"
+      },
+      "verified": false,
+      "note": "digitised from figure, not a published table"
+    },
+    {
+      "id": "sa187_mock_dry_high_s1_t_ha",
+      "value": 1.75,
+      "low": 1.6,
+      "high": 1.9,
+      "unit": "t/ha",
+      "meaning": "Mock (uninoculated) alfalfa dry-weight yield, mock, 7.81 dS/m, season 1",
+      "source": {
+        "authors": "de Zélicourt A, Synek L, Saad MM, Alzubaidy H, Jalal R, Xie Y, Andrés-Barrao C, Rolli E, Guerard F, Mariappan KG, Daur I, Colcombet J, Benhamed M, Depaepe T, Van Der Straeten D, Hirt H",
+        "year": 2018,
+        "title": "Ethylene induced plant stress tolerance by Enterobacter sp. SA187 is mediated by 2-keto-4-methylthiobutyric acid production",
+        "doi_or_url": "10.1371/journal.pgen.1007273",
+        "page_or_table": "Fig 1, read by eye +-0.15"
+      },
+      "verified": false,
+      "note": "digitised from figure, not a published table"
+    },
+    {
+      "id": "sa187_ecw_low_dS_m",
+      "value": 3.12,
+      "low": 3.12,
+      "high": 3.12,
+      "unit": "dS/m",
+      "meaning": "Irrigation groundwater EC, low-salinity treatment, Hada Al-Sham",
+      "source": {
+        "authors": "de Zélicourt A, Synek L, Saad MM, Alzubaidy H, Jalal R, Xie Y, Andrés-Barrao C, Rolli E, Guerard F, Mariappan KG, Daur I, Colcombet J, Benhamed M, Depaepe T, Van Der Straeten D, Hirt H",
+        "year": 2018,
+        "title": "Ethylene induced plant stress tolerance by Enterobacter sp. SA187 is mediated by 2-keto-4-methylthiobutyric acid production",
+        "doi_or_url": "10.1371/journal.pgen.1007273",
+        "page_or_table": "Methods / Results"
+      },
+      "verified": false,
+      "note": "from the spec"
+    },
+    {
+      "id": "sa187_ecw_high_dS_m",
+      "value": 7.81,
+      "low": 7.81,
+      "high": 7.81,
+      "unit": "dS/m",
+      "meaning": "Irrigation groundwater EC, high-salinity treatment, Hada Al-Sham",
+      "source": {
+        "authors": "de Zélicourt A, Synek L, Saad MM, Alzubaidy H, Jalal R, Xie Y, Andrés-Barrao C, Rolli E, Guerard F, Mariappan KG, Daur I, Colcombet J, Benhamed M, Depaepe T, Van Der Straeten D, Hirt H",
+        "year": 2018,
+        "title": "Ethylene induced plant stress tolerance by Enterobacter sp. SA187 is mediated by 2-keto-4-methylthiobutyric acid production",
+        "doi_or_url": "10.1371/journal.pgen.1007273",
+        "page_or_table": "Methods / Results"
+      },
+      "verified": false,
+      "note": "from the spec"
+    },
+    {
+      "id": "sa187_soil_ec_dS_m",
+      "value": 1.95,
+      "low": 1.95,
+      "high": 1.95,
+      "unit": "dS/m",
+      "meaning": "Soil EC at the field site (Hada Al-Sham)",
+      "source": {
+        "authors": "de Zélicourt A, Synek L, Saad MM, Alzubaidy H, Jalal R, Xie Y, Andrés-Barrao C, Rolli E, Guerard F, Mariappan KG, Daur I, Colcombet J, Benhamed M, Depaepe T, Van Der Straeten D, Hirt H",
+        "year": 2018,
+        "title": "Ethylene induced plant stress tolerance by Enterobacter sp. SA187 is mediated by 2-keto-4-methylthiobutyric acid production",
+        "doi_or_url": "10.1371/journal.pgen.1007273",
+        "page_or_table": "Methods"
+      },
+      "verified": false,
+      "note": "from the spec"
+    }
+  ]
+}
