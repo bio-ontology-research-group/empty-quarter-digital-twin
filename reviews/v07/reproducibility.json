@@ -4,7 +4,7 @@
     "data/external/de_zelicourt_2018/fig1.png": "2ec2c32c63f7cdafea3c43916138593af5d571989ee13269cd2e0227a35eb839",
     "data/external/de_zelicourt_2018/fig1_digitised.json": "bf4573360f45b29febce9ba3043e06795f66d340fe8335f9e7e3cc29626b08a9",
     "data/ontology/eq_biodt_v03.ofn": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
-    "reproducibility/v06/analyse.py": "5c88e7c104ad763ad0db023dea4d23502a4567e84c79a74a4c83d1735b8c7d2e",
+    "reproducibility/v06/analyse.py": "b6f7de8927e8c32b8e7f02e9a2560aea082da01be202d630f6b9065f69489feb",
     "reproducibility/v07/composition.py": "1281a1601737e949d825ad89e3a2d48ad86a3a0f25909cdcb847e78c0ff73bb0",
     "reproducibility/v07/digitise_fig1.py": "043548af04ad752d146c9b54b7a3eeb0f0f977162d79272647ce24ca8bfc5769",
     "reproducibility/v07/figures.py": "d17b81cb8f4cbd855ca5f09100e7c20c7fd60405a83a6b7718f3b7b1447a8dcb",
@@ -36,8 +36,8 @@
   },
   "release": "0.7.0-dev",
   "timings_seconds": {
-    "composition": 12.8,
-    "digitise_fig1": 0.2,
-    "figures": 1.8
+    "composition": 11.5,
+    "digitise_fig1": 0.3,
+    "figures": 1.7
   }
 }
