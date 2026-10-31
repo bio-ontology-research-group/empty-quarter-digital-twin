@@ -239,7 +239,7 @@ to a consumer only if the name and the pair `(term, unit)` agree; otherwise the 
 (`CompositionError`). Twin inputs and outputs are ports too: the exogenous targets of section 2 plus the new
 `h2_mol_m3` and `co_mol_m3`. This is the contract of the composition, not a claim about the models.
 
-**Validity domains are admissibility.** Section 4 makes an intervention admissible only on manipulable
+**Validity domains are admissibility.** Section 3 makes an intervention admissible only on manipulable
 nodes. The same idea applies at each external model: it is a conditional claim on a closed interval of each
 input. An input outside the interval gives a refusal object (model, port, value, interval), reported as
 a result. The twin's own checks (`check_admissible`, domain checks of the process model) apply unchanged,
@@ -264,7 +264,7 @@ probability.
 **Atmospheric forcing.** `C_h2` and `C_co` are manipulable exogenous nodes (default `C_a`), parents of
 `J_h2` and `J_co`; a `do(C_h2)` is an intervention on an exogenous node like water or temperature.
 
-**Inoculation: a constitutive intervention.** Choosing a community (section 3) selects evidence; both arms
+**Inoculation: a constitutive intervention.** Section 1 lists three kinds of change; inoculation is a fourth. Choosing a community (section 3) selects evidence; both arms
 share it. Inoculation adds an organism, which none of the earlier changes does. Let `K` be the TBox,
 `E` the evidence and `D_K(E)` the entailed memberships. Inoculating MAG `g*` at relative share `s` leaves
 `K` and `E` unchanged and does not touch `D_K(E)` of any observed MAG (the memberships of `g*` are
