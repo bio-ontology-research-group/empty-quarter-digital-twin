@@ -632,72 +632,38 @@
       "note": "central 0.15, low 0.12, high 0.17 as in the spec"
     },
     {
-      "id": "sa187_mock_fresh_low_s1_t_ha",
-      "value": 5.4,
-      "low": 5.25,
-      "high": 5.55,
-      "unit": "t/ha",
-      "meaning": "Mock (uninoculated) alfalfa fresh-weight yield, mock, 3.12 dS/m, season 1",
+      "id": "sa187_mock_ratio_fresh",
+      "value": 0.7958,
+      "low": 0.7779,
+      "high": 0.8141,
+      "unit": "-",
+      "meaning": "Season-1 mock fresh-weight yield ratio, 7.81 over 3.12 dS/m; low/high propagate the digitisation error (max calibration residual 0.0148 t/ha absolute and 0.0083 relative, the largest disagreement with the printed SA187 percentages) through the ratio, extreme combinations",
       "source": {
         "authors": "de Zélicourt A, Synek L, Saad MM, Alzubaidy H, Jalal R, Xie Y, Andrés-Barrao C, Rolli E, Guerard F, Mariappan KG, Daur I, Colcombet J, Benhamed M, Depaepe T, Van Der Straeten D, Hirt H",
         "year": 2018,
         "title": "Ethylene induced plant stress tolerance by Enterobacter sp. SA187 is mediated by 2-keto-4-methylthiobutyric acid production",
         "doi_or_url": "10.1371/journal.pgen.1007273",
-        "page_or_table": "Fig 1, read by eye +-0.15"
+        "page_or_table": "Fig 1, pixel digitisation (data/external/de_zelicourt_2018/fig1_digitised.json)"
       },
       "verified": false,
-      "note": "digitised from figure, not a published table"
+      "note": "derived from the pixel digitisation; supersedes the eye-read sa187_mock_*_t_ha entries; tests/test_v07_experiments.py checks consistency with fig1_digitised.json"
     },
     {
-      "id": "sa187_mock_fresh_high_s1_t_ha",
-      "value": 4.3,
-      "low": 4.15,
-      "high": 4.45,
-      "unit": "t/ha",
-      "meaning": "Mock (uninoculated) alfalfa fresh-weight yield, mock, 7.81 dS/m, season 1",
+      "id": "sa187_mock_ratio_dry",
+      "value": 0.8282,
+      "low": 0.8018,
+      "high": 0.8554,
+      "unit": "-",
+      "meaning": "Season-1 mock dry-weight yield ratio, 7.81 over 3.12 dS/m; low/high propagate the digitisation error (max calibration residual 0.0148 t/ha absolute and 0.0083 relative, the largest disagreement with the printed SA187 percentages) through the ratio, extreme combinations",
       "source": {
         "authors": "de Zélicourt A, Synek L, Saad MM, Alzubaidy H, Jalal R, Xie Y, Andrés-Barrao C, Rolli E, Guerard F, Mariappan KG, Daur I, Colcombet J, Benhamed M, Depaepe T, Van Der Straeten D, Hirt H",
         "year": 2018,
         "title": "Ethylene induced plant stress tolerance by Enterobacter sp. SA187 is mediated by 2-keto-4-methylthiobutyric acid production",
         "doi_or_url": "10.1371/journal.pgen.1007273",
-        "page_or_table": "Fig 1, read by eye +-0.15"
+        "page_or_table": "Fig 1, pixel digitisation (data/external/de_zelicourt_2018/fig1_digitised.json)"
       },
       "verified": false,
-      "note": "digitised from figure, not a published table"
-    },
-    {
-      "id": "sa187_mock_dry_low_s1_t_ha",
-      "value": 2.1,
-      "low": 1.95,
-      "high": 2.25,
-      "unit": "t/ha",
-      "meaning": "Mock (uninoculated) alfalfa dry-weight yield, mock, 3.12 dS/m, season 1",
-      "source": {
-        "authors": "de Zélicourt A, Synek L, Saad MM, Alzubaidy H, Jalal R, Xie Y, Andrés-Barrao C, Rolli E, Guerard F, Mariappan KG, Daur I, Colcombet J, Benhamed M, Depaepe T, Van Der Straeten D, Hirt H",
-        "year": 2018,
-        "title": "Ethylene induced plant stress tolerance by Enterobacter sp. SA187 is mediated by 2-keto-4-methylthiobutyric acid production",
-        "doi_or_url": "10.1371/journal.pgen.1007273",
-        "page_or_table": "Fig 1, read by eye +-0.15"
-      },
-      "verified": false,
-      "note": "digitised from figure, not a published table"
-    },
-    {
-      "id": "sa187_mock_dry_high_s1_t_ha",
-      "value": 1.75,
-      "low": 1.6,
-      "high": 1.9,
-      "unit": "t/ha",
-      "meaning": "Mock (uninoculated) alfalfa dry-weight yield, mock, 7.81 dS/m, season 1",
-      "source": {
-        "authors": "de Zélicourt A, Synek L, Saad MM, Alzubaidy H, Jalal R, Xie Y, Andrés-Barrao C, Rolli E, Guerard F, Mariappan KG, Daur I, Colcombet J, Benhamed M, Depaepe T, Van Der Straeten D, Hirt H",
-        "year": 2018,
-        "title": "Ethylene induced plant stress tolerance by Enterobacter sp. SA187 is mediated by 2-keto-4-methylthiobutyric acid production",
-        "doi_or_url": "10.1371/journal.pgen.1007273",
-        "page_or_table": "Fig 1, read by eye +-0.15"
-      },
-      "verified": false,
-      "note": "digitised from figure, not a published table"
+      "note": "derived from the pixel digitisation; supersedes the eye-read sa187_mock_*_t_ha entries; tests/test_v07_experiments.py checks consistency with fig1_digitised.json"
     },
     {
       "id": "sa187_ecw_low_dS_m",

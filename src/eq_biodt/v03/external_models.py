@@ -12,7 +12,9 @@ per-day lists of the baseline length; scalar ports are floats. Twin-input ports 
 """
 from __future__ import annotations
 
+import json
 from math import exp
+from pathlib import Path
 
 from .composition import (BASELINE_PORTS, TWIN_INPUT_PORTS, TWIN_OUTPUT_PORTS, CompositionError, ExternalModel, Port,
                           load_constants)
@@ -101,7 +103,7 @@ def fit_leaching_factor(c: dict, trait: str, crop: str = "alfalfa") -> float:
     digitised season-1 yields of `trait` ('fresh' or 'dry'). Bisection on the strictly decreasing branch; deterministic."""
     thr, slope = c[f"mh_{crop}_threshold_dS_m"], c[f"mh_{crop}_slope_pct_per_dS_m"]
     lo_ec, hi_ec = c["sa187_ecw_low_dS_m"], c["sa187_ecw_high_dS_m"]
-    target = c[f"sa187_mock_{trait}_high_s1_t_ha"] / c[f"sa187_mock_{trait}_low_s1_t_ha"]
+    target = c[f"sa187_mock_ratio_{trait}"]
     if not 0 < target < 1:
         raise CompositionError("fit needs a mock yield ratio strictly between 0 and 1")
     a, b = thr / hi_ec, (100.0 / slope + thr) / hi_ec        # ratio = 1 at a, 0 at b
@@ -124,16 +126,40 @@ def _fitted(trait):
 
 def _fitted_constants(trait):
     return ("mh_alfalfa_threshold_dS_m", "mh_alfalfa_slope_pct_per_dS_m", "sa187_ecw_low_dS_m", "sa187_ecw_high_dS_m",
-            f"sa187_mock_{trait}_low_s1_t_ha", f"sa187_mock_{trait}_high_s1_t_ha")
+            f"sa187_mock_ratio_{trait}")
 
 
-def observed_mock_ratio(trait: str, registry: dict | None = None) -> dict:
-    """Observed season-1 mock yield ratio (high/low salinity) from the digitised yields, with the extreme combinations of
-    the +-reading error as low/high."""
-    r = registry or load_constants()
-    lo, hi = r[f"sa187_mock_{trait}_low_s1_t_ha"], r[f"sa187_mock_{trait}_high_s1_t_ha"]
-    return {"value": hi["value"] / lo["value"], "low": hi["low"] / lo["high"], "high": hi["high"] / lo["low"],
-            "unit": "-", "source": "external:sa187_field_trial", "constants": [lo["id"], hi["id"]]}
+DIGITISED_FIG1 = Path(__file__).resolve().parents[3] / "data" / "external" / "de_zelicourt_2018" / "fig1_digitised.json"
+
+
+def digitised_trial(path: Path | None = None) -> dict:
+    """Pixel digitisation of de Zelicourt et al. 2018 Fig 1 (reproducibility/v07/digitise_fig1.py), read from disk."""
+    return json.loads(Path(path or DIGITISED_FIG1).read_text())
+
+
+def digitisation_error(doc: dict | None = None) -> dict:
+    """Error of a digitised bar height: absolute = largest y-axis calibration residual (t/ha); relative = largest
+    disagreement between the digitised SA187 effects and the percentages printed on the figure."""
+    d = doc or digitised_trial()
+    a = max(v for k, v in d["values"].items() if k.endswith("calibration_max_residual_t_ha"))
+    return {"absolute_t_ha": a, "relative": d["max_abs_diff"]}
+
+
+def mock_yield(trait: str, level: str, doc: dict | None = None) -> float:
+    """Season-1 mock yield (t/ha) at 'low' (3.12) or 'high' (7.81 dS/m) irrigation salinity, from the digitised figure."""
+    d = doc or digitised_trial()
+    return d["values"][f"{'low_3.12' if level == 'low' else 'high_7.81'}/{trait}_s1/mock"]
+
+
+def observed_mock_ratio(trait: str, doc: dict | None = None) -> dict:
+    """Observed season-1 mock yield ratio (high/low salinity) from the pixel digitisation; low/high propagate the
+    digitisation error (absolute calibration residual plus relative disagreement with the printed percentages) as the
+    extreme combinations. Mirrored in the registry as sa187_mock_ratio_<trait> (checked by a test)."""
+    d = doc or digitised_trial()
+    lo, hi, e = mock_yield(trait, "low", d), mock_yield(trait, "high", d), digitisation_error(d)
+    a, r = e["absolute_t_ha"], e["relative"]
+    return {"value": hi / lo, "low": (hi * (1 - r) - a) / (lo * (1 + r) + a), "high": (hi * (1 + r) + a) / (lo * (1 - r) - a),
+            "unit": "-", "source": "external:sa187_field_trial", "error": e, "yields_t_ha": {"low": lo, "high": hi}}
 
 
 def _sa187(i, c):

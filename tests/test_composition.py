@@ -28,7 +28,7 @@ C = constant_values(sorted(REG))                  # central values of every regi
 # ---------------------------------------------------------------- registry
 
 def test_registry_complete_and_unverified():
-    assert len(REG) == 44 and constants_sha256()
+    assert len(REG) == 42 and constants_sha256()
     for e in REG.values():
         assert e["verified"] is False and e["low"] <= e["value"] <= e["high"]
         assert set(e["source"]) == {"authors", "year", "title", "doi_or_url", "page_or_table"}
@@ -328,9 +328,10 @@ def test_twin_solution_to_ece():
 @pytest.mark.parametrize("trait", ["fresh", "dry"])
 def test_fitted_leaching_reproduces_observed_ratio(trait):
     f = xm.fit_leaching_factor(C, trait)
-    obs = C[f"sa187_mock_{trait}_high_s1_t_ha"] / C[f"sa187_mock_{trait}_low_s1_t_ha"]
+    obs = xm.observed_mock_ratio(trait)["value"]
+    assert C[f"sa187_mock_ratio_{trait}"] == pytest.approx(obs, abs=6e-5)
     ry = lambda ec: xm.maas_hoffman(f * ec, C["mh_alfalfa_threshold_dS_m"], C["mh_alfalfa_slope_pct_per_dS_m"])
-    assert ry(7.81) / ry(3.12) == pytest.approx(obs, rel=1e-9)
+    assert ry(7.81) / ry(3.12) == pytest.approx(C[f"sa187_mock_ratio_{trait}"], rel=1e-9)
     out = M[f"fitted_leaching_{trait}"].fn({"ec_w_dS_m": 3.12}, C)
     assert out["ece_dS_m"] == pytest.approx(f * 3.12) and out["fitted_leaching_factor"] == f
     r = xm.observed_mock_ratio(trait)
