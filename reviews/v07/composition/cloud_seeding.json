@@ -796,7 +796,7 @@
       }
     }
   ],
-  "plain_language": "Adding 10 % to the rain that already falls changes the soil's hydrogen uptake by 12.7 % over two weeks (twin). In this baseline there is a single rain day, so the honest answer is a small effect; how much extra rain seeding really yields is uncertain and comes from the weather-modification literature, not the twin.",
+  "plain_language": "Adding 10 % to the rain that already falls changes the soil's hydrogen uptake by 12.7 % over two weeks (twin). The effect is slightly more than proportional because the wetter soil stays active longer, but in this baseline there is a single rain day, so seeding has only one event to act on; how much extra rain seeding really yields is uncertain and comes from the weather-modification literature, not the twin.",
   "question": "What if cloud seeding adds rain?",
   "refusals": [],
   "registry_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578"

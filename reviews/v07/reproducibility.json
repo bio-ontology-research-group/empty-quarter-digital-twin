@@ -5,7 +5,7 @@
     "data/external/de_zelicourt_2018/fig1_digitised.json": "bf4573360f45b29febce9ba3043e06795f66d340fe8335f9e7e3cc29626b08a9",
     "data/ontology/eq_biodt_v03.ofn": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
     "reproducibility/v06/analyse.py": "b6f7de8927e8c32b8e7f02e9a2560aea082da01be202d630f6b9065f69489feb",
-    "reproducibility/v07/composition.py": "d99c25247fea674edd8669ebb43e5d4bc2ac8c77d2f2eabd2a94e8a57507f488",
+    "reproducibility/v07/composition.py": "82b106cf77f3cc2a9551cb7d6f42a84ac00dfc54ba8b6bd69314e26210133350",
     "reproducibility/v07/digitise_fig1.py": "043548af04ad752d146c9b54b7a3eeb0f0f977162d79272647ce24ca8bfc5769",
     "reproducibility/v07/figures.py": "d17b81cb8f4cbd855ca5f09100e7c20c7fd60405a83a6b7718f3b7b1447a8dcb",
     "reproducibility/v07/reproduce.py": "e2aba5bb5125f3e6dda261bf3cab154df79df55a6ac6dabe93f46f2f3bc043a1",
@@ -23,7 +23,7 @@
     "reviews/v07/composition/biochar.json": "24d795c21890bacfcf159017fcea23ef584a1e82ad9628e67b409bc7b53ffe1a",
     "reviews/v07/composition/brackish_irrigation.json": "45ec4832272d4904987adb32893054d130a7f351667f4ec0b4873463976df770",
     "reviews/v07/composition/carbon_fixation_bound.json": "8ef5767c119f8f01f9bc893b4832d3ec534a2571787ca6a2d1a040e6eb9b8ba1",
-    "reviews/v07/composition/cloud_seeding.json": "d577783125ac8a67380cdec4908e469ed0e5a976723b3ce4bc5b7601748ef938",
+    "reviews/v07/composition/cloud_seeding.json": "1ef12f7a2fa394b75ac467890b01bc0c4aaa454e7189e444ef3a90d4303fe805",
     "reviews/v07/composition/compaction.json": "262a08e9530bc749d538fa5d9feefe5f9774fe6746752523b9a8e32abe334f9d",
     "reviews/v07/composition/drip_vs_flood.json": "e28beed1a0f30499fd54bfd954321b13de39f503246bc1cbea33f157d5edb8a5",
     "reviews/v07/composition/h2_leakage.json": "3357d213e37657dbc065f05ba4ee8a9efe83a27efec4bfd8c18c82c57246651c",
@@ -37,7 +37,7 @@
   "release": "0.7.0-dev",
   "timings_seconds": {
     "composition": 23.3,
-    "digitise_fig1": 0.5,
+    "digitise_fig1": 0.4,
     "figures": 3.4
   }
 }

@@ -449,7 +449,7 @@ def exp09_cloud_seeding():
         levels.append(rec); runs.append(r)
     h = h2_head("H2 uptake change, full-intensity seeding (+10 % rain on rain days)", levels[2], "baseline has one rain day (12 mm) in 14")
     plain = (f"Adding 10 % to the rain that already falls changes the soil's hydrogen uptake by {fmt(pct(levels[2])['value'], 3)} % over two weeks (twin). "
-             "In this baseline there is a single rain day, so the honest answer is a small effect; how much extra rain seeding really yields is uncertain and comes from the weather-modification literature, not the twin.")
+             "The effect is slightly more than proportional because the wetter soil stays active longer, but in this baseline there is a single rain day, so seeding has only one event to act on; how much extra rain seeding really yields is uncertain and comes from the weather-modification literature, not the twin.")
     cav = ["Seeding cannot create rain on dry days; with one rain day in the baseline the possible effect is small by construction.",
            "Efficacy range 0-20 % (registry; WMO statement says evidence is weak); low end is no effect.", SRC]
     return finish(exp09_cloud_seeding, "cloud_seeding", ["cloud_seeding", "twin"], levels, runs, [h],
