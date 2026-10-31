@@ -566,7 +566,7 @@ def build_registry():
         h=lambda d: d.v7_head("inoculated_alfalfa_salinity")["high"],
         i=lambda d: d.v7_const("sa187_ecw_low_dS_m"),
         j=lambda d: d.v7_const("sa187_ecw_high_dS_m"))
-    chk("evaluated against a [[a]]-day single-pulse reference baseline, and [[b]] of the [[c]] external registry constants represent modeller assumptions ([[e]]) or unverified secondary citations ([[f]])",
+    chk("evaluated against a [[a]]-day single-pulse reference baseline, and [[b]] of the [[c]] external registry constants represent modeller assumptions ([[e]]) or values whose source could not be checked ([[f]])",
         a=lambda d: d.v7["drip_vs_flood"]["baseline"]["period_days"],
         b=lambda d: d.v7_status_count("modeller_assumption") + d.v7_status_count("source_not_checked"),
         c=lambda d: len(d.v7_reg),

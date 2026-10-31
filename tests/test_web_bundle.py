@@ -3,6 +3,7 @@ import hashlib
 import importlib.util
 import json
 import re
+import tomllib
 import subprocess
 import sys
 from pathlib import Path
@@ -41,7 +42,7 @@ def test_python_files_are_verbatim_copies(out):
         assert (out / "py" / "eq_biodt" / rel).read_bytes() == (ROOT / "src" / "eq_biodt" / rel).read_bytes()
     assert (out / "py" / "eq_biodt" / "live.py").read_bytes() == LIVE.read_bytes()
     init = (out / "py" / "eq_biodt" / "v03" / "__init__.py").read_text()
-    assert re.search(r'^VERSION = "0\.6\.\d+', init, re.M)
+    assert re.search(r'^VERSION = "' + re.escape(tomllib.loads((ROOT / 'pyproject.toml').read_text())['project']['version']) + '"', init, re.M)
 
 
 def test_manifest_digests(out):
