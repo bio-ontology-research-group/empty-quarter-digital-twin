@@ -94,7 +94,24 @@ class D:
         self.defaults = self.con["parameter_defaults"]
         self.clauses = {c["id"]: c["statement"] for c in self.con["clauses"]}
         self.src = {p: (ROOT / p).read_text() for p in (
-            "reproducibility/v06/analyse.py", "reproducibility/v05/external_transfer.py", "src/eq_biodt/v03/resources.py")}
+            "reproducibility/v06/analyse.py", "reproducibility/v05/external_transfer.py", "src/eq_biodt/v03/resources.py",
+            "reproducibility/v07/digitise_fig1.py", "reproducibility/v07/composition.py")}
+        self.v7_sum = J("reviews/v07/composition/summary.json")
+        self.v7 = {r["id"]: J(f"reviews/v07/composition/{r['id']}.json") for r in self.v7_sum["experiments"]}
+        self.v7_reg = {c["id"]: c for c in J("data/external/composition_constants.json")["constants"]}
+        self.v7_fig1 = J("data/external/de_zelicourt_2018/fig1_digitised.json")
+
+    def v7_lvl(self, exp, **kw):
+        return next(l for l in self.v7[exp]["levels"] if all(l.get(k, l.get("action", {}).get(k)) == v for k, v in kw.items()))
+
+    def v7_head(self, exp):
+        return self.v7[exp]["headline"][0]
+
+    def v7_const(self, cid, field="value"):
+        return self.v7_reg[cid][field]
+
+    def v7_status_count(self, status):
+        return sum(1 for c in self.v7_reg.values() if c["status"] == status)
 
     # derived helpers -------------------------------------------------------------------------------------------
     def cl(self, cid, rx):
@@ -406,6 +423,336 @@ def build_registry():
         e=lambda d: d.defaults["porosity"], f=lambda d: _namib_row(d).dry_reference_flux, g=lambda d: _namib_row(d).wet_reference_flux)
     chk("recomputes all [[a]] Sonoran field predictions", a=lambda d: len(d.son_p))
 
+    # ---- v0.7 composition: main.tex Results & Discussion
+    chk("across [[a]] chained experiments on the [[b]]-day single-pulse baseline ([[c]] $\\mu$mol H$_2$ m$^{-2}$ and [[e]] $\\mu$mol CO m$^{-2}$",
+        a=lambda d: len(d.v7_sum["experiments"]),
+        b=lambda d: d.v7["drip_vs_flood"]["baseline"]["period_days"],
+        c=lambda d: d.v7["drip_vs_flood"]["levels"][0]["twin_baseline"]["h2_uptake_mol_m2"] * UM,
+        e=lambda d: d.v7["drip_vs_flood"]["levels"][0]["twin_baseline"]["co_uptake_mol_m2"] * UM)
+    chk("Adding irrigation water ([[a]] mm day$^{-1}$ seasonal demand",
+        a=lambda d: d.v7_const("crop_etc_mm_per_day"))
+    chk("Daily drip irrigation changes [[a]]-day H$_2$ uptake by $[[b]]$ ($[[c]]$ to $[[e]]$), compared with $[[f]]$ for [[g]]-day pulses and $[[h]]$ for [[i]]-day flood pulses",
+        a=lambda d: d.v7["drip_vs_flood"]["baseline"]["period_days"],
+        b=lambda d: d.v7_lvl("drip_vs_flood", irrigation_interval_days=1)["difference_vs_baseline"]["h2_uptake_mol_m2"]["percent"]["value"],
+        c=lambda d: d.v7_lvl("drip_vs_flood", irrigation_interval_days=1)["difference_vs_baseline"]["h2_uptake_mol_m2"]["percent"]["low"],
+        e=lambda d: d.v7_lvl("drip_vs_flood", irrigation_interval_days=1)["difference_vs_baseline"]["h2_uptake_mol_m2"]["percent"]["high"],
+        f=lambda d: d.v7_lvl("drip_vs_flood", irrigation_interval_days=3)["difference_vs_baseline"]["h2_uptake_mol_m2"]["percent"]["value"],
+        g=lambda d: d.v7_lvl("drip_vs_flood", irrigation_interval_days=3)["action"]["irrigation_interval_days"],
+        h=lambda d: d.v7_lvl("drip_vs_flood", irrigation_interval_days=10)["difference_vs_baseline"]["h2_uptake_mol_m2"]["percent"]["value"],
+        i=lambda d: d.v7_lvl("drip_vs_flood", irrigation_interval_days=10)["action"]["irrigation_interval_days"])
+    chk("Under daily brackish irrigation from [[a]] to [[b]] dS m$^{-1}$, twin H$_2$ uptake declines by [[c]] to [[e]] as accumulated salt lowers osmotic potential (with high-salinity envelope runs at [[f]] dS m$^{-1}$ exceeding the [[g]] mol L$^{-1}$ dilute domain), while downstream Maas--Hoffman relative yield at [[h]] dS m$^{-1}$ is [[i]] ([[j]] to [[k]]) for alfalfa, [[l]] for barley, [[m]] ([[o]] to [[p]]) for date palm and [[q]] ([[r]] to [[s]]) for tomato",
+        a=lambda d: d.v7_lvl("brackish_irrigation", ec_w_dS_m=0.5)["action"]["ec_w_dS_m"],
+        b=lambda d: d.v7_lvl("brackish_irrigation", ec_w_dS_m=8)["action"]["ec_w_dS_m"],
+        c=lambda d: -d.v7_lvl("brackish_irrigation", ec_w_dS_m=0.5)["difference_vs_baseline"]["h2_uptake_mol_m2"]["percent"]["value"],
+        e=lambda d: -d.v7_lvl("brackish_irrigation", ec_w_dS_m=8)["difference_vs_baseline"]["h2_uptake_mol_m2"]["percent"]["value"],
+        f=lambda d: d.v7_lvl("brackish_irrigation", ec_w_dS_m=8)["action"]["ec_w_dS_m"],
+        g=lambda d: d.defaults["osmotic_domain_mol_l"],
+        h=lambda d: d.v7_lvl("brackish_irrigation", ec_w_dS_m=8)["action"]["ec_w_dS_m"],
+        i=lambda d: d.v7_lvl("brackish_irrigation", ec_w_dS_m=8)["downstream"]["maas_hoffman_alfalfa"]["relative_yield_alfalfa"]["value"],
+        j=lambda d: d.v7_lvl("brackish_irrigation", ec_w_dS_m=8)["downstream"]["maas_hoffman_alfalfa"]["relative_yield_alfalfa"]["low"],
+        k=lambda d: d.v7_lvl("brackish_irrigation", ec_w_dS_m=8)["downstream"]["maas_hoffman_alfalfa"]["relative_yield_alfalfa"]["high"],
+        l=lambda d: d.v7_lvl("brackish_irrigation", ec_w_dS_m=8)["downstream"]["maas_hoffman_barley"]["relative_yield_barley"]["value"],
+        m=lambda d: d.v7_lvl("brackish_irrigation", ec_w_dS_m=8)["downstream"]["maas_hoffman_date_palm"]["relative_yield_date_palm"]["value"],
+        o=lambda d: d.v7_lvl("brackish_irrigation", ec_w_dS_m=8)["downstream"]["maas_hoffman_date_palm"]["relative_yield_date_palm"]["low"],
+        p=lambda d: d.v7_lvl("brackish_irrigation", ec_w_dS_m=8)["downstream"]["maas_hoffman_date_palm"]["relative_yield_date_palm"]["high"],
+        q=lambda d: d.v7_lvl("brackish_irrigation", ec_w_dS_m=8)["downstream"]["maas_hoffman_tomato"]["relative_yield_tomato"]["value"],
+        r=lambda d: d.v7_lvl("brackish_irrigation", ec_w_dS_m=8)["downstream"]["maas_hoffman_tomato"]["relative_yield_tomato"]["low"],
+        s=lambda d: d.v7_lvl("brackish_irrigation", ec_w_dS_m=8)["downstream"]["maas_hoffman_tomato"]["relative_yield_tomato"]["high"])
+    chk("full organic mulch changes [[a]]-day H$_2$ uptake by [[b]], solar-panel cover with [[c]]-day washing by [[e]], cloud seeding (+[[f]] rain on rain days) by [[g]], +[[h]] $^\\circ$C warming at unchanged rainfall by [[i]], shade-net cooling ($-[[j]] ^\\circ$C) by $[[k]]$, [[l]] w/w biochar by $[[m]]$ and [[o]] off-road vehicle passes by $[[p]]$",
+        a=lambda d: d.v7["mulch_shade"]["baseline"]["period_days"],
+        b=lambda d: d.v7_head("mulch_shade")["value"],
+        c=lambda d: d.v7_const("panel_wash_interval_days"),
+        e=lambda d: d.v7_head("solar_park")["value"],
+        f=lambda d: d.v7_const("cloud_seeding_rain_increase_frac") * 100,
+        g=lambda d: d.v7_head("cloud_seeding")["value"],
+        h=lambda d: d.v7_lvl("warming", warming_c=4, rain_change_frac=0.0)["action"]["warming_c"],
+        i=lambda d: d.v7_head("warming")["value"],
+        j=lambda d: d.v7_const("shade_net_soil_temp_reduction_c"),
+        k=lambda d: d.v7_lvl("mulch_shade", mulch_cover_fraction=0, shade_net_cover_fraction=1)["difference_vs_baseline"]["h2_uptake_mol_m2"]["percent"]["value"],
+        l=lambda d: d.v7_lvl("biochar", biochar_dose_pct_w_w=5)["action"]["biochar_dose_pct_w_w"],
+        m=lambda d: d.v7_head("biochar")["value"],
+        o=lambda d: d.v7_lvl("compaction", offroad_passes=50)["action"]["offroad_passes"],
+        p=lambda d: d.v7_head("compaction")["value"])
+    chk("Perturbing atmospheric H$_2$ above the [[a]] ppm background scales the [[b]]-day soil H$_2$ sink linearly across [[c]], [[e]] and [[f]] times background (+[[g]], +[[h]] and +[[i]] uptake, reaching [[j]] $\\mu$mol m$^{-2}$ at [[k]] ppm), because first-order reaction--diffusion is proportional to surface concentration and peak O$_2$ demand reaches only [[l]] of diffusive O$_2$ supply, leaving oxygen unlimiting and CO uptake unchanged at [[m]] $\\mu$mol m$^{-2}$",
+        a=lambda d: d.v7_const("h2_background_ppm"),
+        b=lambda d: d.v7["h2_leakage"]["baseline"]["period_days"],
+        c=lambda d: d.v7_lvl("h2_leakage", h2_multiplier=1.5)["action"]["h2_multiplier"],
+        e=lambda d: d.v7_lvl("h2_leakage", h2_multiplier=2)["action"]["h2_multiplier"],
+        f=lambda d: d.v7_lvl("h2_leakage", h2_multiplier=10)["action"]["h2_multiplier"],
+        g=lambda d: d.v7_lvl("h2_leakage", h2_multiplier=1.5)["difference_vs_baseline"]["h2_uptake_mol_m2"]["percent"]["value"],
+        h=lambda d: d.v7_lvl("h2_leakage", h2_multiplier=2)["difference_vs_baseline"]["h2_uptake_mol_m2"]["percent"]["value"],
+        i=lambda d: d.v7_lvl("h2_leakage", h2_multiplier=10)["difference_vs_baseline"]["h2_uptake_mol_m2"]["percent"]["value"],
+        j=lambda d: d.v7_lvl("h2_leakage", h2_multiplier=10)["twin"]["h2_uptake_mol_m2"]["value"] * UM,
+        k=lambda d: d.v7_lvl("h2_leakage", h2_multiplier=10)["upstream_ppm"]["value"],
+        l=lambda d: d.v7_lvl("h2_leakage", h2_multiplier=10)["oxygen_used_over_supply_max"] * 100,
+        m=lambda d: d.v7_lvl("h2_leakage", h2_multiplier=10)["twin"]["co_uptake_mol_m2"]["value"] * UM)
+    chk("knallgas CBB stoichiometry ([[a]]/[[b]] mol CO$_2$ per mol H$_2$ ) under the deductive gate gives an annualised carbon-fixation upper bound in high-autotroph sample ([[c]] autotroph share) of [[e]] g C m$^{-2}$ yr$^{-1}$ (envelope [[f]] to [[g]] g C m$^{-2}$ yr$^{-1}$; [[h]] $\\mu$mol CO$_2$ m$^{-2}$ over [[i]] days), equivalent to [[j]] of a [[k]] g C m$^{-2}$ yr$^{-1}$ dryland biocrust reference flux",
+        a=lambda d: 1,
+        b=lambda d: 1.0 / d.v7_const("knallgas_co2_per_h2"),
+        c=lambda d: d.v7_lvl("carbon_fixation_bound", sample="F14Dr1", scenario="baseline (12 mm pulse)")["h2_autotroph_share"] * 100,
+        e=lambda d: d.v7_head("carbon_fixation_bound")["value"] / 1e6,
+        f=lambda d: d.v7_head("carbon_fixation_bound")["low"] / 1e6,
+        g=lambda d: d.v7_head("carbon_fixation_bound")["high"] / 1e6,
+        h=lambda d: d.v7_lvl("carbon_fixation_bound", sample="F14Dr1", scenario="baseline (12 mm pulse)")["co2_fixed_upper_bound"]["per_period_umol_m2"]["value"],
+        i=lambda d: d.v7["carbon_fixation_bound"]["baseline"]["period_days"],
+        j=lambda d: d.v7_lvl("carbon_fixation_bound", sample="F14Dr1", scenario="baseline (12 mm pulse)")["bound_over_context"] * 100,
+        k=lambda d: d.v7_const("biocrust_net_c_fixation_g_c_m2_yr"))
+    chk("where the entailed share is [[a]], the downstream deductive gate returns [[b]] fixed carbon with provenance while twin H$_2$ oxidation continues ([[c]] $\\mu$mol m$^{-2}$ under the gate). Coupled CO oxidation converts CO to CO$_2$ in equimolar stoichiometry with [[e]] net change in atmospheric carbon atoms",
+        a=lambda d: d.v7_lvl("carbon_fixation_bound", sample="14PRr2", scenario="baseline (12 mm pulse)")["h2_autotroph_share"] * 100,
+        b=lambda d: d.v7_lvl("carbon_fixation_bound", sample="14PRr2", scenario="baseline (12 mm pulse)")["c_fixed_upper_bound"]["per_year_ug_c_m2"]["value"],
+        c=lambda d: d.v7_lvl("carbon_fixation_bound", sample="14PRr2", scenario="baseline (12 mm pulse)")["twin"]["h2_uptake_mol_m2"]["value"] * UM,
+        e=lambda d: d.v7_lvl("carbon_fixation_bound", sample="F14Dr1", scenario="baseline (12 mm pulse)")["co_oxidation"]["net_atmospheric_c_change_mol_m2"])
+    chk("which has [[a]] mapped CO-carrier share and a closed CO gate ([[b]] $\\mu$mol m$^{-2}$ uptake), introducing CO-carrier MAG at [[c]], [[e]] or [[f]] share opens the gate and increases [[g]]-day CO uptake to [[h]] $\\mu$mol m$^{-2}$ under gate coupling, or to [[i]], [[j]] and [[k]] $\\mu$mol m$^{-2}$ under proportional coupling",
+        a=lambda d: float(d.ps[d.ps["sample"] == "51PRr3"].q_co.iloc[0]) * 100,
+        b=lambda d: d.v7["inoculation"]["gate"]["co_uptake_before_umol_m2"],
+        c=lambda d: d.v7_lvl("inoculation", sample="51PRr3", coupling="gate", share=0.001)["share"] * 100,
+        e=lambda d: d.v7_lvl("inoculation", sample="51PRr3", coupling="gate", share=0.01)["share"] * 100,
+        f=lambda d: d.v7_lvl("inoculation", sample="51PRr3", coupling="gate", share=0.05)["share"] * 100,
+        g=lambda d: d.v7["inoculation"]["baseline"]["period_days"],
+        h=lambda d: d.v7["inoculation"]["gate"]["co_uptake_after_umol_m2"],
+        i=lambda d: d.v7_lvl("inoculation", sample="51PRr3", coupling="proportional", share=0.001, mag_id="11Dr3__single_SemiBin_57")["twin"]["co_uptake_mol_m2"]["value"] * UM,
+        j=lambda d: d.v7_lvl("inoculation", sample="51PRr3", coupling="proportional", share=0.01, mag_id="11Dr3__single_SemiBin_57")["twin"]["co_uptake_mol_m2"]["value"] * UM,
+        k=lambda d: d.v7_lvl("inoculation", sample="51PRr3", coupling="proportional", share=0.05, mag_id="11Dr3__single_SemiBin_57")["twin"]["co_uptake_mol_m2"]["value"] * UM)
+    chk("keeps CO uptake at [[a]] $\\mu$mol m$^{-2}$, and introducing the CO carrier into sample , whose gate is already open ([[b]] initial share), gives [[c]] change under gate coupling while raising proportional CO uptake from [[e]] to [[f]], [[g]] and [[h]] $\\mu$mol m$^{-2}$",
+        a=lambda d: d.v7["inoculation"]["gate"]["negative_control_co_change_gate_umol_m2"],
+        b=lambda d: float(d.ps[d.ps["sample"] == "V53PRr2"].q_co.iloc[0]) * 100,
+        c=lambda d: d.v7["inoculation"]["gate"]["open_sample_co_change_gate_umol_m2"],
+        e=lambda d: d.v7_lvl("inoculation", sample="V53PRr2", coupling="proportional", share=0.001)["difference_vs_baseline"]["co_uptake_mol_m2"]["baseline"] * UM,
+        f=lambda d: d.v7_lvl("inoculation", sample="V53PRr2", coupling="proportional", share=0.001)["twin"]["co_uptake_mol_m2"]["value"] * UM,
+        g=lambda d: d.v7_lvl("inoculation", sample="V53PRr2", coupling="proportional", share=0.01)["twin"]["co_uptake_mol_m2"]["value"] * UM,
+        h=lambda d: d.v7_lvl("inoculation", sample="V53PRr2", coupling="proportional", share=0.05)["twin"]["co_uptake_mol_m2"]["value"] * UM)
+    chk("Hada Al-Sham alfalfa field trial irrigated at [[a]] and [[b]] dS m$^{-1}$",
+        n=2,
+        a=lambda d: d.v7_const("sa187_ecw_low_dS_m"),
+        b=lambda d: d.v7_const("sa187_ecw_high_dS_m"))
+    chk("Digitised season-[[a]] mock high-to-low salinity yield ratios are [[b]] (digitisation envelope [[c]] to [[e]]) for fresh biomass and [[f]] ([[g]] to [[h]]) for dry biomass",
+        a=lambda d: 1,
+        b=lambda d: d.v7["inoculated_alfalfa_salinity"]["observed"]["fresh"]["value"],
+        c=lambda d: d.v7["inoculated_alfalfa_salinity"]["observed"]["fresh"]["low"],
+        e=lambda d: d.v7["inoculated_alfalfa_salinity"]["observed"]["fresh"]["high"],
+        f=lambda d: d.v7["inoculated_alfalfa_salinity"]["observed"]["dry"]["value"],
+        g=lambda d: d.v7["inoculated_alfalfa_salinity"]["observed"]["dry"]["low"],
+        h=lambda d: d.v7["inoculated_alfalfa_salinity"]["observed"]["dry"]["high"])
+    chk("standard fixed leaching factor ($f=[[a]]$, $\\mathrm{EC_e}=[[b]] \\mathrm{EC_w}$ ) with the Maas--Hoffman alfalfa response (threshold [[c]] dS m$^{-1}$, slope [[e]] dS$^{-1}$ m ) predicts a mock ratio of [[f]] (envelope [[g]] to [[h]]), whereas the twin's bare-sand salt balance predicts [[i]] ([[j]] to [[k]])",
+        a=lambda d: d.v7_const("fao29_ece_per_ecw"),
+        b=lambda d: d.v7_const("fao29_ece_per_ecw"),
+        c=lambda d: d.v7_const("mh_alfalfa_threshold_dS_m"),
+        e=lambda d: d.v7_const("mh_alfalfa_slope_pct_per_dS_m"),
+        f=lambda d: d.v7["inoculated_alfalfa_salinity"]["validation_mock_ratio"]["A_fao_fixed_leaching"]["predicted_ratio"]["value"],
+        g=lambda d: d.v7["inoculated_alfalfa_salinity"]["validation_mock_ratio"]["A_fao_fixed_leaching"]["predicted_ratio"]["low"],
+        h=lambda d: d.v7["inoculated_alfalfa_salinity"]["validation_mock_ratio"]["A_fao_fixed_leaching"]["predicted_ratio"]["high"],
+        i=lambda d: d.v7["inoculated_alfalfa_salinity"]["validation_mock_ratio"]["B_twin_physics"]["predicted_ratio"]["value"],
+        j=lambda d: d.v7["inoculated_alfalfa_salinity"]["validation_mock_ratio"]["B_twin_physics"]["predicted_ratio"]["low"],
+        k=lambda d: d.v7["inoculated_alfalfa_salinity"]["validation_mock_ratio"]["B_twin_physics"]["predicted_ratio"]["high"])
+    chk("observed mock yield ratio gives $f=[[a]]$ (envelope [[b]] to [[c]]) for fresh biomass and $f=[[e]]$ ([[f]] to [[g]]) for dry biomass, implying a low-salinity root-zone $\\mathrm{EC_e}$ of [[h]] to [[i]] dS m$^{-1}$ ([[j]] dS m$^{-1}$ dry, [[k]] dS m$^{-1}$ fresh) compared with the measured site soil conductivity of [[l]] dS m$^{-1}$",
+        a=lambda d: d.v7["inoculated_alfalfa_salinity"]["fitted_leaching"]["fresh"]["f_central"],
+        b=lambda d: d.v7["inoculated_alfalfa_salinity"]["fitted_leaching"]["fresh"]["f_range_from_digitisation_error"][0],
+        c=lambda d: d.v7["inoculated_alfalfa_salinity"]["fitted_leaching"]["fresh"]["f_range_from_digitisation_error"][1],
+        e=lambda d: d.v7["inoculated_alfalfa_salinity"]["fitted_leaching"]["dry"]["f_central"],
+        f=lambda d: d.v7["inoculated_alfalfa_salinity"]["fitted_leaching"]["dry"]["f_range_from_digitisation_error"][0],
+        g=lambda d: d.v7["inoculated_alfalfa_salinity"]["fitted_leaching"]["dry"]["f_range_from_digitisation_error"][1],
+        h=lambda d: d.v7["inoculated_alfalfa_salinity"]["fitted_leaching"]["dry"]["ece_at_3_12_dS_m"],
+        i=lambda d: d.v7["inoculated_alfalfa_salinity"]["fitted_leaching"]["fresh"]["ece_at_3_12_dS_m"],
+        j=lambda d: d.v7["inoculated_alfalfa_salinity"]["fitted_leaching"]["dry"]["ece_at_3_12_dS_m"],
+        k=lambda d: d.v7["inoculated_alfalfa_salinity"]["fitted_leaching"]["fresh"]["ece_at_3_12_dS_m"],
+        l=lambda d: d.v7_const("sa187_soil_ec_dS_m"))
+    chk("With the fitted leaching factor and the [[a]] ([[b]] to [[c]]) SA187 yield multiplier, predicted inoculated relative yield at [[e]] dS m$^{-1}$ is [[f]] ([[g]] to [[h]], fresh biomass); from a single trial at two salinities, the SA187 benefit is identifiable only as a constant multiplier across the tested [[i]] to [[j]] dS m$^{-1}$ range",
+        a=lambda d: d.v7_const("sa187_benefit_b") * 100,
+        b=lambda d: d.v7_const("sa187_benefit_b", "low") * 100,
+        c=lambda d: d.v7_const("sa187_benefit_b", "high") * 100,
+        e=lambda d: d.v7_const("sa187_ecw_high_dS_m"),
+        f=lambda d: d.v7_head("inoculated_alfalfa_salinity")["value"],
+        g=lambda d: d.v7_head("inoculated_alfalfa_salinity")["low"],
+        h=lambda d: d.v7_head("inoculated_alfalfa_salinity")["high"],
+        i=lambda d: d.v7_const("sa187_ecw_low_dS_m"),
+        j=lambda d: d.v7_const("sa187_ecw_high_dS_m"))
+    chk("evaluated against a [[a]]-day single-pulse reference baseline, and [[b]] of the [[c]] external registry constants represent modeller assumptions ([[e]]) or unverified secondary citations ([[f]])",
+        a=lambda d: d.v7["drip_vs_flood"]["baseline"]["period_days"],
+        b=lambda d: d.v7_status_count("modeller_assumption") + d.v7_status_count("source_not_checked"),
+        c=lambda d: len(d.v7_reg),
+        e=lambda d: d.v7_status_count("modeller_assumption"),
+        f=lambda d: d.v7_status_count("source_not_checked"))
+
+    # ---- v0.7 composition: supplementary.tex Section S8
+    chk("evaluates [[a]] management what-if chains against the [[b]]-day single-pulse rain baseline ([[c]] mm rain on day [[e]], initial water storage [[f]] mm, soil temperature $[[g]] ^\\circ$C, potential evaporation [[h]] mm day$^{-1}$; reference uptake [[i]] $\\mu$mol H$_2$ m$^{-2}$ and [[j]] $\\mu$mol CO m$^{-2}$). Table and Fig. summarize all [[k]] experiments",
+        a=lambda d: len(d.v7_sum["experiments"]),
+        b=lambda d: d.v7["drip_vs_flood"]["baseline"]["period_days"],
+        c=lambda d: d.v6["treatment_versions"]["total_water_mm"],
+        e=lambda d: 0,
+        f=lambda d: d.v7["drip_vs_flood"]["baseline"]["initial_water_mm"],
+        g=lambda d: _src_num(d, "analyse.py", r"\"temp_c\": ([\d.]+)"),
+        h=lambda d: _src_num(d, "analyse.py", r"\"evaporation_mm\": ([\d.]+)"),
+        i=lambda d: d.v7["drip_vs_flood"]["levels"][0]["twin_baseline"]["h2_uptake_mol_m2"] * UM,
+        j=lambda d: d.v7["drip_vs_flood"]["levels"][0]["twin_baseline"]["co_uptake_mol_m2"] * UM,
+        k=lambda d: len(d.v7_sum["experiments"]))
+    chk("Summary of the [[a]] management what-if compositions on the [[b]]-day single-pulse reference baseline",
+        a=lambda d: len(d.v7_sum["experiments"]),
+        b=lambda d: d.v7["drip_vs_flood"]["baseline"]["period_days"])
+    chk("Small-multiples summary of the [[a]] management what-if compositions on the [[b]]-day single-pulse reference baseline",
+        a=lambda d: len(d.v7_sum["experiments"]),
+        b=lambda d: d.v7["drip_vs_flood"]["baseline"]["period_days"])
+    chk("Upstream , and ([[a]] mm day$^{-1}$) add daily water",
+        a=lambda d: d.v7_const("crop_etc_mm_per_day"))
+    chk("with high-salinity constant-envelope runs at $\\mathrm{EC_w}=[[a]]$ dS m$^{-1}$ exceeding the [[b]] mol L$^{-1}$ dilute osmotic domain",
+        a=lambda d: d.v7_lvl("brackish_irrigation", ec_w_dS_m=8)["action"]["ec_w_dS_m"],
+        b=lambda d: d.defaults["osmotic_domain_mol_l"])
+    chk("Upstream ([[a]] mm day$^{-1}$) and deliver equal seasonal water demand on [[b]]-, [[c]]- or [[e]]-day intervals on top of the [[f]] mm rain pulse, and the twin integrates [[g]]-day H$_2$ and CO uptake",
+        a=lambda d: d.v7_const("crop_etc_mm_per_day"),
+        b=lambda d: d.v7_lvl("drip_vs_flood", irrigation_interval_days=1)["action"]["irrigation_interval_days"],
+        c=lambda d: d.v7_lvl("drip_vs_flood", irrigation_interval_days=3)["action"]["irrigation_interval_days"],
+        e=lambda d: d.v7_lvl("drip_vs_flood", irrigation_interval_days=10)["action"]["irrigation_interval_days"],
+        f=lambda d: d.v6["treatment_versions"]["total_water_mm"],
+        g=lambda d: d.v7["drip_vs_flood"]["baseline"]["period_days"])
+    chk("full mulch with shade increases [[a]]-day H$_2$ uptake by [[b]] ($[[c]]$ to [[e]])",
+        a=lambda d: d.v7["mulch_shade"]["baseline"]["period_days"],
+        b=lambda d: d.v7_lvl("mulch_shade", mulch_cover_fraction=1, shade_net_cover_fraction=1)["difference_vs_baseline"]["h2_uptake_mol_m2"]["percent"]["value"],
+        c=lambda d: d.v7_lvl("mulch_shade", mulch_cover_fraction=1, shade_net_cover_fraction=1)["difference_vs_baseline"]["h2_uptake_mol_m2"]["percent"]["low"],
+        e=lambda d: d.v7_lvl("mulch_shade", mulch_cover_fraction=1, shade_net_cover_fraction=1)["difference_vs_baseline"]["h2_uptake_mol_m2"]["percent"]["high"])
+    chk("adds [[a]] to soil porosity per percentage point w/w across $\\{0,1,2,5\\}%$ biochar (raising $\\phi$ from [[b]] to [[c]] at [[e]] w/w)",
+        a=lambda d: d.v7_const("biochar_porosity_increase_per_pct"),
+        b=lambda d: d.defaults["porosity"],
+        c=lambda d: d.v7_lvl("biochar", biochar_dose_pct_w_w=5)["upstream"]["biochar_porosity"]["porosity"]["value"],
+        e=lambda d: d.v7_lvl("biochar", biochar_dose_pct_w_w=5)["action"]["biochar_dose_pct_w_w"])
+    chk("Twin [[a]]-day H$_2$ and CO uptake feed downstream (gated by , stoichiometry [[b]]/[[c]] mol CO$_2$ per mol H$_2$",
+        a=lambda d: d.v7["carbon_fixation_bound"]["baseline"]["period_days"],
+        b=lambda d: 1,
+        c=lambda d: 1.0 / d.v7_const("knallgas_co2_per_h2"))
+    chk("across $\\{1,1.5,2,10\\}$ times the [[a]] ppm background",
+        a=lambda d: d.v7_const("h2_background_ppm"))
+    chk("evaporation reduction and [[a]]-day wash pulses across panel cover fractions",
+        a=lambda d: d.v7_const("panel_wash_interval_days"))
+    chk("increases bulk density from [[a]] g cm$^{-3}$ toward an asymptotic +[[b]] g cm$^{-3}$ increment across $\\{0,1,5,10,50\\}$ vehicle passes",
+        a=lambda d: (1.0 - d.defaults["porosity"]) * d.v7_const("particle_density_g_cm3"),
+        b=lambda d: d.v7_const("offroad_bd_max_increase_g_cm3"))
+    chk("converts bulk density to porosity at quartz particle density [[a]] g cm$^{-3}$",
+        a=lambda d: d.v7_const("particle_density_g_cm3"))
+    chk("scaling potential evaporation by [[a]] $^\\circ$C$^{-1}$",
+        a=lambda d: d.v7_const("evap_scaling_per_c") * 100)
+    chk("In each panel, the script detects the horizontal y-axis tick marks from [[a]] to [[b]] t ha$^{-1}$ (step [[c]] t ha$^{-1}$) at pixel column $x=[[e]]$ and fits a linear pixel-to-yield calibration by ordinary least squares, with a maximum calibration residual of [[f]] t ha$^{-1}$ in the low-salinity panel and [[g]] t ha$^{-1}$ in the high-salinity panel",
+        a=lambda d: 0,
+        b=lambda d: 14,
+        c=lambda d: 2,
+        e=lambda d: int(re.search(r"x=(\d+)", d.v7_fig1["method"]).group(1)),
+        f=lambda d: d.v7_fig1["values"]["low_3.12/calibration_max_residual_t_ha"],
+        g=lambda d: d.v7_fig1["values"]["high_7.81/calibration_max_residual_t_ha"])
+    chk("against all [[a]] SA187 percentage increases printed on the figure (+[[b]] and +[[c]] fresh and +[[e]] and +[[f]] dry at [[g]] dS m$^{-1}$; +[[h]] and +[[i]] fresh and +[[j]] and +[[k]] dry at [[l]] dS m$^{-1}$) reproduces all [[m]] printed percentages within [[o]] percentage points (maximum relative difference [[p]])",
+        a=lambda d: len(d.v7_fig1["check_against_printed_percentages"]),
+        b=lambda d: d.v7_fig1["check_against_printed_percentages"]["low_3.12/fresh_s1"]["printed"] * 100,
+        c=lambda d: d.v7_fig1["check_against_printed_percentages"]["low_3.12/fresh_s2"]["printed"] * 100,
+        e=lambda d: d.v7_fig1["check_against_printed_percentages"]["low_3.12/dry_s1"]["printed"] * 100,
+        f=lambda d: d.v7_fig1["check_against_printed_percentages"]["low_3.12/dry_s2"]["printed"] * 100,
+        g=lambda d: d.v7_const("sa187_ecw_low_dS_m"),
+        h=lambda d: d.v7_fig1["check_against_printed_percentages"]["high_7.81/fresh_s1"]["printed"] * 100,
+        i=lambda d: d.v7_fig1["check_against_printed_percentages"]["high_7.81/fresh_s2"]["printed"] * 100,
+        j=lambda d: d.v7_fig1["check_against_printed_percentages"]["high_7.81/dry_s1"]["printed"] * 100,
+        k=lambda d: d.v7_fig1["check_against_printed_percentages"]["high_7.81/dry_s2"]["printed"] * 100,
+        l=lambda d: d.v7_const("sa187_ecw_high_dS_m"),
+        m=lambda d: len(d.v7_fig1["check_against_printed_percentages"]),
+        o=lambda d: d.v7["inoculated_alfalfa_salinity"]["digitisation_error"]["relative"] * 100,
+        p=lambda d: d.v7["inoculated_alfalfa_salinity"]["digitisation_error"]["relative"])
+    chk("Digitised season-[[a]] mock yields at [[b]] and [[c]] dS m$^{-1}$ are [[e]] and [[f]] t ha$^{-1}$ for fresh weight (high-to-low ratio [[g]], digitisation envelope [[h]] to [[i]]) and [[j]] and [[k]] t ha$^{-1}$ for dry biomass (ratio [[l]], [[m]] to [[o]])",
+        a=lambda d: 1,
+        b=lambda d: d.v7_const("sa187_ecw_low_dS_m"),
+        c=lambda d: d.v7_const("sa187_ecw_high_dS_m"),
+        e=lambda d: d.v7["inoculated_alfalfa_salinity"]["observed"]["fresh"]["yields_t_ha"]["low"],
+        f=lambda d: d.v7["inoculated_alfalfa_salinity"]["observed"]["fresh"]["yields_t_ha"]["high"],
+        g=lambda d: d.v7["inoculated_alfalfa_salinity"]["observed"]["fresh"]["value"],
+        h=lambda d: d.v7["inoculated_alfalfa_salinity"]["observed"]["fresh"]["low"],
+        i=lambda d: d.v7["inoculated_alfalfa_salinity"]["observed"]["fresh"]["high"],
+        j=lambda d: d.v7["inoculated_alfalfa_salinity"]["observed"]["dry"]["yields_t_ha"]["low"],
+        k=lambda d: d.v7["inoculated_alfalfa_salinity"]["observed"]["dry"]["yields_t_ha"]["high"],
+        l=lambda d: d.v7["inoculated_alfalfa_salinity"]["observed"]["dry"]["value"],
+        m=lambda d: d.v7["inoculated_alfalfa_salinity"]["observed"]["dry"]["low"],
+        o=lambda d: d.v7["inoculated_alfalfa_salinity"]["observed"]["dry"]["high"])
+    chk("Three root-zone salinity formulations were chained to the Maas--Hoffman alfalfa response (threshold [[a]] dS m$^{-1}$, slope [[b]] dS$^{-1}$ m) and the SA187 yield multiplier ($b=[[c]]$, range [[e]] to [[f]])",
+        a=lambda d: d.v7_const("mh_alfalfa_threshold_dS_m"),
+        b=lambda d: d.v7_const("mh_alfalfa_slope_pct_per_dS_m"),
+        c=lambda d: d.v7_const("sa187_benefit_b"),
+        e=lambda d: d.v7_const("sa187_benefit_b", "low"),
+        f=lambda d: d.v7_const("sa187_benefit_b", "high"))
+    chk("Model A ( ) uses the standard fixed leaching factor $\\mathrm{EC_e}=[[a]] \\mathrm{EC_w}$ (range [[b]] to [[c]] across [[e]] to [[f]] leaching fractions). At [[g]] and [[h]] dS m$^{-1}$, implied $\\mathrm{EC_e}$ is [[i]] and [[j]] dS m$^{-1}$, predicting a mock high-to-low yield ratio of [[k]] ([[l]] to [[m]]; gap $[[o]]$ fresh and $[[p]]$ dry) and an inoculated relative yield at [[q]] dS m$^{-1}$ of [[r]] ([[s]] to [[t]])",
+        a=lambda d: d.v7_const("fao29_ece_per_ecw"),
+        b=lambda d: d.v7_const("fao29_ece_per_ecw", "low"),
+        c=lambda d: d.v7_const("fao29_ece_per_ecw", "high"),
+        e=lambda d: 30,
+        f=lambda d: 10,
+        g=lambda d: d.v7_const("sa187_ecw_low_dS_m"),
+        h=lambda d: d.v7_const("sa187_ecw_high_dS_m"),
+        i=lambda d: d.v7["inoculated_alfalfa_salinity"]["fitted_leaching"]["comparison_with_measured_soil_ec"]["A_1.5x3.12"],
+        j=lambda d: d.v7_const("fao29_ece_per_ecw") * d.v7_const("sa187_ecw_high_dS_m"),
+        k=lambda d: d.v7["inoculated_alfalfa_salinity"]["validation_mock_ratio"]["A_fao_fixed_leaching"]["predicted_ratio"]["value"],
+        l=lambda d: d.v7["inoculated_alfalfa_salinity"]["validation_mock_ratio"]["A_fao_fixed_leaching"]["predicted_ratio"]["low"],
+        m=lambda d: d.v7["inoculated_alfalfa_salinity"]["validation_mock_ratio"]["A_fao_fixed_leaching"]["predicted_ratio"]["high"],
+        o=lambda d: d.v7["inoculated_alfalfa_salinity"]["validation_mock_ratio"]["A_fao_fixed_leaching"]["gap_to_observed_fresh"],
+        p=lambda d: d.v7["inoculated_alfalfa_salinity"]["validation_mock_ratio"]["A_fao_fixed_leaching"]["gap_to_observed_dry"],
+        q=lambda d: d.v7_const("sa187_ecw_high_dS_m"),
+        r=lambda d: d.v7["inoculated_alfalfa_salinity"]["headline_other_models"]["A_fao_fixed_leaching"]["value"],
+        s=lambda d: d.v7["inoculated_alfalfa_salinity"]["headline_other_models"]["A_fao_fixed_leaching"]["low"],
+        t=lambda d: d.v7["inoculated_alfalfa_salinity"]["headline_other_models"]["A_fao_fixed_leaching"]["high"])
+    chk("Model B ( ) runs the twin's bare-sand water and salt balance under daily irrigation at [[a]] mm day$^{-1}$ and converts mean soil-water conductivity via $\\mathrm{EC_e}=\\mathrm{EC_{sw}}/2$. With [[b]] mm day$^{-1}$ bare-soil evaporation and no crop transpiration, drainage keeps implied $\\mathrm{EC_e}$ at [[c]] dS m$^{-1}$ for $\\mathrm{EC_w}=[[e]]$ dS m$^{-1}$, predicting a mock yield ratio of [[f]] ([[g]] to [[h]]; gap +[[i]] fresh and +[[j]] dry) and an inoculated relative yield at [[k]] dS m$^{-1}$ of [[l]] ([[m]] to [[o]]), while twin gas uptake abstains at $\\mathrm{EC_w}=[[p]]$ dS m$^{-1}$ outside the [[q]] mol L$^{-1}$ dilute NaCl domain",
+        a=lambda d: d.v7_const("alfalfa_etc_mm_per_day"),
+        b=lambda d: _src_num(d, "analyse.py", r"\"evaporation_mm\": ([\d.]+)"),
+        c=lambda d: d.v7["inoculated_alfalfa_salinity"]["fitted_leaching"]["comparison_with_measured_soil_ec"]["B_twin_ece_at_3.12"],
+        e=lambda d: d.v7_const("sa187_ecw_low_dS_m"),
+        f=lambda d: d.v7["inoculated_alfalfa_salinity"]["validation_mock_ratio"]["B_twin_physics"]["predicted_ratio"]["value"],
+        g=lambda d: d.v7["inoculated_alfalfa_salinity"]["validation_mock_ratio"]["B_twin_physics"]["predicted_ratio"]["low"],
+        h=lambda d: d.v7["inoculated_alfalfa_salinity"]["validation_mock_ratio"]["B_twin_physics"]["predicted_ratio"]["high"],
+        i=lambda d: d.v7["inoculated_alfalfa_salinity"]["validation_mock_ratio"]["B_twin_physics"]["gap_to_observed_fresh"],
+        j=lambda d: d.v7["inoculated_alfalfa_salinity"]["validation_mock_ratio"]["B_twin_physics"]["gap_to_observed_dry"],
+        k=lambda d: d.v7_const("sa187_ecw_high_dS_m"),
+        l=lambda d: d.v7["inoculated_alfalfa_salinity"]["headline_other_models"]["B_twin_physics"]["value"],
+        m=lambda d: d.v7["inoculated_alfalfa_salinity"]["headline_other_models"]["B_twin_physics"]["low"],
+        o=lambda d: d.v7["inoculated_alfalfa_salinity"]["headline_other_models"]["B_twin_physics"]["high"],
+        p=lambda d: d.v7_lvl("inoculated_alfalfa_salinity", ec_w_dS_m=12)["action"]["ec_w_dS_m"],
+        q=lambda d: d.defaults["osmotic_domain_mol_l"])
+    chk("Model C ( and ) fits $f$ in $\\mathrm{EC_e}=f \\mathrm{EC_w}$ so that the Maas--Hoffman mock yield ratio between [[a]] and [[b]] dS m$^{-1}$ matches the digitised first-season mock ratio, yielding $f=[[c]]$ ([[e]] to [[f]]) for fresh weight and $f=[[g]]$ ([[h]] to [[i]]) for dry biomass. At $\\mathrm{EC_w}=[[j]]$ dS m$^{-1}$, these fitted factors imply root-zone $\\mathrm{EC_e}=[[k]]$ dS m$^{-1}$ ([[l]] to [[m]] dS m$^{-1}$, fresh) and $[[o]]$ dS m$^{-1}$ ([[p]] to [[q]] dS m$^{-1}$, dry), matching the measured site soil conductivity of [[r]] dS m$^{-1}$, and predict inoculated relative yields at [[s]] dS m$^{-1}$ of [[t]] ([[u]] to [[v]]) for fresh weight and [[w]] ([[x]] to [[y]]) for dry biomass",
+        a=lambda d: d.v7_const("sa187_ecw_high_dS_m"),
+        b=lambda d: d.v7_const("sa187_ecw_low_dS_m"),
+        c=lambda d: d.v7["inoculated_alfalfa_salinity"]["fitted_leaching"]["fresh"]["f_central"],
+        e=lambda d: d.v7["inoculated_alfalfa_salinity"]["fitted_leaching"]["fresh"]["f_range_from_digitisation_error"][0],
+        f=lambda d: d.v7["inoculated_alfalfa_salinity"]["fitted_leaching"]["fresh"]["f_range_from_digitisation_error"][1],
+        g=lambda d: d.v7["inoculated_alfalfa_salinity"]["fitted_leaching"]["dry"]["f_central"],
+        h=lambda d: d.v7["inoculated_alfalfa_salinity"]["fitted_leaching"]["dry"]["f_range_from_digitisation_error"][0],
+        i=lambda d: d.v7["inoculated_alfalfa_salinity"]["fitted_leaching"]["dry"]["f_range_from_digitisation_error"][1],
+        j=lambda d: d.v7_const("sa187_ecw_low_dS_m"),
+        k=lambda d: d.v7["inoculated_alfalfa_salinity"]["fitted_leaching"]["fresh"]["ece_at_3_12_dS_m"],
+        l=lambda d: d.v7["inoculated_alfalfa_salinity"]["fitted_leaching"]["fresh"]["ece_at_3_12_range"][0],
+        m=lambda d: d.v7["inoculated_alfalfa_salinity"]["fitted_leaching"]["fresh"]["ece_at_3_12_range"][1],
+        o=lambda d: d.v7["inoculated_alfalfa_salinity"]["fitted_leaching"]["dry"]["ece_at_3_12_dS_m"],
+        p=lambda d: d.v7["inoculated_alfalfa_salinity"]["fitted_leaching"]["dry"]["ece_at_3_12_range"][0],
+        q=lambda d: d.v7["inoculated_alfalfa_salinity"]["fitted_leaching"]["dry"]["ece_at_3_12_range"][1],
+        r=lambda d: d.v7_const("sa187_soil_ec_dS_m"),
+        s=lambda d: d.v7_const("sa187_ecw_high_dS_m"),
+        t=lambda d: d.v7_head("inoculated_alfalfa_salinity")["value"],
+        u=lambda d: d.v7_head("inoculated_alfalfa_salinity")["low"],
+        v=lambda d: d.v7_head("inoculated_alfalfa_salinity")["high"],
+        w=lambda d: d.v7["inoculated_alfalfa_salinity"]["headline_other_models"]["C_fitted_dry"]["value"],
+        x=lambda d: d.v7["inoculated_alfalfa_salinity"]["headline_other_models"]["C_fitted_dry"]["low"],
+        y=lambda d: d.v7["inoculated_alfalfa_salinity"]["headline_other_models"]["C_fitted_dry"]["high"])
+    chk("All [[a]] external constants used in the composition layer reside in (SHA256 digest recorded in every output JSON). Each entry records a central value, low and high bounds, unit, source citation and a verification status from a manual audit against the cited sources: [[b]] constants have status (the two leaching and conductivity conversion factors, the eight Maas--Hoffman crop thresholds and slopes, the Julian year length, the tropospheric H$_2$ background, the potential-evaporation warming scaling, and the ten Hada Al-Sham SA187 field-trial constants and digitised ratios); [[c]] constants have status (the two crop water demands, the full-cover organic-mulch evaporation reduction, the biocrust carbon-fixation context value, the solar-panel soil cooling, evaporation reduction and washing interval, the cloud-seeding rainfall enhancement, the off-road compaction $e$-folding pass scale, and the soil-to-air warming pass-through); and [[e]] constants have status",
+        a=lambda d: len(d.v7_reg),
+        b=lambda d: d.v7_status_count("verified_in_source"),
+        c=lambda d: d.v7_status_count("modeller_assumption"),
+        e=lambda d: d.v7_status_count("source_not_checked"))
+    chk("for ([[a]] ppm) was corrected to ; (ii) was re-centred to [[b]] dS$^{-1}$ m with bounds [[c]] to [[e]] dS$^{-1}$ m spanning the two FAO drainage papers and Maas and Hoffman; (iii) the source citations for the Maas--Hoffman slopes of alfalfa ([[f]] dS$^{-1}$ m), date palm ([[g]] dS$^{-1}$ m) and barley ([[h]] dS$^{-1}$ m) were updated to the FAO evapotranspiration paper ( ); (iv) the low and high bounds of (central [[i]]) were set to [[j]] and [[k]] from the concentration factors for [[l]] and [[m]] leaching fractions; (v) the upper bound of (central [[o]] $^\\circ$C$^{-1}$) was adjusted to [[p]] $^\\circ$C$^{-1}$ to match the Clausius--Clapeyron ceiling in Scheff and Frierson (2014); and (vi) the citation for ([[q]]) was corrected to of the FAO evapotranspiration paper and its status set to as a linear extrapolation of the [[r]] evaporation reduction per [[s]] organic-mulch cover rule",
+        a=lambda d: d.v7_const("h2_background_ppm"),
+        b=lambda d: d.v7_const("mh_tomato_slope_pct_per_dS_m"),
+        c=lambda d: d.v7_const("mh_tomato_slope_pct_per_dS_m", "low"),
+        e=lambda d: d.v7_const("mh_tomato_slope_pct_per_dS_m", "high"),
+        f=lambda d: d.v7_const("mh_alfalfa_slope_pct_per_dS_m"),
+        g=lambda d: d.v7_const("mh_date_palm_slope_pct_per_dS_m"),
+        h=lambda d: d.v7_const("mh_barley_slope_pct_per_dS_m"),
+        i=lambda d: d.v7_const("fao29_ece_per_ecw"),
+        j=lambda d: d.v7_const("fao29_ece_per_ecw", "low"),
+        k=lambda d: d.v7_const("fao29_ece_per_ecw", "high"),
+        l=lambda d: 30,
+        m=lambda d: 10,
+        o=lambda d: d.v7_const("evap_scaling_per_c"),
+        p=lambda d: d.v7_const("evap_scaling_per_c", "high"),
+        q=lambda d: d.v7_const("mulch_evap_reduction_frac"),
+        r=lambda d: 5,
+        s=lambda d: 10)
+
 
 def _unique(vals):
     vals = {round(float(v), 9) for v in vals}
@@ -553,6 +900,19 @@ def table_checks(d):
     out += 1
     if len(adm) != len(d.adm):
         bad.append(f"admissibility table has {len(adm)} rows, admissibility.tsv has {len(d.adm)}")
+    v7_rows = [r for r in rows("v07_composition.tex") if r[0].isdigit()]
+    out += 1
+    if len(v7_rows) != len(d.v7_sum["experiments"]):
+        bad.append(f"v07_composition.tex has {len(v7_rows)} rows, summary.json has {len(d.v7_sum['experiments'])}")
+    for r, s in zip(v7_rows, d.v7_sum["experiments"]):
+        cmp(f"v07 row {s['id']} n", r[0], s["n"])
+        h = s["headline"]
+        for tag, lit, val in zip(("value", "low", "high"), r[3].replace("[", ",").replace("]", "").split(","), (h["value"], h["low"], h["high"])):
+            m = re.search(r"\\times10\^\{(-?\d+)\}", lit)
+            if m:
+                val = val / (10 ** int(m.group(1)))
+                lit = lit[:m.start()]
+            cmp(f"v07 row {s['id']} {tag}", lit.replace("$", "").strip(), val)
     return out, bad
 
 
