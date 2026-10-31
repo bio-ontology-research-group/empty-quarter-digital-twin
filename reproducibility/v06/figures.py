@@ -14,6 +14,8 @@ from matplotlib.patches import FancyArrowPatch, FancyBboxPatch, Patch, Rectangle
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
 from eq_biodt.v03 import theory                                    # noqa: E402
+sys.path.insert(0, str(ROOT / "reproducibility/v06"))
+import v06_graph                                                   # noqa: E402
 
 OUT = ROOT / "reviews/v06"
 FIG = ROOT / "paper/figures"
@@ -60,7 +62,7 @@ def layout(g):
 def draw_graph():
     from matplotlib.patches import PathPatch
     from matplotlib.path import Path as MPath
-    g = theory.graph()
+    g = v06_graph.graph(theory)
     POS = layout(g)
     nodes = {n["id"]: n for n in g["nodes"] if n["id"] in POS}
     fig, ax = plt.subplots(figsize=(7.0, 6.9))

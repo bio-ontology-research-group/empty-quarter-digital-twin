@@ -17,6 +17,8 @@ ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "reviews/v06"
 sys.path.insert(0, str(ROOT / "src"))
 from eq_biodt.v03 import community as comm, theory                       # noqa: E402
+sys.path.insert(0, str(ROOT / "reproducibility/v06"))
+import v06_graph                                                         # noqa: E402
 from eq_biodt.v03.interventions import community_factors, intervene       # noqa: E402
 from eq_biodt.v03.planning import compare, parameter_ensemble             # noqa: E402
 from eq_biodt.v03.process import Parameters, State, gas_exchange, simulate  # noqa: E402
@@ -187,7 +189,7 @@ def version_relevance_demo(base):
 
 def admissibility():
     rows = []
-    for n in theory.graph()["nodes"]:
+    for n in v06_graph.graph(theory)["nodes"]:
         try:
             theory.check_admissible([n["id"]])
             verdict, reason = "admissible", ""

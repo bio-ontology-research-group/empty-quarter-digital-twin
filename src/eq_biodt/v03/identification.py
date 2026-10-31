@@ -122,7 +122,7 @@ def d_connecting_path(G, X, Y, Z=()):
     X, Y, Z = set(_names(X)), set(_names(Y)), set(_names(Z))
     anc_z = G.ancestors(Z)
     # state (node, 'up'): arrived from a child; (node, 'down'): arrived from a parent
-    start = [(x, "up") for x in X]
+    start = [(x, "up") for x in sorted(X)]
     prev = {s: None for s in start}
     queue = list(start)
     while queue:
@@ -136,11 +136,11 @@ def d_connecting_path(G, X, Y, Z=()):
         nxt = []
         if node not in Z:
             if d == "up":
-                nxt += [(p, "up") for p in G.parents(node)] + [(c, "down") for c in G.children(node)]
+                nxt += [(p, "up") for p in sorted(G.parents(node))] + [(c, "down") for c in sorted(G.children(node))]
             else:
-                nxt += [(c, "down") for c in G.children(node)]
+                nxt += [(c, "down") for c in sorted(G.children(node))]
         if d == "down" and node in anc_z:        # collider (or its descendant) activated by conditioning
-            nxt += [(p, "up") for p in G.parents(node)]
+            nxt += [(p, "up") for p in sorted(G.parents(node))]
         for s in nxt:
             if s not in prev:
                 prev[s] = (node, d)
