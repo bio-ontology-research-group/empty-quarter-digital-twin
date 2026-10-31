@@ -47,7 +47,7 @@
       ],
       "open_path_plain": [
         "J_co@0",
-        "D_h2@0",
+        "D_co@0",
         "theta@0",
         "W@0",
         "I@0"
@@ -56,7 +56,7 @@
       "statement": "P(y|do(x),do(z),w) = P(y|do(x),w)",
       "mutilation": "G with edges into X and into Z(W) removed",
       "csi_pruned_edges": [
-        "C_a->J_co@0",
+        "C_co@0->J_co@0",
         "D_co@0->J_co@0",
         "D_co@0->J_h2@0",
         "D_h2@0->J_co@0",
@@ -188,7 +188,7 @@
     },
     "plain_graph_test_fails_because": [
       "J_co@0",
-      "D_h2@0",
+      "D_co@0",
       "theta@0",
       "W@0",
       "I@0"
@@ -280,7 +280,7 @@
       "statement": "P(y|do(x),do(z),w) = P(y|do(x),w)",
       "mutilation": "G with edges into X and into Z(W) removed",
       "csi_pruned_edges": [
-        "C_a->J_co@0",
+        "C_co@0->J_co@0",
         "D_co@0->J_co@0",
         "D_co@0->J_h2@0",
         "D_h2@0->J_co@0",
@@ -310,7 +310,7 @@
       "csi_pruned_edges": []
     },
     "csi_pruned_edges": [
-      "C_a->J_co@0",
+      "C_co@0->J_co@0",
       "D_co@0->J_co@0",
       "D_co@0->J_h2@0",
       "D_h2@0->J_co@0",
@@ -516,7 +516,7 @@
     "open_backdoor_path_without_adjustment": [
       "W@1",
       "phi",
-      "D_co@1",
+      "D_h2@1",
       "J_h2@1"
     ],
     "all_measured": {
