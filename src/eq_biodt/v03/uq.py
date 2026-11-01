@@ -258,6 +258,14 @@ def analyse(
                 dtype=float,
             )
             s1, st, gs1, gst = _sobol_block_estimates(ind_mat, d, names, boot, seed)
+        elif admitted_full.size > 0 and float(np.max(admitted_full) - np.min(admitted_full)) <= 1e-9 * max(
+            1.0, abs(float(np.mean(admitted_full)))
+        ):
+            mode = "constant"
+            s1 = {}
+            st = {}
+            gs1 = None
+            gst = None
         else:
             mode = "variance"
             valid_cols = [

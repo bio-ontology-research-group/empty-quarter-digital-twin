@@ -40,3 +40,16 @@ def test_refusal_mode_switch():
     res = analyse(INPUTS, 32, [{"y": None, "__refused__": "x"}]*10 + [{"y": 1.0}]*(32*(len(INPUTS)+5)-10), ["y"])
     assert res["y"]["refusal_fraction"] < 0.05 or res["y"]["mode"] == "refusal_indicator"
     assert res["y"]["refusal_fraction"] >= 0.05 and res["y"]["mode"] == "refusal_indicator"
+
+
+def test_constant_output_mode_has_no_indices():
+    total = 32 * (len(INPUTS) + 5)
+    res = analyse(INPUTS, 32, [{"y": -50.0, "z": 0.0}] * total, ["y", "z"])
+    for key, val in [("y", -50.0), ("z", 0.0)]:
+        assert res[key]["mode"] == "constant"
+        assert res[key]["median"] == val
+        assert res[key]["S1"] == {}
+        assert res[key]["ST"] == {}
+        assert res[key]["group_S1"] is None
+        assert res[key]["group_ST"] is None
+
