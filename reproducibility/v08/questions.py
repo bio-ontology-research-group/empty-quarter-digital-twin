@@ -29,7 +29,9 @@ from reproducibility.v08.texts import (  # noqa: E402
     MODEL_META,
     OUTCOME_META,
     PLAIN_BASELINE_LABELS,
+    PLAIN_SERIES_LABELS,
     PLAIN_TITLES,
+    PLAIN_X_LABELS,
     plain_level_label,
     render_question_texts,
 )
@@ -53,6 +55,34 @@ PAPER_SECTIONS: dict[str, str] = {
     "air-hydrogen": "§3.5 External model composition (Experiment 9: Atmospheric H₂) & §3.6",
     "carbon-fixation": "§3.5 External model composition (Experiment 12: Knallgas C-fixation bound) & §3.6",
 }
+
+
+def _augment_central_pct(d: dict[str, Any]) -> None:
+    """Compute paired percentage-change outputs `h2_uptake_change_pct` and `co_uptake_change_pct`."""
+    for gas in ("h2", "co"):
+        u_key = f"{gas}_uptake_umol_m2"
+        c_key = f"{gas}_uptake_contrast_umol_m2"
+        p_key = f"{gas}_uptake_change_pct"
+        if p_key in d and d[p_key] is not None:
+            continue
+        u = d.get(u_key)
+        c = d.get(c_key)
+        base = (float(u) - float(c)) if (isinstance(u, (int, float)) and isinstance(c, (int, float))) else None
+        d[p_key] = (100.0 * float(c) / base) if (base and base > 0.0) else None
+
+
+def _question_headline_keys(q: Question) -> list[str]:
+    keys: list[str] = []
+    if any(k.startswith("h2_uptake") for k in q.headline) and q.slug != "missing-co-genes":
+        keys.append("h2_uptake_change_pct")
+    if any(k.startswith("co_uptake_contrast") for k in q.headline):
+        keys.append("co_uptake_change_pct")
+    for k in q.headline:
+        if k not in keys:
+            keys.append(k)
+    if "h2_uptake_contrast_umol_m2" in keys and "h2_uptake_umol_m2" not in keys:
+        keys.append("h2_uptake_umol_m2")
+    return keys
 
 
 def _extract_branch_trajectory(sim: dict[str, Any] | None) -> dict[str, list[float]]:
@@ -194,6 +224,8 @@ def _build_chain_and_methods(q: Question) -> tuple[list[dict[str, str]], dict[st
                 if cid in const_reg:
                     c_entry = dict(const_reg[cid])
                     c_entry["id"] = cid
+                    if c_entry.get("unit") == "1":
+                        c_entry["unit"] = "fraction"
                     c_list.append(c_entry)
             models_out.append(
                 {
@@ -264,6 +296,7 @@ def _compute_oat(
             else:
                 p_override[name] = bound
             res = evaluate(spec, constants=c_override, params=p_override, keep_twin_result=False)
+            _augment_central_pct(res)
             v = res.get(out_key) if res.get("__refused__") is None else None
             vals.append(float(v) if isinstance(v, (int, float)) else None)
         lo_v, hi_v = vals[0], vals[1]
@@ -281,7 +314,8 @@ def _enrich_inputs(raw_inputs: list[dict[str, Any]]) -> list[dict[str, Any]]:
         entry = dict(inp)
         src_meta = const_reg.get(name) if inp["kind"] == "constant" else param_reg.get(name)
         if src_meta:
-            entry["unit"] = src_meta.get("unit", "")
+            u_str = src_meta.get("unit", "")
+            entry["unit"] = "fraction" if u_str == "1" else u_str
             entry["meaning"] = src_meta.get("meaning", "")
             entry["source"] = src_meta.get("source", {})
             if "note" in src_meta:
@@ -333,6 +367,12 @@ def build_questions(
             uq_sha = hashlib.sha256(uq_raw_bytes).hexdigest()
             uq_doc = json.loads(uq_raw_bytes.decode("utf-8"))
 
+            for s_uq in uq_doc.get("series", []):
+                for l_uq in s_uq.get("levels", []):
+                    if "central" in l_uq and isinstance(l_uq["central"], dict):
+                        _augment_central_pct(l_uq["central"])
+
+            q_headline_keys = _question_headline_keys(q)
             uq_series_map = {s["id"]: s for s in uq_doc["series"]}
             series_out: list[dict[str, Any]] = []
             max_refusal_fraction = 0.0
@@ -345,6 +385,7 @@ def build_questions(
                 for l_idx, spec in enumerate(s.levels):
                     uq_lvl = uq_levels_map[l_idx]
                     central_res = evaluate(spec, keep_twin_result=True)
+                    _augment_central_pct(central_res)
                     tw = central_res.get("__twin__")
                     base_sim = tw["result"]["baseline"] if (tw and tw.get("result")) else None
                     intv_sim = tw["result"]["intervened"] if (tw and tw.get("result")) else None
@@ -359,7 +400,7 @@ def build_questions(
 
                     outcomes_out: dict[str, Any] = {}
                     out_keys = [
-                        k for k in q.headline if k in OUTCOME_META and k in uq_lvl["outputs"]
+                        k for k in q_headline_keys if k in OUTCOME_META and k in uq_lvl["outputs"]
                     ]
                     for out_key in out_keys:
                         uq_o = uq_lvl["outputs"][out_key]
@@ -368,7 +409,14 @@ def build_questions(
                         if c_val is not None:
                             c_val = float(c_val)
                         ref_f = float(uq_o.get("refusal_fraction", 0.0))
-                        if out_key in q.headline:
+                        if out_key in {"h2_uptake_change_pct", "co_uptake_change_pct"} and central_refused is None:
+                            gas = "h2" if out_key.startswith("h2_") else "co"
+                            con_uq = uq_lvl["outputs"].get(f"{gas}_uptake_contrast_umol_m2")
+                            if con_uq is not None:
+                                ref_f = float(con_uq.get("refusal_fraction", 0.0))
+                        elif out_key.startswith("relative_yield_") and not spec.downstream and central_refused is None:
+                            ref_f = 0.0
+                        if out_key in q_headline_keys:
                             max_refusal_fraction = max(max_refusal_fraction, ref_f)
                         prov = (
                             "deduced"
@@ -390,6 +438,7 @@ def build_questions(
                             "mode": uq_o.get("mode", "variance"),
                             "refusal_fraction": ref_f,
                             "refusal_reason": central_refused,
+                            "convergence": uq_o.get("convergence", {}),
                         }
 
                     lbl_plain = plain_level_label(slug, s.id, spec.label, spec.x)
@@ -409,10 +458,11 @@ def build_questions(
                         }
                     )
 
+                s_label_plain = PLAIN_SERIES_LABELS.get((slug, s.id), s.label_plain)
                 series_out.append(
                     {
                         "id": s.id,
-                        "label_plain": s.label_plain,
+                        "label_plain": s_label_plain,
                         "label_science": s.label_science,
                         "levels": levels_out,
                     }
@@ -431,11 +481,22 @@ def build_questions(
                 central_val=h_central_val,
                 outcome_uq=h_uq_out,
                 max_refusal_fraction=max_refusal_fraction,
+                uq_doc=uq_doc,
             )
 
             chain, methods = _build_chain_and_methods(q)
             enriched_inputs = _enrich_inputs(h_uq_lvl["inputs"])
             oat = _compute_oat(h_level_spec, h_out_key, h_uq_lvl["inputs"])
+
+            sobol_uq_out = h_uq_out
+            if (
+                h_out_key in {"h2_uptake_change_pct", "co_uptake_change_pct"}
+                and h_uq_out.get("q05") is not None
+                and h_uq_out.get("q95") is not None
+                and abs(float(h_uq_out["q95"]) - float(h_uq_out["q05"])) < 1e-9
+            ):
+                gas = "h2" if h_out_key.startswith("h2_") else "co"
+                sobol_uq_out = h_uq_lvl["outputs"].get(f"{gas}_uptake_contrast_umol_m2", h_uq_out)
 
             uncertainty = {
                 "headline_output": h_out_key,
@@ -451,10 +512,10 @@ def build_questions(
                 "q95": h_uq_out.get("q95"),
                 "mode": h_uq_out.get("mode", "variance"),
                 "refusal_fraction": float(h_uq_out.get("refusal_fraction", 0.0)),
-                "S1": h_uq_out.get("S1", {}),
-                "ST": h_uq_out.get("ST", {}),
-                "group_S1": h_uq_out.get("group_S1", {}),
-                "group_ST": h_uq_out.get("group_ST", {}),
+                "S1": sobol_uq_out.get("S1", {}),
+                "ST": sobol_uq_out.get("ST", {}),
+                "group_S1": sobol_uq_out.get("group_S1", {}),
+                "group_ST": sobol_uq_out.get("group_ST", {}),
                 "inputs": enriched_inputs,
                 "convergence": h_uq_out.get("convergence", {}),
                 "oat": oat,
@@ -481,6 +542,7 @@ def build_questions(
 
             title_plain = PLAIN_TITLES[slug]
             baseline_plain = PLAIN_BASELINE_LABELS[slug]
+            x_label_plain = PLAIN_X_LABELS.get(slug, q.x_label_plain)
 
             q_doc = {
                 "version": "question-1",
@@ -490,10 +552,10 @@ def build_questions(
                 "title_plain": title_plain,
                 "title_science": q.title_science,
                 "level_kind": q.level_kind,
-                "x_label_plain": q.x_label_plain,
+                "x_label_plain": x_label_plain,
                 "x_label_science": q.x_label_science,
                 "baseline_label": baseline_plain,
-                "headline": list(q.headline),
+                "headline": q_headline_keys,
                 "headline_output": h_out_key,
                 "headline_level": {
                     "series": h_series_id,

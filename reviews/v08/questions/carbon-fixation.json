@@ -1,0 +1,1949 @@
+{
+  "answer_plain": "Hydrogen-eating microbes can fix at most 0.058 g of carbon per m\u00b2 per year in sample F14Dr1 after a single rain (range 0.006 to 0.3 g of carbon per m\u00b2 per year, so the upper limit goes up in every case we tried where the genes are present), and 0 g of carbon per m\u00b2 per year in sample 14PRr2 where the carbon-fixing genes are absent. This is an upper ceiling if every bit of captured hydrogen energy went into building cell carbon.",
+  "answer_science": "Central estimate in open-gate sample F14Dr1: c_fixed_upper_bound_g_m2_yr = 0.05757 g C m\u207b\u00b2 yr\u207b\u00b9 (median 0.04993 g C m\u207b\u00b2 yr\u207b\u00b9, 50 % IQR [0.01838, 0.1183] g C m\u207b\u00b2 yr\u207b\u00b9, joint 5\u201395 % interval [0.006216, 0.2687] g C m\u207b\u00b2 yr\u207b\u00b9) (rounded headline: 0.058 g C m\u207b\u00b2 yr\u207b\u00b9; 14-day bound c_fixed_upper_bound_ug_m2 = 2207 \u00b5g C m\u207b\u00b2 (median 1914 \u00b5g C m\u207b\u00b2, 50 % IQR [704.7, 4536] \u00b5g C m\u207b\u00b2, joint 5\u201395 % interval [238.3, 1.03e+04] \u00b5g C m\u207b\u00b2); mode = variance, refusal fraction = 0.0 %, max level refusal across question = 0.0 %), and exact 0 g C m\u207b\u00b2 yr\u207b\u00b9 (joint 5\u201395 % interval [0, 0] g C m\u207b\u00b2 yr\u207b\u00b9, mode = deduced) in closed-gate sample 14PRr2. Top two Sobol' contributors to output variance: k_h2_s (ST = 0.83 [0.75, 0.91], S1 = 0.72) and retention_b (ST = 0.13 [0.10, 0.15], S1 = 0.07). Status share of variance: verified_in_source ST = 0.00 (S1 = 0.00), modeller_assumption ST = 0.96 (S1 = 0.94), source_not_checked ST = 0.06 (S1 = 0.03) (joint group total indices can sum to more than 1 because of interactions). Limits: The parameter-uncertainty interval quantifies joint variation over literature constants and twin process parameters only and excludes external-model and twin model-structure error.",
+  "baseline_label": "Sample community under 14-day rain schedule",
+  "chain": [
+    {
+      "id": "eq_biodt_v03",
+      "kind": "twin",
+      "name_plain": "Desert sand water, salt and gas-uptake twin",
+      "name_science": "EQ-BioDT v0.3 two-layer causal-ontological soil twin"
+    },
+    {
+      "id": "knallgas_carbon_fixation",
+      "kind": "downstream",
+      "name_plain": "Upper limit on carbon fixed from hydrogen energy",
+      "name_science": "Upper bound of CO2 fixed by H2-oxidising autotrophs"
+    },
+    {
+      "id": "co_oxidation_carbon_balance",
+      "kind": "downstream",
+      "name_plain": "Carbon monoxide conversion to carbon dioxide",
+      "name_science": "CO oxidation converts CO to CO2 (no net carbon-atom change)"
+    }
+  ],
+  "headline": [
+    "c_fixed_upper_bound_g_m2_yr",
+    "c_fixed_upper_bound_ug_m2",
+    "co2_fixed_upper_bound_mol_m2"
+  ],
+  "headline_level": {
+    "label": "baseline (12 mm pulse); F14Dr1",
+    "level": 1,
+    "series": "baseline-12mm",
+    "x": "F14Dr1"
+  },
+  "headline_output": "c_fixed_upper_bound_g_m2_yr",
+  "headline_plain": "Hydrogen-eating microbes can fix at most 0.058 g of carbon per m\u00b2 per year in sample F14Dr1, and 0 where the carbon-fixing genes are absent.",
+  "headline_science": "Central c_fixed_upper_bound_g_m2_yr = 0.05757 g C m\u207b\u00b2 yr\u207b\u00b9 (median 0.04993 g C m\u207b\u00b2 yr\u207b\u00b9, 50 % IQR [0.01838, 0.1183] g C m\u207b\u00b2 yr\u207b\u00b9, joint 5\u201395 % interval [0.006216, 0.2687] g C m\u207b\u00b2 yr\u207b\u00b9) (rounded: 0.058 g C m\u207b\u00b2 yr\u207b\u00b9; 14-day bound c_fixed_upper_bound_ug_m2 = 2207 \u00b5g C m\u207b\u00b2 (median 1914 \u00b5g C m\u207b\u00b2, 50 % IQR [704.7, 4536] \u00b5g C m\u207b\u00b2, joint 5\u201395 % interval [238.3, 1.03e+04] \u00b5g C m\u207b\u00b2); mode = variance, refusal = 0.0 %).",
+  "headline_value": 0.0575709,
+  "level_kind": "sample",
+  "limits_plain": "The range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong. This figure is an upper ceiling, not measured net carbon storage in the sand, because microbes also burn energy just to stay alive and release carbon dioxide when they respire.",
+  "limits_science": "The parameter-uncertainty interval quantifies joint variation over literature constants and twin process parameters only and excludes external-model and twin model-structure error. Stoichiometric upper bound only (mode = bound); net ecosystem CO\u2082 removal remains unidentifiable without maintenance respiration, carbon-stock change, and lifecycle measurements.",
+  "methods": {
+    "admissibility": {
+      "dilute_nacl_limit_mol_l": 0.1,
+      "refusal_threshold_fraction": 0.05,
+      "scope": "Joint parameter and literature-constant uncertainty only; excludes model-structure error."
+    },
+    "data": [
+      "data/v03/entailed_memberships.json",
+      "data/v03/mag_evidence.tsv",
+      "data/external/composition_constants.json",
+      "data/external/twin_parameter_ranges.json"
+    ],
+    "gates": [
+      {
+        "id": "Group1hNiFeHydrogenase",
+        "pathway": "Atmospheric H\u2082 oxidation",
+        "rule": "Closed when sample has 0 MAGs entailed as carrying Group 1h [NiFe]-hydrogenase; fixes J_H2 = 0 exactly."
+      },
+      {
+        "id": "FormICODehydrogenaseSubunit",
+        "pathway": "Atmospheric CO oxidation",
+        "rule": "Closed when sample has 0 MAGs entailed as carrying Form I CO dehydrogenase; fixes J_CO = 0 exactly."
+      },
+      {
+        "id": "CBBAutotrophicCarbonFixationPathway",
+        "pathway": "Knallgas autotrophic CO\u2082 fixation",
+        "rule": "Closed when sample has 0 MAGs carrying both Group 1h [NiFe]-hydrogenase and CBB RuBisCO; fixes C_fixed = 0 exactly."
+      }
+    ],
+    "models": [
+      {
+        "citation": "EQ-BioDT v0.3 process-ontological soil model (Campbell 1974; Moldrup 2000; van 't Hoff)",
+        "constants": [],
+        "equation_tex": "\\frac{\\mathrm{d}W}{\\mathrm{d}t}=P-E-Q,\\quad J_g = \\mathbb{I}_{\\mathrm{gate}}\\,A(\\psi,T)\\,D_{\\mathrm{eff}}(\\theta,\\phi)\\,k_g\\,C_g",
+        "id": "eq_biodt_v03",
+        "kind": "twin",
+        "name": "EQ-BioDT v0.3 two-layer causal-ontological soil twin",
+        "name_plain": "Desert sand water, salt and gas-uptake twin",
+        "validity": {
+          "osmotic_domain_mol_l": [
+            0.0,
+            0.1
+          ],
+          "porosity": [
+            0.05,
+            0.9
+          ],
+          "water_mm": [
+            0.0,
+            200.0
+          ]
+        }
+      },
+      {
+        "constants": [
+          {
+            "evidence": "Crossref: 10.1128/jb.104.1.145-151.1970 'Energy Generation and Utilization in Hydrogen Bacteria' Bongers 1970 J Bacteriol 104:145-151. Content not seen.",
+            "high": 0.25,
+            "id": "knallgas_co2_per_h2",
+            "low": 0.1,
+            "meaning": "CO2 fixed per H2 oxidised by knallgas (hydrogen-oxidising) autotrophs via the Calvin-Benson-Bassham cycle (theoretical 6 H2 : 2 O2 : 1 CO2)",
+            "note": "DOI verified via Crossref (Bongers L 1970, J Bacteriol 104:145-151). Paper (ASM 403) not read. 1/6 follows from balanced 6H2+2O2+CO2->(CH2O)+5H2O (textbook stoichiometry, ideal, no biomass synthesis); realistic yields lower, hence low 0.1.",
+            "source": {
+              "authors": "Bongers L",
+              "doi_or_url": "https://doi.org/10.1128/jb.104.1.145-151.1970",
+              "page_or_table": "J Bacteriol 104(1):145-151",
+              "title": "Energy generation and utilization in hydrogen bacteria",
+              "year": 1970
+            },
+            "status": "source_not_checked",
+            "unit": "mol CO2 per mol H2",
+            "value": 0.16666666666666666,
+            "verified": false
+          },
+          {
+            "evidence": "Not fetched from IUPAC (CIAAW).",
+            "high": 12.02,
+            "id": "molar_mass_c_g_mol",
+            "low": 12.0,
+            "meaning": "Molar mass of carbon",
+            "note": "Standard atomic weight of C is the interval [12.0096,12.0116] (conventional 12.011); not fetched but textbook-known. Low-risk.",
+            "source": {
+              "authors": "IUPAC",
+              "doi_or_url": "https://iupac.qmul.ac.uk/AtWt/",
+              "page_or_table": "carbon",
+              "title": "Standard atomic weights",
+              "year": 2021
+            },
+            "status": "source_not_checked",
+            "unit": "g/mol",
+            "value": 12.011,
+            "verified": false
+          }
+        ],
+        "equation_tex": "C_{\\mathrm{fixed}} \\le \\mathbb{I}_{\\mathrm{CBB}}\\,\\eta_{\\mathrm{C/H_2}}\\,M_C\\,\\int J_{\\mathrm{H_2}}\\,\\mathrm{d}t",
+        "id": "knallgas_carbon_fixation",
+        "kind": "downstream",
+        "name": "Upper bound of CO2 fixed by H2-oxidising autotrophs",
+        "name_plain": "Upper limit on carbon fixed from hydrogen energy",
+        "validity": {
+          "h2_uptake_mol_m2": [
+            0.0,
+            1000.0
+          ]
+        }
+      },
+      {
+        "constants": [],
+        "equation_tex": "\\Delta C_{\\mathrm{net,CO}} = 0",
+        "id": "co_oxidation_carbon_balance",
+        "kind": "downstream",
+        "name": "CO oxidation converts CO to CO2 (no net carbon-atom change)",
+        "name_plain": "Carbon monoxide conversion to carbon dioxide",
+        "validity": {
+          "co_uptake_mol_m2": [
+            0.0,
+            1000.0
+          ]
+        }
+      }
+    ]
+  },
+  "reproduce": {
+    "commands": [
+      "uv run python reproducibility/v08/reproduce.py",
+      "uv run python reproducibility/v08/questions.py --uq-dir reviews/v08/uq --out reviews/v08/questions"
+    ],
+    "digests": {
+      "constants_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578",
+      "parameter_ranges_sha256": "f6b9fe6f95d88360375a81171deae746e17c213600077bcc49fa8e05b47ad027",
+      "uq_sha256": "6c43215a54ecb89a40aebbba28a5a6e2a3cb872bc5c25f2093ca8fd498828966"
+    },
+    "files": [
+      "src/eq_biodt/v03/questions.py",
+      "src/eq_biodt/v03/uq.py",
+      "reproducibility/v08/questions.py",
+      "reviews/v08/uq/carbon-fixation.json"
+    ],
+    "paper_section": "\u00a73.5 External model composition (Experiment 12: Knallgas C-fixation bound) & \u00a73.6"
+  },
+  "series": [
+    {
+      "id": "baseline-12mm",
+      "label_plain": "Normal storm (12 mm)",
+      "label_science": "Baseline 12 mm single-pulse regime",
+      "levels": [
+        {
+          "label": "sample 14PRr2",
+          "label_plain": "sample 14PRr2",
+          "label_science": "baseline (12 mm pulse); 14PRr2",
+          "outcomes": {
+            "c_fixed_upper_bound_g_m2_yr": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Upper bound on carbon fixed per year",
+              "label_science": "Stoichiometric upper bound on autotrophic C fixation (annualised)",
+              "median": 0.0,
+              "mode": "deduced",
+              "provenance": "deduced",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "g C m\u207b\u00b2 yr\u207b\u00b9",
+              "unit_plain": "g of carbon per m\u00b2 per year",
+              "value": 0.0
+            },
+            "c_fixed_upper_bound_ug_m2": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Upper bound on carbon fixed over 14 days",
+              "label_science": "14-day stoichiometric upper bound on autotrophic C fixation",
+              "median": 0.0,
+              "mode": "deduced",
+              "provenance": "deduced",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5g C m\u207b\u00b2",
+              "unit_plain": "micrograms of carbon per m\u00b2",
+              "value": 0.0
+            },
+            "co2_fixed_upper_bound_mol_m2": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Upper bound on carbon dioxide fixed over 14 days",
+              "label_science": "14-day stoichiometric upper bound on CO\u2082 fixation",
+              "median": 0.0,
+              "mode": "deduced",
+              "provenance": "deduced",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "mol CO\u2082 m\u207b\u00b2",
+              "unit_plain": "moles of carbon dioxide per m\u00b2",
+              "value": 0.0
+            }
+          },
+          "sample": "14PRr2",
+          "scene": {
+            "active_days": 12,
+            "activity_by_day": [
+              0.9999999999999986,
+              0.9827086468505175,
+              0.9329241298476689,
+              0.8779369704724211,
+              0.8173201894423092,
+              0.7497867866132687,
+              0.6735500825367695,
+              0.5860255055388154,
+              0.48326956432319484,
+              0.3588160584305422,
+              0.20090758727679447,
+              0.024903499112256904,
+              0.0,
+              0.0
+            ],
+            "porosity": 0.4,
+            "salt_mol_l": 0.0,
+            "temp_c": 25.0,
+            "theta": 0.06314285714285922,
+            "water_mm": 12.0
+          },
+          "trajectories": {
+            "baseline": {
+              "A": [
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                13.741854295723,
+                14.401540817724493,
+                14.754619562581683,
+                14.971936621057289,
+                15.018842580351675,
+                14.844092474404043,
+                14.376730035374369,
+                13.512487906018066,
+                12.085711339480774,
+                9.804172045533727,
+                6.069184469828194,
+                0.8255348757416715,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
+              ]
+            },
+            "intervened": {
+              "A": [
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                13.741854295723,
+                14.401540817724493,
+                14.754619562581683,
+                14.971936621057289,
+                15.018842580351675,
+                14.844092474404043,
+                14.376730035374369,
+                13.512487906018066,
+                12.085711339480774,
+                9.804172045533727,
+                6.069184469828194,
+                0.8255348757416715,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
+              ]
+            }
+          },
+          "x": "14PRr2"
+        },
+        {
+          "label": "sample F14Dr1",
+          "label_plain": "sample F14Dr1",
+          "label_science": "baseline (12 mm pulse); F14Dr1",
+          "outcomes": {
+            "c_fixed_upper_bound_g_m2_yr": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.000848858
+              },
+              "label_plain": "Upper bound on carbon fixed per year",
+              "label_science": "Stoichiometric upper bound on autotrophic C fixation (annualised)",
+              "median": 0.0499342,
+              "mode": "variance",
+              "provenance": "bound",
+              "q05": 0.00621617,
+              "q25": 0.0183848,
+              "q75": 0.118346,
+              "q95": 0.268694,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "g C m\u207b\u00b2 yr\u207b\u00b9",
+              "unit_plain": "g of carbon per m\u00b2 per year",
+              "value": 0.0575709
+            },
+            "c_fixed_upper_bound_ug_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.000848858
+              },
+              "label_plain": "Upper bound on carbon fixed over 14 days",
+              "label_science": "14-day stoichiometric upper bound on autotrophic C fixation",
+              "median": 1913.97,
+              "mode": "variance",
+              "provenance": "bound",
+              "q05": 238.265,
+              "q25": 704.688,
+              "q75": 4536.17,
+              "q95": 10299.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5g C m\u207b\u00b2",
+              "unit_plain": "micrograms of carbon per m\u00b2",
+              "value": 2206.69
+            },
+            "co2_fixed_upper_bound_mol_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.000835743
+              },
+              "label_plain": "Upper bound on carbon dioxide fixed over 14 days",
+              "label_science": "14-day stoichiometric upper bound on CO\u2082 fixation",
+              "median": 0.000159331,
+              "mode": "variance",
+              "provenance": "bound",
+              "q05": 1.9844e-05,
+              "q25": 5.86744e-05,
+              "q75": 0.00037774,
+              "q95": 0.000857205,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "mol CO\u2082 m\u207b\u00b2",
+              "unit_plain": "moles of carbon dioxide per m\u00b2",
+              "value": 0.000183722
+            }
+          },
+          "sample": "F14Dr1",
+          "scene": {
+            "active_days": 12,
+            "activity_by_day": [
+              0.9999999999999986,
+              0.9827086468505175,
+              0.9329241298476689,
+              0.8779369704724211,
+              0.8173201894423092,
+              0.7497867866132687,
+              0.6735500825367695,
+              0.5860255055388154,
+              0.48326956432319484,
+              0.3588160584305422,
+              0.20090758727679447,
+              0.024903499112256904,
+              0.0,
+              0.0
+            ],
+            "porosity": 0.4,
+            "salt_mol_l": 0.0,
+            "temp_c": 25.0,
+            "theta": 0.06314285714285922,
+            "water_mm": 12.0
+          },
+          "trajectories": {
+            "baseline": {
+              "A": [
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                13.741854295723,
+                14.401540817724493,
+                14.754619562581683,
+                14.971936621057289,
+                15.018842580351675,
+                14.844092474404043,
+                14.376730035374369,
+                13.512487906018066,
+                12.085711339480774,
+                9.804172045533727,
+                6.069184469828194,
+                0.8255348757416715,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
+              ]
+            },
+            "intervened": {
+              "A": [
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                13.741854295723,
+                14.401540817724493,
+                14.754619562581683,
+                14.971936621057289,
+                15.018842580351675,
+                14.844092474404043,
+                14.376730035374369,
+                13.512487906018066,
+                12.085711339480774,
+                9.804172045533727,
+                6.069184469828194,
+                0.8255348757416715,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
+              ]
+            }
+          },
+          "x": "F14Dr1"
+        }
+      ]
+    },
+    {
+      "id": "wet-36mm",
+      "label_plain": "Heavy storm (36 mm)",
+      "label_science": "Wet 36 mm single-pulse regime",
+      "levels": [
+        {
+          "label": "sample 14PRr2",
+          "label_plain": "sample 14PRr2",
+          "label_science": "wet (36 mm pulse); 14PRr2",
+          "outcomes": {
+            "c_fixed_upper_bound_g_m2_yr": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Upper bound on carbon fixed per year",
+              "label_science": "Stoichiometric upper bound on autotrophic C fixation (annualised)",
+              "median": 0.0,
+              "mode": "deduced",
+              "provenance": "deduced",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "g C m\u207b\u00b2 yr\u207b\u00b9",
+              "unit_plain": "g of carbon per m\u00b2 per year",
+              "value": 0.0
+            },
+            "c_fixed_upper_bound_ug_m2": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Upper bound on carbon fixed over 14 days",
+              "label_science": "14-day stoichiometric upper bound on autotrophic C fixation",
+              "median": 0.0,
+              "mode": "deduced",
+              "provenance": "deduced",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5g C m\u207b\u00b2",
+              "unit_plain": "micrograms of carbon per m\u00b2",
+              "value": 0.0
+            },
+            "co2_fixed_upper_bound_mol_m2": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Upper bound on carbon dioxide fixed over 14 days",
+              "label_science": "14-day stoichiometric upper bound on CO\u2082 fixation",
+              "median": 0.0,
+              "mode": "deduced",
+              "provenance": "deduced",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "mol CO\u2082 m\u207b\u00b2",
+              "unit_plain": "moles of carbon dioxide per m\u00b2",
+              "value": 0.0
+            }
+          },
+          "sample": "14PRr2",
+          "scene": {
+            "active_days": 14,
+            "activity_by_day": [
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9798185726288866,
+              0.9293767696022435,
+              0.8740435511275821
+            ],
+            "porosity": 0.4,
+            "salt_mol_l": 0.0,
+            "temp_c": 25.0,
+            "theta": 0.16754095795633564,
+            "water_mm": 36.0
+          },
+          "trajectories": {
+            "baseline": {
+              "A": [
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9798185726288866,
+                0.9293767696022435,
+                0.8740435511275821
+              ],
+              "J_co": [
+                1.831313177100557,
+                5.064594651997291,
+                7.209960108271195,
+                8.399858661733225,
+                9.155609789839426,
+                9.894169507695766,
+                10.650442261466116,
+                11.42183855020938,
+                12.205396341423434,
+                12.997844138131885,
+                13.795685395253328,
+                14.431338166807747,
+                14.773772239902208,
+                14.980941157171799
+              ],
+              "J_h2": [
+                18.580028416781946,
+                51.256064972295476,
+                72.16524880000087,
+                83.00554513321408,
+                89.48905693022289,
+                95.50680279848459,
+                101.34052110579545,
+                106.95020112176512,
+                112.30499896016153,
+                117.38311969205382,
+                122.17116512428419,
+                124.80125334406841,
+                123.93817868688602,
+                121.61063904115944
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                28.176045179088167,
+                23.364067768632122,
+                20.958079063404117,
+                19.73264992070435,
+                18.732649920704237,
+                17.732649920704123,
+                16.73264992070401,
+                15.732649920703942,
+                14.732649920703999,
+                13.732649920704056,
+                12.732649920704112,
+                11.73264992070417,
+                10.732649920704226,
+                9.732649920704283
+              ],
+              "psi": [
+                -0.002481687745809588,
+                -0.006237035589457386,
+                -0.0109886392402033,
+                -0.01516202051511778,
+                -0.018752624542258685,
+                -0.023223609308192783,
+                -0.029110570831132748,
+                -0.03698760204749266,
+                -0.04771977851085865,
+                -0.06264469158433157,
+                -0.08389200610066046,
+                -0.11496823243443208,
+                -0.16187568370289948,
+                -0.23536784252752987
+              ]
+            },
+            "intervened": {
+              "A": [
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9798185726288866,
+                0.9293767696022435,
+                0.8740435511275821
+              ],
+              "J_co": [
+                1.831313177100557,
+                5.064594651997291,
+                7.209960108271195,
+                8.399858661733225,
+                9.155609789839426,
+                9.894169507695766,
+                10.650442261466116,
+                11.42183855020938,
+                12.205396341423434,
+                12.997844138131885,
+                13.795685395253328,
+                14.431338166807747,
+                14.773772239902208,
+                14.980941157171799
+              ],
+              "J_h2": [
+                18.580028416781946,
+                51.256064972295476,
+                72.16524880000087,
+                83.00554513321408,
+                89.48905693022289,
+                95.50680279848459,
+                101.34052110579545,
+                106.95020112176512,
+                112.30499896016153,
+                117.38311969205382,
+                122.17116512428419,
+                124.80125334406841,
+                123.93817868688602,
+                121.61063904115944
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                28.176045179088167,
+                23.364067768632122,
+                20.958079063404117,
+                19.73264992070435,
+                18.732649920704237,
+                17.732649920704123,
+                16.73264992070401,
+                15.732649920703942,
+                14.732649920703999,
+                13.732649920704056,
+                12.732649920704112,
+                11.73264992070417,
+                10.732649920704226,
+                9.732649920704283
+              ],
+              "psi": [
+                -0.002481687745809588,
+                -0.006237035589457386,
+                -0.0109886392402033,
+                -0.01516202051511778,
+                -0.018752624542258685,
+                -0.023223609308192783,
+                -0.029110570831132748,
+                -0.03698760204749266,
+                -0.04771977851085865,
+                -0.06264469158433157,
+                -0.08389200610066046,
+                -0.11496823243443208,
+                -0.16187568370289948,
+                -0.23536784252752987
+              ]
+            }
+          },
+          "x": "14PRr2"
+        },
+        {
+          "label": "sample F14Dr1",
+          "label_plain": "sample F14Dr1",
+          "label_science": "wet (36 mm pulse); F14Dr1",
+          "outcomes": {
+            "c_fixed_upper_bound_g_m2_yr": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00501838
+              },
+              "label_plain": "Upper bound on carbon fixed per year",
+              "label_science": "Stoichiometric upper bound on autotrophic C fixation (annualised)",
+              "median": 0.068633,
+              "mode": "variance",
+              "provenance": "bound",
+              "q05": 0.0133986,
+              "q25": 0.0290379,
+              "q75": 0.136528,
+              "q95": 0.235061,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "g C m\u207b\u00b2 yr\u207b\u00b9",
+              "unit_plain": "g of carbon per m\u00b2 per year",
+              "value": 0.0700096
+            },
+            "c_fixed_upper_bound_ug_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00501838
+              },
+              "label_plain": "Upper bound on carbon fixed over 14 days",
+              "label_science": "14-day stoichiometric upper bound on autotrophic C fixation",
+              "median": 2630.7,
+              "mode": "variance",
+              "provenance": "bound",
+              "q05": 513.565,
+              "q25": 1113.02,
+              "q75": 5233.12,
+              "q95": 9009.88,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5g C m\u207b\u00b2",
+              "unit_plain": "micrograms of carbon per m\u00b2",
+              "value": 2683.46
+            },
+            "co2_fixed_upper_bound_mol_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00515281
+              },
+              "label_plain": "Upper bound on carbon dioxide fixed over 14 days",
+              "label_science": "14-day stoichiometric upper bound on CO\u2082 fixation",
+              "median": 0.000218957,
+              "mode": "variance",
+              "provenance": "bound",
+              "q05": 4.27485e-05,
+              "q25": 9.26431e-05,
+              "q75": 0.000435679,
+              "q95": 0.000750249,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "mol CO\u2082 m\u207b\u00b2",
+              "unit_plain": "moles of carbon dioxide per m\u00b2",
+              "value": 0.000223417
+            }
+          },
+          "sample": "F14Dr1",
+          "scene": {
+            "active_days": 14,
+            "activity_by_day": [
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9798185726288866,
+              0.9293767696022435,
+              0.8740435511275821
+            ],
+            "porosity": 0.4,
+            "salt_mol_l": 0.0,
+            "temp_c": 25.0,
+            "theta": 0.16754095795633564,
+            "water_mm": 36.0
+          },
+          "trajectories": {
+            "baseline": {
+              "A": [
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9798185726288866,
+                0.9293767696022435,
+                0.8740435511275821
+              ],
+              "J_co": [
+                1.831313177100557,
+                5.064594651997291,
+                7.209960108271195,
+                8.399858661733225,
+                9.155609789839426,
+                9.894169507695766,
+                10.650442261466116,
+                11.42183855020938,
+                12.205396341423434,
+                12.997844138131885,
+                13.795685395253328,
+                14.431338166807747,
+                14.773772239902208,
+                14.980941157171799
+              ],
+              "J_h2": [
+                18.580028416781946,
+                51.256064972295476,
+                72.16524880000087,
+                83.00554513321408,
+                89.48905693022289,
+                95.50680279848459,
+                101.34052110579545,
+                106.95020112176512,
+                112.30499896016153,
+                117.38311969205382,
+                122.17116512428419,
+                124.80125334406841,
+                123.93817868688602,
+                121.61063904115944
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                28.176045179088167,
+                23.364067768632122,
+                20.958079063404117,
+                19.73264992070435,
+                18.732649920704237,
+                17.732649920704123,
+                16.73264992070401,
+                15.732649920703942,
+                14.732649920703999,
+                13.732649920704056,
+                12.732649920704112,
+                11.73264992070417,
+                10.732649920704226,
+                9.732649920704283
+              ],
+              "psi": [
+                -0.002481687745809588,
+                -0.006237035589457386,
+                -0.0109886392402033,
+                -0.01516202051511778,
+                -0.018752624542258685,
+                -0.023223609308192783,
+                -0.029110570831132748,
+                -0.03698760204749266,
+                -0.04771977851085865,
+                -0.06264469158433157,
+                -0.08389200610066046,
+                -0.11496823243443208,
+                -0.16187568370289948,
+                -0.23536784252752987
+              ]
+            },
+            "intervened": {
+              "A": [
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9798185726288866,
+                0.9293767696022435,
+                0.8740435511275821
+              ],
+              "J_co": [
+                1.831313177100557,
+                5.064594651997291,
+                7.209960108271195,
+                8.399858661733225,
+                9.155609789839426,
+                9.894169507695766,
+                10.650442261466116,
+                11.42183855020938,
+                12.205396341423434,
+                12.997844138131885,
+                13.795685395253328,
+                14.431338166807747,
+                14.773772239902208,
+                14.980941157171799
+              ],
+              "J_h2": [
+                18.580028416781946,
+                51.256064972295476,
+                72.16524880000087,
+                83.00554513321408,
+                89.48905693022289,
+                95.50680279848459,
+                101.34052110579545,
+                106.95020112176512,
+                112.30499896016153,
+                117.38311969205382,
+                122.17116512428419,
+                124.80125334406841,
+                123.93817868688602,
+                121.61063904115944
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                28.176045179088167,
+                23.364067768632122,
+                20.958079063404117,
+                19.73264992070435,
+                18.732649920704237,
+                17.732649920704123,
+                16.73264992070401,
+                15.732649920703942,
+                14.732649920703999,
+                13.732649920704056,
+                12.732649920704112,
+                11.73264992070417,
+                10.732649920704226,
+                9.732649920704283
+              ],
+              "psi": [
+                -0.002481687745809588,
+                -0.006237035589457386,
+                -0.0109886392402033,
+                -0.01516202051511778,
+                -0.018752624542258685,
+                -0.023223609308192783,
+                -0.029110570831132748,
+                -0.03698760204749266,
+                -0.04771977851085865,
+                -0.06264469158433157,
+                -0.08389200610066046,
+                -0.11496823243443208,
+                -0.16187568370289948,
+                -0.23536784252752987
+              ]
+            }
+          },
+          "x": "F14Dr1"
+        }
+      ]
+    }
+  ],
+  "slug": "carbon-fixation",
+  "theme": "microbes",
+  "title_plain": "How much carbon can the hydrogen eaters fix?",
+  "title_science": "Stoichiometric upper bound on knallgas autotrophic carbon fixation (exp06)",
+  "twin_version": "0.8.0",
+  "uncertainty": {
+    "S1": {
+      "activation_shape": [
+        0.0045308,
+        -0.00705646,
+        0.0160056
+      ],
+      "d_co_m2_s": [
+        -2.03895e-18,
+        -5.11254e-18,
+        2.43667e-19
+      ],
+      "d_h2_m2_s": [
+        0.00147253,
+        -0.00332681,
+        0.00675907
+      ],
+      "drainage_fraction_day": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dry_threshold_mpa": [
+        9.19764e-05,
+        -0.000789507,
+        0.000965884
+      ],
+      "field_capacity_fraction": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "k_co_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "k_h2_s": [
+        0.718317,
+        0.591612,
+        0.856427
+      ],
+      "knallgas_co2_per_h2": [
+        0.033012,
+        -0.000281986,
+        0.0723042
+      ],
+      "molar_mass_c_g_mol": [
+        2.87259e-06,
+        -5.83585e-05,
+        6.32584e-05
+      ],
+      "porosity": [
+        -0.00143502,
+        -0.00768816,
+        0.00523955
+      ],
+      "psi_entry_mpa": [
+        0.042368,
+        0.00898704,
+        0.0765021
+      ],
+      "q10": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "retention_b": [
+        0.0651514,
+        0.0219409,
+        0.113332
+      ],
+      "wet_activation_mpa": [
+        0.000741898,
+        -0.00756807,
+        0.00940674
+      ]
+    },
+    "ST": {
+      "activation_shape": [
+        0.0111953,
+        0.00921813,
+        0.0136808
+      ],
+      "d_co_m2_s": [
+        3.39054e-34,
+        5.30894e-35,
+        8.80991e-34
+      ],
+      "d_h2_m2_s": [
+        0.00198417,
+        0.00154736,
+        0.00243883
+      ],
+      "drainage_fraction_day": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dry_threshold_mpa": [
+        6.60089e-05,
+        5.38263e-05,
+        8.14188e-05
+      ],
+      "field_capacity_fraction": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "k_co_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "k_h2_s": [
+        0.828627,
+        0.753534,
+        0.913683
+      ],
+      "knallgas_co2_per_h2": [
+        0.0607808,
+        0.0498464,
+        0.0745181
+      ],
+      "molar_mass_c_g_mol": [
+        2.40897e-07,
+        1.9624e-07,
+        2.88031e-07
+      ],
+      "porosity": [
+        0.00253219,
+        0.00196931,
+        0.00315952
+      ],
+      "psi_entry_mpa": [
+        0.0865794,
+        0.0728869,
+        0.105013
+      ],
+      "q10": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "retention_b": [
+        0.125385,
+        0.104964,
+        0.148224
+      ],
+      "wet_activation_mpa": [
+        0.00541575,
+        0.00443399,
+        0.00656459
+      ]
+    },
+    "convergence": {
+      "discrete": false,
+      "flagged": false,
+      "half_n_shift_frac": 0.000848858
+    },
+    "d": 15,
+    "group_S1": {
+      "modeller_assumption": [
+        0.938489,
+        0.780059,
+        1.12583
+      ],
+      "source_not_checked": [
+        0.0330105,
+        -0.000290281,
+        0.0722859
+      ],
+      "verified_in_source": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "group_ST": {
+      "modeller_assumption": [
+        0.963728,
+        0.899062,
+        1.04177
+      ],
+      "source_not_checked": [
+        0.0607561,
+        0.0498263,
+        0.0744789
+      ],
+      "verified_in_source": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "headline_label": "baseline (12 mm pulse); F14Dr1",
+    "headline_level": 1,
+    "headline_output": "c_fixed_upper_bound_g_m2_yr",
+    "headline_series": "baseline-12mm",
+    "inputs": [
+      {
+        "dist": "triangular",
+        "high": 2.0,
+        "kind": "parameter",
+        "low": 0.5,
+        "meaning": "Exponent of the logarithmic moisture-activation ramp between dry and wet thresholds",
+        "name": "activation_shape",
+        "note": "Bounds [0.5, 2.0] around 1.0 from planning.parameter_ensemble.",
+        "source": {
+          "authors": "EQ-BioDT v0.6 scenario ensemble",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/planning.py:parameter_ensemble",
+          "title": "Scenario sensitivity grid for activation shape exponent",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "-",
+        "value": 1.0
+      },
+      {
+        "dist": "triangular",
+        "high": 2.52e-05,
+        "kind": "parameter",
+        "low": 1.68e-05,
+        "meaning": "Free-air binary molecular diffusivity of CO before Millington-Quirk tortuosity scaling",
+        "name": "d_co_m2_s",
+        "note": "+-20 % around the 2.1e-5 m2/s reference diffusivity to represent temperature/packing tortuosity uncertainty.",
+        "source": {
+          "authors": "EQ-BioDT v0.8 parameter range",
+          "doi_or_url": "https://doi.org/10.1039/TF9615701200",
+          "page_or_table": "src/eq_biodt/v03/process.py:Parameters",
+          "title": "Effective free-air diffusivity allowance (+-20 % around 2.1e-5 m2/s)",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "m2/s",
+        "value": 2.1e-05
+      },
+      {
+        "dist": "triangular",
+        "high": 9.24e-05,
+        "kind": "parameter",
+        "low": 6.16e-05,
+        "meaning": "Free-air binary molecular diffusivity of H2 before Millington-Quirk tortuosity scaling",
+        "name": "d_h2_m2_s",
+        "note": "+-20 % around the 7.7e-5 m2/s reference diffusivity to represent temperature/packing tortuosity uncertainty.",
+        "source": {
+          "authors": "EQ-BioDT v0.8 parameter range",
+          "doi_or_url": "https://doi.org/10.1039/TF9615701200",
+          "page_or_table": "src/eq_biodt/v03/process.py:Parameters",
+          "title": "Effective free-air diffusivity allowance (+-20 % around 7.7e-5 m2/s)",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "m2/s",
+        "value": 7.7e-05
+      },
+      {
+        "dist": "triangular",
+        "high": 0.7,
+        "kind": "parameter",
+        "low": 0.3,
+        "meaning": "Daily fraction of water above field capacity drained from the 10 cm sand layer",
+        "name": "drainage_fraction_day",
+        "note": "Modeller assumption [0.3, 0.7] day-1 around the 0.5 day-1 reference drainage fraction.",
+        "source": {
+          "authors": "EQ-BioDT v0.8 parameter range",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/process.py:Parameters",
+          "title": "Bucket-model daily drainage fraction assumption",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "1/day",
+        "value": 0.5
+      },
+      {
+        "dist": "triangular",
+        "high": -70.0,
+        "kind": "parameter",
+        "low": -100.0,
+        "meaning": "Dry water-potential threshold below which moisture activation is zero",
+        "name": "dry_threshold_mpa",
+        "note": "Bounds [-100.0, -70.0] MPa around -85.0 MPa from planning.parameter_ensemble and contract clause C2.",
+        "source": {
+          "authors": "EQ-BioDT v0.6 scenario ensemble (informed by Reji et al. 2025)",
+          "doi_or_url": "https://doi.org/10.1038/s41467-025-67208-3",
+          "page_or_table": "src/eq_biodt/v03/planning.py:parameter_ensemble",
+          "title": "Scenario sensitivity grid for dry activation threshold",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "MPa",
+        "value": -85.0
+      },
+      {
+        "dist": "triangular",
+        "high": 0.6,
+        "kind": "parameter",
+        "low": 0.4,
+        "meaning": "Fraction of pore storage below which gravitational drainage ceases",
+        "name": "field_capacity_fraction",
+        "note": "Modeller assumption [0.4, 0.6] around the 0.5 reference field-capacity fraction.",
+        "source": {
+          "authors": "EQ-BioDT v0.8 parameter range",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/process.py:Parameters",
+          "title": "Bucket-model field-capacity fraction assumption",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "-",
+        "value": 0.5
+      },
+      {
+        "dist": "loguniform",
+        "high": 0.01,
+        "kind": "parameter",
+        "low": 0.0001,
+        "meaning": "Bulk-soil first-order CO reaction rate coefficient at reference temperature and full activation",
+        "name": "k_co_s",
+        "note": "Log-uniform over one order of magnitude below and above the 0.001 s-1 reference rate, matching the 0.1x-10x multipliers in planning.parameter_ensemble.",
+        "source": {
+          "authors": "EQ-BioDT v0.6 scenario ensemble",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/planning.py:parameter_ensemble",
+          "title": "Scenario sensitivity grid (rate multipliers 0.1 to 10 around 0.001 s-1)",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "1/s",
+        "value": 0.001
+      },
+      {
+        "dist": "loguniform",
+        "high": 0.01,
+        "kind": "parameter",
+        "low": 0.0001,
+        "meaning": "Bulk-soil first-order H2 reaction rate coefficient at reference temperature and full activation",
+        "name": "k_h2_s",
+        "note": "Log-uniform over one order of magnitude below and above the 0.001 s-1 reference rate, matching the 0.1x-10x multipliers in planning.parameter_ensemble.",
+        "source": {
+          "authors": "EQ-BioDT v0.6 scenario ensemble",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/planning.py:parameter_ensemble",
+          "title": "Scenario sensitivity grid (rate multipliers 0.1 to 10 around 0.001 s-1)",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "1/s",
+        "value": 0.001
+      },
+      {
+        "dist": "triangular",
+        "high": 0.25,
+        "kind": "constant",
+        "low": 0.1,
+        "meaning": "CO2 fixed per H2 oxidised by knallgas (hydrogen-oxidising) autotrophs via the Calvin-Benson-Bassham cycle (theoretical 6 H2 : 2 O2 : 1 CO2)",
+        "name": "knallgas_co2_per_h2",
+        "note": "DOI verified via Crossref (Bongers L 1970, J Bacteriol 104:145-151). Paper (ASM 403) not read. 1/6 follows from balanced 6H2+2O2+CO2->(CH2O)+5H2O (textbook stoichiometry, ideal, no biomass synthesis); realistic yields lower, hence low 0.1.",
+        "source": {
+          "authors": "Bongers L",
+          "doi_or_url": "https://doi.org/10.1128/jb.104.1.145-151.1970",
+          "page_or_table": "J Bacteriol 104(1):145-151",
+          "title": "Energy generation and utilization in hydrogen bacteria",
+          "year": 1970
+        },
+        "status": "source_not_checked",
+        "unit": "mol CO2 per mol H2",
+        "value": 0.166667
+      },
+      {
+        "dist": "triangular",
+        "high": 12.02,
+        "kind": "constant",
+        "low": 12.0,
+        "meaning": "Molar mass of carbon",
+        "name": "molar_mass_c_g_mol",
+        "note": "Standard atomic weight of C is the interval [12.0096,12.0116] (conventional 12.011); not fetched but textbook-known. Low-risk.",
+        "source": {
+          "authors": "IUPAC",
+          "doi_or_url": "https://iupac.qmul.ac.uk/AtWt/",
+          "page_or_table": "carbon",
+          "title": "Standard atomic weights",
+          "year": 2021
+        },
+        "status": "source_not_checked",
+        "unit": "g/mol",
+        "value": 12.011
+      },
+      {
+        "dist": "triangular",
+        "high": 0.5,
+        "kind": "parameter",
+        "low": 0.35,
+        "meaning": "Total pore volume fraction of undisturbed Rub' al-Khali sand (excluded when porosity is intervened on)",
+        "name": "porosity",
+        "note": "Bounds [0.35, 0.5] around 0.4 from external_transfer.py:CANDIDATES; excluded whenever an experiment intervenes on porosity.",
+        "source": {
+          "authors": "EQ-BioDT v0.5 external transfer protocol",
+          "doi_or_url": "",
+          "page_or_table": "reproducibility/v05/external_transfer.py:CANDIDATES",
+          "title": "Cross-desert porosity candidate grid",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "-",
+        "value": 0.4
+      },
+      {
+        "dist": "loguniform",
+        "high": -0.0001,
+        "kind": "parameter",
+        "low": -0.01,
+        "meaning": "Campbell water-retention air-entry potential",
+        "name": "psi_entry_mpa",
+        "note": "Log-uniform on magnitude over [-0.01, -0.0001] MPa centered on -0.001 MPa, reusing the entry-potential grid in external_transfer.py:CANDIDATES.",
+        "source": {
+          "authors": "EQ-BioDT v0.5 external transfer protocol",
+          "doi_or_url": "",
+          "page_or_table": "reproducibility/v05/external_transfer.py:CANDIDATES",
+          "title": "Cross-desert retention candidate grid",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "MPa",
+        "value": -0.001
+      },
+      {
+        "dist": "uniform",
+        "high": 2.0,
+        "kind": "parameter",
+        "low": 1.0,
+        "meaning": "Thermal Q10 factor per 10 degC above the 25 degC reference temperature",
+        "name": "q10",
+        "note": "Bounds [1.0, 2.0] from external_transfer.py:CANDIDATES (spanning no thermal amplification Q10=1 to the reference Q10=2).",
+        "source": {
+          "authors": "EQ-BioDT v0.5 external transfer protocol",
+          "doi_or_url": "",
+          "page_or_table": "reproducibility/v05/external_transfer.py:CANDIDATES",
+          "title": "Cross-desert Q10 candidate grid",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "-",
+        "value": 2.0
+      },
+      {
+        "dist": "triangular",
+        "high": 6.0,
+        "kind": "parameter",
+        "low": 2.0,
+        "meaning": "Campbell water-retention pore-size distribution exponent b",
+        "name": "retention_b",
+        "note": "Bounds [2.0, 6.0] with mode 4.0 reuse the transfer grid in external_transfer.py:CANDIDATES (widening planning.parameter_ensemble [3.0, 5.0]).",
+        "source": {
+          "authors": "EQ-BioDT v0.5/v0.6 sensitivity grids",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/planning.py:parameter_ensemble; reproducibility/v05/external_transfer.py:CANDIDATES",
+          "title": "Scenario ensemble (3-5) widened to the cross-desert transfer grid (2-6)",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "-",
+        "value": 4.0
+      },
+      {
+        "dist": "loguniform",
+        "high": -0.03,
+        "kind": "parameter",
+        "low": -0.3,
+        "meaning": "Water potential above which microbial moisture activation reaches 1",
+        "name": "wet_activation_mpa",
+        "note": "Log-uniform on magnitude over [-0.3, -0.03] MPa around the -0.1 MPa reference threshold (half an order of magnitude each side, strictly between dry_threshold_mpa and psi_entry_mpa).",
+        "source": {
+          "authors": "EQ-BioDT v0.6 model contract",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/process.py:Parameters",
+          "title": "Clause C2 wet-activation endpoint assumption",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "MPa",
+        "value": -0.1
+      }
+    ],
+    "median": 0.0499342,
+    "mode": "variance",
+    "n": 1024,
+    "oat": {
+      "activation_shape": {
+        "high": 0.04522053757614804,
+        "low": 0.06784917424064926,
+        "span": 0.022628636664501225
+      },
+      "d_co_m2_s": {
+        "high": 0.05757101826298943,
+        "low": 0.05757101826298943,
+        "span": 0.0
+      },
+      "d_h2_m2_s": {
+        "high": 0.05956724658702629,
+        "low": 0.054912327756320024,
+        "span": 0.004654918830706269
+      },
+      "drainage_fraction_day": {
+        "high": 0.05757101826298943,
+        "low": 0.05757101826298943,
+        "span": 0.0
+      },
+      "dry_threshold_mpa": {
+        "high": 0.056704940762610956,
+        "low": 0.05827797306505816,
+        "span": 0.0015730323024472012
+      },
+      "field_capacity_fraction": {
+        "high": 0.05757101826298943,
+        "low": 0.05757101826298943,
+        "span": 0.0
+      },
+      "k_co_s": {
+        "high": 0.05757101826298943,
+        "low": 0.05757101826298943,
+        "span": 0.0
+      },
+      "k_h2_s": {
+        "high": 0.2649414359921365,
+        "low": 0.007162411346907597,
+        "span": 0.2577790246452289
+      },
+      "knallgas_co2_per_h2": {
+        "high": 0.08635635468177479,
+        "low": 0.03454254187270991,
+        "span": 0.05181381280906488
+      },
+      "molar_mass_c_g_mol": {
+        "high": 0.05761415698286013,
+        "low": 0.05751829316092526,
+        "span": 9.586382193487591e-05
+      },
+      "porosity": {
+        "high": 0.051854599144364126,
+        "low": 0.05823383546356484,
+        "span": 0.006379236319200711
+      },
+      "psi_entry_mpa": {
+        "high": 0.07683491813772547,
+        "low": 0.03253469302746538,
+        "span": 0.04430022511026009
+      },
+      "q10": {
+        "high": 0.05757101826298943,
+        "low": 0.05757101826298943,
+        "span": 0.0
+      },
+      "retention_b": {
+        "high": 0.025515981966702798,
+        "low": 0.09488492360569536,
+        "span": 0.06936894163899257
+      },
+      "wet_activation_mpa": {
+        "high": 0.05050460469659634,
+        "low": 0.0638500178027965,
+        "span": 0.013345413106200167
+      }
+    },
+    "q05": 0.00621617,
+    "q25": 0.0183848,
+    "q75": 0.118346,
+    "q95": 0.268694,
+    "refusal_fraction": 0.0
+  },
+  "version": "question-1",
+  "x_label_plain": "Soil sample",
+  "x_label_science": "Metagenomic sample ID"
+}

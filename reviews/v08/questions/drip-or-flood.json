@@ -1,0 +1,1604 @@
+{
+  "answer_plain": "Watering once every ten days changes hydrogen uptake over two weeks by -5.5 % compared with a single rain (range -48 to 175 %), versus -37 % when watering every three days (range -68 to 129 %) and -38 % for daily drip (range -73 to 136 %), so the change may go up or down across uncertain model numbers. Less frequent, deeper watering loses a smaller fraction of water to daily surface evaporation than tiny daily doses.",
+  "answer_science": "Central percentage change: h2_uptake_change_pct = -5.547 % (median 2.475 %, 50 % IQR [-24.25, 47.56] %, joint 5\u201395 % interval [-47.9, 174.6] %) (rounded headline: -5.5 %); absolute change h2_uptake_contrast_umol_m2 = -61.15 \u00b5mol m\u207b\u00b2 (median 12.93 \u00b5mol m\u207b\u00b2, 50 % IQR [-453.2, 169.6] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [-2142, 631] \u00b5mol m\u207b\u00b2); absolute uptake h2_uptake_umol_m2 = 1041 \u00b5mol m\u207b\u00b2 (median 1016 \u00b5mol m\u207b\u00b2, 50 % IQR [475.5, 1885] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [229.8, 3110] \u00b5mol m\u207b\u00b2) (mode = variance, refusal fraction = 0.0 %, max level refusal across question = 0.0 %). Top two Sobol' contributors to output variance: psi_entry_mpa (ST = 0.61 [0.35, 0.95], S1 = 0.20) and retention_b (ST = 0.40 [0.27, 0.57], S1 = 0.24). Status share of variance: verified_in_source ST = 0.00 (S1 = 0.00), modeller_assumption ST = 0.98 (S1 = 0.83), source_not_checked ST = 0.00 (S1 = 0.00) (joint group total indices can sum to more than 1 because of interactions). Limits: The parameter-uncertainty interval quantifies joint variation over literature constants and twin process parameters only and excludes external-model and twin model-structure error.",
+  "baseline_label": "One 12 mm rain on day 1, no irrigation",
+  "chain": [
+    {
+      "id": "crop_water_demand_generic",
+      "kind": "upstream",
+      "name_plain": "Daily desert crop watering demand",
+      "name_science": "Crop water demand, hot-desert order of magnitude (FAO-56)"
+    },
+    {
+      "id": "irrigation_schedule",
+      "kind": "upstream",
+      "name_plain": "Equal-volume watering schedule across 14 days",
+      "name_science": "Equal-total irrigation delivered in pulses every k days"
+    },
+    {
+      "id": "eq_biodt_v03",
+      "kind": "twin",
+      "name_plain": "Desert sand water, salt and gas-uptake twin",
+      "name_science": "EQ-BioDT v0.3 two-layer causal-ontological soil twin"
+    }
+  ],
+  "headline": [
+    "h2_uptake_change_pct",
+    "h2_uptake_umol_m2",
+    "h2_uptake_contrast_umol_m2"
+  ],
+  "headline_level": {
+    "label": "every 10 d",
+    "level": 2,
+    "series": "irrigation-interval",
+    "x": 10.0
+  },
+  "headline_output": "h2_uptake_change_pct",
+  "headline_plain": "Watering once every ten days changes hydrogen uptake over two weeks by -5.5 % compared with a single flood, versus -38 % for daily drip, and the change may go up or down.",
+  "headline_science": "Central h2_uptake_change_pct = -5.547 % (median 2.475 %, 50 % IQR [-24.25, 47.56] %, joint 5\u201395 % interval [-47.9, 174.6] %) (plain headline: -5.5 %); absolute change h2_uptake_contrast_umol_m2 = -61.15 \u00b5mol m\u207b\u00b2 (median 12.93 \u00b5mol m\u207b\u00b2, 50 % IQR [-453.2, 169.6] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [-2142, 631] \u00b5mol m\u207b\u00b2); absolute uptake h2_uptake_umol_m2 = 1041 \u00b5mol m\u207b\u00b2 (median 1016 \u00b5mol m\u207b\u00b2, 50 % IQR [475.5, 1885] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [229.8, 3110] \u00b5mol m\u207b\u00b2) (mode = variance, refusal = 0.0 %).",
+  "headline_value": -5.5474091806198285,
+  "level_kind": "numeric",
+  "limits_plain": "The range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong. Pipe layout, root uptake and uneven wetting around drip emitters are not represented.",
+  "limits_science": "The parameter-uncertainty interval quantifies joint variation over literature constants and twin process parameters only and excludes external-model and twin model-structure error. Assumes spatially uniform 1-D infiltration and fixed daily potential evaporation without 3-D drip-bulb geometry or plant transpiration.",
+  "methods": {
+    "admissibility": {
+      "dilute_nacl_limit_mol_l": 0.1,
+      "refusal_threshold_fraction": 0.05,
+      "scope": "Joint parameter and literature-constant uncertainty only; excludes model-structure error."
+    },
+    "data": [
+      "data/v03/entailed_memberships.json",
+      "data/v03/mag_evidence.tsv",
+      "data/external/composition_constants.json",
+      "data/external/twin_parameter_ranges.json"
+    ],
+    "gates": [
+      {
+        "id": "Group1hNiFeHydrogenase",
+        "pathway": "Atmospheric H\u2082 oxidation",
+        "rule": "Closed when sample has 0 MAGs entailed as carrying Group 1h [NiFe]-hydrogenase; fixes J_H2 = 0 exactly."
+      },
+      {
+        "id": "FormICODehydrogenaseSubunit",
+        "pathway": "Atmospheric CO oxidation",
+        "rule": "Closed when sample has 0 MAGs entailed as carrying Form I CO dehydrogenase; fixes J_CO = 0 exactly."
+      },
+      {
+        "id": "CBBAutotrophicCarbonFixationPathway",
+        "pathway": "Knallgas autotrophic CO\u2082 fixation",
+        "rule": "Closed when sample has 0 MAGs carrying both Group 1h [NiFe]-hydrogenase and CBB RuBisCO; fixes C_fixed = 0 exactly."
+      }
+    ],
+    "models": [
+      {
+        "constants": [
+          {
+            "evidence": "FAO-56 Table 2: 'Tropics and subtropics - arid and semi-arid 2-4 / 4-6 / 6-8 mm/day (cool/moderate/warm)'. http://www.fao.org/4/x0490e/x0490e04.htm",
+            "high": 9.0,
+            "id": "crop_etc_mm_per_day",
+            "low": 4.0,
+            "meaning": "Order-of-magnitude crop water demand in a hot desert irrigated system, used only to set the seasonal irrigation total in the delivery-schedule experiment",
+            "note": "Modeller order-of-magnitude. FAO-56 Table 2: arid/semi-arid tropics ETo >30C = 6-8 mm/day; ETc = Kc ETo, Kc 0.8-1.2 gives 5-9; range 4-9 plausible. Not a source value.",
+            "source": {
+              "authors": "Allen RG, Pereira LS, Raes D, Smith M",
+              "doi_or_url": "https://www.fao.org/3/x0490e/x0490e00.htm",
+              "page_or_table": "Table 2 (ETo, arid warm 6-8 mm/day) x Kc, Chapter 3-6",
+              "title": "Crop evapotranspiration: guidelines for computing crop water requirements (FAO Irrigation and Drainage Paper 56)",
+              "year": 1998
+            },
+            "status": "modeller_assumption",
+            "unit": "mm/day",
+            "value": 6.0,
+            "verified": false
+          }
+        ],
+        "equation_tex": "P_{\\mathrm{crop}}(t) = ET_{c,\\mathrm{desert}}",
+        "id": "crop_water_demand_generic",
+        "kind": "upstream",
+        "name": "Crop water demand, hot-desert order of magnitude (FAO-56)",
+        "name_plain": "Daily desert crop watering demand",
+        "validity": {}
+      },
+      {
+        "constants": [],
+        "equation_tex": "P_{\\mathrm{irr}}(t) = \\frac{V_{\\mathrm{tot}}}{N_{\\mathrm{pulses}}}\\,\\mathbb{I}(t \\equiv 0 \\pmod k)",
+        "id": "irrigation_schedule",
+        "kind": "upstream",
+        "name": "Equal-total irrigation delivered in pulses every k days",
+        "name_plain": "Equal-volume watering schedule across 14 days",
+        "validity": {
+          "irrigation_interval_days": [
+            1.0,
+            60.0
+          ],
+          "irrigation_mm_per_day": [
+            0.0,
+            50.0
+          ],
+          "irrigation_nacl_mol_l": [
+            0.0,
+            0.2
+          ]
+        }
+      },
+      {
+        "citation": "EQ-BioDT v0.3 process-ontological soil model (Campbell 1974; Moldrup 2000; van 't Hoff)",
+        "constants": [],
+        "equation_tex": "\\frac{\\mathrm{d}W}{\\mathrm{d}t}=P-E-Q,\\quad J_g = \\mathbb{I}_{\\mathrm{gate}}\\,A(\\psi,T)\\,D_{\\mathrm{eff}}(\\theta,\\phi)\\,k_g\\,C_g",
+        "id": "eq_biodt_v03",
+        "kind": "twin",
+        "name": "EQ-BioDT v0.3 two-layer causal-ontological soil twin",
+        "name_plain": "Desert sand water, salt and gas-uptake twin",
+        "validity": {
+          "osmotic_domain_mol_l": [
+            0.0,
+            0.1
+          ],
+          "porosity": [
+            0.05,
+            0.9
+          ],
+          "water_mm": [
+            0.0,
+            200.0
+          ]
+        }
+      }
+    ]
+  },
+  "reproduce": {
+    "commands": [
+      "uv run python reproducibility/v08/reproduce.py",
+      "uv run python reproducibility/v08/questions.py --uq-dir reviews/v08/uq --out reviews/v08/questions"
+    ],
+    "digests": {
+      "constants_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578",
+      "parameter_ranges_sha256": "f6b9fe6f95d88360375a81171deae746e17c213600077bcc49fa8e05b47ad027",
+      "uq_sha256": "5b7428d2fa2f029bab616379a1c18d3a170fa4497d610e37fbbef50f6c11dcec"
+    },
+    "files": [
+      "src/eq_biodt/v03/questions.py",
+      "src/eq_biodt/v03/uq.py",
+      "reproducibility/v08/questions.py",
+      "reviews/v08/uq/drip-or-flood.json"
+    ],
+    "paper_section": "\u00a73.5 External model composition (Experiment 2) & \u00a73.6"
+  },
+  "series": [
+    {
+      "id": "irrigation-interval",
+      "label_plain": "Days between waterings",
+      "label_science": "Equal seasonal water demand split by interval",
+      "levels": [
+        {
+          "label": "every day",
+          "label_plain": "every day",
+          "label_science": "every 1 d",
+          "outcomes": {
+            "h2_uptake_change_pct": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.0415525
+              },
+              "label_plain": "Percentage change in hydrogen uptake over 14 days",
+              "label_science": "14-day relative H\u2082 uptake change vs baseline",
+              "median": -28.9265,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": -72.5579,
+              "q25": -52.6955,
+              "q75": 8.73852,
+              "q95": 136.469,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "%",
+              "unit_plain": "%",
+              "value": -38.355106850652206
+            },
+            "h2_uptake_contrast_umol_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.017302
+              },
+              "label_plain": "Change in hydrogen uptake over 14 days",
+              "label_science": "14-day H\u2082 uptake contrast vs baseline",
+              "median": -248.012,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": -3253.99,
+              "q25": -1053.76,
+              "q75": 35.7882,
+              "q95": 294.807,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": -422.801
+            },
+            "h2_uptake_umol_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00153544
+              },
+              "label_plain": "Hydrogen taken up over 14 days",
+              "label_science": "14-day cumulative H\u2082 uptake",
+              "median": 656.591,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": 181.352,
+              "q25": 335.266,
+              "q75": 1205.46,
+              "q95": 2155.11,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": 679.532
+            }
+          },
+          "sample": null,
+          "scene": {
+            "active_days": 14,
+            "activity_by_day": [
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986
+            ],
+            "porosity": 0.4,
+            "salt_mol_l": 0.0,
+            "temp_c": 25.0,
+            "theta": 0.2373041331839861,
+            "water_mm": 96.0
+          },
+          "trajectories": {
+            "baseline": {
+              "A": [
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                13.741854295723,
+                14.401540817724493,
+                14.754619562581683,
+                14.971936621057289,
+                15.018842580351675,
+                14.844092474404043,
+                14.376730035374369,
+                13.512487906018066,
+                12.085711339480774,
+                9.804172045533727,
+                6.069184469828194,
+                0.8255348757416715,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
+              ]
+            },
+            "intervened": {
+              "A": [
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986
+              ],
+              "J_co": [
+                9.106560851377013,
+                6.5363504521681435,
+                5.272345477505589,
+                4.684713304344479,
+                4.402374616168,
+                4.264125950243273,
+                4.195738532014742,
+                4.161729918862833,
+                4.144771996307364,
+                4.136304644893306,
+                4.132073873391174,
+                4.129959213909117,
+                4.128902065762607,
+                4.128373537091379
+              ],
+              "J_h2": [
+                89.07830459071656,
+                65.74842487065307,
+                53.329544530634166,
+                47.449258455967666,
+                44.60967097819942,
+                43.216708193296675,
+                42.527117470742105,
+                42.1840661784446,
+                42.01297914316079,
+                41.927545597644844,
+                41.88485635755442,
+                41.863518625612656,
+                41.85285148228379,
+                41.84751834135668
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                18.799999999999887,
+                21.676045179087996,
+                23.114067768632047,
+                23.833079063404078,
+                24.192584710790097,
+                24.372337534483098,
+                24.462213946329605,
+                24.50715215225286,
+                24.52962125521448,
+                24.540855806695287,
+                24.546473082435696,
+                24.5492817203059,
+                24.55068603924099,
+                24.551388198708544
+              ],
+              "psi": [
+                -0.01849194139568753,
+                -0.009190888288229076,
+                -0.006588653990048372,
+                -0.005639553351681313,
+                -0.005230271156969911,
+                -0.005039809502171038,
+                -0.004947889826605973,
+                -0.004902730403605011,
+                -0.004880347482207289,
+                -0.004869204811383371,
+                -0.004863645622886849,
+                -0.004860869059073278,
+                -0.004859481533989966,
+                -0.004858787960556112
+              ]
+            }
+          },
+          "x": 1.0
+        },
+        {
+          "label": "every 3 days",
+          "label_plain": "every 3 days",
+          "label_science": "every 3 d",
+          "outcomes": {
+            "h2_uptake_change_pct": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00333139
+              },
+              "label_plain": "Percentage change in hydrogen uptake over 14 days",
+              "label_science": "14-day relative H\u2082 uptake change vs baseline",
+              "median": -26.6432,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": -68.3438,
+              "q25": -51.1293,
+              "q75": 11.4391,
+              "q95": 128.571,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "%",
+              "unit_plain": "%",
+              "value": -37.26659729863844
+            },
+            "h2_uptake_contrast_umol_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00374385
+              },
+              "label_plain": "Change in hydrogen uptake over 14 days",
+              "label_science": "14-day H\u2082 uptake contrast vs baseline",
+              "median": -213.777,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": -3081.23,
+              "q25": -1030.86,
+              "q75": 38.473,
+              "q95": 300.328,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": -410.802
+            },
+            "h2_uptake_umol_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00406858
+              },
+              "label_plain": "Hydrogen taken up over 14 days",
+              "label_science": "14-day cumulative H\u2082 uptake",
+              "median": 684.463,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": 188.956,
+              "q25": 351.138,
+              "q75": 1255.53,
+              "q95": 2153.28,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": 691.531
+            }
+          },
+          "sample": null,
+          "scene": {
+            "active_days": 14,
+            "activity_by_day": [
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986
+            ],
+            "porosity": 0.4,
+            "salt_mol_l": 0.0,
+            "temp_c": 25.0,
+            "theta": 0.23869829370374468,
+            "water_mm": 96.0
+          },
+          "trajectories": {
+            "baseline": {
+              "A": [
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                13.741854295723,
+                14.401540817724493,
+                14.754619562581683,
+                14.971936621057289,
+                15.018842580351675,
+                14.844092474404043,
+                14.376730035374369,
+                13.512487906018066,
+                12.085711339480774,
+                9.804172045533727,
+                6.069184469828194,
+                0.8255348757416715,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
+              ]
+            },
+            "intervened": {
+              "A": [
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986
+              ],
+              "J_co": [
+                4.109832964503078,
+                6.639589572881605,
+                8.092302827267442,
+                2.077606050193479,
+                5.260180398117236,
+                7.323031791993639,
+                1.8718555537691797,
+                5.097520664206564,
+                7.229075453357696,
+                1.846966512506662,
+                5.077344500334338,
+                7.217366016686802,
+                1.8438685589373998,
+                5.074824929433509
+              ],
+              "J_h2": [
+                41.660422425638096,
+                66.74284431711392,
+                80.27225706107538,
+                21.078574178843038,
+                53.20831770190803,
+                73.22445391034542,
+                18.99132866986812,
+                51.5851241448696,
+                72.34470168941243,
+                18.73883120147464,
+                51.38350428067205,
+                72.23479328922137,
+                18.707402574291603,
+                51.35832212267791
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                24.576045179088048,
+                21.564067768632064,
+                20.05807906340408,
+                27.70508471079018,
+                23.12858753448314,
+                20.840338946329616,
+                28.096214652252957,
+                23.32415250521454,
+                20.93812143169533,
+                28.14510589493582,
+                23.348598126555967,
+                20.950344242366018,
+                28.151217300271167,
+                23.351653829223626
+              ],
+              "psi": [
+                -0.004834512206581662,
+                -0.009445010616828006,
+                -0.01393663887504606,
+                -0.0026903746319006244,
+                -0.006567550222161986,
+                -0.011325378152266,
+                -0.0025155798712263575,
+                -0.006291539526285637,
+                -0.011044803347760562,
+                -0.002494754015729503,
+                -0.006258087436962129,
+                -0.011010362643408985,
+                -0.002492166157337374,
+                -0.006253921906148626
+              ]
+            }
+          },
+          "x": 3.0
+        },
+        {
+          "label": "every 10 days",
+          "label_plain": "every 10 days",
+          "label_science": "every 10 d",
+          "outcomes": {
+            "h2_uptake_change_pct": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.0122093
+              },
+              "label_plain": "Percentage change in hydrogen uptake over 14 days",
+              "label_science": "14-day relative H\u2082 uptake change vs baseline",
+              "median": 2.47513,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": -47.9011,
+              "q25": -24.2512,
+              "q75": 47.5627,
+              "q95": 174.627,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "%",
+              "unit_plain": "%",
+              "value": -5.5474091806198285
+            },
+            "h2_uptake_contrast_umol_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.0431387
+              },
+              "label_plain": "Change in hydrogen uptake over 14 days",
+              "label_science": "14-day H\u2082 uptake contrast vs baseline",
+              "median": 12.9285,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": -2141.54,
+              "q25": -453.219,
+              "q75": 169.598,
+              "q95": 631.023,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": -61.1508
+            },
+            "h2_uptake_umol_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.0124741
+              },
+              "label_plain": "Hydrogen taken up over 14 days",
+              "label_science": "14-day cumulative H\u2082 uptake",
+              "median": 1015.89,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": 229.83,
+              "q25": 475.487,
+              "q75": 1884.66,
+              "q95": 3109.75,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": 1041.18
+            }
+          },
+          "sample": null,
+          "scene": {
+            "active_days": 14,
+            "activity_by_day": [
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986
+            ],
+            "porosity": 0.4,
+            "salt_mol_l": 0.0,
+            "temp_c": 25.0,
+            "theta": 0.20496904763559645,
+            "water_mm": 96.0
+          },
+          "trajectories": {
+            "baseline": {
+              "A": [
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                13.741854295723,
+                14.401540817724493,
+                14.754619562581683,
+                14.971936621057289,
+                15.018842580351675,
+                14.844092474404043,
+                14.376730035374369,
+                13.512487906018066,
+                12.085711339480774,
+                9.804172045533727,
+                6.069184469828194,
+                0.8255348757416715,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
+              ]
+            },
+            "intervened": {
+              "A": [
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986
+              ],
+              "J_co": [
+                1.3264473217895512,
+                4.620433436465807,
+                6.948700710322063,
+                8.259056065253109,
+                9.042040445167979,
+                9.777627008594083,
+                10.531294634986864,
+                11.300515889057298,
+                12.082383404474195,
+                12.873668883509145,
+                1.3264473217895512,
+                4.620433436465807,
+                6.948700710322063,
+                8.259056065253109
+              ],
+              "J_h2": [
+                13.4579370935548,
+                46.803449367863344,
+                69.69729588173745,
+                81.7606562344428,
+                88.53590795865954,
+                94.57820481781208,
+                100.44352076250476,
+                106.09044760626,
+                111.48670172879011,
+                116.60910703000845,
+                13.4579370935548,
+                46.803449367863344,
+                69.69729588173745,
+                81.7606562344428
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                29.2760451790882,
+                23.914067768632147,
+                21.23307906340413,
+                19.888785333448485,
+                18.88878533344837,
+                17.888785333448258,
+                16.888785333448144,
+                15.88878533344805,
+                14.888785333448107,
+                13.888785333448164,
+                29.2760451790882,
+                23.914067768632147,
+                21.23307906340413,
+                19.888785333448485
+              ],
+              "psi": [
+                -0.002068543990066138,
+                -0.0055438844592136756,
+                -0.010250832285928801,
+                -0.014586350647725486,
+                -0.01815517556950103,
+                -0.022443898654333515,
+                -0.028077613934591933,
+                -0.03559596211397781,
+                -0.045809060243226826,
+                -0.059964222988034735,
+                -0.002068543990066138,
+                -0.0055438844592136756,
+                -0.010250832285928801,
+                -0.014586350647725486
+              ]
+            }
+          },
+          "x": 10.0
+        }
+      ]
+    }
+  ],
+  "slug": "drip-or-flood",
+  "theme": "water",
+  "title_plain": "Drip or flood irrigation?",
+  "title_science": "Equal-total irrigation split across delivery intervals (exp02)",
+  "twin_version": "0.8.0",
+  "uncertainty": {
+    "S1": {
+      "activation_shape": [
+        0.0267439,
+        -0.0191161,
+        0.0837428
+      ],
+      "crop_etc_mm_per_day": [
+        4.68509e-05,
+        -4.05384e-05,
+        0.000140237
+      ],
+      "d_co_m2_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "d_h2_m2_s": [
+        -0.000543694,
+        -0.00272521,
+        0.00133089
+      ],
+      "drainage_fraction_day": [
+        0.00281311,
+        -0.00637777,
+        0.0106586
+      ],
+      "dry_threshold_mpa": [
+        -0.00038476,
+        -0.00369168,
+        0.00274064
+      ],
+      "field_capacity_fraction": [
+        0.00528553,
+        -0.00391785,
+        0.0167836
+      ],
+      "k_co_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "k_h2_s": [
+        0.129953,
+        0.0794816,
+        0.204946
+      ],
+      "porosity": [
+        0.0305881,
+        -0.000990206,
+        0.0756936
+      ],
+      "psi_entry_mpa": [
+        0.196251,
+        0.104442,
+        0.311061
+      ],
+      "q10": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "retention_b": [
+        0.242986,
+        0.137889,
+        0.377484
+      ],
+      "wet_activation_mpa": [
+        -0.00128261,
+        -0.0211357,
+        0.0143404
+      ]
+    },
+    "ST": {
+      "activation_shape": [
+        0.16174,
+        0.084332,
+        0.227703
+      ],
+      "crop_etc_mm_per_day": [
+        4.58329e-06,
+        1.40615e-06,
+        9.27926e-06
+      ],
+      "d_co_m2_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "d_h2_m2_s": [
+        0.000923906,
+        0.000651242,
+        0.00132603
+      ],
+      "drainage_fraction_day": [
+        0.00665452,
+        0.00477513,
+        0.00949934
+      ],
+      "dry_threshold_mpa": [
+        0.00091843,
+        0.000571594,
+        0.00125189
+      ],
+      "field_capacity_fraction": [
+        0.00973653,
+        0.00713813,
+        0.0131563
+      ],
+      "k_co_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "k_h2_s": [
+        0.243424,
+        0.171429,
+        0.304501
+      ],
+      "porosity": [
+        0.129998,
+        0.0565484,
+        0.209341
+      ],
+      "psi_entry_mpa": [
+        0.611088,
+        0.354416,
+        0.949411
+      ],
+      "q10": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "retention_b": [
+        0.396267,
+        0.265328,
+        0.571736
+      ],
+      "wet_activation_mpa": [
+        0.0200949,
+        0.00926253,
+        0.0386742
+      ]
+    },
+    "convergence": {
+      "discrete": false,
+      "flagged": false,
+      "half_n_shift_frac": 0.0122093
+    },
+    "d": 14,
+    "group_S1": {
+      "modeller_assumption": [
+        0.834521,
+        0.586336,
+        1.19104
+      ],
+      "source_not_checked": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "verified_in_source": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "group_ST": {
+      "modeller_assumption": [
+        0.975147,
+        0.897223,
+        1.04034
+      ],
+      "source_not_checked": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "verified_in_source": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "headline_label": "every 10 d",
+    "headline_level": 2,
+    "headline_output": "h2_uptake_change_pct",
+    "headline_series": "irrigation-interval",
+    "inputs": [
+      {
+        "dist": "triangular",
+        "high": 2.0,
+        "kind": "parameter",
+        "low": 0.5,
+        "meaning": "Exponent of the logarithmic moisture-activation ramp between dry and wet thresholds",
+        "name": "activation_shape",
+        "note": "Bounds [0.5, 2.0] around 1.0 from planning.parameter_ensemble.",
+        "source": {
+          "authors": "EQ-BioDT v0.6 scenario ensemble",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/planning.py:parameter_ensemble",
+          "title": "Scenario sensitivity grid for activation shape exponent",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "-",
+        "value": 1.0
+      },
+      {
+        "dist": "triangular",
+        "high": 9.0,
+        "kind": "constant",
+        "low": 4.0,
+        "meaning": "Order-of-magnitude crop water demand in a hot desert irrigated system, used only to set the seasonal irrigation total in the delivery-schedule experiment",
+        "name": "crop_etc_mm_per_day",
+        "note": "Modeller order-of-magnitude. FAO-56 Table 2: arid/semi-arid tropics ETo >30C = 6-8 mm/day; ETc = Kc ETo, Kc 0.8-1.2 gives 5-9; range 4-9 plausible. Not a source value.",
+        "source": {
+          "authors": "Allen RG, Pereira LS, Raes D, Smith M",
+          "doi_or_url": "https://www.fao.org/3/x0490e/x0490e00.htm",
+          "page_or_table": "Table 2 (ETo, arid warm 6-8 mm/day) x Kc, Chapter 3-6",
+          "title": "Crop evapotranspiration: guidelines for computing crop water requirements (FAO Irrigation and Drainage Paper 56)",
+          "year": 1998
+        },
+        "status": "modeller_assumption",
+        "unit": "mm/day",
+        "value": 6.0
+      },
+      {
+        "dist": "triangular",
+        "high": 2.52e-05,
+        "kind": "parameter",
+        "low": 1.68e-05,
+        "meaning": "Free-air binary molecular diffusivity of CO before Millington-Quirk tortuosity scaling",
+        "name": "d_co_m2_s",
+        "note": "+-20 % around the 2.1e-5 m2/s reference diffusivity to represent temperature/packing tortuosity uncertainty.",
+        "source": {
+          "authors": "EQ-BioDT v0.8 parameter range",
+          "doi_or_url": "https://doi.org/10.1039/TF9615701200",
+          "page_or_table": "src/eq_biodt/v03/process.py:Parameters",
+          "title": "Effective free-air diffusivity allowance (+-20 % around 2.1e-5 m2/s)",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "m2/s",
+        "value": 2.1e-05
+      },
+      {
+        "dist": "triangular",
+        "high": 9.24e-05,
+        "kind": "parameter",
+        "low": 6.16e-05,
+        "meaning": "Free-air binary molecular diffusivity of H2 before Millington-Quirk tortuosity scaling",
+        "name": "d_h2_m2_s",
+        "note": "+-20 % around the 7.7e-5 m2/s reference diffusivity to represent temperature/packing tortuosity uncertainty.",
+        "source": {
+          "authors": "EQ-BioDT v0.8 parameter range",
+          "doi_or_url": "https://doi.org/10.1039/TF9615701200",
+          "page_or_table": "src/eq_biodt/v03/process.py:Parameters",
+          "title": "Effective free-air diffusivity allowance (+-20 % around 7.7e-5 m2/s)",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "m2/s",
+        "value": 7.7e-05
+      },
+      {
+        "dist": "triangular",
+        "high": 0.7,
+        "kind": "parameter",
+        "low": 0.3,
+        "meaning": "Daily fraction of water above field capacity drained from the 10 cm sand layer",
+        "name": "drainage_fraction_day",
+        "note": "Modeller assumption [0.3, 0.7] day-1 around the 0.5 day-1 reference drainage fraction.",
+        "source": {
+          "authors": "EQ-BioDT v0.8 parameter range",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/process.py:Parameters",
+          "title": "Bucket-model daily drainage fraction assumption",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "1/day",
+        "value": 0.5
+      },
+      {
+        "dist": "triangular",
+        "high": -70.0,
+        "kind": "parameter",
+        "low": -100.0,
+        "meaning": "Dry water-potential threshold below which moisture activation is zero",
+        "name": "dry_threshold_mpa",
+        "note": "Bounds [-100.0, -70.0] MPa around -85.0 MPa from planning.parameter_ensemble and contract clause C2.",
+        "source": {
+          "authors": "EQ-BioDT v0.6 scenario ensemble (informed by Reji et al. 2025)",
+          "doi_or_url": "https://doi.org/10.1038/s41467-025-67208-3",
+          "page_or_table": "src/eq_biodt/v03/planning.py:parameter_ensemble",
+          "title": "Scenario sensitivity grid for dry activation threshold",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "MPa",
+        "value": -85.0
+      },
+      {
+        "dist": "triangular",
+        "high": 0.6,
+        "kind": "parameter",
+        "low": 0.4,
+        "meaning": "Fraction of pore storage below which gravitational drainage ceases",
+        "name": "field_capacity_fraction",
+        "note": "Modeller assumption [0.4, 0.6] around the 0.5 reference field-capacity fraction.",
+        "source": {
+          "authors": "EQ-BioDT v0.8 parameter range",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/process.py:Parameters",
+          "title": "Bucket-model field-capacity fraction assumption",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "-",
+        "value": 0.5
+      },
+      {
+        "dist": "loguniform",
+        "high": 0.01,
+        "kind": "parameter",
+        "low": 0.0001,
+        "meaning": "Bulk-soil first-order CO reaction rate coefficient at reference temperature and full activation",
+        "name": "k_co_s",
+        "note": "Log-uniform over one order of magnitude below and above the 0.001 s-1 reference rate, matching the 0.1x-10x multipliers in planning.parameter_ensemble.",
+        "source": {
+          "authors": "EQ-BioDT v0.6 scenario ensemble",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/planning.py:parameter_ensemble",
+          "title": "Scenario sensitivity grid (rate multipliers 0.1 to 10 around 0.001 s-1)",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "1/s",
+        "value": 0.001
+      },
+      {
+        "dist": "loguniform",
+        "high": 0.01,
+        "kind": "parameter",
+        "low": 0.0001,
+        "meaning": "Bulk-soil first-order H2 reaction rate coefficient at reference temperature and full activation",
+        "name": "k_h2_s",
+        "note": "Log-uniform over one order of magnitude below and above the 0.001 s-1 reference rate, matching the 0.1x-10x multipliers in planning.parameter_ensemble.",
+        "source": {
+          "authors": "EQ-BioDT v0.6 scenario ensemble",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/planning.py:parameter_ensemble",
+          "title": "Scenario sensitivity grid (rate multipliers 0.1 to 10 around 0.001 s-1)",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "1/s",
+        "value": 0.001
+      },
+      {
+        "dist": "triangular",
+        "high": 0.5,
+        "kind": "parameter",
+        "low": 0.35,
+        "meaning": "Total pore volume fraction of undisturbed Rub' al-Khali sand (excluded when porosity is intervened on)",
+        "name": "porosity",
+        "note": "Bounds [0.35, 0.5] around 0.4 from external_transfer.py:CANDIDATES; excluded whenever an experiment intervenes on porosity.",
+        "source": {
+          "authors": "EQ-BioDT v0.5 external transfer protocol",
+          "doi_or_url": "",
+          "page_or_table": "reproducibility/v05/external_transfer.py:CANDIDATES",
+          "title": "Cross-desert porosity candidate grid",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "-",
+        "value": 0.4
+      },
+      {
+        "dist": "loguniform",
+        "high": -0.0001,
+        "kind": "parameter",
+        "low": -0.01,
+        "meaning": "Campbell water-retention air-entry potential",
+        "name": "psi_entry_mpa",
+        "note": "Log-uniform on magnitude over [-0.01, -0.0001] MPa centered on -0.001 MPa, reusing the entry-potential grid in external_transfer.py:CANDIDATES.",
+        "source": {
+          "authors": "EQ-BioDT v0.5 external transfer protocol",
+          "doi_or_url": "",
+          "page_or_table": "reproducibility/v05/external_transfer.py:CANDIDATES",
+          "title": "Cross-desert retention candidate grid",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "MPa",
+        "value": -0.001
+      },
+      {
+        "dist": "uniform",
+        "high": 2.0,
+        "kind": "parameter",
+        "low": 1.0,
+        "meaning": "Thermal Q10 factor per 10 degC above the 25 degC reference temperature",
+        "name": "q10",
+        "note": "Bounds [1.0, 2.0] from external_transfer.py:CANDIDATES (spanning no thermal amplification Q10=1 to the reference Q10=2).",
+        "source": {
+          "authors": "EQ-BioDT v0.5 external transfer protocol",
+          "doi_or_url": "",
+          "page_or_table": "reproducibility/v05/external_transfer.py:CANDIDATES",
+          "title": "Cross-desert Q10 candidate grid",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "-",
+        "value": 2.0
+      },
+      {
+        "dist": "triangular",
+        "high": 6.0,
+        "kind": "parameter",
+        "low": 2.0,
+        "meaning": "Campbell water-retention pore-size distribution exponent b",
+        "name": "retention_b",
+        "note": "Bounds [2.0, 6.0] with mode 4.0 reuse the transfer grid in external_transfer.py:CANDIDATES (widening planning.parameter_ensemble [3.0, 5.0]).",
+        "source": {
+          "authors": "EQ-BioDT v0.5/v0.6 sensitivity grids",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/planning.py:parameter_ensemble; reproducibility/v05/external_transfer.py:CANDIDATES",
+          "title": "Scenario ensemble (3-5) widened to the cross-desert transfer grid (2-6)",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "-",
+        "value": 4.0
+      },
+      {
+        "dist": "loguniform",
+        "high": -0.03,
+        "kind": "parameter",
+        "low": -0.3,
+        "meaning": "Water potential above which microbial moisture activation reaches 1",
+        "name": "wet_activation_mpa",
+        "note": "Log-uniform on magnitude over [-0.3, -0.03] MPa around the -0.1 MPa reference threshold (half an order of magnitude each side, strictly between dry_threshold_mpa and psi_entry_mpa).",
+        "source": {
+          "authors": "EQ-BioDT v0.6 model contract",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/process.py:Parameters",
+          "title": "Clause C2 wet-activation endpoint assumption",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "MPa",
+        "value": -0.1
+      }
+    ],
+    "median": 2.47513,
+    "mode": "variance",
+    "n": 1024,
+    "oat": {
+      "activation_shape": {
+        "high": 20.249184880625563,
+        "low": -19.855579021362807,
+        "span": 40.10476390198837
+      },
+      "crop_etc_mm_per_day": {
+        "high": -5.547392638506721,
+        "low": -5.547392638506721,
+        "span": 0.0
+      },
+      "d_co_m2_s": {
+        "high": -5.547392638506721,
+        "low": -5.547392638506721,
+        "span": 0.0
+      },
+      "d_h2_m2_s": {
+        "high": -1.7485189941160715,
+        "low": -9.912230600393999,
+        "span": 8.163711606277927
+      },
+      "drainage_fraction_day": {
+        "high": 7.788024014792428,
+        "low": -25.584466742871953,
+        "span": 33.37249075766438
+      },
+      "dry_threshold_mpa": {
+        "high": -4.104779755260223,
+        "low": -6.693172438836692,
+        "span": 2.588392683576469
+      },
+      "field_capacity_fraction": {
+        "high": -28.336639255012773,
+        "low": 14.644782271796405,
+        "span": 42.98142152680918
+      },
+      "k_co_s": {
+        "high": -5.547392638506721,
+        "low": -5.547392638506721,
+        "span": 0.0
+      },
+      "k_h2_s": {
+        "high": -31.55035035778776,
+        "low": 43.0205049143246,
+        "span": 74.57085527211235
+      },
+      "porosity": {
+        "high": 14.165468399864498,
+        "low": -10.967657751519578,
+        "span": 25.133126151384076
+      },
+      "psi_entry_mpa": {
+        "high": -29.228364977907013,
+        "low": 54.149165338244416,
+        "span": 83.37753031615142
+      },
+      "q10": {
+        "high": -5.547392638506721,
+        "low": -5.547392638506721,
+        "span": 0.0
+      },
+      "retention_b": {
+        "high": 104.11809824276365,
+        "low": -42.69128775407366,
+        "span": 146.8093859968373
+      },
+      "wet_activation_mpa": {
+        "high": 6.38689053837838,
+        "low": -14.835845462249212,
+        "span": 21.22273600062759
+      }
+    },
+    "q05": -47.9011,
+    "q25": -24.2512,
+    "q75": 47.5627,
+    "q95": 174.627,
+    "refusal_fraction": 0.0
+  },
+  "version": "question-1",
+  "x_label_plain": "Days between waterings",
+  "x_label_science": "Irrigation interval (days)"
+}

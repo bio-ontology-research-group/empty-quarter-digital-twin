@@ -7,13 +7,23 @@ from typing import Any
 JARGON = re.compile(
     r"[\u0370-\u03ff\u1f00-\u1fff\u00b5]"
     r"|\bdo\s*\("
-    r"|\bSobol\b"
-    r"|\bontolog\w*\b"
+    r"|\b(?i:sobol)\b"
+    r"|\b(?i:ontolog\w*)\b"
     r"|\bMAGs?\b"
     r"|\bEC_"
     r"|\bECe\b"
     r"|\bMaas\b"
     r"|\bCBB\b"
+    r"|\b(?i:first-order)\b"
+    r"|\b(?i:gates?)\b"
+    r"|\b(?i:read-mapping)\b"
+    r"|\bIQR\b"
+    r"|\b(?i:central run)\b"
+    r"|\b(?i:micromoles?)\b"
+    r"|\b(?i:quantiles?)\b"
+    r"|\b(?i:medians?)\b"
+    r"|\b(?i:shares?)\b"
+    r"|(?i:fraction of unsalted yield)"
     r"|\b[A-Za-z0-9]+_[A-Za-z0-9_]+\b"
     r"|\b(?:umol|nmol|pmol|mmol|mol|ug|mg|ng|uL|mL|MPa|kPa|Pa|cm|km|nm|m3|cm3|yr)\b"
     r"|µmol|µg|µL|mol/L|g/L|g/g|m³|cm³|cm⁻³|m⁻²|s⁻¹|h⁻¹|min⁻¹|yr⁻¹|°[NESWF]"
@@ -52,7 +62,7 @@ PLAIN_BASELINE_LABELS: dict[str, str] = {
     "drip-or-flood": "One 12 mm rain on day 1, no irrigation",
     "cloud-seeding": "One 12 mm rain on day 1, unseeded",
     "salty-water": "One 12 mm fresh rain on day 1, no irrigation",
-    "alfalfa-bacterium": "Unsalted, uninoculated alfalfa yield",
+    "alfalfa-bacterium": "Normal, uninoculated alfalfa yield",
     "hotter": "One 12 mm rain on day 1 at 25 °C",
     "mulch-shade": "Bare unshaded sand (one 12 mm rain on day 1)",
     "solar-park": "Open desert sand outside panels",
@@ -64,49 +74,76 @@ PLAIN_BASELINE_LABELS: dict[str, str] = {
     "carbon-fixation": "Sample community under 14-day rain schedule",
 }
 
+PLAIN_X_LABELS: dict[str, str] = {
+    "adding-microbes": "Added microbes (% of community)",
+}
+
+PLAIN_SERIES_LABELS: dict[tuple[str, str], str] = {
+    ("adding-microbes", "51PRr3-gate"): "Sample lacking CO eaters + CO microbe (yes/no presence)",
+    ("adding-microbes", "51PRr3-proportional"): "Sample lacking CO eaters + CO microbe (scaled by amount)",
+    ("adding-microbes", "V53PRr2-gate"): "Sample already having CO eaters + CO microbe (yes/no presence)",
+    ("adding-microbes", "V53PRr2-proportional"): "Sample already having CO eaters + CO microbe (scaled by amount)",
+    ("adding-microbes", "51PRr3-control-gate"): "Negative control: microbe without CO genes (yes/no presence)",
+    ("adding-microbes", "51PRr3-control-proportional"): "Negative control: microbe without CO genes (scaled by amount)",
+}
+
 # (series_id, level_index, output_key) for the primary headline of each question
 HEADLINE_SPEC: dict[str, tuple[str, int, str]] = {
-    "rain-pattern": ("rain-schedule", 1, "h2_uptake_umol_m2"),
-    "drip-or-flood": ("irrigation-interval", 2, "h2_uptake_umol_m2"),
-    "cloud-seeding": ("seeding-intensity", 2, "h2_uptake_contrast_umol_m2"),
-    "salty-water": ("daily-irrigation", 3, "h2_uptake_contrast_umol_m2"),
+    "rain-pattern": ("rain-schedule", 2, "h2_uptake_change_pct"),
+    "drip-or-flood": ("irrigation-interval", 2, "h2_uptake_change_pct"),
+    "cloud-seeding": ("seeding-intensity", 2, "h2_uptake_change_pct"),
+    "salty-water": ("daily-irrigation", 3, "h2_uptake_change_pct"),
     "alfalfa-bacterium": ("C_fitted_fresh", 4, "relative_yield_alfalfa_sa187"),
-    "hotter": ("warmer-climate", 3, "h2_uptake_contrast_umol_m2"),
-    "mulch-shade": ("mulch-only", 2, "h2_uptake_contrast_umol_m2"),
-    "solar-park": ("panel-cover", 2, "h2_uptake_contrast_umol_m2"),
-    "compaction": ("offroad-passes", 3, "h2_uptake_contrast_umol_m2"),
-    "biochar": ("biochar-dose", 3, "h2_uptake_contrast_umol_m2"),
-    "missing-co-genes": ("co-gate-samples", 0, "co_uptake_umol_m2"),
-    "adding-microbes": ("51PRr3-gate", 1, "co_uptake_contrast_umol_m2"),
-    "air-hydrogen": ("h2-multiplier", 2, "h2_uptake_contrast_umol_m2"),
+    "hotter": ("warmer-climate", 3, "h2_uptake_change_pct"),
+    "mulch-shade": ("mulch-only", 2, "h2_uptake_change_pct"),
+    "solar-park": ("panel-cover", 2, "h2_uptake_change_pct"),
+    "compaction": ("offroad-passes", 3, "h2_uptake_change_pct"),
+    "biochar": ("biochar-dose", 3, "h2_uptake_change_pct"),
+    "missing-co-genes": ("co-gate-samples", 2, "co_uptake_umol_m2"),
+    "adding-microbes": ("V53PRr2-proportional", 1, "co_uptake_change_pct"),
+    "air-hydrogen": ("h2-multiplier", 2, "h2_uptake_change_pct"),
     "carbon-fixation": ("baseline-12mm", 1, "c_fixed_upper_bound_g_m2_yr"),
 }
 
 OUTCOME_META: dict[str, dict[str, str]] = {
+    "h2_uptake_change_pct": {
+        "unit": "%",
+        "unit_plain": "%",
+        "label_plain": "Percentage change in hydrogen uptake over 14 days",
+        "label_science": "14-day relative H₂ uptake change vs baseline",
+        "provenance": "simulated",
+    },
+    "co_uptake_change_pct": {
+        "unit": "%",
+        "unit_plain": "%",
+        "label_plain": "Percentage change in carbon monoxide uptake over 14 days",
+        "label_science": "14-day relative CO uptake change vs baseline",
+        "provenance": "simulated",
+    },
     "h2_uptake_umol_m2": {
         "unit": "µmol m⁻²",
-        "unit_plain": "micromoles per m²",
+        "unit_plain": "millionths of a mole per m²",
         "label_plain": "Hydrogen taken up over 14 days",
         "label_science": "14-day cumulative H₂ uptake",
         "provenance": "simulated",
     },
     "h2_uptake_contrast_umol_m2": {
         "unit": "µmol m⁻²",
-        "unit_plain": "micromoles per m²",
+        "unit_plain": "millionths of a mole per m²",
         "label_plain": "Change in hydrogen uptake over 14 days",
         "label_science": "14-day H₂ uptake contrast vs baseline",
         "provenance": "simulated",
     },
     "co_uptake_umol_m2": {
         "unit": "µmol m⁻²",
-        "unit_plain": "micromoles per m²",
+        "unit_plain": "millionths of a mole per m²",
         "label_plain": "Carbon monoxide taken up over 14 days",
         "label_science": "14-day cumulative CO uptake",
         "provenance": "simulated",
     },
     "co_uptake_contrast_umol_m2": {
         "unit": "µmol m⁻²",
-        "unit_plain": "micromoles per m²",
+        "unit_plain": "millionths of a mole per m²",
         "label_plain": "Change in carbon monoxide uptake over 14 days",
         "label_science": "14-day CO uptake contrast vs baseline",
         "provenance": "simulated",
@@ -154,37 +191,37 @@ OUTCOME_META: dict[str, dict[str, str]] = {
         "provenance": "external",
     },
     "relative_yield_date_palm": {
-        "unit": "1",
-        "unit_plain": "fraction of unsalted yield",
-        "label_plain": "Date palm yield (share of unsalted)",
+        "unit": "fraction",
+        "unit_plain": "fraction of normal yield",
+        "label_plain": "Date palm yield (compared with normal)",
         "label_science": "Maas-Hoffman relative yield (date palm)",
         "provenance": "external",
     },
     "relative_yield_barley": {
-        "unit": "1",
-        "unit_plain": "fraction of unsalted yield",
-        "label_plain": "Barley yield (share of unsalted)",
+        "unit": "fraction",
+        "unit_plain": "fraction of normal yield",
+        "label_plain": "Barley yield (compared with normal)",
         "label_science": "Maas-Hoffman relative yield (barley)",
         "provenance": "external",
     },
     "relative_yield_alfalfa": {
-        "unit": "1",
-        "unit_plain": "fraction of unsalted yield",
-        "label_plain": "Alfalfa yield without bacterium (share of unsalted)",
+        "unit": "fraction",
+        "unit_plain": "fraction of normal yield",
+        "label_plain": "Alfalfa yield without bacterium (compared with normal)",
         "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
         "provenance": "external",
     },
     "relative_yield_tomato": {
-        "unit": "1",
-        "unit_plain": "fraction of unsalted yield",
-        "label_plain": "Tomato yield (share of unsalted)",
+        "unit": "fraction",
+        "unit_plain": "fraction of normal yield",
+        "label_plain": "Tomato yield (compared with normal)",
         "label_science": "Maas-Hoffman relative yield (tomato)",
         "provenance": "external",
     },
     "relative_yield_alfalfa_sa187": {
-        "unit": "1",
-        "unit_plain": "fraction of unsalted yield",
-        "label_plain": "Alfalfa yield with desert bacterium (share of unsalted)",
+        "unit": "fraction",
+        "unit_plain": "fraction of normal yield",
+        "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
         "label_science": "Inoculated alfalfa relative yield (+SA187)",
         "provenance": "external",
     },
@@ -273,7 +310,7 @@ MODEL_META: dict[str, dict[str, str]] = {
         "equation_tex": r"\phi(f_b) = \phi_0 + \alpha_{\phi,b}\,f_b",
     },
     "inoculant": {
-        "name_plain": "Adding microbe strains at a chosen community share",
+        "name_plain": "Adding microbe strains to the soil community",
         "name_science": "Inoculum: reference MAG at a relative share",
         "equation_tex": r"w_i' = (1 - s)\,w_i + s\,\mathbb{I}(i = i_{\mathrm{inoc}})",
     },
@@ -346,7 +383,7 @@ MODEL_META: dict[str, dict[str, str]] = {
 
 
 def round_plain(x: float | None) -> str:
-    """Format a number for plain-language display and cross-mode headline matching."""
+    """Format a number for plain-language display: integers for |x| >= 10, one decimal below."""
     if x is None:
         return "none"
     val = float(x)
@@ -355,31 +392,33 @@ def round_plain(x: float | None) -> str:
     ax = abs(val)
     if ax >= 1000.0:
         return f"{round(val):,}"
-    if ax >= 100.0:
-        return f"{round(val):d}"
     if ax >= 10.0:
+        return f"{round(val):d}"
+    if ax >= 0.1:
         s = f"{val:.1f}".rstrip("0").rstrip(".")
-        return "0" if s in {"-0", ""} else s
-    if ax >= 1.0:
-        s = f"{val:.2f}".rstrip("0").rstrip(".")
         return "0" if s in {"-0", ""} else s
     s = f"{val:.3f}".rstrip("0").rstrip(".")
     return "0" if s in {"-0", ""} else s
 
 
 def science_central(q: dict[str, Any]) -> float:
-    """Return the exact central headline value from a built question dict."""
+    """Return the central headline value from a built question dict (in % for relative_yield_*)."""
     if "headline_value" in q and q["headline_value"] is not None:
-        return float(q["headline_value"])
-    s_id, l_idx, out_key = HEADLINE_SPEC[q["slug"]]
-    s = next(sr for sr in q["series"] if sr["id"] == s_id)
-    return float(s["levels"][l_idx]["outcomes"][out_key]["value"])
+        val = float(q["headline_value"])
+    else:
+        s_id, l_idx, out_key = HEADLINE_SPEC[q["slug"]]
+        s = next(sr for sr in q["series"] if sr["id"] == s_id)
+        val = float(s["levels"][l_idx]["outcomes"][out_key]["value"])
+    _, _, out_key = HEADLINE_SPEC[q["slug"]]
+    if out_key.startswith("relative_yield_") and abs(val) <= 2.0:
+        return 100.0 * val
+    return val
 
 
 def plain_number(q: dict[str, Any]) -> str:
     """Extract the core rounded headline number from `q['answer_plain']`."""
     m = re.search(
-        r"(?<![A-Za-z0-9_])-?\d[\d,]*(?:\.\d+)?(?![A-Za-z0-9_])",
+        r"(?<![A-Za-z0-9_])-?\d+(?:,\d{3})*(?:\.\d+)?(?![A-Za-z0-9_])",
         q["answer_plain"],
     )
     if not m:
@@ -394,9 +433,9 @@ def plain_level_label(slug: str, series_id: str, spec_label: str, x: float | str
             return f"{round_plain(float(x))} dS/m single rain"
         return f"{round_plain(float(x))} dS/m daily water"
     if slug == "alfalfa-bacterium":
-        return f"{round_plain(float(x))} dS/m water"
+        return f"{float(x):g} dS/m water"
     if slug == "adding-microbes":
-        return f"{round_plain(float(x))} % added share"
+        return f"{round_plain(float(x))} % added microbes"
     if slug == "compaction" and series_id == "direct-porosity-v06":
         return "pore space 0.30"
     if slug == "biochar":
@@ -419,6 +458,20 @@ def _format_interval_plain(q05: float | None, q95: float | None, unit_plain: str
     return f"range {round_plain(q05)} to {round_plain(q95)} {unit_plain}"
 
 
+def _hedge_phrase(q05: float | None, q95: float | None) -> str:
+    """Return the required hedge phrase matching the sign of the 5–95 % headline interval."""
+    if q05 is not None and q95 is not None:
+        lo = float(q05)
+        hi = float(q95)
+        if lo < 0.0 < hi:
+            return "may go up or down"
+        if hi <= 0.0 and lo < 0.0:
+            return "goes down in every case we tried"
+        if lo >= 0.0 and hi > 0.0:
+            return "goes up in every case we tried"
+    return "goes up in every case we tried"
+
+
 def _top_two_sobol_text(st: dict[str, list[float]], s1: dict[str, list[float]], mode: str) -> str:
     if mode == "deduced" or not st:
         return (
@@ -430,7 +483,7 @@ def _top_two_sobol_text(st: dict[str, list[float]], s1: dict[str, list[float]], 
     for name, vals in ranked[:2]:
         st_est, st_lo, st_hi = vals[0], vals[1], vals[2]
         s1_vals = s1.get(name, [0.0, 0.0, 0.0])
-        s1_est = s1_vals[0]
+        s1_est = 0.0 if abs(s1_vals[0]) < 1e-6 else s1_vals[0]
         parts.append(
             f"{name} (ST = {st_est:.2f} [{st_lo:.2f}, {st_hi:.2f}], S1 = {s1_est:.2f})"
         )
@@ -446,16 +499,78 @@ def _group_share_text(
     if mode == "deduced" or not group_st:
         return (
             "Status share of variance (group ST / S1): verified_in_source = 0.00 / 0.00, "
-            "modeller_assumption = 0.00 / 0.00, source_not_checked = 0.00 / 0.00."
+            "modeller_assumption = 0.00 / 0.00, source_not_checked = 0.00 / 0.00 "
+            "(joint group total indices can sum to more than 1 because of interactions)."
         )
     order = ("verified_in_source", "modeller_assumption", "source_not_checked")
     items = []
     for k in order:
         if k in group_st:
-            gst = group_st[k][0]
-            gs1 = group_s1.get(k, [0.0])[0]
+            gst = 0.0 if abs(group_st[k][0]) < 1e-6 else group_st[k][0]
+            gs1_raw = group_s1.get(k, [0.0])[0]
+            gs1 = 0.0 if abs(gs1_raw) < 1e-6 else gs1_raw
             items.append(f"{k} ST = {gst:.2f} (S1 = {gs1:.2f})")
-    return "Status share of variance: " + ", ".join(items) + "."
+    return (
+        "Status share of variance: "
+        + ", ".join(items)
+        + " (joint group total indices can sum to more than 1 because of interactions)."
+    )
+
+
+def _fmt_sci_stat(central_val: float | None, uq_o: dict[str, Any] | None, unit: str) -> str:
+    c_str = f"{central_val:.4g}" if central_val is not None else "n/a"
+    if not uq_o:
+        return f"{c_str} {unit}"
+    med = uq_o.get("median")
+    q25 = uq_o.get("q25")
+    q75 = uq_o.get("q75")
+    q05 = uq_o.get("q05")
+    q95 = uq_o.get("q95")
+    med_s = f"{med:.4g}" if med is not None else "n/a"
+    iqr_s = f"[{q25:.4g}, {q75:.4g}]" if (q25 is not None and q75 is not None) else "[n/a, n/a]"
+    ci90_s = f"[{q05:.4g}, {q95:.4g}]" if (q05 is not None and q95 is not None) else "[n/a, n/a]"
+    return (
+        f"{c_str} {unit} (median {med_s} {unit}, 50 % IQR {iqr_s} {unit}, "
+        f"joint 5–95 % interval {ci90_s} {unit})"
+    )
+
+
+def _get_uq_level(uq_doc: dict[str, Any] | None, series_id: str, level_idx: int) -> dict[str, Any] | None:
+    if not uq_doc:
+        return None
+    for s in uq_doc.get("series", []):
+        if s.get("id") == series_id:
+            for l in s.get("levels", []):
+                if int(l.get("level", -1)) == level_idx:
+                    return l
+    return None
+
+
+def _convergence_text(outcome_uq: dict[str, Any], uq_doc: dict[str, Any] | None) -> str:
+    flagged_items: list[str] = []
+    if uq_doc:
+        for s in uq_doc.get("series", []):
+            for l in s.get("levels", []):
+                lbl = l.get("label", f"level {l.get('level')}")
+                n_val = l.get("n")
+                for k, out_v in l.get("outputs", {}).items():
+                    conv = out_v.get("convergence") or {}
+                    if conv.get("flagged"):
+                        shift = float(conv.get("half_n_shift_frac") or 0.0) * 100.0
+                        flagged_items.append(
+                            f"at {lbl} ({k}, N = {n_val}), interval endpoints still move by "
+                            f"{shift:.1f} % of the width between N/2 and N"
+                        )
+    else:
+        conv = outcome_uq.get("convergence") or {}
+        if conv.get("flagged"):
+            shift = float(conv.get("half_n_shift_frac") or 0.0) * 100.0
+            flagged_items.append(
+                f"interval endpoints still move by {shift:.1f} % of the width between N/2 and N"
+            )
+    if not flagged_items:
+        return ""
+    return "Convergence check: " + "; ".join(flagged_items) + "."
 
 
 def render_question_texts(
@@ -463,9 +578,14 @@ def render_question_texts(
     central_val: float,
     outcome_uq: dict[str, Any],
     max_refusal_fraction: float,
+    uq_doc: dict[str, Any] | None = None,
 ) -> dict[str, str]:
     """Render plain and scientific answer, headline, and limits strings for `slug`."""
-    core = round_plain(central_val)
+    s_id, l_idx, out_key = HEADLINE_SPEC[slug]
+    is_rel_yield = out_key.startswith("relative_yield_")
+    display_central = 100.0 * central_val if (is_rel_yield and abs(central_val) <= 2.0) else central_val
+    core = round_plain(display_central)
+
     q05 = outcome_uq.get("q05")
     q25 = outcome_uq.get("q25")
     q75 = outcome_uq.get("q75")
@@ -474,25 +594,29 @@ def render_question_texts(
     mode = str(outcome_uq.get("mode", "variance"))
     ref_frac = float(outcome_uq.get("refusal_fraction", 0.0))
 
-    _, _, out_key = HEADLINE_SPEC[slug]
     meta = OUTCOME_META[out_key]
     unit_sci = meta["unit"]
     unit_plain = meta["unit_plain"]
-    rng_plain = _format_interval_plain(q05, q95, unit_plain)
+    if is_rel_yield:
+        q05_disp = 100.0 * float(q05) if q05 is not None else None
+        q95_disp = 100.0 * float(q95) if q95 is not None else None
+        rng_plain = _format_interval_plain(q05_disp, q95_disp, "%")
+    else:
+        rng_plain = _format_interval_plain(q05, q95, unit_plain)
 
-    spans_zero = q05 is not None and q95 is not None and (float(q05) < 0.0 < float(q95))
+    hedge = _hedge_phrase(q05, q95)
     has_refusal = max_refusal_fraction >= 0.05 or ref_frac >= 0.05
 
     if slug == "rain-pattern":
         headline_plain = (
-            f"One heavy rain gives {core} {unit_plain} of hydrogen uptake over two weeks, "
-            f"versus 405 for four smaller showers and 2.87 for daily drizzle."
+            f"Splitting one heavy rain into four smaller showers changes hydrogen uptake over two weeks "
+            f"by {core} %, and daily drizzle changes it by -100 %, so uptake {hedge}."
         )
         answer_plain = (
-            f"One heavy downpour gives {core} {unit_plain} of hydrogen uptake over two weeks "
-            f"({rng_plain}), compared with 405 for four smaller showers and 2.87 for daily drizzle. "
-            f"A single soaking pushes water deeper into the sand so microbes stay active for more days "
-            f"before evaporation dries the surface."
+            f"Splitting one heavy downpour into four smaller showers changes hydrogen uptake over two weeks "
+            f"by {core} % ({rng_plain}), and splitting it into daily drizzle changes uptake by -100 % "
+            f"(range -100 to -51 %), so uptake {hedge}. A single soaking pushes water deeper into the sand "
+            f"so microbes stay active for more days before surface evaporation dries the top layer."
         )
         limits_extra_plain = (
             "The simulation uses a single sand column with fixed evaporation and does not include "
@@ -504,13 +628,15 @@ def render_question_texts(
         )
     elif slug == "drip-or-flood":
         headline_plain = (
-            f"Watering once every ten days gives {core} {unit_plain} of hydrogen uptake over two weeks, "
-            f"compared with 680 for daily drip."
+            f"Watering once every ten days changes hydrogen uptake over two weeks by {core} % compared "
+            f"with a single flood, versus -38 % for daily drip, and the change {hedge}."
         )
         answer_plain = (
-            f"Watering once every ten days gives {core} {unit_plain} of hydrogen uptake over two weeks "
-            f"({rng_plain}), compared with 692 when watering every three days and 680 when watering every day. "
-            f"Infrequent deeper watering loses a smaller share to daily surface evaporation than tiny daily doses."
+            f"Watering once every ten days changes hydrogen uptake over two weeks by {core} % compared "
+            f"with a single rain ({rng_plain}), versus -37 % when watering every three days "
+            f"(range -68 to 129 %) and -38 % for daily drip (range -73 to 136 %), so the change {hedge} "
+            f"across uncertain model numbers. Less frequent, deeper watering loses a smaller fraction of "
+            f"water to daily surface evaporation than tiny daily doses."
         )
         limits_extra_plain = (
             "Pipe layout, root uptake and uneven wetting around drip emitters are not represented."
@@ -521,13 +647,13 @@ def render_question_texts(
         )
     elif slug == "cloud-seeding":
         headline_plain = (
-            f"Adding ten percent more rain on rainy days changes hydrogen uptake by {core} {unit_plain} "
-            f"over two weeks."
+            f"Adding ten percent more rain on rainy days changes hydrogen uptake over two weeks by {core} %, "
+            f"and uptake {hedge}."
         )
         answer_plain = (
-            f"Adding a ten percent rain boost on rainy days changes hydrogen uptake by {core} {unit_plain} "
-            f"over two weeks ({rng_plain}), raising total uptake from 1,102 to 1,242 {unit_plain}. "
-            f"Extra water on wet days keeps the sand moist past the end of the first week."
+            f"Adding a ten percent rain boost on rainy days changes hydrogen uptake over two weeks by {core} % "
+            f"({rng_plain}), so uptake {hedge}. Extra water on wet days pushes moisture deeper into the sand "
+            f"and keeps microbes active for longer after the rain."
         )
         limits_extra_plain = (
             "Cloud seeding can only add water when suitable clouds are already present; the twin does not "
@@ -539,13 +665,14 @@ def render_question_texts(
         )
     elif slug == "salty-water":
         headline_plain = (
-            f"Daily watering with salty water changes hydrogen uptake by {core} {unit_plain} at 8 dS/m; "
-            f"the model cannot tell for such salty water when pore salt passes the dilute limit."
+            f"Daily watering with salty water changes hydrogen uptake by {core} % at 8 dS/m, where the "
+            f"change {hedge}; at higher salt levels, the model cannot tell for such salty water."
         )
         answer_plain = (
-            f"Daily watering with brackish water changes hydrogen uptake by {core} {unit_plain} "
-            f"over two weeks at 8 dS/m ({rng_plain}) and leaves alfalfa at 88.7 % of its unsalted yield; at high salt "
-            f"levels, the model cannot tell for such salty water because the pore water passes the dilute-salt limit."
+            f"Daily watering with brackish water changes hydrogen uptake over two weeks by {core} % at 8 dS/m "
+            f"({rng_plain}), so uptake {hedge} depending on how strongly daily water additions offset salt "
+            f"build-up, while leaving alfalfa at about 89 % of normal yield (range 83 to 93 %); at higher salt "
+            f"levels, the model cannot tell for such salty water because pore-water salt passes the dilute limit."
         )
         limits_extra_plain = (
             "When salt concentration in the sand water rises above a tenth of a mole per litre, the twin "
@@ -557,14 +684,14 @@ def render_question_texts(
         )
     elif slug == "alfalfa-bacterium":
         headline_plain = (
-            f"Coating alfalfa seeds with the desert bacterium gives {core} of unsalted crop yield "
-            f"at 7.81 dS/m salty water, up from 0.796 without it."
+            f"Coating alfalfa seeds with the desert bacterium gives about {core} % of normal yield in salty "
+            f"water at 7.81 dS/m, up from 80 % without it."
         )
         answer_plain = (
-            f"Coating alfalfa seeds with the desert bacterium gives {core} of unsalted crop yield "
-            f"({rng_plain}) in salty irrigation water at 7.81 dS/m, compared with 0.796 without the bacterium. "
-            f"Across the three salt-accumulation formulas, the bacterium lifts yield when salt stress is moderate "
-            f"to high, though at extreme salt levels the model cannot tell for such salty water in the twin-physics branch."
+            f"Coating alfalfa seeds with the desert bacterium gives about {core} % of normal yield, {rng_plain}, "
+            f"in salty irrigation water at 7.81 dS/m, compared with about 80 % of normal yield (range 78 to 81 %) "
+            f"without the bacterium, so yield with the bacterium {hedge}; at extreme salt levels in the "
+            f"sand-physics branch, the model cannot tell for such salty water."
         )
         limits_extra_plain = (
             "The crop boost comes from field trials in one desert farm and assumes the added bacterium "
@@ -576,14 +703,14 @@ def render_question_texts(
         )
     elif slug == "hotter":
         headline_plain = (
-            f"Four degrees of climate warming changes hydrogen uptake by {core} {unit_plain} "
-            f"over two weeks when rain stays the same."
+            f"Four degrees of climate warming changes hydrogen uptake over two weeks by {core} %, "
+            f"and uptake {hedge} across uncertain model numbers."
         )
         answer_plain = (
-            f"Four degrees of climate warming changes hydrogen uptake by {core} {unit_plain} over two weeks "
-            f"({rng_plain}), while warming the sand alone by ten degrees raises uptake by 762 {unit_plain}. "
-            f"Warmer sand speeds up microbial enzymes while water is present, but higher air temperature also "
-            f"dries the sand faster."
+            f"Four degrees of climate warming changes hydrogen uptake over two weeks by {core} % when rainfall "
+            f"stays the same ({rng_plain}), so uptake {hedge} depending on whether faster enzyme activity "
+            f"outweighs faster drying of the sand; warming the sand alone by ten degrees without extra drying "
+            f"changes uptake by 69 % (range 3.8 to 78 %)."
         )
         limits_extra_plain = (
             "Heat stress death at extreme afternoon surface temperatures is not included in the simple "
@@ -595,14 +722,15 @@ def render_question_texts(
         )
     elif slug == "mulch-shade":
         headline_plain = (
-            f"Full mulch cover increases hydrogen uptake by {core} {unit_plain} over two weeks "
-            f"by keeping the sand damp longer."
+            f"Full mulch cover changes hydrogen uptake over two weeks by {core} % by keeping the sand damp "
+            f"longer, and uptake {hedge}."
         )
         answer_plain = (
-            f"Full mulch cover increases hydrogen uptake by {core} {unit_plain} over two weeks "
-            f"({rng_plain}) by slowing evaporation, whereas full shade alone changes uptake by -273 {unit_plain} "
-            f"and combining mulch with shade gives 155 {unit_plain}. Mulch keeps water in the sand without cooling "
-            f"the microbes, whereas shade cools the sand and slows enzyme speed."
+            f"Full mulch cover changes hydrogen uptake over two weeks by {core} % ({rng_plain}) by slowing "
+            f"evaporation, so uptake with mulch alone {hedge}, whereas full shade alone changes uptake by "
+            f"-25 % (range -28 to -1.7 %) and combining mulch with shade changes uptake by 14 % "
+            f"(range -6.2 to 70 %). Mulch keeps water in the sand without cooling the microbes, whereas shade "
+            f"cools the sand and slows enzyme speed."
         )
         limits_extra_plain = (
             "Organic mulch breakdown and extra carbon food for soil microbes are not included."
@@ -613,47 +741,48 @@ def render_question_texts(
         )
     elif slug == "solar-park":
         headline_plain = (
-            f"Full solar-panel cover changes hydrogen uptake by {core} {unit_plain} in the central run, "
-            f"and uptake may go up or down across uncertain model numbers."
+            f"Full solar-panel cover changes hydrogen uptake over two weeks by {core} %, "
+            f"and uptake {hedge}."
         )
         answer_plain = (
-            f"Full solar-panel cover changes hydrogen uptake by {core} {unit_plain} in the central run "
-            f"({rng_plain}), and the change may go up or down depending on how strongly panel shade cuts "
-            f"evaporation and cools the sand versus how much panel-washing water drips onto the ground."
+            f"Full solar-panel cover changes hydrogen uptake over two weeks by {core} % ({rng_plain}), "
+            f"so uptake {hedge} because reduced evaporation under the panels and water from panel washing "
+            f"keep the sand moist longer than panel shade slows microbial enzymes."
         )
         limits_extra_plain = (
             "Wind shifts under panel rows and runoff strips along panel edges are simplified to an even average."
         )
         limits_extra_sci = (
             "Homogenises under-panel microclimate and wash-water drips spatially; competing cooling (Q10) and "
-            "moisture-retention effects yield sign ambiguity across parameter draws."
+            "moisture-retention effects partially offset each other across parameter draws."
         )
     elif slug == "compaction":
         headline_plain = (
-            f"Fifty vehicle passes change hydrogen uptake by {core} {unit_plain} in the central run, "
-            f"and uptake may go up or down across the uncertainty range."
+            f"Fifty vehicle passes change hydrogen uptake over two weeks by {core} %, "
+            f"and the change {hedge} across the uncertainty range."
         )
         answer_plain = (
-            f"Fifty vehicle passes change hydrogen uptake by {core} {unit_plain} in the central run "
-            f"({rng_plain}), and the change may go up or down because squeezing pore space slows gas movement "
-            f"through air spaces while changing how tightly the sand holds water."
+            f"Fifty vehicle passes change hydrogen uptake over two weeks by {core} % ({rng_plain}), "
+            f"so the change {hedge} because squeezing pore space slows gas movement through air spaces "
+            f"while changing how tightly the sand holds water."
         )
         limits_extra_plain = (
             "Crushing of soil crusts, plants or burrows by tyres is not modelled beyond the drop in pore space."
         )
         limits_extra_sci = (
             "Maps traffic passes to bulk density and porosity only, holding retention shape b and air-entry "
-            "potentialpsi_entry uncoupled from pore-size redistribution."
+            "potential psi_entry uncoupled from pore-size redistribution."
         )
     elif slug == "biochar":
         headline_plain = (
-            f"Adding five percent biochar by weight changes hydrogen uptake by {core} {unit_plain} "
-            f"over two weeks."
+            f"Adding five percent biochar by weight changes hydrogen uptake over two weeks by {core} %, "
+            f"and the change {hedge} across uncertain model numbers."
         )
         answer_plain = (
-            f"Adding five percent biochar by weight changes hydrogen uptake by {core} {unit_plain} over two weeks "
-            f"({rng_plain}). Increasing total pore space without adding extra water lowers the fraction of pores "
-            f"filled with water after a fixed 12 mm rain."
+            f"Adding five percent biochar by weight changes hydrogen uptake over two weeks by {core} % "
+            f"({rng_plain}), so the change {hedge} across uncertain model numbers. Increasing total pore space "
+            f"without adding extra water lowers the fraction of pores filled with water after a single rain "
+            f"while opening more air space for gas movement."
         )
         limits_extra_plain = (
             "Chemical effects of biochar on soil acidity, nutrients or microbe attachment are not included."
@@ -664,13 +793,15 @@ def render_question_texts(
         )
     elif slug == "missing-co-genes":
         headline_plain = (
-            f"Carbon monoxide uptake is {core} {unit_plain} when the soil community lacks the "
-            f"carbon-monoxide genes; the model cannot tell for such incomplete sample records."
+            f"Where the carbon-monoxide genes are missing there is no carbon-monoxide uptake at all (none), "
+            f"versus some uptake (about {core}) where the genes are present; for one sample the records are "
+            f"incomplete, so the twin gives no answer."
         )
         answer_plain = (
-            f"Carbon monoxide uptake is {core} {unit_plain} ({rng_plain}) in sample 51PRr3 where the "
-            f"carbon-monoxide enzyme genes are absent, compared with 144 {unit_plain} in samples that carry them; "
-            f"when read-mapping weights are missing, the model cannot tell for such incomplete sample records."
+            f"Where the soil community lacks the carbon-monoxide enzyme genes there is no carbon-monoxide "
+            f"uptake at all (none), versus some uptake where the genes are present (about {core} over two "
+            f"weeks, range {round_plain(q05)} to {round_plain(q95)}, so uptake {hedge} when the genes are "
+            f"present); for one sample the records are incomplete, so the twin gives no answer."
         )
         limits_extra_plain = (
             "A missing gene in recovered DNA means the twin sets that pathway to zero, though very rare "
@@ -682,14 +813,17 @@ def render_question_texts(
         )
     elif slug == "adding-microbes":
         headline_plain = (
-            f"Adding carrier microbes increases carbon monoxide uptake by {core} {unit_plain} at 1 % share "
-            f"under the on-off gene gate, or 77.4 when speed scales with share."
+            f"Adding carbon-monoxide-eating microbes at one percent of the community changes carbon monoxide "
+            f"uptake by {core} % where those microbes are already present, and switches uptake from none to "
+            f"some where they were missing."
         )
         answer_plain = (
-            f"Adding carrier microbes increases carbon monoxide uptake by {core} {unit_plain} "
-            f"over two weeks at 1 % share ({rng_plain}) under the on-off gene gate, or by 77.4 {unit_plain} when reaction "
-            f"speed scales with carrier abundance. Adding a microbe that lacks the carbon-monoxide genes leaves "
-            f"uptake at 0 {unit_plain}."
+            f"Adding carbon-monoxide-eating microbes at one percent of the soil community changes carbon "
+            f"monoxide uptake over two weeks by {core} % ({rng_plain}), and adding five percent changes "
+            f"uptake by 2.7 % (range 2.7 to 3.1 %), where carbon-monoxide eaters are already present, so "
+            f"uptake {hedge}. In a soil community that starts with no carbon-monoxide eaters at all, adding "
+            f"a carrier strain switches uptake from none to some, whereas adding a microbe without the "
+            f"carbon-monoxide genes leaves uptake at none."
         )
         limits_extra_plain = (
             "The scenario assumes the added microbes survive and work immediately in dry desert sand without "
@@ -701,13 +835,14 @@ def render_question_texts(
         )
     elif slug == "air-hydrogen":
         headline_plain = (
-            f"Doubling hydrogen in the air increases soil hydrogen uptake by {core} {unit_plain} "
-            f"over two weeks."
+            f"Doubling hydrogen in the air increases soil hydrogen uptake over two weeks by {core} %, "
+            f"and uptake {hedge}."
         )
         answer_plain = (
-            f"Doubling hydrogen in the air increases soil hydrogen uptake by {core} {unit_plain} over two weeks "
-            f"({rng_plain}), doubling total uptake from 1,102 to 2,205 {unit_plain}. Because the reaction in the "
-            f"twin is first-order in air hydrogen, uptake scales in lockstep with the air concentration."
+            f"Doubling hydrogen in the air increases soil hydrogen uptake over two weeks by {core} % "
+            f"({rng_plain}), and tenfold air hydrogen increases uptake by 900 %, so uptake {hedge}. Because "
+            f"soil uptake in the twin is directly proportional to the hydrogen level in the air, percentage "
+            f"uptake rises in lockstep with air concentration."
         )
         limits_extra_plain = (
             "At very high hydrogen levels, microbes could hit a maximum enzyme speed or grow in number, "
@@ -723,9 +858,10 @@ def render_question_texts(
             f"and 0 where the carbon-fixing genes are absent."
         )
         answer_plain = (
-            f"Hydrogen-eating microbes can fix at most {core} {unit_plain} in sample F14Dr1 after a 12 mm rain "
-            f"({rng_plain}), and 0 {unit_plain} in sample 14PRr2 where the carbon-fixing genes are absent. "
-            f"This is an upper limit if every bit of captured hydrogen energy went into building cell carbon."
+            f"Hydrogen-eating microbes can fix at most {core} {unit_plain} in sample F14Dr1 after a single rain "
+            f"({rng_plain}, so the upper limit {hedge} where the genes are present), and 0 {unit_plain} in "
+            f"sample 14PRr2 where the carbon-fixing genes are absent. This is an upper ceiling if every bit of "
+            f"captured hydrogen energy went into building cell carbon."
         )
         limits_extra_plain = (
             "This figure is an upper ceiling, not measured net carbon storage in the sand, because microbes "
@@ -738,46 +874,175 @@ def render_question_texts(
     else:
         raise KeyError(f"Unknown question slug: {slug}")
 
-    if spans_zero and "may go up or down" not in answer_plain.lower():
-        answer_plain += " Across the uncertainty range, the answer may go up or down."
-    if has_refusal and "the model cannot tell for such" not in answer_plain.lower():
+    if has_refusal and slug != "missing-co-genes" and "the model cannot tell for such" not in answer_plain.lower():
         cond = "salty water" if slug in {"salty-water", "alfalfa-bacterium"} else "conditions outside the model domain"
         answer_plain += f" At extreme settings, the model cannot tell for such {cond}."
 
     limits_plain = f"{SCOPE_SENTENCE_PLAIN} {limits_extra_plain}"
 
     # Scientific headline and answer
-    if q05 is not None and q95 is not None:
-        ci90_str = f"[{q05:.4g}, {q95:.4g}]"
-        iqr_str = f"[{q25:.4g}, {q75:.4g}]" if (q25 is not None and q75 is not None) else "n/a"
-        med_str = f"{median:.4g}" if median is not None else "n/a"
+    h_lvl = _get_uq_level(uq_doc, s_id, l_idx)
+    h_central_map = (h_lvl or {}).get("central", {})
+    h_outputs_map = (h_lvl or {}).get("outputs", {})
+
+    if out_key in {"h2_uptake_change_pct", "co_uptake_change_pct"}:
+        gas = "h2" if out_key.startswith("h2_") else "co"
+        contrast_key = f"{gas}_uptake_contrast_umol_m2"
+        abs_key = f"{gas}_uptake_umol_m2"
+        pct_stat = _fmt_sci_stat(central_val, outcome_uq, "%")
+        con_stat = _fmt_sci_stat(
+            h_central_map.get(contrast_key),
+            h_outputs_map.get(contrast_key),
+            "µmol m⁻²",
+        )
+        abs_stat = _fmt_sci_stat(
+            h_central_map.get(abs_key),
+            h_outputs_map.get(abs_key),
+            "µmol m⁻²",
+        )
+        headline_science = (
+            f"Central {out_key} = {pct_stat} (plain headline: {core} %); "
+            f"absolute change {contrast_key} = {con_stat}; "
+            f"absolute uptake {abs_key} = {abs_stat} "
+            f"(mode = {mode}, refusal = {ref_frac * 100:.1f} %)."
+        )
+        extra_levels_sci = ""
+        if slug == "rain-pattern":
+            driz_lvl = _get_uq_level(uq_doc, "rain-schedule", 3)
+            base_lvl = _get_uq_level(uq_doc, "rain-schedule", 1)
+            if driz_lvl and base_lvl:
+                d_c = driz_lvl.get("central", {})
+                d_o = driz_lvl.get("outputs", {})
+                b_c = base_lvl.get("central", {})
+                b_o = base_lvl.get("outputs", {})
+                extra_levels_sci = (
+                    f" Daily drizzle (12 mm total) vs one 12 mm storm: "
+                    f"h2_uptake_change_pct = {_fmt_sci_stat(d_c.get('h2_uptake_change_pct'), d_o.get('h2_uptake_change_pct'), '%')} "
+                    f"(plain: -100 %); "
+                    f"h2_uptake_contrast_umol_m2 = {_fmt_sci_stat(d_c.get('h2_uptake_contrast_umol_m2'), d_o.get('h2_uptake_contrast_umol_m2'), 'µmol m⁻²')}; "
+                    f"h2_uptake_umol_m2 = {_fmt_sci_stat(d_c.get('h2_uptake_umol_m2'), d_o.get('h2_uptake_umol_m2'), 'µmol m⁻²')} "
+                    f"(one-storm baseline h2_uptake_umol_m2 = {_fmt_sci_stat(b_c.get('h2_uptake_umol_m2'), b_o.get('h2_uptake_umol_m2'), 'µmol m⁻²')})."
+                )
+        elif slug == "adding-microbes":
+            gate_lvl = _get_uq_level(uq_doc, "51PRr3-gate", 1)
+            prop_lvl = _get_uq_level(uq_doc, "51PRr3-proportional", 1)
+            v53_5_lvl = _get_uq_level(uq_doc, "V53PRr2-proportional", 2)
+            if gate_lvl and prop_lvl and v53_5_lvl:
+                extra_levels_sci = (
+                    f" At 5 % inoculum in V53PRr2-proportional: "
+                    f"co_uptake_change_pct = {_fmt_sci_stat(v53_5_lvl['central'].get('co_uptake_change_pct'), v53_5_lvl['outputs'].get('co_uptake_change_pct'), '%')}, "
+                    f"co_uptake_contrast_umol_m2 = {_fmt_sci_stat(v53_5_lvl['central'].get('co_uptake_contrast_umol_m2'), v53_5_lvl['outputs'].get('co_uptake_contrast_umol_m2'), 'µmol m⁻²')}, "
+                    f"co_uptake_umol_m2 = {_fmt_sci_stat(v53_5_lvl['central'].get('co_uptake_umol_m2'), v53_5_lvl['outputs'].get('co_uptake_umol_m2'), 'µmol m⁻²')}. "
+                    f"In closed-baseline sample 51PRr3 (baseline co_uptake_umol_m2 = 0 µmol m⁻²), 1 % carrier inoculum yields "
+                    f"co_uptake_umol_m2 = {_fmt_sci_stat(gate_lvl['central'].get('co_uptake_umol_m2'), gate_lvl['outputs'].get('co_uptake_umol_m2'), 'µmol m⁻²')} under gate coupling "
+                    f"and {_fmt_sci_stat(prop_lvl['central'].get('co_uptake_umol_m2'), prop_lvl['outputs'].get('co_uptake_umol_m2'), 'µmol m⁻²')} under proportional coupling."
+                )
+        core_body_sci = (
+            f"Central percentage change: {out_key} = {pct_stat} (rounded headline: {core} %); "
+            f"absolute change {contrast_key} = {con_stat}; "
+            f"absolute uptake {abs_key} = {abs_stat} "
+            f"(mode = {mode}, refusal fraction = {ref_frac * 100:.1f} %, "
+            f"max level refusal across question = {max_refusal_fraction * 100:.1f} %).{extra_levels_sci}"
+        )
+    elif slug == "alfalfa-bacterium":
+        pct_q05 = 100.0 * float(q05) if q05 is not None else 0.0
+        pct_q95 = 100.0 * float(q95) if q95 is not None else 0.0
+        pct_med = 100.0 * float(median) if median is not None else 0.0
+        frac_stat = _fmt_sci_stat(central_val, outcome_uq, "fraction")
+        uninoc_stat = _fmt_sci_stat(
+            h_central_map.get("relative_yield_alfalfa"),
+            h_outputs_map.get("relative_yield_alfalfa"),
+            "fraction",
+        )
+        headline_science = (
+            f"Central inoculated yield = {display_central:.4g} % of normal yield (rounded: {core} %, "
+            f"median {pct_med:.4g} %, joint 5–95 % interval [{pct_q05:.4g}, {pct_q95:.4g}] %; "
+            f"{out_key} = {frac_stat}, mode = {mode}, refusal = {ref_frac * 100:.1f} %)."
+        )
+        core_body_sci = (
+            f"Central estimate: {display_central:.4g} % of normal yield (rounded headline: {core} %, "
+            f"joint 5–95 % interval [{pct_q05:.4g}, {pct_q95:.4g}] %), corresponding to "
+            f"{out_key} = {frac_stat}, versus uninoculated relative_yield_alfalfa = {uninoc_stat} "
+            f"(mode = {mode}, refusal fraction = {ref_frac * 100:.1f} %, "
+            f"max level refusal across question = {max_refusal_fraction * 100:.1f} %)."
+        )
+    elif slug == "missing-co-genes":
+        open_stat = _fmt_sci_stat(central_val, outcome_uq, "µmol m⁻²")
+        closed_lvl = _get_uq_level(uq_doc, "co-gate-samples", 0)
+        closed_stat = _fmt_sci_stat(
+            0.0,
+            (closed_lvl or {}).get("outputs", {}).get("co_uptake_umol_m2"),
+            "µmol m⁻²",
+        )
+        headline_science = (
+            f"Closed-gate sample 51PRr3 has co_uptake_umol_m2 = 0 µmol m⁻² (joint 5–95 % interval [0, 0] µmol m⁻², "
+            f"mode = deduced), whereas open-gate samples 10Dr2 and V53PRr2 have co_uptake_umol_m2 = {open_stat} "
+            f"(a tiny amount, about {core} millionths of a mole per square metre); samples 10Dr1 and 51PRr1 are "
+            f"refused (100.0 %) due to missing read-mapping weights."
+        )
+        core_body_sci = (
+            f"Open-gate samples 10Dr2 and V53PRr2 have co_uptake_umol_m2 = {open_stat} (a tiny amount, about "
+            f"{core} millionths of a mole per square metre; mode = {mode}, refusal fraction = 0.0 %), whereas "
+            f"closed-gate sample 51PRr3 has exact deductive co_uptake_umol_m2 = {closed_stat} (mode = deduced, "
+            f"because 0 assembled MAGs in 51PRr3 are entailed as carrying FormICODehydrogenaseSubunit). "
+            f"Samples 10Dr1 and 51PRr1 are refused for 100.0 % of parameter draws (max level refusal across "
+            f"question = {max_refusal_fraction * 100:.1f} %; exact refusal reason: No usable read-mapping weights "
+            f"(unknown sample or excluded for missing weights): ['10Dr1'] and ['51PRr1'])."
+        )
     else:
-        ci90_str = "[n/a, n/a]"
-        iqr_str = "[n/a, n/a]"
-        med_str = "n/a"
+        # carbon-fixation
+        stat_str = _fmt_sci_stat(central_val, outcome_uq, unit_sci)
+        ug_stat = _fmt_sci_stat(
+            h_central_map.get("c_fixed_upper_bound_ug_m2"),
+            h_outputs_map.get("c_fixed_upper_bound_ug_m2"),
+            "µg C m⁻²",
+        )
+        headline_science = (
+            f"Central {out_key} = {stat_str} (rounded: {core} {unit_sci}; "
+            f"14-day bound c_fixed_upper_bound_ug_m2 = {ug_stat}; "
+            f"mode = {mode}, refusal = {ref_frac * 100:.1f} %)."
+        )
+        core_body_sci = (
+            f"Central estimate in open-gate sample F14Dr1: {out_key} = {stat_str} "
+            f"(rounded headline: {core} {unit_sci}; 14-day bound c_fixed_upper_bound_ug_m2 = {ug_stat}; "
+            f"mode = {mode}, refusal fraction = {ref_frac * 100:.1f} %, "
+            f"max level refusal across question = {max_refusal_fraction * 100:.1f} %), "
+            f"and exact 0 {unit_sci} (joint 5–95 % interval [0, 0] {unit_sci}, mode = deduced) in closed-gate sample 14PRr2."
+        )
 
-    headline_science = (
-        f"Central {out_key} = {central_val:.4g} {unit_sci} (rounded: {core}; "
-        f"median {med_str}, 90 % interval {ci90_str} {unit_sci}, mode = {mode}, "
-        f"refusal = {ref_frac * 100:.1f} %)."
-    )
+    sobol_src = outcome_uq
+    sobol_prefix = ""
+    if (
+        out_key in {"h2_uptake_change_pct", "co_uptake_change_pct"}
+        and q05 is not None
+        and q95 is not None
+        and abs(float(q95) - float(q05)) < 1e-9
+    ):
+        gas = "h2" if out_key.startswith("h2_") else "co"
+        con_uq = h_outputs_map.get(f"{gas}_uptake_contrast_umol_m2")
+        if con_uq:
+            sobol_src = con_uq
+            sobol_prefix = (
+                f"Because {out_key} is invariant across all parameter draws (ST = 0, S1 = 0), "
+                f"Sobol' indices are reported for {gas}_uptake_contrast_umol_m2. "
+            )
 
-    sobol_str = _top_two_sobol_text(
-        outcome_uq.get("ST", {}),
-        outcome_uq.get("S1", {}),
+    sobol_str = sobol_prefix + _top_two_sobol_text(
+        sobol_src.get("ST", {}),
+        sobol_src.get("S1", {}),
         mode,
     )
     group_str = _group_share_text(
-        outcome_uq.get("group_ST", {}),
-        outcome_uq.get("group_S1", {}),
+        sobol_src.get("group_ST", {}),
+        sobol_src.get("group_S1", {}),
         mode,
     )
+    conv_str = _convergence_text(outcome_uq, uq_doc)
+    conv_part = f" {conv_str}" if conv_str else ""
 
     answer_science = (
-        f"Central estimate: {out_key} = {central_val:.6g} {unit_sci} (rounded headline: {core} {unit_sci}; "
-        f"median = {med_str} {unit_sci}, 50 % IQR = {iqr_str} {unit_sci}, joint 90 % interval = {ci90_str} {unit_sci}; "
-        f"mode = {mode}, refusal fraction = {ref_frac * 100:.1f} %, max level refusal across question = {max_refusal_fraction * 100:.1f} %). "
-        f"{sobol_str} {group_str} "
+        f"{core_body_sci} "
+        f"{sobol_str} {group_str}{conv_part} "
         f"Limits: {SCOPE_SENTENCE_SCIENCE}"
     )
     limits_science = f"{SCOPE_SENTENCE_SCIENCE} {limits_extra_sci}"

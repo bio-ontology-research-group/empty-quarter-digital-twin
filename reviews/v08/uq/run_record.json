@@ -1,0 +1,20 @@
+{
+  "cluster": "unimatrix (Slurm 23.11, partition debug, nodes node002-node008; ~142 tasks concurrently)",
+  "code_commit_cluster": "6d59867 (branch v0.8-questions)",
+  "pilot": {"job": 10708, "tasks": 25,
+            "comparison_with_ws": "same task file (sha256 prefix 47a785618f79a11f on both machines); 315 of 20011 raw values differ, max relative difference 2.0e-11 (different libm); each machine is deterministic. Published summaries are rounded to 6 significant digits (reproducibility/v08/gather.py SIG_DIGITS) so they do not depend on the machine."},
+  "full_run": {"jobs": [10733, 10734], "array_split": "MaxArraySize 1001: indices 0-1000 (UQ_OFFSET=0) and 0-218 (UQ_OFFSET=1000)",
+               "tasks": 1219, "failed": 0, "n": 1024, "evaluations": 2285568,
+               "cost_per_evaluation_s_ws": 0.127, "wall_time_approx_min": 40,
+               "raw_sha256_of_sha256s": "7e6de8d5c71f98c8e86e014f14bc2d23c27d764107285afeaae4b4feb98458d1"},
+  "convergence_rerun": {"job": 11953, "n": 2048, "tasks": 171, "failed": 0,
+                        "levels": ["rain-pattern|rain-schedule|0", "rain-pattern|rain-schedule|3", "drip-or-flood|irrigation-interval|1",
+                                   "salty-water|daily-irrigation|0", "salty-water|daily-irrigation|2", "salty-water|daily-irrigation|3",
+                                   "alfalfa-bacterium|A_fao_fixed_leaching|6"],
+                        "reason": "half-N interval endpoints moved by more than 5 % of the interval width at N=1024 (non-discrete outputs)",
+                        "raw_sha256_of_sha256s": "4097df85d05fa5672caebf0d8fe4cd6c5bf6bc21e1a113051fbe917ee5cdbba0",
+                        "still_flagged_after_rerun": 7,
+                        "note": "Remaining flags (shift 5.5-10 % of width) are mostly absolute uptakes with heavy tails from the log-uniform rate constant; they stay flagged in the question files and are shown as such."},
+  "raw_storage": "ws:/mnt/data1/agents/projects/eq-biodt-v07/{uq-raw,uq-raw-n2048} (1.1 GB + n2048); unimatrix:~/eq-biodt-uq/{raw,raw-n2048}. Not in git; gathered summaries in reviews/v08/uq/ are committed.",
+  "gather": "reproducibility/v08/gather.py --raw <merged dir: N=1024 chunks except the 7 rerun levels, which use N=2048>"
+}

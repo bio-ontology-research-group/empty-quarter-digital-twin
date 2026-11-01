@@ -1,0 +1,6808 @@
+{
+  "constants_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578",
+  "headline": [
+    "h2_uptake_umol_m2",
+    "h2_uptake_contrast_umol_m2"
+  ],
+  "parameter_ranges_sha256": "f6b9fe6f95d88360375a81171deae746e17c213600077bcc49fa8e05b47ad027",
+  "series": [
+    {
+      "id": "irrigation-interval",
+      "label_plain": "Days between waterings",
+      "label_science": "Equal seasonal water demand split by interval",
+      "levels": [
+        {
+          "central": {
+            "active_days": 14.0,
+            "co_uptake_contrast_umol_m2": -76.9824,
+            "co_uptake_umol_m2": 67.4243,
+            "final_salt_mol_m2": 0.0,
+            "final_water_mm": 24.5514,
+            "h2_uptake_contrast_umol_m2": -422.801,
+            "h2_uptake_umol_m2": 679.532,
+            "mean_nacl_mol_l": 0.0,
+            "porosity": 0.4
+          },
+          "central_deduced": [],
+          "central_refused": null,
+          "d": 14,
+          "inputs": [
+            {
+              "dist": "triangular",
+              "high": 2.0,
+              "kind": "parameter",
+              "low": 0.5,
+              "name": "activation_shape",
+              "status": "modeller_assumption",
+              "value": 1.0
+            },
+            {
+              "dist": "triangular",
+              "high": 9.0,
+              "kind": "constant",
+              "low": 4.0,
+              "name": "crop_etc_mm_per_day",
+              "status": "modeller_assumption",
+              "value": 6.0
+            },
+            {
+              "dist": "triangular",
+              "high": 2.52e-05,
+              "kind": "parameter",
+              "low": 1.68e-05,
+              "name": "d_co_m2_s",
+              "status": "modeller_assumption",
+              "value": 2.1e-05
+            },
+            {
+              "dist": "triangular",
+              "high": 9.24e-05,
+              "kind": "parameter",
+              "low": 6.16e-05,
+              "name": "d_h2_m2_s",
+              "status": "modeller_assumption",
+              "value": 7.7e-05
+            },
+            {
+              "dist": "triangular",
+              "high": 0.7,
+              "kind": "parameter",
+              "low": 0.3,
+              "name": "drainage_fraction_day",
+              "status": "modeller_assumption",
+              "value": 0.5
+            },
+            {
+              "dist": "triangular",
+              "high": -70.0,
+              "kind": "parameter",
+              "low": -100.0,
+              "name": "dry_threshold_mpa",
+              "status": "modeller_assumption",
+              "value": -85.0
+            },
+            {
+              "dist": "triangular",
+              "high": 0.6,
+              "kind": "parameter",
+              "low": 0.4,
+              "name": "field_capacity_fraction",
+              "status": "modeller_assumption",
+              "value": 0.5
+            },
+            {
+              "dist": "loguniform",
+              "high": 0.01,
+              "kind": "parameter",
+              "low": 0.0001,
+              "name": "k_co_s",
+              "status": "modeller_assumption",
+              "value": 0.001
+            },
+            {
+              "dist": "loguniform",
+              "high": 0.01,
+              "kind": "parameter",
+              "low": 0.0001,
+              "name": "k_h2_s",
+              "status": "modeller_assumption",
+              "value": 0.001
+            },
+            {
+              "dist": "triangular",
+              "high": 0.5,
+              "kind": "parameter",
+              "low": 0.35,
+              "name": "porosity",
+              "status": "modeller_assumption",
+              "value": 0.4
+            },
+            {
+              "dist": "loguniform",
+              "high": -0.0001,
+              "kind": "parameter",
+              "low": -0.01,
+              "name": "psi_entry_mpa",
+              "status": "modeller_assumption",
+              "value": -0.001
+            },
+            {
+              "dist": "uniform",
+              "high": 2.0,
+              "kind": "parameter",
+              "low": 1.0,
+              "name": "q10",
+              "status": "modeller_assumption",
+              "value": 2.0
+            },
+            {
+              "dist": "triangular",
+              "high": 6.0,
+              "kind": "parameter",
+              "low": 2.0,
+              "name": "retention_b",
+              "status": "modeller_assumption",
+              "value": 4.0
+            },
+            {
+              "dist": "loguniform",
+              "high": -0.03,
+              "kind": "parameter",
+              "low": -0.3,
+              "name": "wet_activation_mpa",
+              "status": "modeller_assumption",
+              "value": -0.1
+            }
+          ],
+          "label": "every 1 d",
+          "level": 0,
+          "level_seed": 7257636766986822250,
+          "n": 1024,
+          "outputs": {
+            "active_days": {
+              "S1": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "convergence": {
+                "discrete": true,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": 14.0,
+              "mode": "variance",
+              "q05": 14.0,
+              "q25": 14.0,
+              "q75": 14.0,
+              "q95": 14.0,
+              "refusal_fraction": 0.0
+            },
+            "co_uptake_change_pct": {
+              "S1": {
+                "activation_shape": [
+                  0.0433826,
+                  0.0173835,
+                  0.068313
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0248759,
+                  0.0079517,
+                  0.0463036
+                ],
+                "d_co_m2_s": [
+                  0.00237675,
+                  -0.00147674,
+                  0.00565837
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0241889,
+                  0.0077269,
+                  0.0493978
+                ],
+                "dry_threshold_mpa": [
+                  -0.00244355,
+                  -0.00671279,
+                  0.00230428
+                ],
+                "field_capacity_fraction": [
+                  0.0271437,
+                  0.0113286,
+                  0.0482704
+                ],
+                "k_co_s": [
+                  0.0936382,
+                  0.0555856,
+                  0.138671
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0317982,
+                  0.00421133,
+                  0.0651467
+                ],
+                "psi_entry_mpa": [
+                  0.145594,
+                  0.0990978,
+                  0.195118
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.191894,
+                  0.140414,
+                  0.252829
+                ],
+                "wet_activation_mpa": [
+                  0.00674755,
+                  -0.00401812,
+                  0.0177498
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.112782,
+                  0.0755727,
+                  0.158331
+                ],
+                "crop_etc_mm_per_day": [
+                  0.037812,
+                  0.0275854,
+                  0.0513651
+                ],
+                "d_co_m2_s": [
+                  0.00189828,
+                  0.000975277,
+                  0.00271345
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0393009,
+                  0.0283118,
+                  0.0534693
+                ],
+                "dry_threshold_mpa": [
+                  0.00381368,
+                  0.000504518,
+                  0.00802552
+                ],
+                "field_capacity_fraction": [
+                  0.0431337,
+                  0.0318992,
+                  0.0581819
+                ],
+                "k_co_s": [
+                  0.196405,
+                  0.157053,
+                  0.255802
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.102214,
+                  0.0650611,
+                  0.15036
+                ],
+                "psi_entry_mpa": [
+                  0.399045,
+                  0.26412,
+                  0.535298
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.46019,
+                  0.299007,
+                  0.60846
+                ],
+                "wet_activation_mpa": [
+                  0.0174565,
+                  0.0120568,
+                  0.0237537
+                ]
+              },
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.0165246
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  0.93962,
+                  0.666455,
+                  1.24326
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  1.00715,
+                  0.95331,
+                  1.05222
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": -46.3521,
+              "mode": "variance",
+              "q05": -76.0222,
+              "q25": -62.1674,
+              "q75": -19.5857,
+              "q95": 58.147,
+              "refusal_fraction": 0.0
+            },
+            "co_uptake_contrast_umol_m2": {
+              "S1": {
+                "activation_shape": [
+                  0.0108449,
+                  -0.00859111,
+                  0.0292789
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0156479,
+                  0.000864555,
+                  0.0315286
+                ],
+                "d_co_m2_s": [
+                  -0.0004088,
+                  -0.00537004,
+                  0.00467003
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.00733853,
+                  -0.00816305,
+                  0.0231918
+                ],
+                "dry_threshold_mpa": [
+                  0.000253632,
+                  -0.00125191,
+                  0.00175263
+                ],
+                "field_capacity_fraction": [
+                  0.00668724,
+                  -0.0048443,
+                  0.0202386
+                ],
+                "k_co_s": [
+                  0.500324,
+                  0.397942,
+                  0.613065
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0065599,
+                  -0.00352651,
+                  0.0167716
+                ],
+                "psi_entry_mpa": [
+                  0.0990324,
+                  0.0587591,
+                  0.142749
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.155964,
+                  0.102499,
+                  0.224057
+                ],
+                "wet_activation_mpa": [
+                  0.00376005,
+                  -0.00668207,
+                  0.0142454
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.0217497,
+                  0.0180929,
+                  0.026413
+                ],
+                "crop_etc_mm_per_day": [
+                  0.01858,
+                  0.0159145,
+                  0.0216041
+                ],
+                "d_co_m2_s": [
+                  0.00219604,
+                  0.00169343,
+                  0.00275832
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0163512,
+                  0.0134274,
+                  0.0196072
+                ],
+                "dry_threshold_mpa": [
+                  0.000146271,
+                  0.000118927,
+                  0.000176828
+                ],
+                "field_capacity_fraction": [
+                  0.0176995,
+                  0.0149385,
+                  0.0208751
+                ],
+                "k_co_s": [
+                  0.665937,
+                  0.592121,
+                  0.742062
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.00769625,
+                  0.00648823,
+                  0.0089988
+                ],
+                "psi_entry_mpa": [
+                  0.162224,
+                  0.137775,
+                  0.18965
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.253613,
+                  0.219354,
+                  0.288572
+                ],
+                "wet_activation_mpa": [
+                  0.00912608,
+                  0.00759196,
+                  0.0106331
+                ]
+              },
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00599502
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  0.989793,
+                  0.843166,
+                  1.15899
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  0.985652,
+                  0.923212,
+                  1.05499
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": -53.5332,
+              "mode": "variance",
+              "q05": -335.974,
+              "q25": -143.657,
+              "q75": -11.5816,
+              "q95": 17.5306,
+              "refusal_fraction": 0.0
+            },
+            "co_uptake_umol_m2": {
+              "S1": {
+                "activation_shape": [
+                  -0.000406445,
+                  -0.00198154,
+                  0.00100822
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0446718,
+                  0.00537631,
+                  0.0803047
+                ],
+                "d_co_m2_s": [
+                  0.00426649,
+                  -0.00642167,
+                  0.0143576
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0371638,
+                  0.000208461,
+                  0.0768169
+                ],
+                "dry_threshold_mpa": [
+                  2.8158e-06,
+                  -3.81363e-05,
+                  3.85239e-05
+                ],
+                "field_capacity_fraction": [
+                  0.0385262,
+                  0.00150522,
+                  0.0756765
+                ],
+                "k_co_s": [
+                  0.77515,
+                  0.61679,
+                  0.932849
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0256775,
+                  -0.00798421,
+                  0.0544164
+                ],
+                "psi_entry_mpa": [
+                  0.00188388,
+                  -0.00216977,
+                  0.00630912
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.00179968,
+                  3.24594e-05,
+                  0.00400356
+                ],
+                "wet_activation_mpa": [
+                  0.000459749,
+                  -0.00166557,
+                  0.00280101
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  7.77684e-05,
+                  1.95474e-05,
+                  0.000182227
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0641455,
+                  0.0550336,
+                  0.0747443
+                ],
+                "d_co_m2_s": [
+                  0.0048797,
+                  0.00412915,
+                  0.00568427
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0564508,
+                  0.0469192,
+                  0.0677036
+                ],
+                "dry_threshold_mpa": [
+                  4.62053e-08,
+                  2.33001e-08,
+                  7.46691e-08
+                ],
+                "field_capacity_fraction": [
+                  0.0611057,
+                  0.0526025,
+                  0.0703288
+                ],
+                "k_co_s": [
+                  0.847406,
+                  0.777932,
+                  0.927465
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0459652,
+                  0.0393967,
+                  0.0534005
+                ],
+                "psi_entry_mpa": [
+                  0.000406851,
+                  0.000235733,
+                  0.00062971
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.000146938,
+                  8.79211e-05,
+                  0.000216811
+                ],
+                "wet_activation_mpa": [
+                  0.000215813,
+                  0.00012229,
+                  0.000329777
+                ]
+              },
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.0185538
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  1.00473,
+                  0.813754,
+                  1.20525
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  1.00534,
+                  0.947126,
+                  1.06435
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": 65.6883,
+              "mode": "variance",
+              "q05": 19.7794,
+              "q25": 36.2214,
+              "q75": 120.81,
+              "q95": 209.557,
+              "refusal_fraction": 0.0
+            },
+            "final_salt_mol_m2": {
+              "S1": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "convergence": {
+                "discrete": true,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": 0.0,
+              "mode": "variance",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0
+            },
+            "final_water_mm": {
+              "S1": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.102941,
+                  -0.167322,
+                  0.356656
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.337451,
+                  -0.125897,
+                  0.781157
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.286971,
+                  -0.126136,
+                  0.693919
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.242022,
+                  -0.137395,
+                  0.586011
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.125271,
+                  0.111319,
+                  0.140802
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.360042,
+                  0.327538,
+                  0.402077
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.288968,
+                  0.265927,
+                  0.319214
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.246933,
+                  0.225747,
+                  0.272656
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00498223
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  1.00023,
+                  0.279277,
+                  1.68629
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  0.99738,
+                  0.93917,
+                  1.05588
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": 25.8967,
+              "mode": "variance",
+              "q05": 21.043,
+              "q25": 23.736,
+              "q75": 28.1243,
+              "q95": 31.2157,
+              "refusal_fraction": 0.0
+            },
+            "h2_uptake_change_pct": {
+              "S1": {
+                "activation_shape": [
+                  0.0588002,
+                  0.0196237,
+                  0.114867
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0147349,
+                  0.00205447,
+                  0.0305893
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.000151499,
+                  -0.00301571,
+                  0.00296655
+                ],
+                "drainage_fraction_day": [
+                  0.0178672,
+                  0.00639834,
+                  0.0340653
+                ],
+                "dry_threshold_mpa": [
+                  -0.000938591,
+                  -0.00382358,
+                  0.00145616
+                ],
+                "field_capacity_fraction": [
+                  0.0139352,
+                  -0.00140333,
+                  0.0270071
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.132578,
+                  0.0916148,
+                  0.186553
+                ],
+                "porosity": [
+                  0.0336058,
+                  0.0180613,
+                  0.0525915
+                ],
+                "psi_entry_mpa": [
+                  0.132347,
+                  0.0894313,
+                  0.181026
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.159086,
+                  0.119548,
+                  0.207593
+                ],
+                "wet_activation_mpa": [
+                  0.0117181,
+                  0.00360324,
+                  0.023271
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.1927,
+                  0.0775458,
+                  0.431155
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0237914,
+                  0.0173296,
+                  0.0333312
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.00166504,
+                  0.000651305,
+                  0.00335858
+                ],
+                "drainage_fraction_day": [
+                  0.0279132,
+                  0.0195462,
+                  0.0392253
+                ],
+                "dry_threshold_mpa": [
+                  0.00196079,
+                  0.000459342,
+                  0.00462037
+                ],
+                "field_capacity_fraction": [
+                  0.0256468,
+                  0.0185222,
+                  0.0341878
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.332038,
+                  0.221991,
+                  0.470804
+                ],
+                "porosity": [
+                  0.0836114,
+                  0.0521035,
+                  0.120993
+                ],
+                "psi_entry_mpa": [
+                  0.362524,
+                  0.233388,
+                  0.511435
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.321895,
+                  0.222027,
+                  0.448938
+                ],
+                "wet_activation_mpa": [
+                  0.0251392,
+                  0.0120107,
+                  0.0464143
+                ]
+              },
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.0415525
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  1.05312,
+                  0.734258,
+                  1.3444
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  1.00196,
+                  0.953292,
+                  1.0439
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": -28.9265,
+              "mode": "variance",
+              "q05": -72.5579,
+              "q25": -52.6955,
+              "q75": 8.73852,
+              "q95": 136.469,
+              "refusal_fraction": 0.0
+            },
+            "h2_uptake_contrast_umol_m2": {
+              "S1": {
+                "activation_shape": [
+                  0.00646636,
+                  -0.00839873,
+                  0.020955
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0157989,
+                  0.00458925,
+                  0.0277686
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  -0.00137809,
+                  -0.00458516,
+                  0.00156251
+                ],
+                "drainage_fraction_day": [
+                  0.00983188,
+                  -0.00373435,
+                  0.0242132
+                ],
+                "dry_threshold_mpa": [
+                  -0.000177477,
+                  -0.00112372,
+                  0.000663716
+                ],
+                "field_capacity_fraction": [
+                  0.00307952,
+                  -0.00919514,
+                  0.0165462
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.523908,
+                  0.427602,
+                  0.629219
+                ],
+                "porosity": [
+                  0.00542387,
+                  -0.00728902,
+                  0.0175771
+                ],
+                "psi_entry_mpa": [
+                  0.0925474,
+                  0.0515326,
+                  0.137687
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.146058,
+                  0.0877464,
+                  0.201734
+                ],
+                "wet_activation_mpa": [
+                  -0.00951234,
+                  -0.0202912,
+                  0.000239564
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.0235284,
+                  0.0190376,
+                  0.0286667
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0194979,
+                  0.0163196,
+                  0.0224398
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.00138152,
+                  0.00104731,
+                  0.00172048
+                ],
+                "drainage_fraction_day": [
+                  0.0171789,
+                  0.0146589,
+                  0.0203076
+                ],
+                "dry_threshold_mpa": [
+                  0.000119787,
+                  9.81505e-05,
+                  0.000144304
+                ],
+                "field_capacity_fraction": [
+                  0.0195551,
+                  0.0164853,
+                  0.0230798
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.714957,
+                  0.641349,
+                  0.785778
+                ],
+                "porosity": [
+                  0.0134025,
+                  0.0106905,
+                  0.0161497
+                ],
+                "psi_entry_mpa": [
+                  0.164913,
+                  0.138088,
+                  0.192073
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.297102,
+                  0.248941,
+                  0.347826
+                ],
+                "wet_activation_mpa": [
+                  0.0107469,
+                  0.00888415,
+                  0.012811
+                ]
+              },
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.017302
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  1.00103,
+                  0.859706,
+                  1.1557
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  1.02502,
+                  0.958896,
+                  1.07852
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": -248.012,
+              "mode": "variance",
+              "q05": -3253.99,
+              "q25": -1053.76,
+              "q75": 35.7882,
+              "q95": 294.807,
+              "refusal_fraction": 0.0
+            },
+            "h2_uptake_umol_m2": {
+              "S1": {
+                "activation_shape": [
+                  -0.000540439,
+                  -0.00137593,
+                  0.000159142
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0425587,
+                  0.0077873,
+                  0.0798954
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0024735,
+                  -0.00643382,
+                  0.0129915
+                ],
+                "drainage_fraction_day": [
+                  0.0363461,
+                  0.00412459,
+                  0.0682453
+                ],
+                "dry_threshold_mpa": [
+                  6.27177e-06,
+                  -3.17004e-05,
+                  3.6418e-05
+                ],
+                "field_capacity_fraction": [
+                  0.0616563,
+                  0.022098,
+                  0.10031
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.760246,
+                  0.607852,
+                  0.926663
+                ],
+                "porosity": [
+                  0.0244445,
+                  -0.0053662,
+                  0.0562342
+                ],
+                "psi_entry_mpa": [
+                  0.000156649,
+                  -0.00254878,
+                  0.00255501
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.00108809,
+                  -0.000484131,
+                  0.00275784
+                ],
+                "wet_activation_mpa": [
+                  0.000887198,
+                  -0.000646309,
+                  0.00243629
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  2.45464e-05,
+                  1.39677e-05,
+                  3.83664e-05
+                ],
+                "crop_etc_mm_per_day": [
+                  0.058569,
+                  0.0498607,
+                  0.0669002
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.00474192,
+                  0.00381747,
+                  0.00565009
+                ],
+                "drainage_fraction_day": [
+                  0.051603,
+                  0.0446887,
+                  0.0601926
+                ],
+                "dry_threshold_mpa": [
+                  4.85549e-08,
+                  1.8236e-08,
+                  9.04018e-08
+                ],
+                "field_capacity_fraction": [
+                  0.0587409,
+                  0.0507783,
+                  0.0678268
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.854398,
+                  0.778313,
+                  0.946334
+                ],
+                "porosity": [
+                  0.0415207,
+                  0.0352264,
+                  0.0479582
+                ],
+                "psi_entry_mpa": [
+                  0.00028722,
+                  0.000191857,
+                  0.000405146
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.000141937,
+                  9.09211e-05,
+                  0.000212167
+                ],
+                "wet_activation_mpa": [
+                  0.000177193,
+                  0.000100483,
+                  0.00027216
+                ]
+              },
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00153544
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  0.987928,
+                  0.804129,
+                  1.17225
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  0.985662,
+                  0.920668,
+                  1.04492
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": 656.591,
+              "mode": "variance",
+              "q05": 181.352,
+              "q25": 335.266,
+              "q75": 1205.46,
+              "q95": 2155.11,
+              "refusal_fraction": 0.0
+            },
+            "mean_nacl_mol_l": {
+              "S1": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "convergence": {
+                "discrete": true,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": 0.0,
+              "mode": "variance",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0
+            },
+            "porosity": {
+              "S1": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  1.00112,
+                  -0.284398,
+                  2.10908
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  1.00033,
+                  0.940882,
+                  1.06379
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00146696
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  1.00112,
+                  -0.284398,
+                  2.10908
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  1.00033,
+                  0.940882,
+                  1.06379
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": 0.413423,
+              "mode": "variance",
+              "q05": 0.369425,
+              "q25": 0.393302,
+              "q75": 0.438786,
+              "q95": 0.472541,
+              "refusal_fraction": 0.0
+            }
+          },
+          "x": 1.0
+        },
+        {
+          "central": {
+            "active_days": 14.0,
+            "co_uptake_contrast_umol_m2": -75.6453,
+            "co_uptake_umol_m2": 68.7614,
+            "final_salt_mol_m2": 0.0,
+            "final_water_mm": 23.3517,
+            "h2_uptake_contrast_umol_m2": -410.802,
+            "h2_uptake_umol_m2": 691.531,
+            "mean_nacl_mol_l": 0.0,
+            "porosity": 0.4
+          },
+          "central_deduced": [],
+          "central_refused": null,
+          "d": 14,
+          "inputs": [
+            {
+              "dist": "triangular",
+              "high": 2.0,
+              "kind": "parameter",
+              "low": 0.5,
+              "name": "activation_shape",
+              "status": "modeller_assumption",
+              "value": 1.0
+            },
+            {
+              "dist": "triangular",
+              "high": 9.0,
+              "kind": "constant",
+              "low": 4.0,
+              "name": "crop_etc_mm_per_day",
+              "status": "modeller_assumption",
+              "value": 6.0
+            },
+            {
+              "dist": "triangular",
+              "high": 2.52e-05,
+              "kind": "parameter",
+              "low": 1.68e-05,
+              "name": "d_co_m2_s",
+              "status": "modeller_assumption",
+              "value": 2.1e-05
+            },
+            {
+              "dist": "triangular",
+              "high": 9.24e-05,
+              "kind": "parameter",
+              "low": 6.16e-05,
+              "name": "d_h2_m2_s",
+              "status": "modeller_assumption",
+              "value": 7.7e-05
+            },
+            {
+              "dist": "triangular",
+              "high": 0.7,
+              "kind": "parameter",
+              "low": 0.3,
+              "name": "drainage_fraction_day",
+              "status": "modeller_assumption",
+              "value": 0.5
+            },
+            {
+              "dist": "triangular",
+              "high": -70.0,
+              "kind": "parameter",
+              "low": -100.0,
+              "name": "dry_threshold_mpa",
+              "status": "modeller_assumption",
+              "value": -85.0
+            },
+            {
+              "dist": "triangular",
+              "high": 0.6,
+              "kind": "parameter",
+              "low": 0.4,
+              "name": "field_capacity_fraction",
+              "status": "modeller_assumption",
+              "value": 0.5
+            },
+            {
+              "dist": "loguniform",
+              "high": 0.01,
+              "kind": "parameter",
+              "low": 0.0001,
+              "name": "k_co_s",
+              "status": "modeller_assumption",
+              "value": 0.001
+            },
+            {
+              "dist": "loguniform",
+              "high": 0.01,
+              "kind": "parameter",
+              "low": 0.0001,
+              "name": "k_h2_s",
+              "status": "modeller_assumption",
+              "value": 0.001
+            },
+            {
+              "dist": "triangular",
+              "high": 0.5,
+              "kind": "parameter",
+              "low": 0.35,
+              "name": "porosity",
+              "status": "modeller_assumption",
+              "value": 0.4
+            },
+            {
+              "dist": "loguniform",
+              "high": -0.0001,
+              "kind": "parameter",
+              "low": -0.01,
+              "name": "psi_entry_mpa",
+              "status": "modeller_assumption",
+              "value": -0.001
+            },
+            {
+              "dist": "uniform",
+              "high": 2.0,
+              "kind": "parameter",
+              "low": 1.0,
+              "name": "q10",
+              "status": "modeller_assumption",
+              "value": 2.0
+            },
+            {
+              "dist": "triangular",
+              "high": 6.0,
+              "kind": "parameter",
+              "low": 2.0,
+              "name": "retention_b",
+              "status": "modeller_assumption",
+              "value": 4.0
+            },
+            {
+              "dist": "loguniform",
+              "high": -0.03,
+              "kind": "parameter",
+              "low": -0.3,
+              "name": "wet_activation_mpa",
+              "status": "modeller_assumption",
+              "value": -0.1
+            }
+          ],
+          "label": "every 3 d",
+          "level": 1,
+          "level_seed": 9028904950832581699,
+          "n": 2048,
+          "outputs": {
+            "active_days": {
+              "S1": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "convergence": {
+                "discrete": true,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": 14.0,
+              "mode": "variance",
+              "q05": 14.0,
+              "q25": 14.0,
+              "q75": 14.0,
+              "q95": 14.0,
+              "refusal_fraction": 0.0
+            },
+            "co_uptake_change_pct": {
+              "S1": {
+                "activation_shape": [
+                  0.0375642,
+                  0.0180647,
+                  0.0584908
+                ],
+                "crop_etc_mm_per_day": [
+                  0.014857,
+                  0.00664275,
+                  0.0246677
+                ],
+                "d_co_m2_s": [
+                  0.000641479,
+                  -0.0016786,
+                  0.00293803
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0201801,
+                  0.00674702,
+                  0.0363066
+                ],
+                "dry_threshold_mpa": [
+                  -0.000733509,
+                  -0.00242342,
+                  0.000848085
+                ],
+                "field_capacity_fraction": [
+                  0.031349,
+                  0.0177488,
+                  0.0458222
+                ],
+                "k_co_s": [
+                  0.103651,
+                  0.0790495,
+                  0.130796
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0277689,
+                  0.00510422,
+                  0.0506906
+                ],
+                "psi_entry_mpa": [
+                  0.132701,
+                  0.0988173,
+                  0.176657
+                ],
+                "q10": [
+                  8.47343e-19,
+                  -6.76749e-19,
+                  2.72895e-18
+                ],
+                "retention_b": [
+                  0.222318,
+                  0.175047,
+                  0.281915
+                ],
+                "wet_activation_mpa": [
+                  0.00680425,
+                  -0.00148247,
+                  0.0164454
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.115548,
+                  0.0739664,
+                  0.16261
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0212121,
+                  0.0172602,
+                  0.0260001
+                ],
+                "d_co_m2_s": [
+                  0.00138146,
+                  0.000997197,
+                  0.00198471
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0431117,
+                  0.0346051,
+                  0.0522446
+                ],
+                "dry_threshold_mpa": [
+                  0.000821097,
+                  0.000526496,
+                  0.00120244
+                ],
+                "field_capacity_fraction": [
+                  0.0417713,
+                  0.03345,
+                  0.0521067
+                ],
+                "k_co_s": [
+                  0.228228,
+                  0.169025,
+                  0.294305
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.090625,
+                  0.0657548,
+                  0.122452
+                ],
+                "psi_entry_mpa": [
+                  0.284312,
+                  0.223375,
+                  0.355897
+                ],
+                "q10": [
+                  3.79279e-34,
+                  1.731e-34,
+                  6.47049e-34
+                ],
+                "retention_b": [
+                  0.425534,
+                  0.326044,
+                  0.535622
+                ],
+                "wet_activation_mpa": [
+                  0.0166261,
+                  0.0128958,
+                  0.0215861
+                ]
+              },
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.0143434
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  1.02862,
+                  0.840627,
+                  1.2464
+                ],
+                "source_not_checked": [
+                  2.66693e-18,
+                  -2.17456e-18,
+                  8.95969e-18
+                ],
+                "verified_in_source": [
+                  2.66693e-18,
+                  -2.17456e-18,
+                  8.95969e-18
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  0.987891,
+                  0.943057,
+                  1.02754
+                ],
+                "source_not_checked": [
+                  1.74044e-32,
+                  7.51447e-34,
+                  5.10012e-32
+                ],
+                "verified_in_source": [
+                  1.74044e-32,
+                  7.51447e-34,
+                  5.10012e-32
+                ]
+              },
+              "median": -44.5864,
+              "mode": "variance",
+              "q05": -72.5751,
+              "q25": -59.8295,
+              "q75": -18.4585,
+              "q95": 61.4703,
+              "refusal_fraction": 0.0
+            },
+            "co_uptake_contrast_umol_m2": {
+              "S1": {
+                "activation_shape": [
+                  0.0140999,
+                  0.00332353,
+                  0.0257509
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0059515,
+                  -0.00241679,
+                  0.0145695
+                ],
+                "d_co_m2_s": [
+                  0.000208373,
+                  -0.00336983,
+                  0.00358284
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.00697205,
+                  -0.00204104,
+                  0.0161771
+                ],
+                "dry_threshold_mpa": [
+                  0.000442335,
+                  -0.000593267,
+                  0.00150325
+                ],
+                "field_capacity_fraction": [
+                  0.0129276,
+                  0.00210992,
+                  0.0240111
+                ],
+                "k_co_s": [
+                  0.477429,
+                  0.404904,
+                  0.547317
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0091345,
+                  0.00298306,
+                  0.0156063
+                ],
+                "psi_entry_mpa": [
+                  0.106228,
+                  0.0734492,
+                  0.138141
+                ],
+                "q10": [
+                  9.73216e-19,
+                  -3.44604e-19,
+                  2.30317e-18
+                ],
+                "retention_b": [
+                  0.166016,
+                  0.128326,
+                  0.212075
+                ],
+                "wet_activation_mpa": [
+                  0.00603143,
+                  -0.000870338,
+                  0.0131286
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.0221656,
+                  0.0194464,
+                  0.0253652
+                ],
+                "crop_etc_mm_per_day": [
+                  0.00969411,
+                  0.00863873,
+                  0.0109389
+                ],
+                "d_co_m2_s": [
+                  0.00213602,
+                  0.00186199,
+                  0.0024276
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0144873,
+                  0.0130021,
+                  0.0162159
+                ],
+                "dry_threshold_mpa": [
+                  0.000152257,
+                  0.00013262,
+                  0.000175791
+                ],
+                "field_capacity_fraction": [
+                  0.0191606,
+                  0.0168497,
+                  0.0218699
+                ],
+                "k_co_s": [
+                  0.661297,
+                  0.60549,
+                  0.714759
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0072577,
+                  0.00628528,
+                  0.0082732
+                ],
+                "psi_entry_mpa": [
+                  0.173665,
+                  0.155032,
+                  0.195836
+                ],
+                "q10": [
+                  4.4588e-34,
+                  1.07295e-34,
+                  9.71972e-34
+                ],
+                "retention_b": [
+                  0.269489,
+                  0.244969,
+                  0.300282
+                ],
+                "wet_activation_mpa": [
+                  0.00918114,
+                  0.00814774,
+                  0.0104902
+                ]
+              },
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00223602
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  0.986522,
+                  0.878173,
+                  1.10866
+                ],
+                "source_not_checked": [
+                  2.21058e-18,
+                  -4.03962e-19,
+                  4.92007e-18
+                ],
+                "verified_in_source": [
+                  2.21058e-18,
+                  -4.03962e-19,
+                  4.92007e-18
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  0.987673,
+                  0.943012,
+                  1.03444
+                ],
+                "source_not_checked": [
+                  1.35161e-33,
+                  6.75392e-34,
+                  2.11336e-33
+                ],
+                "verified_in_source": [
+                  1.35161e-33,
+                  6.75392e-34,
+                  2.11336e-33
+                ]
+              },
+              "median": -51.7576,
+              "mode": "variance",
+              "q05": -329.841,
+              "q25": -136.965,
+              "q75": -10.0776,
+              "q95": 18.5949,
+              "refusal_fraction": 0.0
+            },
+            "co_uptake_umol_m2": {
+              "S1": {
+                "activation_shape": [
+                  -0.000112749,
+                  -0.00106341,
+                  0.000759709
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0209275,
+                  0.00129474,
+                  0.0405674
+                ],
+                "d_co_m2_s": [
+                  0.00247904,
+                  -0.00402353,
+                  0.00965241
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0333838,
+                  0.0124596,
+                  0.0547858
+                ],
+                "dry_threshold_mpa": [
+                  2.87233e-05,
+                  9.23573e-06,
+                  5.02273e-05
+                ],
+                "field_capacity_fraction": [
+                  0.0336371,
+                  0.00578221,
+                  0.0606772
+                ],
+                "k_co_s": [
+                  0.83087,
+                  0.709963,
+                  0.956577
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0125235,
+                  -0.00490983,
+                  0.0316039
+                ],
+                "psi_entry_mpa": [
+                  -0.000330626,
+                  -0.00234529,
+                  0.00168262
+                ],
+                "q10": [
+                  3.2558e-18,
+                  1.02655e-18,
+                  5.95251e-18
+                ],
+                "retention_b": [
+                  0.000473221,
+                  -0.00090694,
+                  0.0019834
+                ],
+                "wet_activation_mpa": [
+                  -0.00142825,
+                  -0.00464773,
+                  0.00100447
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  7.49442e-05,
+                  3.49176e-05,
+                  0.000129121
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0318292,
+                  0.0288374,
+                  0.035535
+                ],
+                "d_co_m2_s": [
+                  0.00509866,
+                  0.00455665,
+                  0.00565649
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.047567,
+                  0.0429677,
+                  0.0522692
+                ],
+                "dry_threshold_mpa": [
+                  5.76898e-08,
+                  3.1578e-08,
+                  8.96434e-08
+                ],
+                "field_capacity_fraction": [
+                  0.0629111,
+                  0.0565446,
+                  0.0693946
+                ],
+                "k_co_s": [
+                  0.874972,
+                  0.820086,
+                  0.932248
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0289038,
+                  0.0256317,
+                  0.0321203
+                ],
+                "psi_entry_mpa": [
+                  0.000525252,
+                  0.000342422,
+                  0.000738352
+                ],
+                "q10": [
+                  4.05224e-34,
+                  8.25028e-35,
+                  8.64673e-34
+                ],
+                "retention_b": [
+                  0.000223217,
+                  0.00014978,
+                  0.000317742
+                ],
+                "wet_activation_mpa": [
+                  0.000393488,
+                  0.000206235,
+                  0.00064268
+                ]
+              },
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00288031
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  1.00146,
+                  0.869494,
+                  1.14477
+                ],
+                "source_not_checked": [
+                  5.67314e-18,
+                  2.84682e-18,
+                  8.70678e-18
+                ],
+                "verified_in_source": [
+                  5.67314e-18,
+                  2.84682e-18,
+                  8.70678e-18
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  1.00286,
+                  0.956011,
+                  1.0459
+                ],
+                "source_not_checked": [
+                  7.58308e-34,
+                  3.41341e-34,
+                  1.34495e-33
+                ],
+                "verified_in_source": [
+                  7.58308e-34,
+                  3.41341e-34,
+                  1.34495e-33
+                ]
+              },
+              "median": 68.86,
+              "mode": "variance",
+              "q05": 21.9026,
+              "q25": 38.1593,
+              "q75": 123.032,
+              "q95": 213.342,
+              "refusal_fraction": 0.0
+            },
+            "final_salt_mol_m2": {
+              "S1": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "convergence": {
+                "discrete": true,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": 0.0,
+              "mode": "variance",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0
+            },
+            "final_water_mm": {
+              "S1": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.03733,
+                  -0.0704413,
+                  0.155186
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.291749,
+                  0.0231656,
+                  0.572519
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.293548,
+                  -0.00437127,
+                  0.58071
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.353814,
+                  0.0242534,
+                  0.702844
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0468156,
+                  0.0427249,
+                  0.0509782
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.303392,
+                  0.285485,
+                  0.321966
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.305115,
+                  0.283842,
+                  0.327108
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.365591,
+                  0.342554,
+                  0.38773
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.0047057
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  1.00386,
+                  0.51485,
+                  1.50278
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  1.00193,
+                  0.960374,
+                  1.0406
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": 24.3013,
+              "mode": "variance",
+              "q05": 20.1977,
+              "q25": 22.1689,
+              "q75": 26.5513,
+              "q95": 29.2351,
+              "refusal_fraction": 0.0
+            },
+            "h2_uptake_change_pct": {
+              "S1": {
+                "activation_shape": [
+                  0.022758,
+                  0.00944917,
+                  0.0366047
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0109939,
+                  0.00526328,
+                  0.017695
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.000454292,
+                  -0.00116034,
+                  0.00241584
+                ],
+                "drainage_fraction_day": [
+                  0.0153714,
+                  0.0075791,
+                  0.0245048
+                ],
+                "dry_threshold_mpa": [
+                  -0.000856245,
+                  -0.00222877,
+                  0.000321633
+                ],
+                "field_capacity_fraction": [
+                  0.0148697,
+                  0.00627245,
+                  0.024682
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.155056,
+                  0.123353,
+                  0.198696
+                ],
+                "porosity": [
+                  0.0207391,
+                  0.00652935,
+                  0.0361276
+                ],
+                "psi_entry_mpa": [
+                  0.127809,
+                  0.0948363,
+                  0.173759
+                ],
+                "q10": [
+                  -5.57897e-19,
+                  -1.94449e-18,
+                  8.33674e-19
+                ],
+                "retention_b": [
+                  0.216676,
+                  0.136035,
+                  0.332494
+                ],
+                "wet_activation_mpa": [
+                  0.00460234,
+                  -0.000609629,
+                  0.0104885
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.123387,
+                  0.0802706,
+                  0.16649
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0140351,
+                  0.0113465,
+                  0.0171694
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.00128298,
+                  0.000967346,
+                  0.001733
+                ],
+                "drainage_fraction_day": [
+                  0.0238945,
+                  0.0191278,
+                  0.0298552
+                ],
+                "dry_threshold_mpa": [
+                  0.00140569,
+                  0.000498398,
+                  0.00291356
+                ],
+                "field_capacity_fraction": [
+                  0.0227373,
+                  0.017453,
+                  0.0294975
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.254114,
+                  0.200475,
+                  0.323287
+                ],
+                "porosity": [
+                  0.0899648,
+                  0.0629793,
+                  0.129875
+                ],
+                "psi_entry_mpa": [
+                  0.317557,
+                  0.229661,
+                  0.438486
+                ],
+                "q10": [
+                  1.1112e-33,
+                  3.31554e-34,
+                  2.33463e-33
+                ],
+                "retention_b": [
+                  0.456498,
+                  0.333631,
+                  0.637224
+                ],
+                "wet_activation_mpa": [
+                  0.0168522,
+                  0.0129456,
+                  0.022111
+                ]
+              },
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00333139
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  1.05339,
+                  0.818265,
+                  1.29498
+                ],
+                "source_not_checked": [
+                  -2.11075e-18,
+                  -5.70326e-18,
+                  1.3163e-18
+                ],
+                "verified_in_source": [
+                  -2.11075e-18,
+                  -5.70326e-18,
+                  1.3163e-18
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  1.00767,
+                  0.975347,
+                  1.03997
+                ],
+                "source_not_checked": [
+                  2.18173e-33,
+                  9.01191e-34,
+                  3.85891e-33
+                ],
+                "verified_in_source": [
+                  2.18173e-33,
+                  9.01191e-34,
+                  3.85891e-33
+                ]
+              },
+              "median": -26.6432,
+              "mode": "variance",
+              "q05": -68.3438,
+              "q25": -51.1293,
+              "q75": 11.4391,
+              "q95": 128.571,
+              "refusal_fraction": 0.0
+            },
+            "h2_uptake_contrast_umol_m2": {
+              "S1": {
+                "activation_shape": [
+                  0.0160359,
+                  0.00689706,
+                  0.0259333
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0070067,
+                  -0.000331829,
+                  0.0138809
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  -0.00035906,
+                  -0.0028575,
+                  0.0019622
+                ],
+                "drainage_fraction_day": [
+                  0.0105574,
+                  0.00208242,
+                  0.019923
+                ],
+                "dry_threshold_mpa": [
+                  8.22585e-05,
+                  -0.000788878,
+                  0.000902059
+                ],
+                "field_capacity_fraction": [
+                  0.0126937,
+                  0.00238252,
+                  0.0221017
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.508064,
+                  0.435629,
+                  0.581841
+                ],
+                "porosity": [
+                  0.00699022,
+                  -0.000295508,
+                  0.014602
+                ],
+                "psi_entry_mpa": [
+                  0.0978467,
+                  0.0697199,
+                  0.126499
+                ],
+                "q10": [
+                  -2.0938e-19,
+                  -1.19007e-18,
+                  6.817e-19
+                ],
+                "retention_b": [
+                  0.140664,
+                  0.105609,
+                  0.179577
+                ],
+                "wet_activation_mpa": [
+                  0.00873549,
+                  0.00154167,
+                  0.0164377
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.0218824,
+                  0.018795,
+                  0.0249711
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0106376,
+                  0.00933479,
+                  0.0122458
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.00126028,
+                  0.0010133,
+                  0.00151217
+                ],
+                "drainage_fraction_day": [
+                  0.0162218,
+                  0.0144148,
+                  0.018436
+                ],
+                "dry_threshold_mpa": [
+                  0.000165972,
+                  0.000140069,
+                  0.000193672
+                ],
+                "field_capacity_fraction": [
+                  0.0202285,
+                  0.0181102,
+                  0.0230565
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.709014,
+                  0.652519,
+                  0.76964
+                ],
+                "porosity": [
+                  0.00997877,
+                  0.0086319,
+                  0.0114181
+                ],
+                "psi_entry_mpa": [
+                  0.171806,
+                  0.152904,
+                  0.193451
+                ],
+                "q10": [
+                  3.23233e-34,
+                  1.49478e-34,
+                  5.34779e-34
+                ],
+                "retention_b": [
+                  0.249621,
+                  0.216791,
+                  0.28323
+                ],
+                "wet_activation_mpa": [
+                  0.0107981,
+                  0.00948749,
+                  0.0122991
+                ]
+              },
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00374385
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  1.0134,
+                  0.909657,
+                  1.13178
+                ],
+                "source_not_checked": [
+                  2.06243e-18,
+                  -7.30573e-19,
+                  5.35749e-18
+                ],
+                "verified_in_source": [
+                  2.06243e-18,
+                  -7.30573e-19,
+                  5.35749e-18
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  1.0104,
+                  0.968197,
+                  1.05517
+                ],
+                "source_not_checked": [
+                  1.87945e-33,
+                  1.12894e-33,
+                  2.67796e-33
+                ],
+                "verified_in_source": [
+                  1.87945e-33,
+                  1.12894e-33,
+                  2.67796e-33
+                ]
+              },
+              "median": -213.777,
+              "mode": "variance",
+              "q05": -3081.23,
+              "q25": -1030.86,
+              "q75": 38.473,
+              "q95": 300.328,
+              "refusal_fraction": 0.0
+            },
+            "h2_uptake_umol_m2": {
+              "S1": {
+                "activation_shape": [
+                  0.000522137,
+                  -0.000160101,
+                  0.00130115
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0204088,
+                  0.000951565,
+                  0.0375157
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.00365602,
+                  -0.00308153,
+                  0.0109701
+                ],
+                "drainage_fraction_day": [
+                  0.0304175,
+                  0.00872195,
+                  0.0492937
+                ],
+                "dry_threshold_mpa": [
+                  2.81153e-05,
+                  5.11281e-06,
+                  5.49775e-05
+                ],
+                "field_capacity_fraction": [
+                  0.0420403,
+                  0.0137792,
+                  0.0741558
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.833599,
+                  0.716063,
+                  0.945251
+                ],
+                "porosity": [
+                  0.0174959,
+                  0.00180224,
+                  0.0364799
+                ],
+                "psi_entry_mpa": [
+                  0.000596615,
+                  -0.00187148,
+                  0.0032551
+                ],
+                "q10": [
+                  1.74228e-18,
+                  1.64055e-19,
+                  3.86064e-18
+                ],
+                "retention_b": [
+                  -0.000310538,
+                  -0.00270024,
+                  0.00158145
+                ],
+                "wet_activation_mpa": [
+                  0.000668755,
+                  -0.00115667,
+                  0.00275314
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  5.5387e-05,
+                  3.01513e-05,
+                  9.30833e-05
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0305785,
+                  0.027127,
+                  0.0345644
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.00459551,
+                  0.0040902,
+                  0.00509458
+                ],
+                "drainage_fraction_day": [
+                  0.0466308,
+                  0.0416533,
+                  0.0526154
+                ],
+                "dry_threshold_mpa": [
+                  6.02582e-08,
+                  3.7567e-08,
+                  8.72013e-08
+                ],
+                "field_capacity_fraction": [
+                  0.0581484,
+                  0.0522043,
+                  0.0652492
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.902964,
+                  0.851105,
+                  0.957577
+                ],
+                "porosity": [
+                  0.0259058,
+                  0.0228238,
+                  0.0289619
+                ],
+                "psi_entry_mpa": [
+                  0.000444406,
+                  0.00029146,
+                  0.000638779
+                ],
+                "q10": [
+                  2.5194e-34,
+                  5.55096e-35,
+                  5.37241e-34
+                ],
+                "retention_b": [
+                  0.000229952,
+                  0.000154741,
+                  0.000325376
+                ],
+                "wet_activation_mpa": [
+                  0.000372446,
+                  0.000218766,
+                  0.000626651
+                ]
+              },
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00406858
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  0.986149,
+                  0.849817,
+                  1.11961
+                ],
+                "source_not_checked": [
+                  5.33687e-18,
+                  2.40327e-18,
+                  8.39742e-18
+                ],
+                "verified_in_source": [
+                  5.33687e-18,
+                  2.40327e-18,
+                  8.39742e-18
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  0.99325,
+                  0.947359,
+                  1.0391
+                ],
+                "source_not_checked": [
+                  1.10308e-33,
+                  5.99674e-34,
+                  1.64217e-33
+                ],
+                "verified_in_source": [
+                  1.10308e-33,
+                  5.99674e-34,
+                  1.64217e-33
+                ]
+              },
+              "median": 684.463,
+              "mode": "variance",
+              "q05": 188.956,
+              "q25": 351.138,
+              "q75": 1255.53,
+              "q95": 2153.28,
+              "refusal_fraction": 0.0
+            },
+            "mean_nacl_mol_l": {
+              "S1": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "convergence": {
+                "discrete": true,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": 0.0,
+              "mode": "variance",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0
+            },
+            "porosity": {
+              "S1": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  1.00438,
+                  0.168171,
+                  1.86396
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  1.00425,
+                  0.961403,
+                  1.04828
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.000194305
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  1.00438,
+                  0.168171,
+                  1.86396
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  1.00425,
+                  0.961403,
+                  1.04828
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": 0.413394,
+              "mode": "variance",
+              "q05": 0.369356,
+              "q25": 0.393313,
+              "q75": 0.438742,
+              "q95": 0.472627,
+              "refusal_fraction": 0.0
+            }
+          },
+          "x": 3.0
+        },
+        {
+          "central": {
+            "active_days": 14.0,
+            "co_uptake_contrast_umol_m2": -36.4899,
+            "co_uptake_umol_m2": 107.917,
+            "final_salt_mol_m2": 0.0,
+            "final_water_mm": 19.8888,
+            "h2_uptake_contrast_umol_m2": -61.1508,
+            "h2_uptake_umol_m2": 1041.18,
+            "mean_nacl_mol_l": 0.0,
+            "porosity": 0.4
+          },
+          "central_deduced": [],
+          "central_refused": null,
+          "d": 14,
+          "inputs": [
+            {
+              "dist": "triangular",
+              "high": 2.0,
+              "kind": "parameter",
+              "low": 0.5,
+              "name": "activation_shape",
+              "status": "modeller_assumption",
+              "value": 1.0
+            },
+            {
+              "dist": "triangular",
+              "high": 9.0,
+              "kind": "constant",
+              "low": 4.0,
+              "name": "crop_etc_mm_per_day",
+              "status": "modeller_assumption",
+              "value": 6.0
+            },
+            {
+              "dist": "triangular",
+              "high": 2.52e-05,
+              "kind": "parameter",
+              "low": 1.68e-05,
+              "name": "d_co_m2_s",
+              "status": "modeller_assumption",
+              "value": 2.1e-05
+            },
+            {
+              "dist": "triangular",
+              "high": 9.24e-05,
+              "kind": "parameter",
+              "low": 6.16e-05,
+              "name": "d_h2_m2_s",
+              "status": "modeller_assumption",
+              "value": 7.7e-05
+            },
+            {
+              "dist": "triangular",
+              "high": 0.7,
+              "kind": "parameter",
+              "low": 0.3,
+              "name": "drainage_fraction_day",
+              "status": "modeller_assumption",
+              "value": 0.5
+            },
+            {
+              "dist": "triangular",
+              "high": -70.0,
+              "kind": "parameter",
+              "low": -100.0,
+              "name": "dry_threshold_mpa",
+              "status": "modeller_assumption",
+              "value": -85.0
+            },
+            {
+              "dist": "triangular",
+              "high": 0.6,
+              "kind": "parameter",
+              "low": 0.4,
+              "name": "field_capacity_fraction",
+              "status": "modeller_assumption",
+              "value": 0.5
+            },
+            {
+              "dist": "loguniform",
+              "high": 0.01,
+              "kind": "parameter",
+              "low": 0.0001,
+              "name": "k_co_s",
+              "status": "modeller_assumption",
+              "value": 0.001
+            },
+            {
+              "dist": "loguniform",
+              "high": 0.01,
+              "kind": "parameter",
+              "low": 0.0001,
+              "name": "k_h2_s",
+              "status": "modeller_assumption",
+              "value": 0.001
+            },
+            {
+              "dist": "triangular",
+              "high": 0.5,
+              "kind": "parameter",
+              "low": 0.35,
+              "name": "porosity",
+              "status": "modeller_assumption",
+              "value": 0.4
+            },
+            {
+              "dist": "loguniform",
+              "high": -0.0001,
+              "kind": "parameter",
+              "low": -0.01,
+              "name": "psi_entry_mpa",
+              "status": "modeller_assumption",
+              "value": -0.001
+            },
+            {
+              "dist": "uniform",
+              "high": 2.0,
+              "kind": "parameter",
+              "low": 1.0,
+              "name": "q10",
+              "status": "modeller_assumption",
+              "value": 2.0
+            },
+            {
+              "dist": "triangular",
+              "high": 6.0,
+              "kind": "parameter",
+              "low": 2.0,
+              "name": "retention_b",
+              "status": "modeller_assumption",
+              "value": 4.0
+            },
+            {
+              "dist": "loguniform",
+              "high": -0.03,
+              "kind": "parameter",
+              "low": -0.3,
+              "name": "wet_activation_mpa",
+              "status": "modeller_assumption",
+              "value": -0.1
+            }
+          ],
+          "label": "every 10 d",
+          "level": 2,
+          "level_seed": 15623847359906938866,
+          "n": 1024,
+          "outputs": {
+            "active_days": {
+              "S1": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "convergence": {
+                "discrete": true,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": 14.0,
+              "mode": "variance",
+              "q05": 14.0,
+              "q25": 14.0,
+              "q75": 14.0,
+              "q95": 14.0,
+              "refusal_fraction": 0.0
+            },
+            "co_uptake_change_pct": {
+              "S1": {
+                "activation_shape": [
+                  0.0592965,
+                  0.0067338,
+                  0.126604
+                ],
+                "crop_etc_mm_per_day": [
+                  6.43353e-06,
+                  -0.00015301,
+                  0.00017877
+                ],
+                "d_co_m2_s": [
+                  0.000896191,
+                  -0.0015204,
+                  0.00338756
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.00749771,
+                  -0.00725001,
+                  0.0195397
+                ],
+                "dry_threshold_mpa": [
+                  -0.000473713,
+                  -0.00487235,
+                  0.00310909
+                ],
+                "field_capacity_fraction": [
+                  0.0138064,
+                  0.000289213,
+                  0.0287536
+                ],
+                "k_co_s": [
+                  0.129895,
+                  0.0721458,
+                  0.18237
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0248877,
+                  -0.013226,
+                  0.0877886
+                ],
+                "psi_entry_mpa": [
+                  0.19514,
+                  0.126425,
+                  0.256653
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.323,
+                  0.253056,
+                  0.397268
+                ],
+                "wet_activation_mpa": [
+                  0.0056108,
+                  -0.00215759,
+                  0.0137812
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.106572,
+                  0.075157,
+                  0.140023
+                ],
+                "crop_etc_mm_per_day": [
+                  7.32458e-06,
+                  1.88431e-06,
+                  1.47787e-05
+                ],
+                "d_co_m2_s": [
+                  0.00104832,
+                  0.00077332,
+                  0.00141035
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0143598,
+                  0.0114879,
+                  0.0173449
+                ],
+                "dry_threshold_mpa": [
+                  0.000813262,
+                  0.000587665,
+                  0.00104978
+                ],
+                "field_capacity_fraction": [
+                  0.0232243,
+                  0.0181662,
+                  0.0294121
+                ],
+                "k_co_s": [
+                  0.359009,
+                  0.187491,
+                  0.61953
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0746057,
+                  0.0499436,
+                  0.101498
+                ],
+                "psi_entry_mpa": [
+                  0.398791,
+                  0.299713,
+                  0.507649
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.454199,
+                  0.352099,
+                  0.595164
+                ],
+                "wet_activation_mpa": [
+                  0.0137128,
+                  0.0101392,
+                  0.0180868
+                ]
+              },
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.01063
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  1.01131,
+                  0.845974,
+                  1.20276
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  0.975099,
+                  0.891868,
+                  1.04369
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": -15.8495,
+              "mode": "variance",
+              "q05": -54.8367,
+              "q25": -36.6774,
+              "q75": 15.828,
+              "q95": 106.629,
+              "refusal_fraction": 0.0
+            },
+            "co_uptake_contrast_umol_m2": {
+              "S1": {
+                "activation_shape": [
+                  0.0242818,
+                  0.00386082,
+                  0.0445338
+                ],
+                "crop_etc_mm_per_day": [
+                  0.000506572,
+                  -8.03971e-05,
+                  0.00119589
+                ],
+                "d_co_m2_s": [
+                  -0.000274671,
+                  -0.00349237,
+                  0.00390595
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.00701134,
+                  -0.00710611,
+                  0.018187
+                ],
+                "dry_threshold_mpa": [
+                  -0.000117509,
+                  -0.00177311,
+                  0.0016009
+                ],
+                "field_capacity_fraction": [
+                  0.0385778,
+                  0.0209584,
+                  0.0578199
+                ],
+                "k_co_s": [
+                  0.279929,
+                  0.200103,
+                  0.362755
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.00320433,
+                  -0.00552378,
+                  0.0116205
+                ],
+                "psi_entry_mpa": [
+                  0.150058,
+                  0.101923,
+                  0.19567
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.232968,
+                  0.169745,
+                  0.304751
+                ],
+                "wet_activation_mpa": [
+                  0.0061868,
+                  -0.00516912,
+                  0.0164836
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.029983,
+                  0.0254463,
+                  0.0355388
+                ],
+                "crop_etc_mm_per_day": [
+                  1.68545e-05,
+                  3.51063e-06,
+                  3.52169e-05
+                ],
+                "d_co_m2_s": [
+                  0.00166586,
+                  0.00129104,
+                  0.00207118
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0175162,
+                  0.0143284,
+                  0.0211423
+                ],
+                "dry_threshold_mpa": [
+                  0.000229438,
+                  0.000192155,
+                  0.000278784
+                ],
+                "field_capacity_fraction": [
+                  0.0320944,
+                  0.0277378,
+                  0.0370194
+                ],
+                "k_co_s": [
+                  0.54575,
+                  0.477466,
+                  0.623632
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0100881,
+                  0.00804693,
+                  0.0125798
+                ],
+                "psi_entry_mpa": [
+                  0.223095,
+                  0.194696,
+                  0.255081
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.396217,
+                  0.341151,
+                  0.463367
+                ],
+                "wet_activation_mpa": [
+                  0.0118306,
+                  0.00975722,
+                  0.0141962
+                ]
+              },
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00547516
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  1.0137,
+                  0.880023,
+                  1.15039
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  1.01377,
+                  0.943816,
+                  1.06951
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": -16.8991,
+              "mode": "variance",
+              "q05": -238.483,
+              "q25": -78.9567,
+              "q75": 10.3219,
+              "q95": 47.2882,
+              "refusal_fraction": 0.0
+            },
+            "co_uptake_umol_m2": {
+              "S1": {
+                "activation_shape": [
+                  -0.00112262,
+                  -0.00534934,
+                  0.00226452
+                ],
+                "crop_etc_mm_per_day": [
+                  -0.000268638,
+                  -0.000782495,
+                  0.000230477
+                ],
+                "d_co_m2_s": [
+                  0.00346984,
+                  -0.00798615,
+                  0.0132335
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0129398,
+                  -0.00574095,
+                  0.035139
+                ],
+                "dry_threshold_mpa": [
+                  9.54632e-05,
+                  -0.000138106,
+                  0.000380098
+                ],
+                "field_capacity_fraction": [
+                  0.0228061,
+                  -0.00367325,
+                  0.0504689
+                ],
+                "k_co_s": [
+                  0.933268,
+                  0.763577,
+                  1.11308
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0023585,
+                  -0.00669669,
+                  0.0132621
+                ],
+                "psi_entry_mpa": [
+                  0.00450384,
+                  -0.00688049,
+                  0.0151327
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.00062652,
+                  -0.00585867,
+                  0.00746314
+                ],
+                "wet_activation_mpa": [
+                  0.00150897,
+                  -0.00320836,
+                  0.0066326
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.00048574,
+                  0.000281918,
+                  0.000760553
+                ],
+                "crop_etc_mm_per_day": [
+                  1.74648e-05,
+                  3.61148e-06,
+                  3.68168e-05
+                ],
+                "d_co_m2_s": [
+                  0.00514664,
+                  0.00444253,
+                  0.0058515
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0181504,
+                  0.0152021,
+                  0.0211959
+                ],
+                "dry_threshold_mpa": [
+                  1.06734e-06,
+                  4.82702e-07,
+                  2.09683e-06
+                ],
+                "field_capacity_fraction": [
+                  0.0332564,
+                  0.0288856,
+                  0.0381803
+                ],
+                "k_co_s": [
+                  0.955849,
+                  0.896572,
+                  1.01871
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.00359171,
+                  0.0031225,
+                  0.00411124
+                ],
+                "psi_entry_mpa": [
+                  0.00450989,
+                  0.00333061,
+                  0.00588269
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.00173867,
+                  0.00134389,
+                  0.00220165
+                ],
+                "wet_activation_mpa": [
+                  0.00105344,
+                  0.000802858,
+                  0.00134307
+                ]
+              },
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00508013
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  0.995646,
+                  0.813498,
+                  1.1758
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  0.999971,
+                  0.942947,
+                  1.05616
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": 105.548,
+              "mode": "variance",
+              "q05": 31.5489,
+              "q25": 56.6263,
+              "q75": 191.492,
+              "q95": 310.774,
+              "refusal_fraction": 0.0
+            },
+            "final_salt_mol_m2": {
+              "S1": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "convergence": {
+                "discrete": true,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": 0.0,
+              "mode": "variance",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0
+            },
+            "final_water_mm": {
+              "S1": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  -0.000319676,
+                  -0.00226566,
+                  0.00181187
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0943415,
+                  -0.164452,
+                  0.351653
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.416127,
+                  -0.0477898,
+                  0.881184
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.482228,
+                  -0.0215293,
+                  1.03271
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  7.22429e-06,
+                  1.64536e-07,
+                  1.64534e-05
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0978768,
+                  0.0873711,
+                  0.10769
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.418139,
+                  0.384265,
+                  0.458844
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.484432,
+                  0.450608,
+                  0.526483
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.017047
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  1.00231,
+                  0.218231,
+                  1.7736
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  0.999191,
+                  0.949902,
+                  1.05945
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": 20.7328,
+              "mode": "variance",
+              "q05": 17.2451,
+              "q25": 19.0697,
+              "q75": 22.6338,
+              "q95": 25.0557,
+              "refusal_fraction": 0.0
+            },
+            "h2_uptake_change_pct": {
+              "S1": {
+                "activation_shape": [
+                  0.0267439,
+                  -0.0191161,
+                  0.0837428
+                ],
+                "crop_etc_mm_per_day": [
+                  4.68509e-05,
+                  -4.05384e-05,
+                  0.000140237
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  -0.000543694,
+                  -0.00272521,
+                  0.00133089
+                ],
+                "drainage_fraction_day": [
+                  0.00281311,
+                  -0.00637777,
+                  0.0106586
+                ],
+                "dry_threshold_mpa": [
+                  -0.00038476,
+                  -0.00369168,
+                  0.00274064
+                ],
+                "field_capacity_fraction": [
+                  0.00528553,
+                  -0.00391785,
+                  0.0167836
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.129953,
+                  0.0794816,
+                  0.204946
+                ],
+                "porosity": [
+                  0.0305881,
+                  -0.000990206,
+                  0.0756936
+                ],
+                "psi_entry_mpa": [
+                  0.196251,
+                  0.104442,
+                  0.311061
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.242986,
+                  0.137889,
+                  0.377484
+                ],
+                "wet_activation_mpa": [
+                  -0.00128261,
+                  -0.0211357,
+                  0.0143404
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.16174,
+                  0.084332,
+                  0.227703
+                ],
+                "crop_etc_mm_per_day": [
+                  4.58329e-06,
+                  1.40615e-06,
+                  9.27926e-06
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.000923906,
+                  0.000651242,
+                  0.00132603
+                ],
+                "drainage_fraction_day": [
+                  0.00665452,
+                  0.00477513,
+                  0.00949934
+                ],
+                "dry_threshold_mpa": [
+                  0.00091843,
+                  0.000571594,
+                  0.00125189
+                ],
+                "field_capacity_fraction": [
+                  0.00973653,
+                  0.00713813,
+                  0.0131563
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.243424,
+                  0.171429,
+                  0.304501
+                ],
+                "porosity": [
+                  0.129998,
+                  0.0565484,
+                  0.209341
+                ],
+                "psi_entry_mpa": [
+                  0.611088,
+                  0.354416,
+                  0.949411
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.396267,
+                  0.265328,
+                  0.571736
+                ],
+                "wet_activation_mpa": [
+                  0.0200949,
+                  0.00926253,
+                  0.0386742
+                ]
+              },
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.0122093
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  0.834521,
+                  0.586336,
+                  1.19104
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  0.975147,
+                  0.897223,
+                  1.04034
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": 2.47513,
+              "mode": "variance",
+              "q05": -47.9011,
+              "q25": -24.2512,
+              "q75": 47.5627,
+              "q95": 174.627,
+              "refusal_fraction": 0.0
+            },
+            "h2_uptake_contrast_umol_m2": {
+              "S1": {
+                "activation_shape": [
+                  0.0265482,
+                  0.00956831,
+                  0.0444615
+                ],
+                "crop_etc_mm_per_day": [
+                  -0.000244343,
+                  -0.000850725,
+                  6.85566e-05
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  -0.000382296,
+                  -0.00303566,
+                  0.00186193
+                ],
+                "drainage_fraction_day": [
+                  0.00893306,
+                  -0.00375203,
+                  0.0196516
+                ],
+                "dry_threshold_mpa": [
+                  0.000499294,
+                  -0.00110485,
+                  0.0021479
+                ],
+                "field_capacity_fraction": [
+                  0.0146459,
+                  -0.0020903,
+                  0.0310338
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.288279,
+                  0.203737,
+                  0.374863
+                ],
+                "porosity": [
+                  0.00283335,
+                  -0.00540045,
+                  0.011425
+                ],
+                "psi_entry_mpa": [
+                  0.135253,
+                  0.0901278,
+                  0.17682
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.194432,
+                  0.138309,
+                  0.256886
+                ],
+                "wet_activation_mpa": [
+                  0.00209346,
+                  -0.00836626,
+                  0.0138883
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.0378334,
+                  0.0309146,
+                  0.0455992
+                ],
+                "crop_etc_mm_per_day": [
+                  1.46663e-05,
+                  1.78333e-06,
+                  3.77787e-05
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.00104052,
+                  0.000835057,
+                  0.00127357
+                ],
+                "drainage_fraction_day": [
+                  0.0187467,
+                  0.0155921,
+                  0.0221218
+                ],
+                "dry_threshold_mpa": [
+                  0.000225677,
+                  0.00017759,
+                  0.000282
+                ],
+                "field_capacity_fraction": [
+                  0.038409,
+                  0.0316744,
+                  0.0459908
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.607204,
+                  0.519016,
+                  0.688254
+                ],
+                "porosity": [
+                  0.010208,
+                  0.00802654,
+                  0.0125045
+                ],
+                "psi_entry_mpa": [
+                  0.240328,
+                  0.204247,
+                  0.277562
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.382962,
+                  0.317142,
+                  0.452211
+                ],
+                "wet_activation_mpa": [
+                  0.0152398,
+                  0.0118331,
+                  0.0189513
+                ]
+              },
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.0431387
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  1.00037,
+                  0.853553,
+                  1.15191
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  1.01959,
+                  0.965326,
+                  1.07705
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": 12.9285,
+              "mode": "variance",
+              "q05": -2141.54,
+              "q25": -453.219,
+              "q75": 169.598,
+              "q95": 631.023,
+              "refusal_fraction": 0.0
+            },
+            "h2_uptake_umol_m2": {
+              "S1": {
+                "activation_shape": [
+                  0.000582332,
+                  -0.0017142,
+                  0.00298984
+                ],
+                "crop_etc_mm_per_day": [
+                  0.000411287,
+                  -5.94502e-05,
+                  0.00116896
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.00168891,
+                  -0.00881129,
+                  0.0108586
+                ],
+                "drainage_fraction_day": [
+                  0.0123784,
+                  -0.00624916,
+                  0.0316637
+                ],
+                "dry_threshold_mpa": [
+                  -2.87116e-05,
+                  -0.000272612,
+                  0.000163553
+                ],
+                "field_capacity_fraction": [
+                  0.0350919,
+                  0.0082134,
+                  0.0623772
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.931254,
+                  0.761404,
+                  1.1154
+                ],
+                "porosity": [
+                  0.00186769,
+                  -0.00623795,
+                  0.0113145
+                ],
+                "psi_entry_mpa": [
+                  0.0013748,
+                  -0.00891159,
+                  0.0126533
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.000438174,
+                  -0.0066474,
+                  0.00900522
+                ],
+                "wet_activation_mpa": [
+                  0.00230304,
+                  -0.00237568,
+                  0.00696305
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.000327792,
+                  0.000192757,
+                  0.000501663
+                ],
+                "crop_etc_mm_per_day": [
+                  1.17892e-05,
+                  1.48805e-06,
+                  2.95281e-05
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.00430739,
+                  0.00369069,
+                  0.00490491
+                ],
+                "drainage_fraction_day": [
+                  0.0150692,
+                  0.0128461,
+                  0.0174648
+                ],
+                "dry_threshold_mpa": [
+                  1.36296e-06,
+                  4.95222e-07,
+                  2.75767e-06
+                ],
+                "field_capacity_fraction": [
+                  0.0308743,
+                  0.0258363,
+                  0.0358524
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.972789,
+                  0.911556,
+                  1.04992
+                ],
+                "porosity": [
+                  0.0032552,
+                  0.00273466,
+                  0.00378782
+                ],
+                "psi_entry_mpa": [
+                  0.00427386,
+                  0.00310593,
+                  0.0058445
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.00217204,
+                  0.00149399,
+                  0.00291921
+                ],
+                "wet_activation_mpa": [
+                  0.00106667,
+                  0.000814712,
+                  0.00135185
+                ]
+              },
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.0124741
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  0.988818,
+                  0.825134,
+                  1.16569
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  0.985626,
+                  0.933333,
+                  1.05156
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": 1015.89,
+              "mode": "variance",
+              "q05": 229.83,
+              "q25": 475.487,
+              "q75": 1884.66,
+              "q95": 3109.75,
+              "refusal_fraction": 0.0
+            },
+            "mean_nacl_mol_l": {
+              "S1": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "convergence": {
+                "discrete": true,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": 0.0,
+              "mode": "variance",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0
+            },
+            "porosity": {
+              "S1": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.999868,
+                  -0.11659,
+                  2.2305
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "crop_etc_mm_per_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.999994,
+                  0.949881,
+                  1.0655
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.000667944
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  0.999868,
+                  -0.11659,
+                  2.2305
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  0.999994,
+                  0.949881,
+                  1.0655
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": 0.413392,
+              "mode": "variance",
+              "q05": 0.369363,
+              "q25": 0.393333,
+              "q75": 0.43876,
+              "q95": 0.472508,
+              "refusal_fraction": 0.0
+            }
+          },
+          "x": 10.0
+        }
+      ]
+    }
+  ],
+  "slug": "drip-or-flood",
+  "theme": "water"
+}

@@ -3,7 +3,6 @@ from __future__ import annotations
 import functools
 import json
 from pathlib import Path
-import re
 import sys
 
 import pytest
@@ -18,7 +17,7 @@ from eq_biodt.v03.composition import constants_sha256
 from eq_biodt.v03.questions import QUESTIONS, evaluate
 from eq_biodt.v03.uq import analyse, design, evaluate_rows, inputs_for_spec, task_seed
 from eq_biodt.v03.uq_inputs import parameter_ranges_sha256
-from reproducibility.v08.questions import build_questions
+from reproducibility.v08.questions import _augment_central_pct, build_questions
 from reproducibility.v08.texts import (
     HEADLINE_SPEC,
     JARGON,
@@ -27,16 +26,36 @@ from reproducibility.v08.texts import (
     science_central,
 )
 
+COMMITTED_UQ_DIR = ROOT / "reviews" / "v08" / "uq"
 COMMITTED_QUESTIONS_DIR = ROOT / "reviews" / "v08" / "questions"
+
+UPTAKE_CHANGE_SLUGS = {
+    "rain-pattern",
+    "drip-or-flood",
+    "cloud-seeding",
+    "salty-water",
+    "hotter",
+    "mulch-shade",
+    "solar-park",
+    "compaction",
+    "biochar",
+    "adding-microbes",
+    "air-hydrogen",
+}
 
 _BuiltDirCache: Path | None = None
 
 
 def _build_fixture_questions(tmp_root: Path) -> Path:
-    uq_dir = tmp_root / "uq"
     out_dir = tmp_root / "questions"
-    uq_dir.mkdir(parents=True, exist_ok=True)
     out_dir.mkdir(parents=True, exist_ok=True)
+
+    if all((COMMITTED_UQ_DIR / f"{slug}.json").exists() for slug in QUESTIONS):
+        build_questions(uq_dir=COMMITTED_UQ_DIR, out_dir=out_dir)
+        return out_dir
+
+    uq_dir = tmp_root / "uq"
+    uq_dir.mkdir(parents=True, exist_ok=True)
 
     orig_load = ontology.load_classification
     cached_load = functools.lru_cache(maxsize=8)(orig_load)
@@ -54,6 +73,7 @@ def _build_fixture_questions(tmp_root: Path) -> Path:
                     key_prefix = f"{slug}|{s.id}|{level_idx}"
                     seed = task_seed(key_prefix)
                     central = evaluate(spec, keep_twin_result=False)
+                    _augment_central_pct(central)
                     is_salty_top = (
                         slug == "salty-water"
                         and s.id == "daily-irrigation"
@@ -75,6 +95,8 @@ def _build_fixture_questions(tmp_root: Path) -> Path:
                         rows = [dict(head_rows[i % len(head_rows)]) for i in range(total_needed)]
                     else:
                         rows = [dict(central) for _ in range(n_lvl * (len(inputs) + 5))]
+                    for r in rows:
+                        _augment_central_pct(r)
                     all_keys = [k for k in rows[0] if not k.startswith("__")] if rows else list(q.headline)
                     headline = list(dict.fromkeys([*q.headline, *all_keys]))
                     stats = analyse(
@@ -262,6 +284,27 @@ def test_schema_and_count():
     assert len(load_index()) == 14 and all(validate(q) for q in load_all())
 
 
+def test_jargon_regex_catches_reviewer_terms():
+    forbidden = (
+        "first-order",
+        "gate",
+        "on-off gene gate",
+        "read-mapping",
+        "share",
+        "fraction of unsalted yield",
+        "IQR",
+        "central run",
+        "micromole",
+        "micromoles",
+        "µmol",
+        "Sobol",
+        "quantile",
+        "median",
+    )
+    for term in forbidden:
+        assert JARGON.search(term), f"JARGON regex failed to match {term!r}"
+
+
 def test_plain_text_rules():
     for q in load_all():
         plain_parts = [
@@ -275,10 +318,15 @@ def test_plain_text_rules():
         for s in q["series"]:
             plain_parts.append(s["label_plain"])
             for lvl in s["levels"]:
+                plain_parts.append(lvl["label"])
+                plain_parts.append(lvl["label_plain"])
                 for out in lvl["outcomes"].values():
                     plain_parts.append(out["unit_plain"])
+                    plain_parts.append(out["label_plain"])
         for step in q["chain"]:
             plain_parts.append(step["name_plain"])
+        for m in q["methods"]["models"]:
+            plain_parts.append(m["name_plain"])
         txt = " ".join(plain_parts)
         assert not JARGON.search(txt), f"{q['slug']}: matched {JARGON.search(txt)}"
         assert "the models themselves could also be wrong" in q["limits_plain"].lower()
@@ -286,18 +334,109 @@ def test_plain_text_rules():
             "the range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong"
             in q["limits_plain"].lower()
         )
-        u = q["uncertainty"]
-        if u.get("q05") is not None and u.get("q95") is not None and u["q05"] < 0 < u["q95"]:
-            assert "may go up or down" in q["answer_plain"].lower(), q["slug"]
         max_refusal = max(
             out["refusal_fraction"]
             for s in q["series"]
             for lvl in s["levels"]
             for out in lvl["outcomes"].values()
         )
-        if max_refusal >= 0.05:
+        if q["slug"] == "missing-co-genes":
+            assert (
+                "for one sample the records are incomplete, so the twin gives no answer"
+                in q["answer_plain"].lower()
+            )
+            assert "no carbon-monoxide uptake at all" in q["answer_plain"].lower()
+        elif max_refusal >= 0.05:
             assert "the model cannot tell for such" in q["answer_plain"].lower(), q["slug"]
     assert "at most" in load("carbon-fixation")["answer_plain"].lower()
+    assert "g of carbon per m² per year" in load("carbon-fixation")["answer_plain"]
+    assert "% of normal yield" in load("alfalfa-bacterium")["answer_plain"]
+
+
+def test_hedging_matches_headline_interval():
+    for q in load_all():
+        u = q["uncertainty"]
+        q05 = u.get("q05")
+        q95 = u.get("q95")
+        assert q05 is not None and q95 is not None, q["slug"]
+        ans = q["answer_plain"].lower()
+        hdl = q["headline_plain"].lower()
+        if q05 < 0 < q95:
+            assert "may go up or down" in ans, f"{q['slug']}: expected 'may go up or down' for [{q05}, {q95}]"
+            assert "goes up in every case we tried" not in ans, q["slug"]
+            assert "goes down in every case we tried" not in ans, q["slug"]
+            assert "goes up in every case we tried" not in hdl, q["slug"]
+            assert "goes down in every case we tried" not in hdl, q["slug"]
+        elif q05 >= 0 and q95 > 0:
+            assert "goes up in every case we tried" in ans, f"{q['slug']}: expected 'goes up in every case we tried' for [{q05}, {q95}]"
+            assert "may go up or down" not in ans, q["slug"]
+            assert "goes down in every case we tried" not in ans, q["slug"]
+            assert "may go up or down" not in hdl, q["slug"]
+            assert "goes down in every case we tried" not in hdl, q["slug"]
+        elif q95 <= 0 and q05 < 0:
+            assert "goes down in every case we tried" in ans, f"{q['slug']}: expected 'goes down in every case we tried' for [{q05}, {q95}]"
+            assert "may go up or down" not in ans, q["slug"]
+            assert "goes up in every case we tried" not in ans, q["slug"]
+            assert "may go up or down" not in hdl, q["slug"]
+            assert "goes up in every case we tried" not in hdl, q["slug"]
+
+    sp = load("solar-park")
+    assert sp["uncertainty"]["q05"] > 0
+    assert "goes up in every case we tried" in sp["answer_plain"].lower()
+    assert "may go up or down" not in sp["answer_plain"].lower()
+
+
+def test_headline_percentage_and_science_rules():
+    for q in load_all():
+        slug = q["slug"]
+        sci = q["answer_science"]
+        sci_low = sci.lower()
+        hdl_sci = q["headline_science"]
+
+        if slug in UPTAKE_CHANGE_SLUGS:
+            pct_key = q["headline_output"]
+            assert pct_key in {"h2_uptake_change_pct", "co_uptake_change_pct"}, slug
+            gas = "h2" if pct_key.startswith("h2_") else "co"
+            con_key = f"{gas}_uptake_contrast_umol_m2"
+            abs_key = f"{gas}_uptake_umol_m2"
+            assert "%" in q["answer_plain"] and "%" in q["headline_plain"], slug
+            assert sci.index(pct_key) < sci.index(con_key) < sci.index(abs_key), slug
+            assert hdl_sci.index(pct_key) < hdl_sci.index(con_key) < hdl_sci.index(abs_key), slug
+
+        # Units for fractions must be "fraction", never "1"
+        for s in q["series"]:
+            for lvl in s["levels"]:
+                for out in lvl["outcomes"].values():
+                    assert out["unit"] != "1", f"{slug}: outcome unit is '1'"
+                    if out["provenance"] == "external" and "yield" in out.get("label_science", "").lower():
+                        assert out["unit"] == "fraction", slug
+        for inp in q["uncertainty"]["inputs"]:
+            assert inp.get("unit") != "1", f"{slug}: input {inp['name']} has unit '1'"
+
+        # Science text requirements
+        assert "joint group total indices can sum to more than 1 because of interactions" in sci_low, slug
+        assert "top two sobol' contributors" in sci_low, slug
+        assert "status share of variance" in sci_low, slug
+
+        # Convergence flag requirement
+        any_flagged = bool((q["uncertainty"].get("convergence") or {}).get("flagged"))
+        if not any_flagged:
+            for s in q["series"]:
+                for lvl in s["levels"]:
+                    for out in lvl["outcomes"].values():
+                        if (out.get("convergence") or {}).get("flagged"):
+                            any_flagged = True
+        if any_flagged:
+            assert "interval endpoints still move by" in sci_low, slug
+            assert "% of the width between n/2 and n" in sci_low, slug
+
+    rp = load("rain-pattern")
+    assert "-63 %" in rp["answer_plain"] and "-100 %" in rp["answer_plain"]
+
+    mco = load("missing-co-genes")
+    assert "no usable read-mapping weights" in mco["answer_science"].lower()
+    assert "no usable read-mapping weights" not in mco["answer_plain"].lower()
+    assert "a tiny amount, about 144 millionths of a mole per square metre" in mco["answer_science"].lower()
 
 
 def test_plain_matches_science():

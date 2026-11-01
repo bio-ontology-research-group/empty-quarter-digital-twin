@@ -1,0 +1,4778 @@
+{
+  "answer_plain": "Daily watering with brackish water changes hydrogen uptake over two weeks by -44 % at 8 dS/m (range -75 to 95 %), so uptake may go up or down depending on how strongly daily water additions offset salt build-up, while leaving alfalfa at about 89 % of normal yield (range 83 to 93 %); at higher salt levels, the model cannot tell for such salty water because pore-water salt passes the dilute limit.",
+  "answer_science": "Central percentage change: h2_uptake_change_pct = -43.9 % (median -37.07 %, 50 % IQR [-57.73, -3.501] %, joint 5\u201395 % interval [-74.95, 95.25] %) (rounded headline: -44 %); absolute change h2_uptake_contrast_umol_m2 = -483.9 \u00b5mol m\u207b\u00b2 (median -304.2 \u00b5mol m\u207b\u00b2, 50 % IQR [-1191, -11.21] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [-3290, 197.2] \u00b5mol m\u207b\u00b2); absolute uptake h2_uptake_umol_m2 = 618.4 \u00b5mol m\u207b\u00b2 (median 577.7 \u00b5mol m\u207b\u00b2, 50 % IQR [295.7, 1058] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [152.6, 1933] \u00b5mol m\u207b\u00b2) (mode = variance, refusal fraction = 0.8 %, max level refusal across question = 100.0 %). Top two Sobol' contributors to output variance: retention_b (ST = 0.52 [0.36, 0.71], S1 = 0.21) and psi_entry_mpa (ST = 0.41 [0.32, 0.52], S1 = 0.16). Status share of variance: verified_in_source ST = 0.00 (S1 = 0.00), modeller_assumption ST = 0.98 (S1 = 1.04), source_not_checked ST = 0.00 (S1 = -0.00) (joint group total indices can sum to more than 1 because of interactions). Convergence check: at EC_w=2 dS/m (co_uptake_change_pct, N = 1024), interval endpoints still move by 5.5 % of the width between N/2 and N; at EC_w=2 dS/m (h2_uptake_change_pct, N = 1024), interval endpoints still move by 7.0 % of the width between N/2 and N; at EC_w=8 dS/m (relative_yield_date_palm, N = 2048), interval endpoints still move by 6.1 % of the width between N/2 and N. Limits: The parameter-uncertainty interval quantifies joint variation over literature constants and twin process parameters only and excludes external-model and twin model-structure error.",
+  "baseline_label": "One 12 mm fresh rain on day 1, no irrigation",
+  "chain": [
+    {
+      "id": "ec_to_nacl",
+      "kind": "upstream",
+      "name_plain": "Water saltiness to dissolved salt amount",
+      "name_science": "Irrigation-water EC to NaCl concentration"
+    },
+    {
+      "id": "crop_water_demand_generic",
+      "kind": "upstream",
+      "name_plain": "Daily desert crop watering demand",
+      "name_science": "Crop water demand, hot-desert order of magnitude (FAO-56)"
+    },
+    {
+      "id": "irrigation_schedule",
+      "kind": "upstream",
+      "name_plain": "Equal-volume watering schedule across 14 days",
+      "name_science": "Equal-total irrigation delivered in pulses every k days"
+    },
+    {
+      "id": "eq_biodt_v03",
+      "kind": "twin",
+      "name_plain": "Desert sand water, salt and gas-uptake twin",
+      "name_science": "EQ-BioDT v0.3 two-layer causal-ontological soil twin"
+    },
+    {
+      "id": "twin_solution_to_ece",
+      "kind": "downstream",
+      "name_plain": "Sand pore-water salt to root-zone saltiness",
+      "name_science": "Twin mean soil-solution NaCl to saturation-extract EC (FAO-29 relations)"
+    },
+    {
+      "id": "maas_hoffman_date_palm",
+      "kind": "downstream",
+      "name_plain": "Date palm yield loss from root-zone salt",
+      "name_science": "Maas-Hoffman relative yield, date palm (FAO-29)"
+    },
+    {
+      "id": "maas_hoffman_barley",
+      "kind": "downstream",
+      "name_plain": "Barley yield loss from root-zone salt",
+      "name_science": "Maas-Hoffman relative yield, barley (FAO-29)"
+    },
+    {
+      "id": "maas_hoffman_alfalfa",
+      "kind": "downstream",
+      "name_plain": "Alfalfa yield loss from root-zone salt",
+      "name_science": "Maas-Hoffman relative yield, alfalfa (FAO-29)"
+    },
+    {
+      "id": "maas_hoffman_tomato",
+      "kind": "downstream",
+      "name_plain": "Tomato yield loss from root-zone salt",
+      "name_science": "Maas-Hoffman relative yield, tomato (FAO-29)"
+    }
+  ],
+  "headline": [
+    "h2_uptake_change_pct",
+    "h2_uptake_contrast_umol_m2",
+    "relative_yield_date_palm",
+    "relative_yield_barley",
+    "relative_yield_alfalfa",
+    "relative_yield_tomato",
+    "h2_uptake_umol_m2"
+  ],
+  "headline_level": {
+    "label": "EC_w=8 dS/m",
+    "level": 3,
+    "series": "daily-irrigation",
+    "x": 8.0
+  },
+  "headline_output": "h2_uptake_change_pct",
+  "headline_plain": "Daily watering with salty water changes hydrogen uptake by -44 % at 8 dS/m, where the change may go up or down; at higher salt levels, the model cannot tell for such salty water.",
+  "headline_science": "Central h2_uptake_change_pct = -43.9 % (median -37.07 %, 50 % IQR [-57.73, -3.501] %, joint 5\u201395 % interval [-74.95, 95.25] %) (plain headline: -44 %); absolute change h2_uptake_contrast_umol_m2 = -483.9 \u00b5mol m\u207b\u00b2 (median -304.2 \u00b5mol m\u207b\u00b2, 50 % IQR [-1191, -11.21] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [-3290, 197.2] \u00b5mol m\u207b\u00b2); absolute uptake h2_uptake_umol_m2 = 618.4 \u00b5mol m\u207b\u00b2 (median 577.7 \u00b5mol m\u207b\u00b2, 50 % IQR [295.7, 1058] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [152.6, 1933] \u00b5mol m\u207b\u00b2) (mode = variance, refusal = 0.8 %).",
+  "headline_value": -43.896807951862094,
+  "level_kind": "numeric",
+  "limits_plain": "The range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong. When salt concentration in the sand water rises above a tenth of a mole per litre, the twin refuses to guess rather than extrapolate outside its dilute-salt formula.",
+  "limits_science": "The parameter-uncertainty interval quantifies joint variation over literature constants and twin process parameters only and excludes external-model and twin model-structure error. The twin enforces an ontological/domain admissibility gate at c_NaCl > 0.1 mol/L (ideal-dilute van 't Hoff limit) and abstains when evaporation concentrates solutes above this threshold.",
+  "methods": {
+    "admissibility": {
+      "dilute_nacl_limit_mol_l": 0.1,
+      "refusal_threshold_fraction": 0.05,
+      "scope": "Joint parameter and literature-constant uncertainty only; excludes model-structure error."
+    },
+    "data": [
+      "data/v03/entailed_memberships.json",
+      "data/v03/mag_evidence.tsv",
+      "data/external/composition_constants.json",
+      "data/external/twin_parameter_ranges.json"
+    ],
+    "gates": [
+      {
+        "id": "Group1hNiFeHydrogenase",
+        "pathway": "Atmospheric H\u2082 oxidation",
+        "rule": "Closed when sample has 0 MAGs entailed as carrying Group 1h [NiFe]-hydrogenase; fixes J_H2 = 0 exactly."
+      },
+      {
+        "id": "FormICODehydrogenaseSubunit",
+        "pathway": "Atmospheric CO oxidation",
+        "rule": "Closed when sample has 0 MAGs entailed as carrying Form I CO dehydrogenase; fixes J_CO = 0 exactly."
+      },
+      {
+        "id": "CBBAutotrophicCarbonFixationPathway",
+        "pathway": "Knallgas autotrophic CO\u2082 fixation",
+        "rule": "Closed when sample has 0 MAGs carrying both Group 1h [NiFe]-hydrogenase and CBB RuBisCO; fixes C_fixed = 0 exactly."
+      }
+    ],
+    "models": [
+      {
+        "constants": [
+          {
+            "evidence": "FAO-29 Table 1 (t0234e01): 'EC w dS/m <0.7 / 0.7-3.0 / >3.0 (or) TDS mg/l <450 / 450-2000 / >2000'. Richards page not seen.",
+            "high": 0.011,
+            "id": "nacl_mol_l_per_dS_m",
+            "low": 0.0085,
+            "meaning": "NaCl concentration equivalent to 1 dS/m of electrical conductivity (approx. 10 mmol/L per dS/m; pure NaCl solutions are about 8.5-9)",
+            "note": "Richards not checked (USDA PDF corrupt on download). Indirect support: FAO-29 Table 1 pairs ECw 0.7-3.0 dS/m with TDS 450-2000 mg/L (~640-670 mg/L per dS/m; /58.44 = 11 mmol/L if all NaCl). Pure-NaCl ~9 mmol/L per dS/m. Keep value 0.01 as approximation; low 0.0085 ok.",
+            "source": {
+              "authors": "Richards LA (ed.)",
+              "doi_or_url": "https://www.ars.usda.gov/ARSUserFiles/20360500/hb60_pdf/hb60complete.pdf",
+              "page_or_table": "Richards 1954 Handbook 60 (EC-TDS/meq relation; p. 14-16 not located)",
+              "title": "Diagnosis and improvement of saline and alkali soils (USDA Agriculture Handbook 60)",
+              "year": 1954
+            },
+            "status": "source_not_checked",
+            "unit": "mol/L per dS/m",
+            "value": 0.01,
+            "verified": false
+          }
+        ],
+        "equation_tex": "c_{\\mathrm{NaCl}} = \\kappa_{\\mathrm{NaCl}}\\,\\mathrm{EC}_w",
+        "id": "ec_to_nacl",
+        "kind": "upstream",
+        "name": "Irrigation-water EC to NaCl concentration",
+        "name_plain": "Water saltiness to dissolved salt amount",
+        "validity": {
+          "ec_w_dS_m": [
+            0.0,
+            16.0
+          ]
+        }
+      },
+      {
+        "constants": [
+          {
+            "evidence": "FAO-56 Table 2: 'Tropics and subtropics - arid and semi-arid 2-4 / 4-6 / 6-8 mm/day (cool/moderate/warm)'. http://www.fao.org/4/x0490e/x0490e04.htm",
+            "high": 9.0,
+            "id": "crop_etc_mm_per_day",
+            "low": 4.0,
+            "meaning": "Order-of-magnitude crop water demand in a hot desert irrigated system, used only to set the seasonal irrigation total in the delivery-schedule experiment",
+            "note": "Modeller order-of-magnitude. FAO-56 Table 2: arid/semi-arid tropics ETo >30C = 6-8 mm/day; ETc = Kc ETo, Kc 0.8-1.2 gives 5-9; range 4-9 plausible. Not a source value.",
+            "source": {
+              "authors": "Allen RG, Pereira LS, Raes D, Smith M",
+              "doi_or_url": "https://www.fao.org/3/x0490e/x0490e00.htm",
+              "page_or_table": "Table 2 (ETo, arid warm 6-8 mm/day) x Kc, Chapter 3-6",
+              "title": "Crop evapotranspiration: guidelines for computing crop water requirements (FAO Irrigation and Drainage Paper 56)",
+              "year": 1998
+            },
+            "status": "modeller_assumption",
+            "unit": "mm/day",
+            "value": 6.0,
+            "verified": false
+          }
+        ],
+        "equation_tex": "P_{\\mathrm{crop}}(t) = ET_{c,\\mathrm{desert}}",
+        "id": "crop_water_demand_generic",
+        "kind": "upstream",
+        "name": "Crop water demand, hot-desert order of magnitude (FAO-56)",
+        "name_plain": "Daily desert crop watering demand",
+        "validity": {}
+      },
+      {
+        "constants": [],
+        "equation_tex": "P_{\\mathrm{irr}}(t) = \\frac{V_{\\mathrm{tot}}}{N_{\\mathrm{pulses}}}\\,\\mathbb{I}(t \\equiv 0 \\pmod k)",
+        "id": "irrigation_schedule",
+        "kind": "upstream",
+        "name": "Equal-total irrigation delivered in pulses every k days",
+        "name_plain": "Equal-volume watering schedule across 14 days",
+        "validity": {
+          "irrigation_interval_days": [
+            1.0,
+            60.0
+          ],
+          "irrigation_mm_per_day": [
+            0.0,
+            50.0
+          ],
+          "irrigation_nacl_mol_l": [
+            0.0,
+            0.2
+          ]
+        }
+      },
+      {
+        "citation": "EQ-BioDT v0.3 process-ontological soil model (Campbell 1974; Moldrup 2000; van 't Hoff)",
+        "constants": [],
+        "equation_tex": "\\frac{\\mathrm{d}W}{\\mathrm{d}t}=P-E-Q,\\quad J_g = \\mathbb{I}_{\\mathrm{gate}}\\,A(\\psi,T)\\,D_{\\mathrm{eff}}(\\theta,\\phi)\\,k_g\\,C_g",
+        "id": "eq_biodt_v03",
+        "kind": "twin",
+        "name": "EQ-BioDT v0.3 two-layer causal-ontological soil twin",
+        "name_plain": "Desert sand water, salt and gas-uptake twin",
+        "validity": {
+          "osmotic_domain_mol_l": [
+            0.0,
+            0.1
+          ],
+          "porosity": [
+            0.05,
+            0.9
+          ],
+          "water_mm": [
+            0.0,
+            200.0
+          ]
+        }
+      },
+      {
+        "constants": [
+          {
+            "evidence": "FAO-29 Table 1 (t0234e01): 'EC w dS/m <0.7 / 0.7-3.0 / >3.0 (or) TDS mg/l <450 / 450-2000 / >2000'. Richards page not seen.",
+            "high": 0.011,
+            "id": "nacl_mol_l_per_dS_m",
+            "low": 0.0085,
+            "meaning": "NaCl concentration equivalent to 1 dS/m of electrical conductivity (approx. 10 mmol/L per dS/m; pure NaCl solutions are about 8.5-9)",
+            "note": "Richards not checked (USDA PDF corrupt on download). Indirect support: FAO-29 Table 1 pairs ECw 0.7-3.0 dS/m with TDS 450-2000 mg/L (~640-670 mg/L per dS/m; /58.44 = 11 mmol/L if all NaCl). Pure-NaCl ~9 mmol/L per dS/m. Keep value 0.01 as approximation; low 0.0085 ok.",
+            "source": {
+              "authors": "Richards LA (ed.)",
+              "doi_or_url": "https://www.ars.usda.gov/ARSUserFiles/20360500/hb60_pdf/hb60complete.pdf",
+              "page_or_table": "Richards 1954 Handbook 60 (EC-TDS/meq relation; p. 14-16 not located)",
+              "title": "Diagnosis and improvement of saline and alkali soils (USDA Agriculture Handbook 60)",
+              "year": 1954
+            },
+            "status": "source_not_checked",
+            "unit": "mol/L per dS/m",
+            "value": 0.01,
+            "verified": false
+          },
+          {
+            "evidence": "FAO-29 ch.2 'EC sw = 2 EC e (6)' https://www.fao.org/3/t0234e/t0234e02.htm",
+            "high": 2.5,
+            "id": "fao29_ecsw_per_ece",
+            "low": 1.5,
+            "meaning": "Soil-water EC at field capacity over saturation-extract EC (EC_sw ~ 2 ECe)",
+            "note": "value verified; low/high 1.5-2.5 are scenario bounds (assumption), not in source.",
+            "source": {
+              "authors": "Ayers RS, Westcot DW",
+              "doi_or_url": "https://www.fao.org/3/t0234e/t0234e02.htm",
+              "page_or_table": "Chapter 2, eq. (6) EC sw = 2 EC e (at 15-20% LF)",
+              "title": "Water quality for agriculture (FAO Irrigation and Drainage Paper 29 Rev. 1)",
+              "year": 1985
+            },
+            "status": "verified_in_source",
+            "unit": "dimensionless",
+            "value": 2.0,
+            "verified": true
+          }
+        ],
+        "equation_tex": "\\mathrm{EC}_e = \\frac{\\bar{c}_{\\mathrm{NaCl}}}{2\\,\\kappa_{\\mathrm{NaCl}}}",
+        "id": "twin_solution_to_ece",
+        "kind": "downstream",
+        "name": "Twin mean soil-solution NaCl to saturation-extract EC (FAO-29 relations)",
+        "name_plain": "Sand pore-water salt to root-zone saltiness",
+        "validity": {
+          "mean_nacl_mol_l": [
+            0.0,
+            0.2
+          ]
+        }
+      },
+      {
+        "constants": [
+          {
+            "evidence": "FAO-29 T4: 'Date palm (phoenix dactylifera) 4.0 2.7 6.8 4.5 11 7.3 18 12 32 21'; FAO-56 T23 'Date Palms 4.0 3.6 T' https://www.fao.org/3/x0490e/x0490e0e.htm",
+            "high": 4.8,
+            "id": "mh_date_palm_threshold_dS_m",
+            "low": 3.2,
+            "meaning": "Maas-Hoffman salinity threshold (ECe at which yield starts to decline), date palm",
+            "note": "Verified FAO-29 Table 4 date palm 100% ECe=4.0 and FAO-56 Table 23 (Annex 8) threshold 4.0. low/high are modeller +-20% bounds.",
+            "source": {
+              "authors": "Ayers RS, Westcot DW (after Maas EV, Hoffman GJ 1977)",
+              "doi_or_url": "https://www.fao.org/3/t0234e/t0234e03.htm",
+              "page_or_table": "Table 4 (fruit crops: date palm)",
+              "title": "Water quality for agriculture (FAO Irrigation and Drainage Paper 29 Rev. 1)",
+              "year": 1985
+            },
+            "status": "verified_in_source",
+            "unit": "dS/m",
+            "value": 4.0,
+            "verified": true
+          },
+          {
+            "evidence": "FAO-56 T23: 'Date Palms 4.0 3.6 T' https://www.fao.org/3/x0490e/x0490e0e.htm",
+            "high": 4.32,
+            "id": "mh_date_palm_slope_pct_per_dS_m",
+            "low": 2.88,
+            "meaning": "Maas-Hoffman slope of relative-yield decline above the threshold, date palm",
+            "note": "FAO-29 Table 4 gives yield-potential columns, not slopes; slope is in FAO-56 Table 23 (Maas & Hoffman form). low/high modeller +-20%.",
+            "source": {
+              "authors": "Ayers RS, Westcot DW (after Maas EV, Hoffman GJ 1977)",
+              "doi_or_url": "https://www.fao.org/3/x0490e/x0490e0e.htm",
+              "page_or_table": "FAO-56 Annex 8 Table 23 (slope 3.6); FAO-29 Table 4 implies 100/(32-4)=3.57",
+              "title": "Water quality for agriculture (FAO Irrigation and Drainage Paper 29 Rev. 1)",
+              "year": 1985
+            },
+            "status": "verified_in_source",
+            "unit": "% yield per dS/m",
+            "value": 3.6,
+            "verified": true
+          }
+        ],
+        "equation_tex": "Y_r = \\mathrm{clip}\\!\\bigl(1 - b_{\\mathrm{MH}}(\\mathrm{EC}_e - a_{\\mathrm{MH}})/100,\\,0,\\,1\\bigr)",
+        "id": "maas_hoffman_date_palm",
+        "kind": "downstream",
+        "name": "Maas-Hoffman relative yield, date palm (FAO-29)",
+        "name_plain": "Date palm yield loss from root-zone salt",
+        "validity": {
+          "ece_dS_m": [
+            0.0,
+            40.0
+          ]
+        }
+      },
+      {
+        "constants": [
+          {
+            "evidence": "FAO-29 Table 4, FAO-56 Table 23 https://www.fao.org/3/x0490e/x0490e0e.htm",
+            "high": 9.6,
+            "id": "mh_barley_threshold_dS_m",
+            "low": 6.4,
+            "meaning": "Maas-Hoffman salinity threshold (ECe at which yield starts to decline), barley",
+            "note": "FAO-29 T4 'Barley (Hordeum vulgare) 8.0 5.3 10 6.7 13 8.7 18 12 28 19'; FAO-56 T23 'Barley 8.0 5.0 T'. low/high modeller +-20%.",
+            "source": {
+              "authors": "Ayers RS, Westcot DW (after Maas EV, Hoffman GJ 1977)",
+              "doi_or_url": "https://www.fao.org/3/t0234e/t0234e03.htm",
+              "page_or_table": "Table 4 (field crops: barley, grain)",
+              "title": "Water quality for agriculture (FAO Irrigation and Drainage Paper 29 Rev. 1)",
+              "year": 1985
+            },
+            "status": "verified_in_source",
+            "unit": "dS/m",
+            "value": 8.0,
+            "verified": true
+          },
+          {
+            "evidence": "FAO-56 T23: 'i. Cereals Barley 8.0 5.0 T' https://www.fao.org/3/x0490e/x0490e0e.htm",
+            "high": 6.0,
+            "id": "mh_barley_slope_pct_per_dS_m",
+            "low": 4.0,
+            "meaning": "Maas-Hoffman slope of relative-yield decline above the threshold, barley",
+            "note": "slope from FAO-56 Table 23; low/high modeller +-20%. (Grain barley.)",
+            "source": {
+              "authors": "Ayers RS, Westcot DW (after Maas EV, Hoffman GJ 1977)",
+              "doi_or_url": "https://www.fao.org/3/x0490e/x0490e0e.htm",
+              "page_or_table": "FAO-56 Annex 8 Table 23 (slope 5.0); FAO-29 Table 4 implies 100/(28-8)=5.0",
+              "title": "Water quality for agriculture (FAO Irrigation and Drainage Paper 29 Rev. 1)",
+              "year": 1985
+            },
+            "status": "verified_in_source",
+            "unit": "% yield per dS/m",
+            "value": 5.0,
+            "verified": true
+          }
+        ],
+        "equation_tex": "Y_r = \\mathrm{clip}\\!\\bigl(1 - b_{\\mathrm{MH}}(\\mathrm{EC}_e - a_{\\mathrm{MH}})/100,\\,0,\\,1\\bigr)",
+        "id": "maas_hoffman_barley",
+        "kind": "downstream",
+        "name": "Maas-Hoffman relative yield, barley (FAO-29)",
+        "name_plain": "Barley yield loss from root-zone salt",
+        "validity": {
+          "ece_dS_m": [
+            0.0,
+            40.0
+          ]
+        }
+      },
+      {
+        "constants": [
+          {
+            "evidence": "FAO-29 Table 4; FAO-56 Table 23 https://www.fao.org/3/x0490e/x0490e0e.htm",
+            "high": 2.4,
+            "id": "mh_alfalfa_threshold_dS_m",
+            "low": 1.6,
+            "meaning": "Maas-Hoffman salinity threshold (ECe at which yield starts to decline), alfalfa",
+            "note": "FAO-29 T4 'Alfalfa (Medicago sativa) 2.0 1.3 3.4 2.2 5.4 3.6 8.8 5.9 16 10'; FAO-56 T23 '2.0 7.3 MS'. low/high modeller +-20%.",
+            "source": {
+              "authors": "Ayers RS, Westcot DW (after Maas EV, Hoffman GJ 1977)",
+              "doi_or_url": "https://www.fao.org/3/t0234e/t0234e03.htm",
+              "page_or_table": "Table 4 (forage crops: alfalfa)",
+              "title": "Water quality for agriculture (FAO Irrigation and Drainage Paper 29 Rev. 1)",
+              "year": 1985
+            },
+            "status": "verified_in_source",
+            "unit": "dS/m",
+            "value": 2.0,
+            "verified": true
+          },
+          {
+            "evidence": "FAO-56 T23: 'j. Forages Alfalfa 2.0 7.3 MS' https://www.fao.org/3/x0490e/x0490e0e.htm",
+            "high": 8.76,
+            "id": "mh_alfalfa_slope_pct_per_dS_m",
+            "low": 5.84,
+            "meaning": "Maas-Hoffman slope of relative-yield decline above the threshold, alfalfa",
+            "note": "7.3 verified in FAO-56 Table 23, NOT printed in FAO-29 (Table 4 only implies 100/(16-2)=7.1). Citation corrected. low/high modeller +-20%.",
+            "source": {
+              "authors": "Allen RG, Pereira LS, Raes D, Smith M (Table 23; after Maas & Hoffman 1977, Maas 1984)",
+              "doi_or_url": "https://www.fao.org/3/x0490e/x0490e0e.htm",
+              "page_or_table": "Annex 8, Table 23 (Alfalfa 2.0 7.3 MS)",
+              "title": "Crop evapotranspiration: guidelines for computing crop water requirements (FAO Irrigation and Drainage Paper 56)",
+              "year": 1998
+            },
+            "status": "verified_in_source",
+            "unit": "% yield per dS/m",
+            "value": 7.3,
+            "verified": true
+          }
+        ],
+        "equation_tex": "Y_r = \\mathrm{clip}\\!\\bigl(1 - b_{\\mathrm{MH}}(\\mathrm{EC}_e - a_{\\mathrm{MH}})/100,\\,0,\\,1\\bigr)",
+        "id": "maas_hoffman_alfalfa",
+        "kind": "downstream",
+        "name": "Maas-Hoffman relative yield, alfalfa (FAO-29)",
+        "name_plain": "Alfalfa yield loss from root-zone salt",
+        "validity": {
+          "ece_dS_m": [
+            0.0,
+            40.0
+          ]
+        }
+      },
+      {
+        "constants": [
+          {
+            "evidence": "FAO-29 Table 4 https://www.fao.org/3/t0234e/t0234e03.htm",
+            "high": 3.0,
+            "id": "mh_tomato_threshold_dS_m",
+            "low": 2.0,
+            "meaning": "Maas-Hoffman salinity threshold (ECe at which yield starts to decline), tomato",
+            "note": "FAO-29 T4 'Tomato (Lycopersicon esculentum) 2.5 1.7 3.5 2.3 5.0 3.4 7.6 5.0 13 8.4'. FAO-56 T23 gives 0.9-2.5. low/high modeller +-20%.",
+            "source": {
+              "authors": "Ayers RS, Westcot DW (after Maas EV, Hoffman GJ 1977)",
+              "doi_or_url": "https://www.fao.org/3/t0234e/t0234e03.htm",
+              "page_or_table": "Table 4 (vegetable crops: tomato)",
+              "title": "Water quality for agriculture (FAO Irrigation and Drainage Paper 29 Rev. 1)",
+              "year": 1985
+            },
+            "status": "verified_in_source",
+            "unit": "dS/m",
+            "value": 2.5,
+            "verified": true
+          },
+          {
+            "evidence": "FAO-56 T23: 'Tomato 0.9-2.5 9.0 MS'; FAO-29 T4 tomato 0%: ECe 13 https://www.fao.org/3/x0490e/x0490e0e.htm",
+            "high": 9.9,
+            "id": "mh_tomato_slope_pct_per_dS_m",
+            "low": 9.0,
+            "meaning": "Maas-Hoffman slope of relative-yield decline above the threshold, tomato",
+            "note": "9.9 is not in FAO-29 or FAO-56 (FAO-56 T23: tomato 0.9-2.5, 9.0 MS). Value re-centred on 9.5 with range spanning 9.0 (FAO-56) to 9.9 (M&H 1977, unverified). Alternative: keep 9.9 and cite Maas & Hoffman 1977 J Irrig Drain Div ASCE 103:115-134 after checking.",
+            "source": {
+              "authors": "Ayers RS, Westcot DW (after Maas EV, Hoffman GJ 1977)",
+              "doi_or_url": "https://www.fao.org/3/t0234e/t0234e03.htm",
+              "page_or_table": "FAO-29 Table 4 (implied slope 100/(13-2.5)=9.5); FAO-56 Annex 8 Table 23 gives 9.0; 9.9 is the Maas & Hoffman 1977 value (not seen here)",
+              "title": "Water quality for agriculture (FAO Irrigation and Drainage Paper 29 Rev. 1)",
+              "year": 1985
+            },
+            "status": "verified_in_source",
+            "unit": "% yield per dS/m",
+            "value": 9.5,
+            "verified": true
+          }
+        ],
+        "equation_tex": "Y_r = \\mathrm{clip}\\!\\bigl(1 - b_{\\mathrm{MH}}(\\mathrm{EC}_e - a_{\\mathrm{MH}})/100,\\,0,\\,1\\bigr)",
+        "id": "maas_hoffman_tomato",
+        "kind": "downstream",
+        "name": "Maas-Hoffman relative yield, tomato (FAO-29)",
+        "name_plain": "Tomato yield loss from root-zone salt",
+        "validity": {
+          "ece_dS_m": [
+            0.0,
+            40.0
+          ]
+        }
+      }
+    ]
+  },
+  "reproduce": {
+    "commands": [
+      "uv run python reproducibility/v08/reproduce.py",
+      "uv run python reproducibility/v08/questions.py --uq-dir reviews/v08/uq --out reviews/v08/questions"
+    ],
+    "digests": {
+      "constants_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578",
+      "parameter_ranges_sha256": "f6b9fe6f95d88360375a81171deae746e17c213600077bcc49fa8e05b47ad027",
+      "uq_sha256": "5aa5214b1109c2c189b92396373bbc9ee3968a29089e4e00d98354100f1ade32"
+    },
+    "files": [
+      "src/eq_biodt/v03/questions.py",
+      "src/eq_biodt/v03/uq.py",
+      "reproducibility/v08/questions.py",
+      "reviews/v08/uq/salty-water.json"
+    ],
+    "paper_section": "\u00a73.2 Paired regimes, \u00a73.5 (Experiment 1: Brackish irrigation) & \u00a73.6"
+  },
+  "series": [
+    {
+      "id": "salty-rain-once",
+      "label_plain": "One salty rain (12 mm)",
+      "label_science": "Single 12 mm saline rain pulse (twin only, v0.6)",
+      "levels": [
+        {
+          "label": "0 dS/m single rain",
+          "label_plain": "0 dS/m single rain",
+          "label_science": "0 M NaCl (0 dS/m)",
+          "outcomes": {
+            "h2_uptake_change_pct": {
+              "convergence": {
+                "discrete": true,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Percentage change in hydrogen uptake over 14 days",
+              "label_science": "14-day relative H\u2082 uptake change vs baseline",
+              "median": 0.0,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "%",
+              "unit_plain": "%",
+              "value": 0.0
+            },
+            "h2_uptake_contrast_umol_m2": {
+              "convergence": {
+                "discrete": true,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Change in hydrogen uptake over 14 days",
+              "label_science": "14-day H\u2082 uptake contrast vs baseline",
+              "median": 0.0,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": 0.0
+            },
+            "h2_uptake_umol_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.0136129
+              },
+              "label_plain": "Hydrogen taken up over 14 days",
+              "label_science": "14-day cumulative H\u2082 uptake",
+              "median": 937.445,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": 117.811,
+              "q25": 346.183,
+              "q75": 2262.58,
+              "q95": 4869.58,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": 1102.33
+            },
+            "relative_yield_alfalfa": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Alfalfa yield without bacterium (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "external",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": null
+            },
+            "relative_yield_barley": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Barley yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (barley)",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "external",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": null
+            },
+            "relative_yield_date_palm": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Date palm yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (date palm)",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "external",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": null
+            },
+            "relative_yield_tomato": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Tomato yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (tomato)",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "external",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": null
+            }
+          },
+          "sample": null,
+          "scene": {
+            "active_days": 12,
+            "activity_by_day": [
+              0.9999999999999986,
+              0.9827086468505175,
+              0.9329241298476689,
+              0.8779369704724211,
+              0.8173201894423092,
+              0.7497867866132687,
+              0.6735500825367695,
+              0.5860255055388154,
+              0.48326956432319484,
+              0.3588160584305422,
+              0.20090758727679447,
+              0.024903499112256904,
+              0.0,
+              0.0
+            ],
+            "porosity": 0.4,
+            "salt_mol_l": 0.0,
+            "temp_c": 25.0,
+            "theta": 0.06314285714285922,
+            "water_mm": 12.0
+          },
+          "trajectories": {
+            "baseline": {
+              "A": [
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                13.741854295723,
+                14.401540817724493,
+                14.754619562581683,
+                14.971936621057289,
+                15.018842580351675,
+                14.844092474404043,
+                14.376730035374369,
+                13.512487906018066,
+                12.085711339480774,
+                9.804172045533727,
+                6.069184469828194,
+                0.8255348757416715,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
+              ]
+            },
+            "intervened": {
+              "A": [
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                13.741854295723,
+                14.401540817724493,
+                14.754619562581683,
+                14.971936621057289,
+                15.018842580351675,
+                14.844092474404043,
+                14.376730035374369,
+                13.512487906018066,
+                12.085711339480774,
+                9.804172045533727,
+                6.069184469828194,
+                0.8255348757416715,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
+              ]
+            }
+          },
+          "x": 0.0
+        },
+        {
+          "label": "2 dS/m single rain",
+          "label_plain": "2 dS/m single rain",
+          "label_science": "0.02 M NaCl (2 dS/m)",
+          "outcomes": {
+            "h2_uptake_change_pct": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Percentage change in hydrogen uptake over 14 days",
+              "label_science": "14-day relative H\u2082 uptake change vs baseline",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "simulated",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "%",
+              "unit_plain": "%",
+              "value": null
+            },
+            "h2_uptake_contrast_umol_m2": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Change in hydrogen uptake over 14 days",
+              "label_science": "14-day H\u2082 uptake contrast vs baseline",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "simulated",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": null
+            },
+            "h2_uptake_umol_m2": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Hydrogen taken up over 14 days",
+              "label_science": "14-day cumulative H\u2082 uptake",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "simulated",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": null
+            },
+            "relative_yield_alfalfa": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Alfalfa yield without bacterium (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "external",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": null
+            },
+            "relative_yield_barley": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Barley yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (barley)",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "external",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": null
+            },
+            "relative_yield_date_palm": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Date palm yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (date palm)",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "external",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": null
+            },
+            "relative_yield_tomato": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Tomato yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (tomato)",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "external",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": null
+            }
+          },
+          "sample": null,
+          "scene": {
+            "active_days": 11,
+            "activity_by_day": [
+              0.9200563332963854,
+              0.8908096969452445,
+              0.8567912337305206,
+              0.8169882651279635,
+              0.7701615915543306,
+              0.7147692498252476,
+              0.648827547723271,
+              0.5696430468356872,
+              0.47327300937694955,
+              0.35336858761407025,
+              0.19839717365240941,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "porosity": 0.4,
+            "salt_mol_l": 0.065593992385355,
+            "temp_c": 25.0,
+            "theta": 0.06314285714285922,
+            "water_mm": 12.0
+          },
+          "trajectories": {
+            "baseline": {
+              "A": [
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                13.741854295723,
+                14.401540817724493,
+                14.754619562581683,
+                14.971936621057289,
+                15.018842580351675,
+                14.844092474404043,
+                14.376730035374369,
+                13.512487906018066,
+                12.085711339480774,
+                9.804172045533727,
+                6.069184469828194,
+                0.8255348757416715,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
+              ]
+            },
+            "intervened": {
+              "A": [
+                0.9200563332963854,
+                0.8908096969452445,
+                0.8567912337305206,
+                0.8169882651279635,
+                0.7701615915543306,
+                0.7147692498252476,
+                0.648827547723271,
+                0.5696430468356872,
+                0.47327300937694955,
+                0.35336858761407025,
+                0.19839717365240941,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                13.138999932891997,
+                13.646810014856019,
+                14.063706959128048,
+                14.35831483187772,
+                14.489892882112557,
+                14.404253098162421,
+                14.02669791746735,
+                13.248711467562034,
+                11.900333352364456,
+                9.685507999018407,
+                6.002727721174466,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                114.9365740178102,
+                116.22878792601445,
+                116.38493281092585,
+                115.2197227386916,
+                112.50353026663699,
+                107.94373509327515,
+                101.1536797021165,
+                91.59542045693055,
+                78.46493399801685,
+                60.44053529721755,
+                35.05611170218177,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.24,
+                0.24,
+                0.24,
+                0.24,
+                0.24,
+                0.24,
+                0.24,
+                0.24,
+                0.24,
+                0.24,
+                0.24,
+                0.24,
+                0.24,
+                0.24
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.17170992265674184,
+                -0.2092570217390158,
+                -0.2634080128575677,
+                -0.3448630710750617,
+                -0.47360890933765887,
+                -0.6895302896700158,
+                -1.0789550409863398,
+                -1.8489351289288491,
+                -3.5676607455754863,
+                -8.113232117450384,
+                -23.684510750162847,
+                -85.0,
+                -85.0,
+                -85.0
+              ]
+            }
+          },
+          "x": 2.0
+        },
+        {
+          "label": "5 dS/m single rain",
+          "label_plain": "5 dS/m single rain",
+          "label_science": "0.05 M NaCl (5 dS/m)",
+          "outcomes": {
+            "h2_uptake_change_pct": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Percentage change in hydrogen uptake over 14 days",
+              "label_science": "14-day relative H\u2082 uptake change vs baseline",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "simulated",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "%",
+              "unit_plain": "%",
+              "value": null
+            },
+            "h2_uptake_contrast_umol_m2": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Change in hydrogen uptake over 14 days",
+              "label_science": "14-day H\u2082 uptake contrast vs baseline",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "simulated",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": null
+            },
+            "h2_uptake_umol_m2": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Hydrogen taken up over 14 days",
+              "label_science": "14-day cumulative H\u2082 uptake",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "simulated",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": null
+            },
+            "relative_yield_alfalfa": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Alfalfa yield without bacterium (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "external",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": null
+            },
+            "relative_yield_barley": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Barley yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (barley)",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "external",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": null
+            },
+            "relative_yield_date_palm": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Date palm yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (date palm)",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "external",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": null
+            },
+            "relative_yield_tomato": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Tomato yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (tomato)",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "external",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": null
+            }
+          },
+          "sample": null,
+          "scene": {
+            "active_days": 7,
+            "activity_by_day": [
+              0.8343191466270202,
+              0.8125582575903223,
+              0.7869477578713491,
+              0.7563864514898945,
+              0.7194255562896479,
+              0.6741690359481893,
+              0.6181407815311238,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "porosity": 0.4,
+            "salt_mol_l": 0.16398498096338757,
+            "temp_c": 25.0,
+            "theta": 0.06314285714285922,
+            "water_mm": 12.0
+          },
+          "trajectories": {
+            "baseline": {
+              "A": [
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                13.741854295723,
+                14.401540817724493,
+                14.754619562581683,
+                14.971936621057289,
+                15.018842580351675,
+                14.844092474404043,
+                14.376730035374369,
+                13.512487906018066,
+                12.085711339480774,
+                9.804172045533727,
+                6.069184469828194,
+                0.8255348757416715,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
+              ]
+            },
+            "intervened": {
+              "A": [
+                0.8343191466270202,
+                0.8125582575903223,
+                0.7869477578713491,
+                0.7563864514898945,
+                0.7194255562896479,
+                0.6741690359481893,
+                0.6181407815311238,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                12.458359082534232,
+                12.965453603135538,
+                13.395238740781524,
+                13.718990659564716,
+                13.897771591194987,
+                13.877522261985613,
+                13.58118722994187,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                107.17912014907705,
+                108.60185522536827,
+                109.08500585600736,
+                108.45463566565232,
+                106.47468531969737,
+                102.8219050505541,
+                97.05128808540249,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.6000000000000001,
+                0.6000000000000001,
+                0.6000000000000001,
+                0.6000000000000001,
+                0.6000000000000001,
+                0.6000000000000001,
+                0.6000000000000001,
+                0.6000000000000001,
+                0.6000000000000001,
+                0.6000000000000001,
+                0.6000000000000001,
+                0.6000000000000001,
+                0.6000000000000001,
+                0.6000000000000001
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.30597236855957133,
+                -0.35444670125609584,
+                -0.42146244974658137,
+                -0.518285681453717,
+                -0.6657133791054118,
+                -0.9048330120071257,
+                -1.3238382920476393,
+                -85.0,
+                -85.0,
+                -85.0,
+                -85.0,
+                -85.0,
+                -85.0,
+                -85.0
+              ]
+            }
+          },
+          "x": 5.0
+        },
+        {
+          "label": "8 dS/m single rain",
+          "label_plain": "8 dS/m single rain",
+          "label_science": "0.08 M NaCl (8 dS/m)",
+          "outcomes": {
+            "h2_uptake_change_pct": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Percentage change in hydrogen uptake over 14 days",
+              "label_science": "14-day relative H\u2082 uptake change vs baseline",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "simulated",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "%",
+              "unit_plain": "%",
+              "value": null
+            },
+            "h2_uptake_contrast_umol_m2": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Change in hydrogen uptake over 14 days",
+              "label_science": "14-day H\u2082 uptake contrast vs baseline",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "simulated",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": null
+            },
+            "h2_uptake_umol_m2": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Hydrogen taken up over 14 days",
+              "label_science": "14-day cumulative H\u2082 uptake",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "simulated",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": null
+            },
+            "relative_yield_alfalfa": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Alfalfa yield without bacterium (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "external",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": null
+            },
+            "relative_yield_barley": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Barley yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (barley)",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "external",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": null
+            },
+            "relative_yield_date_palm": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Date palm yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (date palm)",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "external",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": null
+            },
+            "relative_yield_tomato": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Tomato yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (tomato)",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "external",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": null
+            }
+          },
+          "sample": null,
+          "scene": {
+            "active_days": 4,
+            "activity_by_day": [
+              0.780353918620678,
+              0.7616187960186503,
+              0.7396760977279211,
+              0.7135114785060745,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "porosity": 0.4,
+            "salt_mol_l": 0.26237596954142,
+            "temp_c": 25.0,
+            "theta": 0.06314285714285922,
+            "water_mm": 12.0
+          },
+          "trajectories": {
+            "baseline": {
+              "A": [
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                13.741854295723,
+                14.401540817724493,
+                14.754619562581683,
+                14.971936621057289,
+                15.018842580351675,
+                14.844092474404043,
+                14.376730035374369,
+                13.512487906018066,
+                12.085711339480774,
+                9.804172045533727,
+                6.069184469828194,
+                0.8255348757416715,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
+              ]
+            },
+            "intervened": {
+              "A": [
+                0.780353918620678,
+                0.7616187960186503,
+                0.7396760977279211,
+                0.7135114785060745,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                12.007821714117988,
+                12.4998229909191,
+                12.921551974621556,
+                13.24717722455219,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                102.09001427156466,
+                103.45120582377533,
+                103.98439685806503,
+                103.5381504181365,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.96,
+                0.96,
+                0.96,
+                0.96,
+                0.96,
+                0.96,
+                0.96,
+                0.96,
+                0.96,
+                0.96,
+                0.96,
+                0.96,
+                0.96,
+                0.96
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.4402348144624005,
+                -0.4996363807731757,
+                -0.579516886635595,
+                -0.6917082918323726,
+                -85.0,
+                -85.0,
+                -85.0,
+                -85.0,
+                -85.0,
+                -85.0,
+                -85.0,
+                -85.0,
+                -85.0,
+                -85.0
+              ]
+            }
+          },
+          "x": 8.0
+        },
+        {
+          "label": "12 dS/m single rain",
+          "label_plain": "12 dS/m single rain",
+          "label_science": "0.12 M NaCl (12 dS/m)",
+          "outcomes": {
+            "h2_uptake_change_pct": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Percentage change in hydrogen uptake over 14 days",
+              "label_science": "14-day relative H\u2082 uptake change vs baseline",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "simulated",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "%",
+              "unit_plain": "%",
+              "value": null
+            },
+            "h2_uptake_contrast_umol_m2": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Change in hydrogen uptake over 14 days",
+              "label_science": "14-day H\u2082 uptake contrast vs baseline",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "simulated",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": null
+            },
+            "h2_uptake_umol_m2": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Hydrogen taken up over 14 days",
+              "label_science": "14-day cumulative H\u2082 uptake",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "simulated",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": null
+            },
+            "relative_yield_alfalfa": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Alfalfa yield without bacterium (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "external",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": null
+            },
+            "relative_yield_barley": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Barley yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (barley)",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "external",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": null
+            },
+            "relative_yield_date_palm": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Date palm yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (date palm)",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "external",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": null
+            },
+            "relative_yield_tomato": {
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Tomato yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (tomato)",
+              "median": null,
+              "mode": "refusal_indicator",
+              "provenance": "external",
+              "q05": null,
+              "q25": null,
+              "q75": null,
+              "q95": null,
+              "refusal_fraction": 1.0,
+              "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": null
+            }
+          },
+          "sample": null,
+          "scene": {
+            "active_days": 0,
+            "activity_by_day": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "porosity": 0.4,
+            "salt_mol_l": 0.3935639543121301,
+            "temp_c": 25.0,
+            "theta": 0.06314285714285922,
+            "water_mm": 12.0
+          },
+          "trajectories": {
+            "baseline": {
+              "A": [
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                13.741854295723,
+                14.401540817724493,
+                14.754619562581683,
+                14.971936621057289,
+                15.018842580351675,
+                14.844092474404043,
+                14.376730035374369,
+                13.512487906018066,
+                12.085711339480774,
+                9.804172045533727,
+                6.069184469828194,
+                0.8255348757416715,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
+              ]
+            },
+            "intervened": {
+              "A": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "N": [
+                1.44,
+                1.44,
+                1.44,
+                1.44,
+                1.44,
+                1.44,
+                1.44,
+                1.44,
+                1.44,
+                1.44,
+                1.44,
+                1.44,
+                1.44,
+                1.44
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -85.0,
+                -85.0,
+                -85.0,
+                -85.0,
+                -85.0,
+                -85.0,
+                -85.0,
+                -85.0,
+                -85.0,
+                -85.0,
+                -85.0,
+                -85.0,
+                -85.0,
+                -85.0
+              ]
+            }
+          },
+          "x": 12.0
+        }
+      ]
+    },
+    {
+      "id": "daily-irrigation",
+      "label_plain": "Daily salty irrigation",
+      "label_science": "Daily brackish irrigation + FAO-29 / Maas-Hoffman crop yields (exp01)",
+      "levels": [
+        {
+          "label": "0.5 dS/m daily water",
+          "label_plain": "0.5 dS/m daily water",
+          "label_science": "EC_w=0.5 dS/m",
+          "outcomes": {
+            "h2_uptake_change_pct": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.012059
+              },
+              "label_plain": "Percentage change in hydrogen uptake over 14 days",
+              "label_science": "14-day relative H\u2082 uptake change vs baseline",
+              "median": -29.2823,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": -71.7903,
+              "q25": -53.022,
+              "q75": 11.1237,
+              "q95": 132.605,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "%",
+              "unit_plain": "%",
+              "value": -38.355106850652206
+            },
+            "h2_uptake_contrast_umol_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.0026779
+              },
+              "label_plain": "Change in hydrogen uptake over 14 days",
+              "label_science": "14-day H\u2082 uptake contrast vs baseline",
+              "median": -230.28,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": -3102.52,
+              "q25": -1074.43,
+              "q75": 34.3368,
+              "q95": 291.81,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": -422.801
+            },
+            "h2_uptake_umol_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00990873
+              },
+              "label_plain": "Hydrogen taken up over 14 days",
+              "label_science": "14-day cumulative H\u2082 uptake",
+              "median": 652.201,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": 178.948,
+              "q25": 336.612,
+              "q75": 1190.64,
+              "q95": 2151.33,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": 679.532
+            },
+            "relative_yield_alfalfa": {
+              "convergence": {
+                "discrete": true,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Alfalfa yield without bacterium (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
+              "median": 1.0,
+              "mode": "variance",
+              "provenance": "external",
+              "q05": 1.0,
+              "q25": 1.0,
+              "q75": 1.0,
+              "q95": 1.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": 1.0
+            },
+            "relative_yield_barley": {
+              "convergence": {
+                "discrete": true,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Barley yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (barley)",
+              "median": 1.0,
+              "mode": "variance",
+              "provenance": "external",
+              "q05": 1.0,
+              "q25": 1.0,
+              "q75": 1.0,
+              "q95": 1.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": 1.0
+            },
+            "relative_yield_date_palm": {
+              "convergence": {
+                "discrete": true,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Date palm yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (date palm)",
+              "median": 1.0,
+              "mode": "variance",
+              "provenance": "external",
+              "q05": 1.0,
+              "q25": 1.0,
+              "q75": 1.0,
+              "q95": 1.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": 1.0
+            },
+            "relative_yield_tomato": {
+              "convergence": {
+                "discrete": true,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Tomato yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (tomato)",
+              "median": 1.0,
+              "mode": "variance",
+              "provenance": "external",
+              "q05": 1.0,
+              "q25": 1.0,
+              "q75": 1.0,
+              "q95": 1.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": 1.0
+            }
+          },
+          "sample": null,
+          "scene": {
+            "active_days": 14,
+            "activity_by_day": [
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986
+            ],
+            "porosity": 0.4,
+            "salt_mol_l": 0.004442007083761667,
+            "temp_c": 25.0,
+            "theta": 0.2373041331839861,
+            "water_mm": 96.0
+          },
+          "trajectories": {
+            "baseline": {
+              "A": [
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                13.741854295723,
+                14.401540817724493,
+                14.754619562581683,
+                14.971936621057289,
+                15.018842580351675,
+                14.844092474404043,
+                14.376730035374369,
+                13.512487906018066,
+                12.085711339480774,
+                9.804172045533727,
+                6.069184469828194,
+                0.8255348757416715,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
+              ]
+            },
+            "intervened": {
+              "A": [
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986
+              ],
+              "J_co": [
+                9.106560851377013,
+                6.5363504521681435,
+                5.272345477505589,
+                4.684713304344479,
+                4.402374616168,
+                4.264125950243273,
+                4.195738532014742,
+                4.161729918862833,
+                4.144771996307364,
+                4.136304644893306,
+                4.132073873391174,
+                4.129959213909117,
+                4.128902065762607,
+                4.128373537091379
+              ],
+              "J_h2": [
+                89.07830459071656,
+                65.74842487065307,
+                53.329544530634166,
+                47.449258455967666,
+                44.60967097819942,
+                43.216708193296675,
+                42.527117470742105,
+                42.1840661784446,
+                42.01297914316079,
+                41.927545597644844,
+                41.88485635755442,
+                41.863518625612656,
+                41.85285148228379,
+                41.84751834135668
+              ],
+              "N": [
+                0.03,
+                0.05477103117870925,
+                0.0736814983540323,
+                0.0881946722932523,
+                0.09952408758001556,
+                0.10852736947456057,
+                0.11578943839431355,
+                0.12171259511890722,
+                0.1265814554513771,
+                0.13060460832438286,
+                0.13394024848034242,
+                0.13671185065505695,
+                0.139017920365448,
+                0.14093827126865754
+              ],
+              "W": [
+                18.799999999999887,
+                21.676045179087996,
+                23.114067768632047,
+                23.833079063404078,
+                24.192584710790097,
+                24.372337534483098,
+                24.462213946329605,
+                24.50715215225286,
+                24.52962125521448,
+                24.540855806695287,
+                24.546473082435696,
+                24.5492817203059,
+                24.55068603924099,
+                24.551388198708544
+              ],
+              "psi": [
+                -0.026200268185767518,
+                -0.021444349084976853,
+                -0.02207263973171782,
+                -0.02362745565395773,
+                -0.025234167850909848,
+                -0.026696094069683346,
+                -0.027970319646822266,
+                -0.02905948481941329,
+                -0.029980946796005676,
+                -0.030755989333359816,
+                -0.03140563927644375,
+                -0.03194906159737966,
+                -0.03240306024498656,
+                -0.03278206450695688
+              ]
+            }
+          },
+          "x": 0.5
+        },
+        {
+          "label": "2 dS/m daily water",
+          "label_plain": "2 dS/m daily water",
+          "label_science": "EC_w=2 dS/m",
+          "outcomes": {
+            "h2_uptake_change_pct": {
+              "convergence": {
+                "discrete": false,
+                "flagged": true,
+                "half_n_shift_frac": 0.0695608
+              },
+              "label_plain": "Percentage change in hydrogen uptake over 14 days",
+              "label_science": "14-day relative H\u2082 uptake change vs baseline",
+              "median": -30.7056,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": -72.4142,
+              "q25": -54.0656,
+              "q75": 7.20417,
+              "q95": 132.143,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "%",
+              "unit_plain": "%",
+              "value": -38.5556814501607
+            },
+            "h2_uptake_contrast_umol_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.0406535
+              },
+              "label_plain": "Change in hydrogen uptake over 14 days",
+              "label_science": "14-day H\u2082 uptake contrast vs baseline",
+              "median": -245.457,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": -3100.51,
+              "q25": -1115.67,
+              "q75": 29.141,
+              "q95": 264.502,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": -425.012
+            },
+            "h2_uptake_umol_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00520224
+              },
+              "label_plain": "Hydrogen taken up over 14 days",
+              "label_science": "14-day cumulative H\u2082 uptake",
+              "median": 640.543,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": 178.59,
+              "q25": 333.308,
+              "q75": 1187.99,
+              "q95": 2049.49,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": 677.321
+            },
+            "relative_yield_alfalfa": {
+              "convergence": {
+                "discrete": true,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Alfalfa yield without bacterium (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
+              "median": 1.0,
+              "mode": "variance",
+              "provenance": "external",
+              "q05": 1.0,
+              "q25": 1.0,
+              "q75": 1.0,
+              "q95": 1.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": 1.0
+            },
+            "relative_yield_barley": {
+              "convergence": {
+                "discrete": true,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Barley yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (barley)",
+              "median": 1.0,
+              "mode": "variance",
+              "provenance": "external",
+              "q05": 1.0,
+              "q25": 1.0,
+              "q75": 1.0,
+              "q95": 1.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": 1.0
+            },
+            "relative_yield_date_palm": {
+              "convergence": {
+                "discrete": true,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Date palm yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (date palm)",
+              "median": 1.0,
+              "mode": "variance",
+              "provenance": "external",
+              "q05": 1.0,
+              "q25": 1.0,
+              "q75": 1.0,
+              "q95": 1.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": 1.0
+            },
+            "relative_yield_tomato": {
+              "convergence": {
+                "discrete": true,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Tomato yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (tomato)",
+              "median": 1.0,
+              "mode": "variance",
+              "provenance": "external",
+              "q05": 1.0,
+              "q25": 1.0,
+              "q75": 1.0,
+              "q95": 1.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": 1.0
+            }
+          },
+          "sample": null,
+          "scene": {
+            "active_days": 14,
+            "activity_by_day": [
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999103867713423,
+              0.9972838418896384,
+              0.9924024611578218,
+              0.9880532639236023,
+              0.9845186824739129,
+              0.9816328185087773,
+              0.979267792541164,
+              0.9773237060074419
+            ],
+            "porosity": 0.4,
+            "salt_mol_l": 0.01776802833504667,
+            "temp_c": 25.0,
+            "theta": 0.2373041331839861,
+            "water_mm": 96.0
+          },
+          "trajectories": {
+            "baseline": {
+              "A": [
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                13.741854295723,
+                14.401540817724493,
+                14.754619562581683,
+                14.971936621057289,
+                15.018842580351675,
+                14.844092474404043,
+                14.376730035374369,
+                13.512487906018066,
+                12.085711339480774,
+                9.804172045533727,
+                6.069184469828194,
+                0.8255348757416715,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
+              ]
+            },
+            "intervened": {
+              "A": [
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999103867713423,
+                0.9972838418896384,
+                0.9924024611578218,
+                0.9880532639236023,
+                0.9845186824739129,
+                0.9816328185087773,
+                0.979267792541164,
+                0.9773237060074419
+              ],
+              "J_co": [
+                9.106560851377013,
+                6.5363504521681435,
+                5.272345477505589,
+                4.684713304344479,
+                4.402374616168,
+                4.264125950243273,
+                4.1954897576264125,
+                4.154921254650558,
+                4.127542989560539,
+                4.110086352856164,
+                4.098541727655781,
+                4.0904443632834075,
+                4.084475071676229,
+                4.079902132750268
+              ],
+              "J_h2": [
+                89.07830459071656,
+                65.74842487065307,
+                53.329544530634166,
+                47.449258455967666,
+                44.60967097819942,
+                43.216708193296675,
+                42.52455311424819,
+                42.11428162897479,
+                41.83682669429725,
+                41.659666675980034,
+                41.542342150537905,
+                41.459948567101584,
+                41.399147749478594,
+                41.352534793635314
+              ],
+              "N": [
+                0.12,
+                0.219084124714837,
+                0.2947259934161292,
+                0.3527786891730092,
+                0.39809635032006224,
+                0.4341094778982423,
+                0.4631577535772542,
+                0.4868503804756289,
+                0.5063258218055084,
+                0.5224184332975315,
+                0.5357609939213697,
+                0.5468474026202278,
+                0.556071681461792,
+                0.5637530850746302
+              ],
+              "W": [
+                18.799999999999887,
+                21.676045179087996,
+                23.114067768632047,
+                23.833079063404078,
+                24.192584710790097,
+                24.372337534483098,
+                24.462213946329605,
+                24.50715215225286,
+                24.52962125521448,
+                24.540855806695287,
+                24.546473082435696,
+                24.5492817203059,
+                24.55068603924099,
+                24.551388198708544
+              ],
+              "psi": [
+                -0.04932524855600741,
+                -0.05820473147522023,
+                -0.06852459695672623,
+                -0.07759116256078694,
+                -0.08524585793272965,
+                -0.09166494777222026,
+                -0.09703760910747114,
+                -0.1015297480668381,
+                -0.10528274473740093,
+                -0.10841634289928918,
+                -0.11103162023711455,
+                -0.11321363921229878,
+                -0.1150337963779764,
+                -0.11655189414615917
+              ]
+            }
+          },
+          "x": 2.0
+        },
+        {
+          "label": "4 dS/m daily water",
+          "label_plain": "4 dS/m daily water",
+          "label_science": "EC_w=4 dS/m",
+          "outcomes": {
+            "h2_uptake_change_pct": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.0452263
+              },
+              "label_plain": "Percentage change in hydrogen uptake over 14 days",
+              "label_science": "14-day relative H\u2082 uptake change vs baseline",
+              "median": -32.9441,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": -73.2005,
+              "q25": -55.4903,
+              "q75": 2.40915,
+              "q95": 112.233,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "%",
+              "unit_plain": "%",
+              "value": -40.718820900762296
+            },
+            "h2_uptake_contrast_umol_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.0136908
+              },
+              "label_plain": "Change in hydrogen uptake over 14 days",
+              "label_science": "14-day H\u2082 uptake contrast vs baseline",
+              "median": -259.873,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": -3132.06,
+              "q25": -1134.98,
+              "q75": 7.93362,
+              "q95": 231.848,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": -448.857
+            },
+            "h2_uptake_umol_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00220415
+              },
+              "label_plain": "Hydrogen taken up over 14 days",
+              "label_science": "14-day cumulative H\u2082 uptake",
+              "median": 616.708,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": 169.427,
+              "q25": 316.252,
+              "q75": 1131.82,
+              "q95": 2044.91,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": 653.476
+            },
+            "relative_yield_alfalfa": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.0247848
+              },
+              "label_plain": "Alfalfa yield without bacterium (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
+              "median": 1.0,
+              "mode": "variance",
+              "provenance": "external",
+              "q05": 0.983319,
+              "q25": 1.0,
+              "q75": 1.0,
+              "q95": 1.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": 1.0
+            },
+            "relative_yield_barley": {
+              "convergence": {
+                "discrete": true,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Barley yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (barley)",
+              "median": 1.0,
+              "mode": "variance",
+              "provenance": "external",
+              "q05": 1.0,
+              "q25": 1.0,
+              "q75": 1.0,
+              "q95": 1.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": 1.0
+            },
+            "relative_yield_date_palm": {
+              "convergence": {
+                "discrete": true,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Date palm yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (date palm)",
+              "median": 1.0,
+              "mode": "variance",
+              "provenance": "external",
+              "q05": 1.0,
+              "q25": 1.0,
+              "q75": 1.0,
+              "q95": 1.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": 1.0
+            },
+            "relative_yield_tomato": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Tomato yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (tomato)",
+              "median": 1.0,
+              "mode": "variance",
+              "provenance": "external",
+              "q05": 1.0,
+              "q25": 1.0,
+              "q75": 1.0,
+              "q95": 1.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": 1.0
+            }
+          },
+          "sample": null,
+          "scene": {
+            "active_days": 14,
+            "activity_by_day": [
+              0.9999999999999986,
+              0.9897116098410877,
+              0.9606128651888548,
+              0.9403684995643732,
+              0.925547949372292,
+              0.9142961808101606,
+              0.9055468140647289,
+              0.8986318044559369,
+              0.8931031709354945,
+              0.888645168157014,
+              0.885027075287862,
+              0.8820757586814149,
+              0.8796586618633283,
+              0.8776727015764958
+            ],
+            "porosity": 0.4,
+            "salt_mol_l": 0.03553605667009334,
+            "temp_c": 25.0,
+            "theta": 0.2373041331839861,
+            "water_mm": 96.0
+          },
+          "trajectories": {
+            "baseline": {
+              "A": [
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                13.741854295723,
+                14.401540817724493,
+                14.754619562581683,
+                14.971936621057289,
+                15.018842580351675,
+                14.844092474404043,
+                14.376730035374369,
+                13.512487906018066,
+                12.085711339480774,
+                9.804172045533727,
+                6.069184469828194,
+                0.8255348757416715,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
+              ]
+            },
+            "intervened": {
+              "A": [
+                0.9999999999999986,
+                0.9897116098410877,
+                0.9606128651888548,
+                0.9403684995643732,
+                0.925547949372292,
+                0.9142961808101606,
+                0.9055468140647289,
+                0.8986318044559369,
+                0.8931031709354945,
+                0.888645168157014,
+                0.885027075287862,
+                0.8820757586814149,
+                0.8796586618633283,
+                0.8776727015764958
+              ],
+              "J_co": [
+                9.106560851377013,
+                6.501550128049893,
+                5.166221508496419,
+                4.5416414045877715,
+                4.234098063174488,
+                4.076104822807793,
+                3.9914886248560335,
+                3.943989430750616,
+                3.9158194262491053,
+                3.8980574818746776,
+                3.8861380263454373,
+                3.877670258299236,
+                3.871364860786055,
+                3.8664992429668965
+              ],
+              "J_h2": [
+                89.07830459071656,
+                65.38074199219274,
+                52.234103152522124,
+                45.98187745794143,
+                42.88777039171063,
+                41.294593913276465,
+                40.439948418158984,
+                39.95941959935798,
+                39.673925024210135,
+                39.49356741088008,
+                39.3723092416663,
+                39.28602508017533,
+                39.22169200356169,
+                39.17200195745878
+              ],
+              "N": [
+                0.24,
+                0.438168249429674,
+                0.5894519868322584,
+                0.7055573783460184,
+                0.7961927006401245,
+                0.8682189557964846,
+                0.9263155071545084,
+                0.9737007609512578,
+                1.012651643611017,
+                1.044836866595063,
+                1.0715219878427393,
+                1.0936948052404556,
+                1.112143362923584,
+                1.1275061701492604
+              ],
+              "W": [
+                18.799999999999887,
+                21.676045179087996,
+                23.114067768632047,
+                23.833079063404078,
+                24.192584710790097,
+                24.372337534483098,
+                24.462213946329605,
+                24.50715215225286,
+                24.52962125521448,
+                24.540855806695287,
+                24.546473082435696,
+                24.5492817203059,
+                24.55068603924099,
+                24.551388198708544
+              ],
+              "psi": [
+                -0.08015855571632731,
+                -0.10721857466221134,
+                -0.13046053992340403,
+                -0.14954277176989256,
+                -0.16526144470848933,
+                -0.17829008604226956,
+                -0.18912732838833626,
+                -0.19815676573007118,
+                -0.20568514199259458,
+                -0.21196348098719503,
+                -0.21719959485134221,
+                -0.2215664093655243,
+                -0.2252081112219627,
+                -0.22824500033176226
+              ]
+            }
+          },
+          "x": 4.0
+        },
+        {
+          "label": "8 dS/m daily water",
+          "label_plain": "8 dS/m daily water",
+          "label_science": "EC_w=8 dS/m",
+          "outcomes": {
+            "h2_uptake_change_pct": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00906628
+              },
+              "label_plain": "Percentage change in hydrogen uptake over 14 days",
+              "label_science": "14-day relative H\u2082 uptake change vs baseline",
+              "median": -37.0728,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": -74.949,
+              "q25": -57.7269,
+              "q75": -3.50121,
+              "q95": 95.2535,
+              "refusal_fraction": 0.0078125,
+              "refusal_reason": null,
+              "unit": "%",
+              "unit_plain": "%",
+              "value": -43.896807951862094
+            },
+            "h2_uptake_contrast_umol_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00923187
+              },
+              "label_plain": "Change in hydrogen uptake over 14 days",
+              "label_science": "14-day H\u2082 uptake contrast vs baseline",
+              "median": -304.191,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": -3289.59,
+              "q25": -1191.33,
+              "q75": -11.2057,
+              "q95": 197.198,
+              "refusal_fraction": 0.0078125,
+              "refusal_reason": null,
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": -483.889
+            },
+            "h2_uptake_umol_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00278416
+              },
+              "label_plain": "Hydrogen taken up over 14 days",
+              "label_science": "14-day cumulative H\u2082 uptake",
+              "median": 577.743,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": 152.572,
+              "q25": 295.749,
+              "q75": 1058.42,
+              "q95": 1932.79,
+              "refusal_fraction": 0.0078125,
+              "refusal_reason": null,
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": 618.444
+            },
+            "relative_yield_alfalfa": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.000896326
+              },
+              "label_plain": "Alfalfa yield without bacterium (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
+              "median": 0.88661,
+              "mode": "variance",
+              "provenance": "external",
+              "q05": 0.825769,
+              "q25": 0.863065,
+              "q75": 0.907582,
+              "q95": 0.932883,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": 0.886587
+            },
+            "relative_yield_barley": {
+              "convergence": {
+                "discrete": true,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Barley yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (barley)",
+              "median": 1.0,
+              "mode": "variance",
+              "provenance": "external",
+              "q05": 1.0,
+              "q25": 1.0,
+              "q75": 1.0,
+              "q95": 1.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": 1.0
+            },
+            "relative_yield_date_palm": {
+              "convergence": {
+                "discrete": false,
+                "flagged": true,
+                "half_n_shift_frac": 0.0606541
+              },
+              "label_plain": "Date palm yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (date palm)",
+              "median": 1.0,
+              "mode": "variance",
+              "provenance": "external",
+              "q05": 0.983491,
+              "q25": 1.0,
+              "q75": 1.0,
+              "q95": 1.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": 1.0
+            },
+            "relative_yield_tomato": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00279461
+              },
+              "label_plain": "Tomato yield (compared with normal)",
+              "label_science": "Maas-Hoffman relative yield (tomato)",
+              "median": 0.899116,
+              "mode": "variance",
+              "provenance": "external",
+              "q05": 0.823051,
+              "q25": 0.869599,
+              "q75": 0.927056,
+              "q95": 0.961362,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "fraction",
+              "unit_plain": "fraction of normal yield",
+              "value": 0.899907
+            }
+          },
+          "sample": null,
+          "scene": {
+            "active_days": 14,
+            "activity_by_day": [
+              0.9482288811232001,
+              0.8934265522932755,
+              0.8616303790611822,
+              0.8404195601645368,
+              0.8251432777573989,
+              0.8136380617371936,
+              0.8047310817882594,
+              0.7977098913922215,
+              0.7921054566445863,
+              0.7875910354992777,
+              0.7839296831210815,
+              0.7809444879787165,
+              0.7785004557436704,
+              0.7764928455845865
+            ],
+            "porosity": 0.4,
+            "salt_mol_l": 0.07107211334018668,
+            "temp_c": 25.0,
+            "theta": 0.2373041331839861,
+            "water_mm": 96.0
+          },
+          "trajectories": {
+            "baseline": {
+              "A": [
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                13.741854295723,
+                14.401540817724493,
+                14.754619562581683,
+                14.971936621057289,
+                15.018842580351675,
+                14.844092474404043,
+                14.376730035374369,
+                13.512487906018066,
+                12.085711339480774,
+                9.804172045533727,
+                6.069184469828194,
+                0.8255348757416715,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
+              ]
+            },
+            "intervened": {
+              "A": [
+                0.9482288811232001,
+                0.8934265522932755,
+                0.8616303790611822,
+                0.8404195601645368,
+                0.8251432777573989,
+                0.8136380617371936,
+                0.8047310817882594,
+                0.7977098913922215,
+                0.7921054566445863,
+                0.7875910354992777,
+                0.7839296831210815,
+                0.7809444879787165,
+                0.7785004557436704,
+                0.7764928455845865
+              ],
+              "J_co": [
+                8.865387865123642,
+                6.177065753041254,
+                4.892916973111805,
+                4.293610119582935,
+                3.997940758054488,
+                3.845268975200698,
+                3.7628163144468423,
+                3.7159908388425227,
+                3.6878214892613537,
+                3.6697827762652895,
+                3.657496496853208,
+                3.648656840292018,
+                3.6420098162920698,
+                3.636844630621952
+              ],
+              "J_h2": [
+                86.38012627112363,
+                61.95254133474411,
+                49.40619288070043,
+                43.43213252546479,
+                40.465836400921035,
+                38.92942482732096,
+                38.09774757345591,
+                37.62432789894405,
+                37.33879460677433,
+                37.15545646460413,
+                37.03026563620706,
+                36.939998987586144,
+                36.87200861005521,
+                36.81911156677817
+              ],
+              "N": [
+                0.48,
+                0.876336498859348,
+                1.1789039736645168,
+                1.4111147566920368,
+                1.592385401280249,
+                1.7364379115929691,
+                1.8526310143090168,
+                1.9474015219025156,
+                2.025303287222034,
+                2.089673733190126,
+                2.1430439756854787,
+                2.187389610480911,
+                2.224286725847168,
+                2.2550123402985207
+              ],
+              "W": [
+                18.799999999999887,
+                21.676045179087996,
+                23.114067768632047,
+                23.833079063404078,
+                24.192584710790097,
+                24.372337534483098,
+                24.462213946329605,
+                24.50715215225286,
+                24.52962125521448,
+                24.540855806695287,
+                24.546473082435696,
+                24.5492817203059,
+                24.55068603924099,
+                24.551388198708544
+              ],
+              "psi": [
+                -0.14182517003696704,
+                -0.20524626103619362,
+                -0.2543324258567596,
+                -0.29344599018810386,
+                -0.3252926182600088,
+                -0.351540362582368,
+                -0.3733067669500664,
+                -0.39141080105653747,
+                -0.4064899365029821,
+                -0.4190577571630067,
+                -0.42953554407979744,
+                -0.4382719496719752,
+                -0.4455567409099354,
+                -0.45163121270296835
+              ]
+            }
+          },
+          "x": 8.0
+        }
+      ]
+    }
+  ],
+  "slug": "salty-water",
+  "theme": "salt",
+  "title_plain": "What if the water is salty?",
+  "title_science": "Saline rain and daily brackish irrigation across water conductivities (v0.6 + exp01)",
+  "twin_version": "0.8.0",
+  "uncertainty": {
+    "S1": {
+      "activation_shape": [
+        0.0276012,
+        0.00839347,
+        0.0487552
+      ],
+      "crop_etc_mm_per_day": [
+        0.0330441,
+        0.0192219,
+        0.0490146
+      ],
+      "d_co_m2_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "d_h2_m2_s": [
+        0.00198353,
+        -0.000684482,
+        0.00484048
+      ],
+      "drainage_fraction_day": [
+        0.0246909,
+        0.0120084,
+        0.0385252
+      ],
+      "dry_threshold_mpa": [
+        -0.00124691,
+        -0.00358949,
+        0.000954566
+      ],
+      "fao29_ecsw_per_ece": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "field_capacity_fraction": [
+        0.0227991,
+        0.00965315,
+        0.0378989
+      ],
+      "k_co_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "k_h2_s": [
+        0.16588,
+        0.13432,
+        0.196556
+      ],
+      "mh_alfalfa_slope_pct_per_dS_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mh_alfalfa_threshold_dS_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mh_barley_slope_pct_per_dS_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mh_barley_threshold_dS_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mh_date_palm_slope_pct_per_dS_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mh_date_palm_threshold_dS_m": [
+        4.1807e-19,
+        -3.46559e-19,
+        1.25691e-18
+      ],
+      "mh_tomato_slope_pct_per_dS_m": [
+        -1.28605e-18,
+        -5.6506e-18,
+        1.53856e-18
+      ],
+      "mh_tomato_threshold_dS_m": [
+        -1.28605e-18,
+        -5.6506e-18,
+        1.53856e-18
+      ],
+      "nacl_mol_l_per_dS_m": [
+        -3.21511e-06,
+        -0.000734322,
+        0.000678721
+      ],
+      "porosity": [
+        0.0469239,
+        0.0266146,
+        0.0706347
+      ],
+      "psi_entry_mpa": [
+        0.155353,
+        0.115424,
+        0.203181
+      ],
+      "q10": [
+        -1.28605e-18,
+        -5.6506e-18,
+        1.53856e-18
+      ],
+      "retention_b": [
+        0.207821,
+        0.159316,
+        0.268355
+      ],
+      "wet_activation_mpa": [
+        -0.000481876,
+        -0.0046328,
+        0.00295809
+      ]
+    },
+    "ST": {
+      "activation_shape": [
+        0.0911279,
+        0.055357,
+        0.136281
+      ],
+      "crop_etc_mm_per_day": [
+        0.035683,
+        0.0303259,
+        0.042958
+      ],
+      "d_co_m2_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "d_h2_m2_s": [
+        0.00119017,
+        0.000955854,
+        0.00145256
+      ],
+      "drainage_fraction_day": [
+        0.0299368,
+        0.0244689,
+        0.0364869
+      ],
+      "dry_threshold_mpa": [
+        0.00111509,
+        0.000638525,
+        0.00174214
+      ],
+      "fao29_ecsw_per_ece": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "field_capacity_fraction": [
+        0.0345115,
+        0.0287819,
+        0.0421996
+      ],
+      "k_co_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "k_h2_s": [
+        0.281265,
+        0.23216,
+        0.353644
+      ],
+      "mh_alfalfa_slope_pct_per_dS_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mh_alfalfa_threshold_dS_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mh_barley_slope_pct_per_dS_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mh_barley_threshold_dS_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mh_date_palm_slope_pct_per_dS_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mh_date_palm_threshold_dS_m": [
+        4.58047e-34,
+        1.71241e-34,
+        8.73905e-34
+      ],
+      "mh_tomato_slope_pct_per_dS_m": [
+        1.35788e-33,
+        8.12439e-34,
+        2.07507e-33
+      ],
+      "mh_tomato_threshold_dS_m": [
+        1.35788e-33,
+        8.12439e-34,
+        2.07507e-33
+      ],
+      "nacl_mol_l_per_dS_m": [
+        0.000123598,
+        9.48572e-05,
+        0.000159187
+      ],
+      "porosity": [
+        0.126253,
+        0.091087,
+        0.175134
+      ],
+      "psi_entry_mpa": [
+        0.412035,
+        0.318908,
+        0.519134
+      ],
+      "q10": [
+        1.35788e-33,
+        8.12439e-34,
+        2.07507e-33
+      ],
+      "retention_b": [
+        0.517196,
+        0.35676,
+        0.712753
+      ],
+      "wet_activation_mpa": [
+        0.00264338,
+        0.002108,
+        0.00323976
+      ]
+    },
+    "convergence": {
+      "discrete": false,
+      "flagged": false,
+      "half_n_shift_frac": 0.00906628
+    },
+    "d": 24,
+    "group_S1": {
+      "modeller_assumption": [
+        1.03601,
+        0.884426,
+        1.1812
+      ],
+      "source_not_checked": [
+        -3.21511e-06,
+        -0.000734322,
+        0.000678721
+      ],
+      "verified_in_source": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "group_ST": {
+      "modeller_assumption": [
+        0.983365,
+        0.936789,
+        1.02231
+      ],
+      "source_not_checked": [
+        0.000123598,
+        9.48572e-05,
+        0.000159187
+      ],
+      "verified_in_source": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "headline_label": "EC_w=8 dS/m",
+    "headline_level": 3,
+    "headline_output": "h2_uptake_change_pct",
+    "headline_series": "daily-irrigation",
+    "inputs": [
+      {
+        "dist": "triangular",
+        "high": 2.0,
+        "kind": "parameter",
+        "low": 0.5,
+        "meaning": "Exponent of the logarithmic moisture-activation ramp between dry and wet thresholds",
+        "name": "activation_shape",
+        "note": "Bounds [0.5, 2.0] around 1.0 from planning.parameter_ensemble.",
+        "source": {
+          "authors": "EQ-BioDT v0.6 scenario ensemble",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/planning.py:parameter_ensemble",
+          "title": "Scenario sensitivity grid for activation shape exponent",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "-",
+        "value": 1.0
+      },
+      {
+        "dist": "triangular",
+        "high": 9.0,
+        "kind": "constant",
+        "low": 4.0,
+        "meaning": "Order-of-magnitude crop water demand in a hot desert irrigated system, used only to set the seasonal irrigation total in the delivery-schedule experiment",
+        "name": "crop_etc_mm_per_day",
+        "note": "Modeller order-of-magnitude. FAO-56 Table 2: arid/semi-arid tropics ETo >30C = 6-8 mm/day; ETc = Kc ETo, Kc 0.8-1.2 gives 5-9; range 4-9 plausible. Not a source value.",
+        "source": {
+          "authors": "Allen RG, Pereira LS, Raes D, Smith M",
+          "doi_or_url": "https://www.fao.org/3/x0490e/x0490e00.htm",
+          "page_or_table": "Table 2 (ETo, arid warm 6-8 mm/day) x Kc, Chapter 3-6",
+          "title": "Crop evapotranspiration: guidelines for computing crop water requirements (FAO Irrigation and Drainage Paper 56)",
+          "year": 1998
+        },
+        "status": "modeller_assumption",
+        "unit": "mm/day",
+        "value": 6.0
+      },
+      {
+        "dist": "triangular",
+        "high": 2.52e-05,
+        "kind": "parameter",
+        "low": 1.68e-05,
+        "meaning": "Free-air binary molecular diffusivity of CO before Millington-Quirk tortuosity scaling",
+        "name": "d_co_m2_s",
+        "note": "+-20 % around the 2.1e-5 m2/s reference diffusivity to represent temperature/packing tortuosity uncertainty.",
+        "source": {
+          "authors": "EQ-BioDT v0.8 parameter range",
+          "doi_or_url": "https://doi.org/10.1039/TF9615701200",
+          "page_or_table": "src/eq_biodt/v03/process.py:Parameters",
+          "title": "Effective free-air diffusivity allowance (+-20 % around 2.1e-5 m2/s)",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "m2/s",
+        "value": 2.1e-05
+      },
+      {
+        "dist": "triangular",
+        "high": 9.24e-05,
+        "kind": "parameter",
+        "low": 6.16e-05,
+        "meaning": "Free-air binary molecular diffusivity of H2 before Millington-Quirk tortuosity scaling",
+        "name": "d_h2_m2_s",
+        "note": "+-20 % around the 7.7e-5 m2/s reference diffusivity to represent temperature/packing tortuosity uncertainty.",
+        "source": {
+          "authors": "EQ-BioDT v0.8 parameter range",
+          "doi_or_url": "https://doi.org/10.1039/TF9615701200",
+          "page_or_table": "src/eq_biodt/v03/process.py:Parameters",
+          "title": "Effective free-air diffusivity allowance (+-20 % around 7.7e-5 m2/s)",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "m2/s",
+        "value": 7.7e-05
+      },
+      {
+        "dist": "triangular",
+        "high": 0.7,
+        "kind": "parameter",
+        "low": 0.3,
+        "meaning": "Daily fraction of water above field capacity drained from the 10 cm sand layer",
+        "name": "drainage_fraction_day",
+        "note": "Modeller assumption [0.3, 0.7] day-1 around the 0.5 day-1 reference drainage fraction.",
+        "source": {
+          "authors": "EQ-BioDT v0.8 parameter range",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/process.py:Parameters",
+          "title": "Bucket-model daily drainage fraction assumption",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "1/day",
+        "value": 0.5
+      },
+      {
+        "dist": "triangular",
+        "high": -70.0,
+        "kind": "parameter",
+        "low": -100.0,
+        "meaning": "Dry water-potential threshold below which moisture activation is zero",
+        "name": "dry_threshold_mpa",
+        "note": "Bounds [-100.0, -70.0] MPa around -85.0 MPa from planning.parameter_ensemble and contract clause C2.",
+        "source": {
+          "authors": "EQ-BioDT v0.6 scenario ensemble (informed by Reji et al. 2025)",
+          "doi_or_url": "https://doi.org/10.1038/s41467-025-67208-3",
+          "page_or_table": "src/eq_biodt/v03/planning.py:parameter_ensemble",
+          "title": "Scenario sensitivity grid for dry activation threshold",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "MPa",
+        "value": -85.0
+      },
+      {
+        "dist": "triangular",
+        "high": 2.5,
+        "kind": "constant",
+        "low": 1.5,
+        "meaning": "Soil-water EC at field capacity over saturation-extract EC (EC_sw ~ 2 ECe)",
+        "name": "fao29_ecsw_per_ece",
+        "note": "value verified; low/high 1.5-2.5 are scenario bounds (assumption), not in source.",
+        "source": {
+          "authors": "Ayers RS, Westcot DW",
+          "doi_or_url": "https://www.fao.org/3/t0234e/t0234e02.htm",
+          "page_or_table": "Chapter 2, eq. (6) EC sw = 2 EC e (at 15-20% LF)",
+          "title": "Water quality for agriculture (FAO Irrigation and Drainage Paper 29 Rev. 1)",
+          "year": 1985
+        },
+        "status": "verified_in_source",
+        "unit": "dimensionless",
+        "value": 2.0
+      },
+      {
+        "dist": "triangular",
+        "high": 0.6,
+        "kind": "parameter",
+        "low": 0.4,
+        "meaning": "Fraction of pore storage below which gravitational drainage ceases",
+        "name": "field_capacity_fraction",
+        "note": "Modeller assumption [0.4, 0.6] around the 0.5 reference field-capacity fraction.",
+        "source": {
+          "authors": "EQ-BioDT v0.8 parameter range",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/process.py:Parameters",
+          "title": "Bucket-model field-capacity fraction assumption",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "-",
+        "value": 0.5
+      },
+      {
+        "dist": "loguniform",
+        "high": 0.01,
+        "kind": "parameter",
+        "low": 0.0001,
+        "meaning": "Bulk-soil first-order CO reaction rate coefficient at reference temperature and full activation",
+        "name": "k_co_s",
+        "note": "Log-uniform over one order of magnitude below and above the 0.001 s-1 reference rate, matching the 0.1x-10x multipliers in planning.parameter_ensemble.",
+        "source": {
+          "authors": "EQ-BioDT v0.6 scenario ensemble",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/planning.py:parameter_ensemble",
+          "title": "Scenario sensitivity grid (rate multipliers 0.1 to 10 around 0.001 s-1)",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "1/s",
+        "value": 0.001
+      },
+      {
+        "dist": "loguniform",
+        "high": 0.01,
+        "kind": "parameter",
+        "low": 0.0001,
+        "meaning": "Bulk-soil first-order H2 reaction rate coefficient at reference temperature and full activation",
+        "name": "k_h2_s",
+        "note": "Log-uniform over one order of magnitude below and above the 0.001 s-1 reference rate, matching the 0.1x-10x multipliers in planning.parameter_ensemble.",
+        "source": {
+          "authors": "EQ-BioDT v0.6 scenario ensemble",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/planning.py:parameter_ensemble",
+          "title": "Scenario sensitivity grid (rate multipliers 0.1 to 10 around 0.001 s-1)",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "1/s",
+        "value": 0.001
+      },
+      {
+        "dist": "triangular",
+        "high": 8.76,
+        "kind": "constant",
+        "low": 5.84,
+        "meaning": "Maas-Hoffman slope of relative-yield decline above the threshold, alfalfa",
+        "name": "mh_alfalfa_slope_pct_per_dS_m",
+        "note": "7.3 verified in FAO-56 Table 23, NOT printed in FAO-29 (Table 4 only implies 100/(16-2)=7.1). Citation corrected. low/high modeller +-20%.",
+        "source": {
+          "authors": "Allen RG, Pereira LS, Raes D, Smith M (Table 23; after Maas & Hoffman 1977, Maas 1984)",
+          "doi_or_url": "https://www.fao.org/3/x0490e/x0490e0e.htm",
+          "page_or_table": "Annex 8, Table 23 (Alfalfa 2.0 7.3 MS)",
+          "title": "Crop evapotranspiration: guidelines for computing crop water requirements (FAO Irrigation and Drainage Paper 56)",
+          "year": 1998
+        },
+        "status": "verified_in_source",
+        "unit": "% yield per dS/m",
+        "value": 7.3
+      },
+      {
+        "dist": "triangular",
+        "high": 2.4,
+        "kind": "constant",
+        "low": 1.6,
+        "meaning": "Maas-Hoffman salinity threshold (ECe at which yield starts to decline), alfalfa",
+        "name": "mh_alfalfa_threshold_dS_m",
+        "note": "FAO-29 T4 'Alfalfa (Medicago sativa) 2.0 1.3 3.4 2.2 5.4 3.6 8.8 5.9 16 10'; FAO-56 T23 '2.0 7.3 MS'. low/high modeller +-20%.",
+        "source": {
+          "authors": "Ayers RS, Westcot DW (after Maas EV, Hoffman GJ 1977)",
+          "doi_or_url": "https://www.fao.org/3/t0234e/t0234e03.htm",
+          "page_or_table": "Table 4 (forage crops: alfalfa)",
+          "title": "Water quality for agriculture (FAO Irrigation and Drainage Paper 29 Rev. 1)",
+          "year": 1985
+        },
+        "status": "verified_in_source",
+        "unit": "dS/m",
+        "value": 2.0
+      },
+      {
+        "dist": "triangular",
+        "high": 6.0,
+        "kind": "constant",
+        "low": 4.0,
+        "meaning": "Maas-Hoffman slope of relative-yield decline above the threshold, barley",
+        "name": "mh_barley_slope_pct_per_dS_m",
+        "note": "slope from FAO-56 Table 23; low/high modeller +-20%. (Grain barley.)",
+        "source": {
+          "authors": "Ayers RS, Westcot DW (after Maas EV, Hoffman GJ 1977)",
+          "doi_or_url": "https://www.fao.org/3/x0490e/x0490e0e.htm",
+          "page_or_table": "FAO-56 Annex 8 Table 23 (slope 5.0); FAO-29 Table 4 implies 100/(28-8)=5.0",
+          "title": "Water quality for agriculture (FAO Irrigation and Drainage Paper 29 Rev. 1)",
+          "year": 1985
+        },
+        "status": "verified_in_source",
+        "unit": "% yield per dS/m",
+        "value": 5.0
+      },
+      {
+        "dist": "triangular",
+        "high": 9.6,
+        "kind": "constant",
+        "low": 6.4,
+        "meaning": "Maas-Hoffman salinity threshold (ECe at which yield starts to decline), barley",
+        "name": "mh_barley_threshold_dS_m",
+        "note": "FAO-29 T4 'Barley (Hordeum vulgare) 8.0 5.3 10 6.7 13 8.7 18 12 28 19'; FAO-56 T23 'Barley 8.0 5.0 T'. low/high modeller +-20%.",
+        "source": {
+          "authors": "Ayers RS, Westcot DW (after Maas EV, Hoffman GJ 1977)",
+          "doi_or_url": "https://www.fao.org/3/t0234e/t0234e03.htm",
+          "page_or_table": "Table 4 (field crops: barley, grain)",
+          "title": "Water quality for agriculture (FAO Irrigation and Drainage Paper 29 Rev. 1)",
+          "year": 1985
+        },
+        "status": "verified_in_source",
+        "unit": "dS/m",
+        "value": 8.0
+      },
+      {
+        "dist": "triangular",
+        "high": 4.32,
+        "kind": "constant",
+        "low": 2.88,
+        "meaning": "Maas-Hoffman slope of relative-yield decline above the threshold, date palm",
+        "name": "mh_date_palm_slope_pct_per_dS_m",
+        "note": "FAO-29 Table 4 gives yield-potential columns, not slopes; slope is in FAO-56 Table 23 (Maas & Hoffman form). low/high modeller +-20%.",
+        "source": {
+          "authors": "Ayers RS, Westcot DW (after Maas EV, Hoffman GJ 1977)",
+          "doi_or_url": "https://www.fao.org/3/x0490e/x0490e0e.htm",
+          "page_or_table": "FAO-56 Annex 8 Table 23 (slope 3.6); FAO-29 Table 4 implies 100/(32-4)=3.57",
+          "title": "Water quality for agriculture (FAO Irrigation and Drainage Paper 29 Rev. 1)",
+          "year": 1985
+        },
+        "status": "verified_in_source",
+        "unit": "% yield per dS/m",
+        "value": 3.6
+      },
+      {
+        "dist": "triangular",
+        "high": 4.8,
+        "kind": "constant",
+        "low": 3.2,
+        "meaning": "Maas-Hoffman salinity threshold (ECe at which yield starts to decline), date palm",
+        "name": "mh_date_palm_threshold_dS_m",
+        "note": "Verified FAO-29 Table 4 date palm 100% ECe=4.0 and FAO-56 Table 23 (Annex 8) threshold 4.0. low/high are modeller +-20% bounds.",
+        "source": {
+          "authors": "Ayers RS, Westcot DW (after Maas EV, Hoffman GJ 1977)",
+          "doi_or_url": "https://www.fao.org/3/t0234e/t0234e03.htm",
+          "page_or_table": "Table 4 (fruit crops: date palm)",
+          "title": "Water quality for agriculture (FAO Irrigation and Drainage Paper 29 Rev. 1)",
+          "year": 1985
+        },
+        "status": "verified_in_source",
+        "unit": "dS/m",
+        "value": 4.0
+      },
+      {
+        "dist": "triangular",
+        "high": 9.9,
+        "kind": "constant",
+        "low": 9.0,
+        "meaning": "Maas-Hoffman slope of relative-yield decline above the threshold, tomato",
+        "name": "mh_tomato_slope_pct_per_dS_m",
+        "note": "9.9 is not in FAO-29 or FAO-56 (FAO-56 T23: tomato 0.9-2.5, 9.0 MS). Value re-centred on 9.5 with range spanning 9.0 (FAO-56) to 9.9 (M&H 1977, unverified). Alternative: keep 9.9 and cite Maas & Hoffman 1977 J Irrig Drain Div ASCE 103:115-134 after checking.",
+        "source": {
+          "authors": "Ayers RS, Westcot DW (after Maas EV, Hoffman GJ 1977)",
+          "doi_or_url": "https://www.fao.org/3/t0234e/t0234e03.htm",
+          "page_or_table": "FAO-29 Table 4 (implied slope 100/(13-2.5)=9.5); FAO-56 Annex 8 Table 23 gives 9.0; 9.9 is the Maas & Hoffman 1977 value (not seen here)",
+          "title": "Water quality for agriculture (FAO Irrigation and Drainage Paper 29 Rev. 1)",
+          "year": 1985
+        },
+        "status": "verified_in_source",
+        "unit": "% yield per dS/m",
+        "value": 9.5
+      },
+      {
+        "dist": "triangular",
+        "high": 3.0,
+        "kind": "constant",
+        "low": 2.0,
+        "meaning": "Maas-Hoffman salinity threshold (ECe at which yield starts to decline), tomato",
+        "name": "mh_tomato_threshold_dS_m",
+        "note": "FAO-29 T4 'Tomato (Lycopersicon esculentum) 2.5 1.7 3.5 2.3 5.0 3.4 7.6 5.0 13 8.4'. FAO-56 T23 gives 0.9-2.5. low/high modeller +-20%.",
+        "source": {
+          "authors": "Ayers RS, Westcot DW (after Maas EV, Hoffman GJ 1977)",
+          "doi_or_url": "https://www.fao.org/3/t0234e/t0234e03.htm",
+          "page_or_table": "Table 4 (vegetable crops: tomato)",
+          "title": "Water quality for agriculture (FAO Irrigation and Drainage Paper 29 Rev. 1)",
+          "year": 1985
+        },
+        "status": "verified_in_source",
+        "unit": "dS/m",
+        "value": 2.5
+      },
+      {
+        "dist": "triangular",
+        "high": 0.011,
+        "kind": "constant",
+        "low": 0.0085,
+        "meaning": "NaCl concentration equivalent to 1 dS/m of electrical conductivity (approx. 10 mmol/L per dS/m; pure NaCl solutions are about 8.5-9)",
+        "name": "nacl_mol_l_per_dS_m",
+        "note": "Richards not checked (USDA PDF corrupt on download). Indirect support: FAO-29 Table 1 pairs ECw 0.7-3.0 dS/m with TDS 450-2000 mg/L (~640-670 mg/L per dS/m; /58.44 = 11 mmol/L if all NaCl). Pure-NaCl ~9 mmol/L per dS/m. Keep value 0.01 as approximation; low 0.0085 ok.",
+        "source": {
+          "authors": "Richards LA (ed.)",
+          "doi_or_url": "https://www.ars.usda.gov/ARSUserFiles/20360500/hb60_pdf/hb60complete.pdf",
+          "page_or_table": "Richards 1954 Handbook 60 (EC-TDS/meq relation; p. 14-16 not located)",
+          "title": "Diagnosis and improvement of saline and alkali soils (USDA Agriculture Handbook 60)",
+          "year": 1954
+        },
+        "status": "source_not_checked",
+        "unit": "mol/L per dS/m",
+        "value": 0.01
+      },
+      {
+        "dist": "triangular",
+        "high": 0.5,
+        "kind": "parameter",
+        "low": 0.35,
+        "meaning": "Total pore volume fraction of undisturbed Rub' al-Khali sand (excluded when porosity is intervened on)",
+        "name": "porosity",
+        "note": "Bounds [0.35, 0.5] around 0.4 from external_transfer.py:CANDIDATES; excluded whenever an experiment intervenes on porosity.",
+        "source": {
+          "authors": "EQ-BioDT v0.5 external transfer protocol",
+          "doi_or_url": "",
+          "page_or_table": "reproducibility/v05/external_transfer.py:CANDIDATES",
+          "title": "Cross-desert porosity candidate grid",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "-",
+        "value": 0.4
+      },
+      {
+        "dist": "loguniform",
+        "high": -0.0001,
+        "kind": "parameter",
+        "low": -0.01,
+        "meaning": "Campbell water-retention air-entry potential",
+        "name": "psi_entry_mpa",
+        "note": "Log-uniform on magnitude over [-0.01, -0.0001] MPa centered on -0.001 MPa, reusing the entry-potential grid in external_transfer.py:CANDIDATES.",
+        "source": {
+          "authors": "EQ-BioDT v0.5 external transfer protocol",
+          "doi_or_url": "",
+          "page_or_table": "reproducibility/v05/external_transfer.py:CANDIDATES",
+          "title": "Cross-desert retention candidate grid",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "MPa",
+        "value": -0.001
+      },
+      {
+        "dist": "uniform",
+        "high": 2.0,
+        "kind": "parameter",
+        "low": 1.0,
+        "meaning": "Thermal Q10 factor per 10 degC above the 25 degC reference temperature",
+        "name": "q10",
+        "note": "Bounds [1.0, 2.0] from external_transfer.py:CANDIDATES (spanning no thermal amplification Q10=1 to the reference Q10=2).",
+        "source": {
+          "authors": "EQ-BioDT v0.5 external transfer protocol",
+          "doi_or_url": "",
+          "page_or_table": "reproducibility/v05/external_transfer.py:CANDIDATES",
+          "title": "Cross-desert Q10 candidate grid",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "-",
+        "value": 2.0
+      },
+      {
+        "dist": "triangular",
+        "high": 6.0,
+        "kind": "parameter",
+        "low": 2.0,
+        "meaning": "Campbell water-retention pore-size distribution exponent b",
+        "name": "retention_b",
+        "note": "Bounds [2.0, 6.0] with mode 4.0 reuse the transfer grid in external_transfer.py:CANDIDATES (widening planning.parameter_ensemble [3.0, 5.0]).",
+        "source": {
+          "authors": "EQ-BioDT v0.5/v0.6 sensitivity grids",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/planning.py:parameter_ensemble; reproducibility/v05/external_transfer.py:CANDIDATES",
+          "title": "Scenario ensemble (3-5) widened to the cross-desert transfer grid (2-6)",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "-",
+        "value": 4.0
+      },
+      {
+        "dist": "loguniform",
+        "high": -0.03,
+        "kind": "parameter",
+        "low": -0.3,
+        "meaning": "Water potential above which microbial moisture activation reaches 1",
+        "name": "wet_activation_mpa",
+        "note": "Log-uniform on magnitude over [-0.3, -0.03] MPa around the -0.1 MPa reference threshold (half an order of magnitude each side, strictly between dry_threshold_mpa and psi_entry_mpa).",
+        "source": {
+          "authors": "EQ-BioDT v0.6 model contract",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/process.py:Parameters",
+          "title": "Clause C2 wet-activation endpoint assumption",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "MPa",
+        "value": -0.1
+      }
+    ],
+    "median": -37.0728,
+    "mode": "variance",
+    "n": 2048,
+    "oat": {
+      "activation_shape": {
+        "high": -34.980551054645765,
+        "low": -50.10219948768631,
+        "span": 15.121648433040548
+      },
+      "crop_etc_mm_per_day": {
+        "high": -66.70076993679211,
+        "low": -24.803160566465504,
+        "span": 41.897609370326606
+      },
+      "d_co_m2_s": {
+        "high": -43.89682760301965,
+        "low": -43.89682760301965,
+        "span": 0.0
+      },
+      "d_h2_m2_s": {
+        "high": -40.85905797075014,
+        "low": -47.19747049216056,
+        "span": 6.338412521410419
+      },
+      "drainage_fraction_day": {
+        "high": -28.478484411192596,
+        "low": -67.05991444739519,
+        "span": 38.58143003620259
+      },
+      "dry_threshold_mpa": {
+        "high": -43.216751519228374,
+        "low": -44.44128378197573,
+        "span": 1.2245322627473527
+      },
+      "fao29_ecsw_per_ece": {
+        "high": -43.89682760301965,
+        "low": -43.89682760301965,
+        "span": 0.0
+      },
+      "field_capacity_fraction": {
+        "high": -62.29061153814167,
+        "low": -21.127265752504734,
+        "span": 41.163345785636935
+      },
+      "k_co_s": {
+        "high": -43.89682760301965,
+        "low": -43.89682760301965,
+        "span": 0.0
+      },
+      "k_h2_s": {
+        "high": -61.10045470362235,
+        "low": 9.557976162172007,
+        "span": 70.65843086579436
+      },
+      "mh_alfalfa_slope_pct_per_dS_m": {
+        "high": -43.89682760301965,
+        "low": -43.89682760301965,
+        "span": 0.0
+      },
+      "mh_alfalfa_threshold_dS_m": {
+        "high": -43.89682760301965,
+        "low": -43.89682760301965,
+        "span": 0.0
+      },
+      "mh_barley_slope_pct_per_dS_m": {
+        "high": -43.89682760301965,
+        "low": -43.89682760301965,
+        "span": 0.0
+      },
+      "mh_barley_threshold_dS_m": {
+        "high": -43.89682760301965,
+        "low": -43.89682760301965,
+        "span": 0.0
+      },
+      "mh_date_palm_slope_pct_per_dS_m": {
+        "high": -43.89682760301965,
+        "low": -43.89682760301965,
+        "span": 0.0
+      },
+      "mh_date_palm_threshold_dS_m": {
+        "high": -43.89682760301965,
+        "low": -43.89682760301965,
+        "span": 0.0
+      },
+      "mh_tomato_slope_pct_per_dS_m": {
+        "high": -43.89682760301965,
+        "low": -43.89682760301965,
+        "span": 0.0
+      },
+      "mh_tomato_threshold_dS_m": {
+        "high": -43.89682760301965,
+        "low": -43.89682760301965,
+        "span": 0.0
+      },
+      "nacl_mol_l_per_dS_m": {
+        "high": null,
+        "low": -43.08923154063771,
+        "span": null
+      },
+      "porosity": {
+        "high": -12.850971778282805,
+        "low": -56.08763055826939,
+        "span": 43.236658779986584
+      },
+      "psi_entry_mpa": {
+        "high": -57.84079401657624,
+        "low": -2.9359006272654247,
+        "span": 54.904893389310814
+      },
+      "q10": {
+        "high": -43.89682760301965,
+        "low": -43.89682760301965,
+        "span": 0.0
+      },
+      "retention_b": {
+        "high": 25.712071567101383,
+        "low": -65.88405565263842,
+        "span": 91.5961272197398
+      },
+      "wet_activation_mpa": {
+        "high": -41.31516053606094,
+        "low": -45.332427902120095,
+        "span": 4.0172673660591585
+      }
+    },
+    "q05": -74.949,
+    "q25": -57.7269,
+    "q75": -3.50121,
+    "q95": 95.2535,
+    "refusal_fraction": 0.0078125
+  },
+  "version": "question-1",
+  "x_label_plain": "Water saltiness (dS/m)",
+  "x_label_science": "Irrigation or rain electrical conductivity EC_w (dS m^-1)"
+}

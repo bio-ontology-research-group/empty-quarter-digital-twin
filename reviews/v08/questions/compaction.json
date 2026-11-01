@@ -1,0 +1,2354 @@
+{
+  "answer_plain": "Fifty vehicle passes change hydrogen uptake over two weeks by -1.5 % (range -19 to 40 %), so the change may go up or down because squeezing pore space slows gas movement through air spaces while changing how tightly the sand holds water.",
+  "answer_science": "Central percentage change: h2_uptake_change_pct = -1.494 % (median 0.2054 %, 50 % IQR [-9.254, 11.34] %, joint 5\u201395 % interval [-19.01, 40.29] %) (rounded headline: -1.5 %); absolute change h2_uptake_contrast_umol_m2 = -16.46 \u00b5mol m\u207b\u00b2 (median 1.125 \u00b5mol m\u207b\u00b2, 50 % IQR [-196.5, 38.76] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [-872.5, 110] \u00b5mol m\u207b\u00b2); absolute uptake h2_uptake_umol_m2 = 1086 \u00b5mol m\u207b\u00b2 (median 987 \u00b5mol m\u207b\u00b2, 50 % IQR [398, 2087] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [170.1, 3920] \u00b5mol m\u207b\u00b2) (mode = variance, refusal fraction = 0.0 %, max level refusal across question = 0.0 %). Top two Sobol' contributors to output variance: k_h2_s (ST = 0.36 [0.32, 0.41], S1 = 0.33) and retention_b (ST = 0.34 [0.29, 0.40], S1 = 0.25). Status share of variance: verified_in_source ST = 0.00 (S1 = 0.00), modeller_assumption ST = 0.99 (S1 = 0.94), source_not_checked ST = 0.03 (S1 = 0.00) (joint group total indices can sum to more than 1 because of interactions). Convergence check: at 50 passes (co_uptake_change_pct, N = 1024), interval endpoints still move by 5.9 % of the width between N/2 and N. Limits: The parameter-uncertainty interval quantifies joint variation over literature constants and twin process parameters only and excludes external-model and twin model-structure error.",
+  "baseline_label": "Uncompacted sand (pore space 0.40)",
+  "chain": [
+    {
+      "id": "offroad_compaction",
+      "kind": "upstream",
+      "name_plain": "Vehicle passes squeezing sand pore space",
+      "name_science": "Off-road traffic compacts desert sand"
+    },
+    {
+      "id": "eq_biodt_v03",
+      "kind": "twin",
+      "name_plain": "Desert sand water, salt and gas-uptake twin",
+      "name_science": "EQ-BioDT v0.3 two-layer causal-ontological soil twin"
+    }
+  ],
+  "headline": [
+    "h2_uptake_change_pct",
+    "h2_uptake_umol_m2",
+    "h2_uptake_contrast_umol_m2",
+    "porosity"
+  ],
+  "headline_level": {
+    "label": "50 passes",
+    "level": 3,
+    "series": "offroad-passes",
+    "x": 50.0
+  },
+  "headline_output": "h2_uptake_change_pct",
+  "headline_plain": "Fifty vehicle passes change hydrogen uptake over two weeks by -1.5 %, and the change may go up or down across the uncertainty range.",
+  "headline_science": "Central h2_uptake_change_pct = -1.494 % (median 0.2054 %, 50 % IQR [-9.254, 11.34] %, joint 5\u201395 % interval [-19.01, 40.29] %) (plain headline: -1.5 %); absolute change h2_uptake_contrast_umol_m2 = -16.46 \u00b5mol m\u207b\u00b2 (median 1.125 \u00b5mol m\u207b\u00b2, 50 % IQR [-196.5, 38.76] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [-872.5, 110] \u00b5mol m\u207b\u00b2); absolute uptake h2_uptake_umol_m2 = 1086 \u00b5mol m\u207b\u00b2 (median 987 \u00b5mol m\u207b\u00b2, 50 % IQR [398, 2087] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [170.1, 3920] \u00b5mol m\u207b\u00b2) (mode = variance, refusal = 0.0 %).",
+  "headline_value": -1.493638639219352,
+  "level_kind": "numeric",
+  "limits_plain": "The range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong. Crushing of soil crusts, plants or burrows by tyres is not modelled beyond the drop in pore space.",
+  "limits_science": "The parameter-uncertainty interval quantifies joint variation over literature constants and twin process parameters only and excludes external-model and twin model-structure error. Maps traffic passes to bulk density and porosity only, holding retention shape b and air-entry potential psi_entry uncoupled from pore-size redistribution.",
+  "methods": {
+    "admissibility": {
+      "dilute_nacl_limit_mol_l": 0.1,
+      "refusal_threshold_fraction": 0.05,
+      "scope": "Joint parameter and literature-constant uncertainty only; excludes model-structure error."
+    },
+    "data": [
+      "data/v03/entailed_memberships.json",
+      "data/v03/mag_evidence.tsv",
+      "data/external/composition_constants.json",
+      "data/external/twin_parameter_ranges.json"
+    ],
+    "gates": [
+      {
+        "id": "Group1hNiFeHydrogenase",
+        "pathway": "Atmospheric H\u2082 oxidation",
+        "rule": "Closed when sample has 0 MAGs entailed as carrying Group 1h [NiFe]-hydrogenase; fixes J_H2 = 0 exactly."
+      },
+      {
+        "id": "FormICODehydrogenaseSubunit",
+        "pathway": "Atmospheric CO oxidation",
+        "rule": "Closed when sample has 0 MAGs entailed as carrying Form I CO dehydrogenase; fixes J_CO = 0 exactly."
+      },
+      {
+        "id": "CBBAutotrophicCarbonFixationPathway",
+        "pathway": "Knallgas autotrophic CO\u2082 fixation",
+        "rule": "Closed when sample has 0 MAGs carrying both Group 1h [NiFe]-hydrogenase and CBB RuBisCO; fixes C_fixed = 0 exactly."
+      }
+    ],
+    "models": [
+      {
+        "constants": [
+          {
+            "evidence": "textbook; not opened",
+            "high": 2.7,
+            "id": "particle_density_g_cm3",
+            "low": 2.6,
+            "meaning": "Mineral soil particle density (quartz-dominated sand)",
+            "note": "Brady & Weil 14th ed. is 2008 (Prentice Hall, ISBN 978-0-13-227938-3), no DOI; not opened. 2.65 is the universally cited quartz-dominated value.",
+            "source": {
+              "authors": "Brady NC, Weil RR",
+              "doi_or_url": "",
+              "page_or_table": "Ch. 4 soil density (particle density ~2.65 g/cm3)",
+              "title": "The nature and properties of soils, 14th edition",
+              "year": 2008
+            },
+            "status": "source_not_checked",
+            "unit": "g/cm3",
+            "value": 2.65,
+            "verified": false
+          },
+          {
+            "evidence": "Crossref 10.1007/978-1-4612-5454-6_4 'Compaction of Desert Soils by Off-Road Vehicles', Webb 1983, 51-79.",
+            "high": 0.35,
+            "id": "offroad_bd_max_increase_g_cm3",
+            "low": 0.15,
+            "meaning": "Asymptotic increase of bulk density of desert sand after many off-road vehicle passes",
+            "note": "Chapter/DOI verified via Crossref; Springer chapter not read, magnitude (0.25 g/cm3) unverified: treat as assumption.",
+            "source": {
+              "authors": "Webb RH",
+              "doi_or_url": "https://doi.org/10.1007/978-1-4612-5454-6_4",
+              "page_or_table": "pp. 51-79 in Webb & Wilshire (eds) Environmental Effects of Off-Road Vehicles, Springer",
+              "title": "Compaction of desert soils by off-road vehicles, in Webb RH, Wilshire HG (eds) Environmental effects of off-road vehicles",
+              "year": 1983
+            },
+            "status": "source_not_checked",
+            "unit": "g/cm3",
+            "value": 0.25,
+            "verified": false
+          },
+          {
+            "evidence": "labelled in file",
+            "high": 10.0,
+            "id": "offroad_bd_passes_efold",
+            "low": 3.0,
+            "meaning": "Number of passes after which about 63% of the asymptotic compaction is reached (exponential approach)",
+            "note": "Modeller fit (already labelled); not a source value.",
+            "source": {
+              "authors": "Webb RH",
+              "doi_or_url": "https://doi.org/10.1007/978-1-4612-5454-6_4",
+              "page_or_table": "bulk density vs passes (Mojave)",
+              "title": "Compaction of desert soils by off-road vehicles",
+              "year": 1983
+            },
+            "status": "modeller_assumption",
+            "unit": "passes",
+            "value": 5.0,
+            "verified": false
+          }
+        ],
+        "equation_tex": "\\phi(n_{\\mathrm{pass}}) = 1 - \\frac{\\rho_b(n_{\\mathrm{pass}})}{\\rho_s}",
+        "id": "offroad_compaction",
+        "kind": "upstream",
+        "name": "Off-road traffic compacts desert sand",
+        "name_plain": "Vehicle passes squeezing sand pore space",
+        "validity": {
+          "offroad_passes": [
+            0.0,
+            200.0
+          ]
+        }
+      },
+      {
+        "citation": "EQ-BioDT v0.3 process-ontological soil model (Campbell 1974; Moldrup 2000; van 't Hoff)",
+        "constants": [],
+        "equation_tex": "\\frac{\\mathrm{d}W}{\\mathrm{d}t}=P-E-Q,\\quad J_g = \\mathbb{I}_{\\mathrm{gate}}\\,A(\\psi,T)\\,D_{\\mathrm{eff}}(\\theta,\\phi)\\,k_g\\,C_g",
+        "id": "eq_biodt_v03",
+        "kind": "twin",
+        "name": "EQ-BioDT v0.3 two-layer causal-ontological soil twin",
+        "name_plain": "Desert sand water, salt and gas-uptake twin",
+        "validity": {
+          "osmotic_domain_mol_l": [
+            0.0,
+            0.1
+          ],
+          "porosity": [
+            0.05,
+            0.9
+          ],
+          "water_mm": [
+            0.0,
+            200.0
+          ]
+        }
+      }
+    ]
+  },
+  "reproduce": {
+    "commands": [
+      "uv run python reproducibility/v08/reproduce.py",
+      "uv run python reproducibility/v08/questions.py --uq-dir reviews/v08/uq --out reviews/v08/questions"
+    ],
+    "digests": {
+      "constants_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578",
+      "parameter_ranges_sha256": "f6b9fe6f95d88360375a81171deae746e17c213600077bcc49fa8e05b47ad027",
+      "uq_sha256": "e5a9428d460c8cf9b7db455bc7981bac06caa253c5f10c04b9f3da9495f27fec"
+    },
+    "files": [
+      "src/eq_biodt/v03/questions.py",
+      "src/eq_biodt/v03/uq.py",
+      "reproducibility/v08/questions.py",
+      "reviews/v08/uq/compaction.json"
+    ],
+    "paper_section": "\u00a73.2 Paired regimes, \u00a73.5 (Experiment 6: Off-road compaction) & \u00a73.6"
+  },
+  "series": [
+    {
+      "id": "offroad-passes",
+      "label_plain": "Off-road vehicle passes",
+      "label_science": "Bulk-density compaction curve (exp10)",
+      "levels": [
+        {
+          "label": "0 passes",
+          "label_plain": "0 passes",
+          "label_science": "0 passes",
+          "outcomes": {
+            "h2_uptake_change_pct": {
+              "convergence": {
+                "discrete": true,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Percentage change in hydrogen uptake over 14 days",
+              "label_science": "14-day relative H\u2082 uptake change vs baseline",
+              "median": 0.0,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "%",
+              "unit_plain": "%",
+              "value": 0.0
+            },
+            "h2_uptake_contrast_umol_m2": {
+              "convergence": {
+                "discrete": true,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Change in hydrogen uptake over 14 days",
+              "label_science": "14-day H\u2082 uptake contrast vs baseline",
+              "median": 0.0,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": 0.0
+            },
+            "h2_uptake_umol_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.000412911
+              },
+              "label_plain": "Hydrogen taken up over 14 days",
+              "label_science": "14-day cumulative H\u2082 uptake",
+              "median": 962.113,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": 133.973,
+              "q25": 343.307,
+              "q75": 2261.26,
+              "q95": 4689.92,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": 1102.33
+            },
+            "porosity": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Pore space in sand",
+              "label_science": "Soil porosity \u03c6",
+              "median": 0.4,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": 0.4,
+              "q25": 0.4,
+              "q75": 0.4,
+              "q95": 0.4,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "m\u00b3 m\u207b\u00b3",
+              "unit_plain": "fraction of sand volume",
+              "value": 0.4
+            }
+          },
+          "sample": null,
+          "scene": {
+            "active_days": 12,
+            "activity_by_day": [
+              0.9999999999999986,
+              0.9827086468505175,
+              0.9329241298476689,
+              0.8779369704724211,
+              0.8173201894423092,
+              0.7497867866132687,
+              0.6735500825367695,
+              0.5860255055388154,
+              0.48326956432319484,
+              0.3588160584305422,
+              0.20090758727679447,
+              0.024903499112256904,
+              0.0,
+              0.0
+            ],
+            "porosity": 0.4,
+            "salt_mol_l": 0.0,
+            "temp_c": 25.0,
+            "theta": 0.06314285714285922,
+            "water_mm": 12.0
+          },
+          "trajectories": {
+            "baseline": {
+              "A": [
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                13.741854295723,
+                14.401540817724493,
+                14.754619562581683,
+                14.971936621057289,
+                15.018842580351675,
+                14.844092474404043,
+                14.376730035374369,
+                13.512487906018066,
+                12.085711339480774,
+                9.804172045533727,
+                6.069184469828194,
+                0.8255348757416715,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
+              ]
+            },
+            "intervened": {
+              "A": [
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                13.741854295723,
+                14.401540817724493,
+                14.754619562581683,
+                14.971936621057289,
+                15.018842580351675,
+                14.844092474404043,
+                14.376730035374369,
+                13.512487906018066,
+                12.085711339480774,
+                9.804172045533727,
+                6.069184469828194,
+                0.8255348757416715,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
+              ]
+            }
+          },
+          "x": 0.0
+        },
+        {
+          "label": "1 passes",
+          "label_plain": "1 passes",
+          "label_science": "1 passes",
+          "outcomes": {
+            "h2_uptake_change_pct": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00514021
+              },
+              "label_plain": "Percentage change in hydrogen uptake over 14 days",
+              "label_science": "14-day relative H\u2082 uptake change vs baseline",
+              "median": 0.688862,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": -2.35126,
+              "q25": -0.58254,
+              "q75": 2.71607,
+              "q95": 6.73025,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "%",
+              "unit_plain": "%",
+              "value": 0.8037483946278011
+            },
+            "h2_uptake_contrast_umol_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00604724
+              },
+              "label_plain": "Change in hydrogen uptake over 14 days",
+              "label_science": "14-day H\u2082 uptake contrast vs baseline",
+              "median": 3.86151,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": -105.6,
+              "q25": -12.3071,
+              "q75": 10.6452,
+              "q95": 30.0483,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": 8.85996
+            },
+            "h2_uptake_umol_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00535851
+              },
+              "label_plain": "Hydrogen taken up over 14 days",
+              "label_science": "14-day cumulative H\u2082 uptake",
+              "median": 982.345,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": 138.043,
+              "q25": 356.435,
+              "q75": 2297.96,
+              "q95": 4635.33,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": 1111.19
+            },
+            "porosity": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.011892
+              },
+              "label_plain": "Pore space in sand",
+              "label_science": "Soil porosity \u03c6",
+              "median": 0.385326,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": 0.376759,
+              "q25": 0.382119,
+              "q75": 0.387932,
+              "q95": 0.390888,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "m\u00b3 m\u207b\u00b3",
+              "unit_plain": "fraction of sand volume",
+              "value": 0.382899
+            }
+          },
+          "sample": null,
+          "scene": {
+            "active_days": 12,
+            "activity_by_day": [
+              0.9999999999999986,
+              0.9976523764571072,
+              0.9588345440348418,
+              0.9038473846595941,
+              0.8432306036294821,
+              0.7756972008004417,
+              0.6994604967239425,
+              0.6119359197259884,
+              0.5091799785103677,
+              0.38472647261771514,
+              0.2268180014639674,
+              0.03805776119061532,
+              0.0,
+              0.0
+            ],
+            "porosity": 0.38289912764886624,
+            "salt_mol_l": 0.0,
+            "temp_c": 25.0,
+            "theta": 0.06314285714285922,
+            "water_mm": 12.0
+          },
+          "trajectories": {
+            "baseline": {
+              "A": [
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                13.741854295723,
+                14.401540817724493,
+                14.754619562581683,
+                14.971936621057289,
+                15.018842580351675,
+                14.844092474404043,
+                14.376730035374369,
+                13.512487906018066,
+                12.085711339480774,
+                9.804172045533727,
+                6.069184469828194,
+                0.8255348757416715,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
+              ]
+            },
+            "intervened": {
+              "A": [
+                0.9999999999999986,
+                0.9976523764571072,
+                0.9588345440348418,
+                0.9038473846595941,
+                0.8432306036294821,
+                0.7756972008004417,
+                0.6994604967239425,
+                0.6119359197259884,
+                0.5091799785103677,
+                0.38472647261771514,
+                0.2268180014639674,
+                0.03805776119061532,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                12.9074614470698,
+                13.708305430997322,
+                14.214222285884953,
+                14.518568203809108,
+                14.665412963006675,
+                14.604350489496618,
+                14.265576875478475,
+                13.546667193949618,
+                12.285171024389834,
+                10.194683664751963,
+                6.687311382979795,
+                1.2429816844954154,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                116.81979872759776,
+                121.56114362869454,
+                122.61803529020499,
+                121.26201298868178,
+                118.2516003910905,
+                113.34656078210872,
+                106.21771158512998,
+                96.3821882073304,
+                83.08124157801967,
+                65.02245679635664,
+                39.74768100494073,
+                6.882858765641605,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.06902047556118615,
+                -0.09443015228783568,
+                -0.13269670354393626,
+                -0.19248774867210824,
+                -0.29013154098442934,
+                -0.45844402879732843,
+                -0.7688657911901087,
+                -1.3935346321506814,
+                -2.8065100656500652,
+                -6.578859736284796,
+                -19.58155939443027,
+                -90.21543869091751,
+                -1276.4410254617756,
+                -85.0
+              ]
+            }
+          },
+          "x": 1.0
+        },
+        {
+          "label": "10 passes",
+          "label_plain": "10 passes",
+          "label_science": "10 passes",
+          "outcomes": {
+            "h2_uptake_change_pct": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00945147
+              },
+              "label_plain": "Percentage change in hydrogen uptake over 14 days",
+              "label_science": "14-day relative H\u2082 uptake change vs baseline",
+              "median": 1.89061,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": -15.0231,
+              "q25": -6.12702,
+              "q75": 11.2233,
+              "q95": 31.2572,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "%",
+              "unit_plain": "%",
+              "value": -0.3122525530102063
+            },
+            "h2_uptake_contrast_umol_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.0121129
+              },
+              "label_plain": "Change in hydrogen uptake over 14 days",
+              "label_science": "14-day H\u2082 uptake contrast vs baseline",
+              "median": 9.70377,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": -675.291,
+              "q25": -126.874,
+              "q75": 39.912,
+              "q95": 109.851,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": -3.44206
+            },
+            "h2_uptake_umol_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00756635
+              },
+              "label_plain": "Hydrogen taken up over 14 days",
+              "label_science": "14-day cumulative H\u2082 uptake",
+              "median": 992.661,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": 166.496,
+              "q25": 388.754,
+              "q75": 2123.35,
+              "q95": 4184.17,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": 1098.89
+            },
+            "porosity": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00572736
+              },
+              "label_plain": "Pore space in sand",
+              "label_science": "Soil porosity \u03c6",
+              "median": 0.323607,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": 0.298758,
+              "q25": 0.313243,
+              "q75": 0.333615,
+              "q95": 0.346013,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "m\u00b3 m\u207b\u00b3",
+              "unit_plain": "fraction of sand volume",
+              "value": 0.318428
+            }
+          },
+          "sample": null,
+          "scene": {
+            "active_days": 12,
+            "activity_by_day": [
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9978408929231126,
+              0.9525674038352018,
+              0.8850340010061618,
+              0.8087972969296625,
+              0.7212727199317083,
+              0.6185167787160876,
+              0.49406327282343565,
+              0.33615480166968736,
+              0.12029298597552471,
+              0.0,
+              0.0
+            ],
+            "porosity": 0.31842785690911446,
+            "salt_mol_l": 0.0,
+            "temp_c": 25.0,
+            "theta": 0.06314285714285922,
+            "water_mm": 12.0
+          },
+          "trajectories": {
+            "baseline": {
+              "A": [
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                13.741854295723,
+                14.401540817724493,
+                14.754619562581683,
+                14.971936621057289,
+                15.018842580351675,
+                14.844092474404043,
+                14.376730035374369,
+                13.512487906018066,
+                12.085711339480774,
+                9.804172045533727,
+                6.069184469828194,
+                0.8255348757416715,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
+              ]
+            },
+            "intervened": {
+              "A": [
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9978408929231126,
+                0.9525674038352018,
+                0.8850340010061618,
+                0.8087972969296625,
+                0.7212727199317083,
+                0.6185167787160876,
+                0.49406327282343565,
+                0.33615480166968736,
+                0.12029298597552471,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                9.518834022009761,
+                10.377501399342847,
+                11.257313726983792,
+                12.139789163826618,
+                12.727160311164406,
+                13.078382633208667,
+                13.22609749556245,
+                13.079471104222016,
+                12.494355314379328,
+                11.216906498161093,
+                8.72329485514944,
+                3.626441450400608,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                92.48382898843707,
+                99.26910960210242,
+                105.77779843011034,
+                111.7951676328393,
+                113.90480685959785,
+                112.9441282522975,
+                109.61205727028448,
+                103.38682173013905,
+                93.49152459335245,
+                78.63412958453324,
+                56.36722464893238,
+                21.224670214682067,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.03301297443043334,
+                -0.045166599876245064,
+                -0.0634697580026856,
+                -0.09206823154167769,
+                -0.13877193783590003,
+                -0.21927697364319568,
+                -0.36775386577121605,
+                -0.6665373254105001,
+                -1.3423733215794025,
+                -3.146714456680932,
+                -9.365996312547411,
+                -43.15067299258699,
+                -610.5306373638313,
+                -85.0
+              ]
+            }
+          },
+          "x": 10.0
+        },
+        {
+          "label": "50 passes",
+          "label_plain": "50 passes",
+          "label_science": "50 passes",
+          "outcomes": {
+            "h2_uptake_change_pct": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00449621
+              },
+              "label_plain": "Percentage change in hydrogen uptake over 14 days",
+              "label_science": "14-day relative H\u2082 uptake change vs baseline",
+              "median": 0.205433,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": -19.0137,
+              "q25": -9.25377,
+              "q75": 11.3412,
+              "q95": 40.289,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "%",
+              "unit_plain": "%",
+              "value": -1.493638639219352
+            },
+            "h2_uptake_contrast_umol_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00268724
+              },
+              "label_plain": "Change in hydrogen uptake over 14 days",
+              "label_science": "14-day H\u2082 uptake contrast vs baseline",
+              "median": 1.12524,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": -872.495,
+              "q25": -196.503,
+              "q75": 38.7638,
+              "q95": 110.015,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": -16.4649
+            },
+            "h2_uptake_umol_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00452923
+              },
+              "label_plain": "Hydrogen taken up over 14 days",
+              "label_science": "14-day cumulative H\u2082 uptake",
+              "median": 987.008,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": 170.138,
+              "q25": 398.044,
+              "q75": 2087.05,
+              "q95": 3920.5,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": 1085.87
+            },
+            "porosity": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00475543
+              },
+              "label_plain": "Pore space in sand",
+              "label_science": "Soil porosity \u03c6",
+              "median": 0.305849,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": 0.279811,
+              "q25": 0.294687,
+              "q75": 0.316775,
+              "q95": 0.331403,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "m\u00b3 m\u207b\u00b3",
+              "unit_plain": "fraction of sand volume",
+              "value": 0.305665
+            }
+          },
+          "sample": null,
+          "scene": {
+            "active_days": 13,
+            "activity_by_day": [
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.976277393632493,
+              0.9092924959925176,
+              0.8330557919160178,
+              0.7455312149180643,
+              0.6427752737024434,
+              0.5183217678097908,
+              0.3604132966560432,
+              0.14387479561904856,
+              1.5980778261616206e-05,
+              0.0
+            ],
+            "porosity": 0.30566466037073237,
+            "salt_mol_l": 0.0,
+            "temp_c": 25.0,
+            "theta": 0.06314285714285922,
+            "water_mm": 12.0
+          },
+          "trajectories": {
+            "baseline": {
+              "A": [
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                13.741854295723,
+                14.401540817724493,
+                14.754619562581683,
+                14.971936621057289,
+                15.018842580351675,
+                14.844092474404043,
+                14.376730035374369,
+                13.512487906018066,
+                12.085711339480774,
+                9.804172045533727,
+                6.069184469828194,
+                0.8255348757416715,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
+              ]
+            },
+            "intervened": {
+              "A": [
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.976277393632493,
+                0.9092924959925176,
+                0.8330557919160178,
+                0.7455312149180643,
+                0.6427752737024434,
+                0.5183217678097908,
+                0.3604132966560432,
+                0.14387479561904856,
+                1.5980778261616206e-05,
+                0.0
+              ],
+              "J_co": [
+                8.810630920692603,
+                9.669641229016213,
+                10.554054825366086,
+                11.459810746919631,
+                12.224340295015713,
+                12.652728550418146,
+                12.891786442115352,
+                12.857596554885525,
+                12.411196844889194,
+                11.307660174608301,
+                9.04111239690293,
+                4.243362598199683,
+                0.0005542553994920354,
+                0.0
+              ],
+              "J_h2": [
+                86.56664873026337,
+                93.70566251703715,
+                100.61015095652013,
+                107.21215988400111,
+                111.6330077865971,
+                111.68801872861846,
+                109.33051855987053,
+                104.05829595990976,
+                95.08143207748131,
+                81.10205258859082,
+                59.6733978815778,
+                25.204138877319952,
+                0.0029398145186637394,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.02802988791984972,
+                -0.038349005325759376,
+                -0.05388942480369863,
+                -0.07817115105850589,
+                -0.11782524692397353,
+                -0.18617858889311642,
+                -0.31224389251505974,
+                -0.5659279979458507,
+                -1.1397510948235126,
+                -2.6717390679958646,
+                -7.952262146255314,
+                -36.63736905006967,
+                -518.3751428700926,
+                -85.0
+              ]
+            }
+          },
+          "x": 50.0
+        }
+      ]
+    },
+    {
+      "id": "direct-porosity-v06",
+      "label_plain": "Heavily packed sand (porosity 0.30)",
+      "label_science": "Direct porosity reduction to 0.30 (v0.6 scenario)",
+      "levels": [
+        {
+          "label": "pore space 0.30",
+          "label_plain": "pore space 0.30",
+          "label_science": "porosity 0.30 (v0.6)",
+          "outcomes": {
+            "h2_uptake_change_pct": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.00433464
+              },
+              "label_plain": "Percentage change in hydrogen uptake over 14 days",
+              "label_science": "14-day relative H\u2082 uptake change vs baseline",
+              "median": -0.177721,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": -19.1819,
+              "q25": -10.3461,
+              "q75": 13.2291,
+              "q95": 39.6809,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "%",
+              "unit_plain": "%",
+              "value": -2.137850309383806
+            },
+            "h2_uptake_contrast_umol_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.0327952
+              },
+              "label_plain": "Change in hydrogen uptake over 14 days",
+              "label_science": "14-day H\u2082 uptake contrast vs baseline",
+              "median": -1.15179,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": -890.561,
+              "q25": -221.89,
+              "q75": 44.3464,
+              "q95": 125.595,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": -23.5663
+            },
+            "h2_uptake_umol_m2": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.0123932
+              },
+              "label_plain": "Hydrogen taken up over 14 days",
+              "label_science": "14-day cumulative H\u2082 uptake",
+              "median": 979.98,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": 168.606,
+              "q25": 405.358,
+              "q75": 2077.23,
+              "q95": 3823.36,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "\u00b5mol m\u207b\u00b2",
+              "unit_plain": "millionths of a mole per m\u00b2",
+              "value": 1078.77
+            },
+            "porosity": {
+              "convergence": {
+                "discrete": false,
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "label_plain": "Pore space in sand",
+              "label_science": "Soil porosity \u03c6",
+              "median": 0.3,
+              "mode": "variance",
+              "provenance": "simulated",
+              "q05": 0.3,
+              "q25": 0.3,
+              "q75": 0.3,
+              "q95": 0.3,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
+              "unit": "m\u00b3 m\u207b\u00b3",
+              "unit_plain": "fraction of sand volume",
+              "value": 0.3
+            }
+          },
+          "sample": null,
+          "scene": {
+            "active_days": 13,
+            "activity_by_day": [
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9999999999999986,
+              0.9848868041893166,
+              0.9203854476809555,
+              0.8441487436044566,
+              0.7566241666065021,
+              0.6538682253908815,
+              0.5294147194982293,
+              0.3715062483444811,
+              0.15496774730748675,
+              0.0003095497451110727,
+              0.0
+            ],
+            "porosity": 0.3,
+            "salt_mol_l": 0.0,
+            "temp_c": 25.0,
+            "theta": 0.06314285714285922,
+            "water_mm": 12.0
+          },
+          "trajectories": {
+            "baseline": {
+              "A": [
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
+                0.0,
+                0.0
+              ],
+              "J_co": [
+                13.741854295723,
+                14.401540817724493,
+                14.754619562581683,
+                14.971936621057289,
+                15.018842580351675,
+                14.844092474404043,
+                14.376730035374369,
+                13.512487906018066,
+                12.085711339480774,
+                9.804172045533727,
+                6.069184469828194,
+                0.8255348757416715,
+                0.0,
+                0.0
+              ],
+              "J_h2": [
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
+                0.0,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
+              ]
+            },
+            "intervened": {
+              "A": [
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9999999999999986,
+                0.9848868041893166,
+                0.9203854476809555,
+                0.8441487436044566,
+                0.7566241666065021,
+                0.6538682253908815,
+                0.5294147194982293,
+                0.3715062483444811,
+                0.15496774730748675,
+                0.0003095497451110727,
+                0.0
+              ],
+              "J_co": [
+                8.493293133722123,
+                9.35153773458462,
+                10.237084117851715,
+                11.146020254124974,
+                11.975760849923473,
+                12.45049123270285,
+                12.729024393735623,
+                12.744027243441648,
+                12.359043850213633,
+                11.333410841631219,
+                9.169852616117975,
+                4.52110197651524,
+                0.010654087635026297,
+                0.0
+              ],
+              "J_h2": [
+                83.82390665390189,
+                91.11079778089635,
+                98.18751432549692,
+                104.97765277579869,
+                110.28799962447377,
+                110.96708134891314,
+                109.06708343339058,
+                104.24697464480398,
+                95.70937839636967,
+                82.15260765077795,
+                61.12965777878594,
+                27.04957626840264,
+                0.05682499091217409,
+                0.0
+              ],
+              "N": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "W": [
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
+                0.0
+              ],
+              "psi": [
+                -0.02600910803298164,
+                -0.03558428151147641,
+                -0.050004333786938374,
+                -0.07253549920559611,
+                -0.10933078237848318,
+                -0.1727562752229193,
+                -0.28973305766634105,
+                -0.525128123221606,
+                -1.0575821580428488,
+                -2.4791233648220263,
+                -7.37895370327453,
+                -33.996043522980635,
+                -481.0035320538243,
+                -85.0
+              ]
+            }
+          },
+          "x": 50.0
+        }
+      ]
+    }
+  ],
+  "slug": "compaction",
+  "theme": "soil",
+  "title_plain": "What if vehicles compact the sand?",
+  "title_science": "Off-road vehicle compaction curve and direct porosity clamp (v0.6 + exp10)",
+  "twin_version": "0.8.0",
+  "uncertainty": {
+    "S1": {
+      "activation_shape": [
+        0.0514345,
+        0.0255027,
+        0.0842964
+      ],
+      "d_co_m2_s": [
+        -2.80463e-20,
+        -7.72279e-18,
+        6.51875e-18
+      ],
+      "d_h2_m2_s": [
+        0.00103885,
+        -0.00204604,
+        0.00436659
+      ],
+      "drainage_fraction_day": [
+        0.000482837,
+        -0.000208673,
+        0.00116567
+      ],
+      "dry_threshold_mpa": [
+        0.000293205,
+        -0.0019835,
+        0.00262536
+      ],
+      "field_capacity_fraction": [
+        -0.000651202,
+        -0.00517523,
+        0.00691954
+      ],
+      "k_co_s": [
+        5.84432e-19,
+        -7.17528e-18,
+        7.81858e-18
+      ],
+      "k_h2_s": [
+        0.325124,
+        0.282775,
+        0.375648
+      ],
+      "offroad_bd_max_increase_g_cm3": [
+        0.00375444,
+        -0.0101018,
+        0.0176187
+      ],
+      "offroad_bd_passes_efold": [
+        2.21494e-05,
+        -7.32759e-05,
+        0.000121701
+      ],
+      "particle_density_g_cm3": [
+        0.000101543,
+        -0.000579875,
+        0.000810036
+      ],
+      "psi_entry_mpa": [
+        0.178227,
+        0.13154,
+        0.225965
+      ],
+      "q10": [
+        5.84432e-19,
+        -7.17528e-18,
+        7.81858e-18
+      ],
+      "retention_b": [
+        0.251884,
+        0.171765,
+        0.333147
+      ],
+      "wet_activation_mpa": [
+        0.00517301,
+        -0.00206383,
+        0.0137234
+      ]
+    },
+    "ST": {
+      "activation_shape": [
+        0.0712151,
+        0.0593372,
+        0.0875892
+      ],
+      "d_co_m2_s": [
+        1.15885e-32,
+        7.53257e-33,
+        1.70685e-32
+      ],
+      "d_h2_m2_s": [
+        0.00117578,
+        0.00100465,
+        0.00136412
+      ],
+      "drainage_fraction_day": [
+        7.25132e-05,
+        3.25849e-05,
+        0.00013365
+      ],
+      "dry_threshold_mpa": [
+        0.000620705,
+        0.000419867,
+        0.000853845
+      ],
+      "field_capacity_fraction": [
+        0.0029,
+        0.00190233,
+        0.00416508
+      ],
+      "k_co_s": [
+        1.34587e-32,
+        8.98625e-33,
+        1.94615e-32
+      ],
+      "k_h2_s": [
+        0.359277,
+        0.319033,
+        0.40701
+      ],
+      "offroad_bd_max_increase_g_cm3": [
+        0.0263873,
+        0.0217224,
+        0.0323512
+      ],
+      "offroad_bd_passes_efold": [
+        1.60628e-06,
+        1.12074e-06,
+        2.26805e-06
+      ],
+      "particle_density_g_cm3": [
+        7.57839e-05,
+        5.83284e-05,
+        9.74938e-05
+      ],
+      "psi_entry_mpa": [
+        0.266199,
+        0.227775,
+        0.304173
+      ],
+      "q10": [
+        1.34587e-32,
+        8.98625e-33,
+        1.94615e-32
+      ],
+      "retention_b": [
+        0.341077,
+        0.287086,
+        0.400827
+      ],
+      "wet_activation_mpa": [
+        0.0110531,
+        0.00919483,
+        0.0132398
+      ]
+    },
+    "convergence": {
+      "discrete": false,
+      "flagged": false,
+      "half_n_shift_frac": 0.00449621
+    },
+    "d": 15,
+    "group_S1": {
+      "modeller_assumption": [
+        0.938078,
+        0.791568,
+        1.08418
+      ],
+      "source_not_checked": [
+        0.00380963,
+        -0.00986722,
+        0.018133
+      ],
+      "verified_in_source": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "group_ST": {
+      "modeller_assumption": [
+        0.987587,
+        0.900247,
+        1.08309
+      ],
+      "source_not_checked": [
+        0.0264662,
+        0.0217613,
+        0.0324991
+      ],
+      "verified_in_source": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "headline_label": "50 passes",
+    "headline_level": 3,
+    "headline_output": "h2_uptake_change_pct",
+    "headline_series": "offroad-passes",
+    "inputs": [
+      {
+        "dist": "triangular",
+        "high": 2.0,
+        "kind": "parameter",
+        "low": 0.5,
+        "meaning": "Exponent of the logarithmic moisture-activation ramp between dry and wet thresholds",
+        "name": "activation_shape",
+        "note": "Bounds [0.5, 2.0] around 1.0 from planning.parameter_ensemble.",
+        "source": {
+          "authors": "EQ-BioDT v0.6 scenario ensemble",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/planning.py:parameter_ensemble",
+          "title": "Scenario sensitivity grid for activation shape exponent",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "-",
+        "value": 1.0
+      },
+      {
+        "dist": "triangular",
+        "high": 2.52e-05,
+        "kind": "parameter",
+        "low": 1.68e-05,
+        "meaning": "Free-air binary molecular diffusivity of CO before Millington-Quirk tortuosity scaling",
+        "name": "d_co_m2_s",
+        "note": "+-20 % around the 2.1e-5 m2/s reference diffusivity to represent temperature/packing tortuosity uncertainty.",
+        "source": {
+          "authors": "EQ-BioDT v0.8 parameter range",
+          "doi_or_url": "https://doi.org/10.1039/TF9615701200",
+          "page_or_table": "src/eq_biodt/v03/process.py:Parameters",
+          "title": "Effective free-air diffusivity allowance (+-20 % around 2.1e-5 m2/s)",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "m2/s",
+        "value": 2.1e-05
+      },
+      {
+        "dist": "triangular",
+        "high": 9.24e-05,
+        "kind": "parameter",
+        "low": 6.16e-05,
+        "meaning": "Free-air binary molecular diffusivity of H2 before Millington-Quirk tortuosity scaling",
+        "name": "d_h2_m2_s",
+        "note": "+-20 % around the 7.7e-5 m2/s reference diffusivity to represent temperature/packing tortuosity uncertainty.",
+        "source": {
+          "authors": "EQ-BioDT v0.8 parameter range",
+          "doi_or_url": "https://doi.org/10.1039/TF9615701200",
+          "page_or_table": "src/eq_biodt/v03/process.py:Parameters",
+          "title": "Effective free-air diffusivity allowance (+-20 % around 7.7e-5 m2/s)",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "m2/s",
+        "value": 7.7e-05
+      },
+      {
+        "dist": "triangular",
+        "high": 0.7,
+        "kind": "parameter",
+        "low": 0.3,
+        "meaning": "Daily fraction of water above field capacity drained from the 10 cm sand layer",
+        "name": "drainage_fraction_day",
+        "note": "Modeller assumption [0.3, 0.7] day-1 around the 0.5 day-1 reference drainage fraction.",
+        "source": {
+          "authors": "EQ-BioDT v0.8 parameter range",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/process.py:Parameters",
+          "title": "Bucket-model daily drainage fraction assumption",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "1/day",
+        "value": 0.5
+      },
+      {
+        "dist": "triangular",
+        "high": -70.0,
+        "kind": "parameter",
+        "low": -100.0,
+        "meaning": "Dry water-potential threshold below which moisture activation is zero",
+        "name": "dry_threshold_mpa",
+        "note": "Bounds [-100.0, -70.0] MPa around -85.0 MPa from planning.parameter_ensemble and contract clause C2.",
+        "source": {
+          "authors": "EQ-BioDT v0.6 scenario ensemble (informed by Reji et al. 2025)",
+          "doi_or_url": "https://doi.org/10.1038/s41467-025-67208-3",
+          "page_or_table": "src/eq_biodt/v03/planning.py:parameter_ensemble",
+          "title": "Scenario sensitivity grid for dry activation threshold",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "MPa",
+        "value": -85.0
+      },
+      {
+        "dist": "triangular",
+        "high": 0.6,
+        "kind": "parameter",
+        "low": 0.4,
+        "meaning": "Fraction of pore storage below which gravitational drainage ceases",
+        "name": "field_capacity_fraction",
+        "note": "Modeller assumption [0.4, 0.6] around the 0.5 reference field-capacity fraction.",
+        "source": {
+          "authors": "EQ-BioDT v0.8 parameter range",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/process.py:Parameters",
+          "title": "Bucket-model field-capacity fraction assumption",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "-",
+        "value": 0.5
+      },
+      {
+        "dist": "loguniform",
+        "high": 0.01,
+        "kind": "parameter",
+        "low": 0.0001,
+        "meaning": "Bulk-soil first-order CO reaction rate coefficient at reference temperature and full activation",
+        "name": "k_co_s",
+        "note": "Log-uniform over one order of magnitude below and above the 0.001 s-1 reference rate, matching the 0.1x-10x multipliers in planning.parameter_ensemble.",
+        "source": {
+          "authors": "EQ-BioDT v0.6 scenario ensemble",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/planning.py:parameter_ensemble",
+          "title": "Scenario sensitivity grid (rate multipliers 0.1 to 10 around 0.001 s-1)",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "1/s",
+        "value": 0.001
+      },
+      {
+        "dist": "loguniform",
+        "high": 0.01,
+        "kind": "parameter",
+        "low": 0.0001,
+        "meaning": "Bulk-soil first-order H2 reaction rate coefficient at reference temperature and full activation",
+        "name": "k_h2_s",
+        "note": "Log-uniform over one order of magnitude below and above the 0.001 s-1 reference rate, matching the 0.1x-10x multipliers in planning.parameter_ensemble.",
+        "source": {
+          "authors": "EQ-BioDT v0.6 scenario ensemble",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/planning.py:parameter_ensemble",
+          "title": "Scenario sensitivity grid (rate multipliers 0.1 to 10 around 0.001 s-1)",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "1/s",
+        "value": 0.001
+      },
+      {
+        "dist": "triangular",
+        "high": 0.35,
+        "kind": "constant",
+        "low": 0.15,
+        "meaning": "Asymptotic increase of bulk density of desert sand after many off-road vehicle passes",
+        "name": "offroad_bd_max_increase_g_cm3",
+        "note": "Chapter/DOI verified via Crossref; Springer chapter not read, magnitude (0.25 g/cm3) unverified: treat as assumption.",
+        "source": {
+          "authors": "Webb RH",
+          "doi_or_url": "https://doi.org/10.1007/978-1-4612-5454-6_4",
+          "page_or_table": "pp. 51-79 in Webb & Wilshire (eds) Environmental Effects of Off-Road Vehicles, Springer",
+          "title": "Compaction of desert soils by off-road vehicles, in Webb RH, Wilshire HG (eds) Environmental effects of off-road vehicles",
+          "year": 1983
+        },
+        "status": "source_not_checked",
+        "unit": "g/cm3",
+        "value": 0.25
+      },
+      {
+        "dist": "triangular",
+        "high": 10.0,
+        "kind": "constant",
+        "low": 3.0,
+        "meaning": "Number of passes after which about 63% of the asymptotic compaction is reached (exponential approach)",
+        "name": "offroad_bd_passes_efold",
+        "note": "Modeller fit (already labelled); not a source value.",
+        "source": {
+          "authors": "Webb RH",
+          "doi_or_url": "https://doi.org/10.1007/978-1-4612-5454-6_4",
+          "page_or_table": "bulk density vs passes (Mojave)",
+          "title": "Compaction of desert soils by off-road vehicles",
+          "year": 1983
+        },
+        "status": "modeller_assumption",
+        "unit": "passes",
+        "value": 5.0
+      },
+      {
+        "dist": "triangular",
+        "high": 2.7,
+        "kind": "constant",
+        "low": 2.6,
+        "meaning": "Mineral soil particle density (quartz-dominated sand)",
+        "name": "particle_density_g_cm3",
+        "note": "Brady & Weil 14th ed. is 2008 (Prentice Hall, ISBN 978-0-13-227938-3), no DOI; not opened. 2.65 is the universally cited quartz-dominated value.",
+        "source": {
+          "authors": "Brady NC, Weil RR",
+          "doi_or_url": "",
+          "page_or_table": "Ch. 4 soil density (particle density ~2.65 g/cm3)",
+          "title": "The nature and properties of soils, 14th edition",
+          "year": 2008
+        },
+        "status": "source_not_checked",
+        "unit": "g/cm3",
+        "value": 2.65
+      },
+      {
+        "dist": "loguniform",
+        "high": -0.0001,
+        "kind": "parameter",
+        "low": -0.01,
+        "meaning": "Campbell water-retention air-entry potential",
+        "name": "psi_entry_mpa",
+        "note": "Log-uniform on magnitude over [-0.01, -0.0001] MPa centered on -0.001 MPa, reusing the entry-potential grid in external_transfer.py:CANDIDATES.",
+        "source": {
+          "authors": "EQ-BioDT v0.5 external transfer protocol",
+          "doi_or_url": "",
+          "page_or_table": "reproducibility/v05/external_transfer.py:CANDIDATES",
+          "title": "Cross-desert retention candidate grid",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "MPa",
+        "value": -0.001
+      },
+      {
+        "dist": "uniform",
+        "high": 2.0,
+        "kind": "parameter",
+        "low": 1.0,
+        "meaning": "Thermal Q10 factor per 10 degC above the 25 degC reference temperature",
+        "name": "q10",
+        "note": "Bounds [1.0, 2.0] from external_transfer.py:CANDIDATES (spanning no thermal amplification Q10=1 to the reference Q10=2).",
+        "source": {
+          "authors": "EQ-BioDT v0.5 external transfer protocol",
+          "doi_or_url": "",
+          "page_or_table": "reproducibility/v05/external_transfer.py:CANDIDATES",
+          "title": "Cross-desert Q10 candidate grid",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "-",
+        "value": 2.0
+      },
+      {
+        "dist": "triangular",
+        "high": 6.0,
+        "kind": "parameter",
+        "low": 2.0,
+        "meaning": "Campbell water-retention pore-size distribution exponent b",
+        "name": "retention_b",
+        "note": "Bounds [2.0, 6.0] with mode 4.0 reuse the transfer grid in external_transfer.py:CANDIDATES (widening planning.parameter_ensemble [3.0, 5.0]).",
+        "source": {
+          "authors": "EQ-BioDT v0.5/v0.6 sensitivity grids",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/planning.py:parameter_ensemble; reproducibility/v05/external_transfer.py:CANDIDATES",
+          "title": "Scenario ensemble (3-5) widened to the cross-desert transfer grid (2-6)",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "-",
+        "value": 4.0
+      },
+      {
+        "dist": "loguniform",
+        "high": -0.03,
+        "kind": "parameter",
+        "low": -0.3,
+        "meaning": "Water potential above which microbial moisture activation reaches 1",
+        "name": "wet_activation_mpa",
+        "note": "Log-uniform on magnitude over [-0.3, -0.03] MPa around the -0.1 MPa reference threshold (half an order of magnitude each side, strictly between dry_threshold_mpa and psi_entry_mpa).",
+        "source": {
+          "authors": "EQ-BioDT v0.6 model contract",
+          "doi_or_url": "",
+          "page_or_table": "src/eq_biodt/v03/process.py:Parameters",
+          "title": "Clause C2 wet-activation endpoint assumption",
+          "year": 2026
+        },
+        "status": "modeller_assumption",
+        "unit": "MPa",
+        "value": -0.1
+      }
+    ],
+    "median": 0.205433,
+    "mode": "variance",
+    "n": 1024,
+    "oat": {
+      "activation_shape": {
+        "high": 6.171177290434167,
+        "low": -5.842217135170733,
+        "span": 12.0133944256049
+      },
+      "d_co_m2_s": {
+        "high": -1.4936408105442553,
+        "low": -1.4936408105442553,
+        "span": 0.0
+      },
+      "d_h2_m2_s": {
+        "high": 0.1634977569153936,
+        "low": -3.4818558534301616,
+        "span": 3.645353610345555
+      },
+      "drainage_fraction_day": {
+        "high": -1.4936408105442553,
+        "low": -1.4936408105442553,
+        "span": 0.0
+      },
+      "dry_threshold_mpa": {
+        "high": -1.0806009068325872,
+        "low": -1.821754266173026,
+        "span": 0.7411533593404387
+      },
+      "field_capacity_fraction": {
+        "high": -1.4936408105442553,
+        "low": -5.545541721873814,
+        "span": 4.051900911329559
+      },
+      "k_co_s": {
+        "high": -1.4936408105442553,
+        "low": -1.4936408105442553,
+        "span": 0.0
+      },
+      "k_h2_s": {
+        "high": -14.963172665967656,
+        "low": 14.661708274310778,
+        "span": 29.624880940278434
+      },
+      "offroad_bd_max_increase_g_cm3": {
+        "high": -7.5805148969412555,
+        "low": 1.0039151869157759,
+        "span": 8.58443008385703
+      },
+      "offroad_bd_passes_efold": {
+        "high": -1.4265538609838107,
+        "low": -1.4940988167984812,
+        "span": 0.06754495581467057
+      },
+      "particle_density_g_cm3": {
+        "high": -1.310132858140889,
+        "low": -1.6917150783595736,
+        "span": 0.3815822202186845
+      },
+      "psi_entry_mpa": {
+        "high": -8.749659396253593,
+        "low": 14.376391430119664,
+        "span": 23.12605082637326
+      },
+      "q10": {
+        "high": -1.4936408105442553,
+        "low": -1.4936408105442553,
+        "span": 0.0
+      },
+      "retention_b": {
+        "high": 28.56651348698921,
+        "low": -12.567807849132777,
+        "span": 41.134321336121985
+      },
+      "wet_activation_mpa": {
+        "high": 2.0689316816225287,
+        "low": -4.535287622852861,
+        "span": 6.604219304475389
+      }
+    },
+    "q05": -19.0137,
+    "q25": -9.25377,
+    "q75": 11.3412,
+    "q95": 40.289,
+    "refusal_fraction": 0.0
+  },
+  "version": "question-1",
+  "x_label_plain": "Vehicle passes",
+  "x_label_science": "Off-road vehicle passes (count)"
+}
