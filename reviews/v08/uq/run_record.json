@@ -15,6 +15,11 @@
                         "raw_sha256_of_sha256s": "4097df85d05fa5672caebf0d8fe4cd6c5bf6bc21e1a113051fbe917ee5cdbba0",
                         "still_flagged_after_rerun": 7,
                         "note": "Remaining flags (shift 5.5-10 % of width) are mostly absolute uptakes with heavy tails from the log-uniform rate constant; they stay flagged in the question files and are shown as such."},
-  "raw_storage": "ws:/mnt/data1/agents/projects/eq-biodt-v07/{uq-raw,uq-raw-n2048} (1.1 GB + n2048); unimatrix:~/eq-biodt-uq/{raw,raw-n2048}. Not in git; gathered summaries in reviews/v08/uq/ are committed.",
-  "gather": "reproducibility/v08/gather.py --raw <merged dir: N=1024 chunks except the 7 rerun levels, which use N=2048>"
+  "missing_co_genes_rerun": {"machine": "ws (56 cores)", "n": 1024, "tasks": 70, "failed": 0,
+                             "samples": ["51PRr3", "55PRr1", "55PRr3", "55Sr1", "58PRr3", "10Dr2", "V53PRr2"],
+                             "raw_sha256_of_sha256s": "3dd05e0e56adaa3a3ade06660a6b1d6a01188aca3c5fb2fce19584ee2b73feb0",
+                             "merged_raw_sha256_of_sha256s": "cd19c59b5375a96091aaadca088df11c4b820471349a7628a13835cd4342fe2b",
+                             "reason": "replace mislabeled samples (10Dr1, 13Dr3, 14PRr2, 51PRr1) in missing-co-genes with reasoner-verified CO-closed samples (51PRr3, 55PRr1, 55PRr3, 55Sr1, 58PRr3) and open samples (10Dr2, V53PRr2), all with read-mapping weights"},
+  "raw_storage": "ws:/mnt/data1/agents/projects/eq-biodt-v07/{uq-raw,uq-raw-n2048,uq-raw-mcg,uq-raw-merged2} (1.1 GB + n2048 + mcg); unimatrix:~/eq-biodt-uq/{raw,raw-n2048}. Not in git; gathered summaries in reviews/v08/uq/ are committed.",
+  "gather": "reproducibility/v08/gather.py --raw /mnt/data1/agents/projects/eq-biodt-v07/uq-raw-merged2 --out reviews/v08/uq"
 }

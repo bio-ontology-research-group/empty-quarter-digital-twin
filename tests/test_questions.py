@@ -5,9 +5,11 @@ from pathlib import Path
 
 import pytest
 
+from eq_biodt.v03.community import carrier_shares, samples_of
 from eq_biodt.v03.composition import run_chain, twin_request
 from eq_biodt.v03.external_models import MODELS
-from eq_biodt.v03.questions import QUESTIONS, evaluate
+from eq_biodt.v03.questions import QUESTIONS, co_gate_label, evaluate
+from reproducibility.v08.texts import plain_level_label
 
 ROOT = Path(__file__).resolve().parents[1]
 FORCING = [{"water_mm": 12.0 if d == 0 else 0.0, "nacl_mol_l": 0.0, "evaporation_mm": 1.0, "temp_c": 25.0} for d in range(14)]
@@ -88,3 +90,56 @@ def test_v07_levels_reproduce_stored_central_values():
 def test_v06_points_placed_on_axis():
     hot = QUESTIONS["hotter"]; assert any(l.x == 10.0 for l in hot.series[0].levels)          # 35 C fortnight = +10 C
     comp = QUESTIONS["compaction"]; assert any(l.twin.get("params",{}).get("porosity") == 0.3 for s in comp.series for l in s.levels)
+
+
+def test_all_question_samples_have_weights_and_consistent_deduced_labels():
+    mco_series = QUESTIONS["missing-co-genes"].series[0]
+    mco_samples = [lvl.sample for lvl in mco_series.levels]
+    assert mco_samples == ["51PRr3", "55PRr1", "55PRr3", "55Sr1", "58PRr3", "10Dr2", "V53PRr2"]
+
+    for q in QUESTIONS.values():
+        for s in q.series:
+            for lvl in s.levels:
+                sample = lvl.sample or lvl.twin.get("sample")
+                if not sample:
+                    continue
+                assert samples_of({"sample": sample}) == [sample], (
+                    f"{q.slug}/{s.id}: sample {sample!r} lacks read-mapping weights"
+                )
+                shares = carrier_shares(sample)["shares"]
+                co_share = float(shares["COCarrierMAG"])
+                h2_auto_share = float(shares["H2AutotrophicCandidateMAG"])
+                plain_lbl = plain_level_label(q.slug, s.id, lvl.label, lvl.x)
+
+                if q.slug == "missing-co-genes":
+                    if sample in {"51PRr3", "55PRr1", "55PRr3", "55Sr1", "58PRr3"}:
+                        assert co_share == 0.0
+                        assert co_gate_label(sample) == "CO gate closed"
+                        assert lvl.label == f"{sample} (CO gate closed)"
+                        assert plain_lbl == f"sample {sample} (no carbon-monoxide-eating genes)"
+                    else:
+                        assert sample in {"10Dr2", "V53PRr2"}
+                        assert co_share > 0.0
+                        assert co_gate_label(sample) == "CO gate open"
+                        assert lvl.label == f"{sample} (CO gate open)"
+                        assert plain_lbl == f"sample {sample} (has carbon-monoxide-eating genes)"
+                elif q.slug == "carbon-fixation":
+                    if sample == "14PRr2":
+                        assert h2_auto_share == 0.0
+                        assert plain_lbl == "sample 14PRr2 (no carbon-fixing genes)"
+                    elif sample == "F14Dr1":
+                        assert h2_auto_share > 0.0
+                        assert plain_lbl == "sample F14Dr1 (has carbon-fixing genes)"
+                elif q.slug == "adding-microbes":
+                    if sample == "51PRr3":
+                        assert co_share == 0.0
+                        if "control" not in s.id:
+                            assert "(CO gate closed)" in s.label_science
+                            assert "(CO gate closed)" in lvl.label
+                            assert "lacking carbon-monoxide-eating microbes" in s.label_plain
+                    elif sample == "V53PRr2":
+                        assert co_share > 0.0
+                        assert "(CO gate open)" in s.label_science
+                        assert "(CO gate already open)" in lvl.label
+                        assert "already having carbon-monoxide-eating microbes" in s.label_plain
+

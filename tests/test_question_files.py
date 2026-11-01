@@ -349,11 +349,12 @@ def test_plain_text_rules():
             for out in lvl["outcomes"].values()
         )
         if q["slug"] == "missing-co-genes":
-            assert (
-                "for two of the seven samples the records are incomplete, so the twin gives no answer"
-                in q["answer_plain"].lower()
-            )
             assert "zero carbon-monoxide uptake" in q["answer_plain"].lower()
+            if max_refusal >= 0.05:
+                assert "records are incomplete, so the twin gives no answer" in q["answer_plain"].lower()
+            else:
+                assert "incomplete" not in q["answer_plain"].lower()
+                assert "incomplete" not in q["headline_plain"].lower()
         elif max_refusal >= 0.05:
             assert "cannot tell" in q["answer_plain"].lower(), q["slug"]
     assert "at most" in load("carbon-fixation")["answer_plain"].lower()
@@ -438,8 +439,11 @@ def test_headline_percentage_and_science_rules():
     assert "by 51 to 100 %" in rp["answer_plain"] and "-100 %" not in rp["answer_plain"]
 
     mco = load("missing-co-genes")
-    assert "read-mapping weights" in mco["answer_science"].lower()
     assert "read-mapping weights" not in mco["answer_plain"].lower()
+    assert "read-mapping weights" not in mco["answer_science"].lower()
+
+    cf = load("carbon-fixation")
+    assert "reference parameterisation 0.058 g C m⁻² yr⁻¹; 90 % interval" in cf["answer_science"]
 
 
 def test_plain_matches_science():
@@ -589,7 +593,10 @@ def test_cannot_tell_requires_refusal_and_names_refused_series():
 
 
 def test_missing_co_genes_refused_sample_count_matches_data():
-    """(c) The number of refused samples stated in missing-co-genes equals the data."""
+    """(c) The number of refused samples stated in missing-co-genes is data-driven and omitted when 0."""
+    import copy
+    from reproducibility.v08.texts import render_question_texts
+
     mco = load("missing-co-genes")
     levels = mco["series"][0]["levels"]
     n_total = len(levels)
@@ -598,11 +605,27 @@ def test_missing_co_genes_refused_sample_count_matches_data():
         for lvl in levels
         if any(float(out["refusal_fraction"]) >= 0.05 for out in lvl["outcomes"].values())
     )
-    word_map = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven"}
-    expected_phrase = f"for {word_map[n_refused]} of the {word_map[n_total]} samples"
-    assert n_refused == 2 and n_total == 7
-    assert expected_phrase in mco["answer_plain"].lower()
-    assert "for one sample" not in mco["answer_plain"].lower()
+    assert n_refused == 0 and n_total == 7
+    assert "incomplete" not in mco["answer_plain"].lower()
+    assert "incomplete" not in mco["headline_plain"].lower()
+    assert "read-mapping weights" not in mco["answer_science"].lower()
+
+    uq_doc = json.loads((COMMITTED_UQ_DIR / "missing-co-genes.json").read_text(encoding="utf-8"))
+    uq_with_refusals = copy.deepcopy(uq_doc)
+    for idx in (1, 4):
+        uq_with_refusals["series"][0]["levels"][idx]["outputs"]["co_uptake_umol_m2"]["refusal_fraction"] = 1.0
+        uq_with_refusals["series"][0]["levels"][idx]["outputs"]["co_uptake_umol_m2"]["mode"] = "refused"
+    lvl6 = uq_with_refusals["series"][0]["levels"][6]
+    rendered = render_question_texts(
+        "missing-co-genes",
+        float(lvl6["central"]["co_uptake_umol_m2"]),
+        lvl6["outputs"]["co_uptake_umol_m2"],
+        1.0,
+        uq_with_refusals,
+    )
+    assert "for two of the seven samples the records are incomplete, so the twin gives no answer" in rendered["answer_plain"].lower()
+    assert "for two of the seven samples, incomplete records give no answer" in rendered["headline_plain"].lower()
+    assert "read-mapping weights" in rendered["answer_science"].lower()
 
 
 def test_carbon_fixation_states_biweekly_annualisation():

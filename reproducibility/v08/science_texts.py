@@ -299,9 +299,8 @@ SCIENCE_TEMPLATES: dict[str, dict[str, str]] = {
             "the interval is [0, 0]. In samples with carriers ({special:open_samples}), 14-day CO uptake has a "
             "median of {co-gate-samples/6:co_uptake_umol_m2:median|um} (90 % interval "
             "{co-gate-samples/6:co_uptake_umol_m2:ci90|um}), with {co-gate-samples/6:co_uptake_umol_m2:st1name} "
-            "explaining most of the variance (S_T = {co-gate-samples/6:co_uptake_umol_m2:st1|idx}). For "
-            "{special:refused_samples} the read-mapping weights needed to compute carrier shares are missing, and "
-            "the twin refuses the request."
+            "explaining most of the variance (S_T = {co-gate-samples/6:co_uptake_umol_m2:st1|idx})."
+            "{special:refused_samples}"
         ),
         "limits_science": (
             "Absence of entailment reflects the genomic evidence in the sample; a carrier below the detection limit "
@@ -355,7 +354,8 @@ SCIENCE_TEMPLATES: dict[str, dict[str, str]] = {
             "knallgas yield ({const:knallgas_co2_per_h2|plain} mol CO₂ per mol H₂; Bongers 1970), assuming that all "
             "oxidised H₂ supports growth. In sample F14Dr1, the bound after a single 12 mm rain is "
             "{baseline-12mm/1:c_fixed_upper_bound_ug_m2:median|ug} over 14 days; repeating such a rain every two "
-            "weeks gives {baseline-12mm/1:c_fixed_upper_bound_g_m2_yr:median|g} (90 % interval "
+            "weeks gives {baseline-12mm/1:c_fixed_upper_bound_g_m2_yr:median|g} (reference parameterisation "
+            "{baseline-12mm/1:c_fixed_upper_bound_g_m2_yr:central|g}; 90 % interval "
             "{baseline-12mm/1:c_fixed_upper_bound_g_m2_yr:ci90|g}), with "
             "{baseline-12mm/1:c_fixed_upper_bound_g_m2_yr:st1name} explaining most of the variance (S_T = "
             "{baseline-12mm/1:c_fixed_upper_bound_g_m2_yr:st1|idx}). In sample 14PRr2 the reasoner entails no "
@@ -600,15 +600,20 @@ def _resolve_special(name: str, uq_doc: dict[str, Any]) -> str:
         samples = [
             str(lvl["x"])
             for lvl in levels
-            if float(lvl.get("outputs", {}).get("co_uptake_umol_m2", {}).get("refusal_fraction", 0.0)) == 1.0
+            if float(lvl.get("outputs", {}).get("co_uptake_umol_m2", {}).get("refusal_fraction", 0.0)) >= 0.05
         ]
         if not samples:
-            raise ValueError("No refused samples found for {special:refused_samples}")
+            return ""
         if len(samples) == 1:
-            return samples[0]
-        if len(samples) == 2:
-            return f"{samples[0]} and {samples[1]}"
-        return ", ".join(samples[:-1]) + f" and {samples[-1]}"
+            joined = samples[0]
+        elif len(samples) == 2:
+            joined = f"{samples[0]} and {samples[1]}"
+        else:
+            joined = ", ".join(samples[:-1]) + f" and {samples[-1]}"
+        return (
+            f" For {joined} the read-mapping weights needed to compute carrier shares are missing, and "
+            f"the twin refuses the request."
+        )
     raise ValueError(f"Unknown special slot {name!r}")
 
 

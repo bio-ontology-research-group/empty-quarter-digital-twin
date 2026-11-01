@@ -182,6 +182,12 @@ def write_manifest(uq_dir: Path, questions_dir: Path) -> Path:
                 "still_flagged_after_rerun": run_record["convergence_rerun"]["still_flagged_after_rerun"],
                 "tasks": run_record["convergence_rerun"]["tasks"],
             },
+            "missing_co_genes_rerun": {
+                "machine": run_record["missing_co_genes_rerun"]["machine"],
+                "n": run_record["missing_co_genes_rerun"]["n"],
+                "raw_sha256_of_sha256s": run_record["missing_co_genes_rerun"]["raw_sha256_of_sha256s"],
+                "tasks": run_record["missing_co_genes_rerun"]["tasks"],
+            },
         },
         "inputs": {str(p.relative_to(ROOT)): digest(p) for p in inputs},
         "outputs": {str(p.relative_to(ROOT)): digest(p) for p in outputs},

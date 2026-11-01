@@ -11,7 +11,7 @@ from copy import deepcopy
 from dataclasses import dataclass, field
 from typing import Literal
 
-from .community import DATA
+from .community import DATA, carrier_shares
 from .composition import load_constants, run_chain, twin_request
 from .external_models import MODELS
 from .process import Parameters, State
@@ -75,6 +75,32 @@ def _forcing_water_iv(waters: list[float]) -> dict:
 
 def _forcing_temp_iv(temp_c: float) -> dict:
     return {"forcing": {str(d): {"temp_c": float(temp_c)} for d in range(14)}}
+
+
+def co_gate_label(sample: str) -> str:
+    """Return 'CO gate open' or 'CO gate closed' from the reasoner-entailed COCarrierMAG share."""
+    shares = carrier_shares(sample)["shares"]
+    return "CO gate open" if float(shares["COCarrierMAG"]) > 0.0 else "CO gate closed"
+
+
+def _adding_microbes_labels(sample: str, mode: str, *, control: bool = False) -> tuple[str, str, str]:
+    """Derive plain series label, science series label, and level case name from deduced carrier shares."""
+    gate_lbl = co_gate_label(sample)
+    open_gate = gate_lbl == "CO gate open"
+    mode_plain = "yes/no presence" if mode == "gate" else "scaled by amount"
+    if control:
+        return (
+            f"Negative control: microbe without carbon-monoxide-eating genes ({mode_plain})",
+            f"{sample} + non-carrier MAG (negative control), {mode} coupling",
+            f"{sample} + non-carrier MAG (negative control)",
+        )
+    plain_lbl = (
+        f"Sample {'already having' if open_gate else 'lacking'} carbon-monoxide-eating microbes "
+        f"+ carrier microbe ({mode_plain})"
+    )
+    sci_lbl = f"{sample} ({gate_lbl}) + COCarrierMAG, {mode} coupling"
+    case_name = f"{sample} ({'CO gate already open' if open_gate else 'CO gate closed'}) + CO carrier"
+    return plain_lbl, sci_lbl, case_name
 
 
 def _build_questions() -> dict[str, Question]:
@@ -516,7 +542,7 @@ def _build_questions() -> dict[str, Question]:
                     label_science="Closed-gate vs open-gate metagenomic communities (gate coupling)",
                     levels=[
                         LevelSpec(
-                            label=f"{s} ({kind})",
+                            label=f"{s} ({co_gate_label(s)})",
                             x=s,
                             action={},
                             upstream=[],
@@ -524,14 +550,14 @@ def _build_questions() -> dict[str, Question]:
                             downstream=[],
                             sample=s,
                         )
-                        for s, kind in (
-                            ("51PRr3", "CO gate closed"),
-                            ("10Dr1", "CO gate closed"),
-                            ("13Dr3", "CO gate closed"),
-                            ("14PRr2", "CO gate closed"),
-                            ("51PRr1", "CO gate closed"),
-                            ("10Dr2", "CO gate open"),
-                            ("V53PRr2", "CO gate open"),
+                        for s in (
+                            "51PRr3",
+                            "55PRr1",
+                            "55PRr3",
+                            "55Sr1",
+                            "58PRr3",
+                            "10Dr2",
+                            "V53PRr2",
                         )
                     ],
                 )
@@ -566,62 +592,15 @@ def _build_questions() -> dict[str, Question]:
                         for s in (0.001, 0.01, 0.05)
                     ],
                 )
-                for sid, plain_lbl, sci_lbl, case_name, sample, mag, mode in (
-                    (
-                        "51PRr3-gate",
-                        "Sample lacking carbon-monoxide-eating microbes + carrier microbe (yes/no presence)",
-                        "51PRr3 (CO gate closed) + COCarrierMAG, gate coupling",
-                        "51PRr3 (CO gate closed) + CO carrier",
-                        "51PRr3",
-                        "11Dr3__single_SemiBin_57",
-                        "gate",
-                    ),
-                    (
-                        "51PRr3-proportional",
-                        "Sample lacking carbon-monoxide-eating microbes + carrier microbe (scaled by amount)",
-                        "51PRr3 (CO gate closed) + COCarrierMAG, proportional coupling",
-                        "51PRr3 (CO gate closed) + CO carrier",
-                        "51PRr3",
-                        "11Dr3__single_SemiBin_57",
-                        "proportional",
-                    ),
-                    (
-                        "V53PRr2-gate",
-                        "Sample already having carbon-monoxide-eating microbes + carrier microbe (yes/no presence)",
-                        "V53PRr2 (CO gate open) + COCarrierMAG, gate coupling",
-                        "V53PRr2 (CO gate already open) + CO carrier",
-                        "V53PRr2",
-                        "11Dr3__single_SemiBin_57",
-                        "gate",
-                    ),
-                    (
-                        "V53PRr2-proportional",
-                        "Sample already having carbon-monoxide-eating microbes + carrier microbe (scaled by amount)",
-                        "V53PRr2 (CO gate open) + COCarrierMAG, proportional coupling",
-                        "V53PRr2 (CO gate already open) + CO carrier",
-                        "V53PRr2",
-                        "11Dr3__single_SemiBin_57",
-                        "proportional",
-                    ),
-                    (
-                        "51PRr3-control-gate",
-                        "Negative control: microbe without carbon-monoxide-eating genes (yes/no presence)",
-                        "51PRr3 + non-carrier MAG (negative control), gate coupling",
-                        "51PRr3 + non-carrier MAG (negative control)",
-                        "51PRr3",
-                        "10Dr2__single_SemiBin_0",
-                        "gate",
-                    ),
-                    (
-                        "51PRr3-control-proportional",
-                        "Negative control: microbe without carbon-monoxide-eating genes (scaled by amount)",
-                        "51PRr3 + non-carrier MAG (negative control), proportional coupling",
-                        "51PRr3 + non-carrier MAG (negative control)",
-                        "51PRr3",
-                        "10Dr2__single_SemiBin_0",
-                        "proportional",
-                    ),
+                for sid, sample, mag, mode, control in (
+                    ("51PRr3-gate", "51PRr3", "11Dr3__single_SemiBin_57", "gate", False),
+                    ("51PRr3-proportional", "51PRr3", "11Dr3__single_SemiBin_57", "proportional", False),
+                    ("V53PRr2-gate", "V53PRr2", "11Dr3__single_SemiBin_57", "gate", False),
+                    ("V53PRr2-proportional", "V53PRr2", "11Dr3__single_SemiBin_57", "proportional", False),
+                    ("51PRr3-control-gate", "51PRr3", "10Dr2__single_SemiBin_0", "gate", True),
+                    ("51PRr3-control-proportional", "51PRr3", "10Dr2__single_SemiBin_0", "proportional", True),
                 )
+                for plain_lbl, sci_lbl, case_name in (_adding_microbes_labels(sample, mode, control=control),)
             ],
         ),
         # 13. air-hydrogen (microbes) — v0.7 exp07_h2_leakage

@@ -109,12 +109,6 @@ PLAIN_X_LABELS: dict[str, str] = {
 PLAIN_SERIES_LABELS: dict[tuple[str, str], str] = {
     ("alfalfa-bacterium", "A_fao_fixed_leaching"): "Standard farm drainage rule (published formula)",
     ("compaction", "direct-porosity-v06"): "Heavily packed sand (pore space 30 % of volume)",
-    ("adding-microbes", "51PRr3-gate"): "Sample lacking carbon-monoxide-eating microbes + carrier microbe (yes/no presence)",
-    ("adding-microbes", "51PRr3-proportional"): "Sample lacking carbon-monoxide-eating microbes + carrier microbe (scaled by amount)",
-    ("adding-microbes", "V53PRr2-gate"): "Sample already having carbon-monoxide-eating microbes + carrier microbe (yes/no presence)",
-    ("adding-microbes", "V53PRr2-proportional"): "Sample already having carbon-monoxide-eating microbes + carrier microbe (scaled by amount)",
-    ("adding-microbes", "51PRr3-control-gate"): "Negative control: microbe without carbon-monoxide-eating genes (yes/no presence)",
-    ("adding-microbes", "51PRr3-control-proportional"): "Negative control: microbe without carbon-monoxide-eating genes (scaled by amount)",
 }
 
 # (series_id, level_index, output_key) for the primary headline of each question
@@ -129,7 +123,7 @@ HEADLINE_SPEC: dict[str, tuple[str, int, str]] = {
     "solar-park": ("panel-cover", 2, "h2_uptake_change_pct"),
     "compaction": ("offroad-passes", 3, "h2_uptake_change_pct"),
     "biochar": ("biochar-dose", 3, "h2_uptake_change_pct"),
-    "missing-co-genes": ("co-gate-samples", 2, "co_uptake_umol_m2"),
+    "missing-co-genes": ("co-gate-samples", 6, "co_uptake_umol_m2"),
     "adding-microbes": ("V53PRr2-proportional", 1, "co_uptake_change_pct"),
     "air-hydrogen": ("h2-multiplier", 2, "h2_uptake_change_pct"),
     "carbon-fixation": ("baseline-12mm", 1, "c_fixed_upper_bound_g_m2_yr"),
@@ -895,22 +889,34 @@ def render_question_texts(
                 >= 0.05
             )
             if mco_levels
-            else 2
+            else 0
         )
         ref_word = _num_word(n_refused)
         tot_word = _num_word(n_total)
-        headline_plain = (
-            f"Where the soil community has no genes for eating carbon monoxide, the twin gives zero uptake, "
-            f"versus about {core} {unit_plain} over two weeks where the genes are present; for {ref_word} "
-            f"of the {tot_word} samples, incomplete records give no answer."
-        )
-        answer_plain = (
-            f"Where the soil community has no genes for eating carbon monoxide, the twin gives exactly zero "
-            f"carbon-monoxide uptake. "
-            f"Where the genes are present it gives a small uptake, about {core} {unit_plain} over two weeks "
-            f"({round_plain(q05)} to {round_plain(q95)}). "
-            f"For {ref_word} of the {tot_word} samples the records are incomplete, so the twin gives no answer."
-        )
+        if n_refused > 0:
+            headline_plain = (
+                f"Where the soil community has no genes for eating carbon monoxide, the twin gives zero uptake, "
+                f"versus about {core} {unit_plain} over two weeks where the genes are present; for {ref_word} "
+                f"of the {tot_word} samples, incomplete records give no answer."
+            )
+            answer_plain = (
+                f"Where the soil community has no genes for eating carbon monoxide, the twin gives exactly zero "
+                f"carbon-monoxide uptake. "
+                f"Where the genes are present it gives a small uptake, about {core} {unit_plain} over two weeks "
+                f"({round_plain(q05)} to {round_plain(q95)}). "
+                f"For {ref_word} of the {tot_word} samples the records are incomplete, so the twin gives no answer."
+            )
+        else:
+            headline_plain = (
+                f"Where the soil community has no genes for eating carbon monoxide, the twin gives zero uptake, "
+                f"versus about {core} {unit_plain} over two weeks where the genes are present."
+            )
+            answer_plain = (
+                f"Where the soil community has no genes for eating carbon monoxide, the twin gives exactly zero "
+                f"carbon-monoxide uptake. "
+                f"Where the genes are present it gives a small uptake, about {core} {unit_plain} over two weeks "
+                f"({round_plain(q05)} to {round_plain(q95)})."
+            )
         limits_extra_plain = (
             "A missing gene in recovered DNA means the twin sets that pathway to zero, though very rare "
             "unsequenced microbes could still exist in the sand."

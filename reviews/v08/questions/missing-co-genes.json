@@ -1,6 +1,6 @@
 {
-  "answer_plain": "Where the soil community has no genes for eating carbon monoxide, the twin gives exactly zero carbon-monoxide uptake. Where the genes are present it gives a small uptake, about 144 millionths of a mole per m\u00b2 over two weeks (21 to 507). For two of the seven samples the records are incomplete, so the twin gives no answer.",
-  "answer_science": "In samples whose reasoner-entailed CO-carrier share is zero (51PRr3), CO uptake is zero by deduction: the community factor \u03b3_CO is zero, so uptake is zero for every parameter draw and the interval is [0, 0]. In samples with carriers (13Dr3, 14PRr2, 10Dr2, V53PRr2), 14-day CO uptake has a median of 126 \u00b5mol m\u207b\u00b2 (90 % interval 21.1 to 501 \u00b5mol m\u207b\u00b2), with the CO rate constant k_CO explaining most of the variance (S_T = 0.84). For 10Dr1 and 51PRr1 the read-mapping weights needed to compute carrier shares are missing, and the twin refuses the request.",
+  "answer_plain": "Where the soil community has no genes for eating carbon monoxide, the twin gives exactly zero carbon-monoxide uptake. Where the genes are present it gives a small uptake, about 144 millionths of a mole per m\u00b2 over two weeks (21 to 501).",
+  "answer_science": "In samples whose reasoner-entailed CO-carrier share is zero (51PRr3, 55PRr1, 55PRr3, 55Sr1, 58PRr3), CO uptake is zero by deduction: the community factor \u03b3_CO is zero, so uptake is zero for every parameter draw and the interval is [0, 0]. In samples with carriers (10Dr2, V53PRr2), 14-day CO uptake has a median of 126 \u00b5mol m\u207b\u00b2 (90 % interval 21.1 to 501 \u00b5mol m\u207b\u00b2), with the CO rate constant k_CO explaining most of the variance (S_T = 0.84).",
   "baseline_label": "One 12 mm rain on day 1 in the selected sample community",
   "chain": [
     {
@@ -15,14 +15,14 @@
     "h2_uptake_umol_m2"
   ],
   "headline_level": {
-    "label": "13Dr3 (CO gate closed)",
-    "level": 2,
+    "label": "V53PRr2 (CO gate open)",
+    "level": 6,
     "series": "co-gate-samples",
-    "x": "13Dr3"
+    "x": "V53PRr2"
   },
   "headline_output": "co_uptake_umol_m2",
-  "headline_plain": "Where the soil community has no genes for eating carbon monoxide, the twin gives zero uptake, versus about 144 millionths of a mole per m\u00b2 over two weeks where the genes are present; for two of the seven samples, incomplete records give no answer.",
-  "headline_science": "In samples whose reasoner-entailed CO-carrier share is zero (51PRr3), CO uptake is zero by deduction: the community factor \u03b3_CO is zero, so uptake is zero for every parameter draw and the interval is [0, 0].",
+  "headline_plain": "Where the soil community has no genes for eating carbon monoxide, the twin gives zero uptake, versus about 144 millionths of a mole per m\u00b2 over two weeks where the genes are present.",
+  "headline_science": "In samples whose reasoner-entailed CO-carrier share is zero (51PRr3, 55PRr1, 55PRr3, 55Sr1, 58PRr3), CO uptake is zero by deduction: the community factor \u03b3_CO is zero, so uptake is zero for every parameter draw and the interval is [0, 0].",
   "headline_value": 144.407,
   "level_kind": "sample",
   "limits_plain": "The range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong. A missing gene in recovered DNA means the twin sets that pathway to zero, though very rare unsequenced microbes could still exist in the sand.",
@@ -90,7 +90,7 @@
     "digests": {
       "constants_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578",
       "parameter_ranges_sha256": "f6b9fe6f95d88360375a81171deae746e17c213600077bcc49fa8e05b47ad027",
-      "uq_sha256": "dbc8e32dea669253519213a9bfddf281cbcff7c338bcbf8419d318cd7a0f598e"
+      "uq_sha256": "e16e8f2fb6e800bd16f979e3bc5f962ede8e9725f42ca9b571c1dbc9816e3c74"
     },
     "files": [
       "src/eq_biodt/v03/questions.py",
@@ -379,9 +379,9 @@
           "x": "51PRr3"
         },
         {
-          "label": "sample 10Dr1 (incomplete records)",
-          "label_plain": "sample 10Dr1 (incomplete records)",
-          "label_science": "10Dr1 (CO gate closed)",
+          "label": "sample 55PRr1 (no carbon-monoxide-eating genes)",
+          "label_plain": "sample 55PRr1 (no carbon-monoxide-eating genes)",
+          "label_science": "55PRr1 (CO gate closed)",
           "outcomes": {
             "co_uptake_umol_m2": {
               "convergence": {
@@ -390,80 +390,81 @@
               },
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
-              "median": null,
-              "mode": "refusal_indicator",
-              "provenance": "simulated",
-              "q05": null,
-              "q25": null,
-              "q75": null,
-              "q95": null,
-              "refusal_fraction": 1.0,
-              "refusal_reason": "No usable read-mapping weights (unknown sample or excluded for missing weights): ['10Dr1']",
+              "median": 0.0,
+              "mode": "deduced",
+              "provenance": "deduced",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": null
+              "value": 0.0
             },
             "h2_uptake_umol_m2": {
               "convergence": {
+                "discrete": false,
                 "flagged": false,
-                "half_n_shift_frac": 0.0
+                "half_n_shift_frac": 0.0133807
               },
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
-              "median": null,
-              "mode": "refusal_indicator",
+              "median": 932.863,
+              "mode": "variance",
               "provenance": "simulated",
-              "q05": null,
-              "q25": null,
-              "q75": null,
-              "q95": null,
-              "refusal_fraction": 1.0,
-              "refusal_reason": "No usable read-mapping weights (unknown sample or excluded for missing weights): ['10Dr1']",
+              "q05": 118.597,
+              "q25": 348.03,
+              "q75": 2263.93,
+              "q95": 4684.47,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": null
+              "value": 1102.33
             }
           },
-          "sample": "10Dr1",
+          "sample": "55PRr1",
           "scene": {
-            "active_days": 0,
+            "active_days": 12,
             "activity_by_day": [
-              0.0,
-              0.0,
-              0.0,
-              0.0,
-              0.0,
-              0.0,
-              0.0,
-              0.0,
-              0.0,
-              0.0,
-              0.0,
-              0.0,
+              0.9999999999999986,
+              0.9827086468505175,
+              0.9329241298476689,
+              0.8779369704724211,
+              0.8173201894423092,
+              0.7497867866132687,
+              0.6735500825367695,
+              0.5860255055388154,
+              0.48326956432319484,
+              0.3588160584305422,
+              0.20090758727679447,
+              0.024903499112256904,
               0.0,
               0.0
             ],
             "porosity": 0.4,
             "salt_mol_l": 0.0,
             "temp_c": 25.0,
-            "theta": 0.0,
+            "theta": 0.06314285714285922,
             "water_mm": 12.0
           },
           "trajectories": {
             "baseline": {
               "A": [
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
                 0.0,
                 0.0
               ],
@@ -484,18 +485,18 @@
                 0.0
               ],
               "J_h2": [
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
                 0.0,
                 0.0
               ],
@@ -516,52 +517,52 @@
                 0.0
               ],
               "W": [
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
                 0.0
               ],
               "psi": [
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
               ]
             },
             "intervened": {
               "A": [
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
                 0.0,
                 0.0
               ],
@@ -582,18 +583,18 @@
                 0.0
               ],
               "J_h2": [
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
                 0.0,
                 0.0
               ],
@@ -614,66 +615,65 @@
                 0.0
               ],
               "W": [
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
                 0.0
               ],
               "psi": [
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
               ]
             }
           },
-          "x": "10Dr1"
+          "x": "55PRr1"
         },
         {
-          "label": "sample 13Dr3 (has carbon-monoxide-eating genes)",
-          "label_plain": "sample 13Dr3 (has carbon-monoxide-eating genes)",
-          "label_science": "13Dr3 (CO gate closed)",
+          "label": "sample 55PRr3 (no carbon-monoxide-eating genes)",
+          "label_plain": "sample 55PRr3 (no carbon-monoxide-eating genes)",
+          "label_science": "55PRr3 (CO gate closed)",
           "outcomes": {
             "co_uptake_umol_m2": {
               "convergence": {
-                "discrete": false,
                 "flagged": false,
-                "half_n_shift_frac": 0.0190559
+                "half_n_shift_frac": 0.0
               },
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
-              "median": 127.283,
-              "mode": "variance",
-              "provenance": "simulated",
-              "q05": 21.2514,
-              "q25": 55.2281,
-              "q75": 258.885,
-              "q95": 506.705,
+              "median": 0.0,
+              "mode": "deduced",
+              "provenance": "deduced",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 144.407
+              "value": 0.0
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -697,7 +697,7 @@
               "value": 1102.33
             }
           },
-          "sample": "13Dr3",
+          "sample": "55PRr3",
           "scene": {
             "active_days": 12,
             "activity_by_day": [
@@ -741,18 +741,18 @@
                 0.0
               ],
               "J_co": [
-                13.741854295723,
-                14.401540817724493,
-                14.754619562581683,
-                14.971936621057289,
-                15.018842580351675,
-                14.844092474404043,
-                14.376730035374369,
-                13.512487906018066,
-                12.085711339480774,
-                9.804172045533727,
-                6.069184469828194,
-                0.8255348757416715,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
                 0.0,
                 0.0
               ],
@@ -839,18 +839,18 @@
                 0.0
               ],
               "J_co": [
-                13.741854295723,
-                14.401540817724493,
-                14.754619562581683,
-                14.971936621057289,
-                15.018842580351675,
-                14.844092474404043,
-                14.376730035374369,
-                13.512487906018066,
-                12.085711339480774,
-                9.804172045533727,
-                6.069184469828194,
-                0.8255348757416715,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
                 0.0,
                 0.0
               ],
@@ -920,33 +920,32 @@
               ]
             }
           },
-          "x": "13Dr3"
+          "x": "55PRr3"
         },
         {
-          "label": "sample 14PRr2 (has carbon-monoxide-eating genes)",
-          "label_plain": "sample 14PRr2 (has carbon-monoxide-eating genes)",
-          "label_science": "14PRr2 (CO gate closed)",
+          "label": "sample 55Sr1 (no carbon-monoxide-eating genes)",
+          "label_plain": "sample 55Sr1 (no carbon-monoxide-eating genes)",
+          "label_science": "55Sr1 (CO gate closed)",
           "outcomes": {
             "co_uptake_umol_m2": {
               "convergence": {
-                "discrete": false,
                 "flagged": false,
-                "half_n_shift_frac": 0.0128612
+                "half_n_shift_frac": 0.0
               },
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
-              "median": 126.083,
-              "mode": "variance",
-              "provenance": "simulated",
-              "q05": 21.4137,
-              "q25": 54.0082,
-              "q75": 262.584,
-              "q95": 500.568,
+              "median": 0.0,
+              "mode": "deduced",
+              "provenance": "deduced",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 144.407
+              "value": 0.0
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -970,7 +969,7 @@
               "value": 1102.33
             }
           },
-          "sample": "14PRr2",
+          "sample": "55Sr1",
           "scene": {
             "active_days": 12,
             "activity_by_day": [
@@ -1014,18 +1013,18 @@
                 0.0
               ],
               "J_co": [
-                13.741854295723,
-                14.401540817724493,
-                14.754619562581683,
-                14.971936621057289,
-                15.018842580351675,
-                14.844092474404043,
-                14.376730035374369,
-                13.512487906018066,
-                12.085711339480774,
-                9.804172045533727,
-                6.069184469828194,
-                0.8255348757416715,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
                 0.0,
                 0.0
               ],
@@ -1112,18 +1111,18 @@
                 0.0
               ],
               "J_co": [
-                13.741854295723,
-                14.401540817724493,
-                14.754619562581683,
-                14.971936621057289,
-                15.018842580351675,
-                14.844092474404043,
-                14.376730035374369,
-                13.512487906018066,
-                12.085711339480774,
-                9.804172045533727,
-                6.069184469828194,
-                0.8255348757416715,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
                 0.0,
                 0.0
               ],
@@ -1193,12 +1192,12 @@
               ]
             }
           },
-          "x": "14PRr2"
+          "x": "55Sr1"
         },
         {
-          "label": "sample 51PRr1 (incomplete records)",
-          "label_plain": "sample 51PRr1 (incomplete records)",
-          "label_science": "51PRr1 (CO gate closed)",
+          "label": "sample 58PRr3 (no carbon-monoxide-eating genes)",
+          "label_plain": "sample 58PRr3 (no carbon-monoxide-eating genes)",
+          "label_science": "58PRr3 (CO gate closed)",
           "outcomes": {
             "co_uptake_umol_m2": {
               "convergence": {
@@ -1207,80 +1206,81 @@
               },
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
-              "median": null,
-              "mode": "refusal_indicator",
-              "provenance": "simulated",
-              "q05": null,
-              "q25": null,
-              "q75": null,
-              "q95": null,
-              "refusal_fraction": 1.0,
-              "refusal_reason": "No usable read-mapping weights (unknown sample or excluded for missing weights): ['51PRr1']",
+              "median": 0.0,
+              "mode": "deduced",
+              "provenance": "deduced",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": null
+              "value": 0.0
             },
             "h2_uptake_umol_m2": {
               "convergence": {
+                "discrete": false,
                 "flagged": false,
-                "half_n_shift_frac": 0.0
+                "half_n_shift_frac": 0.00168371
               },
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
-              "median": null,
-              "mode": "refusal_indicator",
+              "median": 932.754,
+              "mode": "variance",
               "provenance": "simulated",
-              "q05": null,
-              "q25": null,
-              "q75": null,
-              "q95": null,
-              "refusal_fraction": 1.0,
-              "refusal_reason": "No usable read-mapping weights (unknown sample or excluded for missing weights): ['51PRr1']",
+              "q05": 118.173,
+              "q25": 347.795,
+              "q75": 2254.53,
+              "q95": 4831.78,
+              "refusal_fraction": 0.0,
+              "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": null
+              "value": 1102.33
             }
           },
-          "sample": "51PRr1",
+          "sample": "58PRr3",
           "scene": {
-            "active_days": 0,
+            "active_days": 12,
             "activity_by_day": [
-              0.0,
-              0.0,
-              0.0,
-              0.0,
-              0.0,
-              0.0,
-              0.0,
-              0.0,
-              0.0,
-              0.0,
-              0.0,
-              0.0,
+              0.9999999999999986,
+              0.9827086468505175,
+              0.9329241298476689,
+              0.8779369704724211,
+              0.8173201894423092,
+              0.7497867866132687,
+              0.6735500825367695,
+              0.5860255055388154,
+              0.48326956432319484,
+              0.3588160584305422,
+              0.20090758727679447,
+              0.024903499112256904,
               0.0,
               0.0
             ],
             "porosity": 0.4,
             "salt_mol_l": 0.0,
             "temp_c": 25.0,
-            "theta": 0.0,
+            "theta": 0.06314285714285922,
             "water_mm": 12.0
           },
           "trajectories": {
             "baseline": {
               "A": [
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
                 0.0,
                 0.0
               ],
@@ -1301,18 +1301,18 @@
                 0.0
               ],
               "J_h2": [
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
                 0.0,
                 0.0
               ],
@@ -1333,52 +1333,52 @@
                 0.0
               ],
               "W": [
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
                 0.0
               ],
               "psi": [
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
               ]
             },
             "intervened": {
               "A": [
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
+                0.9999999999999986,
+                0.9827086468505175,
+                0.9329241298476689,
+                0.8779369704724211,
+                0.8173201894423092,
+                0.7497867866132687,
+                0.6735500825367695,
+                0.5860255055388154,
+                0.48326956432319484,
+                0.3588160584305422,
+                0.20090758727679447,
+                0.024903499112256904,
                 0.0,
                 0.0
               ],
@@ -1399,18 +1399,18 @@
                 0.0
               ],
               "J_h2": [
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
+                121.85795797717799,
+                124.77985879571034,
+                124.04103544627802,
+                121.8163494844647,
+                117.97475409763977,
+                112.28352780460366,
+                104.4176089644215,
+                93.89523697544334,
+                79.95626675679785,
+                61.3052756917747,
+                35.48204296394989,
+                4.523409811027907,
                 0.0,
                 0.0
               ],
@@ -1431,40 +1431,40 @@
                 0.0
               ],
               "W": [
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
+                12.800000000000058,
+                11.800000000000114,
+                10.800000000000171,
+                9.800000000000228,
+                8.800000000000285,
+                7.800000000000324,
+                6.800000000000296,
+                5.800000000000267,
+                4.800000000000239,
+                3.800000000000219,
+                2.8000000000002334,
+                1.8000000000002432,
+                0.8000000000002383,
                 0.0
               ],
               "psi": [
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0
+                -0.08220162538818894,
+                -0.11246390206096257,
+                -0.15803838826489183,
+                -0.22924799748929153,
+                -0.34553926282582353,
+                -0.5459951414452763,
+                -0.9156995402788064,
+                -1.6596641919102622,
+                -3.3424818822094986,
+                -7.835254091289373,
+                -23.321137630102214,
+                -107.44428570225978,
+                -1520.2086938985067,
+                -85.0
               ]
             }
           },
-          "x": "51PRr1"
+          "x": "58PRr3"
         },
         {
           "label": "sample 10Dr2 (has carbon-monoxide-eating genes)",
@@ -2023,14 +2023,14 @@
   "uncertainty": {
     "S1": {
       "activation_shape": [
-        0.00889328,
-        -0.00421874,
-        0.0217454
+        0.00407715,
+        -0.00940165,
+        0.0182576
       ],
       "d_co_m2_s": [
-        -0.000782985,
-        -0.00719221,
-        0.00606509
+        0.00106369,
+        -0.00564801,
+        0.00806226
       ],
       "d_h2_m2_s": [
         0.0,
@@ -2043,34 +2043,34 @@
         0.0
       ],
       "dry_threshold_mpa": [
-        -0.000353811,
-        -0.00146273,
-        0.000781741
+        0.000315024,
+        -0.000919989,
+        0.0014526
       ],
       "field_capacity_fraction": [
-        1.40406e-19,
-        -1.53838e-18,
-        2.2666e-18
+        0.0,
+        0.0,
+        0.0
       ],
       "k_co_s": [
-        0.739389,
-        0.602903,
-        0.865227
+        0.763555,
+        0.619957,
+        0.901936
       ],
       "k_h2_s": [
-        -2.387e-18,
-        -4.71627e-18,
-        -4.00724e-19
+        0.0,
+        0.0,
+        0.0
       ],
       "porosity": [
-        0.00447985,
-        -0.00357767,
-        0.0128365
+        -0.00467577,
+        -0.014336,
+        0.00404564
       ],
       "psi_entry_mpa": [
-        0.0613854,
-        0.0217106,
-        0.107218
+        0.0582633,
+        0.0202795,
+        0.100443
       ],
       "q10": [
         0.0,
@@ -2078,26 +2078,26 @@
         0.0
       ],
       "retention_b": [
-        0.0894966,
-        0.0407019,
-        0.142734
+        0.0857879,
+        0.0369418,
+        0.136034
       ],
       "wet_activation_mpa": [
-        0.00279064,
-        -0.00669775,
-        0.0126964
+        0.00221607,
+        -0.0061172,
+        0.0110195
       ]
     },
     "ST": {
       "activation_shape": [
-        0.0116985,
-        0.00954413,
-        0.0144124
+        0.0117757,
+        0.00963372,
+        0.0139836
       ],
       "d_co_m2_s": [
-        0.0033469,
-        0.00267541,
-        0.00409374
+        0.00343445,
+        0.00274424,
+        0.00418462
       ],
       "d_h2_m2_s": [
         0.0,
@@ -2110,34 +2110,34 @@
         0.0
       ],
       "dry_threshold_mpa": [
-        8.25085e-05,
-        6.85496e-05,
-        9.81075e-05
+        8.28086e-05,
+        6.87409e-05,
+        0.000101224
       ],
       "field_capacity_fraction": [
-        2.7543e-34,
-        6.73749e-35,
-        5.39348e-34
+        0.0,
+        0.0,
+        0.0
       ],
       "k_co_s": [
-        0.82695,
-        0.755594,
-        0.902039
+        0.838624,
+        0.766183,
+        0.917198
       ],
       "k_h2_s": [
-        5.43625e-34,
-        1.44931e-34,
-        1.17141e-33
+        0.0,
+        0.0,
+        0.0
       ],
       "porosity": [
-        0.00499159,
-        0.00372866,
-        0.00643866
+        0.00402169,
+        0.00315636,
+        0.00511371
       ],
       "psi_entry_mpa": [
-        0.0889962,
-        0.076684,
-        0.102036
+        0.0911739,
+        0.0790379,
+        0.107562
       ],
       "q10": [
         0.0,
@@ -2145,27 +2145,27 @@
         0.0
       ],
       "retention_b": [
-        0.137855,
-        0.117862,
-        0.158448
+        0.139916,
+        0.117949,
+        0.165441
       ],
       "wet_activation_mpa": [
-        0.00504801,
-        0.00426812,
-        0.00599426
+        0.00497388,
+        0.00423434,
+        0.00577363
       ]
     },
     "convergence": {
       "discrete": false,
       "flagged": false,
-      "half_n_shift_frac": 0.0190559
+      "half_n_shift_frac": 0.010675
     },
     "d": 13,
     "group_S1": {
       "modeller_assumption": [
-        1.00474,
-        0.831609,
-        1.18264
+        1.00359,
+        0.823939,
+        1.17299
       ],
       "source_not_checked": [
         0.0,
@@ -2180,9 +2180,9 @@
     },
     "group_ST": {
       "modeller_assumption": [
-        1.00344,
-        0.941671,
-        1.06344
+        1.0028,
+        0.946728,
+        1.06085
       ],
       "source_not_checked": [
         0.0,
@@ -2195,8 +2195,8 @@
         0.0
       ]
     },
-    "headline_label": "13Dr3 (CO gate closed)",
-    "headline_level": 2,
+    "headline_label": "V53PRr2 (CO gate open)",
+    "headline_level": 6,
     "headline_output": "co_uptake_umol_m2",
     "headline_series": "co-gate-samples",
     "inputs": [
@@ -2448,7 +2448,7 @@
         "value": -0.1
       }
     ],
-    "median": 127.283,
+    "median": 126.203,
     "mode": "variance",
     "n": 1024,
     "oat": {
@@ -2518,10 +2518,10 @@
         "span": 27.3982587729202
       }
     },
-    "q05": 21.2514,
-    "q25": 55.2281,
-    "q75": 258.885,
-    "q95": 506.705,
+    "q05": 21.1085,
+    "q25": 55.8429,
+    "q75": 258.889,
+    "q95": 501.326,
     "refusal_fraction": 0.0
   },
   "version": "question-1",

@@ -934,14 +934,14 @@
                   1.18238
                 ],
                 "source_not_checked": [
-                  -2.66866e-18,
-                  -5.36863e-18,
-                  -3.46949e-19
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "verified_in_source": [
-                  -1.02132e-18,
-                  -2.17742e-18,
-                  -7.44732e-21
+                  0.0,
+                  0.0,
+                  0.0
                 ]
               },
               "group_ST": {
@@ -951,14 +951,14 @@
                   1.06542
                 ],
                 "source_not_checked": [
-                  6.90542e-34,
-                  2.40722e-34,
-                  1.29401e-33
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "verified_in_source": [
-                  2.70257e-34,
-                  1.06703e-34,
-                  4.86935e-34
+                  0.0,
+                  0.0,
+                  0.0
                 ]
               },
               "median": 951.665,
@@ -1174,18 +1174,21 @@
         },
         {
           "central": {
-            "active_days": null,
-            "co_uptake_contrast_umol_m2": null,
-            "co_uptake_umol_m2": null,
-            "final_salt_mol_m2": null,
-            "final_water_mm": null,
-            "h2_uptake_contrast_umol_m2": null,
-            "h2_uptake_umol_m2": null,
-            "mean_nacl_mol_l": null,
-            "porosity": null
+            "active_days": 12.0,
+            "co_uptake_contrast_umol_m2": 0.0,
+            "co_uptake_umol_m2": 0.0,
+            "final_salt_mol_m2": 0.0,
+            "final_water_mm": 0.0,
+            "h2_uptake_contrast_umol_m2": 0.0,
+            "h2_uptake_umol_m2": 1102.33,
+            "mean_nacl_mol_l": 0.0,
+            "porosity": 0.4
           },
-          "central_deduced": [],
-          "central_refused": "No usable read-mapping weights (unknown sample or excluded for missing weights): ['10Dr1']",
+          "central_deduced": [
+            "co_uptake_umol_m2",
+            "co_uptake_contrast_umol_m2"
+          ],
+          "central_refused": null,
           "d": 13,
           "inputs": [
             {
@@ -1306,7 +1309,7 @@
               "value": -0.1
             }
           ],
-          "label": "10Dr1 (CO gate closed)",
+          "label": "55PRr1 (CO gate closed)",
           "level": 1,
           "level_seed": 1019371830358484554,
           "n": 1024,
@@ -1334,9 +1337,9 @@
                   0.0
                 ],
                 "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
+                  -0.0427953,
+                  -0.112685,
+                  0.0245047
                 ],
                 "field_capacity_fraction": [
                   0.0,
@@ -1354,14 +1357,14 @@
                   0.0
                 ],
                 "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
+                  -0.0338221,
+                  -0.157582,
+                  0.0856002
                 ],
                 "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.172562,
+                  -0.133836,
+                  0.48659
                 ],
                 "q10": [
                   0.0,
@@ -1369,9 +1372,9 @@
                   0.0
                 ],
                 "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.623982,
+                  0.135022,
+                  1.09789
                 ],
                 "wet_activation_mpa": [
                   0.0,
@@ -1401,9 +1404,9 @@
                   0.0
                 ],
                 "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.0113891,
+                  0.00901588,
+                  0.0142274
                 ],
                 "field_capacity_fraction": [
                   0.0,
@@ -1421,14 +1424,14 @@
                   0.0
                 ],
                 "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.0422776,
+                  0.0378577,
+                  0.0473105
                 ],
                 "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.305261,
+                  0.278366,
+                  0.338159
                 ],
                 "q10": [
                   0.0,
@@ -1436,9 +1439,9 @@
                   0.0
                 ],
                 "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.744258,
+                  0.679383,
+                  0.804452
                 ],
                 "wet_activation_mpa": [
                   0.0,
@@ -1447,14 +1450,15 @@
                 ]
               },
               "convergence": {
+                "discrete": true,
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
               "group_S1": {
                 "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.943221,
+                  0.391757,
+                  1.48806
                 ],
                 "source_not_checked": [
                   0.0,
@@ -1469,9 +1473,9 @@
               },
               "group_ST": {
                 "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.997233,
+                  0.93863,
+                  1.05746
                 ],
                 "source_not_checked": [
                   0.0,
@@ -1484,194 +1488,31 @@
                   0.0
                 ]
               },
-              "median": null,
-              "mode": "refusal_indicator",
-              "q05": null,
-              "q25": null,
-              "q75": null,
-              "q95": null,
-              "refusal_fraction": 1.0
+              "median": 12.0,
+              "mode": "variance",
+              "q05": 8.0,
+              "q25": 11.0,
+              "q75": 13.0,
+              "q95": 14.0,
+              "refusal_fraction": 0.0
             },
             "co_uptake_change_pct": {
-              "S1": {
-                "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_co_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "drainage_fraction_day": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "field_capacity_fraction": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_co_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "q10": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "ST": {
-                "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_co_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "drainage_fraction_day": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "field_capacity_fraction": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_co_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "q10": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
+              "S1": {},
+              "ST": {},
               "convergence": {
+                "discrete": true,
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
-              "group_S1": {
-                "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "source_not_checked": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "verified_in_source": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "group_ST": {
-                "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "source_not_checked": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "verified_in_source": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "median": null,
-              "mode": "refusal_indicator",
-              "q05": null,
-              "q25": null,
-              "q75": null,
-              "q95": null,
-              "refusal_fraction": 1.0
+              "group_S1": null,
+              "group_ST": null,
+              "median": 0.0,
+              "mode": "constant",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0
             },
             "co_uptake_contrast_umol_m2": {
               "S1": {
@@ -1846,13 +1687,13 @@
                   0.0
                 ]
               },
-              "median": null,
-              "mode": "refusal_indicator",
-              "q05": null,
-              "q25": null,
-              "q75": null,
-              "q95": null,
-              "refusal_fraction": 1.0
+              "median": 0.0,
+              "mode": "deduced",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0
             },
             "co_uptake_umol_m2": {
               "S1": {
@@ -2027,744 +1868,92 @@
                   0.0
                 ]
               },
-              "median": null,
-              "mode": "refusal_indicator",
-              "q05": null,
-              "q25": null,
-              "q75": null,
-              "q95": null,
-              "refusal_fraction": 1.0
+              "median": 0.0,
+              "mode": "deduced",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0
             },
             "final_salt_mol_m2": {
-              "S1": {
-                "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_co_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "drainage_fraction_day": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "field_capacity_fraction": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_co_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "q10": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "ST": {
-                "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_co_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "drainage_fraction_day": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "field_capacity_fraction": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_co_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "q10": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
+              "S1": {},
+              "ST": {},
               "convergence": {
+                "discrete": true,
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
-              "group_S1": {
-                "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "source_not_checked": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "verified_in_source": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "group_ST": {
-                "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "source_not_checked": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "verified_in_source": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "median": null,
-              "mode": "refusal_indicator",
-              "q05": null,
-              "q25": null,
-              "q75": null,
-              "q95": null,
-              "refusal_fraction": 1.0
+              "group_S1": null,
+              "group_ST": null,
+              "median": 0.0,
+              "mode": "constant",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0
             },
             "final_water_mm": {
-              "S1": {
-                "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_co_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "drainage_fraction_day": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "field_capacity_fraction": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_co_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "q10": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "ST": {
-                "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_co_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "drainage_fraction_day": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "field_capacity_fraction": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_co_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "q10": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
+              "S1": {},
+              "ST": {},
               "convergence": {
+                "discrete": true,
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
-              "group_S1": {
-                "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "source_not_checked": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "verified_in_source": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "group_ST": {
-                "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "source_not_checked": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "verified_in_source": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "median": null,
-              "mode": "refusal_indicator",
-              "q05": null,
-              "q25": null,
-              "q75": null,
-              "q95": null,
-              "refusal_fraction": 1.0
+              "group_S1": null,
+              "group_ST": null,
+              "median": 0.0,
+              "mode": "constant",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0
             },
             "h2_uptake_change_pct": {
-              "S1": {
-                "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_co_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "drainage_fraction_day": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "field_capacity_fraction": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_co_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "q10": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "ST": {
-                "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_co_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "drainage_fraction_day": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "field_capacity_fraction": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_co_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "q10": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
+              "S1": {},
+              "ST": {},
               "convergence": {
+                "discrete": true,
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
-              "group_S1": {
-                "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "source_not_checked": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "verified_in_source": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "group_ST": {
-                "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "source_not_checked": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "verified_in_source": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "median": null,
-              "mode": "refusal_indicator",
-              "q05": null,
-              "q25": null,
-              "q75": null,
-              "q95": null,
-              "refusal_fraction": 1.0
+              "group_S1": null,
+              "group_ST": null,
+              "median": 0.0,
+              "mode": "constant",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0
             },
             "h2_uptake_contrast_umol_m2": {
-              "S1": {
-                "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_co_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "drainage_fraction_day": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "field_capacity_fraction": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_co_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "q10": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "ST": {
-                "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_co_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "drainage_fraction_day": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "field_capacity_fraction": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_co_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "q10": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
+              "S1": {},
+              "ST": {},
               "convergence": {
+                "discrete": true,
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
-              "group_S1": {
-                "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "source_not_checked": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "verified_in_source": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "group_ST": {
-                "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "source_not_checked": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "verified_in_source": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "median": null,
-              "mode": "refusal_indicator",
-              "q05": null,
-              "q25": null,
-              "q75": null,
-              "q95": null,
-              "refusal_fraction": 1.0
+              "group_S1": null,
+              "group_ST": null,
+              "median": 0.0,
+              "mode": "constant",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0
             },
             "h2_uptake_umol_m2": {
               "S1": {
                 "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.00490017,
+                  -0.00669589,
+                  0.018092
                 ],
                 "d_co_m2_s": [
                   0.0,
@@ -2772,9 +1961,9 @@
                   0.0
                 ],
                 "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.000306789,
+                  -0.00482589,
+                  0.00531702
                 ],
                 "drainage_fraction_day": [
                   0.0,
@@ -2782,9 +1971,9 @@
                   0.0
                 ],
                 "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.000250515,
+                  -0.000649376,
+                  0.00113291
                 ],
                 "field_capacity_fraction": [
                   0.0,
@@ -2797,19 +1986,19 @@
                   0.0
                 ],
                 "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.759418,
+                  0.632569,
+                  0.903737
                 ],
                 "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
+                  -8.57423e-05,
+                  -0.00755534,
+                  0.00701005
                 ],
                 "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.0452941,
+                  0.0118422,
+                  0.078038
                 ],
                 "q10": [
                   0.0,
@@ -2817,21 +2006,21 @@
                   0.0
                 ],
                 "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.066734,
+                  0.0213922,
+                  0.114188
                 ],
                 "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.000838683,
+                  -0.0080953,
+                  0.00897193
                 ]
               },
               "ST": {
                 "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.0110532,
+                  0.00935117,
+                  0.0130283
                 ],
                 "d_co_m2_s": [
                   0.0,
@@ -2839,9 +2028,9 @@
                   0.0
                 ],
                 "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.00200455,
+                  0.0016172,
+                  0.0024421
                 ],
                 "drainage_fraction_day": [
                   0.0,
@@ -2849,9 +2038,9 @@
                   0.0
                 ],
                 "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
+                  6.91218e-05,
+                  5.37001e-05,
+                  8.7881e-05
                 ],
                 "field_capacity_fraction": [
                   0.0,
@@ -2864,19 +2053,19 @@
                   0.0
                 ],
                 "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.855919,
+                  0.768177,
+                  0.946154
                 ],
                 "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.00278035,
+                  0.00201647,
+                  0.00358462
                 ],
                 "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.0832691,
+                  0.0714705,
+                  0.0969844
                 ],
                 "q10": [
                   0.0,
@@ -2884,25 +2073,26 @@
                   0.0
                 ],
                 "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.125166,
+                  0.107525,
+                  0.144965
                 ],
                 "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.00549572,
+                  0.0045992,
+                  0.00657
                 ]
               },
               "convergence": {
+                "discrete": false,
                 "flagged": false,
-                "half_n_shift_frac": 0.0
+                "half_n_shift_frac": 0.0133807
               },
               "group_S1": {
                 "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.991748,
+                  0.836626,
+                  1.16955
                 ],
                 "source_not_checked": [
                   0.0,
@@ -2917,9 +2107,9 @@
               },
               "group_ST": {
                 "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.995848,
+                  0.935389,
+                  1.05731
                 ],
                 "source_not_checked": [
                   0.0,
@@ -2932,194 +2122,31 @@
                   0.0
                 ]
               },
-              "median": null,
-              "mode": "refusal_indicator",
-              "q05": null,
-              "q25": null,
-              "q75": null,
-              "q95": null,
-              "refusal_fraction": 1.0
+              "median": 932.863,
+              "mode": "variance",
+              "q05": 118.597,
+              "q25": 348.03,
+              "q75": 2263.93,
+              "q95": 4684.47,
+              "refusal_fraction": 0.0
             },
             "mean_nacl_mol_l": {
-              "S1": {
-                "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_co_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "drainage_fraction_day": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "field_capacity_fraction": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_co_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "q10": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "ST": {
-                "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_co_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "drainage_fraction_day": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "field_capacity_fraction": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_co_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "q10": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
+              "S1": {},
+              "ST": {},
               "convergence": {
+                "discrete": true,
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
-              "group_S1": {
-                "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "source_not_checked": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "verified_in_source": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "group_ST": {
-                "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "source_not_checked": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "verified_in_source": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "median": null,
-              "mode": "refusal_indicator",
-              "q05": null,
-              "q25": null,
-              "q75": null,
-              "q95": null,
-              "refusal_fraction": 1.0
+              "group_S1": null,
+              "group_ST": null,
+              "median": 0.0,
+              "mode": "constant",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0
             },
             "porosity": {
               "S1": {
@@ -3164,9 +2191,9 @@
                   0.0
                 ],
                 "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
+                  1.0018,
+                  -0.243023,
+                  2.22958
                 ],
                 "psi_entry_mpa": [
                   0.0,
@@ -3231,9 +2258,9 @@
                   0.0
                 ],
                 "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
+                  1.00143,
+                  0.947624,
+                  1.06285
                 ],
                 "psi_entry_mpa": [
                   0.0,
@@ -3257,14 +2284,15 @@
                 ]
               },
               "convergence": {
+                "discrete": false,
                 "flagged": false,
-                "half_n_shift_frac": 0.0
+                "half_n_shift_frac": 0.00126199
               },
               "group_S1": {
                 "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
+                  1.0018,
+                  -0.243023,
+                  2.22958
                 ],
                 "source_not_checked": [
                   0.0,
@@ -3279,9 +2307,9 @@
               },
               "group_ST": {
                 "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
+                  1.00143,
+                  0.947624,
+                  1.06285
                 ],
                 "source_not_checked": [
                   0.0,
@@ -3294,22 +2322,22 @@
                   0.0
                 ]
               },
-              "median": null,
-              "mode": "refusal_indicator",
-              "q05": null,
-              "q25": null,
-              "q75": null,
-              "q95": null,
-              "refusal_fraction": 1.0
+              "median": 0.413424,
+              "mode": "variance",
+              "q05": 0.369453,
+              "q25": 0.393304,
+              "q75": 0.43873,
+              "q95": 0.472561,
+              "refusal_fraction": 0.0
             }
           },
-          "x": "10Dr1"
+          "x": "55PRr1"
         },
         {
           "central": {
             "active_days": 12.0,
             "co_uptake_contrast_umol_m2": 0.0,
-            "co_uptake_umol_m2": 144.407,
+            "co_uptake_umol_m2": 0.0,
             "final_salt_mol_m2": 0.0,
             "final_water_mm": 0.0,
             "h2_uptake_contrast_umol_m2": 0.0,
@@ -3317,7 +2345,10 @@
             "mean_nacl_mol_l": 0.0,
             "porosity": 0.4
           },
-          "central_deduced": [],
+          "central_deduced": [
+            "co_uptake_umol_m2",
+            "co_uptake_contrast_umol_m2"
+          ],
           "central_refused": null,
           "d": 13,
           "inputs": [
@@ -3439,7 +2470,7 @@
               "value": -0.1
             }
           ],
-          "label": "13Dr3 (CO gate closed)",
+          "label": "55PRr3 (CO gate closed)",
           "level": 2,
           "level_seed": 7729625915240646304,
           "n": 1024,
@@ -3645,34 +2676,16 @@
               "refusal_fraction": 0.0
             },
             "co_uptake_contrast_umol_m2": {
-              "S1": {},
-              "ST": {},
-              "convergence": {
-                "discrete": true,
-                "flagged": false,
-                "half_n_shift_frac": 0.0
-              },
-              "group_S1": null,
-              "group_ST": null,
-              "median": 0.0,
-              "mode": "constant",
-              "q05": 0.0,
-              "q25": 0.0,
-              "q75": 0.0,
-              "q95": 0.0,
-              "refusal_fraction": 0.0
-            },
-            "co_uptake_umol_m2": {
               "S1": {
                 "activation_shape": [
-                  0.00889328,
-                  -0.00421874,
-                  0.0217454
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "d_co_m2_s": [
-                  -0.000782985,
-                  -0.00719221,
-                  0.00606509
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "d_h2_m2_s": [
                   0.0,
@@ -3685,34 +2698,34 @@
                   0.0
                 ],
                 "dry_threshold_mpa": [
-                  -0.000353811,
-                  -0.00146273,
-                  0.000781741
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "field_capacity_fraction": [
-                  1.40406e-19,
-                  -1.53838e-18,
-                  2.2666e-18
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "k_co_s": [
-                  0.739389,
-                  0.602903,
-                  0.865227
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "k_h2_s": [
-                  -2.387e-18,
-                  -4.71627e-18,
-                  -4.00724e-19
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "porosity": [
-                  0.00447985,
-                  -0.00357767,
-                  0.0128365
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "psi_entry_mpa": [
-                  0.0613854,
-                  0.0217106,
-                  0.107218
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "q10": [
                   0.0,
@@ -3720,26 +2733,26 @@
                   0.0
                 ],
                 "retention_b": [
-                  0.0894966,
-                  0.0407019,
-                  0.142734
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "wet_activation_mpa": [
-                  0.00279064,
-                  -0.00669775,
-                  0.0126964
+                  0.0,
+                  0.0,
+                  0.0
                 ]
               },
               "ST": {
                 "activation_shape": [
-                  0.0116985,
-                  0.00954413,
-                  0.0144124
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "d_co_m2_s": [
-                  0.0033469,
-                  0.00267541,
-                  0.00409374
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "d_h2_m2_s": [
                   0.0,
@@ -3752,34 +2765,34 @@
                   0.0
                 ],
                 "dry_threshold_mpa": [
-                  8.25085e-05,
-                  6.85496e-05,
-                  9.81075e-05
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "field_capacity_fraction": [
-                  2.7543e-34,
-                  6.73749e-35,
-                  5.39348e-34
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "k_co_s": [
-                  0.82695,
-                  0.755594,
-                  0.902039
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "k_h2_s": [
-                  5.43625e-34,
-                  1.44931e-34,
-                  1.17141e-33
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "porosity": [
-                  0.00499159,
-                  0.00372866,
-                  0.00643866
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "psi_entry_mpa": [
-                  0.0889962,
-                  0.076684,
-                  0.102036
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "q10": [
                   0.0,
@@ -3787,26 +2800,25 @@
                   0.0
                 ],
                 "retention_b": [
-                  0.137855,
-                  0.117862,
-                  0.158448
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "wet_activation_mpa": [
-                  0.00504801,
-                  0.00426812,
-                  0.00599426
+                  0.0,
+                  0.0,
+                  0.0
                 ]
               },
               "convergence": {
-                "discrete": false,
                 "flagged": false,
-                "half_n_shift_frac": 0.0190559
+                "half_n_shift_frac": 0.0
               },
               "group_S1": {
                 "modeller_assumption": [
-                  1.00474,
-                  0.831609,
-                  1.18264
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "source_not_checked": [
                   0.0,
@@ -3821,9 +2833,9 @@
               },
               "group_ST": {
                 "modeller_assumption": [
-                  1.00344,
-                  0.941671,
-                  1.06344
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "source_not_checked": [
                   0.0,
@@ -3836,12 +2848,193 @@
                   0.0
                 ]
               },
-              "median": 127.283,
-              "mode": "variance",
-              "q05": 21.2514,
-              "q25": 55.2281,
-              "q75": 258.885,
-              "q95": 506.705,
+              "median": 0.0,
+              "mode": "deduced",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0
+            },
+            "co_uptake_umol_m2": {
+              "S1": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": 0.0,
+              "mode": "deduced",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
               "refusal_fraction": 0.0
             },
             "final_salt_mol_m2": {
@@ -3944,14 +3137,14 @@
                   0.000522187
                 ],
                 "field_capacity_fraction": [
-                  -5.96804e-20,
-                  -4.29254e-19,
-                  2.60821e-19
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "k_co_s": [
-                  -1.26436e-18,
-                  -3.4666e-18,
-                  1.47323e-18
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "k_h2_s": [
                   0.78521,
@@ -4011,14 +3204,14 @@
                   8.15083e-05
                 ],
                 "field_capacity_fraction": [
-                  2.52767e-35,
-                  1.29592e-36,
-                  5.97653e-35
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "k_co_s": [
-                  5.08445e-34,
-                  1.93872e-34,
-                  9.63417e-34
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "k_h2_s": [
                   0.881552,
@@ -4299,13 +3492,13 @@
               "refusal_fraction": 0.0
             }
           },
-          "x": "13Dr3"
+          "x": "55PRr3"
         },
         {
           "central": {
             "active_days": 12.0,
             "co_uptake_contrast_umol_m2": 0.0,
-            "co_uptake_umol_m2": 144.407,
+            "co_uptake_umol_m2": 0.0,
             "final_salt_mol_m2": 0.0,
             "final_water_mm": 0.0,
             "h2_uptake_contrast_umol_m2": 0.0,
@@ -4313,7 +3506,10 @@
             "mean_nacl_mol_l": 0.0,
             "porosity": 0.4
           },
-          "central_deduced": [],
+          "central_deduced": [
+            "co_uptake_umol_m2",
+            "co_uptake_contrast_umol_m2"
+          ],
           "central_refused": null,
           "d": 13,
           "inputs": [
@@ -4435,7 +3631,7 @@
               "value": -0.1
             }
           ],
-          "label": "14PRr2 (CO gate closed)",
+          "label": "55Sr1 (CO gate closed)",
           "level": 3,
           "level_seed": 2719553551029150214,
           "n": 1024,
@@ -4641,74 +3837,56 @@
               "refusal_fraction": 0.0
             },
             "co_uptake_contrast_umol_m2": {
-              "S1": {},
-              "ST": {},
-              "convergence": {
-                "discrete": true,
-                "flagged": false,
-                "half_n_shift_frac": 0.0
-              },
-              "group_S1": null,
-              "group_ST": null,
-              "median": 0.0,
-              "mode": "constant",
-              "q05": 0.0,
-              "q25": 0.0,
-              "q75": 0.0,
-              "q95": 0.0,
-              "refusal_fraction": 0.0
-            },
-            "co_uptake_umol_m2": {
               "S1": {
                 "activation_shape": [
-                  0.00654368,
-                  -0.00821888,
-                  0.0197737
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "d_co_m2_s": [
-                  0.000195264,
-                  -0.00584892,
-                  0.00723285
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "d_h2_m2_s": [
-                  -5.02009e-18,
-                  -1.0223e-17,
-                  2.09147e-19
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "drainage_fraction_day": [
-                  -5.02009e-18,
-                  -1.0223e-17,
-                  2.09147e-19
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "dry_threshold_mpa": [
-                  0.000365716,
-                  -0.000787927,
-                  0.00146247
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "field_capacity_fraction": [
-                  -5.02009e-18,
-                  -1.0223e-17,
-                  2.09147e-19
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "k_co_s": [
-                  0.744919,
-                  0.606556,
-                  0.874174
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "k_h2_s": [
-                  -5.02009e-18,
-                  -1.0223e-17,
-                  2.09147e-19
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "porosity": [
-                  0.00183158,
-                  -0.00627315,
-                  0.0100866
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "psi_entry_mpa": [
-                  0.0606663,
-                  0.0236743,
-                  0.0967293
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "q10": [
                   0.0,
@@ -4716,66 +3894,66 @@
                   0.0
                 ],
                 "retention_b": [
-                  0.0892894,
-                  0.0274735,
-                  0.147322
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "wet_activation_mpa": [
-                  0.0032593,
-                  -0.00584573,
-                  0.0117845
+                  0.0,
+                  0.0,
+                  0.0
                 ]
               },
               "ST": {
                 "activation_shape": [
-                  0.0118314,
-                  0.00973668,
-                  0.0139671
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "d_co_m2_s": [
-                  0.00328318,
-                  0.00268778,
-                  0.00391773
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "d_h2_m2_s": [
-                  1.5337e-33,
-                  7.55818e-34,
-                  2.43797e-33
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "drainage_fraction_day": [
-                  1.5337e-33,
-                  7.55818e-34,
-                  2.43797e-33
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "dry_threshold_mpa": [
-                  8.01724e-05,
-                  6.58767e-05,
-                  9.64432e-05
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "field_capacity_fraction": [
-                  1.5337e-33,
-                  7.55818e-34,
-                  2.43797e-33
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "k_co_s": [
-                  0.826892,
-                  0.757085,
-                  0.901166
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "k_h2_s": [
-                  1.5337e-33,
-                  7.55818e-34,
-                  2.43797e-33
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "porosity": [
-                  0.0041563,
-                  0.00321361,
-                  0.00519394
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "psi_entry_mpa": [
-                  0.0878607,
-                  0.0760478,
-                  0.100568
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "q10": [
                   0.0,
@@ -4783,26 +3961,25 @@
                   0.0
                 ],
                 "retention_b": [
-                  0.139556,
-                  0.122781,
-                  0.160833
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "wet_activation_mpa": [
-                  0.00482859,
-                  0.00410763,
-                  0.00567494
+                  0.0,
+                  0.0,
+                  0.0
                 ]
               },
               "convergence": {
-                "discrete": false,
                 "flagged": false,
-                "half_n_shift_frac": 0.0128612
+                "half_n_shift_frac": 0.0
               },
               "group_S1": {
                 "modeller_assumption": [
-                  0.991955,
-                  0.813445,
-                  1.14645
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "source_not_checked": [
                   0.0,
@@ -4817,9 +3994,9 @@
               },
               "group_ST": {
                 "modeller_assumption": [
-                  0.994861,
-                  0.931095,
-                  1.05925
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "source_not_checked": [
                   0.0,
@@ -4832,12 +4009,193 @@
                   0.0
                 ]
               },
-              "median": 126.083,
-              "mode": "variance",
-              "q05": 21.4137,
-              "q25": 54.0082,
-              "q75": 262.584,
-              "q95": 500.568,
+              "median": 0.0,
+              "mode": "deduced",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0
+            },
+            "co_uptake_umol_m2": {
+              "S1": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "ST": {
+                "activation_shape": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_co_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "d_h2_m2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "drainage_fraction_day": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "dry_threshold_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "field_capacity_fraction": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_co_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "k_h2_s": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "porosity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "psi_entry_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "q10": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "retention_b": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "wet_activation_mpa": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "convergence": {
+                "flagged": false,
+                "half_n_shift_frac": 0.0
+              },
+              "group_S1": {
+                "modeller_assumption": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "group_ST": {
+                "modeller_assumption": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "source_not_checked": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "verified_in_source": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "median": 0.0,
+              "mode": "deduced",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
               "refusal_fraction": 0.0
             },
             "final_salt_mol_m2": {
@@ -4920,9 +4278,9 @@
                   0.0212141
                 ],
                 "d_co_m2_s": [
-                  -9.63489e-20,
-                  -2.21615e-19,
-                  -1.09371e-20
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "d_h2_m2_s": [
                   0.000975271,
@@ -4930,9 +4288,9 @@
                   0.00660941
                 ],
                 "drainage_fraction_day": [
-                  -3.69812e-18,
-                  -7.71056e-18,
-                  3.81353e-19
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "dry_threshold_mpa": [
                   4.27268e-05,
@@ -4940,14 +4298,14 @@
                   0.000960591
                 ],
                 "field_capacity_fraction": [
-                  -3.69812e-18,
-                  -7.71056e-18,
-                  3.81353e-19
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "k_co_s": [
-                  -3.69812e-18,
-                  -7.71056e-18,
-                  3.81353e-19
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "k_h2_s": [
                   0.77229,
@@ -4987,9 +4345,9 @@
                   0.0147808
                 ],
                 "d_co_m2_s": [
-                  5.35905e-35,
-                  1.02051e-37,
-                  1.44373e-34
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "d_h2_m2_s": [
                   0.00204489,
@@ -4997,9 +4355,9 @@
                   0.00248236
                 ],
                 "drainage_fraction_day": [
-                  1.02011e-33,
-                  4.69467e-34,
-                  1.76292e-33
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "dry_threshold_mpa": [
                   7.2668e-05,
@@ -5007,14 +4365,14 @@
                   9.46633e-05
                 ],
                 "field_capacity_fraction": [
-                  1.02011e-33,
-                  4.69467e-34,
-                  1.76292e-33
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "k_co_s": [
-                  1.02011e-33,
-                  4.69467e-34,
-                  1.76292e-33
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "k_h2_s": [
                   0.874739,
@@ -5295,22 +4653,25 @@
               "refusal_fraction": 0.0
             }
           },
-          "x": "14PRr2"
+          "x": "55Sr1"
         },
         {
           "central": {
-            "active_days": null,
-            "co_uptake_contrast_umol_m2": null,
-            "co_uptake_umol_m2": null,
-            "final_salt_mol_m2": null,
-            "final_water_mm": null,
-            "h2_uptake_contrast_umol_m2": null,
-            "h2_uptake_umol_m2": null,
-            "mean_nacl_mol_l": null,
-            "porosity": null
+            "active_days": 12.0,
+            "co_uptake_contrast_umol_m2": 0.0,
+            "co_uptake_umol_m2": 0.0,
+            "final_salt_mol_m2": 0.0,
+            "final_water_mm": 0.0,
+            "h2_uptake_contrast_umol_m2": 0.0,
+            "h2_uptake_umol_m2": 1102.33,
+            "mean_nacl_mol_l": 0.0,
+            "porosity": 0.4
           },
-          "central_deduced": [],
-          "central_refused": "No usable read-mapping weights (unknown sample or excluded for missing weights): ['51PRr1']",
+          "central_deduced": [
+            "co_uptake_umol_m2",
+            "co_uptake_contrast_umol_m2"
+          ],
+          "central_refused": null,
           "d": 13,
           "inputs": [
             {
@@ -5431,7 +4792,7 @@
               "value": -0.1
             }
           ],
-          "label": "51PRr1 (CO gate closed)",
+          "label": "58PRr3 (CO gate closed)",
           "level": 4,
           "level_seed": 16057849147184830970,
           "n": 1024,
@@ -5459,9 +4820,9 @@
                   0.0
                 ],
                 "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.0313433,
+                  -0.0251513,
+                  0.0903487
                 ],
                 "field_capacity_fraction": [
                   0.0,
@@ -5479,14 +4840,14 @@
                   0.0
                 ],
                 "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.0695752,
+                  -0.0596621,
+                  0.194114
                 ],
                 "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.344776,
+                  0.000565257,
+                  0.6773
                 ],
                 "q10": [
                   0.0,
@@ -5494,9 +4855,9 @@
                   0.0
                 ],
                 "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.702297,
+                  0.211819,
+                  1.20991
                 ],
                 "wet_activation_mpa": [
                   0.0,
@@ -5526,9 +4887,9 @@
                   0.0
                 ],
                 "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.0086108,
+                  0.00647636,
+                  0.0113589
                 ],
                 "field_capacity_fraction": [
                   0.0,
@@ -5546,14 +4907,14 @@
                   0.0
                 ],
                 "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.0428818,
+                  0.0378602,
+                  0.048221
                 ],
                 "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.306372,
+                  0.278579,
+                  0.339081
                 ],
                 "q10": [
                   0.0,
@@ -5561,9 +4922,9 @@
                   0.0
                 ],
                 "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.751206,
+                  0.691728,
+                  0.815401
                 ],
                 "wet_activation_mpa": [
                   0.0,
@@ -5572,14 +4933,15 @@
                 ]
               },
               "convergence": {
+                "discrete": true,
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
               "group_S1": {
                 "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
+                  1.09529,
+                  0.539188,
+                  1.66475
                 ],
                 "source_not_checked": [
                   0.0,
@@ -5594,9 +4956,9 @@
               },
               "group_ST": {
                 "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
+                  1.01487,
+                  0.957127,
+                  1.07808
                 ],
                 "source_not_checked": [
                   0.0,
@@ -5609,194 +4971,31 @@
                   0.0
                 ]
               },
-              "median": null,
-              "mode": "refusal_indicator",
-              "q05": null,
-              "q25": null,
-              "q75": null,
-              "q95": null,
-              "refusal_fraction": 1.0
+              "median": 12.0,
+              "mode": "variance",
+              "q05": 8.0,
+              "q25": 11.0,
+              "q75": 13.0,
+              "q95": 14.0,
+              "refusal_fraction": 0.0
             },
             "co_uptake_change_pct": {
-              "S1": {
-                "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_co_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "drainage_fraction_day": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "field_capacity_fraction": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_co_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "q10": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "ST": {
-                "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_co_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "drainage_fraction_day": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "field_capacity_fraction": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_co_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "q10": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
+              "S1": {},
+              "ST": {},
               "convergence": {
+                "discrete": true,
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
-              "group_S1": {
-                "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "source_not_checked": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "verified_in_source": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "group_ST": {
-                "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "source_not_checked": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "verified_in_source": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "median": null,
-              "mode": "refusal_indicator",
-              "q05": null,
-              "q25": null,
-              "q75": null,
-              "q95": null,
-              "refusal_fraction": 1.0
+              "group_S1": null,
+              "group_ST": null,
+              "median": 0.0,
+              "mode": "constant",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0
             },
             "co_uptake_contrast_umol_m2": {
               "S1": {
@@ -5971,13 +5170,13 @@
                   0.0
                 ]
               },
-              "median": null,
-              "mode": "refusal_indicator",
-              "q05": null,
-              "q25": null,
-              "q75": null,
-              "q95": null,
-              "refusal_fraction": 1.0
+              "median": 0.0,
+              "mode": "deduced",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0
             },
             "co_uptake_umol_m2": {
               "S1": {
@@ -6152,744 +5351,92 @@
                   0.0
                 ]
               },
-              "median": null,
-              "mode": "refusal_indicator",
-              "q05": null,
-              "q25": null,
-              "q75": null,
-              "q95": null,
-              "refusal_fraction": 1.0
+              "median": 0.0,
+              "mode": "deduced",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0
             },
             "final_salt_mol_m2": {
-              "S1": {
-                "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_co_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "drainage_fraction_day": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "field_capacity_fraction": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_co_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "q10": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "ST": {
-                "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_co_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "drainage_fraction_day": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "field_capacity_fraction": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_co_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "q10": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
+              "S1": {},
+              "ST": {},
               "convergence": {
+                "discrete": true,
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
-              "group_S1": {
-                "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "source_not_checked": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "verified_in_source": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "group_ST": {
-                "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "source_not_checked": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "verified_in_source": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "median": null,
-              "mode": "refusal_indicator",
-              "q05": null,
-              "q25": null,
-              "q75": null,
-              "q95": null,
-              "refusal_fraction": 1.0
+              "group_S1": null,
+              "group_ST": null,
+              "median": 0.0,
+              "mode": "constant",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0
             },
             "final_water_mm": {
-              "S1": {
-                "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_co_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "drainage_fraction_day": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "field_capacity_fraction": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_co_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "q10": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "ST": {
-                "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_co_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "drainage_fraction_day": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "field_capacity_fraction": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_co_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "q10": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
+              "S1": {},
+              "ST": {},
               "convergence": {
+                "discrete": true,
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
-              "group_S1": {
-                "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "source_not_checked": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "verified_in_source": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "group_ST": {
-                "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "source_not_checked": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "verified_in_source": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "median": null,
-              "mode": "refusal_indicator",
-              "q05": null,
-              "q25": null,
-              "q75": null,
-              "q95": null,
-              "refusal_fraction": 1.0
+              "group_S1": null,
+              "group_ST": null,
+              "median": 0.0,
+              "mode": "constant",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0
             },
             "h2_uptake_change_pct": {
-              "S1": {
-                "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_co_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "drainage_fraction_day": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "field_capacity_fraction": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_co_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "q10": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "ST": {
-                "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_co_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "drainage_fraction_day": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "field_capacity_fraction": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_co_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "q10": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
+              "S1": {},
+              "ST": {},
               "convergence": {
+                "discrete": true,
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
-              "group_S1": {
-                "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "source_not_checked": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "verified_in_source": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "group_ST": {
-                "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "source_not_checked": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "verified_in_source": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "median": null,
-              "mode": "refusal_indicator",
-              "q05": null,
-              "q25": null,
-              "q75": null,
-              "q95": null,
-              "refusal_fraction": 1.0
+              "group_S1": null,
+              "group_ST": null,
+              "median": 0.0,
+              "mode": "constant",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0
             },
             "h2_uptake_contrast_umol_m2": {
-              "S1": {
-                "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_co_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "drainage_fraction_day": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "field_capacity_fraction": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_co_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "q10": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "ST": {
-                "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_co_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "drainage_fraction_day": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "field_capacity_fraction": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_co_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "q10": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
+              "S1": {},
+              "ST": {},
               "convergence": {
+                "discrete": true,
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
-              "group_S1": {
-                "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "source_not_checked": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "verified_in_source": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "group_ST": {
-                "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "source_not_checked": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "verified_in_source": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "median": null,
-              "mode": "refusal_indicator",
-              "q05": null,
-              "q25": null,
-              "q75": null,
-              "q95": null,
-              "refusal_fraction": 1.0
+              "group_S1": null,
+              "group_ST": null,
+              "median": 0.0,
+              "mode": "constant",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0
             },
             "h2_uptake_umol_m2": {
               "S1": {
                 "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.00898014,
+                  -0.00715262,
+                  0.0256571
                 ],
                 "d_co_m2_s": [
                   0.0,
@@ -6897,9 +5444,9 @@
                   0.0
                 ],
                 "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.000330225,
+                  -0.00595679,
+                  0.00544899
                 ],
                 "drainage_fraction_day": [
                   0.0,
@@ -6907,9 +5454,9 @@
                   0.0
                 ],
                 "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.000510708,
+                  -0.000395859,
+                  0.00150696
                 ],
                 "field_capacity_fraction": [
                   0.0,
@@ -6922,19 +5469,19 @@
                   0.0
                 ],
                 "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.766675,
+                  0.632855,
+                  0.911451
                 ],
                 "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.00338029,
+                  -0.00297025,
+                  0.00935938
                 ],
                 "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.0566116,
+                  0.0229888,
+                  0.0884031
                 ],
                 "q10": [
                   0.0,
@@ -6942,21 +5489,21 @@
                   0.0
                 ],
                 "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.069272,
+                  0.0301849,
+                  0.120242
                 ],
                 "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.00351495,
+                  -0.00526828,
+                  0.012185
                 ]
               },
               "ST": {
                 "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.0111338,
+                  0.009292,
+                  0.0131985
                 ],
                 "d_co_m2_s": [
                   0.0,
@@ -6964,9 +5511,9 @@
                   0.0
                 ],
                 "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.00189516,
+                  0.00146543,
+                  0.00236853
                 ],
                 "drainage_fraction_day": [
                   0.0,
@@ -6974,9 +5521,9 @@
                   0.0
                 ],
                 "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
+                  6.82967e-05,
+                  5.47905e-05,
+                  8.36773e-05
                 ],
                 "field_capacity_fraction": [
                   0.0,
@@ -6989,19 +5536,19 @@
                   0.0
                 ],
                 "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.860071,
+                  0.777384,
+                  0.944182
                 ],
                 "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.00261759,
+                  0.00208753,
+                  0.00319938
                 ],
                 "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.0850119,
+                  0.072281,
+                  0.0992034
                 ],
                 "q10": [
                   0.0,
@@ -7009,25 +5556,26 @@
                   0.0
                 ],
                 "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.125587,
+                  0.108926,
+                  0.147222
                 ],
                 "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.00531917,
+                  0.00459972,
+                  0.00617274
                 ]
               },
               "convergence": {
+                "discrete": false,
                 "flagged": false,
-                "half_n_shift_frac": 0.0
+                "half_n_shift_frac": 0.00168371
               },
               "group_S1": {
                 "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.987769,
+                  0.828976,
+                  1.14786
                 ],
                 "source_not_checked": [
                   0.0,
@@ -7042,9 +5590,9 @@
               },
               "group_ST": {
                 "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.992999,
+                  0.923844,
+                  1.0605
                 ],
                 "source_not_checked": [
                   0.0,
@@ -7057,194 +5605,31 @@
                   0.0
                 ]
               },
-              "median": null,
-              "mode": "refusal_indicator",
-              "q05": null,
-              "q25": null,
-              "q75": null,
-              "q95": null,
-              "refusal_fraction": 1.0
+              "median": 932.754,
+              "mode": "variance",
+              "q05": 118.173,
+              "q25": 347.795,
+              "q75": 2254.53,
+              "q95": 4831.78,
+              "refusal_fraction": 0.0
             },
             "mean_nacl_mol_l": {
-              "S1": {
-                "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_co_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "drainage_fraction_day": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "field_capacity_fraction": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_co_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "q10": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "ST": {
-                "activation_shape": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_co_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "d_h2_m2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "drainage_fraction_day": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "dry_threshold_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "field_capacity_fraction": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_co_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "k_h2_s": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "psi_entry_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "q10": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "retention_b": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "wet_activation_mpa": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
+              "S1": {},
+              "ST": {},
               "convergence": {
+                "discrete": true,
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
-              "group_S1": {
-                "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "source_not_checked": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "verified_in_source": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "group_ST": {
-                "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "source_not_checked": [
-                  0.0,
-                  0.0,
-                  0.0
-                ],
-                "verified_in_source": [
-                  0.0,
-                  0.0,
-                  0.0
-                ]
-              },
-              "median": null,
-              "mode": "refusal_indicator",
-              "q05": null,
-              "q25": null,
-              "q75": null,
-              "q95": null,
-              "refusal_fraction": 1.0
+              "group_S1": null,
+              "group_ST": null,
+              "median": 0.0,
+              "mode": "constant",
+              "q05": 0.0,
+              "q25": 0.0,
+              "q75": 0.0,
+              "q95": 0.0,
+              "refusal_fraction": 0.0
             },
             "porosity": {
               "S1": {
@@ -7289,9 +5674,9 @@
                   0.0
                 ],
                 "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.99453,
+                  -0.0870729,
+                  2.26255
                 ],
                 "psi_entry_mpa": [
                   0.0,
@@ -7356,9 +5741,9 @@
                   0.0
                 ],
                 "porosity": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.99449,
+                  0.930214,
+                  1.05822
                 ],
                 "psi_entry_mpa": [
                   0.0,
@@ -7382,14 +5767,15 @@
                 ]
               },
               "convergence": {
+                "discrete": false,
                 "flagged": false,
-                "half_n_shift_frac": 0.0
+                "half_n_shift_frac": 0.000135204
               },
               "group_S1": {
                 "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.99453,
+                  -0.0870729,
+                  2.26255
                 ],
                 "source_not_checked": [
                   0.0,
@@ -7404,9 +5790,9 @@
               },
               "group_ST": {
                 "modeller_assumption": [
-                  0.0,
-                  0.0,
-                  0.0
+                  0.99449,
+                  0.930214,
+                  1.05822
                 ],
                 "source_not_checked": [
                   0.0,
@@ -7419,16 +5805,16 @@
                   0.0
                 ]
               },
-              "median": null,
-              "mode": "refusal_indicator",
-              "q05": null,
-              "q25": null,
-              "q75": null,
-              "q95": null,
-              "refusal_fraction": 1.0
+              "median": 0.413383,
+              "mode": "variance",
+              "q05": 0.369415,
+              "q25": 0.393306,
+              "q75": 0.438738,
+              "q95": 0.472475,
+              "refusal_fraction": 0.0
             }
           },
-          "x": "51PRr1"
+          "x": "58PRr3"
         },
         {
           "central": {
@@ -7800,14 +6186,14 @@
                   0.00375044
                 ],
                 "d_h2_m2_s": [
-                  -7.151e-18,
-                  -1.23467e-17,
-                  -3.02379e-18
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "drainage_fraction_day": [
-                  -7.14762e-18,
-                  -1.24146e-17,
-                  -3.06405e-18
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "dry_threshold_mpa": [
                   0.000124904,
@@ -7867,14 +6253,14 @@
                   0.00385996
                 ],
                 "d_h2_m2_s": [
-                  1.21213e-33,
-                  5.95059e-34,
-                  1.926e-33
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "drainage_fraction_day": [
-                  1.20508e-33,
-                  5.83501e-34,
-                  1.91956e-33
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "dry_threshold_mpa": [
                   8.38891e-05,
@@ -7934,14 +6320,14 @@
                   1.1674
                 ],
                 "source_not_checked": [
-                  -5.26743e-18,
-                  -9.56104e-18,
-                  -1.92236e-18
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "verified_in_source": [
-                  -7.151e-18,
-                  -1.23467e-17,
-                  -3.02379e-18
+                  0.0,
+                  0.0,
+                  0.0
                 ]
               },
               "group_ST": {
@@ -7951,14 +6337,14 @@
                   1.05914
                 ],
                 "source_not_checked": [
-                  8.96382e-34,
-                  3.90146e-34,
-                  1.5882e-33
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "verified_in_source": [
-                  1.21213e-33,
-                  5.95059e-34,
-                  1.926e-33
+                  0.0,
+                  0.0,
+                  0.0
                 ]
               },
               "median": 126.411,
@@ -8049,9 +6435,9 @@
                   0.0135147
                 ],
                 "d_co_m2_s": [
-                  -1.11895e-20,
-                  -1.9279e-19,
-                  1.76584e-19
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "d_h2_m2_s": [
                   0.00134183,
@@ -8059,9 +6445,9 @@
                   0.00667655
                 ],
                 "drainage_fraction_day": [
-                  -1.08941e-18,
-                  -4.23734e-18,
-                  1.92724e-18
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "dry_threshold_mpa": [
                   -0.000602204,
@@ -8116,9 +6502,9 @@
                   0.0123545
                 ],
                 "d_co_m2_s": [
-                  1.45024e-35,
-                  6.27e-37,
-                  3.96373e-35
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "d_h2_m2_s": [
                   0.00190287,
@@ -8126,9 +6512,9 @@
                   0.00226183
                 ],
                 "drainage_fraction_day": [
-                  7.25204e-34,
-                  3.2781e-34,
-                  1.18344e-33
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "dry_threshold_mpa": [
                   6.66148e-05,
@@ -8188,14 +6574,14 @@
                   1.20598
                 ],
                 "source_not_checked": [
-                  4.44885e-19,
-                  -1.84587e-18,
-                  3.21523e-18
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "verified_in_source": [
-                  -1.2056e-18,
-                  -4.2776e-18,
-                  2.0468e-18
+                  0.0,
+                  0.0,
+                  0.0
                 ]
               },
               "group_ST": {
@@ -8205,14 +6591,14 @@
                   1.06682
                 ],
                 "source_not_checked": [
-                  5.74865e-34,
-                  2.29237e-34,
-                  1.04117e-33
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "verified_in_source": [
-                  7.93101e-34,
-                  4.02535e-34,
-                  1.26026e-33
+                  0.0,
+                  0.0,
+                  0.0
                 ]
               },
               "median": 963.012,
@@ -8821,9 +7207,9 @@
                   0.901936
                 ],
                 "k_h2_s": [
-                  -2.36977e-18,
-                  -5.86203e-18,
-                  -4.84278e-20
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "porosity": [
                   -0.00467577,
@@ -8888,9 +7274,9 @@
                   0.917198
                 ],
                 "k_h2_s": [
-                  1.74662e-34,
-                  2.27327e-35,
-                  3.97759e-34
+                  0.0,
+                  0.0,
+                  0.0
                 ],
                 "porosity": [
                   0.00402169,

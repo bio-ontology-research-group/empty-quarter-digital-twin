@@ -187,9 +187,20 @@ def _independent_slot_value(expr: str, uq_doc: dict, reg: dict[str, float]) -> s
             samps = [
                 str(l["x"])
                 for l in levels
-                if float(l["outputs"]["co_uptake_umol_m2"]["refusal_fraction"]) == 1.0
+                if float(l["outputs"]["co_uptake_umol_m2"]["refusal_fraction"]) >= 0.05
             ]
-            return f"{samps[0]} and {samps[1]}"
+            if not samps:
+                return ""
+            if len(samps) == 1:
+                joined = samps[0]
+            elif len(samps) == 2:
+                joined = f"{samps[0]} and {samps[1]}"
+            else:
+                joined = ", ".join(samps[:-1]) + f" and {samps[-1]}"
+            return (
+                f" For {joined} the read-mapping weights needed to compute carrier shares are missing, and "
+                f"the twin refuses the request."
+            )
         raise AssertionError(f"Unexpected special slot {sname}")
 
     sl, out_key, stat = core.split(":")
