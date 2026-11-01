@@ -1,3 +1,7 @@
+# v0.8.2 — Median core numbers on question pages — 1 November 2026
+
+- Core numbers on question pages are the median across parameter draws.
+
 # v0.8.1 — Science-page prose and zero-variance UQ reporting — 1 November 2026
 
 - Science-page texts rewritten as scientific prose; zero-variance outputs reported without sensitivity indices.

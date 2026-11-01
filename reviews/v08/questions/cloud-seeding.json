@@ -29,8 +29,9 @@
   },
   "headline_output": "h2_uptake_change_pct",
   "headline_plain": "If cloud seeding really added ten percent more rain on rainy days, hydrogen uptake over two weeks would rise by about 13 %, though whether seeding adds that much rain is disputed.",
+  "headline_reference": 12.687363981664342,
   "headline_science": "With the seeding efficacy sampled between no effect and 20 % additional rain on rain days (central 10 %), 14-day H\u2082 uptake rose by a median of 13 % (90 % interval 3.6 to 31 %; reference parameterisation +13 %); doubling the seeding intensity gave 23 % (5.5 to 65 %).",
-  "headline_value": 12.687363981664342,
+  "headline_value": 12.8312,
   "level_kind": "numeric",
   "limits_plain": "The range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong. Cloud seeding can only add water when suitable clouds are already present; the twin does not predict when clouds form.",
   "limits_science": "The efficacy range follows the WMO statement on weather modification, which reports no established quantitative rain enhancement; the result is conditional on the additional rain occurring. The baseline contains one rain day, so seeding acts on a single event within the 14-day window.",
@@ -167,6 +168,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
@@ -188,6 +190,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -209,11 +212,12 @@
               "q25": 349.4,
               "q75": 2297.46,
               "q95": 4896.54,
+              "reference": 1102.33,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1102.33
+              "value": 922.909
             }
           },
           "sample": null,
@@ -461,11 +465,12 @@
               "q25": 4.40767,
               "q75": 9.48952,
               "q95": 15.7218,
+              "reference": 6.4250074999893405,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": 6.4250074999893405
+              "value": 6.47758
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -482,11 +487,12 @@
               "q25": 23.0691,
               "q75": 127.212,
               "q95": 263.37,
+              "reference": 70.8251,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 70.8251
+              "value": 59.2147
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -503,11 +509,12 @@
               "q25": 384.281,
               "q75": 2387.36,
               "q95": 5103.78,
+              "reference": 1173.16,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1173.16
+              "value": 1030.23
             }
           },
           "sample": null,
@@ -755,11 +762,12 @@
               "q25": 8.19803,
               "q75": 18.8139,
               "q95": 31.1604,
+              "reference": 12.687363981664342,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": 12.687363981664342
+              "value": 12.8312
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -776,11 +784,12 @@
               "q25": 46.4224,
               "q75": 249.351,
               "q95": 500.303,
+              "reference": 139.857,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 139.857
+              "value": 111.934
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -797,11 +806,12 @@
               "q25": 389.543,
               "q75": 2501.53,
               "q95": 5247.86,
+              "reference": 1242.19,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1242.19
+              "value": 1086.09
             }
           },
           "sample": null,
@@ -1049,11 +1059,12 @@
               "q25": 14.753,
               "q75": 35.9433,
               "q95": 64.6632,
+              "reference": 24.701542905248484,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": 24.701542905248484
+              "value": 22.8754
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -1070,11 +1081,12 @@
               "q25": 82.6618,
               "q75": 435.341,
               "q95": 879.362,
+              "reference": 272.294,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 272.294
+              "value": 199.481
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -1091,11 +1103,12 @@
               "q25": 451.306,
               "q75": 2786.49,
               "q95": 5476.48,
+              "reference": 1374.63,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1374.63
+              "value": 1208.39
             }
           },
           "sample": null,
@@ -1330,7 +1343,7 @@
   "theme": "water",
   "title_plain": "What if cloud seeding adds rain?",
   "title_science": "Additional rain from cloud seeding",
-  "twin_version": "0.8.1",
+  "twin_version": "0.8.2",
   "uncertainty": {
     "S1": {
       "activation_shape": [

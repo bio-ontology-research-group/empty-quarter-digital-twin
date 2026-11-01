@@ -1,5 +1,5 @@
 {
-  "answer_plain": "Fifty vehicle passes change hydrogen uptake over two weeks by about -1.5 % (from 19 % lower to 40 % higher), so the change may go up or down. Squeezing the sand slows gas movement through the pores but also changes how tightly the sand holds water.",
+  "answer_plain": "Fifty vehicle passes change hydrogen uptake over two weeks by about +0.21 % (from 19 % lower to 40 % higher), so the change may go up or down. Squeezing the sand slows gas movement through the pores but also changes how tightly the sand holds water.",
   "answer_science": "Fifty vehicle passes lowered porosity from 0.40 to 0.306 and changed 14-day H\u2082 uptake by a median of +0.21 %; the 90 % interval includes decreases and increases (\u221219 to +40 %). Lower porosity acts in two directions: it reduces the gas-filled pore space, which slows H\u2082 diffusion, and it raises the water saturation reached after the rain, which lengthens activation. The net response to compaction is therefore non-monotonic and depends on the H\u2082 rate constant k_H2 and the retention exponent b (S_T = 0.36 and 0.34).",
   "baseline_label": "Uncompacted sand (pore space 40 % of volume)",
   "chain": [
@@ -29,9 +29,10 @@
     "x": 50.0
   },
   "headline_output": "h2_uptake_change_pct",
-  "headline_plain": "Fifty vehicle passes change hydrogen uptake over two weeks by about -1.5 %, and the change may go up or down.",
+  "headline_plain": "Fifty vehicle passes change hydrogen uptake over two weeks by about +0.21 %, and the change may go up or down.",
+  "headline_reference": -1.493638639219352,
   "headline_science": "Fifty vehicle passes lowered porosity from 0.40 to 0.306 and changed 14-day H\u2082 uptake by a median of +0.21 %; the 90 % interval includes decreases and increases (\u221219 to +40 %).",
-  "headline_value": -1.493638639219352,
+  "headline_value": 0.205433,
   "level_kind": "numeric",
   "limits_plain": "The range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong. Crushing of soil crusts, plants or burrows by tyres is not modelled beyond the drop in pore space.",
   "limits_science": "The conversion from vehicle passes to bulk density is an exponential approach to a maximum increase, fitted by the modeller to Mojave off-road studies (Webb 1983). Compaction changes porosity only; the retention curve keeps its parameters.",
@@ -206,6 +207,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
@@ -227,6 +229,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -248,11 +251,12 @@
               "q25": 343.307,
               "q75": 2261.26,
               "q95": 4689.92,
+              "reference": 1102.33,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1102.33
+              "value": 962.113
             },
             "porosity": {
               "convergence": {
@@ -269,6 +273,7 @@
               "q25": 0.4,
               "q75": 0.4,
               "q95": 0.4,
+              "reference": 0.4,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "m\u00b3 m\u207b\u00b3",
@@ -521,11 +526,12 @@
               "q25": -0.58254,
               "q75": 2.71607,
               "q95": 6.73025,
+              "reference": 0.8037483946278011,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": 0.8037483946278011
+              "value": 0.688862
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -542,11 +548,12 @@
               "q25": -12.3071,
               "q75": 10.6452,
               "q95": 30.0483,
+              "reference": 8.85996,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 8.85996
+              "value": 3.86151
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -563,11 +570,12 @@
               "q25": 356.435,
               "q75": 2297.96,
               "q95": 4635.33,
+              "reference": 1111.19,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1111.19
+              "value": 982.345
             },
             "porosity": {
               "convergence": {
@@ -584,11 +592,12 @@
               "q25": 0.382119,
               "q75": 0.387932,
               "q95": 0.390888,
+              "reference": 0.382899,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "m\u00b3 m\u207b\u00b3",
               "unit_plain": "fraction of sand volume",
-              "value": 0.382899
+              "value": 0.385326
             }
           },
           "sample": null,
@@ -836,11 +845,12 @@
               "q25": -6.12702,
               "q75": 11.2233,
               "q95": 31.2572,
+              "reference": -0.3122525530102063,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": -0.3122525530102063
+              "value": 1.89061
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -857,11 +867,12 @@
               "q25": -126.874,
               "q75": 39.912,
               "q95": 109.851,
+              "reference": -3.44206,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": -3.44206
+              "value": 9.70377
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -878,11 +889,12 @@
               "q25": 388.754,
               "q75": 2123.35,
               "q95": 4184.17,
+              "reference": 1098.89,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1098.89
+              "value": 992.661
             },
             "porosity": {
               "convergence": {
@@ -899,11 +911,12 @@
               "q25": 0.313243,
               "q75": 0.333615,
               "q95": 0.346013,
+              "reference": 0.318428,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "m\u00b3 m\u207b\u00b3",
               "unit_plain": "fraction of sand volume",
-              "value": 0.318428
+              "value": 0.323607
             }
           },
           "sample": null,
@@ -1151,11 +1164,12 @@
               "q25": -9.25377,
               "q75": 11.3412,
               "q95": 40.289,
+              "reference": -1.493638639219352,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": -1.493638639219352
+              "value": 0.205433
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -1172,11 +1186,12 @@
               "q25": -196.503,
               "q75": 38.7638,
               "q95": 110.015,
+              "reference": -16.4649,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": -16.4649
+              "value": 1.12524
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -1193,11 +1208,12 @@
               "q25": 398.044,
               "q75": 2087.05,
               "q95": 3920.5,
+              "reference": 1085.87,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1085.87
+              "value": 987.008
             },
             "porosity": {
               "convergence": {
@@ -1214,11 +1230,12 @@
               "q25": 0.294687,
               "q75": 0.316775,
               "q95": 0.331403,
+              "reference": 0.305665,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "m\u00b3 m\u207b\u00b3",
               "unit_plain": "fraction of sand volume",
-              "value": 0.305665
+              "value": 0.305849
             }
           },
           "sample": null,
@@ -1473,11 +1490,12 @@
               "q25": -10.3461,
               "q75": 13.2291,
               "q95": 39.6809,
+              "reference": -2.137850309383806,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": -2.137850309383806
+              "value": -0.177721
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -1494,11 +1512,12 @@
               "q25": -221.89,
               "q75": 44.3464,
               "q95": 125.595,
+              "reference": -23.5663,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": -23.5663
+              "value": -1.15179
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -1515,11 +1534,12 @@
               "q25": 405.358,
               "q75": 2077.23,
               "q95": 3823.36,
+              "reference": 1078.77,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1078.77
+              "value": 979.98
             },
             "porosity": {
               "convergence": {
@@ -1536,6 +1556,7 @@
               "q25": 0.3,
               "q75": 0.3,
               "q95": 0.3,
+              "reference": 0.3,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "m\u00b3 m\u207b\u00b3",
@@ -1775,7 +1796,7 @@
   "theme": "soil",
   "title_plain": "What if vehicles compact the sand?",
   "title_science": "Soil compaction by vehicle traffic",
-  "twin_version": "0.8.1",
+  "twin_version": "0.8.2",
   "uncertainty": {
     "S1": {
       "activation_shape": [

@@ -1,5 +1,5 @@
 {
-  "answer_plain": "Four degrees of warming with the same rainfall changes hydrogen uptake over two weeks by about +7.2 % in the model's central run. Across the uncertain numbers it may go up or down (from 13 % lower to 10 % higher), and a typical run is slightly lower (about 2.6 %). Warming only the sand by 10 degrees, with no extra drying, raises uptake by about 69 % in the central run (by 3.8 to 78 %; typical run about 36 %).",
+  "answer_plain": "Four degrees of warming with the same rainfall changes hydrogen uptake over two weeks by about 2.6 % downwards in a typical case, but it may go up or down (from 13 % lower to 10 % higher). Warming only the sand by 10 degrees, with no extra drying, raises uptake by about 36 % (by 3.8 to 78 %).",
   "answer_science": "Warming the soil at fixed moisture raised 14-day H\u2082 uptake in every draw, by a median of 13 % at +4 \u00b0C (1.5 to 26 %) and 36 % at +10 \u00b0C (3.8 to 78 %), with Q10 explaining most of the variance (S_T = 0.88). Climate warming of the same magnitude also raises the evaporative demand, which shortens the wet period. At +4 \u00b0C with unchanged rainfall the two effects nearly cancel: the reference parameterisation gives +7.2 %, the median is \u22122.6 %, and the 90 % interval includes decreases and increases (\u221213 to +10 %). The sign of the climate response is set by the balance between Q10 (S_T = 0.75) and the evaporation scaling (S_T = 0.15).",
   "baseline_label": "One 12 mm rain on day 1 at 25 \u00b0C",
   "chain": [
@@ -28,9 +28,10 @@
     "x": 4.0
   },
   "headline_output": "h2_uptake_change_pct",
-  "headline_plain": "Four degrees of warming changes hydrogen uptake over two weeks by about +7.2 % in the central run, but a typical run is about 2.6 % lower and uptake may go up or down.",
+  "headline_plain": "Four degrees of warming with the same rainfall changes hydrogen uptake over two weeks by about 2.6 % downwards in a typical case, and uptake may go up or down.",
+  "headline_reference": 7.158453973228711,
   "headline_science": "Warming the soil at fixed moisture raised 14-day H\u2082 uptake in every draw, by a median of 13 % at +4 \u00b0C (1.5 to 26 %) and 36 % at +10 \u00b0C (3.8 to 78 %), with Q10 explaining most of the variance (S_T = 0.88).",
-  "headline_value": 7.158453973228711,
+  "headline_value": -2.64495,
   "level_kind": "numeric",
   "limits_plain": "The range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong. Heat stress death at extreme afternoon surface temperatures is not included in the simple warming curve.",
   "limits_science": "Soil temperature follows air temperature one to one, and evaporative demand scales with warming after Scheff and Frierson (2014). The kinetic temperature response is a single Q10 relation, valid within the 0 to 50 \u00b0C range of the twin.",
@@ -190,6 +191,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
@@ -211,6 +213,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -232,11 +235,12 @@
               "q25": 355.068,
               "q75": 2257.53,
               "q95": 4647.72,
+              "reference": 1102.33,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1102.33
+              "value": 922.576
             }
           },
           "sample": null,
@@ -484,11 +488,12 @@
               "q25": 2.60637,
               "q75": 6.76626,
               "q95": 9.19543,
+              "reference": 8.623779173136635,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": 8.623779173136635
+              "value": 4.78961
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -505,11 +510,12 @@
               "q25": 14.2285,
               "q75": 86.8764,
               "q95": 199.843,
+              "reference": 95.0631,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 95.0631
+              "value": 36.1894
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -526,11 +532,12 @@
               "q25": 356.699,
               "q75": 2349.28,
               "q95": 5019.31,
+              "reference": 1197.4,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1197.4
+              "value": 1002.3
             }
           },
           "sample": null,
@@ -778,11 +785,12 @@
               "q25": 3.4969,
               "q75": 9.11427,
               "q95": 12.446,
+              "reference": 11.627088415367075,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": 11.627088415367075
+              "value": 6.40228
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -799,11 +807,12 @@
               "q25": 18.5107,
               "q75": 117.862,
               "q95": 268.623,
+              "reference": 128.169,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 128.169
+              "value": 50.117
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -820,11 +829,12 @@
               "q25": 373.387,
               "q75": 2392.05,
               "q95": 5009.42,
+              "reference": 1230.5,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1230.5
+              "value": 981.636
             }
           },
           "sample": null,
@@ -1072,11 +1082,12 @@
               "q25": 7.07566,
               "q75": 18.8291,
               "q95": 26.3189,
+              "reference": 24.30386154430928,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": 24.30386154430928
+              "value": 13.1667
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -1093,11 +1104,12 @@
               "q25": 37.0185,
               "q75": 234.667,
               "q95": 563.969,
+              "reference": 267.909,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 267.909
+              "value": 100.302
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -1114,11 +1126,12 @@
               "q25": 391.504,
               "q75": 2524.83,
               "q95": 5355.4,
+              "reference": 1370.24,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1370.24
+              "value": 1086.47
             }
           },
           "sample": null,
@@ -1366,11 +1379,12 @@
               "q25": 18.4624,
               "q75": 52.5249,
               "q95": 77.8313,
+              "reference": 69.09258652800293,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": 69.09258652800293
+              "value": 35.5262
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -1387,11 +1401,12 @@
               "q25": 102.113,
               "q75": 648.934,
               "q95": 1503.46,
+              "reference": 761.629,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 761.629
+              "value": 272.802
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -1408,11 +1423,12 @@
               "q25": 476.764,
               "q75": 2914.66,
               "q95": 6181.06,
+              "reference": 1863.96,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1863.96
+              "value": 1280.63
             }
           },
           "sample": null,
@@ -1667,6 +1683,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
@@ -1688,6 +1705,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -1709,11 +1727,12 @@
               "q25": 342.809,
               "q75": 2299.96,
               "q95": 4848.97,
+              "reference": 1102.33,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1102.33
+              "value": 940.655
             }
           },
           "sample": null,
@@ -1961,11 +1980,12 @@
               "q25": -3.20661,
               "q75": 0.834116,
               "q95": 3.59181,
+              "reference": 2.47525614731791,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": 2.47525614731791
+              "value": -1.22314
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -1982,11 +2002,12 @@
               "q25": -40.9846,
               "q75": 3.58356,
               "q95": 28.5004,
+              "reference": 27.2856,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 27.2856
+              "value": -7.58024
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -2003,11 +2024,12 @@
               "q25": 336.835,
               "q75": 2257.97,
               "q95": 4718.57,
+              "reference": 1129.62,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1129.62
+              "value": 923.686
             }
           },
           "sample": null,
@@ -2255,11 +2277,12 @@
               "q25": -4.33463,
               "q75": 1.19487,
               "q95": 4.92142,
+              "reference": 3.3583784740970404,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": 3.3583784740970404
+              "value": -1.60131
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -2276,11 +2299,12 @@
               "q25": -51.8537,
               "q75": 5.29208,
               "q95": 36.9053,
+              "reference": 37.0204,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 37.0204
+              "value": -10.1648
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -2297,11 +2321,12 @@
               "q25": 338.99,
               "q75": 2259.94,
               "q95": 4585.65,
+              "reference": 1139.35,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1139.35
+              "value": 927.351
             }
           },
           "sample": null,
@@ -2549,11 +2574,12 @@
               "q25": -7.68772,
               "q75": 2.71372,
               "q95": 9.97477,
+              "reference": 7.158453973228711,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": 7.158453973228711
+              "value": -2.64495
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -2570,11 +2596,12 @@
               "q25": -93.2614,
               "q75": 13.6399,
               "q95": 82.5206,
+              "reference": 78.9098,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 78.9098
+              "value": -15.4395
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -2591,11 +2618,12 @@
               "q25": 336.967,
               "q75": 2198.69,
               "q95": 4529.62,
+              "reference": 1181.24,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1181.24
+              "value": 918.712
             }
           },
           "sample": null,
@@ -2830,7 +2858,7 @@
   "theme": "heat",
   "title_plain": "What if it gets hotter?",
   "title_science": "Soil warming and climate warming",
-  "twin_version": "0.8.1",
+  "twin_version": "0.8.2",
   "uncertainty": {
     "S1": {
       "activation_shape": [

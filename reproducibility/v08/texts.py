@@ -425,7 +425,7 @@ def round_plain(x: float | None, decimals: int | None = None) -> str:
         return f"{round(val):,}"
     if ax >= 10.0:
         return f"{round(val):d}"
-    if ax >= 0.1:
+    if ax >= 1.0:
         s = f"{val:.1f}".rstrip("0").rstrip(".")
         return "0" if s in {"-0", ""} else s
     if ax >= 0.01:
@@ -435,10 +435,12 @@ def round_plain(x: float | None, decimals: int | None = None) -> str:
     return "0" if s in {"-0", ""} else s
 
 
-def science_central(q: dict[str, Any]) -> float:
-    """Return the central headline value from a built question dict (in % for relative_yield_*)."""
+def science_median(q: dict[str, Any]) -> float:
+    """Return the core (median) headline value from a built question dict (in % for relative_yield_*)."""
     if "headline_value" in q and q["headline_value"] is not None:
         val = float(q["headline_value"])
+    elif "uncertainty" in q and q["uncertainty"].get("median") is not None:
+        val = float(q["uncertainty"]["median"])
     else:
         s_id, l_idx, out_key = HEADLINE_SPEC[q["slug"]]
         s = next(sr for sr in q["series"] if sr["id"] == s_id)
@@ -447,6 +449,9 @@ def science_central(q: dict[str, Any]) -> float:
     if out_key.startswith("relative_yield_") and abs(val) <= 2.0:
         return 100.0 * val
     return val
+
+
+science_central = science_median
 
 
 def plain_number(q: dict[str, Any]) -> str:
@@ -583,6 +588,17 @@ def _get_uq_level(uq_doc: dict[str, Any] | None, series_id: str, level_idx: int)
     return None
 
 
+def _level_median(lvl: dict[str, Any] | None, key: str, default: float) -> float:
+    if lvl:
+        out = (lvl.get("outputs") or {}).get(key) or {}
+        if out.get("median") is not None:
+            return float(out["median"])
+        central = lvl.get("central") or {}
+        if central.get(key) is not None:
+            return float(central[key])
+    return float(default)
+
+
 def render_question_texts(
     slug: str,
     central_val: float,
@@ -594,19 +610,16 @@ def render_question_texts(
     s_id, l_idx, out_key = HEADLINE_SPEC[slug]
     is_rel_yield = out_key.startswith("relative_yield_")
     is_change = out_key in {"h2_uptake_change_pct", "co_uptake_change_pct"}
-    display_central = 100.0 * central_val if (is_rel_yield and abs(central_val) <= 2.0) else central_val
-    core = round_plain(abs(display_central) if is_change else display_central)
-
     q05 = outcome_uq.get("q05")
     q25 = outcome_uq.get("q25")
     q75 = outcome_uq.get("q75")
     q95 = outcome_uq.get("q95")
     median = outcome_uq.get("median")
-    mode = str(outcome_uq.get("mode", "variance"))
-    ref_frac = float(outcome_uq.get("refusal_fraction", 0.0))
+    core_val = float(median) if median is not None else float(central_val)
+    display_core = 100.0 * core_val if (is_rel_yield and abs(core_val) <= 2.0) else core_val
+    core = round_plain(abs(display_core) if is_change else display_core)
 
     meta = OUTCOME_META[out_key]
-    unit_sci = meta["unit"]
     unit_plain = meta["unit_plain"]
     if is_change:
         rng_plain = format_change_pct_interval(q05, q95)
@@ -619,19 +632,18 @@ def render_question_texts(
 
     hedge = _hedge_phrase(q05, q95)
     h_lvl = _get_uq_level(uq_doc, s_id, l_idx)
-    h_central_map = (h_lvl or {}).get("central", {})
     h_outputs_map = (h_lvl or {}).get("outputs", {})
 
     if slug == "rain-pattern":
         driz_lvl = _get_uq_level(uq_doc, "rain-schedule", 3)
-        driz_c = float((driz_lvl or {}).get("central", {}).get("h2_uptake_change_pct", -99.74))
+        driz_m = _level_median(driz_lvl, "h2_uptake_change_pct", -99.93)
         driz_o = (driz_lvl or {}).get("outputs", {}).get("h2_uptake_change_pct", {})
         driz_str = (
-            f"almost {round_plain(abs(driz_c))} %"
-            if 99.0 <= abs(driz_c) < 100.0
-            else f"{round_plain(abs(driz_c))} %"
+            f"almost {round_plain(abs(driz_m))} %"
+            if 99.0 <= abs(driz_m) < 100.0
+            else f"{round_plain(abs(driz_m))} %"
         )
-        driz_rng = format_change_pct_interval(driz_o.get("q05", -99.93), driz_o.get("q95", -51.40))
+        driz_rng = format_change_pct_interval(driz_o.get("q05", -100.0), driz_o.get("q95", -51.32))
         headline_plain = (
             f"Splitting one heavy rain into four smaller showers lowers hydrogen uptake over two weeks "
             f"by about {core} %, and daily drizzle lowers it by {driz_str}, so uptake {hedge}."
@@ -649,18 +661,18 @@ def render_question_texts(
         )
     elif slug == "drip-or-flood":
         days_10 = _num_word(int(round(float((h_lvl or {}).get("x", 10)))))
-        signed_core = f"-{core}" if display_central < 0 else f"+{core}"
+        signed_core = f"-{core}" if display_core < 0 else f"+{core}"
         lvl_3 = _get_uq_level(uq_doc, "irrigation-interval", 1)
         days_3 = _num_word(int(round(float((lvl_3 or {}).get("x", 3)))))
-        c_3 = round_plain(abs(float((lvl_3 or {}).get("central", {}).get("h2_uptake_change_pct", -36.84))))
+        c_3 = round_plain(abs(_level_median(lvl_3, "h2_uptake_change_pct", -26.64)))
         o_3 = (lvl_3 or {}).get("outputs", {}).get("h2_uptake_change_pct", {})
-        lo_3 = round_plain(abs(float(o_3.get("q05", -68.18))))
-        hi_3 = round_plain(abs(float(o_3.get("q95", 129.39))))
+        lo_3 = round_plain(abs(float(o_3.get("q05", -68.34))))
+        hi_3 = round_plain(abs(float(o_3.get("q95", 128.57))))
         lvl_1 = _get_uq_level(uq_doc, "irrigation-interval", 0)
-        c_1 = round_plain(abs(float((lvl_1 or {}).get("central", {}).get("h2_uptake_change_pct", -38.35))))
+        c_1 = round_plain(abs(_level_median(lvl_1, "h2_uptake_change_pct", -28.93)))
         o_1 = (lvl_1 or {}).get("outputs", {}).get("h2_uptake_change_pct", {})
-        lo_1 = round_plain(abs(float(o_1.get("q05", -73.06))))
-        hi_1 = round_plain(abs(float(o_1.get("q95", 136.34))))
+        lo_1 = round_plain(abs(float(o_1.get("q05", -72.56))))
+        hi_1 = round_plain(abs(float(o_1.get("q95", 136.47))))
         headline_plain = (
             f"Giving the same total water every {days_10} days changes hydrogen uptake over two weeks "
             f"by about {signed_core} % relative to a single rain, versus about {c_1} % less for daily drip, "
@@ -702,10 +714,8 @@ def render_question_texts(
     elif slug == "salty-water":
         ec_8 = round_plain(float((h_lvl or {}).get("x", 8.0)))
         fresh_lvl = _get_uq_level(uq_doc, "daily-irrigation", 0)
-        fresh_drop = round_plain(
-            abs(float((fresh_lvl or {}).get("central", {}).get("h2_uptake_change_pct", -38.37)))
-        )
-        alf_c = round_plain(100.0 * float(h_central_map.get("relative_yield_alfalfa", 0.8904)))
+        fresh_drop = round_plain(abs(_level_median(fresh_lvl, "h2_uptake_change_pct", -29.28)))
+        alf_c = round_plain(100.0 * _level_median(h_lvl, "relative_yield_alfalfa", 0.8866))
         alf_o = h_outputs_map.get("relative_yield_alfalfa", {})
         alf_lo = round_plain(100.0 * float(alf_o.get("q05", 0.8295)))
         alf_hi = round_plain(100.0 * float(alf_o.get("q95", 0.9313)))
@@ -721,13 +731,13 @@ def render_question_texts(
                             ref_ec = round_plain(float(l.get("x", 2.0)))
                             break
         headline_plain = (
-            f"Watering every day with salty water ({ec_8} dS/m) gives about {core} % less hydrogen uptake "
-            f"over two weeks than one fresh rain (and {hedge}), but fresh daily watering alone gives about "
-            f"{fresh_drop} % less."
+            f"Watering every day with salty water gives about {core} % less hydrogen uptake "
+            f"over two weeks than one fresh rain (at {ec_8} dS/m, and it {hedge}), while fresh daily "
+            f"watering alone gives about {fresh_drop} % less."
         )
         answer_plain = (
-            f"Watering every day with salty water ({ec_8} dS/m) gives about {core} % less hydrogen uptake "
-            f"over two weeks than one fresh rain of the same size ({rng_plain}, so it {hedge}). "
+            f"Watering every day with salty water gives about {core} % less hydrogen uptake "
+            f"over two weeks than one fresh rain of the same size (at {ec_8} dS/m; {rng_plain}, so it {hedge}). "
             f"Almost all of that drop is the daily-watering pattern: fresh water given daily gives about "
             f"{fresh_drop} % less. "
             f"Saltiness itself adds only a few points. "
@@ -743,24 +753,16 @@ def render_question_texts(
         )
     elif slug == "alfalfa-bacterium":
         ec_hi = f"{float((h_lvl or {}).get('x', 7.81)):g}"
-        c_lo = round_plain(100.0 * float(q05 if q05 is not None else 0.8938))
-        c_hi = round_plain(100.0 * float(q95 if q95 is not None else 0.9313))
-        u_c = round_plain(100.0 * float(h_central_map.get("relative_yield_alfalfa", 0.7959)))
+        c_lo = round_plain(100.0 * float(q05 if q05 is not None else 0.8874))
+        c_hi = round_plain(100.0 * float(q95 if q95 is not None else 0.9310))
+        u_c = round_plain(100.0 * _level_median(h_lvl, "relative_yield_alfalfa", 0.7946))
         u_o = h_outputs_map.get("relative_yield_alfalfa", {})
         u_lo = round_plain(100.0 * float(u_o.get("q05", 0.7847)))
         u_hi = round_plain(100.0 * float(u_o.get("q95", 0.8109)))
-        mod_a_lvl = _get_uq_level(uq_doc, "A_fao_fixed_leaching", 1)
-        mod_b_lvl = _get_uq_level(uq_doc, "B_twin_physics", 1)
-        a_val = round_plain(
-            100.0 * float((mod_a_lvl or {}).get("central", {}).get("relative_yield_alfalfa_inoculated", 0.3324))
-        )
-        b_med = (
-            (mod_b_lvl or {})
-            .get("outputs", {})
-            .get("relative_yield_alfalfa_inoculated", {})
-            .get("median", 1.0128)
-        )
-        b_val = round_plain(100.0 * float(b_med))
+        mod_a_lvl = _get_uq_level(uq_doc, "A_fao_fixed_leaching", l_idx)
+        mod_b_lvl = _get_uq_level(uq_doc, "B_twin_physics", l_idx)
+        a_val = round_plain(100.0 * _level_median(mod_a_lvl, "relative_yield_alfalfa_sa187", 0.3204))
+        b_val = round_plain(100.0 * _level_median(mod_b_lvl, "relative_yield_alfalfa_sa187", 1.0128))
         headline_plain = (
             f"In a crop-salt formula fitted to one field trial, alfalfa from bacterium-coated seeds reaches "
             f"about {core} % of normal yield in {ec_hi} dS/m water (versus {u_c} % without it), though "
@@ -780,26 +782,21 @@ def render_question_texts(
         )
     elif slug == "hotter":
         deg_4 = _num_word(int(round(float((h_lvl or {}).get("x", 4.0))))).capitalize()
-        signed_core = f"+{core}" if display_central > 0 else f"-{core}"
-        med_4 = round_plain(abs(float(median if median is not None else -2.62)))
-        med_4_dir = "lower" if float(median if median is not None else -2.62) < 0 else "higher"
-        soil_lvl = _get_uq_level(uq_doc, "soil-only-v06", 2)
+        core_dir = "downwards" if display_core < 0 else "upwards"
+        soil_lvl = _get_uq_level(uq_doc, "warmer-soil-only", 4)
         deg_10 = round_plain(float((soil_lvl or {}).get("x", 10.0)))
-        s_c = round_plain(abs(float((soil_lvl or {}).get("central", {}).get("h2_uptake_change_pct", 69.08))))
+        s_m = round_plain(abs(_level_median(soil_lvl, "h2_uptake_change_pct", 35.53)))
         s_o = (soil_lvl or {}).get("outputs", {}).get("h2_uptake_change_pct", {})
-        s_rng = format_change_pct_interval(s_o.get("q05", 3.78), s_o.get("q95", 77.78))
-        s_med = round_plain(abs(float(s_o.get("median", 35.88))))
+        s_rng = format_change_pct_interval(s_o.get("q05", 3.79), s_o.get("q95", 77.83))
         headline_plain = (
-            f"{deg_4} degrees of warming changes hydrogen uptake over two weeks by about {signed_core} % in "
-            f"the central run, but a typical run is about {med_4} % {med_4_dir} and uptake {hedge}."
+            f"{deg_4} degrees of warming with the same rainfall changes hydrogen uptake over two weeks "
+            f"by about {core} % {core_dir} in a typical case, and uptake {hedge}."
         )
         answer_plain = (
-            f"{deg_4} degrees of warming with the same rainfall changes hydrogen uptake over two weeks by "
-            f"about {signed_core} % in the model's central run. "
-            f"Across the uncertain numbers it {hedge} ({rng_plain}), and a typical run is slightly "
-            f"{med_4_dir} (about {med_4} %). "
+            f"{deg_4} degrees of warming with the same rainfall changes hydrogen uptake over two weeks "
+            f"by about {core} % {core_dir} in a typical case, but it {hedge} ({rng_plain}). "
             f"Warming only the sand by {deg_10} degrees, with no extra drying, raises uptake by about "
-            f"{s_c} % in the central run ({s_rng}; typical run about {s_med} %)."
+            f"{s_m} % ({s_rng})."
         )
         limits_extra_plain = (
             "Heat stress death at extreme afternoon surface temperatures is not included in the simple "
@@ -807,14 +804,13 @@ def render_question_texts(
         )
     elif slug == "mulch-shade":
         sh_lvl = _get_uq_level(uq_doc, "shade-only", 2)
-        sh_c = round_plain(abs(float((sh_lvl or {}).get("central", {}).get("h2_uptake_change_pct", -24.76))))
+        sh_m = round_plain(abs(_level_median(sh_lvl, "h2_uptake_change_pct", -13.71)))
         sh_o = (sh_lvl or {}).get("outputs", {}).get("h2_uptake_change_pct", {})
-        sh_rng = format_change_pct_interval(sh_o.get("q05", -27.77), sh_o.get("q95", -1.72))
-        sh_med = round_plain(abs(float(sh_o.get("median", -13.68))))
+        sh_rng = format_change_pct_interval(sh_o.get("q05", -27.87), sh_o.get("q95", -1.74))
         ms_lvl = _get_uq_level(uq_doc, "mulch-and-shade", 2)
-        ms_c = round_plain(abs(float((ms_lvl or {}).get("central", {}).get("h2_uptake_change_pct", 14.07))))
+        ms_m = round_plain(abs(_level_median(ms_lvl, "h2_uptake_change_pct", 28.17)))
         ms_o = (ms_lvl or {}).get("outputs", {}).get("h2_uptake_change_pct", {})
-        ms_rng = format_change_pct_interval(ms_o.get("q05", -6.16), ms_o.get("q95", 70.11))
+        ms_rng = format_change_pct_interval(ms_o.get("q05", -6.22), ms_o.get("q95", 70.17))
         headline_plain = (
             f"Full mulch cover raises hydrogen uptake over two weeks by about {core} % by keeping the sand "
             f"damp longer, and uptake {hedge}."
@@ -822,8 +818,8 @@ def render_question_texts(
         answer_plain = (
             f"Full mulch cover raises hydrogen uptake over two weeks by about {core} % ({rng_plain}) by "
             f"slowing evaporation, so uptake with mulch alone {hedge}. "
-            f"Full shade alone lowers uptake by about {sh_c} % ({sh_rng}; typical run about {sh_med} % lower), "
-            f"and combining mulch with shade raises uptake by about {ms_c} % ({ms_rng}). "
+            f"Full shade alone lowers uptake by about {sh_m} % ({sh_rng}), "
+            f"and combining mulch with shade raises uptake by about {ms_m} % ({ms_rng}). "
             f"Mulch keeps water in the sand without cooling the microbes, whereas shade cools the sand "
             f"and slows enzyme speed."
         )
@@ -847,7 +843,7 @@ def render_question_texts(
     elif slug == "compaction":
         passes_n = int(round(float((h_lvl or {}).get("x", 50))))
         passes_word = "Fifty" if passes_n == 50 else str(passes_n)
-        signed_core = f"-{core}" if display_central < 0 else f"+{core}"
+        signed_core = f"-{core}" if display_core < 0 else f"+{core}"
         headline_plain = (
             f"{passes_word} vehicle passes change hydrogen uptake over two weeks by about {signed_core} %, "
             f"and the change {hedge}."
@@ -863,14 +859,14 @@ def render_question_texts(
         )
     elif slug == "biochar":
         dose_word = _num_word(int(round(float((h_lvl or {}).get("x", 5.0)))))
-        signed_core = f"-{core}" if display_central < 0 else f"+{core}"
+        core_dir = "downwards" if display_core < 0 else "upwards"
         headline_plain = (
             f"Adding {dose_word} percent biochar by weight changes hydrogen uptake over two weeks by about "
-            f"{signed_core} %, and the change {hedge}."
+            f"{core} % {core_dir}, and the change {hedge}."
         )
         answer_plain = (
             f"Adding {dose_word} percent biochar by weight changes hydrogen uptake over two weeks by about "
-            f"{signed_core} % ({rng_plain}), so the change {hedge}. "
+            f"{core} % {core_dir} ({rng_plain}), so the change {hedge}. "
             f"Biochar adds empty pore space, so one rain fills a smaller share of the pores while gas moves "
             f"more easily. "
             f"The two effects nearly cancel, so the net change is small and could go either way."
@@ -925,17 +921,11 @@ def render_question_texts(
         prop_0 = _get_uq_level(uq_doc, "51PRr3-proportional", 0)
         prop_2 = _get_uq_level(uq_doc, "51PRr3-proportional", 2)
         v53_2 = _get_uq_level(uq_doc, "V53PRr2-proportional", 2)
-        lo_start = round_plain(
-            float((prop_0 or {}).get("central", {}).get("co_uptake_umol_m2", 10.18))
-        )
-        hi_start = round_plain(
-            float((prop_2 or {}).get("central", {}).get("co_uptake_umol_m2", 220.62))
-        )
+        lo_start = round_plain(_level_median(prop_0, "co_uptake_umol_m2", 8.75), decimals=2)
+        hi_start = round_plain(_level_median(prop_2, "co_uptake_umol_m2", 199.38))
         x_1 = round_plain(float((h_lvl or {}).get("x", 1.0)))
         x_5 = round_plain(float((v53_2 or {}).get("x", 5.0)))
-        c_5 = round_plain(
-            abs(float((v53_2 or {}).get("central", {}).get("co_uptake_change_pct", 2.66)))
-        )
+        c_5 = round_plain(abs(_level_median(v53_2, "co_uptake_change_pct", 2.72)))
         abs_unit_plain = OUTCOME_META["co_uptake_umol_m2"]["unit_plain"]
         headline_plain = (
             f"Adding microbes that carry the carbon-monoxide-eating genes to a sample that had none starts "
@@ -955,11 +945,9 @@ def render_question_texts(
             "dying off."
         )
     elif slug == "air-hydrogen":
-        lvl_10 = _get_uq_level(uq_doc, "air-h2-scaling", 3)
+        lvl_10 = _get_uq_level(uq_doc, "h2-multiplier", 3)
         mult_10 = _num_word(int(round(float((lvl_10 or {}).get("x", 10.0)))))
-        c_10 = round_plain(
-            abs(float((lvl_10 or {}).get("central", {}).get("h2_uptake_change_pct", 900.0)))
-        )
+        c_10 = round_plain(abs(_level_median(lvl_10, "h2_uptake_change_pct", 900.0)))
         headline_plain = (
             f"Doubling hydrogen in the air doubles soil hydrogen uptake over two weeks "
             f"(+{core} %, the same in every case we tried)."
@@ -977,7 +965,7 @@ def render_question_texts(
         c_lo = round_plain(q05)
         c_hi = round_plain(q95, decimals=2)
         closed_lvl = _get_uq_level(uq_doc, "carbon-bound-samples", 0)
-        closed_c = round_plain(float((closed_lvl or {}).get("central", {}).get(out_key, 0.0)))
+        closed_c = round_plain(_level_median(closed_lvl, out_key, 0.0))
         headline_plain = (
             f"In one desert sand sample, hydrogen-eating microbes could fix at most about {core} {unit_plain} "
             f"if it rained every two weeks, and {closed_c} where the carbon-fixing genes are absent."

@@ -1,5 +1,5 @@
 {
-  "answer_plain": "Where the soil community has no genes for eating carbon monoxide, the twin gives exactly zero carbon-monoxide uptake. Where the genes are present it gives a small uptake, about 144 millionths of a mole per m\u00b2 over two weeks (21 to 501).",
+  "answer_plain": "Where the soil community has no genes for eating carbon monoxide, the twin gives exactly zero carbon-monoxide uptake. Where the genes are present it gives a small uptake, about 126 millionths of a mole per m\u00b2 over two weeks (21 to 501).",
   "answer_science": "In samples whose reasoner-entailed CO-carrier share is zero (51PRr3, 55PRr1, 55PRr3, 55Sr1, 58PRr3), CO uptake is zero by deduction: the community factor \u03b3_CO is zero, so uptake is zero for every parameter draw and the interval is [0, 0]. In samples with carriers (10Dr2, V53PRr2), 14-day CO uptake has a median of 126 \u00b5mol m\u207b\u00b2 (90 % interval 21.1 to 501 \u00b5mol m\u207b\u00b2), with the CO rate constant k_CO explaining most of the variance (S_T = 0.84).",
   "baseline_label": "One 12 mm rain on day 1 in the selected sample community",
   "chain": [
@@ -21,9 +21,10 @@
     "x": "V53PRr2"
   },
   "headline_output": "co_uptake_umol_m2",
-  "headline_plain": "Where the soil community has no genes for eating carbon monoxide, the twin gives zero uptake, versus about 144 millionths of a mole per m\u00b2 over two weeks where the genes are present.",
+  "headline_plain": "Where the soil community has no genes for eating carbon monoxide, the twin gives zero uptake, versus about 126 millionths of a mole per m\u00b2 over two weeks where the genes are present.",
+  "headline_reference": 144.407,
   "headline_science": "In samples whose reasoner-entailed CO-carrier share is zero (51PRr3, 55PRr1, 55PRr3, 55Sr1, 58PRr3), CO uptake is zero by deduction: the community factor \u03b3_CO is zero, so uptake is zero for every parameter draw and the interval is [0, 0].",
-  "headline_value": 144.407,
+  "headline_value": 126.203,
   "level_kind": "sample",
   "limits_plain": "The range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong. A missing gene in recovered DNA means the twin sets that pathway to zero, though very rare unsequenced microbes could still exist in the sand.",
   "limits_science": "Absence of entailment reflects the genomic evidence in the sample; a carrier below the detection limit of the metagenome would change the deduction. The open-sample uptake uses the reference community factor.",
@@ -125,6 +126,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -146,11 +148,12 @@
               "q25": 344.694,
               "q75": 2301.39,
               "q95": 4839.44,
+              "reference": 1102.33,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1102.33
+              "value": 951.665
             }
           },
           "sample": "51PRr3",
@@ -397,6 +400,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -418,11 +422,12 @@
               "q25": 348.03,
               "q75": 2263.93,
               "q95": 4684.47,
+              "reference": 1102.33,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1102.33
+              "value": 932.863
             }
           },
           "sample": "55PRr1",
@@ -669,6 +674,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -690,11 +696,12 @@
               "q25": 345.743,
               "q75": 2272.86,
               "q95": 4858.54,
+              "reference": 1102.33,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1102.33
+              "value": 940.131
             }
           },
           "sample": "55PRr3",
@@ -941,6 +948,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -962,11 +970,12 @@
               "q25": 341.998,
               "q75": 2279.8,
               "q95": 4721.59,
+              "reference": 1102.33,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1102.33
+              "value": 927.96
             }
           },
           "sample": "55Sr1",
@@ -1213,6 +1222,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -1234,11 +1244,12 @@
               "q25": 347.795,
               "q75": 2254.53,
               "q95": 4831.78,
+              "reference": 1102.33,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1102.33
+              "value": 932.754
             }
           },
           "sample": "58PRr3",
@@ -1486,11 +1497,12 @@
               "q25": 54.8585,
               "q75": 255.85,
               "q95": 500.389,
+              "reference": 144.407,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 144.407
+              "value": 126.411
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -1507,11 +1519,12 @@
               "q25": 332.218,
               "q75": 2258.63,
               "q95": 4850.69,
+              "reference": 1102.33,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1102.33
+              "value": 963.012
             }
           },
           "sample": "10Dr2",
@@ -1759,11 +1772,12 @@
               "q25": 55.8429,
               "q75": 258.889,
               "q95": 501.326,
+              "reference": 144.407,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 144.407
+              "value": 126.203
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -1780,11 +1794,12 @@
               "q25": 346.378,
               "q75": 2284.54,
               "q95": 4801.52,
+              "reference": 1102.33,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1102.33
+              "value": 928.279
             }
           },
           "sample": "V53PRr2",
@@ -2019,7 +2034,7 @@
   "theme": "microbes",
   "title_plain": "What if the soil lacks carbon-monoxide-eating genes?",
   "title_science": "Deductive null effects of absent CO-oxidation capacity",
-  "twin_version": "0.8.1",
+  "twin_version": "0.8.2",
   "uncertainty": {
     "S1": {
       "activation_shape": [

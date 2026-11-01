@@ -196,6 +196,8 @@ def validate(q: dict) -> bool:
         "x_label_plain",
         "x_label_science",
         "baseline_label",
+        "headline_value",
+        "headline_reference",
         "series",
         "answer_plain",
         "answer_science",
@@ -243,6 +245,8 @@ def validate(q: dict) -> bool:
             for out in lvl["outcomes"].values():
                 if not {
                     "value",
+                    "reference",
+                    "median",
                     "q05",
                     "q25",
                     "q75",
@@ -434,7 +438,7 @@ def test_headline_percentage_and_science_rules():
 
     rp = load("rain-pattern")
     assert "lowers" in rp["answer_plain"]
-    assert "63 %" in rp["answer_plain"] and "-63 %" not in rp["answer_plain"]
+    assert "69 %" in rp["answer_plain"] and "-69 %" not in rp["answer_plain"]
     assert "almost 100 %" in rp["answer_plain"]
     assert "by 51 to 100 %" in rp["answer_plain"] and "-100 %" not in rp["answer_plain"]
 
@@ -450,25 +454,39 @@ def test_plain_matches_science():
     import re
 
     for q in load_all():
+        slug = q["slug"]
+        assert q["headline_level"]["series"] == q["uncertainty"]["headline_series"], slug
+        assert int(q["headline_level"]["level"]) == int(q["uncertainty"]["headline_level"]), slug
+        assert float(q["headline_value"]) == float(q["uncertainty"]["median"]), slug
+
         c_val = science_central(q)
         expected = round_plain(abs(c_val))
-        assert plain_number(q) == expected, q["slug"]
-        assert expected in q["answer_plain"], q["slug"]
-        m_ref = re.search(
-            r"reference parameterisation (?:gives )?[+−-]?(\d+(?:\.\d+)?)\s*%",
-            q["answer_science"],
+        assert plain_number(q) == expected, slug
+        assert expected in q["answer_plain"], slug
+        assert expected in q["answer_science"], slug
+
+        m_first = re.search(
+            r"(?<![A-Za-z0-9_])-?\d+(?:,\d{3})*(?:\.\d+)?(?![A-Za-z0-9_])",
+            q["answer_plain"],
         )
-        if m_ref:
-            assert m_ref.group(1) == expected, q["slug"]
-        else:
-            u = q["uncertainty"]
-            q05 = float(u["q05"])
-            q95 = float(u["q95"])
-            if q["headline_output"].startswith("relative_yield_") and abs(q05) <= 2.0:
-                q05 *= 100.0
-                q95 *= 100.0
-            tol = max(1e-3, 1e-5 * max(abs(q05), abs(q95)))
-            assert q05 - tol <= c_val <= q95 + tol, q["slug"]
+        assert m_first, slug
+        first_num = m_first.group(0)
+        assert first_num in q["answer_plain"], slug
+        assert first_num in q["answer_science"], slug
+
+        assert "central run" not in q["answer_plain"].lower(), slug
+        assert "typical run" not in q["answer_plain"].lower(), slug
+        assert "central run" not in q["headline_plain"].lower(), slug
+        assert "typical run" not in q["headline_plain"].lower(), slug
+
+        u = q["uncertainty"]
+        q05 = float(u["q05"])
+        q95 = float(u["q95"])
+        if q["headline_output"].startswith("relative_yield_") and abs(q05) <= 2.0:
+            q05 *= 100.0
+            q95 *= 100.0
+        tol = max(1e-3, 1e-5 * max(abs(q05), abs(q95)))
+        assert q05 - tol <= c_val <= q95 + tol, slug
 
 
 def test_refused_level_rendering_fields():
@@ -521,11 +539,11 @@ def test_adding_microbes_leads_with_switch():
     assert ans.startswith(
         "Adding microbes that carry the carbon-monoxide-eating genes to a sample that had none makes uptake start"
     )
-    assert "roughly 10 to 221 millionths of a mole per m² over two weeks" in ans
+    assert "roughly 8.75 to 199 millionths of a mole per m² over two weeks" in ans
     assert "Adding a microbe without those genes changes nothing." in ans
     assert (
         "Where such microbes are already present, adding more raises uptake only slightly "
-        "(0.5 % at 1 % added, 2.7 % at 5 % added)." in ans
+        "(0.55 % at 1 % added, 2.7 % at 5 % added)." in ans
     )
 
 

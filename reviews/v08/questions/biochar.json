@@ -1,5 +1,5 @@
 {
-  "answer_plain": "Adding five percent biochar by weight changes hydrogen uptake over two weeks by about -2.3 % (from 13 % lower to 4.1 % higher), so the change may go up or down. Biochar adds empty pore space, so one rain fills a smaller share of the pores while gas moves more easily. The two effects nearly cancel, so the net change is small and could go either way.",
+  "answer_plain": "Adding five percent biochar by weight changes hydrogen uptake over two weeks by about 2 % downwards (from 13 % lower to 4.1 % higher), so the change may go up or down. Biochar adds empty pore space, so one rain fills a smaller share of the pores while gas moves more easily. The two effects nearly cancel, so the net change is small and could go either way.",
   "answer_science": "Adding 5 % biochar by weight raised porosity to 0.43 and changed 14-day H\u2082 uptake by a median of \u22122.0 %, with a 90 % interval that includes both directions (\u221213 to +4.1 %). The additional pore space lowers the water saturation reached after the 12 mm rain and enlarges the gas-filled volume; the two effects nearly cancel. The variance comes mainly from the retention exponent b (S_T = 0.42) and the air-entry potential \u03c8_e (S_T = 0.27).",
   "baseline_label": "Unamended sand (0 % biochar, pore space 40 % of volume)",
   "chain": [
@@ -29,9 +29,10 @@
     "x": 5.0
   },
   "headline_output": "h2_uptake_change_pct",
-  "headline_plain": "Adding five percent biochar by weight changes hydrogen uptake over two weeks by about -2.3 %, and the change may go up or down.",
+  "headline_plain": "Adding five percent biochar by weight changes hydrogen uptake over two weeks by about 2 % downwards, and the change may go up or down.",
+  "headline_reference": -2.2580420710256655,
   "headline_science": "Adding 5 % biochar by weight raised porosity to 0.43 and changed 14-day H\u2082 uptake by a median of \u22122.0 %, with a 90 % interval that includes both directions (\u221213 to +4.1 %).",
-  "headline_value": -2.2580420710256655,
+  "headline_value": -2.03211,
   "level_kind": "numeric",
   "limits_plain": "The range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong. Chemical effects of biochar on soil acidity, nutrients or microbe attachment are not included.",
   "limits_science": "The porosity response per percent biochar is the modeller's conversion of a meta-analysis mean (Omondi et al. 2016). Biochar effects on water retention, sorption and microbial activity are outside the chain.",
@@ -168,6 +169,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
@@ -189,6 +191,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -210,11 +213,12 @@
               "q25": 347.982,
               "q75": 2299.25,
               "q95": 4711.92,
+              "reference": 1102.33,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1102.33
+              "value": 972.426
             },
             "porosity": {
               "convergence": {
@@ -231,6 +235,7 @@
               "q25": 0.4,
               "q75": 0.4,
               "q95": 0.4,
+              "reference": 0.4,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "m\u00b3 m\u207b\u00b3",
@@ -483,11 +488,12 @@
               "q25": -1.13988,
               "q75": 0.185056,
               "q95": 0.866472,
+              "reference": -0.370109733853433,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": -0.370109733853433
+              "value": -0.347138
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -504,11 +510,12 @@
               "q25": -4.80471,
               "q75": 3.78912,
               "q95": 38.1448,
+              "reference": -4.07983,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": -4.07983
+              "value": -1.74376
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -525,11 +532,12 @@
               "q25": 356.726,
               "q75": 2274.23,
               "q95": 4749.76,
+              "reference": 1098.25,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1098.25
+              "value": 957.423
             },
             "porosity": {
               "convergence": {
@@ -546,6 +554,7 @@
               "q25": 0.404828,
               "q75": 0.40717,
               "q95": 0.40873,
+              "reference": 0.406,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "m\u00b3 m\u207b\u00b3",
@@ -798,11 +807,12 @@
               "q25": -2.22022,
               "q75": 0.325218,
               "q95": 1.77062,
+              "reference": -0.7826919424371425,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": -0.7826919424371425
+              "value": -0.762287
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -819,11 +829,12 @@
               "q25": -9.49484,
               "q75": 6.51717,
               "q95": 79.6154,
+              "reference": -8.62791,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": -8.62791
+              "value": -3.80314
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -840,11 +851,12 @@
               "q25": 347.813,
               "q75": 2269.49,
               "q95": 4837.46,
+              "reference": 1093.71,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1093.71
+              "value": 949.859
             },
             "porosity": {
               "convergence": {
@@ -861,6 +873,7 @@
               "q25": 0.409658,
               "q75": 0.41434,
               "q95": 0.417471,
+              "reference": 0.412,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "m\u00b3 m\u207b\u00b3",
@@ -1113,11 +1126,12 @@
               "q25": -5.7188,
               "q75": 0.509778,
               "q95": 4.12013,
+              "reference": -2.2580420710256655,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": -2.2580420710256655
+              "value": -2.03211
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -1134,11 +1148,12 @@
               "q25": -25.6768,
               "q75": 8.2517,
               "q95": 188.724,
+              "reference": -24.8911,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": -24.8911
+              "value": -10.2919
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -1155,11 +1170,12 @@
               "q25": 330.817,
               "q75": 2278.73,
               "q95": 4901.07,
+              "reference": 1077.44,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1077.44
+              "value": 932.455
             },
             "porosity": {
               "convergence": {
@@ -1176,11 +1192,12 @@
               "q25": 0.424145,
               "q75": 0.435852,
               "q95": 0.443658,
+              "reference": 0.43,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "m\u00b3 m\u207b\u00b3",
               "unit_plain": "fraction of sand volume",
-              "value": 0.43
+              "value": 0.429999
             }
           },
           "sample": null,
@@ -1415,7 +1432,7 @@
   "theme": "soil",
   "title_plain": "What if we add biochar?",
   "title_science": "Biochar amendment",
-  "twin_version": "0.8.1",
+  "twin_version": "0.8.2",
   "uncertainty": {
     "S1": {
       "activation_shape": [

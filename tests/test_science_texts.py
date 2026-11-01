@@ -307,32 +307,29 @@ def test_plain_headline_number_and_mechanism_corrections():
         l_doc = next(l for l in s_doc["levels"] if int(l["level"]) == l_idx)
         c_val = float(l_doc["central"][out_key])
         out_uq = l_doc["outputs"][out_key]
-        txts = render_question_texts(slug, c_val, out_uq, 0.0, uq_doc)
+        m_val = float(out_uq["median"])
+        txts = render_question_texts(slug, m_val, out_uq, 0.0, uq_doc)
 
         q_obj = {
             "slug": slug,
-            "headline_value": c_val,
+            "headline_value": m_val,
+            "headline_reference": c_val,
             "answer_plain": txts["answer_plain"],
             "answer_science": txts["answer_science"],
         }
-        sci_c = science_central(q_obj)
-        expected_plain = round_plain(abs(sci_c))
+        sci_m = science_central(q_obj)
+        expected_plain = round_plain(abs(sci_m))
         assert plain_number(q_obj) == expected_plain, slug
+        assert expected_plain in txts["answer_plain"], slug
+        assert expected_plain in txts["answer_science"], slug
 
-        m_ref = re.search(
-            r"reference parameterisation (?:gives )?[+−-]?(\d+(?:\.\d+)?)\s*%",
-            txts["answer_science"],
-        )
-        if m_ref:
-            assert m_ref.group(1) == expected_plain, slug
-        else:
-            q05 = float(out_uq["q05"])
-            q95 = float(out_uq["q95"])
-            if out_key.startswith("relative_yield_") and abs(q05) <= 2.0:
-                q05 *= 100.0
-                q95 *= 100.0
-            tol = max(1e-3, 1e-5 * max(abs(q05), abs(q95)))
-            assert q05 - tol <= sci_c <= q95 + tol, slug
+        q05 = float(out_uq["q05"])
+        q95 = float(out_uq["q95"])
+        if out_key.startswith("relative_yield_") and abs(q05) <= 2.0:
+            q05 *= 100.0
+            q95 *= 100.0
+        tol = max(1e-3, 1e-5 * max(abs(q05), abs(q95)))
+        assert q05 - tol <= sci_m <= q95 + tol, slug
 
         if slug == "rain-pattern":
             assert (

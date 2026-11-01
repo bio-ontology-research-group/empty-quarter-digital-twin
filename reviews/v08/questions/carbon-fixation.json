@@ -1,5 +1,5 @@
 {
-  "answer_plain": "In one desert sand sample, hydrogen-eating microbes could fix at most about 0.06 g of carbon per m\u00b2 per year, if a rain like this fell every two weeks and all the energy from hydrogen went into making cell carbon. The model's estimate of this ceiling ranges from 0.006 to 0.27 g. In a second sample, which lacks the carbon-fixing genes, the ceiling is exactly 0.",
+  "answer_plain": "In one desert sand sample, hydrogen-eating microbes could fix at most about 0.05 g of carbon per m\u00b2 per year, if a rain like this fell every two weeks and all the energy from hydrogen went into making cell carbon. The model's estimate of this ceiling ranges from 0.006 to 0.27 g. In a second sample, which lacks the carbon-fixing genes, the ceiling is exactly 0.",
   "answer_science": "We bounded CO\u2082 fixation by H\u2082-oxidising autotrophs by converting the twin's H\u2082 uptake with the knallgas yield (0.167 mol CO\u2082 per mol H\u2082; Bongers 1970), assuming that all oxidised H\u2082 supports growth. In sample F14Dr1, the bound after a single 12 mm rain is 1910 \u00b5g C m\u207b\u00b2 over 14 days; repeating such a rain every two weeks gives 0.050 g C m\u207b\u00b2 yr\u207b\u00b9 (reference parameterisation 0.058 g C m\u207b\u00b2 yr\u207b\u00b9; 90 % interval 0.0062 to 0.27 g C m\u207b\u00b2 yr\u207b\u00b9), with the H\u2082 rate constant k_H2 explaining most of the variance (S_T = 0.83). In sample 14PRr2 the reasoner entails no H\u2082-autotroph candidate, and the bound is zero by deduction.",
   "baseline_label": "Sample community under 14-day rain schedule",
   "chain": [
@@ -34,9 +34,10 @@
     "x": "F14Dr1"
   },
   "headline_output": "c_fixed_upper_bound_g_m2_yr",
-  "headline_plain": "In one desert sand sample, hydrogen-eating microbes could fix at most about 0.06 g of carbon per m\u00b2 per year if it rained every two weeks, and 0 where the carbon-fixing genes are absent.",
+  "headline_plain": "In one desert sand sample, hydrogen-eating microbes could fix at most about 0.05 g of carbon per m\u00b2 per year if it rained every two weeks, and 0 where the carbon-fixing genes are absent.",
+  "headline_reference": 0.0575709,
   "headline_science": "We bounded CO\u2082 fixation by H\u2082-oxidising autotrophs by converting the twin's H\u2082 uptake with the knallgas yield (0.167 mol CO\u2082 per mol H\u2082; Bongers 1970), assuming that all oxidised H\u2082 supports growth.",
-  "headline_value": 0.0575709,
+  "headline_value": 0.0499342,
   "level_kind": "sample",
   "limits_plain": "The range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong. This figure is an upper ceiling, not measured net carbon storage in the sand, because microbes also burn energy just to stay alive and release carbon dioxide when they respire.",
   "limits_science": "The bound assumes that all energy from H\u2082 oxidation goes into growth; atmospheric H\u2082 oxidisers use much of it for persistence (Jordaan et al. 2020), so realised fixation lies below the bound. Net carbon removal requires measured stock changes.",
@@ -205,6 +206,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "g C m\u207b\u00b2 yr\u207b\u00b9",
@@ -225,6 +227,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5g C m\u207b\u00b2",
@@ -245,6 +248,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "mol CO\u2082 m\u207b\u00b2",
@@ -497,11 +501,12 @@
               "q25": 0.0183848,
               "q75": 0.118346,
               "q95": 0.268694,
+              "reference": 0.0575709,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "g C m\u207b\u00b2 yr\u207b\u00b9",
               "unit_plain": "g of carbon per m\u00b2 per year",
-              "value": 0.0575709
+              "value": 0.0499342
             },
             "c_fixed_upper_bound_ug_m2": {
               "convergence": {
@@ -518,11 +523,12 @@
               "q25": 704.688,
               "q75": 4536.17,
               "q95": 10299.0,
+              "reference": 2206.69,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5g C m\u207b\u00b2",
               "unit_plain": "micrograms of carbon per m\u00b2",
-              "value": 2206.69
+              "value": 1913.97
             },
             "co2_fixed_upper_bound_mol_m2": {
               "convergence": {
@@ -539,11 +545,12 @@
               "q25": 5.86744e-05,
               "q75": 0.00037774,
               "q95": 0.000857205,
+              "reference": 0.000183722,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "mol CO\u2082 m\u207b\u00b2",
               "unit_plain": "moles of carbon dioxide per m\u00b2",
-              "value": 0.000183722
+              "value": 0.000159331
             }
           },
           "sample": "F14Dr1",
@@ -797,6 +804,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "g C m\u207b\u00b2 yr\u207b\u00b9",
@@ -817,6 +825,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5g C m\u207b\u00b2",
@@ -837,6 +846,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "mol CO\u2082 m\u207b\u00b2",
@@ -1089,11 +1099,12 @@
               "q25": 0.0290379,
               "q75": 0.136528,
               "q95": 0.235061,
+              "reference": 0.0700096,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "g C m\u207b\u00b2 yr\u207b\u00b9",
               "unit_plain": "g of carbon per m\u00b2 per year",
-              "value": 0.0700096
+              "value": 0.068633
             },
             "c_fixed_upper_bound_ug_m2": {
               "convergence": {
@@ -1110,11 +1121,12 @@
               "q25": 1113.02,
               "q75": 5233.12,
               "q95": 9009.88,
+              "reference": 2683.46,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5g C m\u207b\u00b2",
               "unit_plain": "micrograms of carbon per m\u00b2",
-              "value": 2683.46
+              "value": 2630.7
             },
             "co2_fixed_upper_bound_mol_m2": {
               "convergence": {
@@ -1131,11 +1143,12 @@
               "q25": 9.26431e-05,
               "q75": 0.000435679,
               "q95": 0.000750249,
+              "reference": 0.000223417,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "mol CO\u2082 m\u207b\u00b2",
               "unit_plain": "moles of carbon dioxide per m\u00b2",
-              "value": 0.000223417
+              "value": 0.000218957
             }
           },
           "sample": "F14Dr1",
@@ -1370,7 +1383,7 @@
   "theme": "microbes",
   "title_plain": "How much carbon can the hydrogen eaters fix?",
   "title_science": "Upper bound on CO\u2082 fixation by H\u2082-oxidising autotrophs",
-  "twin_version": "0.8.1",
+  "twin_version": "0.8.2",
   "uncertainty": {
     "S1": {
       "activation_shape": [

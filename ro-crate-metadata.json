@@ -14,8 +14,8 @@
     {
       "@id": "./",
       "@type": "Dataset",
-      "name": "EQ-BioDT v0.8.1",
-      "version": "0.8.1",
+      "name": "EQ-BioDT v0.8.2",
+      "version": "0.8.2",
       "description": "Annotated analysis inputs, ontology entailments, conditional soil scenarios, primary Rub' al-Khali provenance and cross-desert transfer evaluation. Reproduction starts from released annotations, read summaries and bundled external supplements.",
       "license": {
         "@id": "LICENSE"

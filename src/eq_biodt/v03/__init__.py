@@ -4,4 +4,4 @@ from importlib.metadata import PackageNotFoundError, version as _version
 try:
     VERSION = _version("eq-biodt")
 except PackageNotFoundError:  # running from an uninstalled source tree
-    VERSION = "0.8.1"
+    VERSION = "0.8.2"

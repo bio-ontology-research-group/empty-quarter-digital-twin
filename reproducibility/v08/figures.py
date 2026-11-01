@@ -150,7 +150,8 @@ def uq_table() -> None:
         top_str = ", ".join(f"{tt(t['id'])} ({num(t['ST'][0])})" for t in top)
         assum = u["group_ST"]["modeller_assumption"][0]
         label = f"{tex(u['headline_label'])} ({unit})"
-        val_str = f"{num(out['value'])} & {num(u['median'])} [{num(u['q05'])}, {num(u['q95'])}]"
+        ref_val = out.get("reference", out["value"])
+        val_str = f"{num(ref_val)} & {num(u['median'])} [{num(u['q05'])}, {num(u['q95'])}]"
         rows.append(
             f"{i} & {tex(slug)} & {label} & {val_str} & {top_str} & {num(assum)} \\\\"
         )

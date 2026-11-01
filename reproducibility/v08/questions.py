@@ -408,6 +408,8 @@ def build_questions(
                         c_val = central_vals.get(out_key, central_res.get(out_key))
                         if c_val is not None:
                             c_val = float(c_val)
+                        med_raw = uq_o.get("median")
+                        med_val = float(med_raw) if med_raw is not None else None
                         ref_f = float(uq_o.get("refusal_fraction", 0.0))
                         if out_key in {"h2_uptake_change_pct", "co_uptake_change_pct"} and central_refused is None:
                             gas = "h2" if out_key.startswith("h2_") else "co"
@@ -424,8 +426,9 @@ def build_questions(
                             else meta["provenance"]
                         )
                         outcomes_out[out_key] = {
-                            "value": c_val,
-                            "median": uq_o.get("median"),
+                            "value": med_val,
+                            "reference": c_val,
+                            "median": med_val,
                             "q05": uq_o.get("q05"),
                             "q25": uq_o.get("q25"),
                             "q75": uq_o.get("q75"),
@@ -475,10 +478,11 @@ def build_questions(
             h_uq_lvl = next(l for l in h_uq_series["levels"] if int(l["level"]) == h_level_idx)
             h_uq_out = h_uq_lvl["outputs"][h_out_key]
             h_central_val = float(h_uq_lvl["central"][h_out_key])
+            h_median_val = float(h_uq_out["median"])
 
             texts = render_question_texts(
                 slug=slug,
-                central_val=h_central_val,
+                central_val=h_median_val,
                 outcome_uq=h_uq_out,
                 max_refusal_fraction=max_refusal_fraction,
                 uq_doc=uq_doc,
@@ -546,7 +550,7 @@ def build_questions(
 
             q_doc = {
                 "version": "question-1",
-                "twin_version": "0.8.1",
+                "twin_version": "0.8.2",
                 "slug": slug,
                 "theme": q.theme,
                 "title_plain": title_plain,
@@ -563,7 +567,8 @@ def build_questions(
                     "label": h_level_spec.label,
                     "x": h_level_spec.x,
                 },
-                "headline_value": h_central_val,
+                "headline_value": h_median_val,
+                "headline_reference": h_central_val,
                 "headline_plain": texts["headline_plain"],
                 "headline_science": texts["headline_science"],
                 "answer_plain": texts["answer_plain"],
@@ -600,7 +605,7 @@ def build_questions(
 
         index_doc = {
             "version": "question-1",
-            "twin_version": "0.8.1",
+            "twin_version": "0.8.2",
             "questions": index_entries,
         }
         index_file = out_path / "index.json"

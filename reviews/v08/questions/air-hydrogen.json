@@ -29,8 +29,9 @@
   },
   "headline_output": "h2_uptake_change_pct",
   "headline_plain": "Doubling hydrogen in the air doubles soil hydrogen uptake over two weeks (+100 %, the same in every case we tried).",
+  "headline_reference": 99.99909283887003,
   "headline_science": "Raising atmospheric H\u2082 to 1.5, 2 and 10 times the background mixing ratio (0.53 ppm; Novelli et al.",
-  "headline_value": 99.99909283887003,
+  "headline_value": 100.0,
   "level_kind": "numeric",
   "limits_plain": "The range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong. This follows from a formula that assumes uptake rises in proportion to the hydrogen level; at very high hydrogen levels, microbes could hit a maximum enzyme speed or grow.",
   "limits_science": "First-order kinetics holds at trace H\u2082 concentrations; at much higher concentrations, saturation of high-affinity hydrogenases would make the response sublinear. The concentration scenarios are inputs.",
@@ -167,6 +168,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
@@ -188,6 +190,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -209,11 +212,12 @@
               "q25": 330.837,
               "q75": 2291.35,
               "q95": 4828.7,
+              "reference": 1102.33,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1102.33
+              "value": 926.971
             }
           },
           "sample": null,
@@ -461,11 +465,12 @@
               "q25": 50.0,
               "q75": 50.0,
               "q95": 50.0,
+              "reference": 50.00004535834453,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": 50.00004535834453
+              "value": 50.0
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -482,11 +487,12 @@
               "q25": 172.341,
               "q75": 1132.66,
               "q95": 2430.57,
+              "reference": 551.167,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 551.167
+              "value": 479.603
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -503,11 +509,12 @@
               "q25": 517.023,
               "q75": 3397.97,
               "q95": 7291.72,
+              "reference": 1653.5,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1653.5
+              "value": 1438.81
             }
           },
           "sample": null,
@@ -755,11 +762,12 @@
               "q25": 100.0,
               "q75": 100.0,
               "q95": 100.0,
+              "reference": 99.99909283887003,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": 99.99909283887003
+              "value": 100.0
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -776,11 +784,12 @@
               "q25": 344.341,
               "q75": 2292.04,
               "q95": 4768.38,
+              "reference": 1102.33,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1102.33
+              "value": 937.689
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -797,11 +806,12 @@
               "q25": 688.683,
               "q75": 4584.09,
               "q95": 9536.76,
+              "reference": 2204.67,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 2204.67
+              "value": 1875.38
             }
           },
           "sample": null,
@@ -1049,11 +1059,12 @@
               "q25": 900.0,
               "q75": 900.0,
               "q95": 900.0,
+              "reference": 900.0272158214648,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": 900.0272158214648
+              "value": 900.0
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -1070,11 +1081,12 @@
               "q25": 3095.49,
               "q75": 20406.2,
               "q95": 43688.7,
+              "reference": 9921.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 9921.0
+              "value": 8516.47
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -1091,11 +1103,12 @@
               "q25": 3439.44,
               "q75": 22673.5,
               "q95": 48543.0,
+              "reference": 11023.3,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 11023.3
+              "value": 9462.74
             }
           },
           "sample": null,
@@ -1330,7 +1343,7 @@
   "theme": "microbes",
   "title_plain": "What if air hydrogen rises?",
   "title_science": "Soil H\u2082 sink under elevated atmospheric H\u2082",
-  "twin_version": "0.8.1",
+  "twin_version": "0.8.2",
   "uncertainty": {
     "S1": {
       "activation_shape": [

@@ -1,9 +1,9 @@
 {
   "questions": [
     {
-      "answer_plain": "Splitting one heavy downpour into four smaller showers lowers hydrogen uptake over two weeks by about 63 % (by 2.8 to 100 %), so uptake goes down in every case we tried. Splitting the same total rain into daily drizzle lowers uptake by almost 100 % (by 51 to 100 %). One soaking keeps the sand wet enough for the microbes for several days, while small daily amounts mostly evaporate the same day.",
+      "answer_plain": "Splitting one heavy downpour into four smaller showers lowers hydrogen uptake over two weeks by about 69 % (by 2.8 to 100 %), so uptake goes down in every case we tried. Splitting the same total rain into daily drizzle lowers uptake by almost 100 % (by 51 to 100 %). One soaking keeps the sand wet enough for the microbes for several days, while small daily amounts mostly evaporate the same day.",
       "answer_science": "Partitioning the same 12 mm of rain into smaller events reduced H\u2082 uptake in every parameter draw. Relative to a single 12 mm event, four 3 mm events reduced 14-day uptake by a median of 69 % (90 % interval 2.8 to 100 %; reference parameterisation \u221263 %), and daily drizzle reduced it by 100 % (51 to 100 %). Each small addition is largely removed by the daily evaporative demand, so the soil water potential spends fewer days above the activation threshold. The magnitude of the reduction depends mainly on the water-retention curve (the retention exponent b, S_T = 0.69; the air-entry potential \u03c8_e, S_T = 0.26); its direction holds across all sampled parameter values.",
-      "headline_plain": "Splitting one heavy rain into four smaller showers lowers hydrogen uptake over two weeks by about 63 %, and daily drizzle lowers it by almost 100 %, so uptake goes down in every case we tried.",
+      "headline_plain": "Splitting one heavy rain into four smaller showers lowers hydrogen uptake over two weeks by about 69 %, and daily drizzle lowers it by almost 100 %, so uptake goes down in every case we tried.",
       "headline_science": "Partitioning the same 12 mm of rain into smaller events reduced H\u2082 uptake in every parameter draw.",
       "slug": "rain-pattern",
       "theme": "water",
@@ -12,9 +12,9 @@
       "title_science": "Rainfall partitioning and 14-day H\u2082 uptake"
     },
     {
-      "answer_plain": "Giving the same total water in one go and then every ten days changes hydrogen uptake over two weeks by about -5.5 % relative to a single rain, but it may go up or down (from 48 % lower to 175 % higher). Spreading it every three days gives about 37 % less (68 % less to 129 % more) and daily drip about 38 % less (73 % less to 136 % more). One possible reason is that frequent small doses mostly evaporate from the surface.",
+      "answer_plain": "Giving the same total water in one go and then every ten days changes hydrogen uptake over two weeks by about +2.5 % relative to a single rain, but it may go up or down (from 48 % lower to 175 % higher). Spreading it every three days gives about 27 % less (68 % less to 129 % more) and daily drip about 29 % less (73 % less to 136 % more). One possible reason is that frequent small doses mostly evaporate from the surface.",
       "answer_science": "Delivering the same irrigation volume, on top of the 12 mm rain, daily, every three days or every ten days changed 14-day H\u2082 uptake by a median of \u221229 %, \u221227 % and +2.5 %, respectively. The 90 % intervals of all three schedules include both decreases and increases (\u221273 to +136 %, \u221268 to +129 % and \u221248 to +175 %). Irrigation acts in two directions in the twin: it lengthens the period above the activation threshold, and it fills pores, which slows H\u2082 diffusion to the reacting community. The balance is set by the retention curve; the air-entry potential \u03c8_e and the retention exponent b explain most of the variance for the ten-day schedule (S_T = 0.61 and 0.40). Ranking the schedules therefore requires a measured retention curve for Rub' al Khali sand.",
-      "headline_plain": "Giving the same total water every ten days changes hydrogen uptake over two weeks by about -5.5 % relative to a single rain, versus about 38 % less for daily drip, and the change may go up or down.",
+      "headline_plain": "Giving the same total water every ten days changes hydrogen uptake over two weeks by about +2.5 % relative to a single rain, versus about 29 % less for daily drip, and the change may go up or down.",
       "headline_science": "Delivering the same irrigation volume, on top of the 12 mm rain, daily, every three days or every ten days changed 14-day H\u2082 uptake by a median of \u221229 %, \u221227 % and +2.5 %, respectively.",
       "slug": "drip-or-flood",
       "theme": "water",
@@ -34,9 +34,9 @@
       "title_science": "Additional rain from cloud seeding"
     },
     {
-      "answer_plain": "Watering every day with salty water (8 dS/m) gives about 44 % less hydrogen uptake over two weeks than one fresh rain of the same size (from 75 % lower to 95 % higher, so it may go up or down). Almost all of that drop is the daily-watering pattern: fresh water given daily gives about 38 % less. Saltiness itself adds only a few points. A separate crop formula (not the twin) puts alfalfa at about 89 % of normal yield (83 to 93 %). The twin cannot tell (gives no answer) for a single salty rain, even at 2 dS/m, because the salt in the sand water becomes too strong for its formulas.",
+      "answer_plain": "Watering every day with salty water gives about 37 % less hydrogen uptake over two weeks than one fresh rain of the same size (at 8 dS/m; from 75 % lower to 95 % higher, so it may go up or down). Almost all of that drop is the daily-watering pattern: fresh water given daily gives about 29 % less. Saltiness itself adds only a few points. A separate crop formula (not the twin) puts alfalfa at about 89 % of normal yield (83 to 93 %). The twin cannot tell (gives no answer) for a single salty rain, even at 2 dS/m, because the salt in the sand water becomes too strong for its formulas.",
       "answer_science": "A single 12 mm rain carrying NaCl at 2 dS/m or more concentrates as the soil dries until the pore-water NaCl exceeds 0.1 mol/L, the limit of the ideal-dilute osmotic model; the twin returns no estimate for any draw of this series. Daily brackish irrigation keeps the solution dilute (refusals 0.78 % at 8 dS/m). Relative to the single fresh rain, daily irrigation at 8 dS/m changed uptake by a median of \u221237 % (90 % interval \u221275 to +95 %), and daily irrigation with near-fresh water (0.5 dS/m) by \u221229 % (\u221272 to +133 %). Salinity therefore adds a few percentage points to an effect set by the irrigation schedule, whose sign depends on the retention curve. With the FAO-29 leaching relation and the Maas\u2013Hoffman response, alfalfa relative yield at 8 dS/m is 89 % (83 to 93 %), a crop-model estimate driven by the twin's salt balance.",
-      "headline_plain": "Watering every day with salty water (8 dS/m) gives about 44 % less hydrogen uptake over two weeks than one fresh rain (and may go up or down), but fresh daily watering alone gives about 38 % less.",
+      "headline_plain": "Watering every day with salty water gives about 37 % less hydrogen uptake over two weeks than one fresh rain (at 8 dS/m, and it may go up or down), while fresh daily watering alone gives about 29 % less.",
       "headline_science": "A single 12 mm rain carrying NaCl at 2 dS/m or more concentrates as the soil dries until the pore-water NaCl exceeds 0.1 mol/L, the limit of the ideal-dilute osmotic model; the twin returns no estimate for any draw of this series.",
       "slug": "salty-water",
       "theme": "salt",
@@ -45,9 +45,9 @@
       "title_science": "Saline rain and daily brackish irrigation"
     },
     {
-      "answer_plain": "In a crop-salt formula fitted to one field trial (not the twin), alfalfa from bacterium-coated seeds reaches about 92 % of normal yield (89 to 93 %) in 7.81 dS/m water, versus about 80 % (78 to 81 %) without the bacterium. Other ways of estimating how salt builds up in the root zone give very different answers, from about 33 % to about 101 % with the bacterium, so this figure depends strongly on that choice.",
+      "answer_plain": "In a crop-salt formula fitted to one field trial (not the twin), alfalfa from bacterium-coated seeds reaches about 91 % of normal yield (89 to 93 %) in 7.81 dS/m water, versus about 79 % (78 to 81 %) without the bacterium. Other ways of estimating how salt builds up in the root zone give very different answers, from about 32 % to about 101 % with the bacterium, so this figure depends strongly on that choice.",
       "answer_science": "We estimated alfalfa relative yield at the high irrigation salinity of the Hada Al-Sham field trial (7.81 dS/m) by combining the Maas\u2013Hoffman response with three root-zone salinity models. With the leaching factor fitted to the trial's season-1 yield ratio, SA187-coated seed reached a median relative yield of 91 % (90 % interval 89 to 93 %) and uncoated seed 79 %; the field-trial inputs carry this uncertainty (the digitised mock yield ratio, S_T = 0.51). The choice of root-zone model dominates the estimate: the FAO-29 fixed leaching factor gives 32 % (2.7 to 57 %) and the twin's bare-sand salt balance 101 % (94 to 107 %) for coated seed. The fitted leaching factor implies a root-zone salinity close to the soil salinity measured at the site (1.95 dS/m).",
-      "headline_plain": "In a crop-salt formula fitted to one field trial, alfalfa from bacterium-coated seeds reaches about 92 % of normal yield in 7.81 dS/m water (versus 80 % without it), though other root-zone salt formulas give 33 to 101 %.",
+      "headline_plain": "In a crop-salt formula fitted to one field trial, alfalfa from bacterium-coated seeds reaches about 91 % of normal yield in 7.81 dS/m water (versus 79 % without it), though other root-zone salt formulas give 32 to 101 %.",
       "headline_science": "We estimated alfalfa relative yield at the high irrigation salinity of the Hada Al-Sham field trial (7.81 dS/m) by combining the Maas\u2013Hoffman response with three root-zone salinity models.",
       "slug": "alfalfa-bacterium",
       "theme": "salt",
@@ -56,9 +56,9 @@
       "title_science": "Alfalfa yield under saline irrigation with Enterobacter sp. SA187"
     },
     {
-      "answer_plain": "Four degrees of warming with the same rainfall changes hydrogen uptake over two weeks by about +7.2 % in the model's central run. Across the uncertain numbers it may go up or down (from 13 % lower to 10 % higher), and a typical run is slightly lower (about 2.6 %). Warming only the sand by 10 degrees, with no extra drying, raises uptake by about 69 % in the central run (by 3.8 to 78 %; typical run about 36 %).",
+      "answer_plain": "Four degrees of warming with the same rainfall changes hydrogen uptake over two weeks by about 2.6 % downwards in a typical case, but it may go up or down (from 13 % lower to 10 % higher). Warming only the sand by 10 degrees, with no extra drying, raises uptake by about 36 % (by 3.8 to 78 %).",
       "answer_science": "Warming the soil at fixed moisture raised 14-day H\u2082 uptake in every draw, by a median of 13 % at +4 \u00b0C (1.5 to 26 %) and 36 % at +10 \u00b0C (3.8 to 78 %), with Q10 explaining most of the variance (S_T = 0.88). Climate warming of the same magnitude also raises the evaporative demand, which shortens the wet period. At +4 \u00b0C with unchanged rainfall the two effects nearly cancel: the reference parameterisation gives +7.2 %, the median is \u22122.6 %, and the 90 % interval includes decreases and increases (\u221213 to +10 %). The sign of the climate response is set by the balance between Q10 (S_T = 0.75) and the evaporation scaling (S_T = 0.15).",
-      "headline_plain": "Four degrees of warming changes hydrogen uptake over two weeks by about +7.2 % in the central run, but a typical run is about 2.6 % lower and uptake may go up or down.",
+      "headline_plain": "Four degrees of warming with the same rainfall changes hydrogen uptake over two weeks by about 2.6 % downwards in a typical case, and uptake may go up or down.",
       "headline_science": "Warming the soil at fixed moisture raised 14-day H\u2082 uptake in every draw, by a median of 13 % at +4 \u00b0C (1.5 to 26 %) and 36 % at +10 \u00b0C (3.8 to 78 %), with Q10 explaining most of the variance (S_T = 0.88).",
       "slug": "hotter",
       "theme": "heat",
@@ -67,7 +67,7 @@
       "title_science": "Soil warming and climate warming"
     },
     {
-      "answer_plain": "Full mulch cover raises hydrogen uptake over two weeks by about 50 % (by 11 to 92 %) by slowing evaporation, so uptake with mulch alone goes up in every case we tried. Full shade alone lowers uptake by about 25 % (by 1.7 to 28 %; typical run about 14 % lower), and combining mulch with shade raises uptake by about 14 % (from 6.2 % lower to 70 % higher). Mulch keeps water in the sand without cooling the microbes, whereas shade cools the sand and slows enzyme speed.",
+      "answer_plain": "Full mulch cover raises hydrogen uptake over two weeks by about 50 % (by 11 to 92 %) by slowing evaporation, so uptake with mulch alone goes up in every case we tried. Full shade alone lowers uptake by about 14 % (by 1.7 to 28 %), and combining mulch with shade raises uptake by about 28 % (from 6.2 % lower to 70 % higher). Mulch keeps water in the sand without cooling the microbes, whereas shade cools the sand and slows enzyme speed.",
       "answer_science": "Full organic mulch raised 14-day H\u2082 uptake by a median of 50 % (90 % interval 11 to 92 %) in every draw, because the reduced evaporation keeps the soil above the activation threshold for longer. A full shade net lowered uptake by 14 % (1.7 to 28 %), also in every draw: the net cools the soil and slows the reaction through Q10 (S_T = 0.77). Combining full mulch and shade changed uptake by +28 %, with an interval that includes both directions (\u22126.2 to +70 %). The mulch effect depends mostly on the retention exponent b (S_T = 0.59).",
       "headline_plain": "Full mulch cover raises hydrogen uptake over two weeks by about 50 % by keeping the sand damp longer, and uptake goes up in every case we tried.",
       "headline_science": "Full organic mulch raised 14-day H\u2082 uptake by a median of 50 % (90 % interval 11 to 92 %) in every draw, because the reduced evaporation keeps the soil above the activation threshold for longer.",
@@ -78,9 +78,9 @@
       "title_science": "Organic mulch and shade nets"
     },
     {
-      "answer_plain": "Full solar-panel cover raises hydrogen uptake over two weeks by about 17 % (by 0.4 to 52 %), and uptake goes up in every case we tried. Less evaporation under the panels and water from panel washing keep the sand moist longer. This outweighs the slowing of microbes by shade.",
+      "answer_plain": "Full solar-panel cover raises hydrogen uptake over two weeks by about 23 % (by 0.35 to 52 %), and uptake goes up in every case we tried. Less evaporation under the panels and water from panel washing keep the sand moist longer. This outweighs the slowing of microbes by shade.",
       "answer_science": "Full panel cover raised 14-day H\u2082 uptake by a median of 23 % (90 % interval 0.35 to 52 %; reference parameterisation +17 %), and every draw gave an increase. The panels act on the soil in three ways in the chain: they reduce evaporation and add washing water, both of which lengthen the wet period, and they cool the soil, which slows the reaction through Q10. At half cover the panel evaporation reduction explains the largest share of the variance (S_T = 0.44); at full cover the retention exponent b does (S_T = 0.41).",
-      "headline_plain": "Full solar-panel cover raises hydrogen uptake over two weeks by about 17 %, and uptake goes up in every case we tried.",
+      "headline_plain": "Full solar-panel cover raises hydrogen uptake over two weeks by about 23 %, and uptake goes up in every case we tried.",
       "headline_science": "Full panel cover raised 14-day H\u2082 uptake by a median of 23 % (90 % interval 0.35 to 52 %; reference parameterisation +17 %), and every draw gave an increase.",
       "slug": "solar-park",
       "theme": "heat",
@@ -89,9 +89,9 @@
       "title_science": "Microclimate under photovoltaic panels"
     },
     {
-      "answer_plain": "Fifty vehicle passes change hydrogen uptake over two weeks by about -1.5 % (from 19 % lower to 40 % higher), so the change may go up or down. Squeezing the sand slows gas movement through the pores but also changes how tightly the sand holds water.",
+      "answer_plain": "Fifty vehicle passes change hydrogen uptake over two weeks by about +0.21 % (from 19 % lower to 40 % higher), so the change may go up or down. Squeezing the sand slows gas movement through the pores but also changes how tightly the sand holds water.",
       "answer_science": "Fifty vehicle passes lowered porosity from 0.40 to 0.306 and changed 14-day H\u2082 uptake by a median of +0.21 %; the 90 % interval includes decreases and increases (\u221219 to +40 %). Lower porosity acts in two directions: it reduces the gas-filled pore space, which slows H\u2082 diffusion, and it raises the water saturation reached after the rain, which lengthens activation. The net response to compaction is therefore non-monotonic and depends on the H\u2082 rate constant k_H2 and the retention exponent b (S_T = 0.36 and 0.34).",
-      "headline_plain": "Fifty vehicle passes change hydrogen uptake over two weeks by about -1.5 %, and the change may go up or down.",
+      "headline_plain": "Fifty vehicle passes change hydrogen uptake over two weeks by about +0.21 %, and the change may go up or down.",
       "headline_science": "Fifty vehicle passes lowered porosity from 0.40 to 0.306 and changed 14-day H\u2082 uptake by a median of +0.21 %; the 90 % interval includes decreases and increases (\u221219 to +40 %).",
       "slug": "compaction",
       "theme": "soil",
@@ -100,9 +100,9 @@
       "title_science": "Soil compaction by vehicle traffic"
     },
     {
-      "answer_plain": "Adding five percent biochar by weight changes hydrogen uptake over two weeks by about -2.3 % (from 13 % lower to 4.1 % higher), so the change may go up or down. Biochar adds empty pore space, so one rain fills a smaller share of the pores while gas moves more easily. The two effects nearly cancel, so the net change is small and could go either way.",
+      "answer_plain": "Adding five percent biochar by weight changes hydrogen uptake over two weeks by about 2 % downwards (from 13 % lower to 4.1 % higher), so the change may go up or down. Biochar adds empty pore space, so one rain fills a smaller share of the pores while gas moves more easily. The two effects nearly cancel, so the net change is small and could go either way.",
       "answer_science": "Adding 5 % biochar by weight raised porosity to 0.43 and changed 14-day H\u2082 uptake by a median of \u22122.0 %, with a 90 % interval that includes both directions (\u221213 to +4.1 %). The additional pore space lowers the water saturation reached after the 12 mm rain and enlarges the gas-filled volume; the two effects nearly cancel. The variance comes mainly from the retention exponent b (S_T = 0.42) and the air-entry potential \u03c8_e (S_T = 0.27).",
-      "headline_plain": "Adding five percent biochar by weight changes hydrogen uptake over two weeks by about -2.3 %, and the change may go up or down.",
+      "headline_plain": "Adding five percent biochar by weight changes hydrogen uptake over two weeks by about 2 % downwards, and the change may go up or down.",
       "headline_science": "Adding 5 % biochar by weight raised porosity to 0.43 and changed 14-day H\u2082 uptake by a median of \u22122.0 %, with a 90 % interval that includes both directions (\u221213 to +4.1 %).",
       "slug": "biochar",
       "theme": "soil",
@@ -111,9 +111,9 @@
       "title_science": "Biochar amendment"
     },
     {
-      "answer_plain": "Where the soil community has no genes for eating carbon monoxide, the twin gives exactly zero carbon-monoxide uptake. Where the genes are present it gives a small uptake, about 144 millionths of a mole per m\u00b2 over two weeks (21 to 501).",
+      "answer_plain": "Where the soil community has no genes for eating carbon monoxide, the twin gives exactly zero carbon-monoxide uptake. Where the genes are present it gives a small uptake, about 126 millionths of a mole per m\u00b2 over two weeks (21 to 501).",
       "answer_science": "In samples whose reasoner-entailed CO-carrier share is zero (51PRr3, 55PRr1, 55PRr3, 55Sr1, 58PRr3), CO uptake is zero by deduction: the community factor \u03b3_CO is zero, so uptake is zero for every parameter draw and the interval is [0, 0]. In samples with carriers (10Dr2, V53PRr2), 14-day CO uptake has a median of 126 \u00b5mol m\u207b\u00b2 (90 % interval 21.1 to 501 \u00b5mol m\u207b\u00b2), with the CO rate constant k_CO explaining most of the variance (S_T = 0.84).",
-      "headline_plain": "Where the soil community has no genes for eating carbon monoxide, the twin gives zero uptake, versus about 144 millionths of a mole per m\u00b2 over two weeks where the genes are present.",
+      "headline_plain": "Where the soil community has no genes for eating carbon monoxide, the twin gives zero uptake, versus about 126 millionths of a mole per m\u00b2 over two weeks where the genes are present.",
       "headline_science": "In samples whose reasoner-entailed CO-carrier share is zero (51PRr3, 55PRr1, 55PRr3, 55Sr1, 58PRr3), CO uptake is zero by deduction: the community factor \u03b3_CO is zero, so uptake is zero for every parameter draw and the interval is [0, 0].",
       "slug": "missing-co-genes",
       "theme": "microbes",
@@ -122,9 +122,9 @@
       "title_science": "Deductive null effects of absent CO-oxidation capacity"
     },
     {
-      "answer_plain": "Adding microbes that carry the carbon-monoxide-eating genes to a sample that had none makes uptake start: roughly 10 to 221 millionths of a mole per m\u00b2 over two weeks, depending on whether presence alone or the amount added matters. Adding a microbe without those genes changes nothing. Where such microbes are already present, adding more raises uptake only slightly (0.5 % at 1 % added, 2.7 % at 5 % added).",
+      "answer_plain": "Adding microbes that carry the carbon-monoxide-eating genes to a sample that had none makes uptake start: roughly 8.75 to 199 millionths of a mole per m\u00b2 over two weeks, depending on whether presence alone or the amount added matters. Adding a microbe without those genes changes nothing. Where such microbes are already present, adding more raises uptake only slightly (0.55 % at 1 % added, 2.7 % at 5 % added).",
       "answer_science": "Inoculation changes the community: the reasoner memberships of the added genome are reused and the community factor \u03b3_CO is recomputed for the hypothetical community. Adding a CO-carrier genome to 51PRr3, whose deduced carrier share is zero, opens CO uptake. The amount depends on the coupling between carrier share and rate: under presence coupling, uptake is 125 \u00b5mol m\u207b\u00b2 (90 % interval 22.3 to 501 \u00b5mol m\u207b\u00b2) at any dose, whereas under share-proportional coupling it rises from 8.75 \u00b5mol m\u207b\u00b2 at 0.1 % to 199 \u00b5mol m\u207b\u00b2 at 5 % inoculum. A non-carrier genome leaves uptake at zero under both couplings. Where carriers are already present (V53PRr2), proportional coupling gives gains of 0.55 % at 1 % and 2.7 % at 5 %.",
-      "headline_plain": "Adding microbes that carry the carbon-monoxide-eating genes to a sample that had none starts uptake (roughly 10 to 221 millionths of a mole per m\u00b2 over two weeks), and raises uptake by 0.5 % at 1 % added where such microbes are already present.",
+      "headline_plain": "Adding microbes that carry the carbon-monoxide-eating genes to a sample that had none starts uptake (roughly 8.75 to 199 millionths of a mole per m\u00b2 over two weeks), and raises uptake by 0.55 % at 1 % added where such microbes are already present.",
       "headline_science": "Inoculation changes the community: the reasoner memberships of the added genome are reused and the community factor \u03b3_CO is recomputed for the hypothetical community.",
       "slug": "adding-microbes",
       "theme": "microbes",
@@ -144,9 +144,9 @@
       "title_science": "Soil H\u2082 sink under elevated atmospheric H\u2082"
     },
     {
-      "answer_plain": "In one desert sand sample, hydrogen-eating microbes could fix at most about 0.06 g of carbon per m\u00b2 per year, if a rain like this fell every two weeks and all the energy from hydrogen went into making cell carbon. The model's estimate of this ceiling ranges from 0.006 to 0.27 g. In a second sample, which lacks the carbon-fixing genes, the ceiling is exactly 0.",
+      "answer_plain": "In one desert sand sample, hydrogen-eating microbes could fix at most about 0.05 g of carbon per m\u00b2 per year, if a rain like this fell every two weeks and all the energy from hydrogen went into making cell carbon. The model's estimate of this ceiling ranges from 0.006 to 0.27 g. In a second sample, which lacks the carbon-fixing genes, the ceiling is exactly 0.",
       "answer_science": "We bounded CO\u2082 fixation by H\u2082-oxidising autotrophs by converting the twin's H\u2082 uptake with the knallgas yield (0.167 mol CO\u2082 per mol H\u2082; Bongers 1970), assuming that all oxidised H\u2082 supports growth. In sample F14Dr1, the bound after a single 12 mm rain is 1910 \u00b5g C m\u207b\u00b2 over 14 days; repeating such a rain every two weeks gives 0.050 g C m\u207b\u00b2 yr\u207b\u00b9 (reference parameterisation 0.058 g C m\u207b\u00b2 yr\u207b\u00b9; 90 % interval 0.0062 to 0.27 g C m\u207b\u00b2 yr\u207b\u00b9), with the H\u2082 rate constant k_H2 explaining most of the variance (S_T = 0.83). In sample 14PRr2 the reasoner entails no H\u2082-autotroph candidate, and the bound is zero by deduction.",
-      "headline_plain": "In one desert sand sample, hydrogen-eating microbes could fix at most about 0.06 g of carbon per m\u00b2 per year if it rained every two weeks, and 0 where the carbon-fixing genes are absent.",
+      "headline_plain": "In one desert sand sample, hydrogen-eating microbes could fix at most about 0.05 g of carbon per m\u00b2 per year if it rained every two weeks, and 0 where the carbon-fixing genes are absent.",
       "headline_science": "We bounded CO\u2082 fixation by H\u2082-oxidising autotrophs by converting the twin's H\u2082 uptake with the knallgas yield (0.167 mol CO\u2082 per mol H\u2082; Bongers 1970), assuming that all oxidised H\u2082 supports growth.",
       "slug": "carbon-fixation",
       "theme": "microbes",
@@ -155,6 +155,6 @@
       "title_science": "Upper bound on CO\u2082 fixation by H\u2082-oxidising autotrophs"
     }
   ],
-  "twin_version": "0.8.1",
+  "twin_version": "0.8.2",
   "version": "question-1"
 }

@@ -1,5 +1,5 @@
 {
-  "answer_plain": "Adding microbes that carry the carbon-monoxide-eating genes to a sample that had none makes uptake start: roughly 10 to 221 millionths of a mole per m\u00b2 over two weeks, depending on whether presence alone or the amount added matters. Adding a microbe without those genes changes nothing. Where such microbes are already present, adding more raises uptake only slightly (0.5 % at 1 % added, 2.7 % at 5 % added).",
+  "answer_plain": "Adding microbes that carry the carbon-monoxide-eating genes to a sample that had none makes uptake start: roughly 8.75 to 199 millionths of a mole per m\u00b2 over two weeks, depending on whether presence alone or the amount added matters. Adding a microbe without those genes changes nothing. Where such microbes are already present, adding more raises uptake only slightly (0.55 % at 1 % added, 2.7 % at 5 % added).",
   "answer_science": "Inoculation changes the community: the reasoner memberships of the added genome are reused and the community factor \u03b3_CO is recomputed for the hypothetical community. Adding a CO-carrier genome to 51PRr3, whose deduced carrier share is zero, opens CO uptake. The amount depends on the coupling between carrier share and rate: under presence coupling, uptake is 125 \u00b5mol m\u207b\u00b2 (90 % interval 22.3 to 501 \u00b5mol m\u207b\u00b2) at any dose, whereas under share-proportional coupling it rises from 8.75 \u00b5mol m\u207b\u00b2 at 0.1 % to 199 \u00b5mol m\u207b\u00b2 at 5 % inoculum. A non-carrier genome leaves uptake at zero under both couplings. Where carriers are already present (V53PRr2), proportional coupling gives gains of 0.55 % at 1 % and 2.7 % at 5 %.",
   "baseline_label": "Uninoculated sample community",
   "chain": [
@@ -28,9 +28,10 @@
     "x": 1.0
   },
   "headline_output": "co_uptake_change_pct",
-  "headline_plain": "Adding microbes that carry the carbon-monoxide-eating genes to a sample that had none starts uptake (roughly 10 to 221 millionths of a mole per m\u00b2 over two weeks), and raises uptake by 0.5 % at 1 % added where such microbes are already present.",
+  "headline_plain": "Adding microbes that carry the carbon-monoxide-eating genes to a sample that had none starts uptake (roughly 8.75 to 199 millionths of a mole per m\u00b2 over two weeks), and raises uptake by 0.55 % at 1 % added where such microbes are already present.",
+  "headline_reference": 0.548970673592493,
   "headline_science": "Inoculation changes the community: the reasoner memberships of the added genome are reused and the community factor \u03b3_CO is recomputed for the hypothetical community.",
-  "headline_value": 0.548970673592493,
+  "headline_value": 0.550384,
   "level_kind": "numeric",
   "limits_plain": "The range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong. The scenario assumes the added microbes survive and work immediately in dry desert sand without dying off.",
   "limits_science": "The inoculum share is a scenario value; survival and establishment of the added organism in desert sand are outside the model. Which coupling holds is untested, and the two couplings bracket the response.",
@@ -146,6 +147,7 @@
               "q25": null,
               "q75": null,
               "q95": null,
+              "reference": null,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
@@ -167,11 +169,12 @@
               "q25": 53.8343,
               "q75": 261.09,
               "q95": 503.79,
+              "reference": 144.407,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 144.407
+              "value": 127.734
             },
             "co_uptake_umol_m2": {
               "convergence": {
@@ -188,11 +191,12 @@
               "q25": 53.8343,
               "q75": 261.09,
               "q95": 503.79,
+              "reference": 144.407,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 144.407
+              "value": 127.734
             }
           },
           "sample": "51PRr3",
@@ -439,6 +443,7 @@
               "q25": null,
               "q75": null,
               "q95": null,
+              "reference": null,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
@@ -460,11 +465,12 @@
               "q25": 54.1724,
               "q75": 262.192,
               "q95": 500.61,
+              "reference": 144.407,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 144.407
+              "value": 125.227
             },
             "co_uptake_umol_m2": {
               "convergence": {
@@ -481,11 +487,12 @@
               "q25": 54.1724,
               "q75": 262.192,
               "q95": 500.61,
+              "reference": 144.407,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 144.407
+              "value": 125.227
             }
           },
           "sample": "51PRr3",
@@ -732,6 +739,7 @@
               "q25": null,
               "q75": null,
               "q95": null,
+              "reference": null,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
@@ -753,11 +761,12 @@
               "q25": 54.2733,
               "q75": 262.721,
               "q95": 509.37,
+              "reference": 144.407,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 144.407
+              "value": 127.325
             },
             "co_uptake_umol_m2": {
               "convergence": {
@@ -774,11 +783,12 @@
               "q25": 54.2733,
               "q75": 262.721,
               "q95": 509.37,
+              "reference": 144.407,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 144.407
+              "value": 127.325
             }
           },
           "sample": "51PRr3",
@@ -1032,6 +1042,7 @@
               "q25": null,
               "q75": null,
               "q95": null,
+              "reference": null,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
@@ -1053,11 +1064,12 @@
               "q25": 2.84057,
               "q75": 25.7501,
               "q95": 67.0393,
+              "reference": 10.3703,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 10.3703
+              "value": 8.7504
             },
             "co_uptake_umol_m2": {
               "convergence": {
@@ -1074,11 +1086,12 @@
               "q25": 2.84057,
               "q75": 25.7501,
               "q95": 67.0393,
+              "reference": 10.3703,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 10.3703
+              "value": 8.7504
             }
           },
           "sample": "51PRr3",
@@ -1325,6 +1338,7 @@
               "q25": null,
               "q75": null,
               "q95": null,
+              "reference": null,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
@@ -1346,11 +1360,12 @@
               "q25": 25.595,
               "q75": 155.25,
               "q95": 307.325,
+              "reference": 77.3745,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 77.3745
+              "value": 65.6568
             },
             "co_uptake_umol_m2": {
               "convergence": {
@@ -1367,11 +1382,12 @@
               "q25": 25.595,
               "q75": 155.25,
               "q95": 307.325,
+              "reference": 77.3745,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 77.3745
+              "value": 65.6568
             }
           },
           "sample": "51PRr3",
@@ -1618,6 +1634,7 @@
               "q25": null,
               "q75": null,
               "q95": null,
+              "reference": null,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
@@ -1639,11 +1656,12 @@
               "q25": 93.1769,
               "q75": 381.024,
               "q95": 729.252,
+              "reference": 221.424,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 221.424
+              "value": 199.384
             },
             "co_uptake_umol_m2": {
               "convergence": {
@@ -1660,11 +1678,12 @@
               "q25": 93.1769,
               "q75": 381.024,
               "q95": 729.252,
+              "reference": 221.424,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 221.424
+              "value": 199.384
             }
           },
           "sample": "51PRr3",
@@ -1919,6 +1938,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
@@ -1940,6 +1960,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -1961,11 +1982,12 @@
               "q25": 53.4568,
               "q75": 261.245,
               "q95": 510.994,
+              "reference": 144.407,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 144.407
+              "value": 126.213
             }
           },
           "sample": "V53PRr2",
@@ -2213,6 +2235,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
@@ -2234,6 +2257,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -2255,11 +2279,12 @@
               "q25": 55.4332,
               "q75": 261.757,
               "q95": 506.537,
+              "reference": 144.407,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 144.407
+              "value": 127.302
             }
           },
           "sample": "V53PRr2",
@@ -2507,6 +2532,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
@@ -2528,6 +2554,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -2549,11 +2576,12 @@
               "q25": 55.6076,
               "q75": 259.597,
               "q95": 506.878,
+              "reference": 144.407,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 144.407
+              "value": 128.18
             }
           },
           "sample": "V53PRr2",
@@ -2808,11 +2836,12 @@
               "q25": 0.0547465,
               "q75": 0.0571833,
               "q95": 0.063,
+              "reference": 0.05503356596243048,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": 0.05503356596243048
+              "value": 0.0551796
             },
             "co_uptake_contrast_umol_m2": {
               "convergence": {
@@ -2829,11 +2858,12 @@
               "q25": 0.210495,
               "q75": 0.666488,
               "q95": 1.24832,
+              "reference": 0.398044,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 0.398044
+              "value": 0.367643
             },
             "co_uptake_umol_m2": {
               "convergence": {
@@ -2850,11 +2880,12 @@
               "q25": 362.774,
               "q75": 1216.41,
               "q95": 2284.05,
+              "reference": 723.673,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 723.673
+              "value": 665.518
             }
           },
           "sample": "V53PRr2",
@@ -3102,11 +3133,12 @@
               "q25": 0.546124,
               "q75": 0.57066,
               "q95": 0.627704,
+              "reference": 0.548970673592493,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": 0.548970673592493
+              "value": 0.550384
             },
             "co_uptake_contrast_umol_m2": {
               "convergence": {
@@ -3123,11 +3155,12 @@
               "q25": 2.0871,
               "q75": 6.60575,
               "q95": 12.2418,
+              "reference": 3.97057,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 3.97057
+              "value": 3.63848
             },
             "co_uptake_umol_m2": {
               "convergence": {
@@ -3144,11 +3177,12 @@
               "q25": 364.602,
               "q75": 1216.78,
               "q95": 2257.24,
+              "reference": 727.246,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 727.246
+              "value": 663.164
             }
           },
           "sample": "V53PRr2",
@@ -3396,11 +3430,12 @@
               "q25": 2.70153,
               "q75": 2.82006,
               "q95": 3.08983,
+              "reference": 2.715326949322368,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": 2.715326949322368
+              "value": 2.72277
             },
             "co_uptake_contrast_umol_m2": {
               "convergence": {
@@ -3417,11 +3452,12 @@
               "q25": 10.409,
               "q75": 32.6345,
               "q95": 60.8451,
+              "reference": 19.6393,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 19.6393
+              "value": 17.9217
             },
             "co_uptake_umol_m2": {
               "convergence": {
@@ -3438,11 +3474,12 @@
               "q25": 376.133,
               "q75": 1240.48,
               "q95": 2316.65,
+              "reference": 742.915,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 742.915
+              "value": 674.13
             }
           },
           "sample": "V53PRr2",
@@ -3697,11 +3734,12 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": null,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": null
+              "value": 0.0
             },
             "co_uptake_contrast_umol_m2": {
               "convergence": {
@@ -3717,6 +3755,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -3737,6 +3776,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -3989,11 +4029,12 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": null,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": null
+              "value": 0.0
             },
             "co_uptake_contrast_umol_m2": {
               "convergence": {
@@ -4009,6 +4050,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -4029,6 +4071,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -4281,11 +4324,12 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": null,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": null
+              "value": 0.0
             },
             "co_uptake_contrast_umol_m2": {
               "convergence": {
@@ -4301,6 +4345,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -4321,6 +4366,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -4580,11 +4626,12 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": null,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": null
+              "value": 0.0
             },
             "co_uptake_contrast_umol_m2": {
               "convergence": {
@@ -4600,6 +4647,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -4620,6 +4668,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -4872,11 +4921,12 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": null,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": null
+              "value": 0.0
             },
             "co_uptake_contrast_umol_m2": {
               "convergence": {
@@ -4892,6 +4942,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -4912,6 +4963,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -5164,11 +5216,12 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": null,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": null
+              "value": 0.0
             },
             "co_uptake_contrast_umol_m2": {
               "convergence": {
@@ -5184,6 +5237,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -5204,6 +5258,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -5443,7 +5498,7 @@
   "theme": "microbes",
   "title_plain": "What if we add microbes?",
   "title_science": "Inoculation as a constitutive intervention on the community",
-  "twin_version": "0.8.1",
+  "twin_version": "0.8.2",
   "uncertainty": {
     "S1": {
       "activation_shape": [

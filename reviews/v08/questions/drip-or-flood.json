@@ -1,5 +1,5 @@
 {
-  "answer_plain": "Giving the same total water in one go and then every ten days changes hydrogen uptake over two weeks by about -5.5 % relative to a single rain, but it may go up or down (from 48 % lower to 175 % higher). Spreading it every three days gives about 37 % less (68 % less to 129 % more) and daily drip about 38 % less (73 % less to 136 % more). One possible reason is that frequent small doses mostly evaporate from the surface.",
+  "answer_plain": "Giving the same total water in one go and then every ten days changes hydrogen uptake over two weeks by about +2.5 % relative to a single rain, but it may go up or down (from 48 % lower to 175 % higher). Spreading it every three days gives about 27 % less (68 % less to 129 % more) and daily drip about 29 % less (73 % less to 136 % more). One possible reason is that frequent small doses mostly evaporate from the surface.",
   "answer_science": "Delivering the same irrigation volume, on top of the 12 mm rain, daily, every three days or every ten days changed 14-day H\u2082 uptake by a median of \u221229 %, \u221227 % and +2.5 %, respectively. The 90 % intervals of all three schedules include both decreases and increases (\u221273 to +136 %, \u221268 to +129 % and \u221248 to +175 %). Irrigation acts in two directions in the twin: it lengthens the period above the activation threshold, and it fills pores, which slows H\u2082 diffusion to the reacting community. The balance is set by the retention curve; the air-entry potential \u03c8_e and the retention exponent b explain most of the variance for the ten-day schedule (S_T = 0.61 and 0.40). Ranking the schedules therefore requires a measured retention curve for Rub' al Khali sand.",
   "baseline_label": "One 12 mm rain on day 1, no irrigation",
   "chain": [
@@ -34,9 +34,10 @@
     "x": 10.0
   },
   "headline_output": "h2_uptake_change_pct",
-  "headline_plain": "Giving the same total water every ten days changes hydrogen uptake over two weeks by about -5.5 % relative to a single rain, versus about 38 % less for daily drip, and the change may go up or down.",
+  "headline_plain": "Giving the same total water every ten days changes hydrogen uptake over two weeks by about +2.5 % relative to a single rain, versus about 29 % less for daily drip, and the change may go up or down.",
+  "headline_reference": -5.5474091806198285,
   "headline_science": "Delivering the same irrigation volume, on top of the 12 mm rain, daily, every three days or every ten days changed 14-day H\u2082 uptake by a median of \u221229 %, \u221227 % and +2.5 %, respectively.",
-  "headline_value": -5.5474091806198285,
+  "headline_value": 2.47513,
   "level_kind": "numeric",
   "limits_plain": "The range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong. Pipe layout, root uptake and uneven wetting around drip emitters are not represented.",
   "limits_science": "The irrigation volume follows the FAO-56 order-of-magnitude crop demand and is a scenario input. The twin uses one well-mixed 10 cm layer, so drip emitters, wetting fronts and deeper drainage are represented only through the daily water balance of that layer.",
@@ -190,11 +191,12 @@
               "q25": -52.6955,
               "q75": 8.73852,
               "q95": 136.469,
+              "reference": -38.355106850652206,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": -38.355106850652206
+              "value": -28.9265
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -211,11 +213,12 @@
               "q25": -1053.76,
               "q75": 35.7882,
               "q95": 294.807,
+              "reference": -422.801,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": -422.801
+              "value": -248.012
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -232,11 +235,12 @@
               "q25": 335.266,
               "q75": 1205.46,
               "q95": 2155.11,
+              "reference": 679.532,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 679.532
+              "value": 656.591
             }
           },
           "sample": null,
@@ -484,11 +488,12 @@
               "q25": -51.1293,
               "q75": 11.4391,
               "q95": 128.571,
+              "reference": -37.26659729863844,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": -37.26659729863844
+              "value": -26.6432
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -505,11 +510,12 @@
               "q25": -1030.86,
               "q75": 38.473,
               "q95": 300.328,
+              "reference": -410.802,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": -410.802
+              "value": -213.777
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -526,11 +532,12 @@
               "q25": 351.138,
               "q75": 1255.53,
               "q95": 2153.28,
+              "reference": 691.531,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 691.531
+              "value": 684.463
             }
           },
           "sample": null,
@@ -778,11 +785,12 @@
               "q25": -24.2512,
               "q75": 47.5627,
               "q95": 174.627,
+              "reference": -5.5474091806198285,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": -5.5474091806198285
+              "value": 2.47513
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -799,11 +807,12 @@
               "q25": -453.219,
               "q75": 169.598,
               "q95": 631.023,
+              "reference": -61.1508,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": -61.1508
+              "value": 12.9285
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -820,11 +829,12 @@
               "q25": 475.487,
               "q75": 1884.66,
               "q95": 3109.75,
+              "reference": 1041.18,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1041.18
+              "value": 1015.89
             }
           },
           "sample": null,
@@ -1059,7 +1069,7 @@
   "theme": "water",
   "title_plain": "Drip or flood irrigation?",
   "title_science": "Irrigation frequency at constant irrigation volume",
-  "twin_version": "0.8.1",
+  "twin_version": "0.8.2",
   "uncertainty": {
     "S1": {
       "activation_shape": [

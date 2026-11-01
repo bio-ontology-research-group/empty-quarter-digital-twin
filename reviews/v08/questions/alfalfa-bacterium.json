@@ -1,5 +1,5 @@
 {
-  "answer_plain": "In a crop-salt formula fitted to one field trial (not the twin), alfalfa from bacterium-coated seeds reaches about 92 % of normal yield (89 to 93 %) in 7.81 dS/m water, versus about 80 % (78 to 81 %) without the bacterium. Other ways of estimating how salt builds up in the root zone give very different answers, from about 33 % to about 101 % with the bacterium, so this figure depends strongly on that choice.",
+  "answer_plain": "In a crop-salt formula fitted to one field trial (not the twin), alfalfa from bacterium-coated seeds reaches about 91 % of normal yield (89 to 93 %) in 7.81 dS/m water, versus about 79 % (78 to 81 %) without the bacterium. Other ways of estimating how salt builds up in the root zone give very different answers, from about 32 % to about 101 % with the bacterium, so this figure depends strongly on that choice.",
   "answer_science": "We estimated alfalfa relative yield at the high irrigation salinity of the Hada Al-Sham field trial (7.81 dS/m) by combining the Maas\u2013Hoffman response with three root-zone salinity models. With the leaching factor fitted to the trial's season-1 yield ratio, SA187-coated seed reached a median relative yield of 91 % (90 % interval 89 to 93 %) and uncoated seed 79 %; the field-trial inputs carry this uncertainty (the digitised mock yield ratio, S_T = 0.51). The choice of root-zone model dominates the estimate: the FAO-29 fixed leaching factor gives 32 % (2.7 to 57 %) and the twin's bare-sand salt balance 101 % (94 to 107 %) for coated seed. The fitted leaching factor implies a root-zone salinity close to the soil salinity measured at the site (1.95 dS/m).",
   "baseline_label": "Normal, uninoculated alfalfa yield",
   "chain": [
@@ -75,9 +75,10 @@
     "x": 7.81
   },
   "headline_output": "relative_yield_alfalfa_sa187",
-  "headline_plain": "In a crop-salt formula fitted to one field trial, alfalfa from bacterium-coated seeds reaches about 92 % of normal yield in 7.81 dS/m water (versus 80 % without it), though other root-zone salt formulas give 33 to 101 %.",
+  "headline_plain": "In a crop-salt formula fitted to one field trial, alfalfa from bacterium-coated seeds reaches about 91 % of normal yield in 7.81 dS/m water (versus 79 % without it), though other root-zone salt formulas give 32 to 101 %.",
+  "headline_reference": 0.91517,
   "headline_science": "We estimated alfalfa relative yield at the high irrigation salinity of the Hada Al-Sham field trial (7.81 dS/m) by combining the Maas\u2013Hoffman response with three root-zone salinity models.",
-  "headline_value": 0.91517,
+  "headline_value": 0.910958,
   "level_kind": "numeric",
   "limits_plain": "The range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong. Crop yields and the bacterial boost come from published crop-salt formulas and one desert farm field trial, not from the soil twin itself.",
   "limits_science": "The fitted model reproduces the trial's mock yield ratio by construction, from two salinity levels in one season of one trial (de Z\u00e9licourt et al. 2018). The SA187 benefit enters as a constant multiplier; its dependence on salinity is unidentified by these data. Yields are crop-model estimates.",
@@ -659,6 +660,7 @@
               "q25": 1.0,
               "q75": 1.0,
               "q95": 1.0,
+              "reference": 1.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
@@ -680,11 +682,12 @@
               "q25": 1.13936,
               "q75": 1.15419,
               "q95": 1.16292,
+              "reference": 1.15,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 1.15
+              "value": 1.14739
             }
           },
           "sample": null,
@@ -932,11 +935,12 @@
               "q25": 0.897273,
               "q75": 0.948053,
               "q95": 0.978895,
+              "reference": 0.927,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.927
+              "value": 0.924223
             },
             "relative_yield_alfalfa_sa187": {
               "convergence": {
@@ -953,11 +957,12 @@
               "q25": 1.02719,
               "q75": 1.0872,
               "q95": 1.12336,
+              "reference": 1.06605,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 1.06605
+              "value": 1.05903
             }
           },
           "sample": null,
@@ -1205,11 +1210,12 @@
               "q25": 0.759468,
               "q75": 0.836855,
               "q95": 0.884405,
+              "reference": 0.80436,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.80436
+              "value": 0.799379
             },
             "relative_yield_alfalfa_sa187": {
               "convergence": {
@@ -1226,11 +1232,12 @@
               "q25": 0.86981,
               "q75": 0.958507,
               "q95": 1.01646,
+              "reference": 0.925014,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.925014
+              "value": 0.916574
             }
           },
           "sample": null,
@@ -1478,11 +1485,12 @@
               "q25": 0.650174,
               "q75": 0.750372,
               "q95": 0.811195,
+              "reference": 0.708,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.708
+              "value": 0.701873
             },
             "relative_yield_alfalfa_sa187": {
               "convergence": {
@@ -1499,11 +1507,12 @@
               "q25": 0.74376,
               "q75": 0.859861,
               "q95": 0.929951,
+              "reference": 0.8142,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.8142
+              "value": 0.80469
             }
           },
           "sample": null,
@@ -1751,11 +1760,12 @@
               "q25": 0.174989,
               "q75": 0.374973,
               "q95": 0.493855,
+              "reference": 0.290805,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.290805
+              "value": 0.27878
             },
             "relative_yield_alfalfa_sa187": {
               "convergence": {
@@ -1772,11 +1782,12 @@
               "q25": 0.200731,
               "q75": 0.42928,
               "q95": 0.566259,
+              "reference": 0.334426,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.334426
+              "value": 0.320412
             }
           },
           "sample": null,
@@ -2024,11 +2035,12 @@
               "q25": 0.151751,
               "q75": 0.356076,
               "q95": 0.478651,
+              "reference": 0.27,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.27
+              "value": 0.258723
             },
             "relative_yield_alfalfa_sa187": {
               "convergence": {
@@ -2045,11 +2057,12 @@
               "q25": 0.174445,
               "q75": 0.408392,
               "q95": 0.54836,
+              "reference": 0.3105,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.3105
+              "value": 0.29637
             }
           },
           "sample": null,
@@ -2297,6 +2310,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.148424,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
@@ -2318,6 +2332,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.170378,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
@@ -2577,6 +2592,7 @@
               "q25": 1.0,
               "q75": 1.0,
               "q95": 1.0,
+              "reference": 1.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
@@ -2598,11 +2614,12 @@
               "q25": 1.13936,
               "q75": 1.15419,
               "q95": 1.16292,
+              "reference": 1.15,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 1.15
+              "value": 1.14738
             }
           },
           "sample": null,
@@ -2850,6 +2867,7 @@
               "q25": 1.0,
               "q75": 1.0,
               "q95": 1.0,
+              "reference": 1.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
@@ -2871,11 +2889,12 @@
               "q25": 1.13938,
               "q75": 1.15418,
               "q95": 1.16292,
+              "reference": 1.15,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 1.15
+              "value": 1.14739
             }
           },
           "sample": null,
@@ -3123,6 +3142,7 @@
               "q25": 1.0,
               "q75": 1.0,
               "q95": 1.0,
+              "reference": 1.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
@@ -3144,11 +3164,12 @@
               "q25": 1.13932,
               "q75": 1.1541,
               "q95": 1.16292,
+              "reference": 1.15,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 1.15
+              "value": 1.14732
             }
           },
           "sample": null,
@@ -3396,6 +3417,7 @@
               "q25": 0.997425,
               "q75": 1.0,
               "q95": 1.0,
+              "reference": 1.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
@@ -3417,11 +3439,12 @@
               "q25": 1.13452,
               "q75": 1.1521,
               "q95": 1.16167,
+              "reference": 1.15,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 1.15
+              "value": 1.14407
             }
           },
           "sample": null,
@@ -3669,11 +3692,12 @@
               "q25": 0.859747,
               "q75": 0.904287,
               "q95": 0.928769,
+              "reference": 0.882797,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.882797
+              "value": 0.883779
             },
             "relative_yield_alfalfa_sa187": {
               "convergence": {
@@ -3690,11 +3714,12 @@
               "q25": 0.984775,
               "q75": 1.03819,
               "q95": 1.06731,
+              "reference": 1.01522,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 1.01522
+              "value": 1.01281
             }
           },
           "sample": null,
@@ -3942,11 +3967,12 @@
               "q25": 0.852856,
               "q75": 0.898358,
               "q95": 0.923382,
+              "reference": 0.876393,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.876393
+              "value": 0.877096
             },
             "relative_yield_alfalfa_sa187": {
               "convergence": {
@@ -3963,11 +3989,12 @@
               "q25": 0.977116,
               "q75": 1.03096,
               "q95": 1.0614,
+              "reference": 1.00785,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 1.00785
+              "value": 1.0065
             }
           },
           "sample": null,
@@ -4215,11 +4242,12 @@
               "q25": 0.706394,
               "q75": 0.774715,
               "q95": 0.814509,
+              "reference": 0.74159,
               "refusal_fraction": 0.0,
               "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.74159
+              "value": 0.743001
             },
             "relative_yield_alfalfa_sa187": {
               "convergence": {
@@ -4236,11 +4264,12 @@
               "q25": 0.810346,
               "q75": 0.888091,
               "q95": 0.934158,
+              "reference": 0.852829,
               "refusal_fraction": 0.0,
               "refusal_reason": "twin abstains outside its ideal-dilute NaCl domain (> 0.1 mol/L)",
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.852829
+              "value": 0.851268
             }
           },
           "sample": null,
@@ -4495,6 +4524,7 @@
               "q25": 1.0,
               "q75": 1.0,
               "q95": 1.0,
+              "reference": 1.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
@@ -4516,11 +4546,12 @@
               "q25": 1.13936,
               "q75": 1.15418,
               "q95": 1.16292,
+              "reference": 1.15,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 1.15
+              "value": 1.14739
             }
           },
           "sample": null,
@@ -4768,6 +4799,7 @@
               "q25": 1.0,
               "q75": 1.0,
               "q95": 1.0,
+              "reference": 1.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
@@ -4789,11 +4821,12 @@
               "q25": 1.13937,
               "q75": 1.15419,
               "q95": 1.16292,
+              "reference": 1.15,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 1.15
+              "value": 1.14738
             }
           },
           "sample": null,
@@ -5041,6 +5074,7 @@
               "q25": 0.998278,
               "q75": 1.0,
               "q95": 1.0,
+              "reference": 1.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
@@ -5062,11 +5096,12 @@
               "q25": 1.13567,
               "q75": 1.15243,
               "q95": 1.16195,
+              "reference": 1.15,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 1.15
+              "value": 1.14475
             }
           },
           "sample": null,
@@ -5314,11 +5349,12 @@
               "q25": 0.9593,
               "q75": 0.972858,
               "q95": 0.982024,
+              "reference": 0.96664,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.96664
+              "value": 0.966438
             },
             "relative_yield_alfalfa_sa187": {
               "convergence": {
@@ -5335,11 +5371,12 @@
               "q25": 1.09725,
               "q75": 1.11813,
               "q95": 1.13196,
+              "reference": 1.11164,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 1.11164
+              "value": 1.10785
             }
           },
           "sample": null,
@@ -5587,11 +5624,12 @@
               "q25": 0.788077,
               "q75": 0.800497,
               "q95": 0.807989,
+              "reference": 0.7958,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.7958
+              "value": 0.794575
             },
             "relative_yield_alfalfa_sa187": {
               "convergence": {
@@ -5608,11 +5646,12 @@
               "q25": 0.901233,
               "q75": 0.919894,
               "q95": 0.930979,
+              "reference": 0.91517,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.91517
+              "value": 0.910958
             }
           },
           "sample": null,
@@ -5860,11 +5899,12 @@
               "q25": 0.779328,
               "q75": 0.791968,
               "q95": 0.799692,
+              "reference": 0.78728,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.78728
+              "value": 0.786037
             },
             "relative_yield_alfalfa_sa187": {
               "convergence": {
@@ -5881,11 +5921,12 @@
               "q25": 0.891151,
               "q75": 0.909788,
               "q95": 0.920769,
+              "reference": 0.905372,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.905372
+              "value": 0.901338
             }
           },
           "sample": null,
@@ -6133,11 +6174,12 @@
               "q25": 0.594633,
               "q75": 0.61521,
               "q95": 0.628718,
+              "reference": 0.607921,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.607921
+              "value": 0.605144
             },
             "relative_yield_alfalfa_sa187": {
               "convergence": {
@@ -6154,11 +6196,12 @@
               "q25": 0.680978,
               "q75": 0.705256,
               "q95": 0.722531,
+              "reference": 0.699109,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.699109
+              "value": 0.694334
             }
           },
           "sample": null,
@@ -6413,6 +6456,7 @@
               "q25": 1.0,
               "q75": 1.0,
               "q95": 1.0,
+              "reference": 1.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
@@ -6434,11 +6478,12 @@
               "q25": 1.13938,
               "q75": 1.15419,
               "q95": 1.16291,
+              "reference": 1.15,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 1.15
+              "value": 1.14738
             }
           },
           "sample": null,
@@ -6686,6 +6731,7 @@
               "q25": 1.0,
               "q75": 1.0,
               "q95": 1.0,
+              "reference": 1.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
@@ -6707,11 +6753,12 @@
               "q25": 1.13936,
               "q75": 1.15418,
               "q95": 1.16291,
+              "reference": 1.15,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 1.15
+              "value": 1.14739
             }
           },
           "sample": null,
@@ -6959,6 +7006,7 @@
               "q25": 1.0,
               "q75": 1.0,
               "q95": 1.0,
+              "reference": 1.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
@@ -6980,11 +7028,12 @@
               "q25": 1.13922,
               "q75": 1.15404,
               "q95": 1.16278,
+              "reference": 1.15,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 1.15
+              "value": 1.1472
             }
           },
           "sample": null,
@@ -7232,11 +7281,12 @@
               "q25": 0.976151,
               "q75": 0.990201,
               "q95": 0.999931,
+              "reference": 0.983234,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.983234
+              "value": 0.983188
             },
             "relative_yield_alfalfa_sa187": {
               "convergence": {
@@ -7253,11 +7303,12 @@
               "q25": 1.11737,
               "q75": 1.13786,
               "q95": 1.15211,
+              "reference": 1.13072,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 1.13072
+              "value": 1.12734
             }
           },
           "sample": null,
@@ -7505,11 +7556,12 @@
               "q25": 0.820521,
               "q75": 0.836308,
               "q95": 0.846828,
+              "reference": 0.8282,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.8282
+              "value": 0.828366
             },
             "relative_yield_alfalfa_sa187": {
               "convergence": {
@@ -7526,11 +7578,12 @@
               "q25": 0.938299,
               "q75": 0.959632,
               "q95": 0.975728,
+              "reference": 0.95243,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.95243
+              "value": 0.950669
             }
           },
           "sample": null,
@@ -7778,11 +7831,12 @@
               "q25": 0.812643,
               "q75": 0.828763,
               "q95": 0.83955,
+              "reference": 0.820469,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.820469
+              "value": 0.820639
             },
             "relative_yield_alfalfa_sa187": {
               "convergence": {
@@ -7799,11 +7853,12 @@
               "q25": 0.930837,
               "q75": 0.952807,
               "q95": 0.965608,
+              "reference": 0.943539,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.943539
+              "value": 0.940361
             }
           },
           "sample": null,
@@ -8051,11 +8106,12 @@
               "q25": 0.644251,
               "q75": 0.671284,
               "q95": 0.689633,
+              "reference": 0.657703,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.657703
+              "value": 0.657794
             },
             "relative_yield_alfalfa_sa187": {
               "convergence": {
@@ -8072,11 +8128,12 @@
               "q25": 0.737943,
               "q75": 0.771088,
               "q95": 0.791429,
+              "reference": 0.756358,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "fraction",
               "unit_plain": "fraction of normal yield",
-              "value": 0.756358
+              "value": 0.754241
             }
           },
           "sample": null,
@@ -8311,7 +8368,7 @@
   "theme": "salt",
   "title_plain": "Can a desert bacterium help alfalfa in salty water?",
   "title_science": "Alfalfa yield under saline irrigation with Enterobacter sp. SA187",
-  "twin_version": "0.8.1",
+  "twin_version": "0.8.2",
   "uncertainty": {
     "S1": {
       "activation_shape": [

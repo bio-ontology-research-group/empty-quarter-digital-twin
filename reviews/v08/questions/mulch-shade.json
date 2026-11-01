@@ -1,5 +1,5 @@
 {
-  "answer_plain": "Full mulch cover raises hydrogen uptake over two weeks by about 50 % (by 11 to 92 %) by slowing evaporation, so uptake with mulch alone goes up in every case we tried. Full shade alone lowers uptake by about 25 % (by 1.7 to 28 %; typical run about 14 % lower), and combining mulch with shade raises uptake by about 14 % (from 6.2 % lower to 70 % higher). Mulch keeps water in the sand without cooling the microbes, whereas shade cools the sand and slows enzyme speed.",
+  "answer_plain": "Full mulch cover raises hydrogen uptake over two weeks by about 50 % (by 11 to 92 %) by slowing evaporation, so uptake with mulch alone goes up in every case we tried. Full shade alone lowers uptake by about 14 % (by 1.7 to 28 %), and combining mulch with shade raises uptake by about 28 % (from 6.2 % lower to 70 % higher). Mulch keeps water in the sand without cooling the microbes, whereas shade cools the sand and slows enzyme speed.",
   "answer_science": "Full organic mulch raised 14-day H\u2082 uptake by a median of 50 % (90 % interval 11 to 92 %) in every draw, because the reduced evaporation keeps the soil above the activation threshold for longer. A full shade net lowered uptake by 14 % (1.7 to 28 %), also in every draw: the net cools the soil and slows the reaction through Q10 (S_T = 0.77). Combining full mulch and shade changed uptake by +28 %, with an interval that includes both directions (\u22126.2 to +70 %). The mulch effect depends mostly on the retention exponent b (S_T = 0.59).",
   "baseline_label": "Bare unshaded sand (one 12 mm rain on day 1)",
   "chain": [
@@ -35,8 +35,9 @@
   },
   "headline_output": "h2_uptake_change_pct",
   "headline_plain": "Full mulch cover raises hydrogen uptake over two weeks by about 50 % by keeping the sand damp longer, and uptake goes up in every case we tried.",
+  "headline_reference": 50.07651966605312,
   "headline_science": "Full organic mulch raised 14-day H\u2082 uptake by a median of 50 % (90 % interval 11 to 92 %) in every draw, because the reduced evaporation keeps the soil above the activation threshold for longer.",
-  "headline_value": 50.07651966605312,
+  "headline_value": 50.0568,
   "level_kind": "numeric",
   "limits_plain": "The range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong. Organic mulch breakdown and extra carbon food for soil microbes are not included.",
   "limits_science": "The mulch evaporation factor extrapolates the FAO-56 rule for partial organic mulch cover linearly to full cover, and the shade-net cooling is a constant soil-temperature offset; both are modeller assumptions.",
@@ -207,6 +208,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
@@ -228,6 +230,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -249,11 +252,12 @@
               "q25": 335.652,
               "q75": 2291.33,
               "q95": 4815.8,
+              "reference": 1102.33,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1102.33
+              "value": 931.704
             }
           },
           "sample": null,
@@ -501,11 +505,12 @@
               "q25": 22.2192,
               "q75": 31.7736,
               "q95": 36.9718,
+              "reference": 31.10375902744452,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": 31.10375902744452
+              "value": 27.101
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -522,11 +527,12 @@
               "q25": 89.5042,
               "q75": 556.826,
               "q95": 1104.28,
+              "reference": 342.867,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 342.867
+              "value": 240.78
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -543,11 +549,12 @@
               "q25": 435.742,
               "q75": 2905.58,
               "q95": 5833.25,
+              "reference": 1445.2,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1445.2
+              "value": 1199.55
             }
           },
           "sample": null,
@@ -795,11 +802,12 @@
               "q25": 33.2278,
               "q75": 66.1566,
               "q95": 91.8162,
+              "reference": 50.07651966605312,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": 50.07651966605312
+              "value": 50.0568
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -816,11 +824,12 @@
               "q25": 153.418,
               "q75": 871.82,
               "q95": 1736.59,
+              "reference": 552.009,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 552.009
+              "value": 399.014
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -837,11 +846,12 @@
               "q25": 524.963,
               "q75": 3346.95,
               "q95": 6166.57,
+              "reference": 1654.34,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1654.34
+              "value": 1419.53
             }
           },
           "sample": null,
@@ -1096,6 +1106,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
@@ -1117,6 +1128,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -1138,11 +1150,12 @@
               "q25": 338.315,
               "q75": 2258.83,
               "q95": 4874.38,
+              "reference": 1102.33,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1102.33
+              "value": 948.655
             }
           },
           "sample": null,
@@ -1390,11 +1403,12 @@
               "q25": -10.3654,
               "q75": -3.98371,
               "q95": -0.8976,
+              "reference": -13.133406027574221,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": -13.133406027574221
+              "value": -7.02744
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -1411,11 +1425,12 @@
               "q25": -139.305,
               "q75": -20.1457,
               "q95": -4.18063,
+              "reference": -144.774,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": -144.774
+              "value": -54.9324
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -1432,11 +1447,12 @@
               "q25": 315.402,
               "q75": 2130.67,
               "q95": 4538.15,
+              "reference": 957.56,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 957.56
+              "value": 867.474
             }
           },
           "sample": null,
@@ -1684,11 +1700,12 @@
               "q25": -20.0519,
               "q75": -7.81551,
               "q95": -1.73943,
+              "reference": -24.805752889553336,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": -24.805752889553336
+              "value": -13.7127
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -1705,11 +1722,12 @@
               "q25": -248.083,
               "q75": -42.8743,
               "q95": -7.78574,
+              "reference": -273.442,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": -273.442
+              "value": -104.915
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -1726,11 +1744,12 @@
               "q25": 280.297,
               "q75": 1988.11,
               "q95": 4303.58,
+              "reference": 828.891,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 828.891
+              "value": 806.399
             }
           },
           "sample": null,
@@ -1985,6 +2004,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
@@ -2006,6 +2026,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -2027,11 +2048,12 @@
               "q25": 345.815,
               "q75": 2282.63,
               "q95": 4836.81,
+              "reference": 1102.33,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1102.33
+              "value": 970.593
             }
           },
           "sample": null,
@@ -2279,11 +2301,12 @@
               "q25": 11.6218,
               "q75": 23.2555,
               "q95": 30.5341,
+              "reference": 13.939667739848993,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": 13.939667739848993
+              "value": 17.6257
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -2300,11 +2323,12 @@
               "q25": 45.4254,
               "q75": 374.347,
               "q95": 839.822,
+              "reference": 153.661,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 153.661
+              "value": 138.945
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -2321,11 +2345,12 @@
               "q25": 401.018,
               "q75": 2704.97,
               "q95": 5585.79,
+              "reference": 1255.99,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1255.99
+              "value": 1108.97
             }
           },
           "sample": null,
@@ -2573,11 +2598,12 @@
               "q25": 12.6763,
               "q75": 44.1941,
               "q95": 70.1712,
+              "reference": 14.093162157454715,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": 14.093162157454715
+              "value": 28.1705
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -2594,11 +2620,12 @@
               "q25": 56.939,
               "q75": 513.854,
               "q95": 1268.21,
+              "reference": 155.354,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 155.354
+              "value": 179.936
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -2615,11 +2642,12 @@
               "q25": 441.432,
               "q75": 2837.53,
               "q95": 5485.79,
+              "reference": 1257.69,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1257.69
+              "value": 1220.64
             }
           },
           "sample": null,
@@ -2854,7 +2882,7 @@
   "theme": "heat",
   "title_plain": "Mulch or shade nets?",
   "title_science": "Organic mulch and shade nets",
-  "twin_version": "0.8.1",
+  "twin_version": "0.8.2",
   "uncertainty": {
     "S1": {
       "activation_shape": [

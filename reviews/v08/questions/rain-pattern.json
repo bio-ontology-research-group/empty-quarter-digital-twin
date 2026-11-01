@@ -1,5 +1,5 @@
 {
-  "answer_plain": "Splitting one heavy downpour into four smaller showers lowers hydrogen uptake over two weeks by about 63 % (by 2.8 to 100 %), so uptake goes down in every case we tried. Splitting the same total rain into daily drizzle lowers uptake by almost 100 % (by 51 to 100 %). One soaking keeps the sand wet enough for the microbes for several days, while small daily amounts mostly evaporate the same day.",
+  "answer_plain": "Splitting one heavy downpour into four smaller showers lowers hydrogen uptake over two weeks by about 69 % (by 2.8 to 100 %), so uptake goes down in every case we tried. Splitting the same total rain into daily drizzle lowers uptake by almost 100 % (by 51 to 100 %). One soaking keeps the sand wet enough for the microbes for several days, while small daily amounts mostly evaporate the same day.",
   "answer_science": "Partitioning the same 12 mm of rain into smaller events reduced H\u2082 uptake in every parameter draw. Relative to a single 12 mm event, four 3 mm events reduced 14-day uptake by a median of 69 % (90 % interval 2.8 to 100 %; reference parameterisation \u221263 %), and daily drizzle reduced it by 100 % (51 to 100 %). Each small addition is largely removed by the daily evaporative demand, so the soil water potential spends fewer days above the activation threshold. The magnitude of the reduction depends mainly on the water-retention curve (the retention exponent b, S_T = 0.69; the air-entry potential \u03c8_e, S_T = 0.26); its direction holds across all sampled parameter values.",
   "baseline_label": "One 12 mm rain on day 1, no treatment",
   "chain": [
@@ -22,9 +22,10 @@
     "x": "four"
   },
   "headline_output": "h2_uptake_change_pct",
-  "headline_plain": "Splitting one heavy rain into four smaller showers lowers hydrogen uptake over two weeks by about 63 %, and daily drizzle lowers it by almost 100 %, so uptake goes down in every case we tried.",
+  "headline_plain": "Splitting one heavy rain into four smaller showers lowers hydrogen uptake over two weeks by about 69 %, and daily drizzle lowers it by almost 100 %, so uptake goes down in every case we tried.",
+  "headline_reference": -63.23769677583815,
   "headline_science": "Partitioning the same 12 mm of rain into smaller events reduced H\u2082 uptake in every parameter draw.",
-  "headline_value": -63.23769677583815,
+  "headline_value": -68.6512,
   "level_kind": "categorical",
   "limits_plain": "The range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong. The simulation uses a single sand column with fixed evaporation and does not include surface crusting or runoff down dune slopes.",
   "limits_science": "The intervals combine uncertainty in the twin's retention, activation and kinetic parameters. The twin represents the top 10 cm of sand as one well-mixed layer at 25 \u00b0C with 1 mm d\u207b\u00b9 evaporative demand, so it resolves the timing of wetting but no vertical redistribution, runoff or vapour transport.",
@@ -127,6 +128,7 @@
               "q25": -100.0,
               "q75": -99.7454,
               "q95": -95.673,
+              "reference": -100.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
@@ -148,11 +150,12 @@
               "q25": -2233.84,
               "q75": -338.676,
               "q95": -122.614,
+              "reference": -1102.33,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": -1102.33
+              "value": -927.274
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -169,6 +172,7 @@
               "q25": 0.0,
               "q75": 2.15631,
               "q95": 107.027,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -421,6 +425,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
@@ -442,6 +447,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -463,11 +469,12 @@
               "q25": 347.667,
               "q75": 2286.19,
               "q95": 4671.13,
+              "reference": 1102.33,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1102.33
+              "value": 925.641
             }
           },
           "sample": null,
@@ -715,11 +722,12 @@
               "q25": -93.2063,
               "q75": -37.949,
               "q95": -2.76607,
+              "reference": -63.23769677583815,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": -63.23769677583815
+              "value": -68.6512
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -736,11 +744,12 @@
               "q25": -1061.37,
               "q75": -165.835,
               "q95": -30.2049,
+              "reference": -697.09,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": -697.09
+              "value": -441.362
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -757,11 +766,12 @@
               "q25": 31.2791,
               "q75": 940.868,
               "q95": 3950.08,
+              "reference": 405.243,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 405.243
+              "value": 204.062
             }
           },
           "sample": null,
@@ -1009,11 +1019,12 @@
               "q25": -100.0,
               "q75": -90.7034,
               "q95": -50.8728,
+              "reference": -99.73943519335717,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": -99.73943519335717
+              "value": -99.9348
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -1030,11 +1041,12 @@
               "q25": -1968.84,
               "q75": -300.751,
               "q95": -120.995,
+              "reference": -1099.46,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": -1099.46
+              "value": -834.85
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -1051,11 +1063,12 @@
               "q25": 0.0,
               "q75": 99.3575,
               "q95": 1391.17,
+              "reference": 2.87229,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 2.87229
+              "value": 0.371468
             }
           },
           "sample": null,
@@ -1290,7 +1303,7 @@
   "theme": "water",
   "title_plain": "One heavy rain, four showers or daily drizzle?",
   "title_science": "Rainfall partitioning and 14-day H\u2082 uptake",
-  "twin_version": "0.8.1",
+  "twin_version": "0.8.2",
   "uncertainty": {
     "S1": {
       "activation_shape": [

@@ -1,5 +1,5 @@
 {
-  "answer_plain": "Full solar-panel cover raises hydrogen uptake over two weeks by about 17 % (by 0.4 to 52 %), and uptake goes up in every case we tried. Less evaporation under the panels and water from panel washing keep the sand moist longer. This outweighs the slowing of microbes by shade.",
+  "answer_plain": "Full solar-panel cover raises hydrogen uptake over two weeks by about 23 % (by 0.35 to 52 %), and uptake goes up in every case we tried. Less evaporation under the panels and water from panel washing keep the sand moist longer. This outweighs the slowing of microbes by shade.",
   "answer_science": "Full panel cover raised 14-day H\u2082 uptake by a median of 23 % (90 % interval 0.35 to 52 %; reference parameterisation +17 %), and every draw gave an increase. The panels act on the soil in three ways in the chain: they reduce evaporation and add washing water, both of which lengthen the wet period, and they cool the soil, which slows the reaction through Q10. At half cover the panel evaporation reduction explains the largest share of the variance (S_T = 0.44); at full cover the retention exponent b does (S_T = 0.41).",
   "baseline_label": "Open desert sand outside panels",
   "chain": [
@@ -34,9 +34,10 @@
     "x": 1.0
   },
   "headline_output": "h2_uptake_change_pct",
-  "headline_plain": "Full solar-panel cover raises hydrogen uptake over two weeks by about 17 %, and uptake goes up in every case we tried.",
+  "headline_plain": "Full solar-panel cover raises hydrogen uptake over two weeks by about 23 %, and uptake goes up in every case we tried.",
+  "headline_reference": 16.644320142533935,
   "headline_science": "Full panel cover raised 14-day H\u2082 uptake by a median of 23 % (90 % interval 0.35 to 52 %; reference parameterisation +17 %), and every draw gave an increase.",
-  "headline_value": 16.644320142533935,
+  "headline_value": 23.437,
   "level_kind": "numeric",
   "limits_plain": "The range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong. Wind shifts under panel rows and runoff strips along panel edges are simplified to an even average.",
   "limits_science": "The soil cooling and evaporation reduction come from studies at temperate sites (Armstrong et al. 2016; Hassanpour Adeh et al. 2018), and the washing volume and interval are scenario values; all three are modeller assumptions for the Rub' al Khali.",
@@ -245,6 +246,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
@@ -266,6 +268,7 @@
               "q25": 0.0,
               "q75": 0.0,
               "q95": 0.0,
+              "reference": 0.0,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
@@ -287,11 +290,12 @@
               "q25": 336.744,
               "q75": 2280.25,
               "q95": 4908.19,
+              "reference": 1102.33,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1102.33
+              "value": 943.363
             }
           },
           "sample": null,
@@ -539,11 +543,12 @@
               "q25": 8.43834,
               "q75": 16.9103,
               "q95": 23.5917,
+              "reference": 9.415411523399053,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": 9.415411523399053
+              "value": 12.515
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -560,11 +565,12 @@
               "q25": 34.6194,
               "q75": 283.085,
               "q95": 685.311,
+              "reference": 103.789,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 103.789
+              "value": 101.299
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -581,11 +587,12 @@
               "q25": 381.329,
               "q75": 2545.27,
               "q95": 5483.3,
+              "reference": 1206.12,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1206.12
+              "value": 1047.01
             }
           },
           "sample": null,
@@ -833,11 +840,12 @@
               "q25": 13.1144,
               "q75": 33.7902,
               "q95": 51.8274,
+              "reference": 16.644320142533935,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "%",
               "unit_plain": "%",
-              "value": 16.644320142533935
+              "value": 23.437
             },
             "h2_uptake_contrast_umol_m2": {
               "convergence": {
@@ -854,11 +862,12 @@
               "q25": 54.4361,
               "q75": 496.195,
               "q95": 1130.99,
+              "reference": 183.476,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 183.476
+              "value": 175.826
             },
             "h2_uptake_umol_m2": {
               "convergence": {
@@ -875,11 +884,12 @@
               "q25": 427.227,
               "q75": 2829.08,
               "q95": 5589.66,
+              "reference": 1285.81,
               "refusal_fraction": 0.0,
               "refusal_reason": null,
               "unit": "\u00b5mol m\u207b\u00b2",
               "unit_plain": "millionths of a mole per m\u00b2",
-              "value": 1285.81
+              "value": 1169.36
             }
           },
           "sample": null,
@@ -1114,7 +1124,7 @@
   "theme": "heat",
   "title_plain": "What if we build a solar park?",
   "title_science": "Microclimate under photovoltaic panels",
-  "twin_version": "0.8.1",
+  "twin_version": "0.8.2",
   "uncertainty": {
     "S1": {
       "activation_shape": [
