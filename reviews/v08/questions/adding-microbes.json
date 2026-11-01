@@ -1,6 +1,6 @@
 {
-  "answer_plain": "In sample 51PRr3, which has no carbon-monoxide eaters, adding a carrier at one percent switches uptake from none to some (about 144 over two weeks, range 21 to 507), and adding a microbe without the genes leaves it at none; then, where carbon-monoxide eaters are already present, adding more raises uptake only slightly (0.5 % at one percent, 2.7 % at five percent), so uptake goes up in every case we tried.",
-  "answer_science": "Central percentage change: co_uptake_change_pct = 0.549 % (median 0.5504 %, 50 % IQR [0.5461, 0.5707] %, joint 5\u201395 % interval [0.5453, 0.6277] %) (rounded headline: 0.5 %); absolute change co_uptake_contrast_umol_m2 = 3.971 \u00b5mol m\u207b\u00b2 (median 3.638 \u00b5mol m\u207b\u00b2, 50 % IQR [2.087, 6.606] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [1.106, 12.24] \u00b5mol m\u207b\u00b2); absolute uptake co_uptake_umol_m2 = 727.2 \u00b5mol m\u207b\u00b2 (median 663.2 \u00b5mol m\u207b\u00b2, 50 % IQR [364.6, 1217] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [181, 2257] \u00b5mol m\u207b\u00b2) (mode = variance, refusal fraction = 0.0 %, max level refusal across question = 0.0 %). At 5 % inoculum in V53PRr2-proportional: co_uptake_change_pct = 2.715 % (median 2.723 %, 50 % IQR [2.702, 2.82] %, joint 5\u201395 % interval [2.697, 3.09] %), co_uptake_contrast_umol_m2 = 19.64 \u00b5mol m\u207b\u00b2 (median 17.92 \u00b5mol m\u207b\u00b2, 50 % IQR [10.41, 32.63] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [5.398, 60.85] \u00b5mol m\u207b\u00b2), co_uptake_umol_m2 = 742.9 \u00b5mol m\u207b\u00b2 (median 674.1 \u00b5mol m\u207b\u00b2, 50 % IQR [376.1, 1240] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [185.1, 2317] \u00b5mol m\u207b\u00b2). In closed-baseline sample 51PRr3 (baseline co_uptake_umol_m2 = 0 \u00b5mol m\u207b\u00b2), 1 % carrier inoculum yields co_uptake_umol_m2 = 144.4 \u00b5mol m\u207b\u00b2 (median 125.2 \u00b5mol m\u207b\u00b2, 50 % IQR [54.17, 262.2] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [22.33, 500.6] \u00b5mol m\u207b\u00b2) under gate coupling and 77.37 \u00b5mol m\u207b\u00b2 (median 65.66 \u00b5mol m\u207b\u00b2, 50 % IQR [25.59, 155.2] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [9.166, 307.3] \u00b5mol m\u207b\u00b2) under proportional coupling. Top two Sobol' contributors to output variance: k_co_s (ST = 0.91 [0.82, 1.00], S1 = 0.81) and psi_entry_mpa (ST = 0.08 [0.07, 0.10], S1 = 0.04). Status share of variance: verified_in_source ST = 0.00 (S1 = 0.00), modeller_assumption ST = 1.00 (S1 = 0.99), source_not_checked ST = 0.00 (S1 = 0.00) (joint group total indices can sum to more than 1 because of interactions). Limits: The parameter-uncertainty interval quantifies joint variation over literature constants and twin process parameters only and excludes external-model and twin model-structure error.",
+  "answer_plain": "Adding microbes that carry the carbon-monoxide-eating genes to a sample that had none makes uptake start: roughly 10 to 221 millionths of a mole per m\u00b2 over two weeks, depending on whether presence alone or the amount added matters. Adding a microbe without those genes changes nothing. Where such microbes are already present, adding more raises uptake only slightly (0.5 % at 1 % added, 2.7 % at 5 % added).",
+  "answer_science": "Central percentage change: co_uptake_change_pct = 0.549 % (median 0.5504 %, 50 % IQR [0.5461, 0.5707] %, joint 5\u201395 % interval [0.5453, 0.6277] %) (rounded headline: 0.5 %); absolute change co_uptake_contrast_umol_m2 = 3.971 \u00b5mol m\u207b\u00b2 (median 3.638 \u00b5mol m\u207b\u00b2, 50 % IQR [2.087, 6.606] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [1.106, 12.24] \u00b5mol m\u207b\u00b2); absolute uptake co_uptake_umol_m2 = 727.2 \u00b5mol m\u207b\u00b2 (median 663.2 \u00b5mol m\u207b\u00b2, 50 % IQR [364.6, 1217] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [181, 2257] \u00b5mol m\u207b\u00b2) (mode = variance, refusal fraction = 0.0 %, max level refusal across question = 0.0 %). At 5 % inoculum in V53PRr2-proportional: co_uptake_change_pct = 2.715 % (median 2.723 %, 50 % IQR [2.702, 2.82] %, joint 5\u201395 % interval [2.697, 3.09] %), co_uptake_contrast_umol_m2 = 19.64 \u00b5mol m\u207b\u00b2 (median 17.92 \u00b5mol m\u207b\u00b2, 50 % IQR [10.41, 32.63] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [5.398, 60.85] \u00b5mol m\u207b\u00b2), co_uptake_umol_m2 = 742.9 \u00b5mol m\u207b\u00b2 (median 674.1 \u00b5mol m\u207b\u00b2, 50 % IQR [376.1, 1240] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [185.1, 2317] \u00b5mol m\u207b\u00b2) (whereas V53PRr2-gate gives exact 0 % change across all inoculum doses). In closed-baseline sample 51PRr3 (baseline co_uptake_umol_m2 = 0 \u00b5mol m\u207b\u00b2), non-carrier inoculation remains at exact 0 \u00b5mol m\u207b\u00b2, whereas carrier inoculation depends on the coupling assumption: binary gate coupling yields 144.4 \u00b5mol m\u207b\u00b2 (median 125.2 \u00b5mol m\u207b\u00b2, 50 % IQR [54.17, 262.2] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [22.33, 500.6] \u00b5mol m\u207b\u00b2) at 0.1, 1, and 5 % inoculum, while share-proportional coupling yields central co_uptake_umol_m2 = 10.37, 77.37, and 221.4 \u00b5mol m\u207b\u00b2 at 0.1, 1, and 5 % inoculum (at 1 %: 77.37 \u00b5mol m\u207b\u00b2 (median 65.66 \u00b5mol m\u207b\u00b2, 50 % IQR [25.59, 155.2] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [9.166, 307.3] \u00b5mol m\u207b\u00b2)). Top two Sobol' contributors to output variance: k_co_s (ST = 0.91 [0.82, 1.00], S1 = 0.81) and psi_entry_mpa (ST = 0.08 [0.07, 0.10], S1 = 0.04). Status share of variance: verified_in_source ST = 0.00 (S1 = 0.00), modeller_assumption ST = 1.00 (S1 = 0.99), source_not_checked ST = 0.00 (S1 = 0.00) (joint group total indices can sum to more than 1 because of interactions). Limits: The parameter-uncertainty interval quantifies joint variation over literature constants and twin process parameters only and excludes external-model and twin model-structure error.",
   "baseline_label": "Uninoculated sample community",
   "chain": [
     {
@@ -28,7 +28,7 @@
     "x": 1.0
   },
   "headline_output": "co_uptake_change_pct",
-  "headline_plain": "Adding carbon-monoxide-eating microbes at one percent of the community raises carbon monoxide uptake by 0.5 % where those microbes are already present, and switches uptake from none to some where they were missing.",
+  "headline_plain": "Adding microbes that carry the carbon-monoxide-eating genes to a sample that had none starts uptake (roughly 10 to 221 millionths of a mole per m\u00b2 over two weeks), and raises uptake by 0.5 % at 1 % added where such microbes are already present.",
   "headline_science": "Central co_uptake_change_pct = 0.549 % (median 0.5504 %, 50 % IQR [0.5461, 0.5707] %, joint 5\u201395 % interval [0.5453, 0.6277] %) (plain headline: 0.5 %); absolute change co_uptake_contrast_umol_m2 = 3.971 \u00b5mol m\u207b\u00b2 (median 3.638 \u00b5mol m\u207b\u00b2, 50 % IQR [2.087, 6.606] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [1.106, 12.24] \u00b5mol m\u207b\u00b2); absolute uptake co_uptake_umol_m2 = 727.2 \u00b5mol m\u207b\u00b2 (median 663.2 \u00b5mol m\u207b\u00b2, 50 % IQR [364.6, 1217] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [181, 2257] \u00b5mol m\u207b\u00b2) (mode = variance, refusal = 0.0 %).",
   "headline_value": 0.548970673592493,
   "level_kind": "numeric",
@@ -111,7 +111,7 @@
     "digests": {
       "constants_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578",
       "parameter_ranges_sha256": "f6b9fe6f95d88360375a81171deae746e17c213600077bcc49fa8e05b47ad027",
-      "uq_sha256": "96b5ba5cb89e13abeb0c44294f13f5483adb2ff31b2638a4b83aee2108e2e32a"
+      "uq_sha256": "f8e088262e7cccf730774bb9e99c0b52c33db5c36f11d77f283904b3079a6477"
     },
     "files": [
       "src/eq_biodt/v03/questions.py",
@@ -124,7 +124,7 @@
   "series": [
     {
       "id": "51PRr3-gate",
-      "label_plain": "Sample lacking CO eaters + CO microbe (yes/no presence)",
+      "label_plain": "Sample lacking carbon-monoxide-eating microbes + carrier microbe (yes/no presence)",
       "label_science": "51PRr3 (CO gate closed) + COCarrierMAG, gate coupling",
       "levels": [
         {
@@ -1010,7 +1010,7 @@
     },
     {
       "id": "51PRr3-proportional",
-      "label_plain": "Sample lacking CO eaters + CO microbe (scaled by amount)",
+      "label_plain": "Sample lacking carbon-monoxide-eating microbes + carrier microbe (scaled by amount)",
       "label_science": "51PRr3 (CO gate closed) + COCarrierMAG, proportional coupling",
       "levels": [
         {
@@ -1896,7 +1896,7 @@
     },
     {
       "id": "V53PRr2-gate",
-      "label_plain": "Sample already having CO eaters + CO microbe (yes/no presence)",
+      "label_plain": "Sample already having carbon-monoxide-eating microbes + carrier microbe (yes/no presence)",
       "label_science": "V53PRr2 (CO gate open) + COCarrierMAG, gate coupling",
       "levels": [
         {
@@ -2785,7 +2785,7 @@
     },
     {
       "id": "V53PRr2-proportional",
-      "label_plain": "Sample already having CO eaters + CO microbe (scaled by amount)",
+      "label_plain": "Sample already having carbon-monoxide-eating microbes + carrier microbe (scaled by amount)",
       "label_science": "V53PRr2 (CO gate open) + COCarrierMAG, proportional coupling",
       "levels": [
         {
@@ -3674,7 +3674,7 @@
     },
     {
       "id": "51PRr3-control-gate",
-      "label_plain": "Negative control: microbe without CO genes (yes/no presence)",
+      "label_plain": "Negative control: microbe without carbon-monoxide-eating genes (yes/no presence)",
       "label_science": "51PRr3 + non-carrier MAG (negative control), gate coupling",
       "levels": [
         {
@@ -4557,7 +4557,7 @@
     },
     {
       "id": "51PRr3-control-proportional",
-      "label_plain": "Negative control: microbe without CO genes (scaled by amount)",
+      "label_plain": "Negative control: microbe without carbon-monoxide-eating genes (scaled by amount)",
       "label_science": "51PRr3 + non-carrier MAG (negative control), proportional coupling",
       "levels": [
         {

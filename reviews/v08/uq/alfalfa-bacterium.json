@@ -8,7 +8,7 @@
   "series": [
     {
       "id": "A_fao_fixed_leaching",
-      "label_plain": "Standard farm drainage rule (FAO-29)",
+      "label_plain": "Standard farm drainage rule (published formula)",
       "label_science": "Model A: FAO-29 fixed leaching factor (1.5x EC_w)",
       "levels": [
         {

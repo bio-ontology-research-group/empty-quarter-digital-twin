@@ -8,7 +8,7 @@
   "series": [
     {
       "id": "51PRr3-gate",
-      "label_plain": "Sample lacking CO eaters + CO microbe (yes/no gate)",
+      "label_plain": "Sample lacking carbon-monoxide-eating microbes + carrier microbe (yes/no presence)",
       "label_science": "51PRr3 (CO gate closed) + COCarrierMAG, gate coupling",
       "levels": [
         {
@@ -6444,7 +6444,7 @@
     },
     {
       "id": "51PRr3-proportional",
-      "label_plain": "Sample lacking CO eaters + CO microbe (scaled by share)",
+      "label_plain": "Sample lacking carbon-monoxide-eating microbes + carrier microbe (scaled by amount)",
       "label_science": "51PRr3 (CO gate closed) + COCarrierMAG, proportional coupling",
       "levels": [
         {
@@ -12880,7 +12880,7 @@
     },
     {
       "id": "V53PRr2-gate",
-      "label_plain": "Sample already having CO eaters + CO microbe (yes/no gate)",
+      "label_plain": "Sample already having carbon-monoxide-eating microbes + carrier microbe (yes/no presence)",
       "label_science": "V53PRr2 (CO gate open) + COCarrierMAG, gate coupling",
       "levels": [
         {
@@ -19319,7 +19319,7 @@
     },
     {
       "id": "V53PRr2-proportional",
-      "label_plain": "Sample already having CO eaters + CO microbe (scaled by share)",
+      "label_plain": "Sample already having carbon-monoxide-eating microbes + carrier microbe (scaled by amount)",
       "label_science": "V53PRr2 (CO gate open) + COCarrierMAG, proportional coupling",
       "levels": [
         {
@@ -25758,7 +25758,7 @@
     },
     {
       "id": "51PRr3-control-gate",
-      "label_plain": "Negative control: microbe without CO genes (yes/no gate)",
+      "label_plain": "Negative control: microbe without carbon-monoxide-eating genes (yes/no presence)",
       "label_science": "51PRr3 + non-carrier MAG (negative control), gate coupling",
       "levels": [
         {
@@ -32200,7 +32200,7 @@
     },
     {
       "id": "51PRr3-control-proportional",
-      "label_plain": "Negative control: microbe without CO genes (scaled by share)",
+      "label_plain": "Negative control: microbe without carbon-monoxide-eating genes (scaled by amount)",
       "label_science": "51PRr3 + non-carrier MAG (negative control), proportional coupling",
       "levels": [
         {

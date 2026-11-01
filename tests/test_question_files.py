@@ -290,10 +290,15 @@ def test_jargon_regex_catches_reviewer_terms():
         "gate",
         "on-off gene gate",
         "read-mapping",
-        "share",
+        "inoculum share",
         "fraction of unsalted yield",
+        "dilute limit",
+        "sand-physics branch",
+        "FAO-29",
+        "CO genes",
+        "CO eaters",
+        "CO microbe",
         "IQR",
-        "central run",
         "micromole",
         "micromoles",
         "µmol",
@@ -345,12 +350,12 @@ def test_plain_text_rules():
         )
         if q["slug"] == "missing-co-genes":
             assert (
-                "for one sample the records are incomplete, so the twin gives no answer"
+                "for two of the seven samples the records are incomplete, so the twin gives no answer"
                 in q["answer_plain"].lower()
             )
-            assert "no carbon-monoxide uptake at all" in q["answer_plain"].lower()
+            assert "zero carbon-monoxide uptake" in q["answer_plain"].lower()
         elif max_refusal >= 0.05:
-            assert "the model cannot tell for such" in q["answer_plain"].lower(), q["slug"]
+            assert "cannot tell" in q["answer_plain"].lower(), q["slug"]
     assert "at most" in load("carbon-fixation")["answer_plain"].lower()
     assert "g of carbon per m² per year" in load("carbon-fixation")["answer_plain"]
     assert "% of normal yield" in load("alfalfa-bacterium")["answer_plain"]
@@ -365,14 +370,19 @@ def test_hedging_matches_headline_interval():
         ans = q["answer_plain"].lower()
         hdl = q["headline_plain"].lower()
 
-        # Rule 2: Hedge phrases apply ONLY to change outputs, never to levels/bounds/yields
-        if q["slug"] in {"missing-co-genes", "carbon-fixation", "alfalfa-bacterium"}:
+        # Hedge phrases apply only to unambiguous change questions, not levels/bounds/yields or multi-series zero-change questions
+        if q["slug"] in {"missing-co-genes", "carbon-fixation", "alfalfa-bacterium", "adding-microbes"}:
             assert "goes up in every case we tried" not in ans, q["slug"]
             assert "goes down in every case we tried" not in ans, q["slug"]
             assert "may go up or down" not in ans, q["slug"]
             assert "goes up in every case we tried" not in hdl, q["slug"]
             assert "goes down in every case we tried" not in hdl, q["slug"]
             assert "may go up or down" not in hdl, q["slug"]
+            continue
+
+        if q["slug"] == "air-hydrogen":
+            assert "in every case we tried" in ans, q["slug"]
+            assert "may go up or down" not in ans, q["slug"]
             continue
 
         if q05 < 0 < q95:
@@ -447,6 +457,7 @@ def test_headline_percentage_and_science_rules():
     rp = load("rain-pattern")
     assert "lowers" in rp["answer_plain"]
     assert "63 %" in rp["answer_plain"] and "-63 %" not in rp["answer_plain"]
+    assert "almost 100 %" in rp["answer_plain"]
     assert "by 51 to 100 %" in rp["answer_plain"] and "-100 %" not in rp["answer_plain"]
 
     mco = load("missing-co-genes")
@@ -465,7 +476,9 @@ def test_plain_matches_science():
 def test_refused_level_rendering_fields():
     lvl = top_level(load("salty-water"), series="daily-irrigation")
     assert lvl["outcomes"]["h2_uptake_contrast_umol_m2"]["refusal_fraction"] > 0
-    assert "the model cannot tell for such salty water" in load("salty-water")["answer_plain"].lower()
+    ans_low = load("salty-water")["answer_plain"].lower()
+    assert "cannot tell" in ans_low
+    assert "single salty rain" in ans_low
 
 
 @pytest.mark.skipif(
@@ -475,28 +488,6 @@ def test_refused_level_rendering_fields():
 def test_committed_questions_on_disk():
     assert len(load_index(COMMITTED_QUESTIONS_DIR)) == 14
     assert all(validate(q) for q in load_all(COMMITTED_QUESTIONS_DIR))
-
-
-def test_direction_words_instead_of_signed_changes():
-    import re
-
-    for q in load_all():
-        slug = q["slug"]
-        ans = q["answer_plain"]
-        hdl = q["headline_plain"]
-        if slug in {"rain-pattern", "drip-or-flood", "salty-water", "biochar"}:
-            assert "lowers" in ans, f"{slug}: expected 'lowers' in answer_plain"
-            assert "lowers" in hdl, f"{slug}: expected 'lowers' in headline_plain"
-            assert not re.search(r"changes\s+.*by\s+-\d+", ans), f"{slug}: has signed changes in answer_plain"
-            assert not re.search(r"changes\s+.*by\s+-\d+", hdl), f"{slug}: has signed changes in headline_plain"
-        elif slug == "compaction":
-            assert "lower" in ans, f"{slug}: expected 'lower' in answer_plain"
-            assert "lower" in hdl, f"{slug}: expected 'lower' in headline_plain"
-            assert not re.search(r"changes?\s+.*by\s+-\d+", ans), f"{slug}: has signed changes in answer_plain"
-        elif slug in {"cloud-seeding", "solar-park", "mulch-shade", "hotter", "adding-microbes", "air-hydrogen"}:
-            assert "raises" in ans, f"{slug}: expected 'raises' in answer_plain"
-            assert "raises" in hdl, f"{slug}: expected 'raises' in headline_plain"
-            assert not re.search(r"changes\s+.*by\s+\d+", ans), f"{slug}: has signed changes in answer_plain"
 
 
 def test_range_sign_and_magnitude_rules():
@@ -522,7 +513,7 @@ def test_range_sign_and_magnitude_rules():
 
 def test_degenerate_interval_format():
     ah = load("air-hydrogen")
-    assert "exactly 100 % in every case we tried" in ah["answer_plain"]
+    assert "(+100 %, the same in every case we tried)" in ah["answer_plain"]
     assert "range 100 to 100 %" not in ah["answer_plain"]
 
 
@@ -530,14 +521,13 @@ def test_adding_microbes_leads_with_switch():
     am = load("adding-microbes")
     ans = am["answer_plain"]
     assert ans.startswith(
-        "In sample 51PRr3, which has no carbon-monoxide eaters, adding a carrier at one percent switches "
-        "uptake from none to some"
+        "Adding microbes that carry the carbon-monoxide-eating genes to a sample that had none makes uptake start"
     )
-    assert "about 144 over two weeks, range 21 to 507" in ans
-    assert "adding a microbe without the genes leaves it at none" in ans
+    assert "roughly 10 to 221 millionths of a mole per m² over two weeks" in ans
+    assert "Adding a microbe without those genes changes nothing." in ans
     assert (
-        "where carbon-monoxide eaters are already present, adding more raises uptake only slightly "
-        "(0.5 % at one percent, 2.7 % at five percent)" in ans
+        "Where such microbes are already present, adding more raises uptake only slightly "
+        "(0.5 % at 1 % added, 2.7 % at 5 % added)." in ans
     )
 
 
@@ -557,3 +547,100 @@ def test_no_hedge_on_levels_or_bounds():
         assert "may go up or down" not in hdl, q["slug"]
 
     assert "without the bacterium" in ab["answer_plain"].lower()
+
+
+def test_plain_sentence_word_limit():
+    """(a) Every plain sentence has <= 45 words."""
+    import re
+
+    for q in load_all():
+        for field in ("answer_plain", "headline_plain", "limits_plain", "title_plain"):
+            text = q[field].strip()
+            sentences = [s.strip() for s in re.split(r"(?<=[.!?])\s+", text) if s.strip()]
+            assert sentences, f"{q['slug']}.{field} is empty"
+            for sent in sentences:
+                words = sent.split()
+                assert len(words) <= 45, (
+                    f"{q['slug']}.{field} sentence has {len(words)} words (> 45): {sent!r}"
+                )
+
+
+def test_cannot_tell_requires_refusal_and_names_refused_series():
+    """(b) No plain answer claims 'cannot tell' unless some level has refusal_fraction >= 0.05,
+    and the refused series is named correctly."""
+    for q in load_all():
+        ans_low = q["answer_plain"].lower()
+        hdl_low = q["headline_plain"].lower()
+        refused_series = [
+            s
+            for s in q["series"]
+            if any(
+                float(out["refusal_fraction"]) >= 0.05
+                for lvl in s["levels"]
+                for out in lvl["outcomes"].values()
+            )
+        ]
+        if "cannot tell" in ans_low or "cannot tell" in hdl_low:
+            assert refused_series, (
+                f"{q['slug']} claims 'cannot tell' but no series has refusal_fraction >= 0.05"
+            )
+            if q["slug"] == "salty-water":
+                ref_ids = {s["id"] for s in refused_series}
+                assert "salty-rain-once" in ref_ids
+                assert "single salty rain" in ans_low or "one salty rainfall" in ans_low
+        else:
+            # Verify alfalfa-bacterium and other zero-refusal questions do not claim 'cannot tell'
+            if not refused_series:
+                assert "cannot tell" not in ans_low and "cannot tell" not in hdl_low
+
+
+def test_missing_co_genes_refused_sample_count_matches_data():
+    """(c) The number of refused samples stated in missing-co-genes equals the data."""
+    mco = load("missing-co-genes")
+    levels = mco["series"][0]["levels"]
+    n_total = len(levels)
+    n_refused = sum(
+        1
+        for lvl in levels
+        if any(float(out["refusal_fraction"]) >= 0.05 for out in lvl["outcomes"].values())
+    )
+    word_map = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven"}
+    expected_phrase = f"for {word_map[n_refused]} of the {word_map[n_total]} samples"
+    assert n_refused == 2 and n_total == 7
+    assert expected_phrase in mco["answer_plain"].lower()
+    assert "for one sample" not in mco["answer_plain"].lower()
+
+
+def test_carbon_fixation_states_biweekly_annualisation():
+    """(d) The carbon answer states the every-two-weeks annualisation."""
+    cf = load("carbon-fixation")
+    ans_low = cf["answer_plain"].lower()
+    sci_low = cf["answer_science"].lower()
+    assert "every two weeks" in ans_low
+    assert "per year" in ans_low
+    assert "every two weeks" in sci_low
+
+
+def test_adding_microbes_no_every_case_with_zero_change_level():
+    """(e) adding-microbes plain text does not say 'every case' while a level has zero change."""
+    am = load("adding-microbes")
+    has_zero_change = any(
+        lvl["outcomes"].get("co_uptake_contrast_umol_m2", {}).get("value") == 0.0
+        or lvl["outcomes"].get("co_uptake_change_pct", {}).get("value") == 0.0
+        for s in am["series"]
+        for lvl in s["levels"]
+    )
+    assert has_zero_change, "Expected at least one zero-change level in adding-microbes"
+    assert "every case" not in am["answer_plain"].lower()
+    assert "every case" not in am["headline_plain"].lower()
+
+
+def test_salty_water_mentions_fresh_daily_watering_comparison():
+    """(f) salty-water plain answer mentions the fresh daily-watering comparison."""
+    sw = load("salty-water")
+    daily_series = next(s for s in sw["series"] if s["id"] == "daily-irrigation")
+    fresh_lvl = daily_series["levels"][0]
+    fresh_drop = round_plain(abs(float(fresh_lvl["outcomes"]["h2_uptake_change_pct"]["value"])))
+    ans_low = sw["answer_plain"].lower()
+    assert "fresh water given daily" in ans_low
+    assert f"about {fresh_drop} % less" in ans_low

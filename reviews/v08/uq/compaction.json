@@ -2546,7 +2546,7 @@
               "value": -0.1
             }
           ],
-          "label": "1 passes",
+          "label": "1 pass",
           "level": 1,
           "level_seed": 14135535950286241229,
           "n": 1024,
@@ -9544,7 +9544,7 @@
     },
     {
       "id": "direct-porosity-v06",
-      "label_plain": "Heavily packed sand (porosity 0.30)",
+      "label_plain": "Heavily packed sand (pore space 30 % of volume)",
       "label_science": "Direct porosity reduction to 0.30 (v0.6 scenario)",
       "levels": [
         {

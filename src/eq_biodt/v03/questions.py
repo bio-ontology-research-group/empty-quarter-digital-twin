@@ -83,7 +83,7 @@ def _build_questions() -> dict[str, Question]:
         Question(
             slug="rain-pattern",
             theme="water",
-            title_plain="Does it matter whether rain falls all at once or in small showers?",
+            title_plain="One heavy rain, four showers or daily drizzle?",
             title_science="Rainfall schedule contrast at fixed 12 mm total depth",
             level_kind="categorical",
             x_label_plain="Rain pattern",
@@ -108,7 +108,7 @@ def _build_questions() -> dict[str, Question]:
         Question(
             slug="drip-or-flood",
             theme="water",
-            title_plain="Same water, delivered as daily drip or occasional flooding?",
+            title_plain="Drip or flood irrigation?",
             title_science="Equal-total irrigation split across delivery intervals (exp02)",
             level_kind="numeric",
             x_label_plain="Days between waterings",
@@ -141,7 +141,7 @@ def _build_questions() -> dict[str, Question]:
             title_plain="What if cloud seeding adds rain?",
             title_science="Relative rainfall enhancement on existing rain days (exp09)",
             level_kind="numeric",
-            x_label_plain="Seeding strength",
+            x_label_plain="Extra rain from seeding (%)",
             x_label_science="Seeding intensity (1 = central +10% rain)",
             baseline_label="One 12 mm rain on day 1, unseeded",
             headline=["h2_uptake_umol_m2", "h2_uptake_contrast_umol_m2"],
@@ -168,7 +168,7 @@ def _build_questions() -> dict[str, Question]:
         Question(
             slug="salty-water",
             theme="salt",
-            title_plain="What happens when the soil is watered with salty water?",
+            title_plain="What if the water is salty?",
             title_science="Saline rain and daily brackish irrigation across water conductivities (v0.6 + exp01)",
             level_kind="numeric",
             x_label_plain="Water saltiness (dS/m)",
@@ -226,12 +226,12 @@ def _build_questions() -> dict[str, Question]:
         Question(
             slug="alfalfa-bacterium",
             theme="salt",
-            title_plain="What if we irrigate alfalfa with brackish water and coat the seed with the desert bacterium SA187?",
+            title_plain="Can a desert bacterium help alfalfa in salty water?",
             title_science="Enterobacter sp. SA187 alfalfa salinity response across three root-zone salinity models (exp12)",
             level_kind="numeric",
             x_label_plain="Water saltiness (dS/m)",
             x_label_science="Irrigation water electrical conductivity EC_w (dS m^-1)",
-            baseline_label="Unsalted, uninoculated alfalfa yield",
+            baseline_label="Normal, uninoculated alfalfa yield",
             headline=["relative_yield_alfalfa_sa187", "relative_yield_alfalfa"],
             series=[
                 Series(
@@ -253,7 +253,7 @@ def _build_questions() -> dict[str, Question]:
                 for mname, plain_lbl, sci_lbl, ups, downs in (
                     (
                         "A_fao_fixed_leaching",
-                        "Standard farm drainage rule (FAO-29)",
+                        "Standard farm drainage rule (published formula)",
                         "Model A: FAO-29 fixed leaching factor (1.5x EC_w)",
                         [],
                         ["fao29_leaching", "maas_hoffman_alfalfa", "sa187_benefit"],
@@ -286,7 +286,7 @@ def _build_questions() -> dict[str, Question]:
         Question(
             slug="hotter",
             theme="heat",
-            title_plain="What if the climate or soil gets hotter?",
+            title_plain="What if it gets hotter?",
             title_science="Soil-only Q10 warming vs coupled climate warming with evaporation scaling (v0.6 + exp11)",
             level_kind="numeric",
             x_label_plain="Warming (°C)",
@@ -332,12 +332,12 @@ def _build_questions() -> dict[str, Question]:
         Question(
             slug="mulch-shade",
             theme="heat",
-            title_plain="What if we mulch or put up shade nets?",
+            title_plain="Mulch or shade nets?",
             title_science="Mulch evaporation reduction and shade-net soil cooling (exp03)",
             level_kind="numeric",
-            x_label_plain="Cover fraction",
+            x_label_plain="Share of ground covered (0 = none, 1 = all)",
             x_label_science="Mulch or shade-net cover fraction (0–1)",
-            baseline_label="Bare unshaded soil (one 12 mm rain on day 1)",
+            baseline_label="Bare unshaded sand (one 12 mm rain on day 1)",
             headline=["h2_uptake_umol_m2", "h2_uptake_contrast_umol_m2"],
             series=[
                 Series(
@@ -397,9 +397,9 @@ def _build_questions() -> dict[str, Question]:
             title_plain="What if we build a solar park?",
             title_science="Under-panel soil cooling, evaporation reduction, and panel-washing water pulses (exp08)",
             level_kind="numeric",
-            x_label_plain="Solar panel cover",
+            x_label_plain="Solar panel cover (0 = none, 1 = whole area)",
             x_label_science="Panel cover fraction (0–1)",
-            baseline_label="Open desert soil outside panels",
+            baseline_label="Open desert sand outside panels",
             headline=["h2_uptake_umol_m2", "h2_uptake_contrast_umol_m2"],
             series=[
                 Series(
@@ -424,12 +424,12 @@ def _build_questions() -> dict[str, Question]:
         Question(
             slug="compaction",
             theme="soil",
-            title_plain="What if off-road traffic compacts the soil?",
+            title_plain="What if vehicles compact the sand?",
             title_science="Off-road vehicle compaction curve and direct porosity clamp (v0.6 + exp10)",
             level_kind="numeric",
             x_label_plain="Vehicle passes",
             x_label_science="Off-road vehicle passes (count)",
-            baseline_label="Uncompacted sand (porosity 0.40)",
+            baseline_label="Uncompacted sand (pore space 40 % of volume)",
             headline=["h2_uptake_umol_m2", "h2_uptake_contrast_umol_m2", "porosity"],
             series=[
                 Series(
@@ -438,7 +438,7 @@ def _build_questions() -> dict[str, Question]:
                     label_science="Bulk-density compaction curve (exp10)",
                     levels=[
                         LevelSpec(
-                            label=f"{n} passes",
+                            label="1 pass" if n == 1 else f"{n} passes",
                             x=float(n),
                             action={"offroad_passes": n},
                             upstream=["offroad_compaction"],
@@ -451,7 +451,7 @@ def _build_questions() -> dict[str, Question]:
                 ),
                 Series(
                     id="direct-porosity-v06",
-                    label_plain="Heavily packed sand (porosity 0.30)",
+                    label_plain="Heavily packed sand (pore space 30 % of volume)",
                     label_science="Direct porosity reduction to 0.30 (v0.6 scenario)",
                     levels=[
                         LevelSpec(
@@ -476,7 +476,7 @@ def _build_questions() -> dict[str, Question]:
             level_kind="numeric",
             x_label_plain="Biochar added (% by weight)",
             x_label_science="Biochar dose (% w/w)",
-            baseline_label="Unamended sand (0% biochar, porosity 0.40)",
+            baseline_label="Unamended sand (0 % biochar, pore space 40 % of volume)",
             headline=["h2_uptake_umol_m2", "h2_uptake_contrast_umol_m2", "porosity"],
             series=[
                 Series(
@@ -502,7 +502,7 @@ def _build_questions() -> dict[str, Question]:
         Question(
             slug="missing-co-genes",
             theme="microbes",
-            title_plain="What if the soil lacks CO-eating microbes?",
+            title_plain="What if the soil lacks carbon-monoxide-eating genes?",
             title_science="Deductive zero CO uptake under closed COCarrierMAG gate across field samples (v0.6)",
             level_kind="sample",
             x_label_plain="Soil sample",
@@ -541,10 +541,10 @@ def _build_questions() -> dict[str, Question]:
         Question(
             slug="adding-microbes",
             theme="microbes",
-            title_plain="What if we add microbes that oxidise CO or H2?",
+            title_plain="What if we add microbes?",
             title_science="Inoculation of closed-gate and open-gate communities under gate vs proportional coupling (exp05)",
             level_kind="numeric",
-            x_label_plain="Added microbe share (%)",
+            x_label_plain="Added microbes (% of community)",
             x_label_science="Inoculum share (%)",
             baseline_label="Uninoculated sample community",
             headline=["co_uptake_umol_m2", "co_uptake_contrast_umol_m2"],
@@ -569,7 +569,7 @@ def _build_questions() -> dict[str, Question]:
                 for sid, plain_lbl, sci_lbl, case_name, sample, mag, mode in (
                     (
                         "51PRr3-gate",
-                        "Sample lacking CO eaters + CO microbe (yes/no gate)",
+                        "Sample lacking carbon-monoxide-eating microbes + carrier microbe (yes/no presence)",
                         "51PRr3 (CO gate closed) + COCarrierMAG, gate coupling",
                         "51PRr3 (CO gate closed) + CO carrier",
                         "51PRr3",
@@ -578,7 +578,7 @@ def _build_questions() -> dict[str, Question]:
                     ),
                     (
                         "51PRr3-proportional",
-                        "Sample lacking CO eaters + CO microbe (scaled by share)",
+                        "Sample lacking carbon-monoxide-eating microbes + carrier microbe (scaled by amount)",
                         "51PRr3 (CO gate closed) + COCarrierMAG, proportional coupling",
                         "51PRr3 (CO gate closed) + CO carrier",
                         "51PRr3",
@@ -587,7 +587,7 @@ def _build_questions() -> dict[str, Question]:
                     ),
                     (
                         "V53PRr2-gate",
-                        "Sample already having CO eaters + CO microbe (yes/no gate)",
+                        "Sample already having carbon-monoxide-eating microbes + carrier microbe (yes/no presence)",
                         "V53PRr2 (CO gate open) + COCarrierMAG, gate coupling",
                         "V53PRr2 (CO gate already open) + CO carrier",
                         "V53PRr2",
@@ -596,7 +596,7 @@ def _build_questions() -> dict[str, Question]:
                     ),
                     (
                         "V53PRr2-proportional",
-                        "Sample already having CO eaters + CO microbe (scaled by share)",
+                        "Sample already having carbon-monoxide-eating microbes + carrier microbe (scaled by amount)",
                         "V53PRr2 (CO gate open) + COCarrierMAG, proportional coupling",
                         "V53PRr2 (CO gate already open) + CO carrier",
                         "V53PRr2",
@@ -605,7 +605,7 @@ def _build_questions() -> dict[str, Question]:
                     ),
                     (
                         "51PRr3-control-gate",
-                        "Negative control: microbe without CO genes (yes/no gate)",
+                        "Negative control: microbe without carbon-monoxide-eating genes (yes/no presence)",
                         "51PRr3 + non-carrier MAG (negative control), gate coupling",
                         "51PRr3 + non-carrier MAG (negative control)",
                         "51PRr3",
@@ -614,7 +614,7 @@ def _build_questions() -> dict[str, Question]:
                     ),
                     (
                         "51PRr3-control-proportional",
-                        "Negative control: microbe without CO genes (scaled by share)",
+                        "Negative control: microbe without carbon-monoxide-eating genes (scaled by amount)",
                         "51PRr3 + non-carrier MAG (negative control), proportional coupling",
                         "51PRr3 + non-carrier MAG (negative control)",
                         "51PRr3",
@@ -628,12 +628,12 @@ def _build_questions() -> dict[str, Question]:
         Question(
             slug="air-hydrogen",
             theme="microbes",
-            title_plain="What if a hydrogen economy raises atmospheric H2?",
+            title_plain="What if air hydrogen rises?",
             title_science="Soil H2 sink scaling under elevated atmospheric H2 mixing ratios (exp07)",
             level_kind="numeric",
             x_label_plain="Air hydrogen (multiple of background)",
             x_label_science="Atmospheric H2 multiplier (× background)",
-            baseline_label="Background atmospheric H2 (1x = 0.53 ppm)",
+            baseline_label="Normal background air hydrogen (1x normal level)",
             headline=["h2_uptake_umol_m2", "h2_uptake_contrast_umol_m2"],
             series=[
                 Series(
@@ -658,12 +658,12 @@ def _build_questions() -> dict[str, Question]:
         Question(
             slug="carbon-fixation",
             theme="microbes",
-            title_plain="How much CO2 could the H2 oxidisers fix?",
+            title_plain="How much carbon can the hydrogen eaters fix?",
             title_science="Stoichiometric upper bound on knallgas autotrophic carbon fixation (exp06)",
             level_kind="sample",
             x_label_plain="Soil sample",
             x_label_science="Metagenomic sample ID",
-            baseline_label="Sample community under 14-day rainfall regime",
+            baseline_label="Sample community under 14-day rain schedule",
             headline=["c_fixed_upper_bound_g_m2_yr", "c_fixed_upper_bound_ug_m2", "co2_fixed_upper_bound_mol_m2"],
             series=[
                 Series(

@@ -1,6 +1,6 @@
 {
-  "answer_plain": "Full mulch cover raises hydrogen uptake over two weeks by 50 % (by 11 to 92 %) by slowing evaporation, so uptake with mulch alone goes up in every case we tried, whereas full shade alone lowers uptake by 25 % (by 1.7 to 28 %) and combining mulch with shade raises uptake by 14 % (from 6.2 % lower to 70 % higher). Mulch keeps water in the sand without cooling the microbes, whereas shade cools the sand and slows enzyme speed.",
-  "answer_science": "Central percentage change: h2_uptake_change_pct = 50.08 % (median 50.06 %, 50 % IQR [33.23, 66.16] %, joint 5\u201395 % interval [11.17, 91.82] %) (rounded headline: 50 %); absolute change h2_uptake_contrast_umol_m2 = 552 \u00b5mol m\u207b\u00b2 (median 399 \u00b5mol m\u207b\u00b2, 50 % IQR [153.4, 871.8] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [61.29, 1737] \u00b5mol m\u207b\u00b2); absolute uptake h2_uptake_umol_m2 = 1654 \u00b5mol m\u207b\u00b2 (median 1420 \u00b5mol m\u207b\u00b2, 50 % IQR [525, 3347] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [209.5, 6167] \u00b5mol m\u207b\u00b2) (mode = variance, refusal fraction = 0.0 %, max level refusal across question = 0.0 %). Top two Sobol' contributors to output variance: retention_b (ST = 0.59 [0.54, 0.65], S1 = 0.54) and psi_entry_mpa (ST = 0.25 [0.22, 0.28], S1 = 0.23). Status share of variance: verified_in_source ST = 0.00 (S1 = 0.00), modeller_assumption ST = 0.98 (S1 = 0.98), source_not_checked ST = 0.00 (S1 = 0.00) (joint group total indices can sum to more than 1 because of interactions). Limits: The parameter-uncertainty interval quantifies joint variation over literature constants and twin process parameters only and excludes external-model and twin model-structure error.",
+  "answer_plain": "Full mulch cover raises hydrogen uptake over two weeks by about 50 % (by 11 to 92 %) by slowing evaporation, so uptake with mulch alone goes up in every case we tried. Full shade alone lowers uptake by about 25 % (by 1.7 to 28 %; typical run about 14 % lower), and combining mulch with shade raises uptake by about 14 % (from 6.2 % lower to 70 % higher). Mulch keeps water in the sand without cooling the microbes, whereas shade cools the sand and slows enzyme speed.",
+  "answer_science": "Central percentage change: h2_uptake_change_pct = 50.08 % (median 50.06 %, 50 % IQR [33.23, 66.16] %, joint 5\u201395 % interval [11.17, 91.82] %) (rounded headline: 50 %); absolute change h2_uptake_contrast_umol_m2 = 552 \u00b5mol m\u207b\u00b2 (median 399 \u00b5mol m\u207b\u00b2, 50 % IQR [153.4, 871.8] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [61.29, 1737] \u00b5mol m\u207b\u00b2); absolute uptake h2_uptake_umol_m2 = 1654 \u00b5mol m\u207b\u00b2 (median 1420 \u00b5mol m\u207b\u00b2, 50 % IQR [525, 3347] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [209.5, 6167] \u00b5mol m\u207b\u00b2) (mode = variance, refusal fraction = 0.0 %, max level refusal across question = 0.0 %). Full shade alone (shade-only level 2): h2_uptake_change_pct = -24.81 % (median -13.71 %, 50 % IQR [-20.05, -7.816] %, joint 5\u201395 % interval [-27.87, -1.739] %; note: central and median diverge by >25 % of the 5\u201395 % width); combined full mulch and shade (mulch-and-shade level 2): h2_uptake_change_pct = 14.09 % (median 28.17 %, 50 % IQR [12.68, 44.19] %, joint 5\u201395 % interval [-6.216, 70.17] %). Top two Sobol' contributors to output variance: retention_b (ST = 0.59 [0.54, 0.65], S1 = 0.54) and psi_entry_mpa (ST = 0.25 [0.22, 0.28], S1 = 0.23). Status share of variance: verified_in_source ST = 0.00 (S1 = 0.00), modeller_assumption ST = 0.98 (S1 = 0.98), source_not_checked ST = 0.00 (S1 = 0.00) (joint group total indices can sum to more than 1 because of interactions). Limits: The parameter-uncertainty interval quantifies joint variation over literature constants and twin process parameters only and excludes external-model and twin model-structure error.",
   "baseline_label": "Bare unshaded sand (one 12 mm rain on day 1)",
   "chain": [
     {
@@ -34,7 +34,7 @@
     "x": 1.0
   },
   "headline_output": "h2_uptake_change_pct",
-  "headline_plain": "Full mulch cover raises hydrogen uptake over two weeks by 50 % by keeping the sand damp longer, and uptake goes up in every case we tried.",
+  "headline_plain": "Full mulch cover raises hydrogen uptake over two weeks by about 50 % by keeping the sand damp longer, and uptake goes up in every case we tried.",
   "headline_science": "Central h2_uptake_change_pct = 50.08 % (median 50.06 %, 50 % IQR [33.23, 66.16] %, joint 5\u201395 % interval [11.17, 91.82] %) (plain headline: 50 %); absolute change h2_uptake_contrast_umol_m2 = 552 \u00b5mol m\u207b\u00b2 (median 399 \u00b5mol m\u207b\u00b2, 50 % IQR [153.4, 871.8] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [61.29, 1737] \u00b5mol m\u207b\u00b2); absolute uptake h2_uptake_umol_m2 = 1654 \u00b5mol m\u207b\u00b2 (median 1420 \u00b5mol m\u207b\u00b2, 50 % IQR [525, 3347] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [209.5, 6167] \u00b5mol m\u207b\u00b2) (mode = variance, refusal = 0.0 %).",
   "headline_value": 50.07651966605312,
   "level_kind": "numeric",
@@ -188,8 +188,8 @@
       "label_science": "Mulch cover fraction at zero shade",
       "levels": [
         {
-          "label": "mulch 0, shade 0",
-          "label_plain": "mulch 0, shade 0",
+          "label": "no mulch, no shade",
+          "label_plain": "no mulch, no shade",
           "label_science": "mulch 0, shade 0",
           "outcomes": {
             "h2_uptake_change_pct": {
@@ -482,8 +482,8 @@
           "x": 0.0
         },
         {
-          "label": "mulch 0.5, shade 0",
-          "label_plain": "mulch 0.5, shade 0",
+          "label": "half mulch, no shade",
+          "label_plain": "half mulch, no shade",
           "label_science": "mulch 0.5, shade 0",
           "outcomes": {
             "h2_uptake_change_pct": {
@@ -776,8 +776,8 @@
           "x": 0.5
         },
         {
-          "label": "mulch 1, shade 0",
-          "label_plain": "mulch 1, shade 0",
+          "label": "full mulch, no shade",
+          "label_plain": "full mulch, no shade",
           "label_science": "mulch 1, shade 0",
           "outcomes": {
             "h2_uptake_change_pct": {
@@ -1077,8 +1077,8 @@
       "label_science": "Shade-net cover fraction at zero mulch",
       "levels": [
         {
-          "label": "mulch 0, shade 0",
-          "label_plain": "mulch 0, shade 0",
+          "label": "no mulch, no shade",
+          "label_plain": "no mulch, no shade",
           "label_science": "mulch 0, shade 0",
           "outcomes": {
             "h2_uptake_change_pct": {
@@ -1371,8 +1371,8 @@
           "x": 0.0
         },
         {
-          "label": "mulch 0, shade 0.5",
-          "label_plain": "mulch 0, shade 0.5",
+          "label": "no mulch, half shade",
+          "label_plain": "no mulch, half shade",
           "label_science": "mulch 0, shade 0.5",
           "outcomes": {
             "h2_uptake_change_pct": {
@@ -1665,8 +1665,8 @@
           "x": 0.5
         },
         {
-          "label": "mulch 0, shade 1",
-          "label_plain": "mulch 0, shade 1",
+          "label": "no mulch, full shade",
+          "label_plain": "no mulch, full shade",
           "label_science": "mulch 0, shade 1",
           "outcomes": {
             "h2_uptake_change_pct": {
@@ -1966,8 +1966,8 @@
       "label_science": "Combined equal mulch and shade-net cover fraction",
       "levels": [
         {
-          "label": "mulch 0, shade 0",
-          "label_plain": "mulch 0, shade 0",
+          "label": "no mulch, no shade",
+          "label_plain": "no mulch, no shade",
           "label_science": "mulch 0, shade 0",
           "outcomes": {
             "h2_uptake_change_pct": {
@@ -2260,8 +2260,8 @@
           "x": 0.0
         },
         {
-          "label": "mulch 0.5, shade 0.5",
-          "label_plain": "mulch 0.5, shade 0.5",
+          "label": "half mulch, half shade",
+          "label_plain": "half mulch, half shade",
           "label_science": "mulch 0.5, shade 0.5",
           "outcomes": {
             "h2_uptake_change_pct": {
@@ -2554,8 +2554,8 @@
           "x": 0.5
         },
         {
-          "label": "mulch 1, shade 1",
-          "label_plain": "mulch 1, shade 1",
+          "label": "full mulch, full shade",
+          "label_plain": "full mulch, full shade",
           "label_science": "mulch 1, shade 1",
           "outcomes": {
             "h2_uptake_change_pct": {
@@ -3428,6 +3428,6 @@
     "refusal_fraction": 0.0
   },
   "version": "question-1",
-  "x_label_plain": "Cover fraction",
+  "x_label_plain": "Share of ground covered (0 = none, 1 = all)",
   "x_label_science": "Mulch or shade-net cover fraction (0\u20131)"
 }

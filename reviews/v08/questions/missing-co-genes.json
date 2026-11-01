@@ -1,6 +1,6 @@
 {
-  "answer_plain": "Where the soil community lacks the carbon-monoxide enzyme genes there is no carbon-monoxide uptake at all (none), versus some uptake where the genes are present (about 144 over two weeks, range 21 to 507); for one sample the records are incomplete, so the twin gives no answer.",
-  "answer_science": "Open-gate samples 10Dr2 and V53PRr2 have co_uptake_umol_m2 = 144.4 \u00b5mol m\u207b\u00b2 (median 127.3 \u00b5mol m\u207b\u00b2, 50 % IQR [55.23, 258.9] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [21.25, 506.7] \u00b5mol m\u207b\u00b2) (a tiny amount, about 144 millionths of a mole per square metre; mode = variance, refusal fraction = 0.0 %), whereas closed-gate sample 51PRr3 has exact deductive co_uptake_umol_m2 = 0 \u00b5mol m\u207b\u00b2 (median 0 \u00b5mol m\u207b\u00b2, 50 % IQR [0, 0] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [0, 0] \u00b5mol m\u207b\u00b2) (mode = deduced, because 0 assembled MAGs in 51PRr3 are entailed as carrying FormICODehydrogenaseSubunit). Samples 10Dr1 and 51PRr1 are refused for 100.0 % of parameter draws (max level refusal across question = 100.0 %; exact refusal reason: No usable read-mapping weights (unknown sample or excluded for missing weights): ['10Dr1'] and ['51PRr1']). Top two Sobol' contributors to output variance: k_co_s (ST = 0.83 [0.76, 0.90], S1 = 0.74) and retention_b (ST = 0.14 [0.12, 0.16], S1 = 0.09). Status share of variance: verified_in_source ST = 0.00 (S1 = 0.00), modeller_assumption ST = 1.00 (S1 = 1.00), source_not_checked ST = 0.00 (S1 = 0.00) (joint group total indices can sum to more than 1 because of interactions). Limits: The parameter-uncertainty interval quantifies joint variation over literature constants and twin process parameters only and excludes external-model and twin model-structure error.",
+  "answer_plain": "Where the soil community has no genes for eating carbon monoxide, the twin gives exactly zero carbon-monoxide uptake. Where the genes are present it gives a small uptake, about 144 millionths of a mole per m\u00b2 over two weeks (21 to 507). For two of the seven samples the records are incomplete, so the twin gives no answer.",
+  "answer_science": "Open-gate samples (10Dr2, V53PRr2, 13Dr3, 14PRr2) have co_uptake_umol_m2 = 144.4 \u00b5mol m\u207b\u00b2 (median 127.3 \u00b5mol m\u207b\u00b2, 50 % IQR [55.23, 258.9] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [21.25, 506.7] \u00b5mol m\u207b\u00b2) (a tiny amount, about 144 millionths of a mole per square metre; mode = variance, refusal fraction = 0.0 %), whereas closed-gate sample 51PRr3 has exact deductive co_uptake_umol_m2 = 0 \u00b5mol m\u207b\u00b2 (median 0 \u00b5mol m\u207b\u00b2, 50 % IQR [0, 0] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [0, 0] \u00b5mol m\u207b\u00b2) (mode = deduced, because 0 assembled MAGs in 51PRr3 are entailed as carrying FormICODehydrogenaseSubunit). Two of the seven samples (10Dr1 and 51PRr1) are refused for 100.0 % of parameter draws (max level refusal across question = 100.0 %; exact refusal reason: No usable read-mapping weights (unknown sample or excluded for missing weights): ['10Dr1'] and ['51PRr1']). Top two Sobol' contributors to output variance: k_co_s (ST = 0.83 [0.76, 0.90], S1 = 0.74) and retention_b (ST = 0.14 [0.12, 0.16], S1 = 0.09). Status share of variance: verified_in_source ST = 0.00 (S1 = 0.00), modeller_assumption ST = 1.00 (S1 = 1.00), source_not_checked ST = 0.00 (S1 = 0.00) (joint group total indices can sum to more than 1 because of interactions). Limits: The parameter-uncertainty interval quantifies joint variation over literature constants and twin process parameters only and excludes external-model and twin model-structure error.",
   "baseline_label": "One 12 mm rain on day 1 in the selected sample community",
   "chain": [
     {
@@ -21,8 +21,8 @@
     "x": "13Dr3"
   },
   "headline_output": "co_uptake_umol_m2",
-  "headline_plain": "Where the carbon-monoxide genes are missing there is no carbon-monoxide uptake at all (none), versus some uptake (about 144) where the genes are present; for one sample the records are incomplete, so the twin gives no answer.",
-  "headline_science": "Closed-gate sample 51PRr3 has co_uptake_umol_m2 = 0 \u00b5mol m\u207b\u00b2 (joint 5\u201395 % interval [0, 0] \u00b5mol m\u207b\u00b2, mode = deduced), whereas open-gate samples 10Dr2 and V53PRr2 have co_uptake_umol_m2 = 144.4 \u00b5mol m\u207b\u00b2 (median 127.3 \u00b5mol m\u207b\u00b2, 50 % IQR [55.23, 258.9] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [21.25, 506.7] \u00b5mol m\u207b\u00b2) (a tiny amount, about 144 millionths of a mole per square metre); samples 10Dr1 and 51PRr1 are refused (100.0 %) due to missing read-mapping weights.",
+  "headline_plain": "Where the soil community has no genes for eating carbon monoxide, the twin gives zero uptake, versus about 144 millionths of a mole per m\u00b2 over two weeks where the genes are present; for two of the seven samples, incomplete records give no answer.",
+  "headline_science": "Closed-gate sample 51PRr3 has co_uptake_umol_m2 = 0 \u00b5mol m\u207b\u00b2 (joint 5\u201395 % interval [0, 0] \u00b5mol m\u207b\u00b2, mode = deduced), whereas open-gate samples have co_uptake_umol_m2 = 144.4 \u00b5mol m\u207b\u00b2 (median 127.3 \u00b5mol m\u207b\u00b2, 50 % IQR [55.23, 258.9] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [21.25, 506.7] \u00b5mol m\u207b\u00b2) (a tiny amount, about 144 millionths of a mole per square metre); two of the seven samples (10Dr1 and 51PRr1) are refused (100.0 %) due to missing read-mapping weights.",
   "headline_value": 144.407,
   "level_kind": "sample",
   "limits_plain": "The range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong. A missing gene in recovered DNA means the twin sets that pathway to zero, though very rare unsequenced microbes could still exist in the sand.",
@@ -107,8 +107,8 @@
       "label_science": "Closed-gate vs open-gate metagenomic communities (gate coupling)",
       "levels": [
         {
-          "label": "sample 51PRr3",
-          "label_plain": "sample 51PRr3",
+          "label": "sample 51PRr3 (no carbon-monoxide-eating genes)",
+          "label_plain": "sample 51PRr3 (no carbon-monoxide-eating genes)",
           "label_science": "51PRr3 (CO gate closed)",
           "outcomes": {
             "co_uptake_umol_m2": {
@@ -379,8 +379,8 @@
           "x": "51PRr3"
         },
         {
-          "label": "sample 10Dr1",
-          "label_plain": "sample 10Dr1",
+          "label": "sample 10Dr1 (incomplete records)",
+          "label_plain": "sample 10Dr1 (incomplete records)",
           "label_science": "10Dr1 (CO gate closed)",
           "outcomes": {
             "co_uptake_umol_m2": {
@@ -650,8 +650,8 @@
           "x": "10Dr1"
         },
         {
-          "label": "sample 13Dr3",
-          "label_plain": "sample 13Dr3",
+          "label": "sample 13Dr3 (has carbon-monoxide-eating genes)",
+          "label_plain": "sample 13Dr3 (has carbon-monoxide-eating genes)",
           "label_science": "13Dr3 (CO gate closed)",
           "outcomes": {
             "co_uptake_umol_m2": {
@@ -923,8 +923,8 @@
           "x": "13Dr3"
         },
         {
-          "label": "sample 14PRr2",
-          "label_plain": "sample 14PRr2",
+          "label": "sample 14PRr2 (has carbon-monoxide-eating genes)",
+          "label_plain": "sample 14PRr2 (has carbon-monoxide-eating genes)",
           "label_science": "14PRr2 (CO gate closed)",
           "outcomes": {
             "co_uptake_umol_m2": {
@@ -1196,8 +1196,8 @@
           "x": "14PRr2"
         },
         {
-          "label": "sample 51PRr1",
-          "label_plain": "sample 51PRr1",
+          "label": "sample 51PRr1 (incomplete records)",
+          "label_plain": "sample 51PRr1 (incomplete records)",
           "label_science": "51PRr1 (CO gate closed)",
           "outcomes": {
             "co_uptake_umol_m2": {
@@ -1467,8 +1467,8 @@
           "x": "51PRr1"
         },
         {
-          "label": "sample 10Dr2",
-          "label_plain": "sample 10Dr2",
+          "label": "sample 10Dr2 (has carbon-monoxide-eating genes)",
+          "label_plain": "sample 10Dr2 (has carbon-monoxide-eating genes)",
           "label_science": "10Dr2 (CO gate open)",
           "outcomes": {
             "co_uptake_umol_m2": {
@@ -1740,8 +1740,8 @@
           "x": "10Dr2"
         },
         {
-          "label": "sample V53PRr2",
-          "label_plain": "sample V53PRr2",
+          "label": "sample V53PRr2 (has carbon-monoxide-eating genes)",
+          "label_plain": "sample V53PRr2 (has carbon-monoxide-eating genes)",
           "label_science": "V53PRr2 (CO gate open)",
           "outcomes": {
             "co_uptake_umol_m2": {
@@ -2017,7 +2017,7 @@
   ],
   "slug": "missing-co-genes",
   "theme": "microbes",
-  "title_plain": "What if the soil lacks the CO genes?",
+  "title_plain": "What if the soil lacks carbon-monoxide-eating genes?",
   "title_science": "Deductive zero CO uptake under closed COCarrierMAG gate across field samples (v0.6)",
   "twin_version": "0.8.0",
   "uncertainty": {

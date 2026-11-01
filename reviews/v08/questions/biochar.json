@@ -1,7 +1,7 @@
 {
-  "answer_plain": "Adding five percent biochar by weight lowers hydrogen uptake over two weeks by 2.3 % (from 13 % lower to 4.1 % higher), so the change may go up or down across uncertain model numbers. Increasing total pore space without adding extra water lowers the fraction of pores filled with water after a single rain while opening more air space for gas movement.",
+  "answer_plain": "Adding five percent biochar by weight changes hydrogen uptake over two weeks by about -2.3 % (from 13 % lower to 4.1 % higher), so the change may go up or down. Biochar adds empty pore space, so one rain fills a smaller share of the pores while gas moves more easily. The two effects nearly cancel, so the net change is small and could go either way.",
   "answer_science": "Central percentage change: h2_uptake_change_pct = -2.258 % (median -2.032 %, 50 % IQR [-5.719, 0.5098] %, joint 5\u201395 % interval [-12.77, 4.12] %) (rounded headline: 2.3 %); absolute change h2_uptake_contrast_umol_m2 = -24.89 \u00b5mol m\u207b\u00b2 (median -10.29 \u00b5mol m\u207b\u00b2, 50 % IQR [-25.68, 8.252] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [-70.54, 188.7] \u00b5mol m\u207b\u00b2); absolute uptake h2_uptake_umol_m2 = 1077 \u00b5mol m\u207b\u00b2 (median 932.5 \u00b5mol m\u207b\u00b2, 50 % IQR [330.8, 2279] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [116.6, 4901] \u00b5mol m\u207b\u00b2) (mode = variance, refusal fraction = 0.0 %, max level refusal across question = 0.0 %). Top two Sobol' contributors to output variance: retention_b (ST = 0.42 [0.37, 0.49], S1 = 0.36) and psi_entry_mpa (ST = 0.27 [0.24, 0.31], S1 = 0.22). Status share of variance: verified_in_source ST = 0.00 (S1 = 0.00), modeller_assumption ST = 0.96 (S1 = 0.91), source_not_checked ST = 0.09 (S1 = 0.02) (joint group total indices can sum to more than 1 because of interactions). Limits: The parameter-uncertainty interval quantifies joint variation over literature constants and twin process parameters only and excludes external-model and twin model-structure error.",
-  "baseline_label": "Unamended sand (0 % biochar, pore space 0.40)",
+  "baseline_label": "Unamended sand (0 % biochar, pore space 40 % of volume)",
   "chain": [
     {
       "id": "biochar_porosity",
@@ -29,7 +29,7 @@
     "x": 5.0
   },
   "headline_output": "h2_uptake_change_pct",
-  "headline_plain": "Adding five percent biochar by weight lowers hydrogen uptake over two weeks by 2.3 %, and the change may go up or down across uncertain model numbers.",
+  "headline_plain": "Adding five percent biochar by weight changes hydrogen uptake over two weeks by about -2.3 %, and the change may go up or down.",
   "headline_science": "Central h2_uptake_change_pct = -2.258 % (median -2.032 %, 50 % IQR [-5.719, 0.5098] %, joint 5\u201395 % interval [-12.77, 4.12] %) (plain headline: 2.3 %); absolute change h2_uptake_contrast_umol_m2 = -24.89 \u00b5mol m\u207b\u00b2 (median -10.29 \u00b5mol m\u207b\u00b2, 50 % IQR [-25.68, 8.252] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [-70.54, 188.7] \u00b5mol m\u207b\u00b2); absolute uptake h2_uptake_umol_m2 = 1077 \u00b5mol m\u207b\u00b2 (median 932.5 \u00b5mol m\u207b\u00b2, 50 % IQR [330.8, 2279] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [116.6, 4901] \u00b5mol m\u207b\u00b2) (mode = variance, refusal = 0.0 %).",
   "headline_value": -2.2580420710256655,
   "level_kind": "numeric",

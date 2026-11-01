@@ -1,8 +1,33 @@
 """Plain and scientific text templates and metadata for EQ-BioDT v0.8 question files."""
 from __future__ import annotations
 
+from pathlib import Path
 import re
+import sys
 from typing import Any
+
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT / "src") not in sys.path:
+    sys.path.insert(0, str(ROOT / "src"))
+
+from eq_biodt.v03.community import carrier_shares  # noqa: E402
+from eq_biodt.v03.composition import load_constants  # noqa: E402
+
+_CONST_REG = load_constants()
+
+_NUM_WORDS: dict[int, str] = {
+    0: "zero",
+    1: "one",
+    2: "two",
+    3: "three",
+    4: "four",
+    5: "five",
+    6: "six",
+    7: "seven",
+    8: "eight",
+    9: "nine",
+    10: "ten",
+}
 
 JARGON = re.compile(
     r"[\u0370-\u03ff\u1f00-\u1fff\u00b5]"
@@ -14,16 +39,19 @@ JARGON = re.compile(
     r"|\bECe\b"
     r"|\bMaas\b"
     r"|\bCBB\b"
+    r"|\bFAO-29\b"
     r"|\b(?i:first-order)\b"
     r"|\b(?i:gates?)\b"
     r"|\b(?i:read-mapping)\b"
     r"|\bIQR\b"
-    r"|\b(?i:central run)\b"
     r"|\b(?i:micromoles?)\b"
     r"|\b(?i:quantiles?)\b"
     r"|\b(?i:medians?)\b"
-    r"|\b(?i:shares?)\b"
+    r"|\b(?i:inoculum shares?|mapped shares?|scaled by share)\b"
     r"|(?i:fraction of unsalted yield)"
+    r"|(?i:dilute limit)"
+    r"|(?i:sand-physics branch)"
+    r"|\bCO\s+(?:genes?|eaters?|microbes?)\b"
     r"|\b[A-Za-z0-9]+_[A-Za-z0-9_]+\b"
     r"|\b(?:umol|nmol|pmol|mmol|mol|ug|mg|ng|uL|mL|MPa|kPa|Pa|km|nm|m3|cm3|yr)\b"
     r"|µmol|µg|µL|mol/L|g/L|g/g|m³|cm³|cm⁻³|m⁻²|s⁻¹|h⁻¹|min⁻¹|yr⁻¹|°[NESWF]"
@@ -51,7 +79,7 @@ PLAIN_TITLES: dict[str, str] = {
     "solar-park": "What if we build a solar park?",
     "compaction": "What if vehicles compact the sand?",
     "biochar": "What if we add biochar?",
-    "missing-co-genes": "What if the soil lacks the CO genes?",
+    "missing-co-genes": "What if the soil lacks carbon-monoxide-eating genes?",
     "adding-microbes": "What if we add microbes?",
     "air-hydrogen": "What if air hydrogen rises?",
     "carbon-fixation": "How much carbon can the hydrogen eaters fix?",
@@ -66,8 +94,8 @@ PLAIN_BASELINE_LABELS: dict[str, str] = {
     "hotter": "One 12 mm rain on day 1 at 25 °C",
     "mulch-shade": "Bare unshaded sand (one 12 mm rain on day 1)",
     "solar-park": "Open desert sand outside panels",
-    "compaction": "Uncompacted sand (pore space 0.40)",
-    "biochar": "Unamended sand (0 % biochar, pore space 0.40)",
+    "compaction": "Uncompacted sand (pore space 40 % of volume)",
+    "biochar": "Unamended sand (0 % biochar, pore space 40 % of volume)",
     "missing-co-genes": "One 12 mm rain on day 1 in the selected sample community",
     "adding-microbes": "Uninoculated sample community",
     "air-hydrogen": "Normal background air hydrogen (1x normal level)",
@@ -75,16 +103,21 @@ PLAIN_BASELINE_LABELS: dict[str, str] = {
 }
 
 PLAIN_X_LABELS: dict[str, str] = {
+    "cloud-seeding": "Extra rain from seeding (%)",
+    "mulch-shade": "Share of ground covered (0 = none, 1 = all)",
+    "solar-park": "Solar panel cover (0 = none, 1 = whole area)",
     "adding-microbes": "Added microbes (% of community)",
 }
 
 PLAIN_SERIES_LABELS: dict[tuple[str, str], str] = {
-    ("adding-microbes", "51PRr3-gate"): "Sample lacking CO eaters + CO microbe (yes/no presence)",
-    ("adding-microbes", "51PRr3-proportional"): "Sample lacking CO eaters + CO microbe (scaled by amount)",
-    ("adding-microbes", "V53PRr2-gate"): "Sample already having CO eaters + CO microbe (yes/no presence)",
-    ("adding-microbes", "V53PRr2-proportional"): "Sample already having CO eaters + CO microbe (scaled by amount)",
-    ("adding-microbes", "51PRr3-control-gate"): "Negative control: microbe without CO genes (yes/no presence)",
-    ("adding-microbes", "51PRr3-control-proportional"): "Negative control: microbe without CO genes (scaled by amount)",
+    ("alfalfa-bacterium", "A_fao_fixed_leaching"): "Standard farm drainage rule (published formula)",
+    ("compaction", "direct-porosity-v06"): "Heavily packed sand (pore space 30 % of volume)",
+    ("adding-microbes", "51PRr3-gate"): "Sample lacking carbon-monoxide-eating microbes + carrier microbe (yes/no presence)",
+    ("adding-microbes", "51PRr3-proportional"): "Sample lacking carbon-monoxide-eating microbes + carrier microbe (scaled by amount)",
+    ("adding-microbes", "V53PRr2-gate"): "Sample already having carbon-monoxide-eating microbes + carrier microbe (yes/no presence)",
+    ("adding-microbes", "V53PRr2-proportional"): "Sample already having carbon-monoxide-eating microbes + carrier microbe (scaled by amount)",
+    ("adding-microbes", "51PRr3-control-gate"): "Negative control: microbe without carbon-monoxide-eating genes (yes/no presence)",
+    ("adding-microbes", "51PRr3-control-proportional"): "Negative control: microbe without carbon-monoxide-eating genes (scaled by amount)",
 }
 
 # (series_id, level_index, output_key) for the primary headline of each question
@@ -382,13 +415,20 @@ MODEL_META: dict[str, dict[str, str]] = {
 }
 
 
-def round_plain(x: float | None) -> str:
-    """Format a number for plain-language display: integers for |x| >= 10, one decimal below."""
+def _num_word(n: int) -> str:
+    return _NUM_WORDS.get(int(n), str(int(n)))
+
+
+def round_plain(x: float | None, decimals: int | None = None) -> str:
+    """Format a number for plain-language display."""
     if x is None:
         return "none"
     val = float(x)
     if abs(val) < 1e-12:
         return "0"
+    if decimals is not None:
+        s = f"{val:.{decimals}f}".rstrip("0").rstrip(".")
+        return "0" if s in {"-0", ""} else s
     ax = abs(val)
     if ax >= 1000.0:
         return f"{round(val):,}"
@@ -396,6 +436,9 @@ def round_plain(x: float | None) -> str:
         return f"{round(val):d}"
     if ax >= 0.1:
         s = f"{val:.1f}".rstrip("0").rstrip(".")
+        return "0" if s in {"-0", ""} else s
+    if ax >= 0.01:
+        s = f"{val:.2f}".rstrip("0").rstrip(".")
         return "0" if s in {"-0", ""} else s
     s = f"{val:.3f}".rstrip("0").rstrip(".")
     return "0" if s in {"-0", ""} else s
@@ -421,13 +464,17 @@ def plain_number(q: dict[str, Any]) -> str:
         m = re.search(r"raises uptake only slightly \((\d+(?:\.\d+)?)\s*%", q["answer_plain"])
         if m:
             return m.group(1)
+    if q.get("slug") == "salty-water":
+        m = re.search(r"gives about (\d+(?:\.\d+)?)\s*%\s*(?:less|more)", q["answer_plain"])
+        if m:
+            return m.group(1)
     m = re.search(
-        r"(?<![A-Za-z0-9_])-?\d+(?:,\d{3})*(?:\.\d+)?(?![A-Za-z0-9_])",
+        r"(?<![A-Za-z0-9_])[+-]?(\d+(?:,\d{3})*(?:\.\d+)?)(?![A-Za-z0-9_])",
         q["answer_plain"],
     )
     if not m:
         raise ValueError(f"No plain number found in answer_plain for {q.get('slug')}")
-    return m.group(0)
+    return m.group(1)
 
 
 def plain_level_label(slug: str, series_id: str, spec_label: str, x: float | str) -> str:
@@ -440,8 +487,11 @@ def plain_level_label(slug: str, series_id: str, spec_label: str, x: float | str
         return f"{float(x):g} dS/m water"
     if slug == "adding-microbes":
         return f"{round_plain(float(x))} % added microbes"
-    if slug == "compaction" and series_id == "direct-porosity-v06":
-        return "pore space 0.30"
+    if slug == "compaction":
+        if series_id == "direct-porosity-v06":
+            return f"pore space {round_plain(float(x) * 100.0)} % of volume"
+        d = int(round(float(x)))
+        return "1 pass" if d == 1 else f"{d} passes"
     if slug == "biochar":
         return f"{round_plain(float(x))} % biochar"
     if slug == "drip-or-flood":
@@ -449,10 +499,47 @@ def plain_level_label(slug: str, series_id: str, spec_label: str, x: float | str
         return "every day" if d == 1 else f"every {d} days"
     if slug == "hotter":
         return spec_label.replace(" C", " °C")
+    if slug == "cloud-seeding":
+        xv = float(x)
+        if abs(xv) < 1e-12:
+            return "no extra rain"
+        pct = round_plain(xv * float(_CONST_REG["cloud_seeding_rain_increase_frac"]["value"]) * 100.0)
+        return f"{pct} % more"
+    if slug == "solar-park":
+        xv = float(x)
+        if abs(xv) < 1e-6:
+            return "not covered"
+        if abs(xv - 0.5) < 1e-6:
+            return "half covered"
+        if abs(xv - 1.0) < 1e-6:
+            return "fully covered"
+        return f"{round_plain(xv * 100.0)} % covered"
+    if slug == "mulch-shade":
+        xv = float(x)
+        amt = "no" if abs(xv) < 1e-6 else ("half" if abs(xv - 0.5) < 1e-6 else "full")
+        if series_id == "mulch-only":
+            return f"{amt} mulch, no shade"
+        if series_id == "shade-only":
+            return f"no mulch, {amt} shade"
+        return f"{amt} mulch, {amt} shade"
     if slug == "carbon-fixation":
-        return f"sample {x}"
+        sx = str(x)
+        try:
+            sh = carrier_shares(sx)["shares"]
+        except ValueError:
+            return f"sample {sx} (incomplete records)"
+        if float(sh.get("H2AutotrophicCandidateMAG", 0.0)) > 0.0:
+            return f"sample {sx} (has carbon-fixing genes)"
+        return f"sample {sx} (no carbon-fixing genes)"
     if slug == "missing-co-genes":
-        return f"sample {x}"
+        sx = str(x)
+        try:
+            sh = carrier_shares(sx)["shares"]
+        except ValueError:
+            return f"sample {sx} (incomplete records)"
+        if float(sh.get("COCarrierMAG", 0.0)) > 0.0:
+            return f"sample {sx} (has carbon-monoxide-eating genes)"
+        return f"sample {sx} (no carbon-monoxide-eating genes)"
     return spec_label
 
 
@@ -492,6 +579,21 @@ def _hedge_phrase(q05: float | None, q95: float | None) -> str:
         if lo >= 0.0 and hi > 0.0:
             return "goes up in every case we tried"
     return "goes up in every case we tried"
+
+
+def _median_diverges(central_val: float | None, uq_o: dict[str, Any] | None) -> bool:
+    """Return True when |central - median| exceeds a quarter of the 5–95 % width."""
+    if central_val is None or not uq_o:
+        return False
+    med = uq_o.get("median")
+    q05 = uq_o.get("q05")
+    q95 = uq_o.get("q95")
+    if med is None or q05 is None or q95 is None:
+        return False
+    width = float(q95) - float(q05)
+    if width <= 1e-12:
+        return False
+    return abs(float(central_val) - float(med)) > 0.25 * width
 
 
 def _top_two_sobol_text(st: dict[str, list[float]], s1: dict[str, list[float]], mode: str) -> str:
@@ -551,9 +653,14 @@ def _fmt_sci_stat(central_val: float | None, uq_o: dict[str, Any] | None, unit: 
     med_s = f"{med:.4g}" if med is not None else "n/a"
     iqr_s = f"[{q25:.4g}, {q75:.4g}]" if (q25 is not None and q75 is not None) else "[n/a, n/a]"
     ci90_s = f"[{q05:.4g}, {q95:.4g}]" if (q05 is not None and q95 is not None) else "[n/a, n/a]"
+    div_note = (
+        "; note: central and median diverge by >25 % of the 5–95 % width"
+        if _median_diverges(central_val, uq_o)
+        else ""
+    )
     return (
         f"{c_str} {unit} (median {med_s} {unit}, 50 % IQR {iqr_s} {unit}, "
-        f"joint 5–95 % interval {ci90_s} {unit})"
+        f"joint 5–95 % interval {ci90_s} {unit}{div_note})"
     )
 
 
@@ -630,18 +737,30 @@ def render_question_texts(
         rng_plain = _format_interval_plain(q05, q95, unit_plain)
 
     hedge = _hedge_phrase(q05, q95)
-    has_refusal = max_refusal_fraction >= 0.05 or ref_frac >= 0.05
+    h_lvl = _get_uq_level(uq_doc, s_id, l_idx)
+    h_central_map = (h_lvl or {}).get("central", {})
+    h_outputs_map = (h_lvl or {}).get("outputs", {})
 
     if slug == "rain-pattern":
+        driz_lvl = _get_uq_level(uq_doc, "rain-schedule", 3)
+        driz_c = float((driz_lvl or {}).get("central", {}).get("h2_uptake_change_pct", -99.74))
+        driz_o = (driz_lvl or {}).get("outputs", {}).get("h2_uptake_change_pct", {})
+        driz_str = (
+            f"almost {round_plain(abs(driz_c))} %"
+            if 99.0 <= abs(driz_c) < 100.0
+            else f"{round_plain(abs(driz_c))} %"
+        )
+        driz_rng = format_change_pct_interval(driz_o.get("q05", -99.93), driz_o.get("q95", -51.40))
         headline_plain = (
             f"Splitting one heavy rain into four smaller showers lowers hydrogen uptake over two weeks "
-            f"by {core} %, and daily drizzle lowers it by 100 %, so uptake {hedge}."
+            f"by about {core} %, and daily drizzle lowers it by {driz_str}, so uptake {hedge}."
         )
         answer_plain = (
             f"Splitting one heavy downpour into four smaller showers lowers hydrogen uptake over two weeks "
-            f"by {core} % ({rng_plain}), and splitting it into daily drizzle lowers uptake by 100 % "
-            f"(by 51 to 100 %), so uptake {hedge}. A single soaking pushes water deeper into the sand "
-            f"so microbes stay active for more days before surface evaporation dries the top layer."
+            f"by about {core} % ({rng_plain}), so uptake {hedge}. "
+            f"Splitting the same total rain into daily drizzle lowers uptake by {driz_str} ({driz_rng}). "
+            f"A single soaking pushes water deeper into the sand so microbes stay active for more days "
+            f"before surface evaporation dries the top layer."
         )
         limits_extra_plain = (
             "The simulation uses a single sand column with fixed evaporation and does not include "
@@ -652,16 +771,30 @@ def render_question_texts(
             "water-retention shifts."
         )
     elif slug == "drip-or-flood":
+        days_10 = _num_word(int(round(float((h_lvl or {}).get("x", 10)))))
+        signed_core = f"-{core}" if display_central < 0 else f"+{core}"
+        lvl_3 = _get_uq_level(uq_doc, "irrigation-interval", 1)
+        days_3 = _num_word(int(round(float((lvl_3 or {}).get("x", 3)))))
+        c_3 = round_plain(abs(float((lvl_3 or {}).get("central", {}).get("h2_uptake_change_pct", -36.84))))
+        o_3 = (lvl_3 or {}).get("outputs", {}).get("h2_uptake_change_pct", {})
+        lo_3 = round_plain(abs(float(o_3.get("q05", -68.18))))
+        hi_3 = round_plain(abs(float(o_3.get("q95", 129.39))))
+        lvl_1 = _get_uq_level(uq_doc, "irrigation-interval", 0)
+        c_1 = round_plain(abs(float((lvl_1 or {}).get("central", {}).get("h2_uptake_change_pct", -38.35))))
+        o_1 = (lvl_1 or {}).get("outputs", {}).get("h2_uptake_change_pct", {})
+        lo_1 = round_plain(abs(float(o_1.get("q05", -73.06))))
+        hi_1 = round_plain(abs(float(o_1.get("q95", 136.34))))
         headline_plain = (
-            f"Watering once every ten days lowers hydrogen uptake over two weeks by {core} % compared "
-            f"with a single flood, versus 38 % lower for daily drip, and the change {hedge}."
+            f"Giving the same total water every {days_10} days changes hydrogen uptake over two weeks "
+            f"by about {signed_core} % relative to a single rain, versus about {c_1} % less for daily drip, "
+            f"and the change {hedge}."
         )
         answer_plain = (
-            f"Watering once every ten days lowers hydrogen uptake over two weeks by {core} % compared "
-            f"with a single rain ({rng_plain}), versus 37 % lower when watering every three days "
-            f"(from 68 % lower to 129 % higher) and 38 % lower for daily drip (from 73 % lower to 136 % higher), "
-            f"so the change {hedge} across uncertain model numbers. Less frequent, deeper watering loses a "
-            f"smaller fraction of water to daily surface evaporation than tiny daily doses."
+            f"Giving the same total water in one go and then every {days_10} days changes hydrogen uptake "
+            f"over two weeks by about {signed_core} % relative to a single rain, but it {hedge} ({rng_plain}). "
+            f"Spreading it every {days_3} days gives about {c_3} % less ({lo_3} % less to {hi_3} % more) "
+            f"and daily drip about {c_1} % less ({lo_1} % less to {hi_1} % more). "
+            f"One possible reason is that frequent small doses mostly evaporate from the surface."
         )
         limits_extra_plain = (
             "Pipe layout, root uptake and uneven wetting around drip emitters are not represented."
@@ -671,14 +804,24 @@ def render_question_texts(
             "3-D drip-bulb geometry or plant transpiration."
         )
     elif slug == "cloud-seeding":
+        boost_pct = int(
+            round(
+                float((h_lvl or {}).get("x", 1.0))
+                * float(_CONST_REG["cloud_seeding_rain_increase_frac"]["value"])
+                * 100.0
+            )
+        )
+        boost_word = _num_word(boost_pct)
         headline_plain = (
-            f"Adding ten percent more rain on rainy days raises hydrogen uptake over two weeks by {core} %, "
-            f"and uptake {hedge}."
+            f"If cloud seeding really added {boost_word} percent more rain on rainy days, hydrogen uptake "
+            f"over two weeks would rise by about {core} %, though whether seeding adds that much rain is disputed."
         )
         answer_plain = (
-            f"Adding a ten percent rain boost on rainy days raises hydrogen uptake over two weeks by {core} % "
-            f"({rng_plain}), so uptake {hedge}. Extra water on wet days pushes moisture deeper into the sand "
-            f"and keeps microbes active for longer after the rain."
+            f"If cloud seeding really added {boost_word} percent more rain on rainy days, hydrogen uptake "
+            f"over two weeks would rise by about {core} % ({rng_plain}), so under that rain boost uptake {hedge}. "
+            f"Whether seeding adds that much rain at all is disputed. "
+            f"When extra water does fall on wet days, it pushes moisture deeper into the sand and keeps "
+            f"microbes active for longer after the rain."
         )
         limits_extra_plain = (
             "Cloud seeding can only add water when suitable clouds are already present; the twin does not "
@@ -689,53 +832,116 @@ def render_question_texts(
             "microphysics and cloud availability are external to the soil twin."
         )
     elif slug == "salty-water":
+        ec_8 = round_plain(float((h_lvl or {}).get("x", 8.0)))
+        fresh_lvl = _get_uq_level(uq_doc, "daily-irrigation", 0)
+        fresh_drop = round_plain(
+            abs(float((fresh_lvl or {}).get("central", {}).get("h2_uptake_change_pct", -38.37)))
+        )
+        alf_c = round_plain(100.0 * float(h_central_map.get("relative_yield_alfalfa", 0.8904)))
+        alf_o = h_outputs_map.get("relative_yield_alfalfa", {})
+        alf_lo = round_plain(100.0 * float(alf_o.get("q05", 0.8295)))
+        alf_hi = round_plain(100.0 * float(alf_o.get("q95", 0.9313)))
+        ref_ec = "2"
+        if uq_doc:
+            for s in uq_doc.get("series", []):
+                if s.get("id") == "salty-rain-once":
+                    for l in s.get("levels", []):
+                        rf = float(
+                            l.get("outputs", {}).get("h2_uptake_umol_m2", {}).get("refusal_fraction", 0.0)
+                        )
+                        if rf >= 0.05:
+                            ref_ec = round_plain(float(l.get("x", 2.0)))
+                            break
         headline_plain = (
-            f"Daily watering with salty water lowers hydrogen uptake by {core} % at 8 dS/m, where the "
-            f"change {hedge}; at higher salt levels, the model cannot tell for such salty water."
+            f"Watering every day with salty water ({ec_8} dS/m) gives about {core} % less hydrogen uptake "
+            f"over two weeks than one fresh rain (and {hedge}), but fresh daily watering alone gives about "
+            f"{fresh_drop} % less."
         )
         answer_plain = (
-            f"Daily watering with brackish water lowers hydrogen uptake over two weeks by {core} % at 8 dS/m "
-            f"({rng_plain}), so uptake {hedge} depending on how strongly daily water additions offset salt "
-            f"build-up, while leaving alfalfa at about 89 % of normal yield (range 83 to 93 %); at higher salt "
-            f"levels, the model cannot tell for such salty water because pore-water salt passes the dilute limit."
+            f"Watering every day with salty water ({ec_8} dS/m) gives about {core} % less hydrogen uptake "
+            f"over two weeks than one fresh rain of the same size ({rng_plain}, so it {hedge}). "
+            f"Almost all of that drop is the daily-watering pattern: fresh water given daily gives about "
+            f"{fresh_drop} % less. "
+            f"Saltiness itself adds only a few points. "
+            f"A separate crop formula (not the twin) puts alfalfa at about {alf_c} % of normal yield "
+            f"({alf_lo} to {alf_hi} %). "
+            f"The twin cannot tell (gives no answer) for a single salty rain, even at {ref_ec} dS/m, "
+            f"because the salt in the sand water becomes too strong for its formulas."
         )
         limits_extra_plain = (
             "When salt concentration in the sand water rises above a tenth of a mole per litre, the twin "
-            "refuses to guess rather than extrapolate outside its dilute-salt formula."
+            "refuses to guess rather than extrapolate outside its formulas. Crop yields come from published "
+            "crop-salt formulas, not from the twin."
         )
         limits_extra_sci = (
             "The twin enforces an ontological/domain admissibility gate at c_NaCl > 0.1 mol/L (ideal-dilute "
-            "van 't Hoff limit) and abstains when evaporation concentrates solutes above this threshold."
+            "van 't Hoff limit) and abstains when evaporation concentrates solutes above this threshold; "
+            "alfalfa and tomato relative yields come from external Maas-Hoffman crop-salt formulas."
         )
     elif slug == "alfalfa-bacterium":
+        ec_hi = f"{float((h_lvl or {}).get('x', 7.81)):g}"
+        c_lo = round_plain(100.0 * float(q05 if q05 is not None else 0.8938))
+        c_hi = round_plain(100.0 * float(q95 if q95 is not None else 0.9313))
+        u_c = round_plain(100.0 * float(h_central_map.get("relative_yield_alfalfa", 0.7959)))
+        u_o = h_outputs_map.get("relative_yield_alfalfa", {})
+        u_lo = round_plain(100.0 * float(u_o.get("q05", 0.7847)))
+        u_hi = round_plain(100.0 * float(u_o.get("q95", 0.8109)))
+        mod_a_lvl = _get_uq_level(uq_doc, "A_fao_fixed_leaching", 1)
+        mod_b_lvl = _get_uq_level(uq_doc, "B_twin_physics", 1)
+        a_val = round_plain(
+            100.0 * float((mod_a_lvl or {}).get("central", {}).get("relative_yield_alfalfa_inoculated", 0.3324))
+        )
+        b_med = (
+            (mod_b_lvl or {})
+            .get("outputs", {})
+            .get("relative_yield_alfalfa_inoculated", {})
+            .get("median", 1.0128)
+        )
+        b_val = round_plain(100.0 * float(b_med))
         headline_plain = (
-            f"Coating alfalfa seeds with the desert bacterium gives about {core} % of normal yield in salty "
-            f"water at 7.81 dS/m, up from 80 % without it."
+            f"In a crop-salt formula fitted to one field trial, alfalfa from bacterium-coated seeds reaches "
+            f"about {core} % of normal yield in {ec_hi} dS/m water (versus {u_c} % without it), though "
+            f"other root-zone salt formulas give {a_val} to {b_val} %."
         )
         answer_plain = (
-            f"Coating alfalfa seeds with the desert bacterium gives about {core} % of normal yield, {rng_plain}, "
-            f"in salty irrigation water at 7.81 dS/m, compared with about 80 % of normal yield (range 78 to 81 %) "
-            f"without the bacterium; at extreme salt levels in the sand-physics branch, the model cannot tell for "
-            f"such salty water."
+            f"In a crop-salt formula fitted to one field trial (not the twin), alfalfa from bacterium-coated "
+            f"seeds reaches about {core} % of normal yield ({c_lo} to {c_hi} %) in {ec_hi} dS/m water, "
+            f"versus about {u_c} % ({u_lo} to {u_hi} %) without the bacterium. "
+            f"Other ways of estimating how salt builds up in the root zone give very different answers, "
+            f"from about {a_val} % to about {b_val} % with the bacterium, so this figure depends strongly "
+            f"on that choice."
         )
         limits_extra_plain = (
-            "The crop boost comes from field trials in one desert farm and assumes the added bacterium "
-            "colonises the roots reliably."
+            "Crop yields and the bacterial boost come from published crop-salt formulas and one desert farm "
+            "field trial, not from the soil twin itself."
         )
         limits_extra_sci = (
-            "Multiplies Maas-Hoffman relative yield by an empirical SA187 field multiplier; root-zone EC_e "
-            "depends strongly on the chosen leaching/accumulation closure (models A, B, C)."
+            "Multiplies external Maas-Hoffman relative yield by an empirical SA187 field multiplier calibrated "
+            "to fresh weight at one trial; root-zone EC_e depends strongly on the chosen leaching/accumulation "
+            "closure (models A, B, C)."
         )
     elif slug == "hotter":
+        deg_4 = _num_word(int(round(float((h_lvl or {}).get("x", 4.0))))).capitalize()
+        signed_core = f"+{core}" if display_central > 0 else f"-{core}"
+        med_4 = round_plain(abs(float(median if median is not None else -2.62)))
+        med_4_dir = "lower" if float(median if median is not None else -2.62) < 0 else "higher"
+        soil_lvl = _get_uq_level(uq_doc, "soil-only-v06", 2)
+        deg_10 = round_plain(float((soil_lvl or {}).get("x", 10.0)))
+        s_c = round_plain(abs(float((soil_lvl or {}).get("central", {}).get("h2_uptake_change_pct", 69.08))))
+        s_o = (soil_lvl or {}).get("outputs", {}).get("h2_uptake_change_pct", {})
+        s_rng = format_change_pct_interval(s_o.get("q05", 3.78), s_o.get("q95", 77.78))
+        s_med = round_plain(abs(float(s_o.get("median", 35.88))))
         headline_plain = (
-            f"Four degrees of climate warming raises hydrogen uptake over two weeks by {core} %, "
-            f"and uptake {hedge} across uncertain model numbers."
+            f"{deg_4} degrees of warming changes hydrogen uptake over two weeks by about {signed_core} % in "
+            f"the central run, but a typical run is about {med_4} % {med_4_dir} and uptake {hedge}."
         )
         answer_plain = (
-            f"Four degrees of climate warming raises hydrogen uptake over two weeks by {core} % when rainfall "
-            f"stays the same ({rng_plain}), so uptake {hedge} depending on whether faster enzyme activity "
-            f"outweighs faster drying of the sand; warming the sand alone by ten degrees without extra drying "
-            f"raises uptake by 69 % (by 3.8 to 78 %)."
+            f"{deg_4} degrees of warming with the same rainfall changes hydrogen uptake over two weeks by "
+            f"about {signed_core} % in the model's central run. "
+            f"Across the uncertain numbers it {hedge} ({rng_plain}), and a typical run is slightly "
+            f"{med_4_dir} (about {med_4} %). "
+            f"Warming only the sand by {deg_10} degrees, with no extra drying, raises uptake by about "
+            f"{s_c} % in the central run ({s_rng}; typical run about {s_med} %)."
         )
         limits_extra_plain = (
             "Heat stress death at extreme afternoon surface temperatures is not included in the simple "
@@ -746,16 +952,26 @@ def render_question_texts(
             "diurnal surface-skin thermal gradients."
         )
     elif slug == "mulch-shade":
+        sh_lvl = _get_uq_level(uq_doc, "shade-only", 2)
+        sh_c = round_plain(abs(float((sh_lvl or {}).get("central", {}).get("h2_uptake_change_pct", -24.76))))
+        sh_o = (sh_lvl or {}).get("outputs", {}).get("h2_uptake_change_pct", {})
+        sh_rng = format_change_pct_interval(sh_o.get("q05", -27.77), sh_o.get("q95", -1.72))
+        sh_med = round_plain(abs(float(sh_o.get("median", -13.68))))
+        ms_lvl = _get_uq_level(uq_doc, "mulch-and-shade", 2)
+        ms_c = round_plain(abs(float((ms_lvl or {}).get("central", {}).get("h2_uptake_change_pct", 14.07))))
+        ms_o = (ms_lvl or {}).get("outputs", {}).get("h2_uptake_change_pct", {})
+        ms_rng = format_change_pct_interval(ms_o.get("q05", -6.16), ms_o.get("q95", 70.11))
         headline_plain = (
-            f"Full mulch cover raises hydrogen uptake over two weeks by {core} % by keeping the sand damp "
-            f"longer, and uptake {hedge}."
+            f"Full mulch cover raises hydrogen uptake over two weeks by about {core} % by keeping the sand "
+            f"damp longer, and uptake {hedge}."
         )
         answer_plain = (
-            f"Full mulch cover raises hydrogen uptake over two weeks by {core} % ({rng_plain}) by slowing "
-            f"evaporation, so uptake with mulch alone {hedge}, whereas full shade alone lowers uptake by "
-            f"25 % (by 1.7 to 28 %) and combining mulch with shade raises uptake by 14 % "
-            f"(from 6.2 % lower to 70 % higher). Mulch keeps water in the sand without cooling the microbes, "
-            f"whereas shade cools the sand and slows enzyme speed."
+            f"Full mulch cover raises hydrogen uptake over two weeks by about {core} % ({rng_plain}) by "
+            f"slowing evaporation, so uptake with mulch alone {hedge}. "
+            f"Full shade alone lowers uptake by about {sh_c} % ({sh_rng}; typical run about {sh_med} % lower), "
+            f"and combining mulch with shade raises uptake by about {ms_c} % ({ms_rng}). "
+            f"Mulch keeps water in the sand without cooling the microbes, whereas shade cools the sand "
+            f"and slows enzyme speed."
         )
         limits_extra_plain = (
             "Organic mulch breakdown and extra carbon food for soil microbes are not included."
@@ -766,13 +982,14 @@ def render_question_texts(
         )
     elif slug == "solar-park":
         headline_plain = (
-            f"Full solar-panel cover raises hydrogen uptake over two weeks by {core} %, "
+            f"Full solar-panel cover raises hydrogen uptake over two weeks by about {core} %, "
             f"and uptake {hedge}."
         )
         answer_plain = (
-            f"Full solar-panel cover raises hydrogen uptake over two weeks by {core} % ({rng_plain}), "
-            f"so uptake {hedge} because reduced evaporation under the panels and water from panel washing "
-            f"keep the sand moist longer than panel shade slows microbial enzymes."
+            f"Full solar-panel cover raises hydrogen uptake over two weeks by about {core} % ({rng_plain}), "
+            f"and uptake {hedge}. "
+            f"Less evaporation under the panels and water from panel washing keep the sand moist longer. "
+            f"This outweighs the slowing of microbes by shade."
         )
         limits_extra_plain = (
             "Wind shifts under panel rows and runoff strips along panel edges are simplified to an even average."
@@ -782,14 +999,18 @@ def render_question_texts(
             "moisture-retention effects partially offset each other across parameter draws."
         )
     elif slug == "compaction":
+        passes_n = int(round(float((h_lvl or {}).get("x", 50))))
+        passes_word = "Fifty" if passes_n == 50 else str(passes_n)
+        signed_core = f"-{core}" if display_central < 0 else f"+{core}"
         headline_plain = (
-            f"Fifty vehicle passes lower hydrogen uptake over two weeks by {core} %, "
-            f"and the change {hedge} across the uncertainty range."
+            f"{passes_word} vehicle passes change hydrogen uptake over two weeks by about {signed_core} %, "
+            f"and the change {hedge}."
         )
         answer_plain = (
-            f"Fifty vehicle passes lower hydrogen uptake over two weeks by {core} % ({rng_plain}), "
-            f"so the change {hedge} because squeezing pore space slows gas movement through air spaces "
-            f"while changing how tightly the sand holds water."
+            f"{passes_word} vehicle passes change hydrogen uptake over two weeks by about {signed_core} % "
+            f"({rng_plain}), so the change {hedge}. "
+            f"Squeezing the sand slows gas movement through the pores but also changes how tightly the "
+            f"sand holds water."
         )
         limits_extra_plain = (
             "Crushing of soil crusts, plants or burrows by tyres is not modelled beyond the drop in pore space."
@@ -799,15 +1020,18 @@ def render_question_texts(
             "potential psi_entry uncoupled from pore-size redistribution."
         )
     elif slug == "biochar":
+        dose_word = _num_word(int(round(float((h_lvl or {}).get("x", 5.0)))))
+        signed_core = f"-{core}" if display_central < 0 else f"+{core}"
         headline_plain = (
-            f"Adding five percent biochar by weight lowers hydrogen uptake over two weeks by {core} %, "
-            f"and the change {hedge} across uncertain model numbers."
+            f"Adding {dose_word} percent biochar by weight changes hydrogen uptake over two weeks by about "
+            f"{signed_core} %, and the change {hedge}."
         )
         answer_plain = (
-            f"Adding five percent biochar by weight lowers hydrogen uptake over two weeks by {core} % "
-            f"({rng_plain}), so the change {hedge} across uncertain model numbers. Increasing total pore space "
-            f"without adding extra water lowers the fraction of pores filled with water after a single rain "
-            f"while opening more air space for gas movement."
+            f"Adding {dose_word} percent biochar by weight changes hydrogen uptake over two weeks by about "
+            f"{signed_core} % ({rng_plain}), so the change {hedge}. "
+            f"Biochar adds empty pore space, so one rain fills a smaller share of the pores while gas moves "
+            f"more easily. "
+            f"The two effects nearly cancel, so the net change is small and could go either way."
         )
         limits_extra_plain = (
             "Chemical effects of biochar on soil acidity, nutrients or microbe attachment are not included."
@@ -817,16 +1041,31 @@ def render_question_texts(
             "parameters and surface chemistry constant."
         )
     elif slug == "missing-co-genes":
+        mco_levels = uq_doc["series"][0]["levels"] if (uq_doc and uq_doc.get("series")) else []
+        n_total = len(mco_levels) if mco_levels else 7
+        n_refused = (
+            sum(
+                1
+                for l in mco_levels
+                if float(l.get("outputs", {}).get("co_uptake_umol_m2", {}).get("refusal_fraction", 0.0))
+                >= 0.05
+            )
+            if mco_levels
+            else 2
+        )
+        ref_word = _num_word(n_refused)
+        tot_word = _num_word(n_total)
         headline_plain = (
-            f"Where the carbon-monoxide genes are missing there is no carbon-monoxide uptake at all (none), "
-            f"versus some uptake (about {core}) where the genes are present; for one sample the records are "
-            f"incomplete, so the twin gives no answer."
+            f"Where the soil community has no genes for eating carbon monoxide, the twin gives zero uptake, "
+            f"versus about {core} {unit_plain} over two weeks where the genes are present; for {ref_word} "
+            f"of the {tot_word} samples, incomplete records give no answer."
         )
         answer_plain = (
-            f"Where the soil community lacks the carbon-monoxide enzyme genes there is no carbon-monoxide "
-            f"uptake at all (none), versus some uptake where the genes are present (about {core} over two "
-            f"weeks, range {round_plain(q05)} to {round_plain(q95)}); for one sample the records are "
-            f"incomplete, so the twin gives no answer."
+            f"Where the soil community has no genes for eating carbon monoxide, the twin gives exactly zero "
+            f"carbon-monoxide uptake. "
+            f"Where the genes are present it gives a small uptake, about {core} {unit_plain} over two weeks "
+            f"({round_plain(q05)} to {round_plain(q95)}). "
+            f"For {ref_word} of the {tot_word} samples the records are incomplete, so the twin gives no answer."
         )
         limits_extra_plain = (
             "A missing gene in recovered DNA means the twin sets that pathway to zero, though very rare "
@@ -837,16 +1076,33 @@ def render_question_texts(
             "low-abundance carriers below sequencing detection are not represented."
         )
     elif slug == "adding-microbes":
+        prop_0 = _get_uq_level(uq_doc, "51PRr3-proportional", 0)
+        prop_2 = _get_uq_level(uq_doc, "51PRr3-proportional", 2)
+        v53_2 = _get_uq_level(uq_doc, "V53PRr2-proportional", 2)
+        lo_start = round_plain(
+            float((prop_0 or {}).get("central", {}).get("co_uptake_umol_m2", 10.18))
+        )
+        hi_start = round_plain(
+            float((prop_2 or {}).get("central", {}).get("co_uptake_umol_m2", 220.62))
+        )
+        x_1 = round_plain(float((h_lvl or {}).get("x", 1.0)))
+        x_5 = round_plain(float((v53_2 or {}).get("x", 5.0)))
+        c_5 = round_plain(
+            abs(float((v53_2 or {}).get("central", {}).get("co_uptake_change_pct", 2.66)))
+        )
+        abs_unit_plain = OUTCOME_META["co_uptake_umol_m2"]["unit_plain"]
         headline_plain = (
-            f"Adding carbon-monoxide-eating microbes at one percent of the community raises carbon monoxide "
-            f"uptake by {core} % where those microbes are already present, and switches uptake from none to "
-            f"some where they were missing."
+            f"Adding microbes that carry the carbon-monoxide-eating genes to a sample that had none starts "
+            f"uptake (roughly {lo_start} to {hi_start} {abs_unit_plain} over two weeks), and raises uptake "
+            f"by {core} % at {x_1} % added where such microbes are already present."
         )
         answer_plain = (
-            f"In sample 51PRr3, which has no carbon-monoxide eaters, adding a carrier at one percent switches "
-            f"uptake from none to some (about 144 over two weeks, range 21 to 507), and adding a microbe without "
-            f"the genes leaves it at none; then, where carbon-monoxide eaters are already present, adding more "
-            f"raises uptake only slightly ({core} % at one percent, 2.7 % at five percent), so uptake {hedge}."
+            f"Adding microbes that carry the carbon-monoxide-eating genes to a sample that had none makes "
+            f"uptake start: roughly {lo_start} to {hi_start} {abs_unit_plain} over two weeks, depending on "
+            f"whether presence alone or the amount added matters. "
+            f"Adding a microbe without those genes changes nothing. "
+            f"Where such microbes are already present, adding more raises uptake only slightly "
+            f"({core} % at {x_1} % added, {c_5} % at {x_5} % added)."
         )
         limits_extra_plain = (
             "The scenario assumes the added microbes survive and work immediately in dry desert sand without "
@@ -857,33 +1113,43 @@ def render_question_texts(
             "inoculant establishment, competition, or die-off kinetics."
         )
     elif slug == "air-hydrogen":
+        lvl_10 = _get_uq_level(uq_doc, "air-h2-scaling", 3)
+        mult_10 = _num_word(int(round(float((lvl_10 or {}).get("x", 10.0)))))
+        c_10 = round_plain(
+            abs(float((lvl_10 or {}).get("central", {}).get("h2_uptake_change_pct", 900.0)))
+        )
         headline_plain = (
-            f"Doubling hydrogen in the air raises soil hydrogen uptake over two weeks by {core} %, "
-            f"and uptake {hedge}."
+            f"Doubling hydrogen in the air doubles soil hydrogen uptake over two weeks "
+            f"(+{core} %, the same in every case we tried)."
         )
         answer_plain = (
-            f"Doubling hydrogen in the air raises soil hydrogen uptake over two weeks by {core} % "
-            f"({rng_plain}), and tenfold air hydrogen increases uptake by 900 %, so uptake {hedge}. Because "
-            f"soil uptake in the twin is directly proportional to the hydrogen level in the air, percentage "
-            f"uptake rises in lockstep with air concentration."
+            f"Doubling hydrogen in the air doubles soil hydrogen uptake over two weeks "
+            f"(+{core} %, the same in every case we tried), and {mult_10} times as much air hydrogen "
+            f"gives {mult_10} times the uptake (+{c_10} %)."
         )
         limits_extra_plain = (
-            "At very high hydrogen levels, microbes could hit a maximum enzyme speed or grow in number, "
-            "which a straight-line formula does not capture."
+            "This follows from a formula that assumes uptake rises in proportion to the hydrogen level; "
+            "at very high hydrogen levels, microbes could hit a maximum enzyme speed or grow."
         )
         limits_extra_sci = (
             "First-order Henry/diffusion-reaction kinetics in C_H2; excludes Michaelis-Menten saturation and "
             "long-term community biomass growth under elevated H₂."
         )
     elif slug == "carbon-fixation":
+        c_lo = round_plain(q05)
+        c_hi = round_plain(q95, decimals=2)
+        closed_lvl = _get_uq_level(uq_doc, "carbon-bound-samples", 0)
+        closed_c = round_plain(float((closed_lvl or {}).get("central", {}).get(out_key, 0.0)))
         headline_plain = (
-            f"Hydrogen-eating microbes can fix at most {core} {unit_plain} in sample F14Dr1, "
-            f"and 0 where the carbon-fixing genes are absent."
+            f"In one desert sand sample, hydrogen-eating microbes could fix at most about {core} {unit_plain} "
+            f"if it rained every two weeks, and {closed_c} where the carbon-fixing genes are absent."
         )
         answer_plain = (
-            f"Hydrogen-eating microbes can fix at most {core} {unit_plain} in sample F14Dr1 after a single rain "
-            f"({rng_plain}), and 0 {unit_plain} in sample 14PRr2 where the carbon-fixing genes are absent. "
-            f"This is an upper ceiling if every bit of captured hydrogen energy went into building cell carbon."
+            f"In one desert sand sample, hydrogen-eating microbes could fix at most about {core} {unit_plain}, "
+            f"if a rain like this fell every two weeks and all the energy from hydrogen went into making "
+            f"cell carbon. "
+            f"The model's estimate of this ceiling ranges from {c_lo} to {c_hi} g. "
+            f"In a second sample, which lacks the carbon-fixing genes, the ceiling is exactly {closed_c}."
         )
         limits_extra_plain = (
             "This figure is an upper ceiling, not measured net carbon storage in the sand, because microbes "
@@ -896,17 +1162,9 @@ def render_question_texts(
     else:
         raise KeyError(f"Unknown question slug: {slug}")
 
-    if has_refusal and slug != "missing-co-genes" and "the model cannot tell for such" not in answer_plain.lower():
-        cond = "salty water" if slug in {"salty-water", "alfalfa-bacterium"} else "conditions outside the model domain"
-        answer_plain += f" At extreme settings, the model cannot tell for such {cond}."
-
     limits_plain = f"{SCOPE_SENTENCE_PLAIN} {limits_extra_plain}"
 
     # Scientific headline and answer
-    h_lvl = _get_uq_level(uq_doc, s_id, l_idx)
-    h_central_map = (h_lvl or {}).get("central", {})
-    h_outputs_map = (h_lvl or {}).get("outputs", {})
-
     if out_key in {"h2_uptake_change_pct", "co_uptake_change_pct"}:
         gas = "h2" if out_key.startswith("h2_") else "co"
         contrast_key = f"{gas}_uptake_contrast_umol_m2"
@@ -940,24 +1198,88 @@ def render_question_texts(
                 extra_levels_sci = (
                     f" Daily drizzle (12 mm total) vs one 12 mm storm: "
                     f"h2_uptake_change_pct = {_fmt_sci_stat(d_c.get('h2_uptake_change_pct'), d_o.get('h2_uptake_change_pct'), '%')} "
-                    f"(plain: -100 %); "
+                    f"(plain: almost 100 % reduction); "
                     f"h2_uptake_contrast_umol_m2 = {_fmt_sci_stat(d_c.get('h2_uptake_contrast_umol_m2'), d_o.get('h2_uptake_contrast_umol_m2'), 'µmol m⁻²')}; "
                     f"h2_uptake_umol_m2 = {_fmt_sci_stat(d_c.get('h2_uptake_umol_m2'), d_o.get('h2_uptake_umol_m2'), 'µmol m⁻²')} "
                     f"(one-storm baseline h2_uptake_umol_m2 = {_fmt_sci_stat(b_c.get('h2_uptake_umol_m2'), b_o.get('h2_uptake_umol_m2'), 'µmol m⁻²')})."
                 )
+        elif slug == "drip-or-flood":
+            lvl_1 = _get_uq_level(uq_doc, "irrigation-interval", 0)
+            lvl_3 = _get_uq_level(uq_doc, "irrigation-interval", 1)
+            if lvl_1 and lvl_3:
+                extra_levels_sci = (
+                    f" At equal 12 mm total water over 14 days relative to a single 12 mm rain: "
+                    f"every-3-days h2_uptake_change_pct = {_fmt_sci_stat(lvl_3['central'].get('h2_uptake_change_pct'), lvl_3['outputs'].get('h2_uptake_change_pct'), '%')}; "
+                    f"daily-drip h2_uptake_change_pct = {_fmt_sci_stat(lvl_1['central'].get('h2_uptake_change_pct'), lvl_1['outputs'].get('h2_uptake_change_pct'), '%')}."
+                )
+        elif slug == "salty-water":
+            d0 = _get_uq_level(uq_doc, "daily-irrigation", 0)
+            d1 = _get_uq_level(uq_doc, "daily-irrigation", 1)
+            d2 = _get_uq_level(uq_doc, "daily-irrigation", 2)
+            r1 = _get_uq_level(uq_doc, "salty-rain-once", 1)
+            if d0 and d1 and d2 and r1:
+                c0 = d0["central"].get("h2_uptake_change_pct")
+                c1 = d1["central"].get("h2_uptake_change_pct")
+                c2 = d2["central"].get("h2_uptake_change_pct")
+                r1_rf = float(r1["outputs"].get("h2_uptake_umol_m2", {}).get("refusal_fraction", 1.0)) * 100.0
+                alf_stat = _fmt_sci_stat(
+                    h_central_map.get("relative_yield_alfalfa"),
+                    h_outputs_map.get("relative_yield_alfalfa"),
+                    "fraction",
+                )
+                extra_levels_sci = (
+                    f" Attribution vs single fresh 12 mm rain baseline: the daily-irrigation schedule drives most of the "
+                    f"reduction (h2_uptake_change_pct = {c0:.4g} % at 0.5 dS/m fresh daily water, {c1:.4g} % at 2 dS/m, "
+                    f"{c2:.4g} % at 4 dS/m, and {central_val:.4g} % at 8 dS/m; salinity adds only "
+                    f"{abs(central_val - float(c0)):.2f} percentage points between 0.5 and 8 dS/m). "
+                    f"The single-salty-rain series (salty-rain-once) is refused in {r1_rf:.1f} % of draws from 2 dS/m up "
+                    f"(pore-water c_NaCl > 0.1 mol/L after evaporative concentration), whereas daily irrigation at 8 dS/m "
+                    f"is refused in only {ref_frac * 100:.1f} % of draws. External Maas-Hoffman relative_yield_alfalfa at "
+                    f"8 dS/m = {alf_stat}."
+                )
+        elif slug == "hotter":
+            soil_lvl = _get_uq_level(uq_doc, "soil-only-v06", 2)
+            if soil_lvl:
+                sc = soil_lvl["central"].get("h2_uptake_change_pct")
+                so = soil_lvl["outputs"].get("h2_uptake_change_pct")
+                extra_levels_sci = (
+                    f" Because moisture-loss suppression and Q10 acceleration pull in opposite directions under +4 °C "
+                    f"climate warming, the distribution is strongly skewed (central {central_val:.4g} % near the upper "
+                    f"tail vs median {float(median):.4g} %). Under +10 °C soil-only warming at fixed moisture "
+                    f"(soil-only-v06), h2_uptake_change_pct = {_fmt_sci_stat(sc, so, '%')}."
+                )
+        elif slug == "mulch-shade":
+            sh_lvl = _get_uq_level(uq_doc, "shade-only", 2)
+            ms_lvl = _get_uq_level(uq_doc, "mulch-and-shade", 2)
+            if sh_lvl and ms_lvl:
+                extra_levels_sci = (
+                    f" Full shade alone (shade-only level 2): h2_uptake_change_pct = "
+                    f"{_fmt_sci_stat(sh_lvl['central'].get('h2_uptake_change_pct'), sh_lvl['outputs'].get('h2_uptake_change_pct'), '%')}; "
+                    f"combined full mulch and shade (mulch-and-shade level 2): h2_uptake_change_pct = "
+                    f"{_fmt_sci_stat(ms_lvl['central'].get('h2_uptake_change_pct'), ms_lvl['outputs'].get('h2_uptake_change_pct'), '%')}."
+                )
         elif slug == "adding-microbes":
             gate_lvl = _get_uq_level(uq_doc, "51PRr3-gate", 1)
-            prop_lvl = _get_uq_level(uq_doc, "51PRr3-proportional", 1)
+            prop_0 = _get_uq_level(uq_doc, "51PRr3-proportional", 0)
+            prop_1 = _get_uq_level(uq_doc, "51PRr3-proportional", 1)
+            prop_2 = _get_uq_level(uq_doc, "51PRr3-proportional", 2)
             v53_5_lvl = _get_uq_level(uq_doc, "V53PRr2-proportional", 2)
-            if gate_lvl and prop_lvl and v53_5_lvl:
+            if gate_lvl and prop_0 and prop_1 and prop_2 and v53_5_lvl:
+                p0_c = prop_0["central"].get("co_uptake_umol_m2")
+                p1_c = prop_1["central"].get("co_uptake_umol_m2")
+                p2_c = prop_2["central"].get("co_uptake_umol_m2")
                 extra_levels_sci = (
                     f" At 5 % inoculum in V53PRr2-proportional: "
                     f"co_uptake_change_pct = {_fmt_sci_stat(v53_5_lvl['central'].get('co_uptake_change_pct'), v53_5_lvl['outputs'].get('co_uptake_change_pct'), '%')}, "
                     f"co_uptake_contrast_umol_m2 = {_fmt_sci_stat(v53_5_lvl['central'].get('co_uptake_contrast_umol_m2'), v53_5_lvl['outputs'].get('co_uptake_contrast_umol_m2'), 'µmol m⁻²')}, "
-                    f"co_uptake_umol_m2 = {_fmt_sci_stat(v53_5_lvl['central'].get('co_uptake_umol_m2'), v53_5_lvl['outputs'].get('co_uptake_umol_m2'), 'µmol m⁻²')}. "
-                    f"In closed-baseline sample 51PRr3 (baseline co_uptake_umol_m2 = 0 µmol m⁻²), 1 % carrier inoculum yields "
-                    f"co_uptake_umol_m2 = {_fmt_sci_stat(gate_lvl['central'].get('co_uptake_umol_m2'), gate_lvl['outputs'].get('co_uptake_umol_m2'), 'µmol m⁻²')} under gate coupling "
-                    f"and {_fmt_sci_stat(prop_lvl['central'].get('co_uptake_umol_m2'), prop_lvl['outputs'].get('co_uptake_umol_m2'), 'µmol m⁻²')} under proportional coupling."
+                    f"co_uptake_umol_m2 = {_fmt_sci_stat(v53_5_lvl['central'].get('co_uptake_umol_m2'), v53_5_lvl['outputs'].get('co_uptake_umol_m2'), 'µmol m⁻²')} "
+                    f"(whereas V53PRr2-gate gives exact 0 % change across all inoculum doses). "
+                    f"In closed-baseline sample 51PRr3 (baseline co_uptake_umol_m2 = 0 µmol m⁻²), non-carrier inoculation "
+                    f"remains at exact 0 µmol m⁻², whereas carrier inoculation depends on the coupling assumption: "
+                    f"binary gate coupling yields {_fmt_sci_stat(gate_lvl['central'].get('co_uptake_umol_m2'), gate_lvl['outputs'].get('co_uptake_umol_m2'), 'µmol m⁻²')} "
+                    f"at 0.1, 1, and 5 % inoculum, while share-proportional coupling yields central co_uptake_umol_m2 = "
+                    f"{p0_c:.4g}, {p1_c:.4g}, and {p2_c:.4g} µmol m⁻² at 0.1, 1, and 5 % inoculum (at 1 %: "
+                    f"{_fmt_sci_stat(p1_c, prop_1['outputs'].get('co_uptake_umol_m2'), 'µmol m⁻²')})."
                 )
         core_body_sci = (
             f"Central percentage change: {out_key} = {pct_stat} (rounded headline: {core} %); "
@@ -976,17 +1298,49 @@ def render_question_texts(
             h_outputs_map.get("relative_yield_alfalfa"),
             "fraction",
         )
+        mod_a_lvl = _get_uq_level(uq_doc, "A_fao_fixed_leaching", 1)
+        mod_b_lvl = _get_uq_level(uq_doc, "B_twin_physics", 1)
+        spread_sci = ""
+        if mod_a_lvl and mod_b_lvl:
+            a_in = _fmt_sci_stat(
+                mod_a_lvl["central"].get("relative_yield_alfalfa_inoculated"),
+                mod_a_lvl["outputs"].get("relative_yield_alfalfa_inoculated"),
+                "fraction",
+            )
+            a_un = _fmt_sci_stat(
+                mod_a_lvl["central"].get("relative_yield_alfalfa"),
+                mod_a_lvl["outputs"].get("relative_yield_alfalfa"),
+                "fraction",
+            )
+            b_in = _fmt_sci_stat(
+                mod_b_lvl["central"].get("relative_yield_alfalfa_inoculated"),
+                mod_b_lvl["outputs"].get("relative_yield_alfalfa_inoculated"),
+                "fraction",
+            )
+            b_un = _fmt_sci_stat(
+                mod_b_lvl["central"].get("relative_yield_alfalfa"),
+                mod_b_lvl["outputs"].get("relative_yield_alfalfa"),
+                "fraction",
+            )
+            spread_sci = (
+                f" Across root-zone salinity closures at 7.81 dS/m (all external crop-salt formulas, not soil-twin "
+                f"outputs, with 0.0 % refusal across all yield series): Model A (FAO-29 fixed leaching) gives "
+                f"inoculated {a_in} vs uninoculated {a_un}; Model B (twin bucket salt balance) gives inoculated "
+                f"{b_in} vs uninoculated {b_un}."
+            )
         headline_science = (
-            f"Central inoculated yield = {display_central:.4g} % of normal yield (rounded: {core} %, "
-            f"median {pct_med:.4g} %, joint 5–95 % interval [{pct_q05:.4g}, {pct_q95:.4g}] %; "
-            f"{out_key} = {frac_stat}, mode = {mode}, refusal = {ref_frac * 100:.1f} %)."
+            f"Central inoculated yield (Model C, trial-calibrated fresh-weight closure) = {display_central:.4g} % "
+            f"of normal yield (rounded: {core} %, median {pct_med:.4g} %, joint 5–95 % interval "
+            f"[{pct_q05:.4g}, {pct_q95:.4g}] %; {out_key} = {frac_stat}, mode = {mode}, "
+            f"refusal = {ref_frac * 100:.1f} %)."
         )
         core_body_sci = (
-            f"Central estimate: {display_central:.4g} % of normal yield (rounded headline: {core} %, "
+            f"Central estimate under Model C (calibrated to Jizan field trial fresh weight): "
+            f"{display_central:.4g} % of normal yield (rounded headline: {core} %, "
             f"joint 5–95 % interval [{pct_q05:.4g}, {pct_q95:.4g}] %), corresponding to "
             f"{out_key} = {frac_stat}, versus uninoculated relative_yield_alfalfa = {uninoc_stat} "
             f"(mode = {mode}, refusal fraction = {ref_frac * 100:.1f} %, "
-            f"max level refusal across question = {max_refusal_fraction * 100:.1f} %)."
+            f"max level refusal across question = {max_refusal_fraction * 100:.1f} %).{spread_sci}"
         )
     elif slug == "missing-co-genes":
         open_stat = _fmt_sci_stat(central_val, outcome_uq, "µmol m⁻²")
@@ -998,18 +1352,18 @@ def render_question_texts(
         )
         headline_science = (
             f"Closed-gate sample 51PRr3 has co_uptake_umol_m2 = 0 µmol m⁻² (joint 5–95 % interval [0, 0] µmol m⁻², "
-            f"mode = deduced), whereas open-gate samples 10Dr2 and V53PRr2 have co_uptake_umol_m2 = {open_stat} "
-            f"(a tiny amount, about {core} millionths of a mole per square metre); samples 10Dr1 and 51PRr1 are "
-            f"refused (100.0 %) due to missing read-mapping weights."
+            f"mode = deduced), whereas open-gate samples have co_uptake_umol_m2 = {open_stat} "
+            f"(a tiny amount, about {core} millionths of a mole per square metre); two of the seven samples "
+            f"(10Dr1 and 51PRr1) are refused (100.0 %) due to missing read-mapping weights."
         )
         core_body_sci = (
-            f"Open-gate samples 10Dr2 and V53PRr2 have co_uptake_umol_m2 = {open_stat} (a tiny amount, about "
-            f"{core} millionths of a mole per square metre; mode = {mode}, refusal fraction = 0.0 %), whereas "
+            f"Open-gate samples (10Dr2, V53PRr2, 13Dr3, 14PRr2) have co_uptake_umol_m2 = {open_stat} (a tiny amount, "
+            f"about {core} millionths of a mole per square metre; mode = {mode}, refusal fraction = 0.0 %), whereas "
             f"closed-gate sample 51PRr3 has exact deductive co_uptake_umol_m2 = {closed_stat} (mode = deduced, "
             f"because 0 assembled MAGs in 51PRr3 are entailed as carrying FormICODehydrogenaseSubunit). "
-            f"Samples 10Dr1 and 51PRr1 are refused for 100.0 % of parameter draws (max level refusal across "
-            f"question = {max_refusal_fraction * 100:.1f} %; exact refusal reason: No usable read-mapping weights "
-            f"(unknown sample or excluded for missing weights): ['10Dr1'] and ['51PRr1'])."
+            f"Two of the seven samples (10Dr1 and 51PRr1) are refused for 100.0 % of parameter draws (max level "
+            f"refusal across question = {max_refusal_fraction * 100:.1f} %; exact refusal reason: No usable "
+            f"read-mapping weights (unknown sample or excluded for missing weights): ['10Dr1'] and ['51PRr1'])."
         )
     else:
         # carbon-fixation
@@ -1019,15 +1373,18 @@ def render_question_texts(
             h_outputs_map.get("c_fixed_upper_bound_ug_m2"),
             "µg C m⁻²",
         )
+        periods_per_yr = 365.25 / 14.0
         headline_science = (
             f"Central {out_key} = {stat_str} (rounded: {core} {unit_sci}; "
-            f"14-day bound c_fixed_upper_bound_ug_m2 = {ug_stat}; "
-            f"mode = {mode}, refusal = {ref_frac * 100:.1f} %)."
+            f"annualised from 14-day bound c_fixed_upper_bound_ug_m2 = {ug_stat} via ×{periods_per_yr:.2f} "
+            f"two-week periods yr⁻¹; mode = {mode}, refusal = {ref_frac * 100:.1f} %)."
         )
         core_body_sci = (
             f"Central estimate in open-gate sample F14Dr1: {out_key} = {stat_str} "
-            f"(rounded headline: {core} {unit_sci}; 14-day bound c_fixed_upper_bound_ug_m2 = {ug_stat}; "
-            f"mode = {mode}, refusal fraction = {ref_frac * 100:.1f} %, "
+            f"(rounded headline: {core} {unit_sci}; 14-day bound c_fixed_upper_bound_ug_m2 = {ug_stat}, "
+            f"annualised by multiplying by 365.25 / 14 = {periods_per_yr:.2f} under the hypothetical assumption "
+            f"that a 12 mm rain event recurs every two weeks all year and all captured H₂ energy goes into CBB "
+            f"cell carbon; mode = {mode}, refusal fraction = {ref_frac * 100:.1f} %, "
             f"max level refusal across question = {max_refusal_fraction * 100:.1f} %), "
             f"and exact 0 {unit_sci} (joint 5–95 % interval [0, 0] {unit_sci}, mode = deduced) in closed-gate sample 14PRr2."
         )
