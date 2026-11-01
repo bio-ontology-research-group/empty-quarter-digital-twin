@@ -1,3 +1,7 @@
+# v0.8.1 — Science-page prose and zero-variance UQ reporting — 1 November 2026
+
+- Science-page texts rewritten as scientific prose; zero-variance outputs reported without sensitivity indices.
+
 # v0.8.0 — Full uncertainty analysis and question catalogue — 1 November 2026
 
 - Add the twin process-parameter uncertainty registry `data/external/twin_parameter_ranges.json` (13 parameters,

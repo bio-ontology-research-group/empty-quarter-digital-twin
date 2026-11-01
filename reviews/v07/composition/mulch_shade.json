@@ -173,7 +173,7 @@
       "label": "mulch 0, shade 0",
       "refused": null,
       "trace": {
-        "contract_sha256": "41bb74ebd094439703b860da136d051bbf8753eadd27e09206738aef820731a9",
+        "contract_sha256": "945e40a6c688248e928defb87050e18748868b512a2c8e54680fd4218887e80b",
         "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
         "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
         "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
@@ -389,7 +389,7 @@
       "label": "mulch 0.5, shade 0",
       "refused": null,
       "trace": {
-        "contract_sha256": "41bb74ebd094439703b860da136d051bbf8753eadd27e09206738aef820731a9",
+        "contract_sha256": "945e40a6c688248e928defb87050e18748868b512a2c8e54680fd4218887e80b",
         "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
         "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
         "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
@@ -605,7 +605,7 @@
       "label": "mulch 1, shade 0",
       "refused": null,
       "trace": {
-        "contract_sha256": "41bb74ebd094439703b860da136d051bbf8753eadd27e09206738aef820731a9",
+        "contract_sha256": "945e40a6c688248e928defb87050e18748868b512a2c8e54680fd4218887e80b",
         "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
         "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
         "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
@@ -821,7 +821,7 @@
       "label": "mulch 0, shade 0.5",
       "refused": null,
       "trace": {
-        "contract_sha256": "41bb74ebd094439703b860da136d051bbf8753eadd27e09206738aef820731a9",
+        "contract_sha256": "945e40a6c688248e928defb87050e18748868b512a2c8e54680fd4218887e80b",
         "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
         "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
         "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
@@ -1037,7 +1037,7 @@
       "label": "mulch 0, shade 1",
       "refused": null,
       "trace": {
-        "contract_sha256": "41bb74ebd094439703b860da136d051bbf8753eadd27e09206738aef820731a9",
+        "contract_sha256": "945e40a6c688248e928defb87050e18748868b512a2c8e54680fd4218887e80b",
         "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
         "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
         "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
@@ -1253,7 +1253,7 @@
       "label": "mulch 1, shade 1",
       "refused": null,
       "trace": {
-        "contract_sha256": "41bb74ebd094439703b860da136d051bbf8753eadd27e09206738aef820731a9",
+        "contract_sha256": "945e40a6c688248e928defb87050e18748868b512a2c8e54680fd4218887e80b",
         "evidence_sha256": "537296f261f0f1bcf0fd05d9cd4cc48f307de49145e6e9b41babbf94096817b6",
         "graph_sha256": "48457602a681ab9060eace321ebc9039897d9e201520c2bc346e95e1e2e37248",
         "ontology_sha256": "36699fcaf33240f6184121326cdb18703a45b366b3f932263900f8022f83288d",
