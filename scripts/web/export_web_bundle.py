@@ -28,6 +28,7 @@ DATA = ROOT / "data" / "v03"
 V05 = ROOT / "reviews" / "v05"
 V06 = ROOT / "reviews" / "v06"
 V07 = ROOT / "reviews" / "v07" / "composition"
+V08_QUESTIONS = ROOT / "reviews" / "v08" / "questions"
 REGISTRY = ROOT / "data" / "external" / "composition_constants.json"
 PAPER_TABLES = ROOT / "paper" / "tables"
 sys.path.insert(0, str(SRC))
@@ -405,7 +406,10 @@ def build_whatifs() -> dict:
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", type=Path, default=DEFAULT_OUT)
-    out = ap.parse_args().out.resolve()
+    ap.add_argument("--questions", type=Path, default=V08_QUESTIONS)
+    args = ap.parse_args()
+    out = args.out.resolve()
+    questions_dir = args.questions.resolve()
     if out.exists():
         shutil.rmtree(out)
     (out / "py" / "eq_biodt" / "v03").mkdir(parents=True)
@@ -417,6 +421,13 @@ def main():
     (out / "py" / "eq_biodt" / "__init__.py").write_text(f'"""EQ-BioDT web runtime (minimal package for the browser)."""\n__version__ = "{version}"\n')
     (out / "py" / "eq_biodt" / "v03" / "__init__.py").write_text(
         f'"""EQ-BioDT causal-ontological twin (web runtime; released process and theory modules are copied verbatim)."""\nVERSION = "{version}"\n')
+
+    if questions_dir.exists():
+        q_files = sorted(questions_dir.glob("*.json"))
+        if q_files:
+            (out / "questions").mkdir(parents=True, exist_ok=True)
+            for qf in q_files:
+                shutil.copyfile(qf, out / "questions" / qf.name)
 
     paper = tex_numbers()
     samples, medians, columns = build_samples()

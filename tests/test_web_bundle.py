@@ -234,3 +234,44 @@ def test_live_refusals_and_psi_versions(live):
     assert round(r["psi_versions"]["matric"]["state_after"]["water_mm"], 1) == 7.1       # paper: 7.1 mm
     assert round(r["psi_versions"]["osmotic"]["nacl_mol_l_after"], 3) == 0.182            # paper: 0.182 mol/L
     assert r["relevance"]["J_h2"]["relevant"] and not r["relevance"]["A"]["relevant"]
+
+
+def test_question_files_exported(tmp_path):
+    from eq_biodt.v03.questions import QUESTIONS
+
+    q_src = ROOT / "reviews" / "v08" / "questions"
+    if not (q_src / "index.json").exists():
+        q_src = tmp_path / "questions_src"
+        q_src.mkdir(parents=True, exist_ok=True)
+        entries = []
+        for slug, q in QUESTIONS.items():
+            payload = {"version": "question-1", "slug": slug, "theme": q.theme}
+            (q_src / f"{slug}.json").write_text(json.dumps(payload, indent=2) + "\n")
+            entries.append({"slug": slug, "theme": q.theme})
+        (q_src / "index.json").write_text(
+            json.dumps({"version": "question-1", "questions": entries}, indent=2) + "\n"
+        )
+
+    d = tmp_path / "web_out" / "eq_biodt_v06"
+    subprocess.run(
+        [sys.executable, str(EXPORTER), "--out", str(d), "--questions", str(q_src)],
+        check=True,
+        cwd=ROOT,
+    )
+
+    idx_raw = json.loads((d / "questions" / "index.json").read_text())
+    idx_list = idx_raw["questions"] if isinstance(idx_raw, dict) and "questions" in idx_raw else idx_raw
+    assert len(idx_list) == 14
+    manifest = json.loads((d / "manifest.json").read_text())
+    assert "questions/index.json" in manifest["files"]
+    for item in idx_list:
+        slug = item["slug"]
+        rel = f"questions/{slug}.json"
+        exported_bytes = (d / rel).read_bytes()
+        source_bytes = (q_src / f"{slug}.json").read_bytes()
+        digest = hashlib.sha256(source_bytes).hexdigest()
+        assert hashlib.sha256(exported_bytes).hexdigest() == digest
+        assert rel in manifest["files"]
+        assert manifest["files"][rel]["sha256"] == digest
+        assert manifest["files"][rel]["bytes"] == len(source_bytes)
+
