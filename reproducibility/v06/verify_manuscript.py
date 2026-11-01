@@ -1191,7 +1191,7 @@ def table_checks(d):
         for tag, lit, val in zip(("median", "q05", "q95"), r[4].replace("[", ",").replace("]", "").split(","), (u["median"], u["q05"], u["q95"])):
             cmp(f"v08_uq row {slug} {tag}", lit.replace("$", "").strip(), val)
         ranked = sorted(u["ST"].items(), key=lambda kv: (-kv[1][0], kv[0]))[:2]
-        top_lits = re.findall(r"\(([^)]+)\)", r[5])
+        top_lits = re.findall(r"\(([-+]?\d[^)]*)\)", r[5])
         for (pname, st), lit in zip(ranked, top_lits):
             cmp(f"v08_uq row {slug} ST {pname}", lit.replace("$", "").strip(), st[0])
         cmp(f"v08_uq row {slug} group_ST assum", r[6].replace("$", "").strip(), u["group_ST"]["modeller_assumption"][0])

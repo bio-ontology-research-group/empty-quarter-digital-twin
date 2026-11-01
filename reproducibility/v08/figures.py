@@ -6,6 +6,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import sys
 
 import matplotlib
 matplotlib.use("Agg")
@@ -13,6 +14,17 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from reproducibility.v08.paper_figures import (  # noqa: E402
+    FIG_WIDTH_IN,
+    HEADLINE_LABELS_READABLE,
+    QUESTION_TITLES_SHORT,
+    readable_name,
+    to_latex,
+)
+
 QDIR = ROOT / "reviews/v08/questions"
 PARAM_PATH = ROOT / "data/external/twin_parameter_ranges.json"
 FIG = ROOT / "paper/figures"
@@ -20,11 +32,12 @@ TAB = ROOT / "paper/tables"
 
 plt.rcParams.update({
     "font.family": "DejaVu Sans",
-    "font.size": 7,
+    "font.size": 6.8,
     "axes.spines.top": False,
     "axes.spines.right": False,
     "pdf.fonttype": 42,
-    "savefig.dpi": 200,
+    "ps.fonttype": 42,
+    "savefig.dpi": 300,
     "mathtext.fontset": "dejavusans",
     "svg.hashsalt": "eq-biodt-v08",
 })
@@ -93,20 +106,20 @@ def pnum(x: float) -> str:
     return f"{x:g}"
 
 
-def tt(s: str) -> str:
-    return f"\\texttt{{{tex(s).replace('\\_', '\\_\\allowbreak{}')}}}"
-
-
 def parameters_table() -> None:
     reg = json.loads(PARAM_PATH.read_text())["parameters"]
     rows = []
     for i, p in enumerate(reg, start=1):
-        pid = tt(p["id"])
+        pname = readable_name(p["id"], latex=True)
+        if p["id"] == "d_h2_m2_s":
+            pname = r"free-air diffusivity (H$_2$)"
+        elif p["id"] == "d_co_m2_s":
+            pname = "free-air diffusivity (CO)"
         dist = tex(p["dist"])
         val_str = f"{pnum(p['value'])} [{pnum(p['low'])}, {pnum(p['high'])}]"
         unit = PARAM_UNITS.get(p["unit"], tex(p["unit"]))
-        status = tt(p["status"])
-        rows.append(f"{i} & {pid} & {dist} & {val_str} & {unit} & {status} \\\\")
+        status = STATUS_LABELS.get(p["status"], tex(p["status"]))
+        rows.append(f"{i} & {pname} & {dist} & {val_str} & {unit} & {status} \\\\")
     body = "\n".join(rows)
     t = (
         "\\begin{tabular}{@{}rlp{1.9cm}p{4.1cm}p{1.4cm}p{3.1cm}@{}}\n"
@@ -147,17 +160,22 @@ def uq_table() -> None:
         out = _headline_outcome(doc)
         unit = OUTCOME_UNITS.get(out["unit"], tex(out["unit"]))
         top = _top_contributors(doc, 2)
-        top_str = ", ".join(f"{tt(t['id'])} ({num(t['ST'][0])})" for t in top)
+        top_str = ", ".join(
+            f"{readable_name(t['id'], latex=True)} ({num(t['ST'][0])})"
+            for t in top
+        )
         assum = u["group_ST"]["modeller_assumption"][0]
-        label = f"{tex(u['headline_label'])} ({unit})"
+        q_title = QUESTION_TITLES_SHORT.get(slug, tex(slug))
+        hl_label = to_latex(HEADLINE_LABELS_READABLE.get(slug, u["headline_label"]))
+        label = f"{hl_label} ({unit})"
         ref_val = out.get("reference", out["value"])
         val_str = f"{num(ref_val)} & {num(u['median'])} [{num(u['q05'])}, {num(u['q95'])}]"
         rows.append(
-            f"{i} & {tex(slug)} & {label} & {val_str} & {top_str} & {num(assum)} \\\\"
+            f"{i} & {q_title} & {label} & {val_str} & {top_str} & {num(assum)} \\\\"
         )
     body = "\n".join(rows)
     t = (
-        "\\begin{tabular}{@{}rp{2.0cm}p{3.2cm}rp{2.6cm}p{4.3cm}r@{}}\n"
+        "\\begin{tabular}{@{}rp{2.3cm}p{3.4cm}rp{2.5cm}p{4.4cm}r@{}}\n"
         "\\toprule\n"
         "\\# & Question & Headline level (unit) & Central & Median [5\\%, 95\\%] & Top two $S_T$ contributors & $S_T^{\\mathrm{assum}}$ \\\\\n"
         "\\midrule\n"
@@ -174,7 +192,19 @@ def sensitivity_figure() -> None:
     n = len(docs)
     y = np.arange(n)[::-1]
 
-    fig, (ax_grp, ax_top) = plt.subplots(1, 2, figsize=(10.6, 4.8), sharey=True)
+    fig = plt.figure(figsize=(FIG_WIDTH_IN, 4.4))
+    gs = fig.add_gridspec(
+        1,
+        2,
+        width_ratios=[1.0, 1.25],
+        left=0.20,
+        right=0.985,
+        top=0.91,
+        bottom=0.11,
+        wspace=0.08,
+    )
+    ax_grp = fig.add_subplot(gs[0, 0])
+    ax_top = fig.add_subplot(gs[0, 1], sharey=ax_grp)
 
     statuses = ["modeller_assumption", "verified_in_source", "source_not_checked"]
     bar_h = 0.24
@@ -202,13 +232,28 @@ def sensitivity_figure() -> None:
             capsize=1.5,
         )
 
+    ax_grp.text(
+        -0.44,
+        1.06,
+        "a",
+        transform=ax_grp.transAxes,
+        fontsize=9.5,
+        fontweight="bold",
+        color=INK,
+        ha="left",
+        va="top",
+    )
     ax_grp.axvline(1.0, color=INK, lw=0.6, ls=":")
     ax_grp.set_yticks(y)
-    ax_grp.set_yticklabels([f"{i + 1}. {d['slug']}" for i, d in enumerate(docs)], fontsize=6.5)
-    ax_grp.set_xlabel("Group total-order Sobol' index $S_T^{\\mathrm{group}}$", fontsize=7)
-    ax_grp.set_title("(A) Total-order sensitivity by verification status", fontsize=7.5, loc="left", color=INK)
+    ax_grp.set_yticklabels(
+        [f"{i + 1}. {QUESTION_TITLES_SHORT.get(d['slug'], d['slug'])}" for i, d in enumerate(docs)],
+        fontsize=6.2,
+        color=INK,
+    )
+    ax_grp.set_xlabel("Group total-order Sobol' index $S_T^{\\mathrm{group}}$", fontsize=6.6, color=INK)
+    ax_grp.set_title("Sensitivity by verification status", fontsize=7.0, fontweight="bold", loc="left", color=INK)
     ax_grp.set_xlim(0, 1.42)
-    ax_grp.legend(fontsize=6, frameon=False, loc="lower right")
+    ax_grp.legend(fontsize=5.6, frameon=False, loc="lower right")
 
     top_off = [0.16, -0.16]
     for rank, off in enumerate(top_off):
@@ -220,26 +265,36 @@ def sensitivity_figure() -> None:
             los.append(max(0.0, v - lo))
             his.append(max(0.0, hi - v))
             cols.append(STATUS_COLOURS[tc["status"]])
-            names.append(tc["id"])
+            names.append(readable_name(tc["id"], latex=False))
         ax_top.barh(y + off, vals, height=0.28, color=cols, alpha=0.88 if rank == 0 else 0.58)
         ax_top.errorbar(vals, y + off, xerr=[los, his], fmt="none", ecolor=INK, elinewidth=0.6, capsize=1.5)
         for yi, v, hi, nm in zip(y + off, vals, his, names):
             if v > 0.02:
-                ax_top.text(v + hi + 0.015, yi, nm, va="center", ha="left", fontsize=5.3, color=INK)
+                ax_top.text(v + hi + 0.015, yi, nm, va="center", ha="left", fontsize=5.1, color=INK)
 
+    ax_top.text(
+        -0.06,
+        1.06,
+        "b",
+        transform=ax_top.transAxes,
+        fontsize=9.5,
+        fontweight="bold",
+        color=INK,
+        ha="left",
+        va="top",
+    )
     ax_top.axvline(1.0, color=INK, lw=0.6, ls=":")
-    ax_top.set_xlabel("Individual total-order Sobol' index $S_T$", fontsize=7)
-    ax_top.set_title("(B) Top two individual parameter contributors (bars coloured by status)", fontsize=7.5, loc="left", color=INK)
-    ax_top.set_xlim(0, 1.32)
+    ax_top.tick_params(axis="y", left=False, labelleft=False)
+    ax_top.set_xlabel("Individual total-order Sobol' index $S_T$", fontsize=6.6, color=INK)
+    ax_top.set_title("Top two parameter contributors", fontsize=7.0, fontweight="bold", loc="left", color=INK)
+    ax_top.set_xlim(0, 1.55)
 
-    fig.tight_layout()
     FIG.mkdir(exist_ok=True)
     fig.savefig(
         FIG / "v08_sensitivity.pdf",
-        bbox_inches="tight",
         metadata={"CreationDate": None, "ModDate": None, "Producer": None},
     )
-    fig.savefig(FIG / "v08_sensitivity.png", bbox_inches="tight", dpi=170, metadata={"Software": None})
+    fig.savefig(FIG / "v08_sensitivity.png", dpi=300, metadata={"Software": None})
     plt.close(fig)
 
 

@@ -24,6 +24,7 @@ if str(ROOT / "src") not in sys.path:
 
 from reproducibility.v08.figures import main as build_figures  # noqa: E402
 from reproducibility.v08.gather import DEFAULT_OUT_DIR, _round_floats, gather, gather_bytes  # noqa: E402
+from reproducibility.v08.paper_figures import main as build_paper_figures  # noqa: E402
 from reproducibility.v08.paper_numbers import write_numbers_tex  # noqa: E402
 from reproducibility.v08.questions import DEFAULT_OUT_DIR as DEFAULT_QUESTIONS_DIR, build_questions  # noqa: E402
 from reproducibility.v08.tasks import enumerate_tasks  # noqa: E402
@@ -161,9 +162,14 @@ def write_manifest(uq_dir: Path, questions_dir: Path) -> Path:
     uq_outputs = [p for p in sorted(uq_dir.glob("*.json")) if p.name != "run_record.json"]
     q_outputs = sorted(questions_dir.glob("*.json"))
     paper_outputs = [
+        ROOT / "paper/tables/v08_answers.tex",
         ROOT / "paper/tables/v08_numbers.tex",
         ROOT / "paper/tables/v08_parameters.tex",
         ROOT / "paper/tables/v08_uq.tex",
+        ROOT / "paper/figures/v08_answers.pdf",
+        ROOT / "paper/figures/v08_answers.png",
+        ROOT / "paper/figures/v08_composition_main.pdf",
+        ROOT / "paper/figures/v08_composition_main.png",
         ROOT / "paper/figures/v08_sensitivity.pdf",
         ROOT / "paper/figures/v08_sensitivity.png",
     ]
@@ -247,6 +253,7 @@ def main(argv: list[str] | None = None) -> int:
     build_questions(uq_dir=args.out, out_dir=args.questions_out)
     write_numbers_tex(args.questions_out)
     build_figures()
+    build_paper_figures()
     manifest_path = write_manifest(args.out, args.questions_out)
     elapsed = round(time.time() - t0, 1)
     print(f"v0.8 reproduction complete in {elapsed}s -> {manifest_path.relative_to(ROOT)}")
