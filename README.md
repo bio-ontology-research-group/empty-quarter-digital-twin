@@ -1,4 +1,4 @@
-# EQ-BioDT v0.7.0
+# EQ-BioDT v0.8.0
 
 EQ-BioDT is a causal–ontological digital twin of microbial processes in the
 Rub’ al-Khali, the world’s largest continuous sand desert. It connects primary
@@ -91,6 +91,43 @@ Two runs give byte-identical outputs; digests are in
 `reviews/v07/reproducibility.json`. Plant yields and carbon are the external
 models' numbers, never the twin's; the experiments use the v0.6 14-day
 single-pulse baseline.
+
+## Uncertainty and question pages (v0.8)
+
+Version 0.8 propagates joint parameter uncertainty across 14 management and
+community questions (`rain-pattern`, `drip-or-flood`, `cloud-seeding`,
+`salty-water`, `alfalfa-bacterium`, `hotter`, `mulch-shade`, `solar-park`,
+`compaction`, `biochar`, `missing-co-genes`, `adding-microbes`, `air-hydrogen`
+and `carbon-fixation`; 111 scenario levels, 1,383 evaluated outputs and
+2,285,568 model evaluations) and exports paired plain-language and scientific
+question records for the public web pages.
+
+- `data/external/twin_parameter_ranges.json` registers the 13 uncertain twin
+  process parameters (`k_h2_s`, `k_co_s`, `psi_entry_mpa`, `retention_b`,
+  `wet_activation_mpa`, `dry_threshold_mpa`, `activation_shape`, `q10`,
+  `d_h2_m2_s`, `d_co_m2_s`, `drainage_fraction_day`,
+  `field_capacity_fraction`, `porosity`), all with status `modeller_assumption`.
+- `src/eq_biodt/v03/uq_inputs.py`, `src/eq_biodt/v03/questions.py` and
+  `src/eq_biodt/v03/uq.py` combine each level's external constants (triangular)
+  and non-clamped twin parameters into a scrambled Sobol' Saltelli design
+  ($N=1,024$ base samples, $N=2,048$ convergence reruns) and compute joint
+  5–95 % intervals, medians, Saltelli (2010) first-order ($S_1$) and Jansen
+  (1999) total-order ($S_T$) Sobol' indices with 500-draw bootstrap 95 %
+  confidence intervals, and status-group indices (`verified_in_source`,
+  `modeller_assumption`, `source_not_checked`).
+- `reviews/v08/uq/` holds the gathered UQ summaries (rounded to 6 significant
+  digits for cross-machine invariance) and `run_record.json`;
+  `reviews/v08/questions/` holds the 14 `question-1` JSON files and `index.json`
+  with plain-language and scientific narratives, trajectories, model chains and
+  scope notes.
+
+```bash
+uv run python reproducibility/v08/reproduce.py              # rebuild question files, tables, figure and manifest
+uv run python reproducibility/v08/reproduce.py --local -j 4 # recompute UQ locally and compare with stored summaries
+```
+
+Two runs of the default reproduction command give byte-identical outputs;
+digests are recorded in `reviews/v08/reproducibility.json`.
 
 ## Install and open the tool
 

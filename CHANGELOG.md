@@ -1,3 +1,25 @@
+# v0.8.0 — Full uncertainty analysis and question catalogue — 1 November 2026
+
+- Add the twin process-parameter uncertainty registry `data/external/twin_parameter_ranges.json` (13 parameters,
+  all `modeller_assumption`) and `src/eq_biodt/v03/uq_inputs.py` to merge external constants (`triangular` over
+  `[low, value, high]`) and non-clamped twin parameters into a deterministic input vector per scenario level.
+- Add the unified 14-question catalogue `src/eq_biodt/v03/questions.py` (111 scenario levels across 12 composed
+  what-if chains plus rainfall splitting and the deductive CO gate).
+- Add Saltelli (2010) / Jansen (1999) quasi-Monte Carlo uncertainty and global sensitivity analysis in
+  `src/eq_biodt/v03/uq.py`: scrambled Sobol' design with individual and verification-status group re-sampling
+  blocks (`verified_in_source`, `modeller_assumption`, `source_not_checked`), 500-draw bootstrap CIs, paired
+  per-row contrasts and percentage changes, refusal indicator sensitivity when refusals reach 5 %, exact
+  deductive zeros (`[0, 0]`) for closed ontological gates, and $N/2$ vs $N$ quantile convergence checks.
+- Add cluster array task runner and deterministic 6-significant-digit gatherer (`reproducibility/v08/{tasks,uq_task,gather}.py`)
+  with full $N=1,024$ and $N=2,048$ rerun summaries in `reviews/v08/uq/` and cluster execution metadata in
+  `reviews/v08/uq/run_record.json` (2,285,568 base evaluations + 171 rerun tasks).
+- Add paired plain-language and scientific question builders (`reproducibility/v08/{texts,questions}.py`,
+  `reviews/v08/questions/*.json`), paper sensitivity figure and tables (`reproducibility/v08/figures.py`,
+  `paper/figures/v08_sensitivity.pdf`, `paper/tables/v08_{parameters,uq}.tex`), and `reproducibility/v08/reproduce.py`
+  (`reviews/v08/reproducibility.json`).
+- Update `scripts/web/export_web_bundle.py` to copy `reviews/v08/questions/*.json` into `data/questions/` of the
+  web bundle, and extend `reproducibility/v06/verify_manuscript.py` to verify all v0.8 manuscript numbers and tables.
+
 # v0.7.0 — Chained what-ifs: composition with external models — 31 October 2026
 
 - Add `composition.py` and `external_models.py`: chained what-ifs `action -> upstream -> twin -> downstream`

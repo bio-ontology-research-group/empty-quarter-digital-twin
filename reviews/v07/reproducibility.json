@@ -20,24 +20,24 @@
     "paper/figures/v07_composition.pdf": "6c0d682e408ae50dc0e544aaa408c19114115479d6df999593982541103a0da0",
     "paper/figures/v07_composition.png": "e65dd7301eba00564ea2f8fcaea59149e8caac55ee6afbddd1017890f0bf3809",
     "paper/tables/v07_composition.tex": "b0bfa1845e0956ee73e08857a60af3febe382d38df621ac019750dce700c47a5",
-    "reviews/v07/composition/biochar.json": "1dc9d6230cfa60f51593fb07c792e9cf520141fbf01b7c49e650d651cb175517",
-    "reviews/v07/composition/brackish_irrigation.json": "dce0ef00dc34f567862d482343b00dbec59a154bcf81005aa04adc047b5c9bb5",
-    "reviews/v07/composition/carbon_fixation_bound.json": "9c3b1828c84c8a6a73f47b7a05de9cec5afac20333d2b2cad39611fefb99775c",
-    "reviews/v07/composition/cloud_seeding.json": "5984d6239d73a075e6492b578a6c61ed93669ada6b060597bc80fabefd938a1a",
-    "reviews/v07/composition/compaction.json": "5691dbabe7bf8ce5a9909ad8248d34dc741b8ae20f7b70a9f82e713455f36e66",
-    "reviews/v07/composition/drip_vs_flood.json": "63185adc0ab309de3d4394b3d5f86cd8cd2388deaf1821ccee7a9b7d79efe02d",
-    "reviews/v07/composition/h2_leakage.json": "cd129a4ccd06124e959270ac14149a0a8742bcf884df4fd400155eb1285ce2ff",
-    "reviews/v07/composition/inoculated_alfalfa_salinity.json": "f54f3ab047a0902ff4fbbab0bf8d06b5bac25b8cb0979662af7d57ee97bf5c19",
-    "reviews/v07/composition/inoculation.json": "acee8981eaf1ab6d6ecdb755fadc77534f033e0dae44d3fb0cb5314f6c48b0cb",
-    "reviews/v07/composition/mulch_shade.json": "b3f58081af7870440e44815080c25dcbdaaa71ee4083a9e5e9d9a8723ab9f67f",
-    "reviews/v07/composition/solar_park.json": "55de67c4a6fd47d113cf1246672ee3024680a321e11f1983d0176ff84001dbac",
+    "reviews/v07/composition/biochar.json": "4f5a7d1bdaa5733cf83ff6482ef9f252b54382c9ec7348d5eb9673eba455841a",
+    "reviews/v07/composition/brackish_irrigation.json": "c92dfa279db516a50047d9d1f92e06e6bba83e3a0cc417c3ae8be9cfffa51f95",
+    "reviews/v07/composition/carbon_fixation_bound.json": "8986397444b195f9bb20c87d67dec835ea5669052a16e880b2f2b599acb35f32",
+    "reviews/v07/composition/cloud_seeding.json": "1baf2e75d2c2330c4cfeddc777bf26a536cad3e500477a9beb19af8efee70dfd",
+    "reviews/v07/composition/compaction.json": "8e2850f5a6a1d9537a24f69d7895da28ac39bb4f6ac88def206b88c0257ba2d1",
+    "reviews/v07/composition/drip_vs_flood.json": "9e5711c56a53ebfe0d3a3a79f8d77b1a22f0efe81f769fc73b25d95e45802cee",
+    "reviews/v07/composition/h2_leakage.json": "10697f2e7dce56a278f4b067f5864b926c07595290f9fa27c3db86954e23dc69",
+    "reviews/v07/composition/inoculated_alfalfa_salinity.json": "e5cbd68e2e85984dcd0bbdaa0ea66aeab98155966cf90e9a7838a0edc3957906",
+    "reviews/v07/composition/inoculation.json": "dfc2eab2f6ca5ae5ab86c63d2853f1e9e74e031f9b83a5ea875ef1baebd73f88",
+    "reviews/v07/composition/mulch_shade.json": "bd1c7ed9632674e89b496c41bd72ffef9fb1ac5487bda8397019bb2d901f2def",
+    "reviews/v07/composition/solar_park.json": "a4ed4b2fccdbd2d5d5edab1f6725b53808b18501cadd875f910673c809dfbdbb",
     "reviews/v07/composition/summary.json": "8ae27d9d2411794504a1a96c904f7ae3fd21e299f5abaa14bc3738cd62ecb9cb",
-    "reviews/v07/composition/warming.json": "030ba877c846bbe6b97e6fbc47ad365e1beb8e43c767a594f2c4bac8a7021ecd"
+    "reviews/v07/composition/warming.json": "f982e66e004203cd017f98c73e00e6f75c1771865fa8b7b177d0ebf9d1a05f38"
   },
   "release": "0.7.0-dev",
   "timings_seconds": {
-    "composition": 55.0,
-    "digitise_fig1": 0.5,
-    "figures": 6.3
+    "composition": 46.6,
+    "digitise_fig1": 0.4,
+    "figures": 5.0
   }
 }

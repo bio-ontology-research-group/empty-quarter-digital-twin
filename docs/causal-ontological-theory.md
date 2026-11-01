@@ -257,9 +257,21 @@ whose input port it produces) must be a DAG. A downstream output that feeds an u
 feedback between management endpoints and the twin's inputs is outside the model, because the within-slice
 acyclicity of `theory.graph()` is what the do-calculus of section 6 relies on.
 
-**Uncertain constants.** Low and high values are propagated by rerunning the whole chain with one constant at
-a time at its end values; the reported interval is the envelope. It is a sensitivity range, not a
-probability.
+**Uncertain constants and joint parameter uncertainty (v0.8).** In v0.7, low and high values of external
+constants are propagated one constant at a time while twin parameters stay at their defaults. In v0.8
+(`src/eq_biodt/v03/{uq_inputs,questions,uq}.py`), each scenario level is evaluated over the joint product of its
+referenced external constants (`data/external/composition_constants.json`, triangular on `[low, value, high]`) and
+all non-clamped twin process parameters (`data/external/twin_parameter_ranges.json`, log-uniform, uniform or
+triangular), using a scrambled Sobol' Saltelli design (`N = 1024`, with `N = 2048` convergence reruns) and
+Saltelli (2010) / Jansen (1999) first- and total-order Sobol' indices, including group indices partitioned by
+verification status (`verified_in_source`, `modeller_assumption`, `source_not_checked`). Paired contrasts and
+percentage changes are computed draw by draw (`Y_a(θ) − Y_a'(θ)`), preserving the unit-level counterfactual reading
+within each parameter draw `θ`. When fewer than 5 % of draws violate an admissibility or validity domain, quantiles
+and Sobol' indices are reported on admitted draws along with the refusal fraction; when at least 5 % of draws are
+refused, sensitivity is computed on the binary refusal indicator. Outputs blocked by a closed deductive gate
+(`q_s(C) = 0`) return exact `0` with interval `[0, 0]` and provenance `deduced` without Monte Carlo variance. These
+intervals quantify parameter and constant uncertainty at fixed model structure only and exclude structural error in
+`F` or in the external models.
 
 **Atmospheric forcing.** `C_h2` and `C_co` are manipulable exogenous nodes (default `C_a`), parents of
 `J_h2` and `J_co`; a `do(C_h2)` is an intervention on an exogenous node like water or temperature.
