@@ -1,0 +1,19 @@
+\begin{tabular}{@{}rlp{1.9cm}p{4.1cm}p{1.4cm}p{3.1cm}@{}}
+\toprule
+\# & Parameter & Distribution & Reference [low, high] & Unit & Status \\
+\midrule
+1 & \texttt{k\_\allowbreak{}h2\_\allowbreak{}s} & loguniform & 0.001 [0.0001, 0.01] & s$^{-1}$ & \texttt{modeller\_\allowbreak{}assumption} \\
+2 & \texttt{k\_\allowbreak{}co\_\allowbreak{}s} & loguniform & 0.001 [0.0001, 0.01] & s$^{-1}$ & \texttt{modeller\_\allowbreak{}assumption} \\
+3 & \texttt{psi\_\allowbreak{}entry\_\allowbreak{}mpa} & loguniform & $-$0.001 [$-$0.01, $-$0.0001] & MPa & \texttt{modeller\_\allowbreak{}assumption} \\
+4 & \texttt{retention\_\allowbreak{}b} & triangular & 4 [2, 6] & -- & \texttt{modeller\_\allowbreak{}assumption} \\
+5 & \texttt{wet\_\allowbreak{}activation\_\allowbreak{}mpa} & loguniform & $-$0.1 [$-$0.3, $-$0.03] & MPa & \texttt{modeller\_\allowbreak{}assumption} \\
+6 & \texttt{dry\_\allowbreak{}threshold\_\allowbreak{}mpa} & triangular & $-$85 [$-$100, $-$70] & MPa & \texttt{modeller\_\allowbreak{}assumption} \\
+7 & \texttt{activation\_\allowbreak{}shape} & triangular & 1 [0.5, 2] & -- & \texttt{modeller\_\allowbreak{}assumption} \\
+8 & \texttt{q10} & uniform & 2 [1, 2] & -- & \texttt{modeller\_\allowbreak{}assumption} \\
+9 & \texttt{d\_\allowbreak{}h2\_\allowbreak{}m2\_\allowbreak{}s} & triangular & $7.7\times10^{-5}$ [$6.16\times10^{-5}$, $9.24\times10^{-5}$] & m$^2$ s$^{-1}$ & \texttt{modeller\_\allowbreak{}assumption} \\
+10 & \texttt{d\_\allowbreak{}co\_\allowbreak{}m2\_\allowbreak{}s} & triangular & $2.1\times10^{-5}$ [$1.68\times10^{-5}$, $2.52\times10^{-5}$] & m$^2$ s$^{-1}$ & \texttt{modeller\_\allowbreak{}assumption} \\
+11 & \texttt{drainage\_\allowbreak{}fraction\_\allowbreak{}day} & triangular & 0.5 [0.3, 0.7] & day$^{-1}$ & \texttt{modeller\_\allowbreak{}assumption} \\
+12 & \texttt{field\_\allowbreak{}capacity\_\allowbreak{}fraction} & triangular & 0.5 [0.4, 0.6] & -- & \texttt{modeller\_\allowbreak{}assumption} \\
+13 & \texttt{porosity} & triangular & 0.4 [0.35, 0.5] & -- & \texttt{modeller\_\allowbreak{}assumption} \\
+\bottomrule
+\end{tabular}
