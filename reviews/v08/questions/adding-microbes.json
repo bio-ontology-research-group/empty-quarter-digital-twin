@@ -112,7 +112,7 @@
     "digests": {
       "constants_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578",
       "parameter_ranges_sha256": "f6b9fe6f95d88360375a81171deae746e17c213600077bcc49fa8e05b47ad027",
-      "uq_sha256": "5eb10df679f98b4456b0b6d3104610880e718a0e0c0faa07a1986b09ccf3fa5f"
+      "uq_sha256": "789a0d33421e95670d19e7aef03cec779ffb68068977cc3d2492630793ea4792"
     },
     "files": [
       "src/eq_biodt/v03/questions.py",
@@ -138,6 +138,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Percentage change in carbon monoxide uptake over 14 days",
               "label_science": "14-day relative CO uptake change vs baseline",
               "median": null,
@@ -160,6 +163,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00503299
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Change in carbon monoxide uptake over 14 days",
               "label_science": "14-day CO uptake contrast vs baseline",
               "median": 127.734,
@@ -182,6 +188,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00503299
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
               "median": 127.734,
@@ -434,6 +443,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Percentage change in carbon monoxide uptake over 14 days",
               "label_science": "14-day relative CO uptake change vs baseline",
               "median": null,
@@ -456,6 +468,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00202985
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Change in carbon monoxide uptake over 14 days",
               "label_science": "14-day CO uptake contrast vs baseline",
               "median": 125.227,
@@ -478,6 +493,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00202985
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
               "median": 125.227,
@@ -730,6 +748,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Percentage change in carbon monoxide uptake over 14 days",
               "label_science": "14-day relative CO uptake change vs baseline",
               "median": null,
@@ -752,6 +773,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0105799
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Change in carbon monoxide uptake over 14 days",
               "label_science": "14-day CO uptake contrast vs baseline",
               "median": 127.325,
@@ -774,6 +798,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0105799
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
               "median": 127.325,
@@ -1033,6 +1060,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Percentage change in carbon monoxide uptake over 14 days",
               "label_science": "14-day relative CO uptake change vs baseline",
               "median": null,
@@ -1055,6 +1085,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00959451
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Change in carbon monoxide uptake over 14 days",
               "label_science": "14-day CO uptake contrast vs baseline",
               "median": 8.7504,
@@ -1077,6 +1110,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00959451
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
               "median": 8.7504,
@@ -1329,6 +1365,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Percentage change in carbon monoxide uptake over 14 days",
               "label_science": "14-day relative CO uptake change vs baseline",
               "median": null,
@@ -1351,6 +1390,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0126718
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Change in carbon monoxide uptake over 14 days",
               "label_science": "14-day CO uptake contrast vs baseline",
               "median": 65.6568,
@@ -1373,6 +1415,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0126718
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
               "median": 65.6568,
@@ -1625,6 +1670,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Percentage change in carbon monoxide uptake over 14 days",
               "label_science": "14-day relative CO uptake change vs baseline",
               "median": null,
@@ -1647,6 +1695,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00829089
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Change in carbon monoxide uptake over 14 days",
               "label_science": "14-day CO uptake contrast vs baseline",
               "median": 199.384,
@@ -1669,6 +1720,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00829089
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
               "median": 199.384,
@@ -1929,6 +1983,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Percentage change in carbon monoxide uptake over 14 days",
               "label_science": "14-day relative CO uptake change vs baseline",
               "median": 0.0,
@@ -1951,6 +2008,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Change in carbon monoxide uptake over 14 days",
               "label_science": "14-day CO uptake contrast vs baseline",
               "median": 0.0,
@@ -1973,6 +2033,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.000768091
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
               "median": 126.213,
@@ -2226,6 +2289,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Percentage change in carbon monoxide uptake over 14 days",
               "label_science": "14-day relative CO uptake change vs baseline",
               "median": 0.0,
@@ -2248,6 +2314,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Change in carbon monoxide uptake over 14 days",
               "label_science": "14-day CO uptake contrast vs baseline",
               "median": 0.0,
@@ -2270,6 +2339,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0134202
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
               "median": 127.302,
@@ -2523,6 +2595,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Percentage change in carbon monoxide uptake over 14 days",
               "label_science": "14-day relative CO uptake change vs baseline",
               "median": 0.0,
@@ -2545,6 +2620,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Change in carbon monoxide uptake over 14 days",
               "label_science": "14-day CO uptake contrast vs baseline",
               "median": 0.0,
@@ -2567,6 +2645,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00348492
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
               "median": 128.18,
@@ -2827,6 +2908,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00117513
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Percentage change in carbon monoxide uptake over 14 days",
               "label_science": "14-day relative CO uptake change vs baseline",
               "median": 0.0551796,
@@ -2849,6 +2933,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00171776
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Change in carbon monoxide uptake over 14 days",
               "label_science": "14-day CO uptake contrast vs baseline",
               "median": 0.367643,
@@ -2871,6 +2958,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00208643
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
               "median": 665.518,
@@ -3124,6 +3214,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00560284
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Percentage change in carbon monoxide uptake over 14 days",
               "label_science": "14-day relative CO uptake change vs baseline",
               "median": 0.550384,
@@ -3146,6 +3239,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0116329
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Change in carbon monoxide uptake over 14 days",
               "label_science": "14-day CO uptake contrast vs baseline",
               "median": 3.63848,
@@ -3168,6 +3264,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.011525
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
               "median": 663.164,
@@ -3421,6 +3520,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.024331
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Percentage change in carbon monoxide uptake over 14 days",
               "label_science": "14-day relative CO uptake change vs baseline",
               "median": 2.72277,
@@ -3443,6 +3545,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00125374
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Change in carbon monoxide uptake over 14 days",
               "label_science": "14-day CO uptake contrast vs baseline",
               "median": 17.9217,
@@ -3465,6 +3570,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00267134
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
               "median": 674.13,
@@ -3725,6 +3833,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Percentage change in carbon monoxide uptake over 14 days",
               "label_science": "14-day relative CO uptake change vs baseline",
               "median": 0.0,
@@ -3746,6 +3857,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Change in carbon monoxide uptake over 14 days",
               "label_science": "14-day CO uptake contrast vs baseline",
               "median": 0.0,
@@ -3767,6 +3881,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
               "median": 0.0,
@@ -4020,6 +4137,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Percentage change in carbon monoxide uptake over 14 days",
               "label_science": "14-day relative CO uptake change vs baseline",
               "median": 0.0,
@@ -4041,6 +4161,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Change in carbon monoxide uptake over 14 days",
               "label_science": "14-day CO uptake contrast vs baseline",
               "median": 0.0,
@@ -4062,6 +4185,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
               "median": 0.0,
@@ -4315,6 +4441,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Percentage change in carbon monoxide uptake over 14 days",
               "label_science": "14-day relative CO uptake change vs baseline",
               "median": 0.0,
@@ -4336,6 +4465,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Change in carbon monoxide uptake over 14 days",
               "label_science": "14-day CO uptake contrast vs baseline",
               "median": 0.0,
@@ -4357,6 +4489,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
               "median": 0.0,
@@ -4617,6 +4752,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Percentage change in carbon monoxide uptake over 14 days",
               "label_science": "14-day relative CO uptake change vs baseline",
               "median": 0.0,
@@ -4638,6 +4776,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Change in carbon monoxide uptake over 14 days",
               "label_science": "14-day CO uptake contrast vs baseline",
               "median": 0.0,
@@ -4659,6 +4800,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
               "median": 0.0,
@@ -4912,6 +5056,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Percentage change in carbon monoxide uptake over 14 days",
               "label_science": "14-day relative CO uptake change vs baseline",
               "median": 0.0,
@@ -4933,6 +5080,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Change in carbon monoxide uptake over 14 days",
               "label_science": "14-day CO uptake contrast vs baseline",
               "median": 0.0,
@@ -4954,6 +5104,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
               "median": 0.0,
@@ -5207,6 +5360,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Percentage change in carbon monoxide uptake over 14 days",
               "label_science": "14-day relative CO uptake change vs baseline",
               "median": 0.0,
@@ -5228,6 +5384,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Change in carbon monoxide uptake over 14 days",
               "label_science": "14-day CO uptake contrast vs baseline",
               "median": 0.0,
@@ -5249,6 +5408,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
               "median": 0.0,
@@ -5498,7 +5660,7 @@
   "theme": "microbes",
   "title_plain": "What if we add microbes?",
   "title_science": "Inoculation as a constitutive intervention on the community",
-  "twin_version": "0.8.2",
+  "twin_version": "0.8.3",
   "uncertainty": {
     "S1": {
       "activation_shape": [
@@ -5640,6 +5802,9 @@
       "half_n_shift_frac": 0.00560284
     },
     "d": 13,
+    "frac_neg": 0.0,
+    "frac_pos": 1.0,
+    "frac_zero": 0.0,
     "group_S1": {
       "modeller_assumption": [
         0.987903,

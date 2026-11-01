@@ -17,6 +17,7 @@ from reproducibility.v08.science_texts import (
     READABLE_INPUT_NAMES,
     SCIENCE_TEMPLATES,
     _SLOT_RE,
+    _fmt_draw_pct,
     _fmt_pct_mag,
     _fmt_plain,
     _fmt_sig,
@@ -126,18 +127,19 @@ def test_absneg_and_abspos_sign_assertions():
         uq_doc = _load_uq(slug)
         for field in ("title_science", "answer_science", "limits_science"):
             for expr in _SLOT_RE.findall(tmpl[field]):
-                if "|absneg" not in expr and "|abspos" not in expr:
+                if not any(m in expr for m in ("|absneg", "|abspos", "|pneg", "|ppos")):
                     continue
                 core, mod = expr.split("|", 1)
                 sl, out_key, _ = core.split(":")
                 s_id, l_s = sl.split("/", 1)
                 l_idx = int(l_s)
+                is_neg = mod in {"absneg", "pneg"}
                 # Mutate each of the 4 guarded statistics to violate sign and verify ValueError
                 for key in ("central", "median", "q05", "q95"):
                     bad_uq = copy.deepcopy(uq_doc)
                     s_doc = next(s for s in bad_uq["series"] if s["id"] == s_id)
                     l_doc = next(l for l in s_doc["levels"] if int(l["level"]) == l_idx)
-                    violation = 1.0 if mod == "absneg" else -1.0
+                    violation = 1.0 if is_neg else -1.0
                     if key == "central":
                         l_doc["central"][out_key] = violation
                     else:
@@ -146,6 +148,16 @@ def test_absneg_and_abspos_sign_assertions():
                         resolve_slot(expr, bad_uq)
                     with pytest.raises(ValueError, match=f"\\|{mod} sign check failed"):
                         render_science_texts(slug, bad_uq)
+                # Also mutate frac_neg / frac_pos to violate the fraction threshold
+                bad_frac_uq = copy.deepcopy(uq_doc)
+                s_doc = next(s for s in bad_frac_uq["series"] if s["id"] == s_id)
+                l_doc = next(l for l in s_doc["levels"] if int(l["level"]) == l_idx)
+                frac_key = "frac_neg" if is_neg else "frac_pos"
+                l_doc["outputs"][out_key][frac_key] = 0.96 if mod in {"absneg", "abspos"} else 0.4
+                with pytest.raises(ValueError, match=f"\\|{mod} sign check failed"):
+                    resolve_slot(expr, bad_frac_uq)
+                with pytest.raises(ValueError, match=f"\\|{mod} sign check failed"):
+                    render_science_texts(slug, bad_frac_uq)
 
 
 def test_word_limits_and_forbidden_phrases():
@@ -210,13 +222,17 @@ def _independent_slot_value(expr: str, uq_doc: dict, reg: dict[str, float]) -> s
     l_doc = next(l for l in s_doc["levels"] if int(l["level"]) == l_idx)
     out_doc = l_doc["outputs"][out_key]
 
+    if stat in {"frac_neg", "pneg"}:
+        return _fmt_draw_pct(float(out_doc["frac_neg"]))
+    if stat in {"frac_pos", "ppos"}:
+        return _fmt_draw_pct(float(out_doc["frac_pos"]))
     if stat in {"central", "median", "q05", "q95"}:
         val = float(l_doc["central"][out_key]) if stat == "central" else float(out_doc[stat])
         if mod is None:
             return _fmt_signed_pct(val) if out_key.endswith("_pct") else _fmt_plain(val)
-        if mod == "absneg":
+        if mod in {"absneg", "pneg"}:
             return f"{_fmt_pct_mag(abs(val))} %"
-        if mod == "abspos":
+        if mod in {"abspos", "ppos"}:
             return f"{_fmt_pct_mag(val)} %"
         if mod == "frac2pct":
             return f"{_fmt_pct_mag(100.0 * val)} %"
@@ -234,10 +250,10 @@ def _independent_slot_value(expr: str, uq_doc: dict, reg: dict[str, float]) -> s
         if mod is None:
             span = lo < 0.0 < hi
             return f"{_fmt_signed_pct_endpoint(lo, span)} to {_fmt_signed_pct_endpoint(hi, span)} %"
-        if mod == "absneg":
+        if mod in {"absneg", "pneg"}:
             mags = sorted([abs(lo), abs(hi)])
             return f"{_fmt_pct_mag(mags[0])} to {_fmt_pct_mag(mags[1])} %"
-        if mod == "abspos":
+        if mod in {"abspos", "ppos"}:
             vals = sorted([lo, hi])
             return f"{_fmt_pct_mag(vals[0])} to {_fmt_pct_mag(vals[1])} %"
         if mod == "frac2pct":
@@ -343,3 +359,87 @@ def test_plain_headline_number_and_mechanism_corrections():
                 "stay active for longer."
             ) in txts["answer_plain"]
             assert "pushes moisture deeper into the sand" not in txts["answer_plain"]
+
+
+def test_no_false_universality_claims_in_generated_texts():
+    q_dir = ROOT / "reviews" / "v08" / "questions"
+    universality_re = re.compile(
+        r"\b(?:in every parameter draw|in all draws|every run|in every case we tried|always|in all parameter)\b",
+        re.IGNORECASE,
+    )
+
+    # Every |absneg or |abspos slot in SCIENCE_TEMPLATES must have frac_neg == 1.0 or frac_pos == 1.0
+    for slug, tmpl in SCIENCE_TEMPLATES.items():
+        uq_doc = _load_uq(slug)
+        for field in ("title_science", "answer_science", "limits_science"):
+            for expr in _SLOT_RE.findall(tmpl[field]):
+                if "|" not in expr or expr.startswith("const:"):
+                    continue
+                body, mod = expr.split("|", 1)
+                if mod not in {"absneg", "abspos"}:
+                    continue
+                sl, out_key, _ = body.split(":")
+                s_id, l_str = sl.split("/", 1)
+                l_idx = int(l_str)
+                s_doc = next(s for s in uq_doc["series"] if s["id"] == s_id)
+                l_doc = next(l for l in s_doc["levels"] if int(l["level"]) == l_idx)
+                out_doc = l_doc["outputs"][out_key]
+                if mod == "absneg":
+                    assert float(out_doc["frac_neg"]) == 1.0, f"{slug}.{field} {expr} has frac_neg < 1"
+                else:
+                    assert float(out_doc["frac_pos"]) == 1.0, f"{slug}.{field} {expr} has frac_pos < 1"
+
+    for slug in SCIENCE_TEMPLATES:
+        q = json.loads((q_dir / f"{slug}.json").read_text(encoding="utf-8"))
+        u = q["uncertainty"]
+        frac_neg = u.get("frac_neg")
+        frac_pos = u.get("frac_pos")
+        headline_is_universal = (frac_neg == 1.0) or (frac_pos == 1.0)
+
+        for field in (
+            "answer_plain",
+            "answer_science",
+            "headline_plain",
+            "headline_science",
+            "limits_plain",
+            "limits_science",
+        ):
+            text = q[field]
+            if not headline_is_universal:
+                assert "in every case we tried" not in text.lower(), (
+                    f"{slug}.{field} claims 'in every case we tried' with frac_neg={frac_neg}, frac_pos={frac_pos}"
+                )
+            for sent in re.split(r"(?<=[.!?])\s+", text.strip()):
+                if not universality_re.search(sent):
+                    continue
+                # Verify any sentence with a universality phrase refers to an exact frac == 1.0 level
+                if slug == "mulch-shade" and "full shade net" in sent.lower():
+                    uq_doc = _load_uq(slug)
+                    s_doc = next(s for s in uq_doc["series"] if s["id"] == "shade-only")
+                    l_doc = next(l for l in s_doc["levels"] if int(l["level"]) == 2)
+                    assert float(l_doc["outputs"]["h2_uptake_change_pct"]["frac_neg"]) == 1.0
+                elif slug == "hotter" and "warming the soil at fixed moisture" in sent.lower():
+                    uq_doc = _load_uq(slug)
+                    s_doc = next(s for s in uq_doc["series"] if s["id"] == "warmer-soil-only")
+                    for lvl_idx in (3, 4):
+                        l_doc = next(l for l in s_doc["levels"] if int(l["level"]) == lvl_idx)
+                        assert float(l_doc["outputs"]["h2_uptake_change_pct"]["frac_pos"]) == 1.0
+                else:
+                    assert headline_is_universal, (
+                        f"False universality claim in {slug}.{field}: {sent!r} "
+                        f"(frac_neg={frac_neg}, frac_pos={frac_pos})"
+                    )
+
+
+def test_v08_numbers_tex_reproducible():
+    from reproducibility.v08.paper_numbers import (
+        DEFAULT_OUT_FILE,
+        DEFAULT_QUESTIONS_DIR,
+        render_numbers_tex,
+    )
+
+    assert DEFAULT_OUT_FILE.exists(), f"Missing {DEFAULT_OUT_FILE}"
+    expected = render_numbers_tex(DEFAULT_QUESTIONS_DIR)
+    actual = DEFAULT_OUT_FILE.read_text(encoding="utf-8")
+    assert actual == expected, "paper/tables/v08_numbers.tex differs from paper_numbers.py output"
+

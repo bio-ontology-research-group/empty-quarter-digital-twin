@@ -1,3 +1,9 @@
+# v0.8.3 — direction probabilities; universality claims corrected — 1 November 2026
+
+- Add direction probabilities (`frac_neg`, `frac_zero`, `frac_pos`) to every UQ output summary and question outcome;
+  correct universality claims in plain and scientific texts where direction fraction < 1; fix compaction porosity
+  series label; add `reproducibility/v08/paper_numbers.py` and `paper/tables/v08_numbers.tex`.
+
 # v0.8.2 — Median core numbers on question pages — 1 November 2026
 
 - Core numbers on question pages are the median across parameter draws.

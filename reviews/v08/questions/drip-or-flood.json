@@ -155,7 +155,7 @@
     "digests": {
       "constants_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578",
       "parameter_ranges_sha256": "f6b9fe6f95d88360375a81171deae746e17c213600077bcc49fa8e05b47ad027",
-      "uq_sha256": "16100b92f623abed5d40e35d029a211015b07911ec702f8336f590db15f601f9"
+      "uq_sha256": "70c363429b671ec0e473264cf79d4537c56b6473ed5aa80c9aed419ab15ccfe6"
     },
     "files": [
       "src/eq_biodt/v03/questions.py",
@@ -182,6 +182,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0415525
               },
+              "frac_neg": 0.712402,
+              "frac_pos": 0.287598,
+              "frac_zero": 0.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": -28.9265,
@@ -204,6 +207,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.017302
               },
+              "frac_neg": 0.712402,
+              "frac_pos": 0.287598,
+              "frac_zero": 0.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": -248.012,
@@ -226,6 +232,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00153544
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 656.591,
@@ -479,6 +488,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00333139
               },
+              "frac_neg": 0.69751,
+              "frac_pos": 0.30249,
+              "frac_zero": 0.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": -26.6432,
@@ -501,6 +513,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00374385
               },
+              "frac_neg": 0.69751,
+              "frac_pos": 0.30249,
+              "frac_zero": 0.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": -213.777,
@@ -523,6 +538,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00406858
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 684.463,
@@ -776,6 +794,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0122093
               },
+              "frac_neg": 0.480469,
+              "frac_pos": 0.519531,
+              "frac_zero": 0.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": 2.47513,
@@ -798,6 +819,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0431387
               },
+              "frac_neg": 0.480469,
+              "frac_pos": 0.519531,
+              "frac_zero": 0.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": 12.9285,
@@ -820,6 +844,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0124741
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 1015.89,
@@ -1069,7 +1096,7 @@
   "theme": "water",
   "title_plain": "Drip or flood irrigation?",
   "title_science": "Irrigation frequency at constant irrigation volume",
-  "twin_version": "0.8.2",
+  "twin_version": "0.8.3",
   "uncertainty": {
     "S1": {
       "activation_shape": [
@@ -1221,6 +1248,9 @@
       "half_n_shift_frac": 0.0122093
     },
     "d": 14,
+    "frac_neg": 0.480469,
+    "frac_pos": 0.519531,
+    "frac_zero": 0.0,
     "group_S1": {
       "modeller_assumption": [
         0.834521,

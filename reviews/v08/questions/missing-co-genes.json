@@ -91,7 +91,7 @@
     "digests": {
       "constants_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578",
       "parameter_ranges_sha256": "f6b9fe6f95d88360375a81171deae746e17c213600077bcc49fa8e05b47ad027",
-      "uq_sha256": "e16e8f2fb6e800bd16f979e3bc5f962ede8e9725f42ca9b571c1dbc9816e3c74"
+      "uq_sha256": "8ee0360b09ab9c49b7bfa4498f53ad7c7cbe83b8800e23dc45e97211cc27f77b"
     },
     "files": [
       "src/eq_biodt/v03/questions.py",
@@ -117,6 +117,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
               "median": 0.0,
@@ -139,6 +142,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00994168
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 951.665,
@@ -391,6 +397,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
               "median": 0.0,
@@ -413,6 +422,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0133807
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 932.863,
@@ -665,6 +677,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
               "median": 0.0,
@@ -687,6 +702,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.034376
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 940.131,
@@ -939,6 +957,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
               "median": 0.0,
@@ -961,6 +982,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.000654635
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 927.96,
@@ -1213,6 +1237,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
               "median": 0.0,
@@ -1235,6 +1262,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00168371
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 932.754,
@@ -1488,6 +1518,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.000508108
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
               "median": 126.411,
@@ -1510,6 +1543,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0255762
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 963.012,
@@ -1763,6 +1799,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.010675
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Carbon monoxide taken up over 14 days",
               "label_science": "14-day cumulative CO uptake",
               "median": 126.203,
@@ -1785,6 +1824,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00524634
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 928.279,
@@ -2034,7 +2076,7 @@
   "theme": "microbes",
   "title_plain": "What if the soil lacks carbon-monoxide-eating genes?",
   "title_science": "Deductive null effects of absent CO-oxidation capacity",
-  "twin_version": "0.8.2",
+  "twin_version": "0.8.3",
   "uncertainty": {
     "S1": {
       "activation_shape": [
@@ -2176,6 +2218,9 @@
       "half_n_shift_frac": 0.010675
     },
     "d": 13,
+    "frac_neg": 0.0,
+    "frac_pos": 1.0,
+    "frac_zero": 0.0,
     "group_S1": {
       "modeller_assumption": [
         1.00359,

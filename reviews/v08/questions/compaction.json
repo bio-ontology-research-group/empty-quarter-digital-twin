@@ -171,7 +171,7 @@
     "digests": {
       "constants_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578",
       "parameter_ranges_sha256": "f6b9fe6f95d88360375a81171deae746e17c213600077bcc49fa8e05b47ad027",
-      "uq_sha256": "2d5c62de77fb76416efd8d068979be8532d2e5f7b11fe3555c0b864cb54d27c8"
+      "uq_sha256": "6d0d616ab29f78ab855254f6591f46dfaadaf7a1dca1eb2ec09f5e5e9dc5ec29"
     },
     "files": [
       "src/eq_biodt/v03/questions.py",
@@ -198,6 +198,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": 0.0,
@@ -220,6 +223,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": 0.0,
@@ -242,6 +248,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.000412911
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 962.113,
@@ -264,6 +273,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Pore space in sand",
               "label_science": "Soil porosity \u03c6",
               "median": 0.4,
@@ -517,6 +529,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00514021
               },
+              "frac_neg": 0.359863,
+              "frac_pos": 0.640137,
+              "frac_zero": 0.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": 0.688862,
@@ -539,6 +554,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00604724
               },
+              "frac_neg": 0.359863,
+              "frac_pos": 0.640137,
+              "frac_zero": 0.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": 3.86151,
@@ -561,6 +579,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00535851
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 982.345,
@@ -583,6 +604,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.011892
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Pore space in sand",
               "label_science": "Soil porosity \u03c6",
               "median": 0.385326,
@@ -836,6 +860,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00945147
               },
+              "frac_neg": 0.441406,
+              "frac_pos": 0.558594,
+              "frac_zero": 0.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": 1.89061,
@@ -858,6 +885,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0121129
               },
+              "frac_neg": 0.441406,
+              "frac_pos": 0.558594,
+              "frac_zero": 0.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": 9.70377,
@@ -880,6 +910,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00756635
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 992.661,
@@ -902,6 +935,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00572736
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Pore space in sand",
               "label_science": "Soil porosity \u03c6",
               "median": 0.323607,
@@ -1155,6 +1191,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00449621
               },
+              "frac_neg": 0.492676,
+              "frac_pos": 0.507324,
+              "frac_zero": 0.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": 0.205433,
@@ -1177,6 +1216,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00268724
               },
+              "frac_neg": 0.492676,
+              "frac_pos": 0.507324,
+              "frac_zero": 0.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": 1.12524,
@@ -1199,6 +1241,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00452923
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 987.008,
@@ -1221,6 +1266,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00475543
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Pore space in sand",
               "label_science": "Soil porosity \u03c6",
               "median": 0.305849,
@@ -1471,8 +1519,8 @@
       "label_science": "Direct porosity reduction to 0.30 (v0.6 scenario)",
       "levels": [
         {
-          "label": "pore space 5,000 % of volume",
-          "label_plain": "pore space 5,000 % of volume",
+          "label": "pore space 50 % of volume",
+          "label_plain": "pore space 50 % of volume",
           "label_science": "porosity 0.30 (v0.6)",
           "outcomes": {
             "h2_uptake_change_pct": {
@@ -1481,6 +1529,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00433464
               },
+              "frac_neg": 0.505859,
+              "frac_pos": 0.494141,
+              "frac_zero": 0.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": -0.177721,
@@ -1503,6 +1554,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0327952
               },
+              "frac_neg": 0.505859,
+              "frac_pos": 0.494141,
+              "frac_zero": 0.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": -1.15179,
@@ -1525,6 +1579,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0123932
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 979.98,
@@ -1547,6 +1604,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Pore space in sand",
               "label_science": "Soil porosity \u03c6",
               "median": 0.3,
@@ -1796,7 +1856,7 @@
   "theme": "soil",
   "title_plain": "What if vehicles compact the sand?",
   "title_science": "Soil compaction by vehicle traffic",
-  "twin_version": "0.8.2",
+  "twin_version": "0.8.3",
   "uncertainty": {
     "S1": {
       "activation_shape": [
@@ -1958,6 +2018,9 @@
       "half_n_shift_frac": 0.00449621
     },
     "d": 15,
+    "frac_neg": 0.492676,
+    "frac_pos": 0.507324,
+    "frac_zero": 0.0,
     "group_S1": {
       "modeller_assumption": [
         0.938078,

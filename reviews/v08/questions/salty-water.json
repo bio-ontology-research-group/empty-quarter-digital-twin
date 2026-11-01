@@ -494,7 +494,7 @@
     "digests": {
       "constants_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578",
       "parameter_ranges_sha256": "f6b9fe6f95d88360375a81171deae746e17c213600077bcc49fa8e05b47ad027",
-      "uq_sha256": "b0b0ec1aec1a6948425b737eb207e724ec8fdfaddd0a96ce3f6e116c1ba7bfc1"
+      "uq_sha256": "78e6aa0e5c1e8c36e25863b2b5e8584f87c5d54ba21ee8e2dc18e55b4afd2950"
     },
     "files": [
       "src/eq_biodt/v03/questions.py",
@@ -521,6 +521,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": 0.0,
@@ -543,6 +546,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": 0.0,
@@ -565,6 +571,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0136129
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 937.445,
@@ -586,6 +595,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": null,
@@ -607,6 +619,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Barley yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (barley)",
               "median": null,
@@ -628,6 +643,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Date palm yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (date palm)",
               "median": null,
@@ -649,6 +667,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Tomato yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (tomato)",
               "median": null,
@@ -901,6 +922,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": null,
@@ -922,6 +946,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": null,
@@ -943,6 +970,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": null,
@@ -964,6 +994,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": null,
@@ -985,6 +1018,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Barley yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (barley)",
               "median": null,
@@ -1006,6 +1042,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Date palm yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (date palm)",
               "median": null,
@@ -1027,6 +1066,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Tomato yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (tomato)",
               "median": null,
@@ -1279,6 +1321,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": null,
@@ -1300,6 +1345,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": null,
@@ -1321,6 +1369,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": null,
@@ -1342,6 +1393,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": null,
@@ -1363,6 +1417,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Barley yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (barley)",
               "median": null,
@@ -1384,6 +1441,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Date palm yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (date palm)",
               "median": null,
@@ -1405,6 +1465,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Tomato yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (tomato)",
               "median": null,
@@ -1657,6 +1720,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": null,
@@ -1678,6 +1744,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": null,
@@ -1699,6 +1768,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": null,
@@ -1720,6 +1792,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": null,
@@ -1741,6 +1816,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Barley yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (barley)",
               "median": null,
@@ -1762,6 +1840,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Date palm yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (date palm)",
               "median": null,
@@ -1783,6 +1864,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Tomato yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (tomato)",
               "median": null,
@@ -2035,6 +2119,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": null,
@@ -2056,6 +2143,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": null,
@@ -2077,6 +2167,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": null,
@@ -2098,6 +2191,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": null,
@@ -2119,6 +2215,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Barley yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (barley)",
               "median": null,
@@ -2140,6 +2239,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Date palm yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (date palm)",
               "median": null,
@@ -2161,6 +2263,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": null,
+              "frac_pos": null,
+              "frac_zero": null,
               "label_plain": "Tomato yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (tomato)",
               "median": null,
@@ -2421,6 +2526,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.012059
               },
+              "frac_neg": 0.704102,
+              "frac_pos": 0.295898,
+              "frac_zero": 0.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": -29.2823,
@@ -2443,6 +2551,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0026779
               },
+              "frac_neg": 0.704102,
+              "frac_pos": 0.295898,
+              "frac_zero": 0.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": -230.28,
@@ -2465,6 +2576,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00990873
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 652.201,
@@ -2487,6 +2601,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 1.0,
@@ -2509,6 +2626,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Barley yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (barley)",
               "median": 1.0,
@@ -2531,6 +2651,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Date palm yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (date palm)",
               "median": 1.0,
@@ -2553,6 +2676,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Tomato yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (tomato)",
               "median": 1.0,
@@ -2806,6 +2932,9 @@
                 "flagged": true,
                 "half_n_shift_frac": 0.0695608
               },
+              "frac_neg": 0.714844,
+              "frac_pos": 0.285156,
+              "frac_zero": 0.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": -30.7056,
@@ -2828,6 +2957,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0406535
               },
+              "frac_neg": 0.714844,
+              "frac_pos": 0.285156,
+              "frac_zero": 0.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": -245.457,
@@ -2850,6 +2982,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00520224
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 640.543,
@@ -2872,6 +3007,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 1.0,
@@ -2894,6 +3032,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Barley yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (barley)",
               "median": 1.0,
@@ -2916,6 +3057,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Date palm yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (date palm)",
               "median": 1.0,
@@ -2938,6 +3082,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Tomato yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (tomato)",
               "median": 1.0,
@@ -3191,6 +3338,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0452263
               },
+              "frac_neg": 0.740967,
+              "frac_pos": 0.259033,
+              "frac_zero": 0.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": -32.9441,
@@ -3213,6 +3363,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0136908
               },
+              "frac_neg": 0.740967,
+              "frac_pos": 0.259033,
+              "frac_zero": 0.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": -259.873,
@@ -3235,6 +3388,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00220415
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 616.708,
@@ -3257,6 +3413,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0247848
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 1.0,
@@ -3279,6 +3438,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Barley yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (barley)",
               "median": 1.0,
@@ -3301,6 +3463,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Date palm yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (date palm)",
               "median": 1.0,
@@ -3323,6 +3488,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Tomato yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (tomato)",
               "median": 1.0,
@@ -3576,6 +3744,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00906628
               },
+              "frac_neg": 0.765994,
+              "frac_pos": 0.234006,
+              "frac_zero": 0.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": -37.0728,
@@ -3598,6 +3769,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00923187
               },
+              "frac_neg": 0.765994,
+              "frac_pos": 0.234006,
+              "frac_zero": 0.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": -304.191,
@@ -3620,6 +3794,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00278416
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 577.743,
@@ -3642,6 +3819,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.000896326
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 0.88661,
@@ -3664,6 +3844,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Barley yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (barley)",
               "median": 1.0,
@@ -3686,6 +3869,9 @@
                 "flagged": true,
                 "half_n_shift_frac": 0.0606541
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Date palm yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (date palm)",
               "median": 1.0,
@@ -3708,6 +3894,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00279461
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Tomato yield (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (tomato)",
               "median": 0.899116,
@@ -3957,7 +4146,7 @@
   "theme": "salt",
   "title_plain": "What if the water is salty?",
   "title_science": "Saline rain and daily brackish irrigation",
-  "twin_version": "0.8.2",
+  "twin_version": "0.8.3",
   "uncertainty": {
     "S1": {
       "activation_shape": [
@@ -4209,6 +4398,9 @@
       "half_n_shift_frac": 0.00906628
     },
     "d": 24,
+    "frac_neg": 0.765994,
+    "frac_pos": 0.234006,
+    "frac_zero": 0.0,
     "group_S1": {
       "modeller_assumption": [
         1.03601,

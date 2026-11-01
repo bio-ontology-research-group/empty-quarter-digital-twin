@@ -24,6 +24,7 @@ if str(ROOT / "src") not in sys.path:
 
 from reproducibility.v08.figures import main as build_figures  # noqa: E402
 from reproducibility.v08.gather import DEFAULT_OUT_DIR, _round_floats, gather, gather_bytes  # noqa: E402
+from reproducibility.v08.paper_numbers import write_numbers_tex  # noqa: E402
 from reproducibility.v08.questions import DEFAULT_OUT_DIR as DEFAULT_QUESTIONS_DIR, build_questions  # noqa: E402
 from reproducibility.v08.tasks import enumerate_tasks  # noqa: E402
 from reproducibility.v08.uq_task import run_task  # noqa: E402
@@ -160,6 +161,7 @@ def write_manifest(uq_dir: Path, questions_dir: Path) -> Path:
     uq_outputs = [p for p in sorted(uq_dir.glob("*.json")) if p.name != "run_record.json"]
     q_outputs = sorted(questions_dir.glob("*.json"))
     paper_outputs = [
+        ROOT / "paper/tables/v08_numbers.tex",
         ROOT / "paper/tables/v08_parameters.tex",
         ROOT / "paper/tables/v08_uq.tex",
         ROOT / "paper/figures/v08_sensitivity.pdf",
@@ -168,7 +170,7 @@ def write_manifest(uq_dir: Path, questions_dir: Path) -> Path:
     outputs = uq_outputs + q_outputs + paper_outputs
 
     manifest: dict[str, Any] = {
-        "release": "0.8.2",
+        "release": "0.8.3",
         "raw_result_digests": {
             "full_run_n1024": {
                 "evaluations": run_record["full_run"]["evaluations"],
@@ -243,6 +245,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.raw is not None and args.raw.exists() and any(args.raw.glob("*.json")):
         gather(args.raw, args.out, boot=args.boot)
     build_questions(uq_dir=args.out, out_dir=args.questions_out)
+    write_numbers_tex(args.questions_out)
     build_figures()
     manifest_path = write_manifest(args.out, args.questions_out)
     elapsed = round(time.time() - t0, 1)

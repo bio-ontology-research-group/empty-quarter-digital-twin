@@ -251,6 +251,9 @@ def validate(q: dict) -> bool:
                     "q25",
                     "q75",
                     "q95",
+                    "frac_neg",
+                    "frac_zero",
+                    "frac_pos",
                     "unit",
                     "unit_plain",
                     "provenance",
@@ -397,13 +400,35 @@ def test_hedging_matches_headline_interval():
             assert "goes up in every case we tried" not in hdl, q["slug"]
             assert "goes down in every case we tried" not in hdl, q["slug"]
         elif q05 >= 0 and q95 > 0:
-            assert "goes up in every case we tried" in ans, f"{q['slug']}: expected 'goes up in every case we tried' for [{q05}, {q95}]"
+            frac_pos = u.get("frac_pos")
+            if frac_pos == 1.0:
+                assert "goes up in every case we tried" in ans, (
+                    f"{q['slug']}: expected 'goes up in every case we tried' for frac_pos=1.0"
+                )
+            else:
+                n_runs = min(99, max(1, round(100.0 * float(frac_pos))))
+                assert f"goes up in about {n_runs} of every 100 model runs" in ans, (
+                    f"{q['slug']}: expected 'goes up in about {n_runs} of every 100 model runs' for frac_pos={frac_pos}"
+                )
+                assert "goes up in every case we tried" not in ans, q["slug"]
+                assert "goes up in every case we tried" not in hdl, q["slug"]
             assert "may go up or down" not in ans, q["slug"]
             assert "goes down in every case we tried" not in ans, q["slug"]
             assert "may go up or down" not in hdl, q["slug"]
             assert "goes down in every case we tried" not in hdl, q["slug"]
         elif q95 <= 0 and q05 < 0:
-            assert "goes down in every case we tried" in ans, f"{q['slug']}: expected 'goes down in every case we tried' for [{q05}, {q95}]"
+            frac_neg = u.get("frac_neg")
+            if frac_neg == 1.0:
+                assert "goes down in every case we tried" in ans, (
+                    f"{q['slug']}: expected 'goes down in every case we tried' for frac_neg=1.0"
+                )
+            else:
+                n_runs = min(99, max(1, round(100.0 * float(frac_neg))))
+                assert f"goes down in about {n_runs} of every 100 model runs" in ans, (
+                    f"{q['slug']}: expected 'goes down in about {n_runs} of every 100 model runs' for frac_neg={frac_neg}"
+                )
+                assert "goes down in every case we tried" not in ans, q["slug"]
+                assert "goes down in every case we tried" not in hdl, q["slug"]
             assert "may go up or down" not in ans, q["slug"]
             assert "goes up in every case we tried" not in ans, q["slug"]
             assert "may go up or down" not in hdl, q["slug"]
@@ -411,8 +436,15 @@ def test_hedging_matches_headline_interval():
 
     sp = load("solar-park")
     assert sp["uncertainty"]["q05"] > 0
-    assert "goes up in every case we tried" in sp["answer_plain"].lower()
+    assert sp["uncertainty"]["frac_pos"] < 1.0
+    assert "goes up in about 95 of every 100 model runs" in sp["answer_plain"].lower()
+    assert "goes up in every case we tried" not in sp["answer_plain"].lower()
     assert "may go up or down" not in sp["answer_plain"].lower()
+
+    comp = load("compaction")
+    por_series = next(s for s in comp["series"] if s["id"] == "direct-porosity-v06")
+    assert por_series["levels"][0]["label_plain"] == "pore space 50 % of volume"
+    assert "5,000 %" not in json.dumps(comp)
 
 
 def test_headline_percentage_and_science_rules():

@@ -624,7 +624,7 @@
     "digests": {
       "constants_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578",
       "parameter_ranges_sha256": "f6b9fe6f95d88360375a81171deae746e17c213600077bcc49fa8e05b47ad027",
-      "uq_sha256": "6cf36c50f050298bb4eec8ef6e6c68c62bef221f36dc43e46aa9e9af2cfcd0f7"
+      "uq_sha256": "0cb6900387975a746d480cfcb1dcece041d9200bf0b76ce6908aac88bf6f3182"
     },
     "files": [
       "src/eq_biodt/v03/questions.py",
@@ -651,6 +651,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 1.0,
@@ -673,6 +676,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.000951276
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 1.14739,
@@ -926,6 +932,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00495097
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 0.924223,
@@ -948,6 +957,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0116897
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 1.05903,
@@ -1201,6 +1213,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0064186
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 0.799379,
@@ -1223,6 +1238,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.000838943
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 0.916574,
@@ -1476,6 +1494,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00598523
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 0.701873,
@@ -1498,6 +1519,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.010309
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 0.80469,
@@ -1751,6 +1775,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0075873
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.965332,
+              "frac_zero": 0.034668,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 0.27878,
@@ -1773,6 +1800,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00236651
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.965332,
+              "frac_zero": 0.034668,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 0.320412,
@@ -2026,6 +2056,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0055127
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.948242,
+              "frac_zero": 0.0517578,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 0.258723,
@@ -2048,6 +2081,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0037661
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.948242,
+              "frac_zero": 0.0517578,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 0.29637,
@@ -2301,6 +2337,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00980851
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.199463,
+              "frac_zero": 0.800537,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 0.0,
@@ -2323,6 +2362,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00949432
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.199463,
+              "frac_zero": 0.800537,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 0.0,
@@ -2583,6 +2625,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 1.0,
@@ -2605,6 +2650,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.000596151
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 1.14738,
@@ -2858,6 +2906,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 1.0,
@@ -2880,6 +2931,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00047011
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 1.14739,
@@ -3133,6 +3187,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 1.0,
@@ -3155,6 +3212,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.000435445
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 1.14732,
@@ -3408,6 +3468,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0197908
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 1.0,
@@ -3430,6 +3493,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0132239
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 1.14407,
@@ -3683,6 +3749,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0132839
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 0.883779,
@@ -3705,6 +3774,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00501465
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 1.01281,
@@ -3958,6 +4030,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00699615
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 0.877096,
@@ -3980,6 +4055,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00741297
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 1.0065,
@@ -4233,6 +4311,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0106578
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 0.743001,
@@ -4255,6 +4336,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0162156
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 0.851268,
@@ -4515,6 +4599,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 1.0,
@@ -4537,6 +4624,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.000912997
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 1.14739,
@@ -4790,6 +4880,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 1.0,
@@ -4812,6 +4905,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00126972
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 1.14738,
@@ -5065,6 +5161,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0209581
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 1.0,
@@ -5087,6 +5186,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00787183
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 1.14475,
@@ -5340,6 +5442,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00752253
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 0.966438,
@@ -5362,6 +5467,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0138569
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 1.10785,
@@ -5615,6 +5723,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0166421
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 0.794575,
@@ -5637,6 +5748,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00118817
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 0.910958,
@@ -5890,6 +6004,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0115083
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 0.786037,
@@ -5912,6 +6029,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00233981
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 0.901338,
@@ -6165,6 +6285,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0125093
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 0.605144,
@@ -6187,6 +6310,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0129883
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 0.694334,
@@ -6447,6 +6573,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 1.0,
@@ -6469,6 +6598,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00111391
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 1.14738,
@@ -6722,6 +6854,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 1.0,
@@ -6744,6 +6879,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00165976
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 1.14739,
@@ -6997,6 +7135,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 1.0,
@@ -7019,6 +7160,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00430111
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 1.1472,
@@ -7272,6 +7416,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00695888
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 0.983188,
@@ -7294,6 +7441,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00669237
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 1.12734,
@@ -7547,6 +7697,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.000780709
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 0.828366,
@@ -7569,6 +7722,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0062948
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 0.950669,
@@ -7822,6 +7978,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00341551
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 0.820639,
@@ -7844,6 +8003,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00195716
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 0.940361,
@@ -8097,6 +8259,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00673374
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield without bacterium (compared with normal)",
               "label_science": "Maas-Hoffman relative yield (alfalfa, uninoculated)",
               "median": 0.657794,
@@ -8119,6 +8284,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.000197125
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Alfalfa yield with desert bacterium (compared with normal)",
               "label_science": "Inoculated alfalfa relative yield (+SA187)",
               "median": 0.754241,
@@ -8368,7 +8536,7 @@
   "theme": "salt",
   "title_plain": "Can a desert bacterium help alfalfa in salty water?",
   "title_science": "Alfalfa yield under saline irrigation with Enterobacter sp. SA187",
-  "twin_version": "0.8.2",
+  "twin_version": "0.8.3",
   "uncertainty": {
     "S1": {
       "activation_shape": [
@@ -8550,6 +8718,9 @@
       "half_n_shift_frac": 0.00118817
     },
     "d": 17,
+    "frac_neg": 0.0,
+    "frac_pos": 1.0,
+    "frac_zero": 0.0,
     "group_S1": {
       "modeller_assumption": [
         0.0,

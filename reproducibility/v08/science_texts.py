@@ -80,18 +80,19 @@ SCIENCE_TEMPLATES: dict[str, dict[str, str]] = {
     "rain-pattern": {
         "title_science": "Rainfall partitioning and 14-day H₂ uptake",
         "answer_science": (
-            "Partitioning the same 12 mm of rain into smaller events reduced H₂ uptake in every parameter draw. "
+            "Partitioning the same 12 mm of rain into four 3 mm events reduced 14-day H₂ uptake in "
+            "{rain-schedule/2:h2_uptake_change_pct:frac_neg|pneg} of parameter draws. "
             "Relative to a single 12 mm event, four 3 mm events reduced 14-day uptake by a median of "
-            "{rain-schedule/2:h2_uptake_change_pct:median|absneg} (90 % interval "
-            "{rain-schedule/2:h2_uptake_change_pct:ci90|absneg}; reference parameterisation "
-            "{rain-schedule/2:h2_uptake_change_pct:central}), and daily drizzle reduced it by "
-            "{rain-schedule/3:h2_uptake_change_pct:median|absneg} "
-            "({rain-schedule/3:h2_uptake_change_pct:ci90|absneg}). Each small addition is largely removed by the "
+            "{rain-schedule/2:h2_uptake_change_pct:median|pneg} (90 % interval "
+            "{rain-schedule/2:h2_uptake_change_pct:ci90|pneg}; reference parameterisation "
+            "{rain-schedule/2:h2_uptake_change_pct:central}), and daily drizzle reduced it in "
+            "{rain-schedule/3:h2_uptake_change_pct:frac_neg|pneg} of parameter draws, by "
+            "{rain-schedule/3:h2_uptake_change_pct:median|pneg} "
+            "({rain-schedule/3:h2_uptake_change_pct:ci90|pneg}). Each small addition is largely removed by the "
             "daily evaporative demand, so the soil water potential spends fewer days above the activation threshold. "
             "The magnitude of the reduction depends mainly on the water-retention curve "
             "({rain-schedule/2:h2_uptake_change_pct:st1name}, S_T = {rain-schedule/2:h2_uptake_change_pct:st1|idx}; "
-            "{rain-schedule/2:h2_uptake_change_pct:st2name}, S_T = {rain-schedule/2:h2_uptake_change_pct:st2|idx}); "
-            "its direction holds across all sampled parameter values."
+            "{rain-schedule/2:h2_uptake_change_pct:st2name}, S_T = {rain-schedule/2:h2_uptake_change_pct:st2|idx})."
         ),
         "limits_science": (
             "The intervals combine uncertainty in the twin's retention, activation and kinetic parameters. "
@@ -127,11 +128,13 @@ SCIENCE_TEMPLATES: dict[str, dict[str, str]] = {
         "title_science": "Additional rain from cloud seeding",
         "answer_science": (
             "With the seeding efficacy sampled between no effect and 20 % additional rain on rain days (central "
-            "10 %), 14-day H₂ uptake rose by a median of {seeding-intensity/2:h2_uptake_change_pct:median|abspos} "
+            "10 %), 14-day H₂ uptake rose in every parameter draw at the central intensity, by a median of "
+            "{seeding-intensity/2:h2_uptake_change_pct:median|abspos} "
             "(90 % interval {seeding-intensity/2:h2_uptake_change_pct:ci90|abspos}; reference parameterisation "
-            "{seeding-intensity/2:h2_uptake_change_pct:central}); doubling the seeding intensity gave "
-            "{seeding-intensity/3:h2_uptake_change_pct:median|abspos} "
-            "({seeding-intensity/3:h2_uptake_change_pct:ci90|abspos}). Every draw increased uptake because the extra "
+            "{seeding-intensity/2:h2_uptake_change_pct:central}). Doubling the seeding intensity raised uptake in "
+            "{seeding-intensity/3:h2_uptake_change_pct:frac_pos|ppos} of parameter draws, by "
+            "{seeding-intensity/3:h2_uptake_change_pct:median|ppos} "
+            "({seeding-intensity/3:h2_uptake_change_pct:ci90|ppos}), because the extra "
             "water lengthens the period above the activation threshold. The efficacy itself is the largest single "
             "source of variance at the central intensity (S_T = {seeding-intensity/2:h2_uptake_change_pct:st1|idx} "
             "for {seeding-intensity/2:h2_uptake_change_pct:st1name}), followed by "
@@ -220,12 +223,13 @@ SCIENCE_TEMPLATES: dict[str, dict[str, str]] = {
     "mulch-shade": {
         "title_science": "Organic mulch and shade nets",
         "answer_science": (
-            "Full organic mulch raised 14-day H₂ uptake by a median of "
-            "{mulch-only/2:h2_uptake_change_pct:median|abspos} (90 % interval "
-            "{mulch-only/2:h2_uptake_change_pct:ci90|abspos}) in every draw, because the reduced evaporation keeps "
+            "Full organic mulch raised 14-day H₂ uptake in "
+            "{mulch-only/2:h2_uptake_change_pct:frac_pos|ppos} of parameter draws, by a median of "
+            "{mulch-only/2:h2_uptake_change_pct:median|ppos} (90 % interval "
+            "{mulch-only/2:h2_uptake_change_pct:ci90|ppos}), because the reduced evaporation keeps "
             "the soil above the activation threshold for longer. A full shade net lowered uptake by "
-            "{shade-only/2:h2_uptake_change_pct:median|absneg} ({shade-only/2:h2_uptake_change_pct:ci90|absneg}), "
-            "also in every draw: the net cools the soil and slows the reaction through Q10 (S_T = "
+            "{shade-only/2:h2_uptake_change_pct:median|absneg} ({shade-only/2:h2_uptake_change_pct:ci90|absneg}) "
+            "in every parameter draw: the net cools the soil and slows the reaction through Q10 (S_T = "
             "{shade-only/2:h2_uptake_change_pct:st1|idx}). Combining full mulch and shade changed uptake by "
             "{mulch-and-shade/2:h2_uptake_change_pct:median}, with an interval that includes both directions "
             "({mulch-and-shade/2:h2_uptake_change_pct:ci90}). The mulch effect depends mostly on "
@@ -240,10 +244,11 @@ SCIENCE_TEMPLATES: dict[str, dict[str, str]] = {
     "solar-park": {
         "title_science": "Microclimate under photovoltaic panels",
         "answer_science": (
-            "Full panel cover raised 14-day H₂ uptake by a median of "
-            "{panel-cover/2:h2_uptake_change_pct:median|abspos} (90 % interval "
-            "{panel-cover/2:h2_uptake_change_pct:ci90|abspos}; reference parameterisation "
-            "{panel-cover/2:h2_uptake_change_pct:central}), and every draw gave an increase. The panels act on the "
+            "Full panel cover raised 14-day H₂ uptake in "
+            "{panel-cover/2:h2_uptake_change_pct:frac_pos|ppos} of parameter draws, by a median of "
+            "{panel-cover/2:h2_uptake_change_pct:median|ppos} (90 % interval "
+            "{panel-cover/2:h2_uptake_change_pct:ci90|ppos}; reference parameterisation "
+            "{panel-cover/2:h2_uptake_change_pct:central}). The panels act on the "
             "soil in three ways in the chain: they reduce evaporation and add washing water, both of which lengthen "
             "the wet period, and they cool the soil, which slows the reaction through Q10. At half cover "
             "{panel-cover/1:h2_uptake_change_pct:st1name} explains the largest share of the variance (S_T = "
@@ -498,14 +503,28 @@ def _ranked_st(out_doc: dict[str, Any], series_id: str, level_idx: int, output_k
     return sorted(((k, float(v[0])) for k, v in st.items()), key=lambda kv: (-kv[1], kv[0]))
 
 
+def _fmt_draw_pct(frac: float) -> str:
+    """Format a draw fraction in [0, 1] as a percentage, never rounding <1 up to 100 %."""
+    f = float(frac)
+    pct = 100.0 * f
+    if f >= 1.0:
+        return "100 %"
+    if pct >= 99.5:
+        r1 = round(pct, 1)
+        if r1 < 100.0:
+            return f"{r1:.1f} %"
+        return f"{round(pct, 2):.2f} %"
+    return f"{_fmt_pct_mag(pct)} %"
+
+
 def _format_scalar(val: float, output_key: str, mod: str | None) -> str:
     if mod is None:
         if output_key.endswith("_pct"):
             return _fmt_signed_pct(val)
         return _fmt_plain(val)
-    if mod == "absneg":
+    if mod in {"absneg", "pneg"}:
         return f"{_fmt_pct_mag(abs(val))} %"
-    if mod == "abspos":
+    if mod in {"abspos", "ppos"}:
         return f"{_fmt_pct_mag(val)} %"
     if mod == "frac2pct":
         return f"{_fmt_pct_mag(100.0 * val)} %"
@@ -532,10 +551,10 @@ def _format_ci90(q05: float, q95: float, output_key: str, mod: str | None) -> st
             hi_s = _fmt_signed_pct_endpoint(hi, span_zero)
             return f"{lo_s} to {hi_s} %"
         return f"{_fmt_plain(lo)} to {_fmt_plain(hi)}"
-    if mod == "absneg":
+    if mod in {"absneg", "pneg"}:
         mags = sorted([abs(lo), abs(hi)])
         return f"{_fmt_pct_mag(mags[0])} to {_fmt_pct_mag(mags[1])} %"
-    if mod == "abspos":
+    if mod in {"abspos", "ppos"}:
         vals = sorted([lo, hi])
         return f"{_fmt_pct_mag(vals[0])} to {_fmt_pct_mag(vals[1])} %"
     if mod == "frac2pct":
@@ -557,7 +576,7 @@ def _check_sign_guard(
     output_key: str,
     expr: str,
 ) -> None:
-    if mod not in {"absneg", "abspos"}:
+    if mod not in {"absneg", "abspos", "pneg", "ppos"}:
         return
     c_val = _central_value(level_doc, output_key)
     med = out_doc.get("median")
@@ -566,14 +585,28 @@ def _check_sign_guard(
     if med is None or q05 is None or q95 is None:
         raise ValueError(f"Missing quantile/median values for sign-checked slot {expr!r}")
     four = {"central": float(c_val), "median": float(med), "q05": float(q05), "q95": float(q95)}
-    if mod == "absneg":
+    if mod in {"absneg", "pneg"}:
         bad = {k: v for k, v in four.items() if v > 0.0}
         if bad:
-            raise ValueError(f"|absneg sign check failed for {expr!r}: positive values {bad}")
-    elif mod == "abspos":
+            raise ValueError(f"|{mod} sign check failed for {expr!r}: positive values {bad}")
+        fn = out_doc.get("frac_neg")
+        if fn is None:
+            raise ValueError(f"|{mod} sign check failed for {expr!r}: missing frac_neg")
+        if mod == "absneg" and float(fn) < 1.0:
+            raise ValueError(f"|absneg sign check failed for {expr!r}: frac_neg={fn} < 1.0")
+        if mod == "pneg" and float(fn) <= 0.5:
+            raise ValueError(f"|pneg sign check failed for {expr!r}: frac_neg={fn} <= 0.5")
+    elif mod in {"abspos", "ppos"}:
         bad = {k: v for k, v in four.items() if v < 0.0}
         if bad:
-            raise ValueError(f"|abspos sign check failed for {expr!r}: negative values {bad}")
+            raise ValueError(f"|{mod} sign check failed for {expr!r}: negative values {bad}")
+        fp = out_doc.get("frac_pos")
+        if fp is None:
+            raise ValueError(f"|{mod} sign check failed for {expr!r}: missing frac_pos")
+        if mod == "abspos" and float(fp) < 1.0:
+            raise ValueError(f"|abspos sign check failed for {expr!r}: frac_pos={fp} < 1.0")
+        if mod == "ppos" and float(fp) <= 0.5:
+            raise ValueError(f"|ppos sign check failed for {expr!r}: frac_pos={fp} <= 0.5")
 
 
 def _resolve_special(name: str, uq_doc: dict[str, Any]) -> str:
@@ -655,10 +688,29 @@ def resolve_slot(expr: str, uq_doc: dict[str, Any]) -> str:
     if out_doc is None and stat != "central":
         raise KeyError(f"Output {output_key!r} not found in {series_id}/{level_idx}")
 
-    if mod in {"absneg", "abspos"}:
+    if mod in {"absneg", "abspos", "pneg", "ppos"}:
         if out_doc is None:
             raise KeyError(f"Output {output_key!r} required for sign check in {expr!r}")
         _check_sign_guard(mod, level_doc, out_doc, output_key, expr)
+
+    if stat in {"frac_neg", "pneg"}:
+        if mod not in {None, "pneg", "absneg"}:
+            raise ValueError(f"Unsupported modifier {mod!r} for {stat!r} in {expr!r}")
+        if mod is None:
+            _check_sign_guard("pneg", level_doc, out_doc, output_key, expr)
+        fn = out_doc.get("frac_neg")
+        if fn is None:
+            raise ValueError(f"frac_neg is None for {expr!r}")
+        return _fmt_draw_pct(float(fn))
+    if stat in {"frac_pos", "ppos"}:
+        if mod not in {None, "ppos", "abspos"}:
+            raise ValueError(f"Unsupported modifier {mod!r} for {stat!r} in {expr!r}")
+        if mod is None:
+            _check_sign_guard("ppos", level_doc, out_doc, output_key, expr)
+        fp = out_doc.get("frac_pos")
+        if fp is None:
+            raise ValueError(f"frac_pos is None for {expr!r}")
+        return _fmt_draw_pct(float(fp))
 
     if stat == "central":
         val = _central_value(level_doc, output_key)

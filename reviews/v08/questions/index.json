@@ -1,10 +1,10 @@
 {
   "questions": [
     {
-      "answer_plain": "Splitting one heavy downpour into four smaller showers lowers hydrogen uptake over two weeks by about 69 % (by 2.8 to 100 %), so uptake goes down in every case we tried. Splitting the same total rain into daily drizzle lowers uptake by almost 100 % (by 51 to 100 %). One soaking keeps the sand wet enough for the microbes for several days, while small daily amounts mostly evaporate the same day.",
-      "answer_science": "Partitioning the same 12 mm of rain into smaller events reduced H\u2082 uptake in every parameter draw. Relative to a single 12 mm event, four 3 mm events reduced 14-day uptake by a median of 69 % (90 % interval 2.8 to 100 %; reference parameterisation \u221263 %), and daily drizzle reduced it by 100 % (51 to 100 %). Each small addition is largely removed by the daily evaporative demand, so the soil water potential spends fewer days above the activation threshold. The magnitude of the reduction depends mainly on the water-retention curve (the retention exponent b, S_T = 0.69; the air-entry potential \u03c8_e, S_T = 0.26); its direction holds across all sampled parameter values.",
-      "headline_plain": "Splitting one heavy rain into four smaller showers lowers hydrogen uptake over two weeks by about 69 %, and daily drizzle lowers it by almost 100 %, so uptake goes down in every case we tried.",
-      "headline_science": "Partitioning the same 12 mm of rain into smaller events reduced H\u2082 uptake in every parameter draw.",
+      "answer_plain": "Splitting one heavy downpour into four smaller showers lowers hydrogen uptake over two weeks by about 69 % (by 2.8 to 100 %), so uptake goes down in about 96 of every 100 model runs. Splitting the same total rain into daily drizzle lowers uptake by almost 100 % (by 51 to 100 %). One soaking keeps the sand wet enough for the microbes for several days, while small daily amounts mostly evaporate the same day.",
+      "answer_science": "Partitioning the same 12 mm of rain into four 3 mm events reduced 14-day H\u2082 uptake in 96 % of parameter draws. Relative to a single 12 mm event, four 3 mm events reduced 14-day uptake by a median of 69 % (90 % interval 2.8 to 100 %; reference parameterisation \u221263 %), and daily drizzle reduced it in 99.98 % of parameter draws, by 100 % (51 to 100 %). Each small addition is largely removed by the daily evaporative demand, so the soil water potential spends fewer days above the activation threshold. The magnitude of the reduction depends mainly on the water-retention curve (the retention exponent b, S_T = 0.69; the air-entry potential \u03c8_e, S_T = 0.26).",
+      "headline_plain": "Splitting one heavy rain into four smaller showers lowers hydrogen uptake over two weeks by about 69 %, and daily drizzle lowers it by almost 100 %, so uptake goes down in about 96 of every 100 model runs.",
+      "headline_science": "Partitioning the same 12 mm of rain into four 3 mm events reduced 14-day H\u2082 uptake in 96 % of parameter draws.",
       "slug": "rain-pattern",
       "theme": "water",
       "thumbnail": null,
@@ -24,9 +24,9 @@
     },
     {
       "answer_plain": "If cloud seeding really added ten percent more rain on rainy days, hydrogen uptake over two weeks would rise by about 13 % (by 3.6 to 31 %), so under that rain boost uptake goes up in every case we tried. Whether seeding adds that much rain at all is disputed. When extra rain does fall, the sand stays wet for longer and the microbes stay active for longer.",
-      "answer_science": "With the seeding efficacy sampled between no effect and 20 % additional rain on rain days (central 10 %), 14-day H\u2082 uptake rose by a median of 13 % (90 % interval 3.6 to 31 %; reference parameterisation +13 %); doubling the seeding intensity gave 23 % (5.5 to 65 %). Every draw increased uptake because the extra water lengthens the period above the activation threshold. The efficacy itself is the largest single source of variance at the central intensity (S_T = 0.43 for the seeding efficacy), followed by the retention exponent b (S_T = 0.29).",
+      "answer_science": "With the seeding efficacy sampled between no effect and 20 % additional rain on rain days (central 10 %), 14-day H\u2082 uptake rose in every parameter draw at the central intensity, by a median of 13 % (90 % interval 3.6 to 31 %; reference parameterisation +13 %). Doubling the seeding intensity raised uptake in 99 % of parameter draws, by 23 % (5.5 to 65 %), because the extra water lengthens the period above the activation threshold. The efficacy itself is the largest single source of variance at the central intensity (S_T = 0.43 for the seeding efficacy), followed by the retention exponent b (S_T = 0.29).",
       "headline_plain": "If cloud seeding really added ten percent more rain on rainy days, hydrogen uptake over two weeks would rise by about 13 %, though whether seeding adds that much rain is disputed.",
-      "headline_science": "With the seeding efficacy sampled between no effect and 20 % additional rain on rain days (central 10 %), 14-day H\u2082 uptake rose by a median of 13 % (90 % interval 3.6 to 31 %; reference parameterisation +13 %); doubling the seeding intensity gave 23 % (5.5 to 65 %).",
+      "headline_science": "With the seeding efficacy sampled between no effect and 20 % additional rain on rain days (central 10 %), 14-day H\u2082 uptake rose in every parameter draw at the central intensity, by a median of 13 % (90 % interval 3.6 to 31 %; reference parameterisation +13 %).",
       "slug": "cloud-seeding",
       "theme": "water",
       "thumbnail": null,
@@ -67,10 +67,10 @@
       "title_science": "Soil warming and climate warming"
     },
     {
-      "answer_plain": "Full mulch cover raises hydrogen uptake over two weeks by about 50 % (by 11 to 92 %) by slowing evaporation, so uptake with mulch alone goes up in every case we tried. Full shade alone lowers uptake by about 14 % (by 1.7 to 28 %), and combining mulch with shade raises uptake by about 28 % (from 6.2 % lower to 70 % higher). Mulch keeps water in the sand without cooling the microbes, whereas shade cools the sand and slows enzyme speed.",
-      "answer_science": "Full organic mulch raised 14-day H\u2082 uptake by a median of 50 % (90 % interval 11 to 92 %) in every draw, because the reduced evaporation keeps the soil above the activation threshold for longer. A full shade net lowered uptake by 14 % (1.7 to 28 %), also in every draw: the net cools the soil and slows the reaction through Q10 (S_T = 0.77). Combining full mulch and shade changed uptake by +28 %, with an interval that includes both directions (\u22126.2 to +70 %). The mulch effect depends mostly on the retention exponent b (S_T = 0.59).",
-      "headline_plain": "Full mulch cover raises hydrogen uptake over two weeks by about 50 % by keeping the sand damp longer, and uptake goes up in every case we tried.",
-      "headline_science": "Full organic mulch raised 14-day H\u2082 uptake by a median of 50 % (90 % interval 11 to 92 %) in every draw, because the reduced evaporation keeps the soil above the activation threshold for longer.",
+      "answer_plain": "Full mulch cover raises hydrogen uptake over two weeks by about 50 % (by 11 to 92 %) by slowing evaporation, so uptake with mulch alone goes up in about 99 of every 100 model runs. Full shade alone lowers uptake by about 14 % (by 1.7 to 28 %), and combining mulch with shade raises uptake by about 28 % (from 6.2 % lower to 70 % higher). Mulch keeps water in the sand without cooling the microbes, whereas shade cools the sand and slows enzyme speed.",
+      "answer_science": "Full organic mulch raised 14-day H\u2082 uptake in 99 % of parameter draws, by a median of 50 % (90 % interval 11 to 92 %), because the reduced evaporation keeps the soil above the activation threshold for longer. A full shade net lowered uptake by 14 % (1.7 to 28 %) in every parameter draw: the net cools the soil and slows the reaction through Q10 (S_T = 0.77). Combining full mulch and shade changed uptake by +28 %, with an interval that includes both directions (\u22126.2 to +70 %). The mulch effect depends mostly on the retention exponent b (S_T = 0.59).",
+      "headline_plain": "Full mulch cover raises hydrogen uptake over two weeks by about 50 % by keeping the sand damp longer, and uptake goes up in about 99 of every 100 model runs.",
+      "headline_science": "Full organic mulch raised 14-day H\u2082 uptake in 99 % of parameter draws, by a median of 50 % (90 % interval 11 to 92 %), because the reduced evaporation keeps the soil above the activation threshold for longer.",
       "slug": "mulch-shade",
       "theme": "heat",
       "thumbnail": null,
@@ -78,10 +78,10 @@
       "title_science": "Organic mulch and shade nets"
     },
     {
-      "answer_plain": "Full solar-panel cover raises hydrogen uptake over two weeks by about 23 % (by 0.35 to 52 %), and uptake goes up in every case we tried. Less evaporation under the panels and water from panel washing keep the sand moist longer. This outweighs the slowing of microbes by shade.",
-      "answer_science": "Full panel cover raised 14-day H\u2082 uptake by a median of 23 % (90 % interval 0.35 to 52 %; reference parameterisation +17 %), and every draw gave an increase. The panels act on the soil in three ways in the chain: they reduce evaporation and add washing water, both of which lengthen the wet period, and they cool the soil, which slows the reaction through Q10. At half cover the panel evaporation reduction explains the largest share of the variance (S_T = 0.44); at full cover the retention exponent b does (S_T = 0.41).",
-      "headline_plain": "Full solar-panel cover raises hydrogen uptake over two weeks by about 23 %, and uptake goes up in every case we tried.",
-      "headline_science": "Full panel cover raised 14-day H\u2082 uptake by a median of 23 % (90 % interval 0.35 to 52 %; reference parameterisation +17 %), and every draw gave an increase.",
+      "answer_plain": "Full solar-panel cover raises hydrogen uptake over two weeks by about 23 % (by 0.35 to 52 %), and uptake goes up in about 95 of every 100 model runs. Less evaporation under the panels and water from panel washing keep the sand moist longer. This outweighs the slowing of microbes by shade.",
+      "answer_science": "Full panel cover raised 14-day H\u2082 uptake in 95 % of parameter draws, by a median of 23 % (90 % interval 0.35 to 52 %; reference parameterisation +17 %). The panels act on the soil in three ways in the chain: they reduce evaporation and add washing water, both of which lengthen the wet period, and they cool the soil, which slows the reaction through Q10. At half cover the panel evaporation reduction explains the largest share of the variance (S_T = 0.44); at full cover the retention exponent b does (S_T = 0.41).",
+      "headline_plain": "Full solar-panel cover raises hydrogen uptake over two weeks by about 23 %, and uptake goes up in about 95 of every 100 model runs.",
+      "headline_science": "Full panel cover raised 14-day H\u2082 uptake in 95 % of parameter draws, by a median of 23 % (90 % interval 0.35 to 52 %; reference parameterisation +17 %).",
       "slug": "solar-park",
       "theme": "heat",
       "thumbnail": null,
@@ -155,6 +155,12 @@
       "title_science": "Upper bound on CO\u2082 fixation by H\u2082-oxidising autotrophs"
     }
   ],
-  "twin_version": "0.8.2",
+  "summary_counts": {
+    "evaluations": 2285568,
+    "levels": 111,
+    "outputs": 1383,
+    "questions": 14
+  },
+  "twin_version": "0.8.3",
   "version": "question-1"
 }

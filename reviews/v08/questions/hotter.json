@@ -155,7 +155,7 @@
     "digests": {
       "constants_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578",
       "parameter_ranges_sha256": "f6b9fe6f95d88360375a81171deae746e17c213600077bcc49fa8e05b47ad027",
-      "uq_sha256": "b488b53696888af728eae76cd4339ed2fbc0a1961e86b15d4daf525578be213b"
+      "uq_sha256": "6615852e3d15275ddc9eb77abec5fe5f75583de17e183accd309bb06774a44a0"
     },
     "files": [
       "src/eq_biodt/v03/questions.py",
@@ -182,6 +182,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": 0.0,
@@ -204,6 +207,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": 0.0,
@@ -226,6 +232,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00522884
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 922.576,
@@ -479,6 +488,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00558582
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": 4.78961,
@@ -501,6 +513,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0105989
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": 36.1894,
@@ -523,6 +538,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0275314
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 1002.3,
@@ -776,6 +794,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00147118
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": 6.40228,
@@ -798,6 +819,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0246141
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": 50.117,
@@ -820,6 +844,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0117266
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 981.636,
@@ -1073,6 +1100,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00431898
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": 13.1667,
@@ -1095,6 +1125,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00112298
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": 100.302,
@@ -1117,6 +1150,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0134751
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 1086.47,
@@ -1370,6 +1406,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00254283
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": 35.5262,
@@ -1392,6 +1431,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0192658
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": 272.802,
@@ -1414,6 +1456,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00429575
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 1280.63,
@@ -1674,6 +1719,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": 0.0,
@@ -1696,6 +1744,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": 0.0,
@@ -1718,6 +1769,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00775311
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 940.655,
@@ -1971,6 +2025,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00536667
               },
+              "frac_neg": 0.663086,
+              "frac_pos": 0.336914,
+              "frac_zero": 0.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": -1.22314,
@@ -1993,6 +2050,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00834962
               },
+              "frac_neg": 0.663086,
+              "frac_pos": 0.336914,
+              "frac_zero": 0.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": -7.58024,
@@ -2015,6 +2075,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0127724
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 923.686,
@@ -2268,6 +2331,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0143806
               },
+              "frac_neg": 0.650879,
+              "frac_pos": 0.349121,
+              "frac_zero": 0.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": -1.60131,
@@ -2290,6 +2356,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00607174
               },
+              "frac_neg": 0.650879,
+              "frac_pos": 0.349121,
+              "frac_zero": 0.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": -10.1648,
@@ -2312,6 +2381,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00393029
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 927.351,
@@ -2565,6 +2637,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00864328
               },
+              "frac_neg": 0.632812,
+              "frac_pos": 0.367188,
+              "frac_zero": 0.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": -2.64495,
@@ -2587,6 +2662,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00505274
               },
+              "frac_neg": 0.632812,
+              "frac_pos": 0.367188,
+              "frac_zero": 0.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": -15.4395,
@@ -2609,6 +2687,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0353035
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 918.712,
@@ -2858,7 +2939,7 @@
   "theme": "heat",
   "title_plain": "What if it gets hotter?",
   "title_science": "Soil warming and climate warming",
-  "twin_version": "0.8.2",
+  "twin_version": "0.8.3",
   "uncertainty": {
     "S1": {
       "activation_shape": [
@@ -3020,6 +3101,9 @@
       "half_n_shift_frac": 0.00864328
     },
     "d": 15,
+    "frac_neg": 0.632812,
+    "frac_pos": 0.367188,
+    "frac_zero": 0.0,
     "group_S1": {
       "modeller_assumption": [
         0.851341,

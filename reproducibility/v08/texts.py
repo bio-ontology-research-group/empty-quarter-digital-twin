@@ -485,7 +485,9 @@ def plain_level_label(slug: str, series_id: str, spec_label: str, x: float | str
         return f"{round_plain(float(x))} % added microbes"
     if slug == "compaction":
         if series_id == "direct-porosity-v06":
-            return f"pore space {round_plain(float(x) * 100.0)} % of volume"
+            xv = float(x)
+            pct = xv * 100.0 if xv <= 1.0 else xv
+            return f"pore space {round_plain(pct)} % of volume"
         d = int(round(float(x)))
         return "1 pass" if d == 1 else f"{d} passes"
     if slug == "biochar":
@@ -563,16 +565,27 @@ def _format_interval_plain(q05: float | None, q95: float | None, unit_plain: str
     return f"range {round_plain(q05)} to {round_plain(q95)} {unit_plain}"
 
 
-def _hedge_phrase(q05: float | None, q95: float | None) -> str:
-    """Return the required hedge phrase matching the sign of the 5–95 % headline interval."""
+def _hedge_phrase(
+    q05: float | None,
+    q95: float | None,
+    frac_neg: float | None = None,
+    frac_pos: float | None = None,
+) -> str:
+    """Return the required hedge phrase matching direction probabilities and the 5–95 % headline interval."""
     if q05 is not None and q95 is not None:
         lo = float(q05)
         hi = float(q95)
         if lo < 0.0 < hi:
             return "may go up or down"
         if hi <= 0.0 and lo < 0.0:
+            if frac_neg is not None and float(frac_neg) < 1.0:
+                n_runs = min(99, max(1, round(100.0 * float(frac_neg))))
+                return f"goes down in about {n_runs} of every 100 model runs"
             return "goes down in every case we tried"
         if lo >= 0.0 and hi > 0.0:
+            if frac_pos is not None and float(frac_pos) < 1.0:
+                n_runs = min(99, max(1, round(100.0 * float(frac_pos))))
+                return f"goes up in about {n_runs} of every 100 model runs"
             return "goes up in every case we tried"
     return "goes up in every case we tried"
 
@@ -630,7 +643,12 @@ def render_question_texts(
     else:
         rng_plain = _format_interval_plain(q05, q95, unit_plain)
 
-    hedge = _hedge_phrase(q05, q95)
+    hedge = _hedge_phrase(
+        q05,
+        q95,
+        outcome_uq.get("frac_neg"),
+        outcome_uq.get("frac_pos"),
+    )
     h_lvl = _get_uq_level(uq_doc, s_id, l_idx)
     h_outputs_map = (h_lvl or {}).get("outputs", {})
 

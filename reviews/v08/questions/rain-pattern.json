@@ -1,6 +1,6 @@
 {
-  "answer_plain": "Splitting one heavy downpour into four smaller showers lowers hydrogen uptake over two weeks by about 69 % (by 2.8 to 100 %), so uptake goes down in every case we tried. Splitting the same total rain into daily drizzle lowers uptake by almost 100 % (by 51 to 100 %). One soaking keeps the sand wet enough for the microbes for several days, while small daily amounts mostly evaporate the same day.",
-  "answer_science": "Partitioning the same 12 mm of rain into smaller events reduced H\u2082 uptake in every parameter draw. Relative to a single 12 mm event, four 3 mm events reduced 14-day uptake by a median of 69 % (90 % interval 2.8 to 100 %; reference parameterisation \u221263 %), and daily drizzle reduced it by 100 % (51 to 100 %). Each small addition is largely removed by the daily evaporative demand, so the soil water potential spends fewer days above the activation threshold. The magnitude of the reduction depends mainly on the water-retention curve (the retention exponent b, S_T = 0.69; the air-entry potential \u03c8_e, S_T = 0.26); its direction holds across all sampled parameter values.",
+  "answer_plain": "Splitting one heavy downpour into four smaller showers lowers hydrogen uptake over two weeks by about 69 % (by 2.8 to 100 %), so uptake goes down in about 96 of every 100 model runs. Splitting the same total rain into daily drizzle lowers uptake by almost 100 % (by 51 to 100 %). One soaking keeps the sand wet enough for the microbes for several days, while small daily amounts mostly evaporate the same day.",
+  "answer_science": "Partitioning the same 12 mm of rain into four 3 mm events reduced 14-day H\u2082 uptake in 96 % of parameter draws. Relative to a single 12 mm event, four 3 mm events reduced 14-day uptake by a median of 69 % (90 % interval 2.8 to 100 %; reference parameterisation \u221263 %), and daily drizzle reduced it in 99.98 % of parameter draws, by 100 % (51 to 100 %). Each small addition is largely removed by the daily evaporative demand, so the soil water potential spends fewer days above the activation threshold. The magnitude of the reduction depends mainly on the water-retention curve (the retention exponent b, S_T = 0.69; the air-entry potential \u03c8_e, S_T = 0.26).",
   "baseline_label": "One 12 mm rain on day 1, no treatment",
   "chain": [
     {
@@ -22,9 +22,9 @@
     "x": "four"
   },
   "headline_output": "h2_uptake_change_pct",
-  "headline_plain": "Splitting one heavy rain into four smaller showers lowers hydrogen uptake over two weeks by about 69 %, and daily drizzle lowers it by almost 100 %, so uptake goes down in every case we tried.",
+  "headline_plain": "Splitting one heavy rain into four smaller showers lowers hydrogen uptake over two weeks by about 69 %, and daily drizzle lowers it by almost 100 %, so uptake goes down in about 96 of every 100 model runs.",
   "headline_reference": -63.23769677583815,
-  "headline_science": "Partitioning the same 12 mm of rain into smaller events reduced H\u2082 uptake in every parameter draw.",
+  "headline_science": "Partitioning the same 12 mm of rain into four 3 mm events reduced 14-day H\u2082 uptake in 96 % of parameter draws.",
   "headline_value": -68.6512,
   "level_kind": "categorical",
   "limits_plain": "The range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong. The simulation uses a single sand column with fixed evaporation and does not include surface crusting or runoff down dune slopes.",
@@ -92,7 +92,7 @@
     "digests": {
       "constants_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578",
       "parameter_ranges_sha256": "f6b9fe6f95d88360375a81171deae746e17c213600077bcc49fa8e05b47ad027",
-      "uq_sha256": "9f40b5f758aaeea99397ce443ac0e36b1dfb41e39ec61ad94fbe098674b178a1"
+      "uq_sha256": "e2bbad87adf0162d69a3753c0047b46f42895fbe2c39aa51434445a6aba6bca7"
     },
     "files": [
       "src/eq_biodt/v03/questions.py",
@@ -119,6 +119,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00301972
               },
+              "frac_neg": 1.0,
+              "frac_pos": 0.0,
+              "frac_zero": 0.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": -100.0,
@@ -141,6 +144,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0138057
               },
+              "frac_neg": 1.0,
+              "frac_pos": 0.0,
+              "frac_zero": 0.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": -927.274,
@@ -163,6 +169,9 @@
                 "flagged": true,
                 "half_n_shift_frac": 0.0815789
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.33667,
+              "frac_zero": 0.66333,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 0.0,
@@ -416,6 +425,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": 0.0,
@@ -438,6 +450,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": 0.0,
@@ -460,6 +475,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.000316664
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 925.641,
@@ -713,6 +731,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00152508
               },
+              "frac_neg": 0.963379,
+              "frac_pos": 0.0366211,
+              "frac_zero": 0.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": -68.6512,
@@ -735,6 +756,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0190823
               },
+              "frac_neg": 0.963379,
+              "frac_pos": 0.0366211,
+              "frac_zero": 0.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": -441.362,
@@ -757,6 +781,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0284051
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.875488,
+              "frac_zero": 0.124512,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 204.062,
@@ -1010,6 +1037,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0094873
               },
+              "frac_neg": 0.999756,
+              "frac_pos": 0.000244141,
+              "frac_zero": 0.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": -99.9348,
@@ -1032,6 +1062,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0146602
               },
+              "frac_neg": 0.999756,
+              "frac_pos": 0.000244141,
+              "frac_zero": 0.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": -834.85,
@@ -1054,6 +1087,9 @@
                 "flagged": true,
                 "half_n_shift_frac": 0.102609
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.542969,
+              "frac_zero": 0.457031,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 0.371468,
@@ -1303,7 +1339,7 @@
   "theme": "water",
   "title_plain": "One heavy rain, four showers or daily drizzle?",
   "title_science": "Rainfall partitioning and 14-day H\u2082 uptake",
-  "twin_version": "0.8.2",
+  "twin_version": "0.8.3",
   "uncertainty": {
     "S1": {
       "activation_shape": [
@@ -1439,12 +1475,82 @@
         0.00617077
       ]
     },
+    "baseline_h2_ST": {
+      "activation_shape": [
+        0.0117762,
+        0.00980515,
+        0.0139123
+      ],
+      "d_co_m2_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "d_h2_m2_s": [
+        0.00201481,
+        0.00155463,
+        0.00259171
+      ],
+      "drainage_fraction_day": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dry_threshold_mpa": [
+        6.83764e-05,
+        5.60936e-05,
+        8.2992e-05
+      ],
+      "field_capacity_fraction": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "k_co_s": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "k_h2_s": [
+        0.859839,
+        0.78452,
+        0.951883
+      ],
+      "porosity": [
+        0.00234688,
+        0.00191324,
+        0.00284122
+      ],
+      "psi_entry_mpa": [
+        0.0829398,
+        0.0703325,
+        0.0964624
+      ],
+      "q10": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "retention_b": [
+        0.128899,
+        0.109383,
+        0.15056
+      ],
+      "wet_activation_mpa": [
+        0.00555954,
+        0.00460029,
+        0.00672874
+      ]
+    },
     "convergence": {
       "discrete": false,
       "flagged": false,
       "half_n_shift_frac": 0.00152508
     },
     "d": 13,
+    "frac_neg": 0.963379,
+    "frac_pos": 0.0366211,
+    "frac_zero": 0.0,
     "group_S1": {
       "modeller_assumption": [
         1.00264,

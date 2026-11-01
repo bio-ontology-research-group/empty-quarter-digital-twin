@@ -1,6 +1,6 @@
 {
-  "answer_plain": "Full solar-panel cover raises hydrogen uptake over two weeks by about 23 % (by 0.35 to 52 %), and uptake goes up in every case we tried. Less evaporation under the panels and water from panel washing keep the sand moist longer. This outweighs the slowing of microbes by shade.",
-  "answer_science": "Full panel cover raised 14-day H\u2082 uptake by a median of 23 % (90 % interval 0.35 to 52 %; reference parameterisation +17 %), and every draw gave an increase. The panels act on the soil in three ways in the chain: they reduce evaporation and add washing water, both of which lengthen the wet period, and they cool the soil, which slows the reaction through Q10. At half cover the panel evaporation reduction explains the largest share of the variance (S_T = 0.44); at full cover the retention exponent b does (S_T = 0.41).",
+  "answer_plain": "Full solar-panel cover raises hydrogen uptake over two weeks by about 23 % (by 0.35 to 52 %), and uptake goes up in about 95 of every 100 model runs. Less evaporation under the panels and water from panel washing keep the sand moist longer. This outweighs the slowing of microbes by shade.",
+  "answer_science": "Full panel cover raised 14-day H\u2082 uptake in 95 % of parameter draws, by a median of 23 % (90 % interval 0.35 to 52 %; reference parameterisation +17 %). The panels act on the soil in three ways in the chain: they reduce evaporation and add washing water, both of which lengthen the wet period, and they cool the soil, which slows the reaction through Q10. At half cover the panel evaporation reduction explains the largest share of the variance (S_T = 0.44); at full cover the retention exponent b does (S_T = 0.41).",
   "baseline_label": "Open desert sand outside panels",
   "chain": [
     {
@@ -34,9 +34,9 @@
     "x": 1.0
   },
   "headline_output": "h2_uptake_change_pct",
-  "headline_plain": "Full solar-panel cover raises hydrogen uptake over two weeks by about 23 %, and uptake goes up in every case we tried.",
+  "headline_plain": "Full solar-panel cover raises hydrogen uptake over two weeks by about 23 %, and uptake goes up in about 95 of every 100 model runs.",
   "headline_reference": 16.644320142533935,
-  "headline_science": "Full panel cover raised 14-day H\u2082 uptake by a median of 23 % (90 % interval 0.35 to 52 %; reference parameterisation +17 %), and every draw gave an increase.",
+  "headline_science": "Full panel cover raised 14-day H\u2082 uptake in 95 % of parameter draws, by a median of 23 % (90 % interval 0.35 to 52 %; reference parameterisation +17 %).",
   "headline_value": 23.437,
   "level_kind": "numeric",
   "limits_plain": "The range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong. Wind shifts under panel rows and runoff strips along panel edges are simplified to an even average.",
@@ -210,7 +210,7 @@
     "digests": {
       "constants_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578",
       "parameter_ranges_sha256": "f6b9fe6f95d88360375a81171deae746e17c213600077bcc49fa8e05b47ad027",
-      "uq_sha256": "94430239ff622864bdd676798a2e018204595a57e5fec60e2e79183cc97502a0"
+      "uq_sha256": "1716fc0ffad59f86e13ed7c7db5f5ed19e15765b063acbc2e697a7920836889e"
     },
     "files": [
       "src/eq_biodt/v03/questions.py",
@@ -237,6 +237,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": 0.0,
@@ -259,6 +262,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": 0.0,
@@ -281,6 +287,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0128109
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 943.363,
@@ -534,6 +543,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00300728
               },
+              "frac_neg": 0.0205078,
+              "frac_pos": 0.979492,
+              "frac_zero": 0.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": 12.515,
@@ -556,6 +568,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.012419
               },
+              "frac_neg": 0.0205078,
+              "frac_pos": 0.979492,
+              "frac_zero": 0.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": 101.299,
@@ -578,6 +593,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00160285
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 1047.01,
@@ -831,6 +849,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00245831
               },
+              "frac_neg": 0.046875,
+              "frac_pos": 0.953125,
+              "frac_zero": 0.0,
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": 23.437,
@@ -853,6 +874,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00874475
               },
+              "frac_neg": 0.046875,
+              "frac_pos": 0.953125,
+              "frac_zero": 0.0,
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": 175.826,
@@ -875,6 +899,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.000534943
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Hydrogen taken up over 14 days",
               "label_science": "14-day cumulative H\u2082 uptake",
               "median": 1169.36,
@@ -1124,7 +1151,7 @@
   "theme": "heat",
   "title_plain": "What if we build a solar park?",
   "title_science": "Microclimate under photovoltaic panels",
-  "twin_version": "0.8.2",
+  "twin_version": "0.8.3",
   "uncertainty": {
     "S1": {
       "activation_shape": [
@@ -1306,6 +1333,9 @@
       "half_n_shift_frac": 0.00245831
     },
     "d": 17,
+    "frac_neg": 0.046875,
+    "frac_pos": 0.953125,
+    "frac_zero": 0.0,
     "group_S1": {
       "modeller_assumption": [
         1.01044,

@@ -211,6 +211,9 @@ def analyse(
                 "q25": 0.0,
                 "q75": 0.0,
                 "q95": 0.0,
+                "frac_neg": 0.0,
+                "frac_zero": 1.0,
+                "frac_pos": 0.0,
                 "refusal_fraction": 0.0,
                 "mode": "deduced",
                 "S1": {name: [0.0, 0.0, 0.0] for name in names},
@@ -283,12 +286,27 @@ def analyse(
                 gs1 = {g: [0.0, 0.0, 0.0] for g in GROUP_STATUSES}
                 gst = {g: [0.0, 0.0, 0.0] for g in GROUP_STATUSES}
 
+        if admitted_full.size == 0:
+            frac_neg = frac_zero = frac_pos = None
+        elif mode == "constant":
+            c_val = float(median)
+            frac_neg = 1.0 if c_val < 0.0 else 0.0
+            frac_zero = 1.0 if c_val == 0.0 else 0.0
+            frac_pos = 1.0 if c_val > 0.0 else 0.0
+        else:
+            frac_neg = float(f"{float(np.mean(admitted_full < 0.0)):.6g}")
+            frac_zero = float(f"{float(np.mean(admitted_full == 0.0)):.6g}")
+            frac_pos = float(f"{float(np.mean(admitted_full > 0.0)):.6g}")
+
         result[key] = {
             "median": median,
             "q05": q05,
             "q25": q25,
             "q75": q75,
             "q95": q95,
+            "frac_neg": frac_neg,
+            "frac_zero": frac_zero,
+            "frac_pos": frac_pos,
             "refusal_fraction": refusal_fraction,
             "mode": mode,
             "S1": s1,

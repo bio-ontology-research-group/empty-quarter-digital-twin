@@ -357,6 +357,9 @@ def build_questions(
 
     written: dict[str, Path] = {}
     index_entries: list[dict[str, Any]] = []
+    total_levels = 0
+    total_outputs = 0
+    total_evals_n1024 = 0
 
     try:
         for slug, q in QUESTIONS.items():
@@ -384,6 +387,9 @@ def build_questions(
 
                 for l_idx, spec in enumerate(s.levels):
                     uq_lvl = uq_levels_map[l_idx]
+                    total_levels += 1
+                    total_outputs += len(uq_lvl.get("outputs", {}))
+                    total_evals_n1024 += 1024 * (int(uq_lvl.get("d", 0)) + 5)
                     central_res = evaluate(spec, keep_twin_result=True)
                     _augment_central_pct(central_res)
                     tw = central_res.get("__twin__")
@@ -433,6 +439,9 @@ def build_questions(
                             "q25": uq_o.get("q25"),
                             "q75": uq_o.get("q75"),
                             "q95": uq_o.get("q95"),
+                            "frac_neg": uq_o.get("frac_neg"),
+                            "frac_zero": uq_o.get("frac_zero"),
+                            "frac_pos": uq_o.get("frac_pos"),
                             "unit": meta["unit"],
                             "unit_plain": meta["unit_plain"],
                             "label_plain": meta["label_plain"],
@@ -514,6 +523,9 @@ def build_questions(
                 "q25": h_uq_out.get("q25"),
                 "q75": h_uq_out.get("q75"),
                 "q95": h_uq_out.get("q95"),
+                "frac_neg": h_uq_out.get("frac_neg"),
+                "frac_zero": h_uq_out.get("frac_zero"),
+                "frac_pos": h_uq_out.get("frac_pos"),
                 "mode": h_uq_out.get("mode", "variance"),
                 "refusal_fraction": float(h_uq_out.get("refusal_fraction", 0.0)),
                 "S1": sobol_uq_out.get("S1", {}),
@@ -524,6 +536,13 @@ def build_questions(
                 "convergence": h_uq_out.get("convergence", {}),
                 "oat": oat,
             }
+            if slug == "rain-pattern":
+                base_uq_lvl = next(
+                    (l for l in uq_series_map["rain-schedule"]["levels"] if int(l["level"]) == 1),
+                    None,
+                )
+                if base_uq_lvl and "h2_uptake_umol_m2" in base_uq_lvl.get("outputs", {}):
+                    uncertainty["baseline_h2_ST"] = base_uq_lvl["outputs"]["h2_uptake_umol_m2"].get("ST", {})
 
             reproduce_block = {
                 "files": [
@@ -550,7 +569,7 @@ def build_questions(
 
             q_doc = {
                 "version": "question-1",
-                "twin_version": "0.8.2",
+                "twin_version": "0.8.3",
                 "slug": slug,
                 "theme": q.theme,
                 "title_plain": title_plain,
@@ -603,9 +622,22 @@ def build_questions(
                 }
             )
 
+        run_rec_path = uq_path / "run_record.json"
+        if run_rec_path.exists():
+            run_rec = json.loads(run_rec_path.read_text(encoding="utf-8"))
+            evals_count = int(run_rec.get("full_run", {}).get("evaluations", total_evals_n1024))
+        else:
+            evals_count = total_evals_n1024
+
         index_doc = {
             "version": "question-1",
-            "twin_version": "0.8.2",
+            "twin_version": "0.8.3",
+            "summary_counts": {
+                "questions": len(index_entries),
+                "levels": total_levels,
+                "outputs": total_outputs,
+                "evaluations": evals_count,
+            },
             "questions": index_entries,
         }
         index_file = out_path / "index.json"

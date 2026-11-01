@@ -328,6 +328,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   1.04535,
@@ -378,6 +381,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -396,6 +402,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -566,6 +575,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00741021
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.992933,
@@ -616,6 +628,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -634,6 +649,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -652,6 +670,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -670,6 +691,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -840,6 +864,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00671589
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.961583,
@@ -890,6 +917,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -1060,6 +1090,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.000754962
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.998526,
@@ -1422,6 +1455,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.945672,
@@ -1624,6 +1660,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0158925
               },
+              "frac_neg": 0.000488281,
+              "frac_pos": 0.999512,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.996993,
@@ -1826,6 +1865,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0226742
               },
+              "frac_neg": 0.000488281,
+              "frac_pos": 0.999512,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   1.01199,
@@ -2028,6 +2070,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0112345
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   1.00882,
@@ -2078,6 +2123,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -2248,6 +2296,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00167853
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   1.00035,
@@ -2450,6 +2501,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00393178
               },
+              "frac_neg": 0.000488281,
+              "frac_pos": 0.999512,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.990391,
@@ -2652,6 +2706,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0448041
               },
+              "frac_neg": 0.000488281,
+              "frac_pos": 0.999512,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   1.02645,
@@ -2854,6 +2911,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0156676
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.965833,
@@ -2904,6 +2964,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -3074,6 +3137,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.000817279
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.99504,
@@ -3436,6 +3502,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   -0.0340488,
@@ -3638,6 +3707,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00394963
               },
+              "frac_neg": 0.0224609,
+              "frac_pos": 0.977539,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.983315,
@@ -3840,6 +3912,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0128527
               },
+              "frac_neg": 0.0224609,
+              "frac_pos": 0.977539,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   1.01824,
@@ -4042,6 +4117,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00493806
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   1.02089,
@@ -4092,6 +4170,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -4262,6 +4343,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.000572019
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.99654,
@@ -4464,6 +4548,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0102422
               },
+              "frac_neg": 0.00878906,
+              "frac_pos": 0.991211,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.983528,
@@ -4666,6 +4753,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0203761
               },
+              "frac_neg": 0.00878906,
+              "frac_pos": 0.991211,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   1.01495,
@@ -4868,6 +4958,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.000833055
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.977777,
@@ -4918,6 +5011,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -5088,6 +5184,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.000533448
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.992926,
@@ -5457,6 +5556,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.942087,
@@ -5507,6 +5609,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -5525,6 +5630,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -5695,6 +5803,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00283415
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   1.01671,
@@ -5745,6 +5856,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -5763,6 +5877,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -5781,6 +5898,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -5799,6 +5919,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -5969,6 +6092,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0130161
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.952603,
@@ -6019,6 +6145,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -6189,6 +6318,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.000480491
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.996435,
@@ -6551,6 +6683,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.948861,
@@ -6753,6 +6888,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00243534
               },
+              "frac_neg": 1.0,
+              "frac_pos": 0.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.793295,
@@ -6955,6 +7093,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0124014
               },
+              "frac_neg": 1.0,
+              "frac_pos": 0.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.896163,
@@ -7157,6 +7298,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00495004
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.979167,
@@ -7207,6 +7351,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -7225,6 +7372,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -7395,6 +7545,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00425119
               },
+              "frac_neg": 1.0,
+              "frac_pos": 0.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.773448,
@@ -7597,6 +7750,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0152206
               },
+              "frac_neg": 1.0,
+              "frac_pos": 0.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   1.04345,
@@ -7799,6 +7955,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0059286
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   1.01895,
@@ -7849,6 +8008,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -8019,6 +8181,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00188714
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.997911,
@@ -8381,6 +8546,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.981253,
@@ -8583,6 +8751,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00213233
               },
+              "frac_neg": 1.0,
+              "frac_pos": 0.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.81058,
@@ -8785,6 +8956,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00912814
               },
+              "frac_neg": 1.0,
+              "frac_pos": 0.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.94947,
@@ -8987,6 +9161,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0161362
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   1.02373,
@@ -9037,6 +9214,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -9055,6 +9235,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -9225,6 +9408,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00324737
               },
+              "frac_neg": 1.0,
+              "frac_pos": 0.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.798039,
@@ -9427,6 +9613,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00210053
               },
+              "frac_neg": 1.0,
+              "frac_pos": 0.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.992997,
@@ -9629,6 +9818,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0086778
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   1.06513,
@@ -9679,6 +9871,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -9849,6 +10044,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00152758
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   1.01011,
@@ -10218,6 +10416,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.991078,
@@ -10268,6 +10469,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -10286,6 +10490,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -10456,6 +10663,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00593476
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   1.00143,
@@ -10506,6 +10716,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -10524,6 +10737,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -10542,6 +10758,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -10560,6 +10779,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -10730,6 +10952,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0168362
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.951164,
@@ -10780,6 +11005,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -10950,6 +11178,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00154746
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   1.00258,
@@ -11312,6 +11543,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.958563,
@@ -11514,6 +11748,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0123596
               },
+              "frac_neg": 0.0244141,
+              "frac_pos": 0.975586,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.933526,
@@ -11716,6 +11953,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00359848
               },
+              "frac_neg": 0.0244141,
+              "frac_pos": 0.975586,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.943941,
@@ -11918,6 +12158,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00313232
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.986083,
@@ -11968,6 +12211,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -12138,6 +12384,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.000259277
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   1.00053,
@@ -12340,6 +12589,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0210872
               },
+              "frac_neg": 0.0273438,
+              "frac_pos": 0.972656,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.924882,
@@ -12542,6 +12794,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0127966
               },
+              "frac_neg": 0.0273438,
+              "frac_pos": 0.972656,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.946599,
@@ -12744,6 +12999,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00988082
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   1.04601,
@@ -12794,6 +13052,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -12964,6 +13225,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.000834871
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   1.00167,
@@ -13326,6 +13590,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.661763,
@@ -13528,6 +13795,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00766406
               },
+              "frac_neg": 0.109863,
+              "frac_pos": 0.890137,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.939309,
@@ -13730,6 +14000,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0182552
               },
+              "frac_neg": 0.109863,
+              "frac_pos": 0.890137,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.94458,
@@ -13932,6 +14205,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00391769
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   1.01436,
@@ -13982,6 +14258,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -14152,6 +14431,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.000523805
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.998017,
@@ -14354,6 +14636,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00945091
               },
+              "frac_neg": 0.0986328,
+              "frac_pos": 0.901367,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.910201,
@@ -14556,6 +14841,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0120349
               },
+              "frac_neg": 0.0986328,
+              "frac_pos": 0.901367,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   1.00162,
@@ -14758,6 +15046,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00858439
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   1.01562,
@@ -14808,6 +15099,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "group_S1": null,
               "group_ST": null,
               "median": 0.0,
@@ -14978,6 +15272,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0015676
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "group_S1": {
                 "modeller_assumption": [
                   0.989975,

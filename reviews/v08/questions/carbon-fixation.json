@@ -171,7 +171,7 @@
     "digests": {
       "constants_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578",
       "parameter_ranges_sha256": "f6b9fe6f95d88360375a81171deae746e17c213600077bcc49fa8e05b47ad027",
-      "uq_sha256": "cb67e201a6bcc61588a3b5f2d98b9eb396697c3d2f1b56f0e27a210feef29337"
+      "uq_sha256": "e0f9e0658b91158414c24d6c06d272025211cdc9c72a2bb1285dbf0918dc848e"
     },
     "files": [
       "src/eq_biodt/v03/questions.py",
@@ -197,6 +197,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Upper bound on carbon fixed per year",
               "label_science": "Stoichiometric upper bound on autotrophic C fixation (annualised)",
               "median": 0.0,
@@ -218,6 +221,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Upper bound on carbon fixed over 14 days",
               "label_science": "14-day stoichiometric upper bound on autotrophic C fixation",
               "median": 0.0,
@@ -239,6 +245,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Upper bound on carbon dioxide fixed over 14 days",
               "label_science": "14-day stoichiometric upper bound on CO\u2082 fixation",
               "median": 0.0,
@@ -492,6 +501,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.000848858
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Upper bound on carbon fixed per year",
               "label_science": "Stoichiometric upper bound on autotrophic C fixation (annualised)",
               "median": 0.0499342,
@@ -514,6 +526,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.000848858
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Upper bound on carbon fixed over 14 days",
               "label_science": "14-day stoichiometric upper bound on autotrophic C fixation",
               "median": 1913.97,
@@ -536,6 +551,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.000835743
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Upper bound on carbon dioxide fixed over 14 days",
               "label_science": "14-day stoichiometric upper bound on CO\u2082 fixation",
               "median": 0.000159331,
@@ -795,6 +813,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Upper bound on carbon fixed per year",
               "label_science": "Stoichiometric upper bound on autotrophic C fixation (annualised)",
               "median": 0.0,
@@ -816,6 +837,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Upper bound on carbon fixed over 14 days",
               "label_science": "14-day stoichiometric upper bound on autotrophic C fixation",
               "median": 0.0,
@@ -837,6 +861,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.0
               },
+              "frac_neg": 0.0,
+              "frac_pos": 0.0,
+              "frac_zero": 1.0,
               "label_plain": "Upper bound on carbon dioxide fixed over 14 days",
               "label_science": "14-day stoichiometric upper bound on CO\u2082 fixation",
               "median": 0.0,
@@ -1090,6 +1117,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00501838
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Upper bound on carbon fixed per year",
               "label_science": "Stoichiometric upper bound on autotrophic C fixation (annualised)",
               "median": 0.068633,
@@ -1112,6 +1142,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00501838
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Upper bound on carbon fixed over 14 days",
               "label_science": "14-day stoichiometric upper bound on autotrophic C fixation",
               "median": 2630.7,
@@ -1134,6 +1167,9 @@
                 "flagged": false,
                 "half_n_shift_frac": 0.00515281
               },
+              "frac_neg": 0.0,
+              "frac_pos": 1.0,
+              "frac_zero": 0.0,
               "label_plain": "Upper bound on carbon dioxide fixed over 14 days",
               "label_science": "14-day stoichiometric upper bound on CO\u2082 fixation",
               "median": 0.000218957,
@@ -1383,7 +1419,7 @@
   "theme": "microbes",
   "title_plain": "How much carbon can the hydrogen eaters fix?",
   "title_science": "Upper bound on CO\u2082 fixation by H\u2082-oxidising autotrophs",
-  "twin_version": "0.8.2",
+  "twin_version": "0.8.3",
   "uncertainty": {
     "S1": {
       "activation_shape": [
@@ -1545,6 +1581,9 @@
       "half_n_shift_frac": 0.000848858
     },
     "d": 15,
+    "frac_neg": 0.0,
+    "frac_pos": 1.0,
+    "frac_zero": 0.0,
     "group_S1": {
       "modeller_assumption": [
         0.938489,
