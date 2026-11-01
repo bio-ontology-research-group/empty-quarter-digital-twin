@@ -19,6 +19,25 @@ from eq_biodt.v03.uq_inputs import parameter_ranges_sha256  # noqa: E402
 DEFAULT_OUT_DIR = ROOT / "reviews" / "v08" / "uq"
 
 
+RELATIVE = (("h2_uptake_umol_m2", "h2_uptake_contrast_umol_m2", "h2_uptake_change_pct"),
+            ("co_uptake_umol_m2", "co_uptake_contrast_umol_m2", "co_uptake_change_pct"))
+
+
+def _add_relative_changes(rows: list[dict]) -> None:
+    """Per-sample percentage change vs the baseline arm of the same draw: 100 * contrast / (uptake - contrast).
+    Paired per row, so the rate-constant scale largely cancels. None when either value is missing or the baseline is 0."""
+    for r in rows:
+        for up, con, out in RELATIVE:
+            if up in r or con in r:
+                u, c = r.get(up), r.get(con)
+                if u is None or c is None:
+                    if con in r:
+                        r[out] = None
+                    continue
+                base = u - c
+                r[out] = 100.0 * c / base if base > 0 else (0.0 if c == 0 else None)
+
+
 def _gather_docs(raw_dir: Path | str, boot: int = 500) -> dict[str, dict]:
     raw_path = Path(raw_dir)
     files = sorted(raw_path.glob("*.json"))
@@ -59,6 +78,7 @@ def _gather_docs(raw_dir: Path | str, boot: int = 500) -> dict[str, dict]:
                 f"Incomplete rows for {slug}|{series_id}|{level_idx}: got {pos}, expected {expected_total}"
             )
 
+        _add_relative_changes(full_outputs)
         seed = task_seed(f"{slug}|{series_id}|{level_idx}")
         all_keys = [k for k in full_outputs[0] if not k.startswith("__")] if full_outputs else list(q.headline)
         headline = list(dict.fromkeys([*q.headline, *all_keys]))
@@ -109,9 +129,25 @@ def _gather_docs(raw_dir: Path | str, boot: int = 500) -> dict[str, dict]:
     return docs
 
 
+SIG_DIGITS = 6
+
+
+def _round_floats(x):
+    """Round every float to SIG_DIGITS significant digits. Raw outputs differ between machines in the last bits
+    (different libm; measured max relative difference 2e-11 between ws and unimatrix), so published summaries are
+    rounded to make them identical across machines."""
+    if isinstance(x, float):
+        return float(f"{x:.{SIG_DIGITS}g}")
+    if isinstance(x, dict):
+        return {k: _round_floats(v) for k, v in x.items()}
+    if isinstance(x, list):
+        return [_round_floats(v) for v in x]
+    return x
+
+
 def gather_bytes(raw_dir: Path | str, boot: int = 500) -> dict[str, bytes]:
-    """Return deterministic UTF-8 JSON bytes per question slug from `raw_dir`."""
-    docs = _gather_docs(raw_dir, boot=boot)
+    """Return deterministic UTF-8 JSON bytes per question slug from `raw_dir` (floats at SIG_DIGITS significant digits)."""
+    docs = _round_floats(_gather_docs(raw_dir, boot=boot))
     return {
         slug: (json.dumps(doc, indent=2, sort_keys=True, allow_nan=False) + "\n").encode("utf-8")
         for slug, doc in docs.items()

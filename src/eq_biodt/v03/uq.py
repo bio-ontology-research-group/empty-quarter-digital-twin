@@ -244,7 +244,9 @@ def analyse(
                 shift = float(max(abs(q05_h - q05), abs(q95_h - q95)) / span) if span > 1e-15 else 0.0
             else:
                 shift = 0.0
-            convergence = {"half_n_shift_frac": shift, "flagged": bool(shift > 0.05)}
+            discrete = bool(np.all(admitted_full == np.round(admitted_full)))
+            # integer-valued outputs (e.g. active days) have quantiles that jump by whole units; the 5 % rule does not apply
+            convergence = {"half_n_shift_frac": shift, "discrete": discrete, "flagged": bool(shift > 0.05 and not discrete)}
         else:
             median = q05 = q25 = q75 = q95 = None
             convergence = {"half_n_shift_frac": 0.0, "flagged": False}
