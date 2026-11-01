@@ -303,6 +303,9 @@ def test_jargon_regex_catches_reviewer_terms():
     )
     for term in forbidden:
         assert JARGON.search(term), f"JARGON regex failed to match {term!r}"
+    assert not JARGON.search("10 cm"), "JARGON regex should allow everyday unit 'cm'"
+    assert not JARGON.search("cm"), "JARGON regex should allow everyday unit 'cm'"
+    assert JARGON.search("10 cm³"), "JARGON regex should still catch scientific 'cm³'"
 
 
 def test_plain_text_rules():
@@ -361,6 +364,17 @@ def test_hedging_matches_headline_interval():
         assert q05 is not None and q95 is not None, q["slug"]
         ans = q["answer_plain"].lower()
         hdl = q["headline_plain"].lower()
+
+        # Rule 2: Hedge phrases apply ONLY to change outputs, never to levels/bounds/yields
+        if q["slug"] in {"missing-co-genes", "carbon-fixation", "alfalfa-bacterium"}:
+            assert "goes up in every case we tried" not in ans, q["slug"]
+            assert "goes down in every case we tried" not in ans, q["slug"]
+            assert "may go up or down" not in ans, q["slug"]
+            assert "goes up in every case we tried" not in hdl, q["slug"]
+            assert "goes down in every case we tried" not in hdl, q["slug"]
+            assert "may go up or down" not in hdl, q["slug"]
+            continue
+
         if q05 < 0 < q95:
             assert "may go up or down" in ans, f"{q['slug']}: expected 'may go up or down' for [{q05}, {q95}]"
             assert "goes up in every case we tried" not in ans, q["slug"]
@@ -431,7 +445,9 @@ def test_headline_percentage_and_science_rules():
             assert "% of the width between n/2 and n" in sci_low, slug
 
     rp = load("rain-pattern")
-    assert "-63 %" in rp["answer_plain"] and "-100 %" in rp["answer_plain"]
+    assert "lowers" in rp["answer_plain"]
+    assert "63 %" in rp["answer_plain"] and "-63 %" not in rp["answer_plain"]
+    assert "by 51 to 100 %" in rp["answer_plain"] and "-100 %" not in rp["answer_plain"]
 
     mco = load("missing-co-genes")
     assert "no usable read-mapping weights" in mco["answer_science"].lower()
@@ -441,8 +457,9 @@ def test_headline_percentage_and_science_rules():
 
 def test_plain_matches_science():
     for q in load_all():
-        assert plain_number(q) == round_plain(science_central(q)), q["slug"]
-        assert round_plain(science_central(q)) in q["answer_plain"], q["slug"]
+        expected = round_plain(abs(science_central(q)))
+        assert plain_number(q) == expected, q["slug"]
+        assert expected in q["answer_plain"], q["slug"]
 
 
 def test_refused_level_rendering_fields():
@@ -458,3 +475,85 @@ def test_refused_level_rendering_fields():
 def test_committed_questions_on_disk():
     assert len(load_index(COMMITTED_QUESTIONS_DIR)) == 14
     assert all(validate(q) for q in load_all(COMMITTED_QUESTIONS_DIR))
+
+
+def test_direction_words_instead_of_signed_changes():
+    import re
+
+    for q in load_all():
+        slug = q["slug"]
+        ans = q["answer_plain"]
+        hdl = q["headline_plain"]
+        if slug in {"rain-pattern", "drip-or-flood", "salty-water", "biochar"}:
+            assert "lowers" in ans, f"{slug}: expected 'lowers' in answer_plain"
+            assert "lowers" in hdl, f"{slug}: expected 'lowers' in headline_plain"
+            assert not re.search(r"changes\s+.*by\s+-\d+", ans), f"{slug}: has signed changes in answer_plain"
+            assert not re.search(r"changes\s+.*by\s+-\d+", hdl), f"{slug}: has signed changes in headline_plain"
+        elif slug == "compaction":
+            assert "lower" in ans, f"{slug}: expected 'lower' in answer_plain"
+            assert "lower" in hdl, f"{slug}: expected 'lower' in headline_plain"
+            assert not re.search(r"changes?\s+.*by\s+-\d+", ans), f"{slug}: has signed changes in answer_plain"
+        elif slug in {"cloud-seeding", "solar-park", "mulch-shade", "hotter", "adding-microbes", "air-hydrogen"}:
+            assert "raises" in ans, f"{slug}: expected 'raises' in answer_plain"
+            assert "raises" in hdl, f"{slug}: expected 'raises' in headline_plain"
+            assert not re.search(r"changes\s+.*by\s+\d+", ans), f"{slug}: has signed changes in answer_plain"
+
+
+def test_range_sign_and_magnitude_rules():
+    import re
+
+    # Ranges keep signs only when spanning zero ("from X % lower to Y % higher")
+    span_zero_slugs = {"compaction", "biochar", "hotter", "drip-or-flood", "salty-water"}
+    for slug in span_zero_slugs:
+        ans = load(slug)["answer_plain"]
+        assert re.search(r"from\s+\d+(?:\.\d+)?\s*%\s*lower\s+to\s+\d+(?:\.\d+)?\s*%\s*higher", ans), (
+            f"{slug}: expected 'from X % lower to Y % higher' in answer_plain"
+        )
+
+    # One-sided ranges written with magnitudes ("by X to Y %")
+    one_sided_slugs = {"rain-pattern", "cloud-seeding", "solar-park", "mulch-shade"}
+    for slug in one_sided_slugs:
+        ans = load(slug)["answer_plain"]
+        assert re.search(r"by\s+\d+(?:\.\d+)?\s+to\s+\d+(?:\.\d+)?\s*%", ans), (
+            f"{slug}: expected 'by X to Y %' magnitude range in answer_plain"
+        )
+        assert not re.search(r"range\s+-\d+", ans), f"{slug}: negative signed range should not appear"
+
+
+def test_degenerate_interval_format():
+    ah = load("air-hydrogen")
+    assert "exactly 100 % in every case we tried" in ah["answer_plain"]
+    assert "range 100 to 100 %" not in ah["answer_plain"]
+
+
+def test_adding_microbes_leads_with_switch():
+    am = load("adding-microbes")
+    ans = am["answer_plain"]
+    assert ans.startswith(
+        "In sample 51PRr3, which has no carbon-monoxide eaters, adding a carrier at one percent switches "
+        "uptake from none to some"
+    )
+    assert "about 144 over two weeks, range 21 to 507" in ans
+    assert "adding a microbe without the genes leaves it at none" in ans
+    assert (
+        "where carbon-monoxide eaters are already present, adding more raises uptake only slightly "
+        "(0.5 % at one percent, 2.7 % at five percent)" in ans
+    )
+
+
+def test_no_hedge_on_levels_or_bounds():
+    mco = load("missing-co-genes")
+    cf = load("carbon-fixation")
+    ab = load("alfalfa-bacterium")
+
+    for q in (mco, cf, ab):
+        ans = q["answer_plain"].lower()
+        hdl = q["headline_plain"].lower()
+        assert "goes up in every case we tried" not in ans, q["slug"]
+        assert "goes down in every case we tried" not in ans, q["slug"]
+        assert "may go up or down" not in ans, q["slug"]
+        assert "goes up in every case we tried" not in hdl, q["slug"]
+        assert "goes down in every case we tried" not in hdl, q["slug"]
+        assert "may go up or down" not in hdl, q["slug"]
+
+    assert "without the bacterium" in ab["answer_plain"].lower()

@@ -25,7 +25,7 @@ JARGON = re.compile(
     r"|\b(?i:shares?)\b"
     r"|(?i:fraction of unsalted yield)"
     r"|\b[A-Za-z0-9]+_[A-Za-z0-9_]+\b"
-    r"|\b(?:umol|nmol|pmol|mmol|mol|ug|mg|ng|uL|mL|MPa|kPa|Pa|cm|km|nm|m3|cm3|yr)\b"
+    r"|\b(?:umol|nmol|pmol|mmol|mol|ug|mg|ng|uL|mL|MPa|kPa|Pa|km|nm|m3|cm3|yr)\b"
     r"|µmol|µg|µL|mol/L|g/L|g/g|m³|cm³|cm⁻³|m⁻²|s⁻¹|h⁻¹|min⁻¹|yr⁻¹|°[NESWF]"
 )
 
@@ -417,6 +417,10 @@ def science_central(q: dict[str, Any]) -> float:
 
 def plain_number(q: dict[str, Any]) -> str:
     """Extract the core rounded headline number from `q['answer_plain']`."""
+    if q.get("slug") == "adding-microbes":
+        m = re.search(r"raises uptake only slightly \((\d+(?:\.\d+)?)\s*%", q["answer_plain"])
+        if m:
+            return m.group(1)
     m = re.search(
         r"(?<![A-Za-z0-9_])-?\d+(?:,\d{3})*(?:\.\d+)?(?![A-Za-z0-9_])",
         q["answer_plain"],
@@ -450,6 +454,24 @@ def plain_level_label(slug: str, series_id: str, spec_label: str, x: float | str
     if slug == "missing-co-genes":
         return f"sample {x}"
     return spec_label
+
+
+def format_change_pct_interval(q05: float | None, q95: float | None) -> str:
+    """Format a percentage-change interval following direction/sign rules."""
+    if q05 is None or q95 is None:
+        return "range not available in %"
+    lo = float(q05)
+    hi = float(q95)
+    r_lo = round_plain(lo)
+    r_hi = round_plain(hi)
+    if r_lo == r_hi:
+        val_str = round_plain(abs(lo))
+        return f"exactly {val_str} % in every case we tried"
+    if lo < 0.0 < hi:
+        return f"from {round_plain(abs(lo))} % lower to {round_plain(abs(hi))} % higher"
+    mag_min = min(abs(lo), abs(hi))
+    mag_max = max(abs(lo), abs(hi))
+    return f"by {round_plain(mag_min)} to {round_plain(mag_max)} %"
 
 
 def _format_interval_plain(q05: float | None, q95: float | None, unit_plain: str) -> str:
@@ -583,8 +605,9 @@ def render_question_texts(
     """Render plain and scientific answer, headline, and limits strings for `slug`."""
     s_id, l_idx, out_key = HEADLINE_SPEC[slug]
     is_rel_yield = out_key.startswith("relative_yield_")
+    is_change = out_key in {"h2_uptake_change_pct", "co_uptake_change_pct"}
     display_central = 100.0 * central_val if (is_rel_yield and abs(central_val) <= 2.0) else central_val
-    core = round_plain(display_central)
+    core = round_plain(abs(display_central) if is_change else display_central)
 
     q05 = outcome_uq.get("q05")
     q25 = outcome_uq.get("q25")
@@ -597,7 +620,9 @@ def render_question_texts(
     meta = OUTCOME_META[out_key]
     unit_sci = meta["unit"]
     unit_plain = meta["unit_plain"]
-    if is_rel_yield:
+    if is_change:
+        rng_plain = format_change_pct_interval(q05, q95)
+    elif is_rel_yield:
         q05_disp = 100.0 * float(q05) if q05 is not None else None
         q95_disp = 100.0 * float(q95) if q95 is not None else None
         rng_plain = _format_interval_plain(q05_disp, q95_disp, "%")
@@ -609,13 +634,13 @@ def render_question_texts(
 
     if slug == "rain-pattern":
         headline_plain = (
-            f"Splitting one heavy rain into four smaller showers changes hydrogen uptake over two weeks "
-            f"by {core} %, and daily drizzle changes it by -100 %, so uptake {hedge}."
+            f"Splitting one heavy rain into four smaller showers lowers hydrogen uptake over two weeks "
+            f"by {core} %, and daily drizzle lowers it by 100 %, so uptake {hedge}."
         )
         answer_plain = (
-            f"Splitting one heavy downpour into four smaller showers changes hydrogen uptake over two weeks "
-            f"by {core} % ({rng_plain}), and splitting it into daily drizzle changes uptake by -100 % "
-            f"(range -100 to -51 %), so uptake {hedge}. A single soaking pushes water deeper into the sand "
+            f"Splitting one heavy downpour into four smaller showers lowers hydrogen uptake over two weeks "
+            f"by {core} % ({rng_plain}), and splitting it into daily drizzle lowers uptake by 100 % "
+            f"(by 51 to 100 %), so uptake {hedge}. A single soaking pushes water deeper into the sand "
             f"so microbes stay active for more days before surface evaporation dries the top layer."
         )
         limits_extra_plain = (
@@ -628,15 +653,15 @@ def render_question_texts(
         )
     elif slug == "drip-or-flood":
         headline_plain = (
-            f"Watering once every ten days changes hydrogen uptake over two weeks by {core} % compared "
-            f"with a single flood, versus -38 % for daily drip, and the change {hedge}."
+            f"Watering once every ten days lowers hydrogen uptake over two weeks by {core} % compared "
+            f"with a single flood, versus 38 % lower for daily drip, and the change {hedge}."
         )
         answer_plain = (
-            f"Watering once every ten days changes hydrogen uptake over two weeks by {core} % compared "
-            f"with a single rain ({rng_plain}), versus -37 % when watering every three days "
-            f"(range -68 to 129 %) and -38 % for daily drip (range -73 to 136 %), so the change {hedge} "
-            f"across uncertain model numbers. Less frequent, deeper watering loses a smaller fraction of "
-            f"water to daily surface evaporation than tiny daily doses."
+            f"Watering once every ten days lowers hydrogen uptake over two weeks by {core} % compared "
+            f"with a single rain ({rng_plain}), versus 37 % lower when watering every three days "
+            f"(from 68 % lower to 129 % higher) and 38 % lower for daily drip (from 73 % lower to 136 % higher), "
+            f"so the change {hedge} across uncertain model numbers. Less frequent, deeper watering loses a "
+            f"smaller fraction of water to daily surface evaporation than tiny daily doses."
         )
         limits_extra_plain = (
             "Pipe layout, root uptake and uneven wetting around drip emitters are not represented."
@@ -647,11 +672,11 @@ def render_question_texts(
         )
     elif slug == "cloud-seeding":
         headline_plain = (
-            f"Adding ten percent more rain on rainy days changes hydrogen uptake over two weeks by {core} %, "
+            f"Adding ten percent more rain on rainy days raises hydrogen uptake over two weeks by {core} %, "
             f"and uptake {hedge}."
         )
         answer_plain = (
-            f"Adding a ten percent rain boost on rainy days changes hydrogen uptake over two weeks by {core} % "
+            f"Adding a ten percent rain boost on rainy days raises hydrogen uptake over two weeks by {core} % "
             f"({rng_plain}), so uptake {hedge}. Extra water on wet days pushes moisture deeper into the sand "
             f"and keeps microbes active for longer after the rain."
         )
@@ -665,11 +690,11 @@ def render_question_texts(
         )
     elif slug == "salty-water":
         headline_plain = (
-            f"Daily watering with salty water changes hydrogen uptake by {core} % at 8 dS/m, where the "
+            f"Daily watering with salty water lowers hydrogen uptake by {core} % at 8 dS/m, where the "
             f"change {hedge}; at higher salt levels, the model cannot tell for such salty water."
         )
         answer_plain = (
-            f"Daily watering with brackish water changes hydrogen uptake over two weeks by {core} % at 8 dS/m "
+            f"Daily watering with brackish water lowers hydrogen uptake over two weeks by {core} % at 8 dS/m "
             f"({rng_plain}), so uptake {hedge} depending on how strongly daily water additions offset salt "
             f"build-up, while leaving alfalfa at about 89 % of normal yield (range 83 to 93 %); at higher salt "
             f"levels, the model cannot tell for such salty water because pore-water salt passes the dilute limit."
@@ -690,8 +715,8 @@ def render_question_texts(
         answer_plain = (
             f"Coating alfalfa seeds with the desert bacterium gives about {core} % of normal yield, {rng_plain}, "
             f"in salty irrigation water at 7.81 dS/m, compared with about 80 % of normal yield (range 78 to 81 %) "
-            f"without the bacterium, so yield with the bacterium {hedge}; at extreme salt levels in the "
-            f"sand-physics branch, the model cannot tell for such salty water."
+            f"without the bacterium; at extreme salt levels in the sand-physics branch, the model cannot tell for "
+            f"such salty water."
         )
         limits_extra_plain = (
             "The crop boost comes from field trials in one desert farm and assumes the added bacterium "
@@ -703,14 +728,14 @@ def render_question_texts(
         )
     elif slug == "hotter":
         headline_plain = (
-            f"Four degrees of climate warming changes hydrogen uptake over two weeks by {core} %, "
+            f"Four degrees of climate warming raises hydrogen uptake over two weeks by {core} %, "
             f"and uptake {hedge} across uncertain model numbers."
         )
         answer_plain = (
-            f"Four degrees of climate warming changes hydrogen uptake over two weeks by {core} % when rainfall "
+            f"Four degrees of climate warming raises hydrogen uptake over two weeks by {core} % when rainfall "
             f"stays the same ({rng_plain}), so uptake {hedge} depending on whether faster enzyme activity "
             f"outweighs faster drying of the sand; warming the sand alone by ten degrees without extra drying "
-            f"changes uptake by 69 % (range 3.8 to 78 %)."
+            f"raises uptake by 69 % (by 3.8 to 78 %)."
         )
         limits_extra_plain = (
             "Heat stress death at extreme afternoon surface temperatures is not included in the simple "
@@ -722,15 +747,15 @@ def render_question_texts(
         )
     elif slug == "mulch-shade":
         headline_plain = (
-            f"Full mulch cover changes hydrogen uptake over two weeks by {core} % by keeping the sand damp "
+            f"Full mulch cover raises hydrogen uptake over two weeks by {core} % by keeping the sand damp "
             f"longer, and uptake {hedge}."
         )
         answer_plain = (
-            f"Full mulch cover changes hydrogen uptake over two weeks by {core} % ({rng_plain}) by slowing "
-            f"evaporation, so uptake with mulch alone {hedge}, whereas full shade alone changes uptake by "
-            f"-25 % (range -28 to -1.7 %) and combining mulch with shade changes uptake by 14 % "
-            f"(range -6.2 to 70 %). Mulch keeps water in the sand without cooling the microbes, whereas shade "
-            f"cools the sand and slows enzyme speed."
+            f"Full mulch cover raises hydrogen uptake over two weeks by {core} % ({rng_plain}) by slowing "
+            f"evaporation, so uptake with mulch alone {hedge}, whereas full shade alone lowers uptake by "
+            f"25 % (by 1.7 to 28 %) and combining mulch with shade raises uptake by 14 % "
+            f"(from 6.2 % lower to 70 % higher). Mulch keeps water in the sand without cooling the microbes, "
+            f"whereas shade cools the sand and slows enzyme speed."
         )
         limits_extra_plain = (
             "Organic mulch breakdown and extra carbon food for soil microbes are not included."
@@ -741,11 +766,11 @@ def render_question_texts(
         )
     elif slug == "solar-park":
         headline_plain = (
-            f"Full solar-panel cover changes hydrogen uptake over two weeks by {core} %, "
+            f"Full solar-panel cover raises hydrogen uptake over two weeks by {core} %, "
             f"and uptake {hedge}."
         )
         answer_plain = (
-            f"Full solar-panel cover changes hydrogen uptake over two weeks by {core} % ({rng_plain}), "
+            f"Full solar-panel cover raises hydrogen uptake over two weeks by {core} % ({rng_plain}), "
             f"so uptake {hedge} because reduced evaporation under the panels and water from panel washing "
             f"keep the sand moist longer than panel shade slows microbial enzymes."
         )
@@ -758,11 +783,11 @@ def render_question_texts(
         )
     elif slug == "compaction":
         headline_plain = (
-            f"Fifty vehicle passes change hydrogen uptake over two weeks by {core} %, "
+            f"Fifty vehicle passes lower hydrogen uptake over two weeks by {core} %, "
             f"and the change {hedge} across the uncertainty range."
         )
         answer_plain = (
-            f"Fifty vehicle passes change hydrogen uptake over two weeks by {core} % ({rng_plain}), "
+            f"Fifty vehicle passes lower hydrogen uptake over two weeks by {core} % ({rng_plain}), "
             f"so the change {hedge} because squeezing pore space slows gas movement through air spaces "
             f"while changing how tightly the sand holds water."
         )
@@ -775,11 +800,11 @@ def render_question_texts(
         )
     elif slug == "biochar":
         headline_plain = (
-            f"Adding five percent biochar by weight changes hydrogen uptake over two weeks by {core} %, "
+            f"Adding five percent biochar by weight lowers hydrogen uptake over two weeks by {core} %, "
             f"and the change {hedge} across uncertain model numbers."
         )
         answer_plain = (
-            f"Adding five percent biochar by weight changes hydrogen uptake over two weeks by {core} % "
+            f"Adding five percent biochar by weight lowers hydrogen uptake over two weeks by {core} % "
             f"({rng_plain}), so the change {hedge} across uncertain model numbers. Increasing total pore space "
             f"without adding extra water lowers the fraction of pores filled with water after a single rain "
             f"while opening more air space for gas movement."
@@ -800,8 +825,8 @@ def render_question_texts(
         answer_plain = (
             f"Where the soil community lacks the carbon-monoxide enzyme genes there is no carbon-monoxide "
             f"uptake at all (none), versus some uptake where the genes are present (about {core} over two "
-            f"weeks, range {round_plain(q05)} to {round_plain(q95)}, so uptake {hedge} when the genes are "
-            f"present); for one sample the records are incomplete, so the twin gives no answer."
+            f"weeks, range {round_plain(q05)} to {round_plain(q95)}); for one sample the records are "
+            f"incomplete, so the twin gives no answer."
         )
         limits_extra_plain = (
             "A missing gene in recovered DNA means the twin sets that pathway to zero, though very rare "
@@ -813,17 +838,15 @@ def render_question_texts(
         )
     elif slug == "adding-microbes":
         headline_plain = (
-            f"Adding carbon-monoxide-eating microbes at one percent of the community changes carbon monoxide "
+            f"Adding carbon-monoxide-eating microbes at one percent of the community raises carbon monoxide "
             f"uptake by {core} % where those microbes are already present, and switches uptake from none to "
             f"some where they were missing."
         )
         answer_plain = (
-            f"Adding carbon-monoxide-eating microbes at one percent of the soil community changes carbon "
-            f"monoxide uptake over two weeks by {core} % ({rng_plain}), and adding five percent changes "
-            f"uptake by 2.7 % (range 2.7 to 3.1 %), where carbon-monoxide eaters are already present, so "
-            f"uptake {hedge}. In a soil community that starts with no carbon-monoxide eaters at all, adding "
-            f"a carrier strain switches uptake from none to some, whereas adding a microbe without the "
-            f"carbon-monoxide genes leaves uptake at none."
+            f"In sample 51PRr3, which has no carbon-monoxide eaters, adding a carrier at one percent switches "
+            f"uptake from none to some (about 144 over two weeks, range 21 to 507), and adding a microbe without "
+            f"the genes leaves it at none; then, where carbon-monoxide eaters are already present, adding more "
+            f"raises uptake only slightly ({core} % at one percent, 2.7 % at five percent), so uptake {hedge}."
         )
         limits_extra_plain = (
             "The scenario assumes the added microbes survive and work immediately in dry desert sand without "
@@ -835,11 +858,11 @@ def render_question_texts(
         )
     elif slug == "air-hydrogen":
         headline_plain = (
-            f"Doubling hydrogen in the air increases soil hydrogen uptake over two weeks by {core} %, "
+            f"Doubling hydrogen in the air raises soil hydrogen uptake over two weeks by {core} %, "
             f"and uptake {hedge}."
         )
         answer_plain = (
-            f"Doubling hydrogen in the air increases soil hydrogen uptake over two weeks by {core} % "
+            f"Doubling hydrogen in the air raises soil hydrogen uptake over two weeks by {core} % "
             f"({rng_plain}), and tenfold air hydrogen increases uptake by 900 %, so uptake {hedge}. Because "
             f"soil uptake in the twin is directly proportional to the hydrogen level in the air, percentage "
             f"uptake rises in lockstep with air concentration."
@@ -859,9 +882,8 @@ def render_question_texts(
         )
         answer_plain = (
             f"Hydrogen-eating microbes can fix at most {core} {unit_plain} in sample F14Dr1 after a single rain "
-            f"({rng_plain}, so the upper limit {hedge} where the genes are present), and 0 {unit_plain} in "
-            f"sample 14PRr2 where the carbon-fixing genes are absent. This is an upper ceiling if every bit of "
-            f"captured hydrogen energy went into building cell carbon."
+            f"({rng_plain}), and 0 {unit_plain} in sample 14PRr2 where the carbon-fixing genes are absent. "
+            f"This is an upper ceiling if every bit of captured hydrogen energy went into building cell carbon."
         )
         limits_extra_plain = (
             "This figure is an upper ceiling, not measured net carbon storage in the sand, because microbes "
