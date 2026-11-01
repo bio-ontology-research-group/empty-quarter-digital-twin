@@ -546,7 +546,7 @@ def build_questions(
 
             q_doc = {
                 "version": "question-1",
-                "twin_version": "0.8.0",
+                "twin_version": "0.8.1",
                 "slug": slug,
                 "theme": q.theme,
                 "title_plain": title_plain,
@@ -600,7 +600,7 @@ def build_questions(
 
         index_doc = {
             "version": "question-1",
-            "twin_version": "0.8.0",
+            "twin_version": "0.8.1",
             "questions": index_entries,
         }
         index_file = out_path / "index.json"

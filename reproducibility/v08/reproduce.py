@@ -168,7 +168,7 @@ def write_manifest(uq_dir: Path, questions_dir: Path) -> Path:
     outputs = uq_outputs + q_outputs + paper_outputs
 
     manifest: dict[str, Any] = {
-        "release": "0.8.0",
+        "release": "0.8.1",
         "raw_result_digests": {
             "full_run_n1024": {
                 "evaluations": run_record["full_run"]["evaluations"],

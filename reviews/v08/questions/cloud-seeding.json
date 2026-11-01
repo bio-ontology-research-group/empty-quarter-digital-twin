@@ -1,6 +1,6 @@
 {
-  "answer_plain": "If cloud seeding really added ten percent more rain on rainy days, hydrogen uptake over two weeks would rise by about 13 % (by 3.6 to 31 %), so under that rain boost uptake goes up in every case we tried. Whether seeding adds that much rain at all is disputed. When extra water does fall on wet days, it pushes moisture deeper into the sand and keeps microbes active for longer after the rain.",
-  "answer_science": "Central percentage change: h2_uptake_change_pct = 12.69 % (median 12.83 %, 50 % IQR [8.198, 18.81] %, joint 5\u201395 % interval [3.596, 31.16] %) (rounded headline: 13 %); absolute change h2_uptake_contrast_umol_m2 = 139.9 \u00b5mol m\u207b\u00b2 (median 111.9 \u00b5mol m\u207b\u00b2, 50 % IQR [46.42, 249.4] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [16.12, 500.3] \u00b5mol m\u207b\u00b2); absolute uptake h2_uptake_umol_m2 = 1242 \u00b5mol m\u207b\u00b2 (median 1086 \u00b5mol m\u207b\u00b2, 50 % IQR [389.5, 2502] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [152.2, 5248] \u00b5mol m\u207b\u00b2) (mode = variance, refusal fraction = 0.0 %, max level refusal across question = 0.0 %). Top two Sobol' contributors to output variance: cloud_seeding_rain_increase_frac (ST = 0.43 [0.37, 0.50], S1 = 0.33) and retention_b (ST = 0.29 [0.24, 0.34], S1 = 0.19). Status share of variance: verified_in_source ST = 0.00 (S1 = 0.00), modeller_assumption ST = 0.98 (S1 = 1.02), source_not_checked ST = 0.00 (S1 = 0.00) (joint group total indices can sum to more than 1 because of interactions). Limits: The parameter-uncertainty interval quantifies joint variation over literature constants and twin process parameters only and excludes external-model and twin model-structure error.",
+  "answer_plain": "If cloud seeding really added ten percent more rain on rainy days, hydrogen uptake over two weeks would rise by about 13 % (by 3.6 to 31 %), so under that rain boost uptake goes up in every case we tried. Whether seeding adds that much rain at all is disputed. When extra rain does fall, the sand stays wet for longer and the microbes stay active for longer.",
+  "answer_science": "With the seeding efficacy sampled between no effect and 20 % additional rain on rain days (central 10 %), 14-day H\u2082 uptake rose by a median of 13 % (90 % interval 3.6 to 31 %; reference parameterisation +13 %); doubling the seeding intensity gave 23 % (5.5 to 65 %). Every draw increased uptake because the extra water lengthens the period above the activation threshold. The efficacy itself is the largest single source of variance at the central intensity (S_T = 0.43 for the seeding efficacy), followed by the retention exponent b (S_T = 0.29).",
   "baseline_label": "One 12 mm rain on day 1, unseeded",
   "chain": [
     {
@@ -29,11 +29,11 @@
   },
   "headline_output": "h2_uptake_change_pct",
   "headline_plain": "If cloud seeding really added ten percent more rain on rainy days, hydrogen uptake over two weeks would rise by about 13 %, though whether seeding adds that much rain is disputed.",
-  "headline_science": "Central h2_uptake_change_pct = 12.69 % (median 12.83 %, 50 % IQR [8.198, 18.81] %, joint 5\u201395 % interval [3.596, 31.16] %) (plain headline: 13 %); absolute change h2_uptake_contrast_umol_m2 = 139.9 \u00b5mol m\u207b\u00b2 (median 111.9 \u00b5mol m\u207b\u00b2, 50 % IQR [46.42, 249.4] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [16.12, 500.3] \u00b5mol m\u207b\u00b2); absolute uptake h2_uptake_umol_m2 = 1242 \u00b5mol m\u207b\u00b2 (median 1086 \u00b5mol m\u207b\u00b2, 50 % IQR [389.5, 2502] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [152.2, 5248] \u00b5mol m\u207b\u00b2) (mode = variance, refusal = 0.0 %).",
+  "headline_science": "With the seeding efficacy sampled between no effect and 20 % additional rain on rain days (central 10 %), 14-day H\u2082 uptake rose by a median of 13 % (90 % interval 3.6 to 31 %; reference parameterisation +13 %); doubling the seeding intensity gave 23 % (5.5 to 65 %).",
   "headline_value": 12.687363981664342,
   "level_kind": "numeric",
   "limits_plain": "The range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong. Cloud seeding can only add water when suitable clouds are already present; the twin does not predict when clouds form.",
-  "limits_science": "The parameter-uncertainty interval quantifies joint variation over literature constants and twin process parameters only and excludes external-model and twin model-structure error. Treats seeding as a multiplicative scaling on existing rain-day precipitation; atmospheric microphysics and cloud availability are external to the soil twin.",
+  "limits_science": "The efficacy range follows the WMO statement on weather modification, which reports no established quantitative rain enhancement; the result is conditional on the additional rain occurring. The baseline contains one rain day, so seeding acts on a single event within the 14-day window.",
   "methods": {
     "admissibility": {
       "dilute_nacl_limit_mol_l": 0.1,
@@ -131,7 +131,7 @@
     "digests": {
       "constants_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578",
       "parameter_ranges_sha256": "f6b9fe6f95d88360375a81171deae746e17c213600077bcc49fa8e05b47ad027",
-      "uq_sha256": "42b4123a9be80cdf3b03d276577f900de9ddd3c33c67212a939ed6016c30b3e5"
+      "uq_sha256": "6599edc5b4d04de12cc86f48339f7f27f5d850daeee7f27f2b66ed4ce9d4d305"
     },
     "files": [
       "src/eq_biodt/v03/questions.py",
@@ -161,7 +161,7 @@
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": 0.0,
-              "mode": "variance",
+              "mode": "constant",
               "provenance": "simulated",
               "q05": 0.0,
               "q25": 0.0,
@@ -182,7 +182,7 @@
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": 0.0,
-              "mode": "variance",
+              "mode": "constant",
               "provenance": "simulated",
               "q05": 0.0,
               "q25": 0.0,
@@ -1329,8 +1329,8 @@
   "slug": "cloud-seeding",
   "theme": "water",
   "title_plain": "What if cloud seeding adds rain?",
-  "title_science": "Relative rainfall enhancement on existing rain days (exp09)",
-  "twin_version": "0.8.0",
+  "title_science": "Additional rain from cloud seeding",
+  "twin_version": "0.8.1",
   "uncertainty": {
     "S1": {
       "activation_shape": [

@@ -1,6 +1,6 @@
 {
-  "answer_plain": "Splitting one heavy downpour into four smaller showers lowers hydrogen uptake over two weeks by about 63 % (by 2.8 to 100 %), so uptake goes down in every case we tried. Splitting the same total rain into daily drizzle lowers uptake by almost 100 % (by 51 to 100 %). A single soaking pushes water deeper into the sand so microbes stay active for more days before surface evaporation dries the top layer.",
-  "answer_science": "Central percentage change: h2_uptake_change_pct = -63.24 % (median -68.65 %, 50 % IQR [-93.21, -37.95] %, joint 5\u201395 % interval [-100, -2.766] %) (rounded headline: 63 %); absolute change h2_uptake_contrast_umol_m2 = -697.1 \u00b5mol m\u207b\u00b2 (median -441.4 \u00b5mol m\u207b\u00b2, 50 % IQR [-1061, -165.8] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [-2343, -30.2] \u00b5mol m\u207b\u00b2); absolute uptake h2_uptake_umol_m2 = 405.2 \u00b5mol m\u207b\u00b2 (median 204.1 \u00b5mol m\u207b\u00b2, 50 % IQR [31.28, 940.9] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [0, 3950] \u00b5mol m\u207b\u00b2) (mode = variance, refusal fraction = 0.0 %, max level refusal across question = 0.0 %). Daily drizzle (12 mm total) vs one 12 mm storm: h2_uptake_change_pct = -99.74 % (median -99.93 %, 50 % IQR [-100, -90.7] %, joint 5\u201395 % interval [-100, -50.87] %) (plain: almost 100 % reduction); h2_uptake_contrast_umol_m2 = -1099 \u00b5mol m\u207b\u00b2 (median -834.9 \u00b5mol m\u207b\u00b2, 50 % IQR [-1969, -300.8] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [-3933, -121] \u00b5mol m\u207b\u00b2); h2_uptake_umol_m2 = 2.872 \u00b5mol m\u207b\u00b2 (median 0.3715 \u00b5mol m\u207b\u00b2, 50 % IQR [0, 99.36] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [0, 1391] \u00b5mol m\u207b\u00b2) (one-storm baseline h2_uptake_umol_m2 = 1102 \u00b5mol m\u207b\u00b2 (median 925.6 \u00b5mol m\u207b\u00b2, 50 % IQR [347.7, 2286] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [120.8, 4671] \u00b5mol m\u207b\u00b2)). Top two Sobol' contributors to output variance: retention_b (ST = 0.69 [0.64, 0.74], S1 = 0.63) and psi_entry_mpa (ST = 0.26 [0.23, 0.29], S1 = 0.22). Status share of variance: verified_in_source ST = 0.00 (S1 = 0.00), modeller_assumption ST = 1.00 (S1 = 1.00), source_not_checked ST = 0.00 (S1 = 0.00) (joint group total indices can sum to more than 1 because of interactions). Convergence check: at No rain (0 mm) (co_uptake_umol_m2, N = 2048), interval endpoints still move by 6.3 % of the width between N/2 and N; at No rain (0 mm) (h2_uptake_umol_m2, N = 2048), interval endpoints still move by 8.2 % of the width between N/2 and N; at Daily drizzle (12 mm total) (h2_uptake_umol_m2, N = 2048), interval endpoints still move by 10.3 % of the width between N/2 and N. Limits: The parameter-uncertainty interval quantifies joint variation over literature constants and twin process parameters only and excludes external-model and twin model-structure error.",
+  "answer_plain": "Splitting one heavy downpour into four smaller showers lowers hydrogen uptake over two weeks by about 63 % (by 2.8 to 100 %), so uptake goes down in every case we tried. Splitting the same total rain into daily drizzle lowers uptake by almost 100 % (by 51 to 100 %). One soaking keeps the sand wet enough for the microbes for several days, while small daily amounts mostly evaporate the same day.",
+  "answer_science": "Partitioning the same 12 mm of rain into smaller events reduced H\u2082 uptake in every parameter draw. Relative to a single 12 mm event, four 3 mm events reduced 14-day uptake by a median of 69 % (90 % interval 2.8 to 100 %; reference parameterisation \u221263 %), and daily drizzle reduced it by 100 % (51 to 100 %). Each small addition is largely removed by the daily evaporative demand, so the soil water potential spends fewer days above the activation threshold. The magnitude of the reduction depends mainly on the water-retention curve (the retention exponent b, S_T = 0.69; the air-entry potential \u03c8_e, S_T = 0.26); its direction holds across all sampled parameter values.",
   "baseline_label": "One 12 mm rain on day 1, no treatment",
   "chain": [
     {
@@ -23,11 +23,11 @@
   },
   "headline_output": "h2_uptake_change_pct",
   "headline_plain": "Splitting one heavy rain into four smaller showers lowers hydrogen uptake over two weeks by about 63 %, and daily drizzle lowers it by almost 100 %, so uptake goes down in every case we tried.",
-  "headline_science": "Central h2_uptake_change_pct = -63.24 % (median -68.65 %, 50 % IQR [-93.21, -37.95] %, joint 5\u201395 % interval [-100, -2.766] %) (plain headline: 63 %); absolute change h2_uptake_contrast_umol_m2 = -697.1 \u00b5mol m\u207b\u00b2 (median -441.4 \u00b5mol m\u207b\u00b2, 50 % IQR [-1061, -165.8] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [-2343, -30.2] \u00b5mol m\u207b\u00b2); absolute uptake h2_uptake_umol_m2 = 405.2 \u00b5mol m\u207b\u00b2 (median 204.1 \u00b5mol m\u207b\u00b2, 50 % IQR [31.28, 940.9] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [0, 3950] \u00b5mol m\u207b\u00b2) (mode = variance, refusal = 0.0 %).",
+  "headline_science": "Partitioning the same 12 mm of rain into smaller events reduced H\u2082 uptake in every parameter draw.",
   "headline_value": -63.23769677583815,
   "level_kind": "categorical",
   "limits_plain": "The range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong. The simulation uses a single sand column with fixed evaporation and does not include surface crusting or runoff down dune slopes.",
-  "limits_science": "The parameter-uncertainty interval quantifies joint variation over literature constants and twin process parameters only and excludes external-model and twin model-structure error. Assumes 1-D bucket hydrology without overland runoff, hysteresis, or biological soil-crust water-retention shifts.",
+  "limits_science": "The intervals combine uncertainty in the twin's retention, activation and kinetic parameters. The twin represents the top 10 cm of sand as one well-mixed layer at 25 \u00b0C with 1 mm d\u207b\u00b9 evaporative demand, so it resolves the timing of wetting but no vertical redistribution, runoff or vapour transport.",
   "methods": {
     "admissibility": {
       "dilute_nacl_limit_mol_l": 0.1,
@@ -91,7 +91,7 @@
     "digests": {
       "constants_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578",
       "parameter_ranges_sha256": "f6b9fe6f95d88360375a81171deae746e17c213600077bcc49fa8e05b47ad027",
-      "uq_sha256": "67dda45229e74842ece6fd4e7b61a934505cd3af4c18eca30f07ebc34c7c5e40"
+      "uq_sha256": "9f40b5f758aaeea99397ce443ac0e36b1dfb41e39ec61ad94fbe098674b178a1"
     },
     "files": [
       "src/eq_biodt/v03/questions.py",
@@ -415,7 +415,7 @@
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": 0.0,
-              "mode": "variance",
+              "mode": "constant",
               "provenance": "simulated",
               "q05": 0.0,
               "q25": 0.0,
@@ -436,7 +436,7 @@
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": 0.0,
-              "mode": "variance",
+              "mode": "constant",
               "provenance": "simulated",
               "q05": 0.0,
               "q25": 0.0,
@@ -1289,8 +1289,8 @@
   "slug": "rain-pattern",
   "theme": "water",
   "title_plain": "One heavy rain, four showers or daily drizzle?",
-  "title_science": "Rainfall schedule contrast at fixed 12 mm total depth",
-  "twin_version": "0.8.0",
+  "title_science": "Rainfall partitioning and 14-day H\u2082 uptake",
+  "twin_version": "0.8.1",
   "uncertainty": {
     "S1": {
       "activation_shape": [

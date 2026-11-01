@@ -1,6 +1,6 @@
 {
   "answer_plain": "Fifty vehicle passes change hydrogen uptake over two weeks by about -1.5 % (from 19 % lower to 40 % higher), so the change may go up or down. Squeezing the sand slows gas movement through the pores but also changes how tightly the sand holds water.",
-  "answer_science": "Central percentage change: h2_uptake_change_pct = -1.494 % (median 0.2054 %, 50 % IQR [-9.254, 11.34] %, joint 5\u201395 % interval [-19.01, 40.29] %) (rounded headline: 1.5 %); absolute change h2_uptake_contrast_umol_m2 = -16.46 \u00b5mol m\u207b\u00b2 (median 1.125 \u00b5mol m\u207b\u00b2, 50 % IQR [-196.5, 38.76] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [-872.5, 110] \u00b5mol m\u207b\u00b2); absolute uptake h2_uptake_umol_m2 = 1086 \u00b5mol m\u207b\u00b2 (median 987 \u00b5mol m\u207b\u00b2, 50 % IQR [398, 2087] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [170.1, 3920] \u00b5mol m\u207b\u00b2) (mode = variance, refusal fraction = 0.0 %, max level refusal across question = 0.0 %). Top two Sobol' contributors to output variance: k_h2_s (ST = 0.36 [0.32, 0.41], S1 = 0.33) and retention_b (ST = 0.34 [0.29, 0.40], S1 = 0.25). Status share of variance: verified_in_source ST = 0.00 (S1 = 0.00), modeller_assumption ST = 0.99 (S1 = 0.94), source_not_checked ST = 0.03 (S1 = 0.00) (joint group total indices can sum to more than 1 because of interactions). Convergence check: at 50 passes (co_uptake_change_pct, N = 1024), interval endpoints still move by 5.9 % of the width between N/2 and N. Limits: The parameter-uncertainty interval quantifies joint variation over literature constants and twin process parameters only and excludes external-model and twin model-structure error.",
+  "answer_science": "Fifty vehicle passes lowered porosity from 0.40 to 0.306 and changed 14-day H\u2082 uptake by a median of +0.21 %; the 90 % interval includes decreases and increases (\u221219 to +40 %). Lower porosity acts in two directions: it reduces the gas-filled pore space, which slows H\u2082 diffusion, and it raises the water saturation reached after the rain, which lengthens activation. The net response to compaction is therefore non-monotonic and depends on the H\u2082 rate constant k_H2 and the retention exponent b (S_T = 0.36 and 0.34).",
   "baseline_label": "Uncompacted sand (pore space 40 % of volume)",
   "chain": [
     {
@@ -30,11 +30,11 @@
   },
   "headline_output": "h2_uptake_change_pct",
   "headline_plain": "Fifty vehicle passes change hydrogen uptake over two weeks by about -1.5 %, and the change may go up or down.",
-  "headline_science": "Central h2_uptake_change_pct = -1.494 % (median 0.2054 %, 50 % IQR [-9.254, 11.34] %, joint 5\u201395 % interval [-19.01, 40.29] %) (plain headline: 1.5 %); absolute change h2_uptake_contrast_umol_m2 = -16.46 \u00b5mol m\u207b\u00b2 (median 1.125 \u00b5mol m\u207b\u00b2, 50 % IQR [-196.5, 38.76] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [-872.5, 110] \u00b5mol m\u207b\u00b2); absolute uptake h2_uptake_umol_m2 = 1086 \u00b5mol m\u207b\u00b2 (median 987 \u00b5mol m\u207b\u00b2, 50 % IQR [398, 2087] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [170.1, 3920] \u00b5mol m\u207b\u00b2) (mode = variance, refusal = 0.0 %).",
+  "headline_science": "Fifty vehicle passes lowered porosity from 0.40 to 0.306 and changed 14-day H\u2082 uptake by a median of +0.21 %; the 90 % interval includes decreases and increases (\u221219 to +40 %).",
   "headline_value": -1.493638639219352,
   "level_kind": "numeric",
   "limits_plain": "The range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong. Crushing of soil crusts, plants or burrows by tyres is not modelled beyond the drop in pore space.",
-  "limits_science": "The parameter-uncertainty interval quantifies joint variation over literature constants and twin process parameters only and excludes external-model and twin model-structure error. Maps traffic passes to bulk density and porosity only, holding retention shape b and air-entry potential psi_entry uncoupled from pore-size redistribution.",
+  "limits_science": "The conversion from vehicle passes to bulk density is an exponential approach to a maximum increase, fitted by the modeller to Mojave off-road studies (Webb 1983). Compaction changes porosity only; the retention curve keeps its parameters.",
   "methods": {
     "admissibility": {
       "dilute_nacl_limit_mol_l": 0.1,
@@ -170,7 +170,7 @@
     "digests": {
       "constants_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578",
       "parameter_ranges_sha256": "f6b9fe6f95d88360375a81171deae746e17c213600077bcc49fa8e05b47ad027",
-      "uq_sha256": "62732f72e54e65f25966a71e59f906ad713f07f0602275aa0ce2d83751751abe"
+      "uq_sha256": "2d5c62de77fb76416efd8d068979be8532d2e5f7b11fe3555c0b864cb54d27c8"
     },
     "files": [
       "src/eq_biodt/v03/questions.py",
@@ -200,7 +200,7 @@
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": 0.0,
-              "mode": "variance",
+              "mode": "constant",
               "provenance": "simulated",
               "q05": 0.0,
               "q25": 0.0,
@@ -221,7 +221,7 @@
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": 0.0,
-              "mode": "variance",
+              "mode": "constant",
               "provenance": "simulated",
               "q05": 0.0,
               "q25": 0.0,
@@ -263,7 +263,7 @@
               "label_plain": "Pore space in sand",
               "label_science": "Soil porosity \u03c6",
               "median": 0.4,
-              "mode": "variance",
+              "mode": "constant",
               "provenance": "simulated",
               "q05": 0.4,
               "q25": 0.4,
@@ -1530,7 +1530,7 @@
               "label_plain": "Pore space in sand",
               "label_science": "Soil porosity \u03c6",
               "median": 0.3,
-              "mode": "variance",
+              "mode": "constant",
               "provenance": "simulated",
               "q05": 0.3,
               "q25": 0.3,
@@ -1774,8 +1774,8 @@
   "slug": "compaction",
   "theme": "soil",
   "title_plain": "What if vehicles compact the sand?",
-  "title_science": "Off-road vehicle compaction curve and direct porosity clamp (v0.6 + exp10)",
-  "twin_version": "0.8.0",
+  "title_science": "Soil compaction by vehicle traffic",
+  "twin_version": "0.8.1",
   "uncertainty": {
     "S1": {
       "activation_shape": [

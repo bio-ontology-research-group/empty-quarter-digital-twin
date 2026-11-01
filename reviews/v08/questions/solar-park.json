@@ -1,6 +1,6 @@
 {
   "answer_plain": "Full solar-panel cover raises hydrogen uptake over two weeks by about 17 % (by 0.4 to 52 %), and uptake goes up in every case we tried. Less evaporation under the panels and water from panel washing keep the sand moist longer. This outweighs the slowing of microbes by shade.",
-  "answer_science": "Central percentage change: h2_uptake_change_pct = 16.64 % (median 23.44 %, 50 % IQR [13.11, 33.79] %, joint 5\u201395 % interval [0.3517, 51.83] %) (rounded headline: 17 %); absolute change h2_uptake_contrast_umol_m2 = 183.5 \u00b5mol m\u207b\u00b2 (median 175.8 \u00b5mol m\u207b\u00b2, 50 % IQR [54.44, 496.2] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [1.722, 1131] \u00b5mol m\u207b\u00b2); absolute uptake h2_uptake_umol_m2 = 1286 \u00b5mol m\u207b\u00b2 (median 1169 \u00b5mol m\u207b\u00b2, 50 % IQR [427.2, 2829] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [150.4, 5590] \u00b5mol m\u207b\u00b2) (mode = variance, refusal fraction = 0.0 %, max level refusal across question = 0.0 %). Top two Sobol' contributors to output variance: retention_b (ST = 0.41 [0.36, 0.45], S1 = 0.26) and solar_panel_evap_reduction_frac (ST = 0.29 [0.25, 0.33], S1 = 0.21). Status share of variance: verified_in_source ST = 0.00 (S1 = 0.00), modeller_assumption ST = 1.05 (S1 = 1.01), source_not_checked ST = 0.00 (S1 = -0.00) (joint group total indices can sum to more than 1 because of interactions). Limits: The parameter-uncertainty interval quantifies joint variation over literature constants and twin process parameters only and excludes external-model and twin model-structure error.",
+  "answer_science": "Full panel cover raised 14-day H\u2082 uptake by a median of 23 % (90 % interval 0.35 to 52 %; reference parameterisation +17 %), and every draw gave an increase. The panels act on the soil in three ways in the chain: they reduce evaporation and add washing water, both of which lengthen the wet period, and they cool the soil, which slows the reaction through Q10. At half cover the panel evaporation reduction explains the largest share of the variance (S_T = 0.44); at full cover the retention exponent b does (S_T = 0.41).",
   "baseline_label": "Open desert sand outside panels",
   "chain": [
     {
@@ -35,11 +35,11 @@
   },
   "headline_output": "h2_uptake_change_pct",
   "headline_plain": "Full solar-panel cover raises hydrogen uptake over two weeks by about 17 %, and uptake goes up in every case we tried.",
-  "headline_science": "Central h2_uptake_change_pct = 16.64 % (median 23.44 %, 50 % IQR [13.11, 33.79] %, joint 5\u201395 % interval [0.3517, 51.83] %) (plain headline: 17 %); absolute change h2_uptake_contrast_umol_m2 = 183.5 \u00b5mol m\u207b\u00b2 (median 175.8 \u00b5mol m\u207b\u00b2, 50 % IQR [54.44, 496.2] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [1.722, 1131] \u00b5mol m\u207b\u00b2); absolute uptake h2_uptake_umol_m2 = 1286 \u00b5mol m\u207b\u00b2 (median 1169 \u00b5mol m\u207b\u00b2, 50 % IQR [427.2, 2829] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [150.4, 5590] \u00b5mol m\u207b\u00b2) (mode = variance, refusal = 0.0 %).",
+  "headline_science": "Full panel cover raised 14-day H\u2082 uptake by a median of 23 % (90 % interval 0.35 to 52 %; reference parameterisation +17 %), and every draw gave an increase.",
   "headline_value": 16.644320142533935,
   "level_kind": "numeric",
   "limits_plain": "The range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong. Wind shifts under panel rows and runoff strips along panel edges are simplified to an even average.",
-  "limits_science": "The parameter-uncertainty interval quantifies joint variation over literature constants and twin process parameters only and excludes external-model and twin model-structure error. Homogenises under-panel microclimate and wash-water drips spatially; competing cooling (Q10) and moisture-retention effects partially offset each other across parameter draws.",
+  "limits_science": "The soil cooling and evaporation reduction come from studies at temperate sites (Armstrong et al. 2016; Hassanpour Adeh et al. 2018), and the washing volume and interval are scenario values; all three are modeller assumptions for the Rub' al Khali.",
   "methods": {
     "admissibility": {
       "dilute_nacl_limit_mol_l": 0.1,
@@ -209,7 +209,7 @@
     "digests": {
       "constants_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578",
       "parameter_ranges_sha256": "f6b9fe6f95d88360375a81171deae746e17c213600077bcc49fa8e05b47ad027",
-      "uq_sha256": "77e5b8185a988443cacea1ce0a2d14d308a5a6bf1ddd99052dee95953a9e9cff"
+      "uq_sha256": "94430239ff622864bdd676798a2e018204595a57e5fec60e2e79183cc97502a0"
     },
     "files": [
       "src/eq_biodt/v03/questions.py",
@@ -239,7 +239,7 @@
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": 0.0,
-              "mode": "variance",
+              "mode": "constant",
               "provenance": "simulated",
               "q05": 0.0,
               "q25": 0.0,
@@ -260,7 +260,7 @@
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": 0.0,
-              "mode": "variance",
+              "mode": "constant",
               "provenance": "simulated",
               "q05": 0.0,
               "q25": 0.0,
@@ -1113,8 +1113,8 @@
   "slug": "solar-park",
   "theme": "heat",
   "title_plain": "What if we build a solar park?",
-  "title_science": "Under-panel soil cooling, evaporation reduction, and panel-washing water pulses (exp08)",
-  "twin_version": "0.8.0",
+  "title_science": "Microclimate under photovoltaic panels",
+  "twin_version": "0.8.1",
   "uncertainty": {
     "S1": {
       "activation_shape": [

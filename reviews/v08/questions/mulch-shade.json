@@ -1,6 +1,6 @@
 {
   "answer_plain": "Full mulch cover raises hydrogen uptake over two weeks by about 50 % (by 11 to 92 %) by slowing evaporation, so uptake with mulch alone goes up in every case we tried. Full shade alone lowers uptake by about 25 % (by 1.7 to 28 %; typical run about 14 % lower), and combining mulch with shade raises uptake by about 14 % (from 6.2 % lower to 70 % higher). Mulch keeps water in the sand without cooling the microbes, whereas shade cools the sand and slows enzyme speed.",
-  "answer_science": "Central percentage change: h2_uptake_change_pct = 50.08 % (median 50.06 %, 50 % IQR [33.23, 66.16] %, joint 5\u201395 % interval [11.17, 91.82] %) (rounded headline: 50 %); absolute change h2_uptake_contrast_umol_m2 = 552 \u00b5mol m\u207b\u00b2 (median 399 \u00b5mol m\u207b\u00b2, 50 % IQR [153.4, 871.8] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [61.29, 1737] \u00b5mol m\u207b\u00b2); absolute uptake h2_uptake_umol_m2 = 1654 \u00b5mol m\u207b\u00b2 (median 1420 \u00b5mol m\u207b\u00b2, 50 % IQR [525, 3347] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [209.5, 6167] \u00b5mol m\u207b\u00b2) (mode = variance, refusal fraction = 0.0 %, max level refusal across question = 0.0 %). Full shade alone (shade-only level 2): h2_uptake_change_pct = -24.81 % (median -13.71 %, 50 % IQR [-20.05, -7.816] %, joint 5\u201395 % interval [-27.87, -1.739] %; note: central and median diverge by >25 % of the 5\u201395 % width); combined full mulch and shade (mulch-and-shade level 2): h2_uptake_change_pct = 14.09 % (median 28.17 %, 50 % IQR [12.68, 44.19] %, joint 5\u201395 % interval [-6.216, 70.17] %). Top two Sobol' contributors to output variance: retention_b (ST = 0.59 [0.54, 0.65], S1 = 0.54) and psi_entry_mpa (ST = 0.25 [0.22, 0.28], S1 = 0.23). Status share of variance: verified_in_source ST = 0.00 (S1 = 0.00), modeller_assumption ST = 0.98 (S1 = 0.98), source_not_checked ST = 0.00 (S1 = 0.00) (joint group total indices can sum to more than 1 because of interactions). Limits: The parameter-uncertainty interval quantifies joint variation over literature constants and twin process parameters only and excludes external-model and twin model-structure error.",
+  "answer_science": "Full organic mulch raised 14-day H\u2082 uptake by a median of 50 % (90 % interval 11 to 92 %) in every draw, because the reduced evaporation keeps the soil above the activation threshold for longer. A full shade net lowered uptake by 14 % (1.7 to 28 %), also in every draw: the net cools the soil and slows the reaction through Q10 (S_T = 0.77). Combining full mulch and shade changed uptake by +28 %, with an interval that includes both directions (\u22126.2 to +70 %). The mulch effect depends mostly on the retention exponent b (S_T = 0.59).",
   "baseline_label": "Bare unshaded sand (one 12 mm rain on day 1)",
   "chain": [
     {
@@ -35,11 +35,11 @@
   },
   "headline_output": "h2_uptake_change_pct",
   "headline_plain": "Full mulch cover raises hydrogen uptake over two weeks by about 50 % by keeping the sand damp longer, and uptake goes up in every case we tried.",
-  "headline_science": "Central h2_uptake_change_pct = 50.08 % (median 50.06 %, 50 % IQR [33.23, 66.16] %, joint 5\u201395 % interval [11.17, 91.82] %) (plain headline: 50 %); absolute change h2_uptake_contrast_umol_m2 = 552 \u00b5mol m\u207b\u00b2 (median 399 \u00b5mol m\u207b\u00b2, 50 % IQR [153.4, 871.8] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [61.29, 1737] \u00b5mol m\u207b\u00b2); absolute uptake h2_uptake_umol_m2 = 1654 \u00b5mol m\u207b\u00b2 (median 1420 \u00b5mol m\u207b\u00b2, 50 % IQR [525, 3347] \u00b5mol m\u207b\u00b2, joint 5\u201395 % interval [209.5, 6167] \u00b5mol m\u207b\u00b2) (mode = variance, refusal = 0.0 %).",
+  "headline_science": "Full organic mulch raised 14-day H\u2082 uptake by a median of 50 % (90 % interval 11 to 92 %) in every draw, because the reduced evaporation keeps the soil above the activation threshold for longer.",
   "headline_value": 50.07651966605312,
   "level_kind": "numeric",
   "limits_plain": "The range shows how much the answer moves when uncertain numbers in the models are varied; the models themselves could also be wrong. Organic mulch breakdown and extra carbon food for soil microbes are not included.",
-  "limits_science": "The parameter-uncertainty interval quantifies joint variation over literature constants and twin process parameters only and excludes external-model and twin model-structure error. Treats mulch and shade as boundary forcing modifiers on evaporation and soil temperature only, excluding organic carbon leaching from mulch.",
+  "limits_science": "The mulch evaporation factor extrapolates the FAO-56 rule for partial organic mulch cover linearly to full cover, and the shade-net cooling is a constant soil-temperature offset; both are modeller assumptions.",
   "methods": {
     "admissibility": {
       "dilute_nacl_limit_mol_l": 0.1,
@@ -171,7 +171,7 @@
     "digests": {
       "constants_sha256": "d3ffce8f565b35c6b166557cceabcc3332b6a92321f4a2f8a71a54b82ccc0578",
       "parameter_ranges_sha256": "f6b9fe6f95d88360375a81171deae746e17c213600077bcc49fa8e05b47ad027",
-      "uq_sha256": "876d39e4acc71773713e57a0dd247c90465525484379bba4b36f481349e20c6d"
+      "uq_sha256": "49b084bc1036a68a779a60927e32a41663bd669c3a3a9202c1e685eedecf0f06"
     },
     "files": [
       "src/eq_biodt/v03/questions.py",
@@ -201,7 +201,7 @@
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": 0.0,
-              "mode": "variance",
+              "mode": "constant",
               "provenance": "simulated",
               "q05": 0.0,
               "q25": 0.0,
@@ -222,7 +222,7 @@
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": 0.0,
-              "mode": "variance",
+              "mode": "constant",
               "provenance": "simulated",
               "q05": 0.0,
               "q25": 0.0,
@@ -1090,7 +1090,7 @@
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": 0.0,
-              "mode": "variance",
+              "mode": "constant",
               "provenance": "simulated",
               "q05": 0.0,
               "q25": 0.0,
@@ -1111,7 +1111,7 @@
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": 0.0,
-              "mode": "variance",
+              "mode": "constant",
               "provenance": "simulated",
               "q05": 0.0,
               "q25": 0.0,
@@ -1979,7 +1979,7 @@
               "label_plain": "Percentage change in hydrogen uptake over 14 days",
               "label_science": "14-day relative H\u2082 uptake change vs baseline",
               "median": 0.0,
-              "mode": "variance",
+              "mode": "constant",
               "provenance": "simulated",
               "q05": 0.0,
               "q25": 0.0,
@@ -2000,7 +2000,7 @@
               "label_plain": "Change in hydrogen uptake over 14 days",
               "label_science": "14-day H\u2082 uptake contrast vs baseline",
               "median": 0.0,
-              "mode": "variance",
+              "mode": "constant",
               "provenance": "simulated",
               "q05": 0.0,
               "q25": 0.0,
@@ -2853,8 +2853,8 @@
   "slug": "mulch-shade",
   "theme": "heat",
   "title_plain": "Mulch or shade nets?",
-  "title_science": "Mulch evaporation reduction and shade-net soil cooling (exp03)",
-  "twin_version": "0.8.0",
+  "title_science": "Organic mulch and shade nets",
+  "twin_version": "0.8.1",
   "uncertainty": {
     "S1": {
       "activation_shape": [
