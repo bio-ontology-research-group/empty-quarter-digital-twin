@@ -95,11 +95,18 @@ class D:
         self.clauses = {c["id"]: c["statement"] for c in self.con["clauses"]}
         self.src = {p: (ROOT / p).read_text() for p in (
             "reproducibility/v06/analyse.py", "reproducibility/v05/external_transfer.py", "src/eq_biodt/v03/resources.py",
-            "reproducibility/v07/digitise_fig1.py", "reproducibility/v07/composition.py")}
+            "reproducibility/v07/digitise_fig1.py", "reproducibility/v07/composition.py",
+            "src/eq_biodt/v03/uq.py", "reproducibility/v08/gather.py")}
         self.v7_sum = J("reviews/v07/composition/summary.json")
         self.v7 = {r["id"]: J(f"reviews/v07/composition/{r['id']}.json") for r in self.v7_sum["experiments"]}
         self.v7_reg = {c["id"]: c for c in J("data/external/composition_constants.json")["constants"]}
         self.v7_fig1 = J("data/external/de_zelicourt_2018/fig1_digitised.json")
+        self.v8_params_list = J("data/external/twin_parameter_ranges.json")["parameters"]
+        self.v8_params = {p["id"]: p for p in self.v8_params_list}
+        self.v8_run = J("reviews/v08/uq/run_record.json")
+        self.v8_idx = J("reviews/v08/questions/index.json")
+        self.v8_q = {q["slug"]: J(f"reviews/v08/questions/{q['slug']}.json") for q in self.v8_idx["questions"]}
+        self.v8_uq = {q["slug"]: J(f"reviews/v08/uq/{q['slug']}.json") for q in self.v8_idx["questions"]}
 
     def v7_lvl(self, exp, **kw):
         return next(l for l in self.v7[exp]["levels"] if all(l.get(k, l.get("action", {}).get(k)) == v for k, v in kw.items()))
@@ -112,6 +119,35 @@ class D:
 
     def v7_status_count(self, status):
         return sum(1 for c in self.v7_reg.values() if c["status"] == status)
+
+    def v8_param(self, pid, field="value"):
+        return self.v8_params[pid][field]
+
+    def v8_q_lvl(self, slug, series_id, level_idx):
+        ser = next(s for s in self.v8_q[slug]["series"] if s["id"] == series_id)
+        return ser["levels"][level_idx]
+
+    def v8_q_out(self, slug, series_id, level_idx, out_key):
+        return self.v8_q_lvl(slug, series_id, level_idx)["outcomes"][out_key]
+
+    def v8_uq_lvl(self, slug, series_id, level_idx):
+        ser = next(s for s in self.v8_uq[slug]["series"] if s["id"] == series_id)
+        return next(l for l in ser["levels"] if l["level"] == level_idx)
+
+    def v8_uq_out(self, slug, series_id, level_idx, out_key):
+        return self.v8_uq_lvl(slug, series_id, level_idx)["outputs"][out_key]
+
+    def v8_total_levels(self):
+        return sum(len(s["levels"]) for u in self.v8_uq.values() for s in u["series"])
+
+    def v8_all_outputs(self):
+        return [o for u in self.v8_uq.values() for s in u["series"] for l in s["levels"] for o in l["outputs"].values()]
+
+    def v8_total_outputs(self):
+        return len(self.v8_all_outputs())
+
+    def v8_flagged_shifts_pct(self):
+        return [o["convergence"]["half_n_shift_frac"] * 100 for o in self.v8_all_outputs() if o.get("convergence", {}).get("flagged")]
 
     # derived helpers -------------------------------------------------------------------------------------------
     def cl(self, cid, rx):
@@ -431,7 +467,7 @@ def build_registry():
         e=lambda d: d.v7["drip_vs_flood"]["levels"][0]["twin_baseline"]["co_uptake_mol_m2"] * UM)
     chk("Adding irrigation water ([[a]] mm day$^{-1}$ seasonal demand",
         a=lambda d: d.v7_const("crop_etc_mm_per_day"))
-    chk("Daily drip irrigation changes [[a]]-day H$_2$ uptake by $[[b]]$ ($[[c]]$ to $[[e]]$), compared with $[[f]]$ for [[g]]-day pulses and $[[h]]$ for [[i]]-day flood pulses",
+    chk("Daily drip irrigation changes [[a]]-day H$_2$ uptake by $[[b]]$ (one-at-a-time constant envelope $[[c]]$ to $[[e]]$), compared with $[[f]]$ for [[g]]-day pulses and $[[h]]$ for [[i]]-day flood pulses",
         a=lambda d: d.v7["drip_vs_flood"]["baseline"]["period_days"],
         b=lambda d: d.v7_lvl("drip_vs_flood", irrigation_interval_days=1)["difference_vs_baseline"]["h2_uptake_mol_m2"]["percent"]["value"],
         c=lambda d: d.v7_lvl("drip_vs_flood", irrigation_interval_days=1)["difference_vs_baseline"]["h2_uptake_mol_m2"]["percent"]["low"],
@@ -556,7 +592,7 @@ def build_registry():
         j=lambda d: d.v7["inoculated_alfalfa_salinity"]["fitted_leaching"]["dry"]["ece_at_3_12_dS_m"],
         k=lambda d: d.v7["inoculated_alfalfa_salinity"]["fitted_leaching"]["fresh"]["ece_at_3_12_dS_m"],
         l=lambda d: d.v7_const("sa187_soil_ec_dS_m"))
-    chk("With the fitted leaching factor and the [[a]] ([[b]] to [[c]]) SA187 yield multiplier, predicted inoculated relative yield at [[e]] dS m$^{-1}$ is [[f]] ([[g]] to [[h]], fresh biomass); from a single trial at two salinities, the SA187 benefit is identifiable only as a constant multiplier across the tested [[i]] to [[j]] dS m$^{-1}$ range",
+    chk("With the fitted leaching factor and the [[a]] ([[b]] to [[c]]) SA187 yield multiplier, predicted inoculated relative yield at [[e]] dS m$^{-1}$ is [[f]] (one-at-a-time envelope [[g]] to [[h]], fresh biomass); from a single trial at two salinities, the SA187 benefit is identifiable only as a constant multiplier across the tested [[i]] to [[j]] dS m$^{-1}$ range",
         a=lambda d: d.v7_const("sa187_benefit_b") * 100,
         b=lambda d: d.v7_const("sa187_benefit_b", "low") * 100,
         c=lambda d: d.v7_const("sa187_benefit_b", "high") * 100,
@@ -753,6 +789,213 @@ def build_registry():
         r=lambda d: 5,
         s=lambda d: 10)
 
+    # ---- v0.8 uncertainty quantification: main.tex Results, Methods, Discussion
+    chk("Propagating joint parameter uncertainty across all [[a]] management and community questions ([[b]] scenario levels, [[c]] evaluated outputs and [[e]] model evaluations at base sample size $N=[[f]]$; Suppl. Section S6, Suppl. Tables S8 and S9 and Suppl. Fig. S2) shows that absolute [[g]]-day H$_2$ uptake on the single-pulse baseline spans an order of magnitude (central [[h]] $\\mu$mol m$^{-2}$, median [[i]], joint 5--95% interval [[j]] to [[k]] $\\mu$mol m$^{-2}$), with variance dominated by the assumed reaction-rate constant $k_{\\mathrm{H_2}}$ (total-order Sobol' index $S_T=[[l]]$) and the Campbell retention exponent $b$ ($S_T=[[m]]$).",
+        a=lambda d: len(d.v8_idx["questions"]),
+        b=lambda d: d.v8_total_levels(),
+        c=lambda d: d.v8_total_outputs(),
+        e=lambda d: d.v8_run["full_run"]["evaluations"],
+        f=lambda d: d.v8_run["full_run"]["n"],
+        g=lambda d: d.v7["drip_vs_flood"]["baseline"]["period_days"],
+        h=lambda d: d.v8_q_out("rain-pattern", "rain-schedule", 1, "h2_uptake_umol_m2")["value"],
+        i=lambda d: d.v8_q_out("rain-pattern", "rain-schedule", 1, "h2_uptake_umol_m2")["median"],
+        j=lambda d: d.v8_q_out("rain-pattern", "rain-schedule", 1, "h2_uptake_umol_m2")["q05"],
+        k=lambda d: d.v8_q_out("rain-pattern", "rain-schedule", 1, "h2_uptake_umol_m2")["q95"],
+        l=lambda d: d.v8_uq_out("rain-pattern", "rain-schedule", 1, "h2_uptake_umol_m2")["ST"]["k_h2_s"][0],
+        m=lambda d: d.v8_uq_out("rain-pattern", "rain-schedule", 1, "h2_uptake_umol_m2")["ST"]["retention_b"][0])
+    chk("four [[a]] mm showers ($[[b]]$ central, median $[[c]]$, joint 5--95% interval $[[e]]$ to $[[f]]$), daily [[g]] mm drizzle ($[[h]]$ central, median $[[i]]$, $[[j]]$ to $[[k]]$) and shade-net cooling ($[[l]]$ central, median $[[m]]$, $[[o]]$ to $[[p]]$) reduce H$_2$ uptake in every draw, whereas full organic mulch ($+[[q]]$ central, median $+[[r]]$, $+[[s]]$ to $+[[t]]$), solar-panel cover ($+[[u]]$ central, median $+[[v]]$, $+[[w]]$ to $+[[x]]$), cloud seeding ($+[[y]]$ central, median $+[[z]]$, $+[[aa]]$ to $+[[ab]]$) and $+[[ac]] ^\\circ$C soil-only heating at fixed moisture ($+[[ae]]$ central, median $+[[af]]$, $+[[ag]]$ to $+[[ah]]$) increase H$_2$ uptake in every draw.",
+        a=lambda d: d.v6["treatment_versions"]["total_water_mm"] / 4,
+        b=lambda d: d.v8_q_out("rain-pattern", "rain-schedule", 2, "h2_uptake_change_pct")["value"],
+        c=lambda d: d.v8_q_out("rain-pattern", "rain-schedule", 2, "h2_uptake_change_pct")["median"],
+        e=lambda d: d.v8_q_out("rain-pattern", "rain-schedule", 2, "h2_uptake_change_pct")["q05"],
+        f=lambda d: d.v8_q_out("rain-pattern", "rain-schedule", 2, "h2_uptake_change_pct")["q95"],
+        g=lambda d: d.v6["treatment_versions"]["total_water_mm"] / 14,
+        h=lambda d: d.v8_q_out("rain-pattern", "rain-schedule", 3, "h2_uptake_change_pct")["value"],
+        i=lambda d: d.v8_q_out("rain-pattern", "rain-schedule", 3, "h2_uptake_change_pct")["median"],
+        j=lambda d: d.v8_q_out("rain-pattern", "rain-schedule", 3, "h2_uptake_change_pct")["q05"],
+        k=lambda d: d.v8_q_out("rain-pattern", "rain-schedule", 3, "h2_uptake_change_pct")["q95"],
+        l=lambda d: d.v8_q_out("mulch-shade", "shade-only", 2, "h2_uptake_change_pct")["value"],
+        m=lambda d: d.v8_q_out("mulch-shade", "shade-only", 2, "h2_uptake_change_pct")["median"],
+        o=lambda d: d.v8_q_out("mulch-shade", "shade-only", 2, "h2_uptake_change_pct")["q05"],
+        p=lambda d: d.v8_q_out("mulch-shade", "shade-only", 2, "h2_uptake_change_pct")["q95"],
+        q=lambda d: d.v8_q_out("mulch-shade", "mulch-only", 2, "h2_uptake_change_pct")["value"],
+        r=lambda d: d.v8_q_out("mulch-shade", "mulch-only", 2, "h2_uptake_change_pct")["median"],
+        s=lambda d: d.v8_q_out("mulch-shade", "mulch-only", 2, "h2_uptake_change_pct")["q05"],
+        t=lambda d: d.v8_q_out("mulch-shade", "mulch-only", 2, "h2_uptake_change_pct")["q95"],
+        u=lambda d: d.v8_q_out("solar-park", "panel-cover", 2, "h2_uptake_change_pct")["value"],
+        v=lambda d: d.v8_q_out("solar-park", "panel-cover", 2, "h2_uptake_change_pct")["median"],
+        w=lambda d: d.v8_q_out("solar-park", "panel-cover", 2, "h2_uptake_change_pct")["q05"],
+        x=lambda d: d.v8_q_out("solar-park", "panel-cover", 2, "h2_uptake_change_pct")["q95"],
+        y=lambda d: d.v8_q_out("cloud-seeding", "seeding-intensity", 2, "h2_uptake_change_pct")["value"],
+        z=lambda d: d.v8_q_out("cloud-seeding", "seeding-intensity", 2, "h2_uptake_change_pct")["median"],
+        aa=lambda d: d.v8_q_out("cloud-seeding", "seeding-intensity", 2, "h2_uptake_change_pct")["q05"],
+        ab=lambda d: d.v8_q_out("cloud-seeding", "seeding-intensity", 2, "h2_uptake_change_pct")["q95"],
+        ac=lambda d: d.v8_q_lvl("hotter", "warmer-soil-only", 4)["x"],
+        ae=lambda d: d.v8_q_out("hotter", "warmer-soil-only", 4, "h2_uptake_change_pct")["value"],
+        af=lambda d: d.v8_q_out("hotter", "warmer-soil-only", 4, "h2_uptake_change_pct")["median"],
+        ag=lambda d: d.v8_q_out("hotter", "warmer-soil-only", 4, "h2_uptake_change_pct")["q05"],
+        ah=lambda d: d.v8_q_out("hotter", "warmer-soil-only", 4, "h2_uptake_change_pct")["q95"])
+    chk("spans negative and positive percentage changes for $+[[a]] ^\\circ$C climate warming at unchanged rainfall ($+[[b]]$ central, median $[[c]]$, joint 5--95% interval $[[e]]$ to $+[[f]]$, where $Q_{10}$ contributes $S_T=[[g]]$ and potential-evaporation scaling $S_T=[[h]]$), [[i]] w/w biochar ($[[j]]$ central, median $[[k]]$, $[[l]]$ to $+[[m]]$), [[o]] vehicle passes ($[[p]]$ central, median $+[[q]]$, $[[r]]$ to $+[[s]]$), [[t]]-day flood irrigation ($[[u]]$ central, median $+[[v]]$, $[[w]]$ to $+[[x]]$), daily drip irrigation ($[[y]]$ central, median $[[z]]$, $[[aa]]$ to $+[[ab]]$) and daily brackish irrigation at [[ac]] dS m$^{-1}$ ($[[ae]]$ central, median $[[af]]$, $[[ag]]$ to $+[[ah]]$, with [[ai]] of draws refused outside the [[aj]] mol L$^{-1}$ dilute osmotic domain).",
+        a=lambda d: d.v8_q_lvl("hotter", "warmer-climate", 3)["x"],
+        b=lambda d: d.v8_q_out("hotter", "warmer-climate", 3, "h2_uptake_change_pct")["value"],
+        c=lambda d: d.v8_q_out("hotter", "warmer-climate", 3, "h2_uptake_change_pct")["median"],
+        e=lambda d: d.v8_q_out("hotter", "warmer-climate", 3, "h2_uptake_change_pct")["q05"],
+        f=lambda d: d.v8_q_out("hotter", "warmer-climate", 3, "h2_uptake_change_pct")["q95"],
+        g=lambda d: d.v8_q["hotter"]["uncertainty"]["ST"]["q10"][0],
+        h=lambda d: d.v8_q["hotter"]["uncertainty"]["ST"]["evap_scaling_per_c"][0],
+        i=lambda d: d.v8_q_lvl("biochar", "biochar-dose", 3)["x"],
+        j=lambda d: d.v8_q_out("biochar", "biochar-dose", 3, "h2_uptake_change_pct")["value"],
+        k=lambda d: d.v8_q_out("biochar", "biochar-dose", 3, "h2_uptake_change_pct")["median"],
+        l=lambda d: d.v8_q_out("biochar", "biochar-dose", 3, "h2_uptake_change_pct")["q05"],
+        m=lambda d: d.v8_q_out("biochar", "biochar-dose", 3, "h2_uptake_change_pct")["q95"],
+        o=lambda d: d.v8_q_lvl("compaction", "offroad-passes", 3)["x"],
+        p=lambda d: d.v8_q_out("compaction", "offroad-passes", 3, "h2_uptake_change_pct")["value"],
+        q=lambda d: d.v8_q_out("compaction", "offroad-passes", 3, "h2_uptake_change_pct")["median"],
+        r=lambda d: d.v8_q_out("compaction", "offroad-passes", 3, "h2_uptake_change_pct")["q05"],
+        s=lambda d: d.v8_q_out("compaction", "offroad-passes", 3, "h2_uptake_change_pct")["q95"],
+        t=lambda d: d.v8_q_lvl("drip-or-flood", "irrigation-interval", 2)["x"],
+        u=lambda d: d.v8_q_out("drip-or-flood", "irrigation-interval", 2, "h2_uptake_change_pct")["value"],
+        v=lambda d: d.v8_q_out("drip-or-flood", "irrigation-interval", 2, "h2_uptake_change_pct")["median"],
+        w=lambda d: d.v8_q_out("drip-or-flood", "irrigation-interval", 2, "h2_uptake_change_pct")["q05"],
+        x=lambda d: d.v8_q_out("drip-or-flood", "irrigation-interval", 2, "h2_uptake_change_pct")["q95"],
+        y=lambda d: d.v8_q_out("drip-or-flood", "irrigation-interval", 0, "h2_uptake_change_pct")["value"],
+        z=lambda d: d.v8_q_out("drip-or-flood", "irrigation-interval", 0, "h2_uptake_change_pct")["median"],
+        aa=lambda d: d.v8_q_out("drip-or-flood", "irrigation-interval", 0, "h2_uptake_change_pct")["q05"],
+        ab=lambda d: d.v8_q_out("drip-or-flood", "irrigation-interval", 0, "h2_uptake_change_pct")["q95"],
+        ac=lambda d: d.v8_q_lvl("salty-water", "daily-irrigation", 3)["x"],
+        ae=lambda d: d.v8_q_out("salty-water", "daily-irrigation", 3, "h2_uptake_change_pct")["value"],
+        af=lambda d: d.v8_q_out("salty-water", "daily-irrigation", 3, "h2_uptake_change_pct")["median"],
+        ag=lambda d: d.v8_q_out("salty-water", "daily-irrigation", 3, "h2_uptake_change_pct")["q05"],
+        ah=lambda d: d.v8_q_out("salty-water", "daily-irrigation", 3, "h2_uptake_change_pct")["q95"],
+        ai=lambda d: d.v8_q_out("salty-water", "daily-irrigation", 3, "h2_uptake_change_pct")["refusal_fraction"] * 100,
+        aj=lambda d: d.defaults["osmotic_domain_mol_l"])
+    chk("Under joint variation, annualised knallgas carbon fixation in sample has median [[a]] g C m$^{-2}$ yr$^{-1}$ (joint 5--95% interval [[b]] to [[c]] g C m$^{-2}$ yr$^{-1}$, $S_T=[[e]]$ for $k_{\\mathrm{H_2}}$), open-gate [[f]]-day CO uptake has median [[g]] $\\mu$mol m$^{-2}$ ([[h]] to [[i]] $\\mu$mol m$^{-2}$, $S_T=[[j]]$ for $k_{\\mathrm{CO}}$) while closed-gate samples remain identically [[k]] $\\mu$mol m$^{-2}$ (interval [[l]] to [[m]]), and SA187-inoculated alfalfa relative yield at [[o]] dS m$^{-1}$ under the fitted fresh-weight leaching model has median [[p]] (joint 5--95% interval [[q]] to [[r]]), with [[s]] of variance ($S_T^{\\mathrm{group}}=[[t]]$) contributed by source-verified field-trial constants ($S_T=[[u]]$ for the mock yield ratio and $S_T=[[v]]$ for the SA187 multiplier) and [[w]] by modeller assumptions.",
+        a=lambda d: d.v8_q_out("carbon-fixation", "baseline-12mm", 1, "c_fixed_upper_bound_g_m2_yr")["median"],
+        b=lambda d: d.v8_q_out("carbon-fixation", "baseline-12mm", 1, "c_fixed_upper_bound_g_m2_yr")["q05"],
+        c=lambda d: d.v8_q_out("carbon-fixation", "baseline-12mm", 1, "c_fixed_upper_bound_g_m2_yr")["q95"],
+        e=lambda d: d.v8_q["carbon-fixation"]["uncertainty"]["ST"]["k_h2_s"][0],
+        f=lambda d: d.v7["inoculation"]["baseline"]["period_days"],
+        g=lambda d: d.v8_q_out("missing-co-genes", "co-gate-samples", 2, "co_uptake_umol_m2")["median"],
+        h=lambda d: d.v8_q_out("missing-co-genes", "co-gate-samples", 2, "co_uptake_umol_m2")["q05"],
+        i=lambda d: d.v8_q_out("missing-co-genes", "co-gate-samples", 2, "co_uptake_umol_m2")["q95"],
+        j=lambda d: d.v8_q["missing-co-genes"]["uncertainty"]["ST"]["k_co_s"][0],
+        k=lambda d: d.v8_q_out("missing-co-genes", "co-gate-samples", 0, "co_uptake_umol_m2")["value"],
+        l=lambda d: d.v8_q_out("missing-co-genes", "co-gate-samples", 0, "co_uptake_umol_m2")["q05"],
+        m=lambda d: d.v8_q_out("missing-co-genes", "co-gate-samples", 0, "co_uptake_umol_m2")["q95"],
+        o=lambda d: d.v7_const("sa187_ecw_high_dS_m"),
+        p=lambda d: d.v8_q_out("alfalfa-bacterium", "C_fitted_fresh", 4, "relative_yield_alfalfa_sa187")["median"],
+        q=lambda d: d.v8_q_out("alfalfa-bacterium", "C_fitted_fresh", 4, "relative_yield_alfalfa_sa187")["q05"],
+        r=lambda d: d.v8_q_out("alfalfa-bacterium", "C_fitted_fresh", 4, "relative_yield_alfalfa_sa187")["q95"],
+        s=lambda d: d.v8_q["alfalfa-bacterium"]["uncertainty"]["group_ST"]["verified_in_source"][0] * 100,
+        t=lambda d: d.v8_q["alfalfa-bacterium"]["uncertainty"]["group_ST"]["verified_in_source"][0],
+        u=lambda d: d.v8_q["alfalfa-bacterium"]["uncertainty"]["ST"]["sa187_mock_ratio_fresh"][0],
+        v=lambda d: d.v8_q["alfalfa-bacterium"]["uncertainty"]["ST"]["sa187_benefit_b"][0],
+        w=lambda d: d.v8_q["alfalfa-bacterium"]["uncertainty"]["group_ST"]["modeller_assumption"][0] * 100)
+    chk("To propagate joint parameter uncertainty and partition output variance across the [[a]] questions, each scenario level is evaluated over the union of constants referenced by its external models ( , assigned triangular distributions on $[\\text{low},\\text{value},\\text{high}]$) and the [[b]] twin process parameters",
+        a=lambda d: len(d.v8_idx["questions"]),
+        b=lambda d: len(d.v8_params))
+    chk("In the twin registry, $k_{\\mathrm{H_2}}$ and $k_{\\mathrm{CO}}$ follow log-uniform distributions on $[[[a]],[[b]]]$ s$^{-1}$ around $[[c]]$ s$^{-1}$, $\\psi_e$ and $\\psi_w$ follow log-uniform distributions on magnitude over $[[[e]],[[f]]]$ and $[[[g]],[[h]]]$ MPa, $Q_{10}$ is uniform on $[[[i]],[[j]]]$, and $b\\in[[[k]],[[l]]]$, $\\psi_d\\in[[[m]],[[o]]]$ MPa, $a\\in[[[p]],[[q]]]$, $D_{\\mathrm{H_2}}$, $D_{\\mathrm{CO}}$, $d\\in[[[r]],[[s]]]$ day$^{-1}$, $f\\in[[[t]],[[u]]]$ and $\\phi\\in[[[v]],[[w]]]$ are triangular around their contract defaults.",
+        a=lambda d: d.v8_param("k_h2_s", "low"),
+        b=lambda d: d.v8_param("k_h2_s", "high"),
+        c=lambda d: d.v8_param("k_h2_s", "value"),
+        e=lambda d: d.v8_param("psi_entry_mpa", "low"),
+        f=lambda d: d.v8_param("psi_entry_mpa", "high"),
+        g=lambda d: d.v8_param("wet_activation_mpa", "low"),
+        h=lambda d: d.v8_param("wet_activation_mpa", "high"),
+        i=lambda d: d.v8_param("q10", "low"),
+        j=lambda d: d.v8_param("q10", "high"),
+        k=lambda d: d.v8_param("retention_b", "low"),
+        l=lambda d: d.v8_param("retention_b", "high"),
+        m=lambda d: d.v8_param("dry_threshold_mpa", "low"),
+        o=lambda d: d.v8_param("dry_threshold_mpa", "high"),
+        p=lambda d: d.v8_param("activation_shape", "low"),
+        q=lambda d: d.v8_param("activation_shape", "high"),
+        r=lambda d: d.v8_param("drainage_fraction_day", "low"),
+        s=lambda d: d.v8_param("drainage_fraction_day", "high"),
+        t=lambda d: d.v8_param("field_capacity_fraction", "low"),
+        u=lambda d: d.v8_param("field_capacity_fraction", "high"),
+        v=lambda d: d.v8_param("porosity", "low"),
+        w=lambda d: d.v8_param("porosity", "high"))
+    chk("A scrambled Sobol' quasi-Monte Carlo Saltelli design with base sample size $N=[[a]]$ generates $N(d+[[b]])$ rows per level for $d$ active inputs",
+        a=lambda d: d.v8_run["full_run"]["n"],
+        b=lambda d: 5)
+    chk("with [[a]] percentile-bootstrap draws (95% intervals; seed derived from the question, series and level identifier).",
+        a=lambda d: int(re.search(r"boot:\s*int\s*=\s*(\d+)", d.src["src/eq_biodt/v03/uq.py"]).group(1)))
+    chk("Convergence is checked by comparing the 5--95% interval at $N/2$ and $N$; the [[a]] non-discrete levels whose interval endpoints shifted by more than [[b]] of the full-$N$ interval width were rerun at $N=[[c]]$ ([[e]] array tasks), leaving [[f]] of [[g]] outputs flagged (endpoint shifts of [[h]] to [[i]]).",
+        a=lambda d: len(d.v8_run["convergence_rerun"]["levels"]),
+        b=lambda d: float(re.search(r"shift\s*>\s*([\d.]+)", d.src["src/eq_biodt/v03/uq.py"]).group(1)) * 100,
+        c=lambda d: d.v8_run["convergence_rerun"]["n"],
+        e=lambda d: d.v8_run["convergence_rerun"]["tasks"],
+        f=lambda d: d.v8_run["convergence_rerun"]["still_flagged_after_rerun"],
+        g=lambda d: d.v8_total_outputs(),
+        h=lambda d: min(d.v8_flagged_shifts_pct()),
+        i=lambda d: max(d.v8_flagged_shifts_pct()))
+    chk("When fewer than [[a]] of draws violate a validity or osmotic domain, quantiles and Sobol' indices are computed on admitted draws along with the refusal fraction; when at least [[b]] of draws are refused, $S_1$ and $S_T$ are computed on the binary refusal indicator.",
+        a=lambda d: d.v8_q["hotter"]["methods"]["admissibility"]["refusal_threshold_fraction"] * 100,
+        b=lambda d: d.v8_q["hotter"]["methods"]["admissibility"]["refusal_threshold_fraction"] * 100)
+    chk("The full design ([[a]] tasks, [[b]] evaluations) was executed deterministically on a Slurm cluster; in a [[c]]-task cross-machine check ([[e]] scalar outputs), raw floating-point values agreed to within $[[f]]\\times [[g]]$ relative difference, and published summaries are rounded to [[h]] significant digits.",
+        a=lambda d: d.v8_run["full_run"]["tasks"],
+        b=lambda d: d.v8_run["full_run"]["evaluations"],
+        c=lambda d: d.v8_run["pilot"]["tasks"],
+        e=lambda d: int(re.search(r"of (\d+) raw values", d.v8_run["pilot"]["comparison_with_ws"]).group(1)),
+        f=lambda d: float(re.search(r"difference ([\d.e-]+)", d.v8_run["pilot"]["comparison_with_ws"]).group(1)) / 1e-11,
+        g=lambda d: 1e-11,
+        h=lambda d: int(re.search(r"SIG_DIGITS(?::\s*int)?\s*=\s*(\d+)", d.src["reproducibility/v08/gather.py"]).group(1)))
+    chk("Joint global sensitivity analysis across the [[a]] questions separates interventions with sign-definite relative effects",
+        a=lambda d: len(d.v8_idx["questions"]))
+    chk("Across [[a]] of the [[b]] headline outputs, variance is dominated by modeller assumptions ($S_T^{\\mathrm{group}}\\ge [[c]]$)",
+        a=lambda d: sum(1 for q in d.v8_q.values() if q["uncertainty"]["group_ST"]["modeller_assumption"][0] >= 0.85),
+        b=lambda d: len(d.v8_idx["questions"]),
+        c=lambda d: min(q["uncertainty"]["group_ST"]["modeller_assumption"][0] for q in d.v8_q.values() if q["uncertainty"]["group_ST"]["modeller_assumption"][0] >= 0.85))
+
+    # ---- v0.8 uncertainty quantification: supplementary.tex Section S6
+    chk("evaluate [[a]] management and community questions across [[b]] scenario levels and [[c]] output series ( and ). Table lists all [[e]] uncertain twin process parameters in , each carrying verification status . For each scenario level, the active input vector combines these twin parameters (excluding $\\phi$ when porosity is directly set by the biochar or compaction upstream model) with the constants referenced by the level's upstream and downstream models from ([[f]] constants in total",
+        a=lambda d: len(d.v8_idx["questions"]),
+        b=lambda d: d.v8_total_levels(),
+        c=lambda d: d.v8_total_outputs(),
+        e=lambda d: len(d.v8_params),
+        f=lambda d: len(d.v7_reg))
+    chk("All [[a]] parameters carry verification status",
+        a=lambda d: len(d.v8_params))
+    chk("for the headline level and output of each of the [[a]] questions. For ($[[b]]\\times$ background H$_2$), the relative H$_2$ uptake change is $+[[c]]$ across every parameter draw (5--95% interval $[[e]]$ to $[[f]]$) because the first-order reaction--diffusion equation is linear in surface concentration; the Sobol' indices in Table and Fig. for are therefore reported on the paired [[g]]-day H$_2$ uptake contrast (central $[[h]] \\mu$mol m$^{-2}$, median $[[i]]$, 5--95% interval $[[j]]$ to $[[k]] \\mu$mol m$^{-2}$, where has $S_T=[[l]]$ and has $S_T=[[m]]$).",
+        a=lambda d: len(d.v8_idx["questions"]),
+        b=lambda d: d.v8_q_lvl("air-hydrogen", "h2-multiplier", 2)["x"],
+        c=lambda d: d.v8_q_out("air-hydrogen", "h2-multiplier", 2, "h2_uptake_change_pct")["value"],
+        e=lambda d: d.v8_q_out("air-hydrogen", "h2-multiplier", 2, "h2_uptake_change_pct")["q05"],
+        f=lambda d: d.v8_q_out("air-hydrogen", "h2-multiplier", 2, "h2_uptake_change_pct")["q95"],
+        g=lambda d: d.v7["h2_leakage"]["baseline"]["period_days"],
+        h=lambda d: d.v8_q_out("air-hydrogen", "h2-multiplier", 2, "h2_uptake_contrast_umol_m2")["value"],
+        i=lambda d: d.v8_q_out("air-hydrogen", "h2-multiplier", 2, "h2_uptake_contrast_umol_m2")["median"],
+        j=lambda d: d.v8_q_out("air-hydrogen", "h2-multiplier", 2, "h2_uptake_contrast_umol_m2")["q05"],
+        k=lambda d: d.v8_q_out("air-hydrogen", "h2-multiplier", 2, "h2_uptake_contrast_umol_m2")["q95"],
+        l=lambda d: d.v8_q["air-hydrogen"]["uncertainty"]["ST"]["k_h2_s"][0],
+        m=lambda d: d.v8_q["air-hydrogen"]["uncertainty"]["ST"]["retention_b"][0])
+    chk("Headline joint parameter-uncertainty summary across the [[a]] questions",
+        a=lambda d: len(d.v8_idx["questions"]))
+    chk("The full Saltelli design ($N=[[a]]$ base samples, [[b]] bootstrap draws for 95% Sobol' confidence intervals, [[c]] Slurm array tasks and [[e]] model evaluations; ) was checked for sample-size convergence by comparing the 5--95% interval endpoints between the first $N/2=512$ base samples and all $N=[[f]]$ base samples. Seven non-discrete levels exceeded the [[g]] interval-width shift threshold and were rerun at $N=[[h]]$ ([[i]] array tasks). After the $N=[[j]]$ rerun, [[k]] of the [[l]] evaluated outputs remain flagged with half-$N$ endpoint shifts of [[m]] to [[o]] of the interval width",
+        a=lambda d: d.v8_run["full_run"]["n"],
+        b=lambda d: int(re.search(r"boot:\s*int\s*=\s*(\d+)", d.src["src/eq_biodt/v03/uq.py"]).group(1)),
+        c=lambda d: d.v8_run["full_run"]["tasks"],
+        e=lambda d: d.v8_run["full_run"]["evaluations"],
+        f=lambda d: d.v8_run["full_run"]["n"],
+        g=lambda d: float(re.search(r"shift\s*>\s*([\d.]+)", d.src["src/eq_biodt/v03/uq.py"]).group(1)) * 100,
+        h=lambda d: d.v8_run["convergence_rerun"]["n"],
+        i=lambda d: d.v8_run["convergence_rerun"]["tasks"],
+        j=lambda d: d.v8_run["convergence_rerun"]["n"],
+        k=lambda d: d.v8_run["convergence_rerun"]["still_flagged_after_rerun"],
+        l=lambda d: d.v8_total_outputs(),
+        m=lambda d: min(d.v8_flagged_shifts_pct()),
+        o=lambda d: max(d.v8_flagged_shifts_pct()))
+    chk("In a [[a]]-task cross-machine verification check ([[b]] scalar outputs), [[c]] raw floating-point values differed between workstations at a maximum relative difference of $[[e]]\\times [[f]]$, and all published summaries are rounded to [[g]] significant digits.",
+        a=lambda d: d.v8_run["pilot"]["tasks"],
+        b=lambda d: int(re.search(r"of (\d+) raw values", d.v8_run["pilot"]["comparison_with_ws"]).group(1)),
+        c=lambda d: int(re.search(r"(\d+) of \d+ raw values", d.v8_run["pilot"]["comparison_with_ws"]).group(1)),
+        e=lambda d: float(re.search(r"difference ([\d.e-]+)", d.v8_run["pilot"]["comparison_with_ws"]).group(1)) / 1e-11,
+        f=lambda d: 1e-11,
+        g=lambda d: int(re.search(r"SIG_DIGITS(?::\s*int)?\s*=\s*(\d+)", d.src["reproducibility/v08/gather.py"]).group(1)))
+    chk("Global sensitivity of the [[a]] headline question outputs under joint parameter uncertainty.",
+        a=lambda d: len(d.v8_idx["questions"]))
+
 
 def _unique(vals):
     vals = {round(float(v), 9) for v in vals}
@@ -807,6 +1050,14 @@ def build_allow():
     allow("sets $v_{CO}=[[a]]$ without CO-carrier entailment", "definition of the admission gate, see Methods and src/eq_biodt/v03/resources.py")
     allow("If $\\gamma_g=[[a]]$, then $k_g=[[b]]$ and $J_g=[[c]]$ in every regime", "definition: consequences of the closed deductive gate, see Methods")
     allow("need not sum to [[a]]", "arithmetic constant (percentages)")
+    allow("[[a]]--[[b]] interval", "quantile interval level (5th to 95th percentile, q05 and q95 in reviews/v08/uq/*.json)",
+          lambda d: all("q05" in o and "q95" in o for o in d.v8_all_outputs()))
+    allow("[[a]]--[[b]] parameter-uncertainty interval", "quantile interval level (5th to 95th percentile, q05 and q95 in reviews/v08/uq/*.json)",
+          lambda d: all("q05" in o and "q95" in o for o in d.v8_all_outputs()))
+    allow("[[a]] intervals; seed derived", "bootstrap confidence interval level (95%, see src/eq_biodt/v03/uq.py)")
+    allow("[[a]] Sobol' confidence intervals", "bootstrap confidence interval level (95%, see src/eq_biodt/v03/uq.py)")
+    allow("with [[a]] bootstrap intervals", "bootstrap confidence interval level (95%, see src/eq_biodt/v03/uq.py)", n=2)
+    allow("return exact [[a]] with interval $[[[b]],[[c]]]$", "definition: closed deductive gate returns exact zero [0, 0] (see src/eq_biodt/v03/uq.py)", n=2)
 
 
 # ----------------------------------------------------------------------------------------------- macros
@@ -913,6 +1164,36 @@ def table_checks(d):
                 val = val / (10 ** int(m.group(1)))
                 lit = lit[:m.start()]
             cmp(f"v07 row {s['id']} {tag}", lit.replace("$", "").strip(), val)
+    v8p_rows = [r for r in rows("v08_parameters.tex") if r[0].isdigit()]
+    out += 1
+    if len(v8p_rows) != len(d.v8_params_list):
+        bad.append(f"v08_parameters.tex has {len(v8p_rows)} rows, twin_parameter_ranges.json has {len(d.v8_params_list)}")
+    for idx, (r, p) in enumerate(zip(v8p_rows, d.v8_params_list), start=1):
+        cmp(f"v08_parameters row {p['id']} n", r[0], idx)
+        for tag, lit, val in zip(("value", "low", "high"), r[3].replace("[", ",").replace("]", "").split(","), (p["value"], p["low"], p["high"])):
+            m = re.search(r"\\times10\^\{(-?\d+)\}", lit)
+            if m:
+                val = val / (10 ** int(m.group(1)))
+                lit = lit[:m.start()]
+            cmp(f"v08_parameters row {p['id']} {tag}", lit.replace("$", "").strip(), val)
+    v8u_rows = [r for r in rows("v08_uq.tex") if r[0].isdigit()]
+    out += 1
+    if len(v8u_rows) != len(d.v8_idx["questions"]):
+        bad.append(f"v08_uq.tex has {len(v8u_rows)} rows, index.json has {len(d.v8_idx['questions'])}")
+    for idx, (r, qinfo) in enumerate(zip(v8u_rows, d.v8_idx["questions"]), start=1):
+        slug = qinfo["slug"]
+        doc = d.v8_q[slug]
+        u = doc["uncertainty"]
+        out_obj = d.v8_q_out(slug, u["headline_series"], u["headline_level"], u["headline_output"])
+        cmp(f"v08_uq row {slug} n", r[0], idx)
+        cmp(f"v08_uq row {slug} central", r[3].replace("$", "").strip(), out_obj["value"])
+        for tag, lit, val in zip(("median", "q05", "q95"), r[4].replace("[", ",").replace("]", "").split(","), (u["median"], u["q05"], u["q95"])):
+            cmp(f"v08_uq row {slug} {tag}", lit.replace("$", "").strip(), val)
+        ranked = sorted(u["ST"].items(), key=lambda kv: (-kv[1][0], kv[0]))[:2]
+        top_lits = re.findall(r"\(([^)]+)\)", r[5])
+        for (pname, st), lit in zip(ranked, top_lits):
+            cmp(f"v08_uq row {slug} ST {pname}", lit.replace("$", "").strip(), st[0])
+        cmp(f"v08_uq row {slug} group_ST assum", r[6].replace("$", "").strip(), u["group_ST"]["modeller_assumption"][0])
     return out, bad
 
 
