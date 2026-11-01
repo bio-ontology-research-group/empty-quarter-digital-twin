@@ -18,7 +18,7 @@ cd /home/hohndor/eq-biodt-uq/twin
 TASKS_FILE="${UQ_TASKS_FILE:-reviews/v08/uq/tasks.json}"
 OUT_DIR="${UQ_RAW_DIR:-/home/hohndor/eq-biodt-uq/raw}"
 
-uv run --frozen python reproducibility/v08/uq_task.py \
+.venv/bin/python reproducibility/v08/uq_task.py \
   --task-index "${SLURM_ARRAY_TASK_ID}" \
   --tasks "${TASKS_FILE}" \
   --out "${OUT_DIR}"
