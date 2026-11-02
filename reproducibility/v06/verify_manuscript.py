@@ -583,7 +583,7 @@ def build_registry_restructured():
     chk(r"Climate warming of [[a]] $^\circ$C with unchanged rainfall", a=lambda d: _lvl_x(d, "hotter", "warmer-climate", 3))
     chk(r"Biochar at [[a]] w/w reduced uptake", a=lambda d: _lvl_x(d, "biochar", "biochar-dose", 3))
     chk(r"and [[a]] off-road vehicle passes in", a=lambda d: _lvl_x(d, "compaction", "offroad-passes", 3))
-    chk(r"seasonal demand of [[a]] mm day$^{-1}$ reduced uptake", a=lambda d: d.v7_const("crop_etc_mm_per_day"))
+    chk(r"seasonal demand of [[a]] mm day$^{-1}$ decreased uptake", a=lambda d: d.v7_const("crop_etc_mm_per_day"))
     chk(r"Irrigating daily with brackish water at [[a]] dS m$^{-1}$ changed uptake", a=lambda d: _lvl_x(d, "salty-water", "daily-irrigation", 3))
     chk(r"for the same irrigation at [[a]] dS m$^{-1}$; the added water", a=lambda d: _lvl_x(d, "salty-water", "daily-irrigation", 0))
     chk(r"Brackish irrigation at [[a]] dS m$^{-1}$ acts on microbial uptake", a=lambda d: _lvl_x(d, "salty-water", "daily-irrigation", 3))
@@ -593,7 +593,7 @@ def build_registry_restructured():
     chk(r"relative to a single [[a]] mm rain event over [[b]] days", a=_tw, b=_days)
     chk(r"In [[a]] of the [[b]] headline outputs, the inputs that we classified as modeller assumptions",
         a=lambda d: sum(1 for q in d.v8_q.values() if q["uncertainty"]["group_ST"]["modeller_assumption"][0] >= 0.85), b=nq)
-    chk(r"In the samples with mapped carriers, [[a]]-day CO uptake has a median", a=_days)
+    chk(r"samples with mapped carriers, [[a]]-day CO uptake has a median", a=_days)
     chk(r"a [[a]] inoculum has no effect", a=lambda d: _lvl_x(d, "adding-microbes", "V53PRr2-proportional", 1))
     chk(r"in a sample with a [[a]] initial carrier share", a=lambda d: float(d.ps[d.ps["sample"] == "V53PRr2"].q_co.iloc[0]) * 100)
     chk(r"knallgas CBB stoichiometry of [[a]]/[[b]] mol CO$_2$ per mol H$_2$",
@@ -672,6 +672,7 @@ def build_allow_restructured():
         or "fn >= 0.95" in d.src["reproducibility/v08/paper_figures.py"]
     allow("at least [[a]] of parameter draws", "direction-reporting threshold: a direction is reported when at least 95% of draws share it (fn >= 0.95 in reproducibility/v08/paper_figures.py)", thr, n=3)
     allow("at least [[a]] of draws", "direction-reporting threshold: a direction is reported when at least 95% of draws share it (fn >= 0.95 in reproducibility/v08/paper_figures.py)", thr, n=3)
+    allow(r"\setcounter{table}{[[a]]}", "LaTeX counter reset, not a quantity")
     allow("the intervention by Rule [[a]].", "name of do-calculus rule 3, not a quantity")
     allow("We digitised Fig. [[a]] of de Z", "figure number in the cited article, see data/external/de_zelicourt_2018/fig1_digitised.json",
           lambda d: "Fig 1" in d.v7_fig1["source"])
@@ -1172,6 +1173,9 @@ def v8_macro_expectations(E):
     E["QMissingCOOpenMedian"] = lambda d: sig(co(d)["median"], 3)
     E["QMissingCOOpenLow"] = lambda d: sig(co(d)["q05"], 3)
     E["QMissingCOOpenHigh"] = lambda d: sig(co(d)["q95"], 3)
+    E["QMissingCOOpenSamples"] = lambda d: sum(
+        1 for l in d.v8_q["missing-co-genes"]["series"][0]["levels"]
+        if float(d.ps[d.ps["sample"] == l["x"]].q_co.iloc[0]) > 0.0)
     E["QMissingCOClosedSamples"] = lambda d: sum(
         1 for l in d.v8_q["missing-co-genes"]["series"][0]["levels"]
         if float(d.ps[d.ps["sample"] == l["x"]].q_co.iloc[0]) == 0.0)
