@@ -288,12 +288,11 @@ For other platforms, use the Linux GitHub Actions workflow or build the same
 [km release](https://github.com/bio-ontology-research-group/kobayashi-marust/releases/tag/v1.5.3)
 and set `KM_BIN` to its executable. The report records the binary digest.
 
-With `latexmk` and TeX Live installed:
+With `pdflatex`, `bibtex` and `make` installed, the following builds the supplement first and then the main text,
+so that the main text resolves its references to supplementary items:
 
 ```bash
-cd paper
-latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
-latexmk -pdf -interaction=nonstopmode -halt-on-error supplementary.tex
+make -C paper
 ```
 
 For a separate output directory, `eq-biodt rebuild-evidence --output DIR`

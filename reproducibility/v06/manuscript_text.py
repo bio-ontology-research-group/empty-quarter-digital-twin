@@ -13,7 +13,7 @@ MONTHS = "January|February|March|April|May|June|July|August|September|October|No
 SKIP_ENV = ("equation", "align", "verbatim", "thebibliography")
 SKIP_CMD_ARG = ("cite", "label", "ref", "eqref", "includegraphics", "input", "href", "texttt", "bibliography",
                 "bibliographystyle", "usepackage", "documentclass", "renewcommand", "newcommand", "section", "subsection",
-                "url", "doi", "title")
+                "url", "doi", "title", "path")
 FORMULA = re.compile(r"/|<|>|\+|\\leq|\\geq|\\log|\\min|\\max|\\lceil|\\rightarrow|\\times|\(|\d(?=[A-Za-z]|\\(?!pm|%|circ))")
 
 

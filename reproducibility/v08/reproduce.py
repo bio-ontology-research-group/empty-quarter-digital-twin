@@ -26,6 +26,7 @@ from reproducibility.v08.figures import main as build_figures  # noqa: E402
 from reproducibility.v08.gather import DEFAULT_OUT_DIR, _round_floats, gather, gather_bytes  # noqa: E402
 from reproducibility.v08.paper_figures import main as build_paper_figures  # noqa: E402
 from reproducibility.v08.paper_numbers import write_numbers_tex  # noqa: E402
+from reproducibility.v08.supplement_tables import main as build_supplement_tables  # noqa: E402
 from reproducibility.v08.questions import DEFAULT_OUT_DIR as DEFAULT_QUESTIONS_DIR, build_questions  # noqa: E402
 from reproducibility.v08.tasks import enumerate_tasks  # noqa: E402
 from reproducibility.v08.uq_task import run_task  # noqa: E402
@@ -254,6 +255,7 @@ def main(argv: list[str] | None = None) -> int:
     write_numbers_tex(args.questions_out)
     build_figures()
     build_paper_figures()
+    build_supplement_tables()
     manifest_path = write_manifest(args.out, args.questions_out)
     elapsed = round(time.time() - t0, 1)
     print(f"v0.8 reproduction complete in {elapsed}s -> {manifest_path.relative_to(ROOT)}")
